@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "info.html",
+    "href": "info.html",
+    "title": "Bureaucracy",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "info.html#weekly-meeting",
+    "href": "info.html#weekly-meeting",
+    "title": "Bureaucracy",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "info.html#deadlines",
+    "href": "info.html#deadlines",
+    "title": "Bureaucracy",
+    "section": "Deadlines",
+    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
+  },
+  {
+    "objectID": "activity_log/landing.html",
+    "href": "activity_log/landing.html",
+    "title": "Activity log",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNhat \n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Activity log (by week)\nBureaucracy"
+  },
+  {
+    "objectID": "index.html#meta",
+    "href": "index.html#meta",
+    "title": "Home",
+    "section": "",
+    "text": "Activity log (by week)\nBureaucracy"
+  },
+  {
+    "objectID": "index.html#notes-on-literature",
+    "href": "index.html#notes-on-literature",
+    "title": "Home",
+    "section": "Notes on literature",
+    "text": "Notes on literature"
+  },
+  {
+    "objectID": "activity_log/week_1.html",
+    "href": "activity_log/week_1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
+  },
+  {
+    "objectID": "activity_log/week_1.html#expected-outcomes",
+    "href": "activity_log/week_1.html#expected-outcomes",
+    "title": "Week 1",
+    "section": "",
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
+  }
+]
