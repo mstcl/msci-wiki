@@ -6,27 +6,27 @@ website:
   back-to-top-navigation: true
   page-footer:
     center: "Made with Quarto"
-  repo-url: https://github.com/mstcl/msci-wiki
-  repo-branch: np
-  repo-actions: [edit, issue]
   sidebar:
     search: true
-    style: "floating"
+    style: "docked"
     contents:
       - section: "Personal"
+        icon: person-fill
         contents:
           - activity_log/landing.qmd
           - literature_notes/landing.qmd
       - section: "Shared"
+        icon: diagram-3-fill
+      - text: "Zotero library"
+        icon: bookmarks-fill
+        href: "https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library"
     tools:
-      - icon: "git"
+      - icon: git
         menu:
           - text: "Codeberg mirror"
             href: "https://codeberg.org/lckdscl/msci-wiki"
           - text: "GitHub mirror"
             href: "https://github.com/mstcl/msci-wiki"
-      - icon: "collection"
-        href: "https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library"
 
 format:
   html:
@@ -38,6 +38,6 @@ format:
     html-math-method: mathjax
     anchor-sections: true
     smooth-scroll: true
-    theme: simplex
+    theme: zephyr
     mainfont: sans-serif
 jupyter: python3
