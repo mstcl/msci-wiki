@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/landing.html</loc>
+    <lastmod>2023-09-29T12:19:08.008Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/landing.html</loc>
+    <lastmod>2023-09-29T12:19:07.625Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/deadlines.html</loc>
+    <lastmod>2023-09-29T12:19:07.182Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/index.html</loc>
+    <lastmod>2023-09-29T12:19:07.382Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_1.html</loc>
+    <lastmod>2023-09-29T12:19:07.831Z</lastmod>
+  </url>
+</urlset>
