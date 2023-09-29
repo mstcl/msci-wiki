@@ -14,22 +14,22 @@
     "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNhat \n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
-    "objectID": "deadlines.html",
-    "href": "deadlines.html",
+    "objectID": "shared/deadlines.html",
+    "href": "shared/deadlines.html",
     "title": "Deadline information",
     "section": "",
     "text": "TB1: Thursday 11:00\nTB2: to be decided"
   },
   {
-    "objectID": "deadlines.html#weekly-meeting",
-    "href": "deadlines.html#weekly-meeting",
+    "objectID": "shared/deadlines.html#weekly-meeting",
+    "href": "shared/deadlines.html#weekly-meeting",
     "title": "Deadline information",
     "section": "",
     "text": "TB1: Thursday 11:00\nTB2: to be decided"
   },
   {
-    "objectID": "deadlines.html#deadlines",
-    "href": "deadlines.html#deadlines",
+    "objectID": "shared/deadlines.html#deadlines",
+    "href": "shared/deadlines.html#deadlines",
     "title": "Deadline information",
     "section": "Deadlines",
     "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
@@ -39,14 +39,63 @@
     "href": "index.html",
     "title": "Home",
     "section": "",
-    "text": "Deadlines"
+    "text": "Deadlines\nRepository information"
   },
   {
     "objectID": "index.html#information",
     "href": "index.html#information",
     "title": "Home",
     "section": "",
-    "text": "Deadlines"
+    "text": "Deadlines\nRepository information"
+  },
+  {
+    "objectID": "shared/repo.html",
+    "href": "shared/repo.html",
+    "title": "Repository information",
+    "section": "",
+    "text": "A brief guide on how to setup this website elsewhere and develop the wiki."
+  },
+  {
+    "objectID": "shared/repo.html#forking",
+    "href": "shared/repo.html#forking",
+    "title": "Repository information",
+    "section": "Forking",
+    "text": "Forking\n\nIf using a Codeberg account, fork this repo.\nIf using a GitHub account, fork this repo."
+  },
+  {
+    "objectID": "shared/repo.html#local-development",
+    "href": "shared/repo.html#local-development",
+    "title": "Repository information",
+    "section": "Local development",
+    "text": "Local development\nIt’s recommended to use SSH and SSH keys when working with a remote git.\n\nKey generating instructions are found here (this is git-server agnostic).\nFor GitHub, follow this to add your key.\nFor Codeberg, it’s similar, navigate to this link when logged in, and then Add key under the Manage SSH Keys section.\n\nClone the repo locally:\n\nFor Codeberg:\n\ngit clone git@codeberg.org:&lt;user&gt;/msci-wiki.git\n\nFor GitHub:\n\ngit clone git@github.com:&lt;user&gt;/msci-wiki.git"
+  },
+  {
+    "objectID": "shared/repo.html#managing-branches-and-commits",
+    "href": "shared/repo.html#managing-branches-and-commits",
+    "title": "Repository information",
+    "section": "Managing branches and commits",
+    "text": "Managing branches and commits\nMake a new branch to build your own website from with\ngit checkout -b &lt;make_your_own_unique_name&gt;\nThis branch will contain individual work + shared stuff. It should be the source of truth.\nFrom now on, we will refer to this branch as my_branch.\nWhen contributing to shared knowledge, switch to shared branch with git checkout shared. In this branch, there should be only one directory called shared. This is the root folder of all shared information. Any further directory structuring occurs within this, not outside of it.\n\nNo individual work goes into the shared branch to avoid conflicts with filenames!\n\nWhen merging new commits containing shared information from shared to my_branch, switch to my_branch with git checkout my_branch, and then perform a merge with\ngit merge shared\n\nDon’t merge from my_branch to shared!"
+  },
+  {
+    "objectID": "shared/repo.html#building-pages",
+    "href": "shared/repo.html#building-pages",
+    "title": "Repository information",
+    "section": "Building pages",
+    "text": "Building pages\n\nCodeberg hosted sites use the branch pages.\nGitHub hosted sites use the branch gh-pages.\n\nQuarto only publishes to the branch gh-pages. As unfortunate as it sounds, this means to host pages on Codeberg, it’s a bit more involved.\nTo build the pages, first, run the following:\nquarto publish gh-pages\nThis will build and push to the gh-pages branch.\n\nIf using GitHub, that’s all you need to do.\nIf using Codeberg, switch to pages if you haven’t already with git checkout pages, then run git merge gh-pages."
+  },
+  {
+    "objectID": "shared/repo.html#push-the-changes",
+    "href": "shared/repo.html#push-the-changes",
+    "title": "Repository information",
+    "section": "Push the changes",
+    "text": "Push the changes\nPushing changes to remote servers make rolling back very difficult, make sure everything looks correct first. Use git log and git status to ensure everything has been committed. To push everything to a mirror:\ngit push &lt;remote&gt; &lt;branch&gt;\nTry to keep all branches up-to-date on all mirrors!"
+  },
+  {
+    "objectID": "shared/repo.html#accessing-the-live-website",
+    "href": "shared/repo.html#accessing-the-live-website",
+    "title": "Repository information",
+    "section": "Accessing the live website",
+    "text": "Accessing the live website\n\nFor Codeberg, it’s https://username.codeberg.page/msci-wiki (more information).\nFor GitHub, it’s https://username.github.io/msci-wiki (more information)."
   },
   {
     "objectID": "activity_log/week_1.html",
