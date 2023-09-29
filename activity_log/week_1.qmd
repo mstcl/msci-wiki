@@ -8,7 +8,7 @@ author: "Nhat"
 
 - [ ] Catch up on background reading
 - [x] Set up electronic notebook
-- [ ] Set up git repository for shared knowledge
+- [x] Set up git repository for shared knowledge
   - Personal logs and files in `.gitignore`
   - How to resolve conflicts? Avoid editing at the same time?
   - Where to host? Private GitHub repo?
