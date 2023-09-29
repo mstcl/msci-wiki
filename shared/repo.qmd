@@ -1,0 +1,112 @@
+---
+title: "Repository information"
+---
+
+A brief guide on how to setup this website elsewhere and develop the wiki.
+
+## Forking
+
+- If using a **Codeberg** account, fork [this
+repo](https://codeberg.org/lckdscl/msci-wiki).
+- If using a **GitHub** account, fork [this
+repo](https://github.com/mstcl/msci-wiki).
+
+## Local development
+
+It's recommended to use SSH and SSH keys when working with a remote git.
+
+- Key generating instructions are found
+[here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+(this is git-server agnostic).
+- For **GitHub**, follow
+[this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+to add your key.
+- For **Codeberg**, it's similar, navigate to [this
+link](https://codeberg.org/user/settings/keys) when logged in, and then `Add
+key` under the `Manage SSH Keys` section.
+
+Clone the repo locally:
+
+- For **Codeberg**:
+
+```bash
+git clone git@codeberg.org:<user>/msci-wiki.git
+```
+
+- For **GitHub**:
+
+```bash
+git clone git@github.com:<user>/msci-wiki.git
+```
+
+## Managing branches and commits
+
+Make a **new branch** to build your own website from with
+
+```bash
+git checkout -b <make_your_own_unique_name>
+```
+
+This branch will contain individual work + shared stuff. It should be the
+source of truth.
+
+From now on, we will refer to this branch as `my_branch`.
+
+When contributing to **shared** knowledge, switch to `shared` branch with
+`git checkout shared`. In this branch, there should be only one directory
+called `shared`. This is the root folder of all shared information. Any further
+directory structuring occurs within this, not outside of it.
+
+- **No individual work goes into the `shared` branch to avoid conflicts with
+filenames!**
+
+When merging new commits containing shared information from `shared` to
+`my_branch`, switch to `my_branch` with `git checkout my_branch`, and then
+perform a merge with
+
+```bash
+git merge shared
+```
+
+- **Don't merge from `my_branch` to `shared`!**
+
+## Building pages
+
+- **Codeberg** hosted sites use the branch `pages`.
+- **GitHub** hosted sites use the branch `gh-pages`.
+
+Quarto only publishes to the branch `gh-pages`. As unfortunate as it sounds,
+this means to host pages on Codeberg, it's a bit more involved.
+
+To build the pages, first, run the following:
+
+```bash
+quarto publish gh-pages
+```
+
+This will build and push to the `gh-pages` branch.
+
+- If using **GitHub**, that's
+all you need to do.
+
+- If using **Codeberg**, switch to `pages` if you haven't already with `git
+checkout pages`, then run `git merge gh-pages`.
+
+## Push the changes
+
+Pushing changes to remote servers make rolling back very difficult, make sure
+everything looks correct first. Use `git log` and `git status` to ensure
+everything has been committed. To push everything to a mirror:
+
+```bash
+git push <remote> <branch>
+```
+
+**Try to keep all branches up-to-date on all mirrors!**
+
+## Accessing the live website
+
+- For **Codeberg**, it's `https://username.codeberg.page/msci-wiki` (more
+[information](https://codeberg.page)).
+- For **GitHub**, it's `https://username.github.io/msci-wiki` (more
+[information](https://pages.github.com/)).

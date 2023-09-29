@@ -1,0 +1,21 @@
+---
+title: "Deadline information"
+aliases:
+  - info.html
+---
+
+## Weekly meeting
+
+- TB1: Thursday 11:00
+- TB2: to be decided
+
+
+## Deadlines
+
+- Week 9: Interim report submitted
+- Week 11/12: Feedback on progress so far
+- Week 18: Practical work finished
+- Week 19/20: Analysis of results finished. Start of report write up. Results
+presented
+- Week 22: Final reports submitted
+- Week 24/25: Final interviews
