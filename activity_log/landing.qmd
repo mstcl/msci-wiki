@@ -1,0 +1,7 @@
+---
+title: "Activity log"
+listing:
+    contents: "*.qmd"
+    type: table
+    sort: "date"
+---

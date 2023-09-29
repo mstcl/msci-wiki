@@ -1,0 +1,8 @@
+---
+title: "Home"
+---
+
+## Information
+
+- [Deadlines](./shared/deadlines.qmd)
+- [Repository information](./shared/repo.qmd)

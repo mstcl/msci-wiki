@@ -1,0 +1,16 @@
+---
+title: "Week 1"
+date: 2023-09-28
+author: "Nhat"
+---
+
+## Expected outcomes
+
+- [ ] Catch up on background reading
+- [x] Set up electronic notebook
+- [ ] Set up git repository for shared knowledge
+  - Personal logs and files in `.gitignore`
+  - How to resolve conflicts? Avoid editing at the same time?
+  - Where to host? Private GitHub repo?
+- [ ] Set up a GitHub organisation (a single repo might not cover the whole
+project)
