@@ -43,5 +43,5 @@ Effects at $\alpha \neq 0$
   - The clusters stay immobile, so there is no merging or splitting.
   - There is now cluster dynamics with the following processes:
     1. Formation of cluster by two particle colliding
-	2. Absorption of moving particles at cluster boundaries
-	3. Particle evaporation at the boundaries
+  2. Absorption of moving particles at cluster boundaries
+  3. Particle evaporation at the boundaries
