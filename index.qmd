@@ -2,7 +2,5 @@
 title: "Home"
 ---
 
-## Information
+![*Rail Bridge Swarm of Starlings*. Credit to J. Holmes at [geograph](geograph.org.uk) under [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).](./assets/swarm.jpg)
 
-- [Deadlines](./shared/deadlines.qmd)
-- [Repository information](./shared/repo.qmd)
