@@ -2,42 +2,53 @@ project:
   title: "Dissipation Learning in Active Matter"
   type: website
 
+theme:
+  light: [flatly, theme-light.scss]
+  dark: [darkly, theme-dark.scss]
+
 website:
+  repo-url: https://github.com/mstcl/msci-wiki
+  repo-actions: [edit, issue, source]
+  repo-branch: np
   back-to-top-navigation: true
   page-footer:
-    center: "Made with Quarto"
+    center: "Made with Quarto · NP"
   sidebar:
     search: true
     style: "docked"
     contents:
       - section: "Personal"
-        icon: person-fill
         contents:
           - activity_log/landing.qmd
           - literature_notes/landing.qmd
       - section: "Shared"
-        icon: diagram-3-fill
+        contents:
+          - shared/deadlines.qmd
+          - shared/repo.qmd
+          - shared/cluster.qmd
       - text: "Zotero library"
-        icon: bookmarks-fill
+        icon: link-45deg
         href: "https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library"
+      - text: "GitHub mirror"
+        icon: link-45deg
+        href: "https://github.com/mstcl/msci-wiki"
+      - text: "Codeberg mirror"
+        icon: link-45deg
+        href: "https://codeberg.org/lckdscl/msci-wiki"
     tools:
       - icon: git
-        menu:
-          - text: "Codeberg mirror"
-            href: "https://codeberg.org/lckdscl/msci-wiki"
-          - text: "GitHub mirror"
-            href: "https://github.com/mstcl/msci-wiki"
+        href: "https://github.com/dlactivematter"
 
 format:
   html:
     toc: true
     toc-depth: 2
-    toc-title: Contents
+    toc-title: Content
     code-fold: false
     page-layout: article
     html-math-method: mathjax
     anchor-sections: true
     smooth-scroll: true
-    theme: zephyr
     mainfont: sans-serif
+    # linkcolor: rgb(213,43,43)
 jupyter: python3
