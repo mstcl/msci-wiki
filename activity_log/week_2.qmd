@@ -1,0 +1,15 @@
+---
+title: "Week 2"
+date: 2023-10-10
+author: "NP"
+---
+
+## From previous week
+
+- [x] Set up a GitHub organisation (a single repo might not cover the whole
+project).
+
+## Current tasks
+
+- [ ] Clone and comment [this repo](https://github.com/FTurci/persistent-exclusion-process).
+- [ ] Write short intro (about 500 words) about why we study active matter, with references.
