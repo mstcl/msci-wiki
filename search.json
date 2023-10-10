@@ -39,14 +39,70 @@
     "href": "activity_log/week_1.html",
     "title": "Week 1",
     "section": "",
-    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project). To be discussed when a more concrete project is decided."
   },
   {
-    "objectID": "activity_log/week_1.html#expected-outcomes",
-    "href": "activity_log/week_1.html#expected-outcomes",
+    "objectID": "activity_log/week_1.html#current-tasks",
+    "href": "activity_log/week_1.html#current-tasks",
     "title": "Week 1",
     "section": "",
-    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project). To be discussed when a more concrete project is decided."
+  },
+  {
+    "objectID": "activity_log/week_2.html",
+    "href": "activity_log/week_2.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "Set up a GitHub organisation (a single repo might not cover the whole project)."
+  },
+  {
+    "objectID": "activity_log/week_2.html#from-previous-week",
+    "href": "activity_log/week_2.html#from-previous-week",
+    "title": "Week 2",
+    "section": "",
+    "text": "Set up a GitHub organisation (a single repo might not cover the whole project)."
+  },
+  {
+    "objectID": "activity_log/week_2.html#current-tasks",
+    "href": "activity_log/week_2.html#current-tasks",
+    "title": "Week 2",
+    "section": "Current tasks",
+    "text": "Current tasks\n\nClone and comment this repo.\nWrite short intro (about 500 words) about why we study active matter, with references."
+  },
+  {
+    "objectID": "shared/cluster.html",
+    "href": "shared/cluster.html",
+    "title": "Cluster information",
+    "section": "",
+    "text": "Project code: PHYS030564\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Rail Bridge Swarm of Starlings. Credit to J. Holmes at geograph under CC BY-SA 2.0.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "shared/deadlines.html",
+    "href": "shared/deadlines.html",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#weekly-meeting",
+    "href": "shared/deadlines.html#weekly-meeting",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#deadlines",
+    "href": "shared/deadlines.html#deadlines",
+    "title": "Deadline information",
+    "section": "Deadlines",
+    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
   },
   {
     "objectID": "shared/repo.html",
@@ -98,46 +154,11 @@
     "text": "Accessing the live website\n\nFor Codeberg, it’s https://username.codeberg.page/msci-wiki (more information).\nFor GitHub, it’s https://username.github.io/msci-wiki (more information)."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
-    "section": "",
-    "text": "Deadlines\nRepository information"
-  },
-  {
-    "objectID": "index.html#information",
-    "href": "index.html#information",
-    "title": "Home",
-    "section": "",
-    "text": "Deadlines\nRepository information"
-  },
-  {
-    "objectID": "shared/deadlines.html",
-    "href": "shared/deadlines.html",
-    "title": "Deadline information",
-    "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
-  },
-  {
-    "objectID": "shared/deadlines.html#weekly-meeting",
-    "href": "shared/deadlines.html#weekly-meeting",
-    "title": "Deadline information",
-    "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
-  },
-  {
-    "objectID": "shared/deadlines.html#deadlines",
-    "href": "shared/deadlines.html#deadlines",
-    "title": "Deadline information",
-    "section": "Deadlines",
-    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
-  },
-  {
     "objectID": "activity_log/landing.html",
     "href": "activity_log/landing.html",
     "title": "Activity log",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\nOct 10, 2023\n\n\nWeek 2\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "literature_notes/motile-active-matter-intro.html",

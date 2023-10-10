@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="NP">
+<meta name="dcterms.date" content="2023-10-10">
 
-<title>Dissipation Learning in Active Matter - Activity log</title>
+<title>Dissipation Learning in Active Matter - Week 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +32,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -63,39 +63,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -108,7 +77,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activity_log/landing.html">Personal</a></li><li class="breadcrumb-item"><a href="../activity_log/landing.html">Activity log</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Dissipation Learning in Active Matter
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -148,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../activity_log/landing.html" class="sidebar-item-text sidebar-link active">
+  <a href="../activity_log/landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Activity log</span></a>
   </div>
 </li>
@@ -216,21 +187,40 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Content</h2>
+   
+  <ul class="collapse">
+  <li><a href="#from-previous-week" id="toc-from-previous-week" class="nav-link active" data-scroll-target="#from-previous-week">From previous week</a></li>
+  <li><a href="#current-tasks" id="toc-current-tasks" class="nav-link" data-scroll-target="#current-tasks">Current tasks</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_2.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Activity log</h1>
+<h1 class="title">Week 2</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>NP </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 10, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -238,81 +228,23 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="from-previous-week" class="level2">
+<h2 class="anchored" data-anchor-id="from-previous-week">From previous week</h2>
+<ul class="task-list">
+<li><input type="checkbox" checked="">Set up a GitHub organisation (a single repo might not cover the whole project).</li>
+</ul>
+</section>
+<section id="current-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="current-tasks">Current tasks</h2>
+<ul class="task-list">
+<li><input type="checkbox">Clone and comment <a href="https://github.com/FTurci/persistent-exclusion-process">this repo</a>.</li>
+<li><input type="checkbox">Write short intro (about 500 words) about why we study active matter, with references.</li>
+</ul>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1695855600000" data-listing-file-modified-sort="1696946424145" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Week 1" data-listing-filename-sort="week_1.qmd">
-<td>
-<span class="listing-date">Sep 28, 2023</span>
-</td>
-<td>
-<a href="../activity_log/week_1.html" class="title listing-title">Week 1</a>
-</td>
-<td>
-<span class="listing-author">NP </span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1696946424148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Week 2" data-listing-filename-sort="week_2.qmd">
-<td>
-<span class="listing-date">Oct 10, 2023</span>
-</td>
-<td>
-<a href="../activity_log/week_2.html" class="title listing-title">Week 2</a>
-</td>
-<td>
-<span class="listing-author">NP </span>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -667,7 +599,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Made with Quarto · NP<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/landing.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/landing.qmd" class="toc-action">View source</a></p></div></div></div>
+    <div class="nav-footer-center">Made with Quarto · NP</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
