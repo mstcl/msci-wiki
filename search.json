@@ -35,46 +35,67 @@
     "text": "MIPS\n\nMotility-induced phase separation\nSelf-propelled particles aggregate into clusters even in the absence of cohensive forces.\n\nThe mechanism is dynamic feedback between speed and density\n\nExploiting the directed motion of synthetic active particles to convert chemical free energy (released by hydrogen peroxide) into mechanical work."
   },
   {
-    "objectID": "writings/landing.html",
-    "href": "writings/landing.html",
-    "title": "Writings",
+    "objectID": "sitemap.html",
+    "href": "sitemap.html",
+    "title": "Sitemap",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 11, 2023\n\n\nWhat is active matter and why do we study it?\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\n\n\n\n2020 Motile Active Matter Introduction\n\n\n\n\nActive Brownian particles: from collective phenomona to fundamental physics\n\n\n\n\nActivity log listing\n\n\n\n\nCluster information\n\n\n\n\nDeadline information\n\n\n\n\nHome\n\n\n\n\nLink to colab notebook\n\n\n\n\nLiterature notes listing\n\n\n\n\nRepository information\n\n\n\n\nRun-and-tumble dynamics in a crowded environment: PEP for swimmers\n\n\n\n\nWeek 1\n\n\n\n\nWeek 2\n\n\n\n\nWhat is active matter and why do we study it?\n\n\n\n\nWritings listing\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
-    "objectID": "activity_log/week_1.html",
-    "href": "activity_log/week_1.html",
-    "title": "Week 1",
+    "objectID": "writings/motivation.html",
+    "href": "writings/motivation.html",
+    "title": "What is active matter and why do we study it?",
     "section": "",
-    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project). To be discussed when a more concrete project is decided."
+    "text": "An active matter system is characterised by its constituent self-propelling and self-directional units that are individually capable of extracting and dissipating free energy to result in complex, systematic behaviours [1]. Allowing material to exchange energy with its environment and interact with other particles can result in a system far from equilibrium [2,3]. However, unlike other standard non-equilibrium systems, energy exchanges in active systems responsible for driving the system out of equilibrium is at the level of individual particle’s contribution, as opposed to effects at the system’s boundaries [1]. The properties of active systems are often emergent collective properties that provide intriguing studies, from self-motility, synchronous dynamics [4], order-disorder transitions, pattern formation, swarming, and lots more.\nExamples of active systems can be found largely in biological systems at all scales, from fish in a school and birds in a flock, to algae, bacteria, proteins [4] and actin and microtubules in subcellular domains [1].\nThere are several reasons to study active systems. For once, it could reveal new physics, as the domain of non-equilibrium systems is not fully well-understood. In applications, it allows us to borrow or mimic strategies from biological systems in order to create to new synthetic materials, devices, robotics and medicine [2].\nOne effective way to study active matter is to model it in vitro or in silico. However, the overall high complexity of living systems means providing a theoretical description with generality is not entirely achievable [1]; the parameter space to be taken into account is far from minimal, let alone in non-equilibrium. However, with appropriate approximations [5], it remains fruitful to study emergent collective behaviour of minimal systems in both physical and computational setting (e.g. synthetic nanomachine and numerical modelling). While we can study emergent behaviours, out of these models, one challenge is to address the inverse problem; to determine the rules that lead to a desired collective state [6], with one motivation being to control such systems in applications. In this domain, powerful tools like machine learning can be deployed to build a robust framework analogous to equilibrium statistical thermodynamics, ultimately with the aim of providing fundamental insight into a microscopic-emergent connection [7].\nIn addition, studies of active matter as materials yield a catalogue of generic properties and behaviours, many of which are universal [1] when examined as collective properties such as orders, phases, phase transitions [3]. Devising these universal classes have many useful implications. For the engineers and manufacturers, this allows for faithful imitations without the need of biological components, and for the biologists and ecologists, it is interesting to match the generalized behaviours of systems in vitro to living systems in vivo, unveiling group-level properties that are independent of the type of animal or its scale [8]. For the theoreticians, it allows better fundamental understanding of non-equilibrium systems.\n\n\n\n\n Back to topReferences\n\n[1] M. C. Marchetti, J. F. Joanny, S. Ramaswamy, T. B. Liverpool, J. Prost, M. Rao, and R. A. Simha, Hydrodynamics of Soft Active Matter, Reviews of Modern Physics 85, 1143 (2013).\n\n\n[2] C. Bechinger, R. Di Leonardo, H. Löwen, C. Reichhardt, G. Volpe, and G. Volpe, Active Particles in Complex and Crowded Environments, Reviews of Modern Physics 88, 045006 (2016).\n\n\n[3] S. Ramaswamy, The Mechanics and Statistics of Active Matter, Annual Review of Condensed Matter Physics 1, 323 (2010).\n\n\n[4] S. Decamp, What Is Active Matter?, Stephen j. Decamp (n.d.).\n\n\n[5] E. Flenner and G. Szamel, Active Matter: Quantifying the Departure from Equilibrium, Physical Review E 102, 022607 (2020).\n\n\n[6] G. Gompper et al., The 2020 Motile Active Matter Roadmap, Journal of Physics: Condensed Matter 32, 193001 (2020).\n\n\n[7] G. Rassolov, L. Tociu, É. Fodor, and S. Vaikuntanathan, From Predicting to Learning Dissipation from Pair Correlations of Active Liquids, The Journal of Chemical Physics 157, 054901 (2022).\n\n\n[8] J. Buhl, D. J. T. Sumpter, I. D. Couzin, J. J. Hale, E. Despland, E. R. Miller, and S. J. Simpson, From Disorder to Order in Marching Locusts, Science 312, 1402 (2006)."
   },
   {
-    "objectID": "activity_log/week_1.html#current-tasks",
-    "href": "activity_log/week_1.html#current-tasks",
-    "title": "Week 1",
+    "objectID": "activity_log/landing.html",
+    "href": "activity_log/landing.html",
+    "title": "Activity log listing",
     "section": "",
-    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project). To be discussed when a more concrete project is decided."
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\nOct 10, 2023\n\n\nWeek 2\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
-    "objectID": "activity_log/week_2.html",
-    "href": "activity_log/week_2.html",
-    "title": "Week 2",
+    "objectID": "shared/ftnotes/Colab.html",
+    "href": "shared/ftnotes/Colab.html",
+    "title": "Link to colab notebook",
     "section": "",
-    "text": "Set up a GitHub organisation (a single repo might not cover the whole project)."
+    "text": "Link to colab notebook\nThis is an experimental notebook for the training of the convolutional neural network onto the data from the Persistence Exclusion Process\nhttps://colab.research.google.com/drive/1B0vXEyb2GG4Mjc5dbd45LIrfcQbReFCr?usp=sharing\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "activity_log/week_2.html#from-previous-week",
-    "href": "activity_log/week_2.html#from-previous-week",
-    "title": "Week 2",
+    "objectID": "shared/cluster.html",
+    "href": "shared/cluster.html",
+    "title": "Cluster information",
     "section": "",
-    "text": "Set up a GitHub organisation (a single repo might not cover the whole project)."
+    "text": "Project code: PHYS030564\n\n\n\n Back to top"
   },
   {
-    "objectID": "activity_log/week_2.html#current-tasks",
-    "href": "activity_log/week_2.html#current-tasks",
-    "title": "Week 2",
-    "section": "Current tasks",
-    "text": "Current tasks\n\nClone and comment this repo.\n\nNew forked repo, with comments in the format branch.\n\nWrite short intro (about 500 words) about why we study active matter, with references.\n\nSee here."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Rail Bridge Swarm of Starlings. Credit to J. Holmes at geograph under CC BY-SA 2.0.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "shared/deadlines.html",
+    "href": "shared/deadlines.html",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#weekly-meeting",
+    "href": "shared/deadlines.html#weekly-meeting",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#deadlines",
+    "href": "shared/deadlines.html#deadlines",
+    "title": "Deadline information",
+    "section": "Deadlines",
+    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
   },
   {
     "objectID": "shared/repo.html",
@@ -133,60 +154,46 @@
     "text": "Accessing the live website\n\nFor Codeberg, it’s https://username.codeberg.page/msci-wiki/@gh-pages (more information).\nFor GitHub, it’s https://username.github.io/msci-wiki (more information)."
   },
   {
-    "objectID": "shared/deadlines.html",
-    "href": "shared/deadlines.html",
-    "title": "Deadline information",
+    "objectID": "activity_log/week_2.html",
+    "href": "activity_log/week_2.html",
+    "title": "Week 2",
     "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+    "text": "Set up a GitHub organisation (a single repo might not cover the whole project)."
   },
   {
-    "objectID": "shared/deadlines.html#weekly-meeting",
-    "href": "shared/deadlines.html#weekly-meeting",
-    "title": "Deadline information",
+    "objectID": "activity_log/week_2.html#from-previous-week",
+    "href": "activity_log/week_2.html#from-previous-week",
+    "title": "Week 2",
     "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+    "text": "Set up a GitHub organisation (a single repo might not cover the whole project)."
   },
   {
-    "objectID": "shared/deadlines.html#deadlines",
-    "href": "shared/deadlines.html#deadlines",
-    "title": "Deadline information",
-    "section": "Deadlines",
-    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
+    "objectID": "activity_log/week_2.html#current-tasks",
+    "href": "activity_log/week_2.html#current-tasks",
+    "title": "Week 2",
+    "section": "Current tasks",
+    "text": "Current tasks\n\nClone and comment this repo.\n\nNew forked repo, with comments in the format branch.\n\nWrite short intro (about 500 words) about why we study active matter, with references.\n\nSee here."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
+    "objectID": "activity_log/week_1.html",
+    "href": "activity_log/week_1.html",
+    "title": "Week 1",
     "section": "",
-    "text": "Rail Bridge Swarm of Starlings. Credit to J. Holmes at geograph under CC BY-SA 2.0.\n\n\n\n\n\n Back to top"
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project). To be discussed when a more concrete project is decided."
   },
   {
-    "objectID": "shared/cluster.html",
-    "href": "shared/cluster.html",
-    "title": "Cluster information",
+    "objectID": "activity_log/week_1.html#current-tasks",
+    "href": "activity_log/week_1.html#current-tasks",
+    "title": "Week 1",
     "section": "",
-    "text": "Project code: PHYS030564\n\n\n\n Back to top"
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project). To be discussed when a more concrete project is decided."
   },
   {
-    "objectID": "shared/ftnotes/Colab.html",
-    "href": "shared/ftnotes/Colab.html",
-    "title": "Link to colab notebook",
+    "objectID": "writings/landing.html",
+    "href": "writings/landing.html",
+    "title": "Writings listing",
     "section": "",
-    "text": "Link to colab notebook\nThis is an experimental notebook for the training of the convolutional neural network onto the data from the Persistence Exclusion Process\nhttps://colab.research.google.com/drive/1B0vXEyb2GG4Mjc5dbd45LIrfcQbReFCr?usp=sharing\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "activity_log/landing.html",
-    "href": "activity_log/landing.html",
-    "title": "Activity log",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\nOct 10, 2023\n\n\nWeek 2\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
-  },
-  {
-    "objectID": "writings/motivation.html",
-    "href": "writings/motivation.html",
-    "title": "What is active matter and why do we study it?",
-    "section": "",
-    "text": "An active matter system is characterised by its constituent self-propelling and self-directional units that are individually capable of extracting and dissipating free energy to result in complex, systematic behaviours [1]. Allowing material to exchange energy with its environment and interact with other particles can result in a system far from equilibrium [2,3]. However, unlike other standard non-equilibrium systems, energy exchanges in active systems responsible for driving the system out of equilibrium is at the level of individual particle’s contribution, as opposed to effects at the system’s boundaries [1]. The properties of active systems are often emergent collective properties that provide intriguing studies, from self-motility, synchronous dynamics [4], order-disorder transitions, pattern formation, swarming, and lots more.\nExamples of active systems can be found largely in biological systems at all scales, from fish in a school and birds in a flock, to algae, bacteria, proteins [4] and actin and microtubules in subcellular domains [1].\nThere are several reasons to study active systems. For once, it could reveal new physics, as the domain of non-equilibrium systems is not fully well-understood. In applications, it allows us to borrow or mimic strategies from biological systems in order to create to new synthetic materials, devices, robotics and medicine [2].\nOne effective way to study active matter is to model it in vitro or in silico. However, the overall high complexity of living systems means providing a theoretical description with generality is not entirely achievable [1]; the parameter space to be taken into account is far from minimal, let alone in non-equilibrium. However, with appropriate approximations [5], it remains fruitful to study emergent collective behaviour of minimal systems in both physical and computational setting (e.g. synthetic nanomachine and numerical modelling). While we can study emergent behaviours, out of these models, one challenge is to address the inverse problem; to determine the rules that lead to a desired collective state [6], with one motivation being to control such systems in applications. In this domain, powerful tools like machine learning can be deployed to build a robust framework analogous to equilibrium statistical thermodynamics, ultimately with the aim of providing fundamental insight into a microscopic-emergent connection [7].\nIn addition, studies of active matter as materials yield a catalogue of generic properties and behaviours, many of which are universal [1] when examined as collective properties such as orders, phases, phase transitions [3]. Devising these universal classes have many useful implications. For the engineers and manufacturers, this allows for faithful imitations without the need of biological components, and for the biologists and ecologists, it is interesting to match the generalized behaviours of systems in vitro to living systems in vivo, unveiling group-level properties that are independent of the type of animal or its scale [8]. For the theoreticians, it allows better fundamental understanding of non-equilibrium systems.\n\n\n\n\n Back to topReferences\n\n[1] M. C. Marchetti, J. F. Joanny, S. Ramaswamy, T. B. Liverpool, J. Prost, M. Rao, and R. A. Simha, Hydrodynamics of Soft Active Matter, Reviews of Modern Physics 85, 1143 (2013).\n\n\n[2] C. Bechinger, R. Di Leonardo, H. Löwen, C. Reichhardt, G. Volpe, and G. Volpe, Active Particles in Complex and Crowded Environments, Reviews of Modern Physics 88, 045006 (2016).\n\n\n[3] S. Ramaswamy, The Mechanics and Statistics of Active Matter, Annual Review of Condensed Matter Physics 1, 323 (2010).\n\n\n[4] S. Decamp, What Is Active Matter?, Stephen j. Decamp (n.d.).\n\n\n[5] E. Flenner and G. Szamel, Active Matter: Quantifying the Departure from Equilibrium, Physical Review E 102, 022607 (2020).\n\n\n[6] G. Gompper et al., The 2020 Motile Active Matter Roadmap, Journal of Physics: Condensed Matter 32, 193001 (2020).\n\n\n[7] G. Rassolov, L. Tociu, É. Fodor, and S. Vaikuntanathan, From Predicting to Learning Dissipation from Pair Correlations of Active Liquids, The Journal of Chemical Physics 157, 054901 (2022).\n\n\n[8] J. Buhl, D. J. T. Sumpter, I. D. Couzin, J. J. Hale, E. Despland, E. R. Miller, and S. J. Simpson, From Disorder to Order in Marching Locusts, Science 312, 1402 (2006)."
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 11, 2023\n\n\nWhat is active matter and why do we study it?\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "literature_notes/motile-active-matter-intro.html",
@@ -226,7 +233,7 @@
   {
     "objectID": "literature_notes/landing.html",
     "href": "literature_notes/landing.html",
-    "title": "Literature notes",
+    "title": "Literature notes listing",
     "section": "",
     "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 29, 2023\n\n\nRun-and-tumble dynamics in a crowded environment: PEP for swimmers\n\n\nSoto, Golestanian\n\n\n\n\nOct 4, 2023\n\n\nActive Brownian particles: from collective phenomona to fundamental physics\n\n\nGompper, Winkler\n\n\n\n\nOct 4, 2023\n\n\n2020 Motile Active Matter Introduction\n\n\nGompper, Winkler\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   }

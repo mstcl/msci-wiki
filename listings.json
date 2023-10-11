@@ -1,8 +1,21 @@
 [
   {
-    "listing": "/writings/landing.html",
+    "listing": "/sitemap.html",
     "items": [
-      "/writings/motivation.html"
+      "/literature_notes/motile-active-matter-intro.html",
+      "/literature_notes/active-brownian-particles.html",
+      "/activity_log/landing.html",
+      "/shared/cluster.html",
+      "/shared/deadlines.html",
+      "/index.html",
+      "/shared/ftnotes/Colab.html",
+      "/literature_notes/landing.html",
+      "/shared/repo.html",
+      "/literature_notes/run-and-tumble.html",
+      "/activity_log/week_1.html",
+      "/activity_log/week_2.html",
+      "/writings/motivation.html",
+      "/writings/landing.html"
     ]
   },
   {
@@ -10,6 +23,12 @@
     "items": [
       "/activity_log/week_1.html",
       "/activity_log/week_2.html"
+    ]
+  },
+  {
+    "listing": "/writings/landing.html",
+    "items": [
+      "/writings/motivation.html"
     ]
   },
   {

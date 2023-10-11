@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="NP">
-<meta name="dcterms.date" content="2023-09-28">
 
-<title>Dissipation Learning in Active Matter - Week 1</title>
+<title>Dissipation Learning in Active Matter - Sitemap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,26 +23,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../activity_log/week_2.html" rel="next">
-<link href="../shared/cluster.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -65,8 +63,39 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -79,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Administration</li><li class="breadcrumb-item"><a href="../activity_log/week_1.html">Activity Log</a></li><li class="breadcrumb-item"><a href="../activity_log/week_1.html">Week 1</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sitemap.html">All pages</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -94,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Dissipation Learning in Active Matter</a> 
+      <a href="./">Dissipation Learning in Active Matter</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dlactivematter" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-git"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -134,19 +163,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
+  <a href="./shared/deadlines.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deadlines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../shared/repo.html" class="sidebar-item-text sidebar-link">
+  <a href="./shared/repo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repository</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../shared/cluster.html" class="sidebar-item-text sidebar-link">
+  <a href="./shared/cluster.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster</span></a>
   </div>
 </li>
@@ -154,22 +183,22 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Activity Log</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_1.html" class="sidebar-item-text sidebar-link active">
+  <a href="./activity_log/week_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
 </li>
@@ -198,19 +227,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
+  <a href="./literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Active Brownian particles: from collective phenomona to fundamental physics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../literature_notes/motile-active-matter-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./literature_notes/motile-active-matter-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2020 Motile Active Matter Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../literature_notes/run-and-tumble.html" class="sidebar-item-text sidebar-link">
+  <a href="./literature_notes/run-and-tumble.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</span></a>
   </div>
 </li>
@@ -227,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
+  <a href="./writings/motivation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is active matter and why do we study it?</span></a>
   </div>
 </li>
@@ -244,7 +273,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
+  <a href="./shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Link to colab notebook</span></a>
   </div>
 </li>
@@ -288,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sitemap.html" class="sidebar-item-text sidebar-link">
+  <a href="./sitemap.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">All pages</span></a>
   </div>
 </li>
@@ -298,39 +327,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Content</h2>
-   
-  <ul class="collapse">
-  <li><a href="#current-tasks" id="toc-current-tasks" class="nav-link active" data-scroll-target="#current-tasks">Current tasks</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_1.qmd" class="toc-action">View source</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 1</h1>
+<h1 class="title">Sitemap</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>NP </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 28, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -338,24 +349,128 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="current-tasks" class="level2">
-<h2 class="anchored" data-anchor-id="current-tasks">Current tasks</h2>
-<ul class="task-list">
-<li><input type="checkbox" checked="">Catch up on background reading</li>
-<li><input type="checkbox" checked="">Set up electronic notebook</li>
-<li><input type="checkbox" checked="">Set up git repository for shared knowledge
-<ul>
-<li>Personal logs and files in <code>.gitignore</code></li>
-<li>How to resolve conflicts? Avoid editing at the same time?</li>
-<li>Where to host? Private GitHub repo?</li>
-</ul></li>
-<li><input type="checkbox">Set up a GitHub organisation (a single repo might not cover the whole project). <em>To be discussed when a more concrete project is decided</em>.</li>
-</ul>
 
 
-</section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+
+<table class="quarto-listing-table table table-striped table-hover">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1696428240000" data-listing-file-modified-sort="1697058310308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="2020 Motile Active Matter Introduction" data-listing-filename-sort="motile-active-matter-intro.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./literature_notes/motile-active-matter-intro.html" class="title listing-title">2020 Motile Active Matter Introduction</a>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1696428240000" data-listing-file-modified-sort="1697058310308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Active Brownian particles: from collective phenomona to fundamental physics" data-listing-filename-sort="active-brownian-particles.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./literature_notes/active-brownian-particles.html" class="title listing-title">Active Brownian particles: from collective phenomona to fundamental physics</a>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1697060378716" data-listing-reading-time-sort="1" data-listing-title-sort="Activity log listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./activity_log/landing.html" class="title listing-title">Activity log listing</a>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1697058310308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Cluster information" data-listing-filename-sort="cluster.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./shared/cluster.html" class="title listing-title">Cluster information</a>
+</td>
+</tr>
+<tr data-index="4" data-listing-file-modified-sort="1697058310308" data-listing-reading-time-sort="1" data-listing-title-sort="Deadline information" data-listing-filename-sort="deadlines.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./shared/deadlines.html" class="title listing-title">Deadline information</a>
+</td>
+</tr>
+<tr data-index="5" data-listing-file-modified-sort="1697058310308" data-listing-reading-time-sort="1" data-listing-title-sort="Home" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./index.html" class="title listing-title">Home</a>
+</td>
+</tr>
+<tr data-index="6" data-listing-file-modified-sort="1697058310308" data-listing-reading-time-sort="1" data-listing-title-sort="Link to colab notebook" data-listing-filename-sort="Colab.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./shared/ftnotes/Colab.html" class="title listing-title">Link to colab notebook</a>
+</td>
+</tr>
+<tr data-index="7" data-listing-file-modified-sort="1697060383569" data-listing-reading-time-sort="1" data-listing-title-sort="Literature notes listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./literature_notes/landing.html" class="title listing-title">Literature notes listing</a>
+</td>
+</tr>
+<tr data-index="8" data-listing-file-modified-sort="1697058310308" data-listing-reading-time-sort="2" data-listing-title-sort="Repository information" data-listing-filename-sort="repo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./shared/repo.html" class="title listing-title">Repository information</a>
+</td>
+</tr>
+<tr data-index="9" data-listing-date-sort="1696019400000" data-listing-file-modified-sort="1697058310308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Run-and-tumble dynamics in a crowded environment: PEP for swimmers" data-listing-filename-sort="run-and-tumble.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./literature_notes/run-and-tumble.html" class="title listing-title">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</a>
+</td>
+</tr>
+<tr data-index="10" data-listing-date-sort="1695855600000" data-listing-file-modified-sort="1697058310308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Week 1" data-listing-filename-sort="week_1.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./activity_log/week_1.html" class="title listing-title">Week 1</a>
+</td>
+</tr>
+<tr data-index="11" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1697058310308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Week 2" data-listing-filename-sort="week_2.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./activity_log/week_2.html" class="title listing-title">Week 2</a>
+</td>
+</tr>
+<tr data-index="12" data-listing-date-sort="1696978800000" data-listing-file-modified-sort="1697058310308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="What is active matter and why do we study it?" data-listing-filename-sort="motivation.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./writings/motivation.html" class="title listing-title">What is active matter and why do we study it?</a>
+</td>
+</tr>
+<tr data-index="13" data-listing-file-modified-sort="1697060373516" data-listing-reading-time-sort="1" data-listing-title-sort="Writings listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./writings/landing.html" class="title listing-title">Writings listing</a>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -704,18 +819,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../shared/cluster.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cluster</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../activity_log/week_2.html" class="pagination-link">
-        <span class="nav-page-text">Week 2</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -731,7 +834,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://creativecommons.org/licenses/by-nd/4.0/">License</a>
   </li>  
 </ul>
-    </div>
+    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/sitemap.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/sitemap.qmd" class="toc-action">View source</a></p></div></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
@@ -744,5 +847,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
