@@ -7,35 +7,65 @@ theme:
   dark: [darkly, theme-dark.scss]
 
 website:
+  title: "Dissipation Learning in Active Matter"
+  description: "MSci project 2023-24"
   repo-url: https://github.com/mstcl/msci-wiki
   repo-actions: [edit, issue, source]
+  page-navigation: true
   repo-branch: np
   back-to-top-navigation: true
+  search:
+    location: sidebar
+    type: textbox
+  reader-mode: true
   page-footer:
-    center: "Made with Quarto · NP"
+    center:
+      - text: "Made with Quarto"
+        href: https://quarto.org
+      - text: "License"
+        href: https://creativecommons.org/licenses/by-nd/4.0/
+    right:
+      - text: "Version: NP"
   sidebar:
+    alignment: center
     search: true
     style: "docked"
     contents:
-      - section: "Personal"
+      - text: "---"
+      - section: "Administration"
         contents:
-          - activity_log/landing.qmd
-          - literature_notes/landing.qmd
-          - writings/landing.qmd
-      - section: "Shared"
+          - section: "Project information"
+            contents:
+              - text: "Deadlines"
+                file: shared/deadlines.qmd
+              - text: "Repository"
+                file: shared/repo.qmd
+              - text: "Cluster"
+                file: shared/cluster.qmd
+          - auto: activity_log/!(landing).*md
+      - text: "---"
+      - section: "Main content"
         contents:
-          - shared/deadlines.qmd
-          - shared/repo.qmd
-          - shared/cluster.qmd
-      - text: "Zotero library"
-        icon: link-45deg
-        href: "https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library"
-      - text: "GitHub mirror"
-        icon: link-45deg
-        href: "https://github.com/mstcl/msci-wiki"
-      - text: "Codeberg mirror"
-        icon: link-45deg
-        href: "https://codeberg.org/lckdscl/msci-wiki"
+          - auto: "literature_notes/!(landing).*md"
+          - auto: writings/!(landing).*md
+          - section: "FT notes"
+            contents:
+              - auto: shared/ftnotes/*.*md
+      - text: "---"
+      - section: "External tools"
+        contents:
+        - text: "Zotero library"
+          icon: link-45deg
+          href: "https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library"
+        - text: "GitHub mirror"
+          icon: link-45deg
+          href: "https://github.com/mstcl/msci-wiki"
+        - text: "Codeberg mirror"
+          icon: link-45deg
+          href: "https://codeberg.org/lckdscl/msci-wiki"
+      - text: "---"
+      - text: "All pages"
+        file: sitemap.qmd
     tools:
       - icon: git
         href: "https://github.com/dlactivematter"

@@ -1,7 +1,9 @@
 ---
-title: "Literature notes"
+title: "Literature notes listing"
 listing:
     contents: "*.qmd"
     type: table
+    table-hover: true
+    table-striped: true
     sort: "date"
 ---

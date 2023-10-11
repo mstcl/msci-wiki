@@ -1,7 +1,9 @@
 ---
-title: "Writings"
+title: "Writings listing"
 listing:
     contents: "*.qmd"
     type: table
+    table-hover: true
+    table-striped: true
     sort: "date"
 ---

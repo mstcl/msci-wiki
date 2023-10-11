@@ -1,9 +1,9 @@
 ---
-title: "Activity log listing"
+title: "Sitemap"
 listing:
-    contents: "*.qmd"
+    contents: "**/*.*md"
     type: table
     table-hover: true
     table-striped: true
-    sort: "date"
+    fields: [title]
 ---
