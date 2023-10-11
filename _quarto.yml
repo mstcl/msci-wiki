@@ -21,6 +21,7 @@ website:
         contents:
           - activity_log/landing.qmd
           - literature_notes/landing.qmd
+          - writings/landing.qmd
       - section: "Shared"
         contents:
           - shared/deadlines.qmd

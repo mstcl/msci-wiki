@@ -1,0 +1,7 @@
+---
+title: "Writings"
+listing:
+    contents: "*.qmd"
+    type: table
+    sort: "date"
+---

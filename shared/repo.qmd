@@ -70,13 +70,22 @@ git merge shared
 
 - **Don't merge from `my_branch` to `shared`!**
 
+
+## Initialise a Quarto project
+
+In `my_branch`, make a new Quarto project with the website template:
+
+```bash
+quarto create project website
+```
+
+Take a look at `_quarto.yml` from branch `np` for an example of how to
+configure it.
+
+
 ## Building pages
 
-- **Codeberg** hosted sites use the branch `pages`.
-- **GitHub** hosted sites use the branch `gh-pages`.
-
-Quarto only publishes to the branch `gh-pages`. As unfortunate as it sounds,
-this means to host pages on Codeberg, it's a bit more involved.
+Quarto by default publishes to the branch `gh-pages`.
 
 To build the pages, first, run the following:
 
@@ -89,8 +98,9 @@ This will build and push to the `gh-pages` branch.
 - If using **GitHub**, that's
 all you need to do.
 
-- If using **Codeberg**, switch to `pages` if you haven't already with `git
-checkout pages`, then run `git merge gh-pages`.
+- If using **Codeberg**, you can view it by going to
+`https://username.codeberg.page/@gh-pages`
+
 
 ## Push the changes
 
@@ -106,7 +116,7 @@ git push <remote> <branch>
 
 ## Accessing the live website
 
-- For **Codeberg**, it's `https://username.codeberg.page/msci-wiki` (more
+- For **Codeberg**, it's `https://username.codeberg.page/msci-wiki/@gh-pages` (more
 [information](https://codeberg.page)).
 - For **GitHub**, it's `https://username.github.io/msci-wiki` (more
 [information](https://pages.github.com/)).

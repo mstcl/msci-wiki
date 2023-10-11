@@ -11,5 +11,11 @@ project).
 
 ## Current tasks
 
-- [ ] Clone and comment [this repo](https://github.com/FTurci/persistent-exclusion-process).
-- [ ] Write short intro (about 500 words) about why we study active matter, with references.
+- [x] Clone and comment [this
+repo](https://github.com/FTurci/persistent-exclusion-process).
+	- [New forked
+	repo](https://github.com/dlactivematter/persistent-exclusion-process), with
+	comments in the `format` branch.
+- [x] Write short intro (about 500 words) about why we study active matter,
+with references.
+	- [See here](../writings/motivation.qmd).

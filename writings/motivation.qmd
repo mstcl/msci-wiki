@@ -1,0 +1,59 @@
+---
+title: "What is active matter and why do we study it?"
+date: 2023-10-11
+author: "NP"
+bibliography: ../assets/references.bib
+csl: ../assets/physical-review-letters.csl
+---
+
+An active matter system is characterised by its constituent self-propelling and
+self-directional units that are individually capable of extracting and
+dissipating free energy to result in complex, systematic
+behaviours[@marchetti_hydrodynamics_2013]. Allowing material to exchange energy
+with its environment and interact with other particles can result in a system
+far from equilibrium[@bechinger_active_2016;@ramaswamy_mechanics_2010].
+However, unlike other standard non-equilibrium systems, energy exchanges in
+active systems responsible for driving the system out of equilibrium is at the
+level of individual particle's contribution, as opposed to effects at the
+system's boundaries[@marchetti_hydrodynamics_2013]. The properties of active
+systems are often emergent collective properties that provide intriguing
+studies, from self-motility, synchronous dynamics[@decamp_what_nodate],
+order-disorder transitions, pattern formation, swarming, and lots more.
+
+Examples of active system can be found largely in biological systems at all
+scales, from fish in a school and birds in a flock, to algae, bacteria,
+proteins[@decamp_what_nodate] and actin and microtubules in subcellular
+domains[@marchetti_hydrodynamics_2013].
+
+There are many ways in which the study of active matter is a point of interest.
+For once, it could reveal new physics in coming up with theories to explain
+these systems, as well as pointing to further investigations when it comes to
+more exotic systems. In applications, it could be a way to borrow or mimic
+strategies from biological systems to create to new synthetic materials,
+devices, robotics and medicine[@bechinger_active_2016].
+
+One effective way to study active matter is to model it _in vitro_ or _in
+silico_. However, the overall high complexity of living systems means providing
+a theoretical description with generality is not
+achievable[@marchetti_hydrodynamics_2013]; the parameter space to be taken into
+account is far from minimal, let alone in non-equilibrium. However, with
+appropriate approximations[@flenner_active_2020], it remains fruitful to study
+emergent collective behaviour of minimal systems in both physical and
+computational setting. Out of these models, one challenge is the inverse
+problem; to determine the rules that lead to a desired collective
+state[@gompper_2020_2020], with one motivation being to control such systems in
+applications. In this domain, powerful tools like machine learning can be
+deployed to build a robust framework analogous to equilibrium statistical
+thermodynamics, with the aim of providing insight a microscopic-to-emergent
+connection[@rassolov_predicting_2022].
+
+In addition, emerging from studies of active matter as materials yield a
+catalogue of generic properties and behaviours, many of which are
+universal[@marchetti_hydrodynamics_2013] if examined as orders, phases, phase
+transitions[@ramaswamy_mechanics_2010]. For the engineers and manufacturers,
+this allows for faithful imitations without the need of biological components,
+and for the biologists and ecologists, it is interesting to match the these
+generalized behaviours of systems _in vitro_ to living systems _in vivo_,
+unveiling group-level properties that are independent of the type of animal or
+its scale[@buhl_disorder_2006]. For the theoreticians, it allows better
+fundamental understanding of non-equilibrium systems.
