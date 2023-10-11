@@ -35,6 +35,13 @@
     "text": "MIPS\n\nMotility-induced phase separation\nSelf-propelled particles aggregate into clusters even in the absence of cohensive forces.\n\nThe mechanism is dynamic feedback between speed and density\n\nExploiting the directed motion of synthetic active particles to convert chemical free energy (released by hydrogen peroxide) into mechanical work."
   },
   {
+    "objectID": "writings/landing.html",
+    "href": "writings/landing.html",
+    "title": "Writings",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 11, 2023\n\n\nWhat is active matter and why do we study it?\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
     "objectID": "activity_log/week_1.html",
     "href": "activity_log/week_1.html",
     "title": "Week 1",
@@ -67,42 +74,7 @@
     "href": "activity_log/week_2.html#current-tasks",
     "title": "Week 2",
     "section": "Current tasks",
-    "text": "Current tasks\n\nClone and comment this repo.\nWrite short intro (about 500 words) about why we study active matter, with references."
-  },
-  {
-    "objectID": "shared/cluster.html",
-    "href": "shared/cluster.html",
-    "title": "Cluster information",
-    "section": "",
-    "text": "Project code: PHYS030564\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
-    "section": "",
-    "text": "Rail Bridge Swarm of Starlings. Credit to J. Holmes at geograph under CC BY-SA 2.0.\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "shared/deadlines.html",
-    "href": "shared/deadlines.html",
-    "title": "Deadline information",
-    "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
-  },
-  {
-    "objectID": "shared/deadlines.html#weekly-meeting",
-    "href": "shared/deadlines.html#weekly-meeting",
-    "title": "Deadline information",
-    "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
-  },
-  {
-    "objectID": "shared/deadlines.html#deadlines",
-    "href": "shared/deadlines.html#deadlines",
-    "title": "Deadline information",
-    "section": "Deadlines",
-    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
+    "text": "Current tasks\n\nClone and comment this repo.\n\nNew forked repo, with comments in the format branch.\n\nWrite short intro (about 500 words) about why we study active matter, with references.\n\nSee here."
   },
   {
     "objectID": "shared/repo.html",
@@ -133,11 +105,18 @@
     "text": "Managing branches and commits\nMake a new branch to build your own website from with\ngit checkout -b &lt;make_your_own_unique_name&gt;\nThis branch will contain individual work + shared stuff. It should be the source of truth.\nFrom now on, we will refer to this branch as my_branch.\nWhen contributing to shared knowledge, switch to shared branch with git checkout shared. In this branch, there should be only one directory called shared. This is the root folder of all shared information. Any further directory structuring occurs within this, not outside of it.\n\nNo individual work goes into the shared branch to avoid conflicts with filenames!\n\nWhen merging new commits containing shared information from shared to my_branch, switch to my_branch with git checkout my_branch, and then perform a merge with\ngit merge shared\n\nDon’t merge from my_branch to shared!"
   },
   {
+    "objectID": "shared/repo.html#initialise-a-quarto-project",
+    "href": "shared/repo.html#initialise-a-quarto-project",
+    "title": "Repository information",
+    "section": "Initialise a Quarto project",
+    "text": "Initialise a Quarto project\nIn my_branch, make a new Quarto project with the website template:\nquarto create project website\nTake a look at _quarto.yml from branch np for an example of how to configure it."
+  },
+  {
     "objectID": "shared/repo.html#building-pages",
     "href": "shared/repo.html#building-pages",
     "title": "Repository information",
     "section": "Building pages",
-    "text": "Building pages\n\nCodeberg hosted sites use the branch pages.\nGitHub hosted sites use the branch gh-pages.\n\nQuarto only publishes to the branch gh-pages. As unfortunate as it sounds, this means to host pages on Codeberg, it’s a bit more involved.\nTo build the pages, first, run the following:\nquarto publish gh-pages\nThis will build and push to the gh-pages branch.\n\nIf using GitHub, that’s all you need to do.\nIf using Codeberg, switch to pages if you haven’t already with git checkout pages, then run git merge gh-pages."
+    "text": "Building pages\nQuarto by default publishes to the branch gh-pages.\nTo build the pages, first, run the following:\nquarto publish gh-pages\nThis will build and push to the gh-pages branch.\n\nIf using GitHub, that’s all you need to do.\nIf using Codeberg, you can view it by going to https://username.codeberg.page/@gh-pages"
   },
   {
     "objectID": "shared/repo.html#push-the-changes",
@@ -151,7 +130,49 @@
     "href": "shared/repo.html#accessing-the-live-website",
     "title": "Repository information",
     "section": "Accessing the live website",
-    "text": "Accessing the live website\n\nFor Codeberg, it’s https://username.codeberg.page/msci-wiki (more information).\nFor GitHub, it’s https://username.github.io/msci-wiki (more information)."
+    "text": "Accessing the live website\n\nFor Codeberg, it’s https://username.codeberg.page/msci-wiki/@gh-pages (more information).\nFor GitHub, it’s https://username.github.io/msci-wiki (more information)."
+  },
+  {
+    "objectID": "shared/deadlines.html",
+    "href": "shared/deadlines.html",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#weekly-meeting",
+    "href": "shared/deadlines.html#weekly-meeting",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#deadlines",
+    "href": "shared/deadlines.html#deadlines",
+    "title": "Deadline information",
+    "section": "Deadlines",
+    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Rail Bridge Swarm of Starlings. Credit to J. Holmes at geograph under CC BY-SA 2.0.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "shared/cluster.html",
+    "href": "shared/cluster.html",
+    "title": "Cluster information",
+    "section": "",
+    "text": "Project code: PHYS030564\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "shared/ftnotes/Colab.html",
+    "href": "shared/ftnotes/Colab.html",
+    "title": "Link to colab notebook",
+    "section": "",
+    "text": "Link to colab notebook\nThis is an experimental notebook for the training of the convolutional neural network onto the data from the Persistence Exclusion Process\nhttps://colab.research.google.com/drive/1B0vXEyb2GG4Mjc5dbd45LIrfcQbReFCr?usp=sharing\n\n\n\n\n Back to top"
   },
   {
     "objectID": "activity_log/landing.html",
@@ -159,6 +180,13 @@
     "title": "Activity log",
     "section": "",
     "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\nOct 10, 2023\n\n\nWeek 2\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "writings/motivation.html",
+    "href": "writings/motivation.html",
+    "title": "What is active matter and why do we study it?",
+    "section": "",
+    "text": "An active matter system is characterised by its constituent self-propelling and self-directional units that are individually capable of extracting and dissipating free energy to result in complex, systematic behaviours [1]. Allowing material to exchange energy with its environment and interact with other particles can result in a system far from equilibrium [2,3]. However, unlike other standard non-equilibrium systems, energy exchanges in active systems responsible for driving the system out of equilibrium is at the level of individual particle’s contribution, as opposed to effects at the system’s boundaries [1]. The properties of active systems are often emergent collective properties that provide intriguing studies, from self-motility, synchronous dynamics [4], order-disorder transitions, pattern formation, swarming, and lots more.\nExamples of active system can be found largely in biological systems at all scales, from fish in a school and birds in a flock, to algae, bacteria, proteins [4] and actin and microtubules in subcellular domains [1].\nThere are many ways in which the study of active matter is a point of interest. For once, it could reveal new physics in coming up with theories to explain these systems, as well as pointing to further investigations when it comes to more exotic systems. In applications, it could be a way to borrow or mimic strategies from biological systems to create to new synthetic materials, devices, robotics and medicine [2].\nOne effective way to study active matter is to model it in vitro or in silico. However, the overall high complexity of living systems means providing a theoretical description with generality is not achievable [1]; the parameter space to be taken into account is far from minimal, let alone in non-equilibrium. However, with appropriate approximations [5], it remains fruitful to study emergent collective behaviour of minimal systems in both physical and computational setting. Out of these models, one challenge is the inverse problem; to determine the rules that lead to a desired collective state [6], with one motivation being to control such systems in applications. In this domain, powerful tools like machine learning can be deployed to build a robust framework analogous to equilibrium statistical thermodynamics, with the aim of providing insight a microscopic-to-emergent connection [7].\nIn addition, emerging from studies of active matter as materials yield a catalogue of generic properties and behaviours, many of which are universal [1] if examined as orders, phases, phase transitions [3]. For the engineers and manufacturers, this allows for faithful imitations without the need of biological components, and for the biologists and ecologists, it is interesting to match the these generalized behaviours of systems in vitro to living systems in vivo, unveiling group-level properties that are independent of the type of animal or its scale [8]. For the theoreticians, it allows better fundamental understanding of non-equilibrium systems.\n\n\n\n\n Back to topReferences\n\n[1] M. C. Marchetti, J. F. Joanny, S. Ramaswamy, T. B. Liverpool, J. Prost, M. Rao, and R. A. Simha, Hydrodynamics of Soft Active Matter, Reviews of Modern Physics 85, 1143 (2013).\n\n\n[2] C. Bechinger, R. Di Leonardo, H. Löwen, C. Reichhardt, G. Volpe, and G. Volpe, Active Particles in Complex and Crowded Environments, Reviews of Modern Physics 88, 045006 (2016).\n\n\n[3] S. Ramaswamy, The Mechanics and Statistics of Active Matter, Annual Review of Condensed Matter Physics 1, 323 (2010).\n\n\n[4] S. Decamp, What Is Active Matter?, Stephen j. Decamp (n.d.).\n\n\n[5] E. Flenner and G. Szamel, Active Matter: Quantifying the Departure from Equilibrium, Physical Review E 102, 022607 (2020).\n\n\n[6] G. Gompper et al., The 2020 Motile Active Matter Roadmap, Journal of Physics: Condensed Matter 32, 193001 (2020).\n\n\n[7] G. Rassolov, L. Tociu, É. Fodor, and S. Vaikuntanathan, From Predicting to Learning Dissipation from Pair Correlations of Active Liquids, The Journal of Chemical Physics 157, 054901 (2022).\n\n\n[8] J. Buhl, D. J. T. Sumpter, I. D. Couzin, J. J. Hale, E. Despland, E. R. Miller, and S. J. Simpson, From Disorder to Order in Marching Locusts, Science 312, 1402 (2006)."
   },
   {
     "objectID": "literature_notes/motile-active-matter-intro.html",

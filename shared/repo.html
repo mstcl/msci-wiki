@@ -159,6 +159,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Literature notes</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writings/landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writings</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -224,6 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#forking" id="toc-forking" class="nav-link active" data-scroll-target="#forking">Forking</a></li>
   <li><a href="#local-development" id="toc-local-development" class="nav-link" data-scroll-target="#local-development">Local development</a></li>
   <li><a href="#managing-branches-and-commits" id="toc-managing-branches-and-commits" class="nav-link" data-scroll-target="#managing-branches-and-commits">Managing branches and commits</a></li>
+  <li><a href="#initialise-a-quarto-project" id="toc-initialise-a-quarto-project" class="nav-link" data-scroll-target="#initialise-a-quarto-project">Initialise a Quarto project</a></li>
   <li><a href="#building-pages" id="toc-building-pages" class="nav-link" data-scroll-target="#building-pages">Building pages</a></li>
   <li><a href="#push-the-changes" id="toc-push-the-changes" class="nav-link" data-scroll-target="#push-the-changes">Push the changes</a></li>
   <li><a href="#accessing-the-live-website" id="toc-accessing-the-live-website" class="nav-link" data-scroll-target="#accessing-the-live-website">Accessing the live website</a></li>
@@ -292,31 +299,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Don’t merge from <code>my_branch</code> to <code>shared</code>!</strong></li>
 </ul>
 </section>
+<section id="initialise-a-quarto-project" class="level2">
+<h2 class="anchored" data-anchor-id="initialise-a-quarto-project">Initialise a Quarto project</h2>
+<p>In <code>my_branch</code>, make a new Quarto project with the website template:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project website</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Take a look at <code>_quarto.yml</code> from branch <code>np</code> for an example of how to configure it.</p>
+</section>
 <section id="building-pages" class="level2">
 <h2 class="anchored" data-anchor-id="building-pages">Building pages</h2>
-<ul>
-<li><strong>Codeberg</strong> hosted sites use the branch <code>pages</code>.</li>
-<li><strong>GitHub</strong> hosted sites use the branch <code>gh-pages</code>.</li>
-</ul>
-<p>Quarto only publishes to the branch <code>gh-pages</code>. As unfortunate as it sounds, this means to host pages on Codeberg, it’s a bit more involved.</p>
+<p>Quarto by default publishes to the branch <code>gh-pages</code>.</p>
 <p>To build the pages, first, run the following:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will build and push to the <code>gh-pages</code> branch.</p>
 <ul>
 <li><p>If using <strong>GitHub</strong>, that’s all you need to do.</p></li>
-<li><p>If using <strong>Codeberg</strong>, switch to <code>pages</code> if you haven’t already with <code>git checkout pages</code>, then run <code>git merge gh-pages</code>.</p></li>
+<li><p>If using <strong>Codeberg</strong>, you can view it by going to <code>https://username.codeberg.page/@gh-pages</code></p></li>
 </ul>
 </section>
 <section id="push-the-changes" class="level2">
 <h2 class="anchored" data-anchor-id="push-the-changes">Push the changes</h2>
 <p>Pushing changes to remote servers make rolling back very difficult, make sure everything looks correct first. Use <code>git log</code> and <code>git status</code> to ensure everything has been committed. To push everything to a mirror:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote<span class="op">&gt;</span> <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote<span class="op">&gt;</span> <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Try to keep all branches up-to-date on all mirrors!</strong></p>
 </section>
 <section id="accessing-the-live-website" class="level2">
 <h2 class="anchored" data-anchor-id="accessing-the-live-website">Accessing the live website</h2>
 <ul>
-<li>For <strong>Codeberg</strong>, it’s <code>https://username.codeberg.page/msci-wiki</code> (more <a href="https://codeberg.page">information</a>).</li>
+<li>For <strong>Codeberg</strong>, it’s <code>https://username.codeberg.page/msci-wiki/@gh-pages</code> (more <a href="https://codeberg.page">information</a>).</li>
 <li>For <strong>GitHub</strong>, it’s <code>https://username.github.io/msci-wiki</code> (more <a href="https://pages.github.com/">information</a>).</li>
 </ul>
 
