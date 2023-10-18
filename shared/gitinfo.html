@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Gompper, Winkler">
-<meta name="dcterms.date" content="2023-10-04">
 
-<title>Dissipation Learning in Active Matter - 2020 Motile Active Matter Introduction</title>
+<title>Dissipation Learning in Active Matter – gitinfo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,8 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../literature_notes/run-and-tumble.html" rel="next">
-<link href="../literature_notes/active-brownian-particles.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,7 +109,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../literature_notes/active-brownian-particles.html">Literature Notes</a></li><li class="breadcrumb-item"><a href="../literature_notes/motile-active-matter-intro.html">2020 Motile Active Matter Introduction</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Dissipation Learning in Active Matter
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -195,13 +227,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Literature Notes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
@@ -210,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../literature_notes/motile-active-matter-intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../literature_notes/motile-active-matter-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2020 Motile Active Matter Introduction</span></a>
   </div>
 </li>
@@ -308,74 +340,68 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Content</h2>
    
   <ul class="collapse">
-  <li><a href="#general-principles-and-methods" id="toc-general-principles-and-methods" class="nav-link active" data-scroll-target="#general-principles-and-methods">General principles and methods</a></li>
-  <li><a href="#micronano-swimmers" id="toc-micronano-swimmers" class="nav-link" data-scroll-target="#micronano-swimmers">Micro/nano swimmers</a></li>
-  <li><a href="#synthetic-micronano-machines" id="toc-synthetic-micronano-machines" class="nav-link" data-scroll-target="#synthetic-micronano-machines">Synthetic micro/nano machines</a></li>
-  <li><a href="#swarming" id="toc-swarming" class="nav-link" data-scroll-target="#swarming">Swarming</a></li>
+  <li><a href="#useful-commands-and-information-for-shared-github-activity" id="toc-useful-commands-and-information-for-shared-github-activity" class="nav-link active" data-scroll-target="#useful-commands-and-information-for-shared-github-activity">Useful Commands and Information for Shared Github Activity</a></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#cloning" id="toc-cloning" class="nav-link" data-scroll-target="#cloning">2. Cloning</a></li>
+  <li><a href="#basic-git-commands" id="toc-basic-git-commands" class="nav-link" data-scroll-target="#basic-git-commands">3. Basic Git Commands</a></li>
+  <li><a href="#basic-quarto-commands" id="toc-basic-quarto-commands" class="nav-link" data-scroll-target="#basic-quarto-commands">4. Basic Quarto Commands</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/literature_notes/motile-active-matter-intro.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/literature_notes/motile-active-matter-intro.qmd" class="toc-action">View source</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/shared/gitinfo.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/shared/gitinfo.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">2020 Motile Active Matter Introduction</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Gompper, Winkler </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 4, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="general-principles-and-methods" class="level2">
-<h2 class="anchored" data-anchor-id="general-principles-and-methods">General principles and methods</h2>
-<p>Theories of active matter have to be constructed on the basis of symmetries, conservation laws, and dynamic rules.</p>
-<p>Methods involved simulations, field-theoretical methods, dynamic density-functional theory.</p>
+<section id="useful-commands-and-information-for-shared-github-activity" class="level1">
+<h1>Useful Commands and Information for Shared Github Activity</h1>
 </section>
-<section id="micronano-swimmers" class="level2">
-<h2 class="anchored" data-anchor-id="micronano-swimmers">Micro/nano swimmers</h2>
-<p>Biological swimmers can employ cilia or flagella or changes in body shape to propel to towards a target.</p>
-<p>Additionally, another point of interest would be search strategies: like <strong>chemotaxis</strong> (orientation/movement away or from stimulus, along a chemical concentration gradien) and <strong>photoaxis</strong> (orientation/movement away or from light).</p>
-<ul>
-<li>How small a swimmer can be to still display directed motion?</li>
-</ul>
+<section id="table-of-contents" class="level1">
+<h1>Table of Contents</h1>
+<ol start="0" type="1">
+<li>Table of Contents</li>
+<li>Introduction</li>
+<li>Cloning</li>
+<li>Basic Git Commands</li>
+<li>Basic Quarto Commands</li>
+</ol>
 </section>
-<section id="synthetic-micronano-machines" class="level2">
-<h2 class="anchored" data-anchor-id="synthetic-micronano-machines">Synthetic micro/nano machines</h2>
-<p><strong>Various strategies for autonomous machines</strong></p>
-<p>Diffusiophoresis - motion of species A in response to the concentration gradient of species B (both in a colloid)</p>
-<p>Thermophoresis - motion in mixture of particles along temperature gradient.</p>
-<p>An important model to study collective motion far from equilibrium: a mixtrue of semiflexible polar filaments and motor proteins.</p>
-<p>Active nematic theory (??) is fruitful in modelling many observed phenomena.</p>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<p>This page is an attempt to take commands that pop up in the course of sharing our activity (whether it’s passing it collectively or publishing it to an easily accessible site). Everything here is subject to change and addition as we discover more commands that need remembering. This page should be as standardised and explanatory as possible; when deemed necessary, examples should be given alongside the basic command structure.</p>
 </section>
-<section id="swarming" class="level2">
-<h2 class="anchored" data-anchor-id="swarming">Swarming</h2>
-<p>Interests in observing reaction of swarms to external signals.</p>
-<ul>
-<li>Reaction of bird flocks to predators</li>
-<li>Algae in gravitational field</li>
-</ul>
-<p>Interests in light control of synthetic systems</p>
+<section id="cloning" class="level1">
+<h1>2. Cloning</h1>
+<p>When cloning a repository, use:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you didn’t use <code>ssh url</code> while cloning, change remote before pushing:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For instance, cloning the persistent exclusion process example script:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin git@github:dlactivematter/persistent-exclusion-process.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If in doubt, use the following to show all the available remotes:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-git-commands" class="level1">
+<h1>3. Basic Git Commands</h1>
+<p>Check which branch you are on (and also other available branches):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Add new file to current branch</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commit new file to current branch (prompts adding a commit comment)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="op">&lt;</span>filename<span class="op">&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Push all changes to branch</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-quarto-commands" class="level1">
+<h1>4. Basic Quarto Commands</h1>
+<p>Note: only works on .qmd files</p>
+<p>Preview <code>.qmd</code> document in browser</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Render all <code>.qmd</code> files into html (usually not necessary)</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Render all <code>.qmd</code> files into html and publish them to the <code>gh-pages</code> branch</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -729,18 +755,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../literature_notes/active-brownian-particles.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Active Brownian particles: from collective phenomona to fundamental physics</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../literature_notes/run-and-tumble.html" class="pagination-link">
-        <span class="nav-page-text">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
