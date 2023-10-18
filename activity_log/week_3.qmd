@@ -6,5 +6,39 @@ author: "NP"
 
 ## Tasks
 
-- [ ] Set up the HPC environment to run PEP code.
-- [ ] Produce some snapshots at small and large persistent times.
+-   [x] Set up the HPC environment to run PEP code.
+    -   Using pip to store Python packages.
+    -   The environment on BluePebble can be set up using [this script](https://github.com/dlactivematter/persistent-exclusion-process/blob/main/bp_env.sh).
+    -   Conveniently, the `PATH` of a user is kept even when using SLURM, so the
+        packages installed through pip should still work (need to test this). Code
+        ran this week was light enough so I ran it on the login node.
+-   [x] Produce some snapshots at small and large persistent times.
+
+## Summary
+
+- On BluePebble, the environment for PEP was set up to satisfy all dependencies (I think).
+    - `protobuf` minimum dependencies for `tensorflow` is different on BlueCrystal than on BluePebble? Need to investigate when we run the model.
+- I added to the `README.md` [on the repo](https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md) to reflect how to set this all up.
+- To run the code up to generating snapshots:
+    1. Run `sampler.py` to populate datasets.
+    2. Adjust `tumble` variable in `video.py` ([location here](https://https://github.com/dlactivematter/persistent-exclusion-process/blob/8af5fd5a3411e4938b819c983b0f8d05ff5e15e8/src/video.py#L24C9-L24C9)).
+    3. Run `video.py`. The video is saved as `src/myAnimation.gif`, transfer that out or rename it before running again with a different tumble value.
+
+### Some animations
+
+::: {.callout-note appearance="simple"}
+You might need to zoom in a bit to see the patterns more clearly.
+:::
+
+::: {layout-nrow=1}
+
+![At $\alpha = 0.5$, very little cluster formation. Few jamming occurs but cluster does not grow substantially.](../assets/tumble0p5.gif)
+
+![At $\alpha = 0.005$, this is enough for a bit for some small, temporary clusters that form and dissipate rather quickly.](../assets/tumble0p05.gif)
+
+![At $\alpha = 0.005$, this is quite a low tumbling rate. A lot of jamming is observed, with particles forming cluster seeds and some evaporation and absorption are observed.](../assets/tumble0p005.gif)
+
+:::
+
+This reflects the effects described in the Method section of the [Soto and
+Golestanian](../literature_notes/run-and-tumble.qmd) paper.

@@ -10,8 +10,8 @@ The model is asynchronous and stochastic.
 
 Particles in the **run** phase characterised by **direction**:
 
-  - `(left,right)` in 1D
-  - `(left,right,up,down)` in 2D
+-   `(left,right)` in 1D
+-   `(left,right,up,down)` in 2D
 
 A total number of particles $M = \phi N$ where $\phi$ is the particle
 concentration and $N$ is the total number of sites.
@@ -34,14 +34,14 @@ directions. This creates a **cluster seed**.
 
 Effects at $\alpha = 0$
 
-  - All particles become jammed.
-  - Particles cluster together until there are no more isolated particles.
+-   All particles become jammed.
+-   Particles cluster together until there are no more isolated particles.
 
 Effects at $\alpha \neq 0$
 
-  - The system forms clusters that coexist.
-  - The clusters stay immobile, so there is no merging or splitting.
-  - There is now cluster dynamics with the following processes:
-    1. Formation of cluster by two particle colliding
-  2. Absorption of moving particles at cluster boundaries
-  3. Particle evaporation at the boundaries
+-   The system forms clusters that coexist.
+-   The clusters stay immobile, so there is no merging or splitting.
+-   There is now cluster dynamics with the following processes:
+    1.  Formation of cluster by two particle colliding
+    2.  Absorption of moving particles at cluster boundaries
+    3.  Particle evaporation at the boundaries

@@ -6,20 +6,20 @@ author: "NP"
 
 ## Tasks
 
-- [x] Catch up on background reading
-- [x] Set up electronic notebook
-- [x] Set up git repository for shared knowledge
-  - Personal logs and files in `.gitignore`
-  - How to resolve conflicts? Avoid editing at the same time?
-  - Where to host? Private GitHub repo?
-- [ ] Set up a GitHub organisation (a single repo might not cover the whole
-project). *To be discussed when a more concrete project is decided*. (Moved to
-next week)
+-   [x] Catch up on background reading
+-   [x] Set up electronic notebook
+-   [x] Set up git repository for shared knowledge
+    -   Personal logs and files in `.gitignore`
+    -   How to resolve conflicts? Avoid editing at the same time?
+    -   Where to host? Private GitHub repo?
+-   [ ] Set up a GitHub organisation (a single repo might not cover the whole
+    project). _To be discussed when a more concrete project is decided_. (Moved to
+    next week)
 
 ## Summary
 
-There were some texts to read through, we were also given a brief of the
+- There were some texts to read through, we were also given a brief of the
 project and different directions we can take it.
 
-We agreed to make an electronic notebook using Quarto and git. Brief guide
+- We agreed to make an electronic notebook using Quarto and git. Brief guide
 documenting how to set it up is found [here](../shared/repo.qmd).

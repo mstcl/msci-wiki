@@ -1,7 +1,10 @@
 ---
 title: "Home"
 ---
+
+
 ::: {layout-nrow=2}
+
 ![*Rail Bridge Swarm of Starlings*. Licensed under [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).](./assets/swarm.jpg)
 
 ![*Schooling anchovies*. Licensed under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/it/deed.en).](./assets/fish.jpg)
