@@ -66,6 +66,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -308,6 +310,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_3.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_3.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -346,11 +349,74 @@ ul.task-list li input[type="checkbox"] {
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><input type="checkbox">Set up the HPC environment to run PEP code.</li>
-<li><input type="checkbox">Produce some snapshots at small and large persistent times.</li>
+<li><input type="checkbox" checked="">Set up the HPC environment to run PEP code.
+<ul>
+<li>Using pip to store Python packages.</li>
+<li>The environment on BluePebble can be set up using <a href="https://github.com/dlactivematter/persistent-exclusion-process/blob/main/bp_env.sh">this script</a>.</li>
+<li>Conveniently, the <code>PATH</code> of a user is kept even when using SLURM, so the packages installed through pip should still work (need to test this). Code ran this week was light enough so I ran it on the login node.</li>
+</ul></li>
+<li><input type="checkbox" checked="">Produce some snapshots at small and large persistent times.</li>
 </ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>On BluePebble, the environment for PEP was set up to satisfy all dependencies (I think).
+<ul>
+<li><code>protobuf</code> minimum dependencies for <code>tensorflow</code> is different on BlueCrystal than on BluePebble? Need to investigate when we run the model.</li>
+</ul></li>
+<li>I added to the <code>README.md</code> <a href="https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md">on the repo</a> to reflect how to set this all up.</li>
+<li>To run the code up to generating snapshots:
+<ol type="1">
+<li>Run <code>sampler.py</code> to populate datasets.</li>
+<li>Adjust <code>tumble</code> variable in <code>video.py</code> (<a href="https://https://github.com/dlactivematter/persistent-exclusion-process/blob/8af5fd5a3411e4938b819c983b0f8d05ff5e15e8/src/video.py#L24C9-L24C9">location here</a>).</li>
+<li>Run <code>video.py</code>. The video is saved as <code>src/myAnimation.gif</code>, transfer that out or rename it before running again with a different tumble value.</li>
+</ol></li>
+</ul>
+<section id="some-animations" class="level3">
+<h3 class="anchored" data-anchor-id="some-animations">Some animations</h3>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>You might need to zoom in a bit to see the patterns more clearly.</p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/tumble0p5.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">At <span class="math inline">\(\alpha = 0.5\)</span>, very little cluster formation. Few jamming occurs but cluster does not grow substantially.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/tumble0p05.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">At <span class="math inline">\(\alpha = 0.005\)</span>, this is enough for a bit for some small, temporary clusters that form and dissipate rather quickly.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/tumble0p005.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">At <span class="math inline">\(\alpha = 0.005\)</span>, this is quite a low tumbling rate. A lot of jamming is observed, with particles forming cluster seeds and some evaporation and absorption are observed.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>This reflects the effects described in the Method section of the <a href="../literature_notes/run-and-tumble.html">Soto and Golestanian</a> paper.</p>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

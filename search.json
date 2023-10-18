@@ -4,14 +4,14 @@
     "href": "literature_notes/run-and-tumble.html",
     "title": "Run-and-tumble dynamics in a crowded environment: PEP for swimmers",
     "section": "",
-    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\n\n\n\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
+    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
   },
   {
     "objectID": "literature_notes/run-and-tumble.html#the-model",
     "href": "literature_notes/run-and-tumble.html#the-model",
     "title": "Run-and-tumble dynamics in a crowded environment: PEP for swimmers",
     "section": "",
-    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\n\n\n\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
+    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
   },
   {
     "objectID": "literature_notes/active-brownian-particles.html",
@@ -53,14 +53,21 @@
     "href": "activity_log/week_3.html",
     "title": "Week 3",
     "section": "",
-    "text": "Set up the HPC environment to run PEP code.\nProduce some snapshots at small and large persistent times."
+    "text": "Set up the HPC environment to run PEP code.\n\nUsing pip to store Python packages.\nThe environment on BluePebble can be set up using this script.\nConveniently, the PATH of a user is kept even when using SLURM, so the packages installed through pip should still work (need to test this). Code ran this week was light enough so I ran it on the login node.\n\nProduce some snapshots at small and large persistent times."
   },
   {
     "objectID": "activity_log/week_3.html#tasks",
     "href": "activity_log/week_3.html#tasks",
     "title": "Week 3",
     "section": "",
-    "text": "Set up the HPC environment to run PEP code.\nProduce some snapshots at small and large persistent times."
+    "text": "Set up the HPC environment to run PEP code.\n\nUsing pip to store Python packages.\nThe environment on BluePebble can be set up using this script.\nConveniently, the PATH of a user is kept even when using SLURM, so the packages installed through pip should still work (need to test this). Code ran this week was light enough so I ran it on the login node.\n\nProduce some snapshots at small and large persistent times."
+  },
+  {
+    "objectID": "activity_log/week_3.html#summary",
+    "href": "activity_log/week_3.html#summary",
+    "title": "Week 3",
+    "section": "Summary",
+    "text": "Summary\n\nOn BluePebble, the environment for PEP was set up to satisfy all dependencies (I think).\n\nprotobuf minimum dependencies for tensorflow is different on BlueCrystal than on BluePebble? Need to investigate when we run the model.\n\nI added to the README.md on the repo to reflect how to set this all up.\nTo run the code up to generating snapshots:\n\nRun sampler.py to populate datasets.\nAdjust tumble variable in video.py (location here).\nRun video.py. The video is saved as src/myAnimation.gif, transfer that out or rename it before running again with a different tumble value.\n\n\n\nSome animations\n\n\n\n\n\n\nYou might need to zoom in a bit to see the patterns more clearly.\n\n\n\n\n\n\n\n\n\nAt \\(\\alpha = 0.5\\), very little cluster formation. Few jamming occurs but cluster does not grow substantially.\n\n\n\n\n\n\n\nAt \\(\\alpha = 0.005\\), this is enough for a bit for some small, temporary clusters that form and dissipate rather quickly.\n\n\n\n\n\n\n\nAt \\(\\alpha = 0.005\\), this is quite a low tumbling rate. A lot of jamming is observed, with particles forming cluster seeds and some evaporation and absorption are observed.\n\n\n\n\n\nThis reflects the effects described in the Method section of the Soto and Golestanian paper."
   },
   {
     "objectID": "activity_log/week_2.html",
@@ -81,14 +88,14 @@
     "href": "activity_log/week_2.html#tasks",
     "title": "Week 2",
     "section": "Tasks",
-    "text": "Tasks\n\nClone and comment this repo.\n\nNew forked repo, with comments in the format branch.\n\nWrite short intro (about 500 words) about why we study active matter, with references.\n\nSee here."
+    "text": "Tasks\n\nClone and comment this repo.\n\nNew forked repo, with comments and docstrings added.\n\nWrite short intro (about 500 words) about why we study active matter, with references.\n\nSee here."
   },
   {
     "objectID": "activity_log/week_2.html#summary",
     "href": "activity_log/week_2.html#summary",
     "title": "Week 2",
     "section": "Summary",
-    "text": "Summary\nThis week, the main task was to comb through introductory literature, and produce a writeup on motivation to study active matter.\nThere was also some code to comment and look through (from the persistent-exclusion-process repo).\nThe other task was to sort out HPC access. CP & I have access to BlueCrystal and BluePebble, correspondingly."
+    "text": "Summary\n\nThis week, the main task was to comb through introductory literature, and produce a writeup on motivation to study active matter.\nThere was also some code to comment and look through (from the persistent-exclusion-process (PEP) repo).\nThe other task was to sort out HPC access. CP & I have access to BlueCrystal and BluePebble, accordingly."
   },
   {
     "objectID": "shared/repo.html",
@@ -221,7 +228,7 @@
     "href": "activity_log/week_1.html#summary",
     "title": "Week 1",
     "section": "Summary",
-    "text": "Summary\nThere were some texts to read through, we were also given a brief of the project and different directions we can take it.\nWe agreed to make an electronic notebook using Quarto and git. Brief guide documenting how to set it up is found here."
+    "text": "Summary\n\nThere were some texts to read through, we were also given a brief of the project and different directions we can take it.\nWe agreed to make an electronic notebook using Quarto and git. Brief guide documenting how to set it up is found here."
   },
   {
     "objectID": "writings/landing.html",
