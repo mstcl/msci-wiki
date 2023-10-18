@@ -1,0 +1,10 @@
+---
+title: "Week 3"
+date: 2023-10-13
+author: "NP"
+---
+
+## Tasks
+
+- [ ] Set up the HPC environment to run PEP code.
+- [ ] Produce some snapshots at small and large persistent times.

@@ -5,7 +5,6 @@ author: "NP"
 bibliography: ../assets/references.bib
 csl: ../assets/physical-review-letters.csl
 ---
-
 An active matter system is characterised by its constituent self-propelling and
 self-directional units that are individually capable of extracting and
 dissipating free energy to result in complex, systematic

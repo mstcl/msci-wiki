@@ -4,7 +4,7 @@ date: 2023-09-28
 author: "NP"
 ---
 
-## Current tasks
+## Tasks
 
 - [x] Catch up on background reading
 - [x] Set up electronic notebook
@@ -13,4 +13,13 @@ author: "NP"
   - How to resolve conflicts? Avoid editing at the same time?
   - Where to host? Private GitHub repo?
 - [ ] Set up a GitHub organisation (a single repo might not cover the whole
-project). *To be discussed when a more concrete project is decided*.
+project). *To be discussed when a more concrete project is decided*. (Moved to
+next week)
+
+## Summary
+
+There were some texts to read through, we were also given a brief of the
+project and different directions we can take it.
+
+We agreed to make an electronic notebook using Quarto and git. Brief guide
+documenting how to set it up is found [here](../shared/repo.qmd).

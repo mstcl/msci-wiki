@@ -9,7 +9,7 @@ author: "NP"
 - [x] Set up a GitHub organisation (a single repo might not cover the whole
 project).
 
-## Current tasks
+## Tasks
 
 - [x] Clone and comment [this
 repo](https://github.com/FTurci/persistent-exclusion-process).
@@ -19,3 +19,14 @@ repo](https://github.com/FTurci/persistent-exclusion-process).
 - [x] Write short intro (about 500 words) about why we study active matter,
 with references.
 	- [See here](../writings/motivation.qmd).
+
+## Summary
+
+This week, the main task was to comb through introductory literature, and
+produce a writeup on motivation to study active matter.
+
+There was also some code to comment and look through (from the
+persistent-exclusion-process repo).
+
+The other task was to sort out HPC access. CP & I have access to BlueCrystal
+and BluePebble, correspondingly.
