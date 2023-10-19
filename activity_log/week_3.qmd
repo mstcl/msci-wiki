@@ -34,7 +34,7 @@ You might need to zoom in a bit to see the patterns more clearly.
 
 ![At $\alpha = 0.5$, very little cluster formation. Few jamming occurs but cluster does not grow substantially.](../assets/tumble0p5.gif)
 
-![At $\alpha = 0.005$, this is enough for a bit for some small, temporary clusters that form and dissipate rather quickly.](../assets/tumble0p05.gif)
+![At $\alpha = 0.05$, this is enough for a bit for some small, temporary clusters that form and dissipate rather quickly.](../assets/tumble0p05.gif)
 
 ![At $\alpha = 0.005$, this is quite a low tumbling rate. A lot of jamming is observed, with particles forming cluster seeds and some evaporation and absorption are observed.](../assets/tumble0p005.gif)
 
