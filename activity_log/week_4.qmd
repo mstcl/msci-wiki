@@ -1,0 +1,13 @@
+---
+title: Week 4
+date: 2023-10-13
+author: NP
+---
+
+## Tasks
+
+- [ ] Act on feedback on [writing](../writings/motivation.qmd) from last week.
+- [ ] We can aim to make a density map of snapshots ($\\alpha / \\phi$), a grid of $3 \\times 3$.
+  - Range of $\\alpha \\in \[0.01, 0.5\]$, 10 values in total, split between my
+    and CP.
+  - Use scikit-learn to detect clusters and cluster size.
