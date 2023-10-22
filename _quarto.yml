@@ -50,7 +50,7 @@ website:
           - auto: writings/!(landing).*md
           - section: "FT notes"
             contents:
-              - auto: shared/ftnotes/*.*md
+              - auto: shared/ftnotes/*
       - text: "---"
       - section: "External tools"
         contents:

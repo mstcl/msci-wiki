@@ -1,94 +1,85 @@
 ---
 title: What is active matter and why do we study it?
-date: 2023-10-11
+date: last-modified
 author: NP
-bibliography: ../assets/references.bib
 csl: ../assets/physical-review-letters.csl
+bibliography: ../assets/references.bib
 ---
 
-<!-- FT: You can maybe provide a wider context, referring to disordered systems, soft matter and statistical mechanics at and out of equilibrium as areas in which active matter has emerged-->
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
+
+- [Introduction](#introduction)
+- [Real-world applications](#real-world-applications)
+- [New physics at non-equilibrium](#new-physics-at-non-equilibrium)
+
+<!-- mdformat-toc end -->
+
+## Introduction<a name="introduction"></a>
 
 An active matter system is characterised by its constituent self-propelling and
 self-directional units that are individually capable of extracting and
 dissipating free energy to result in complex, systematic
-behaviours\[@marchetti_hydrodynamics_2013\]. Allowing a material to exchange energy
-with its environment and interact with other particles can result in a system
-far from equilibrium\[@bechinger_active_2016;@ramaswamy_mechanics_2010\].
+behaviours[@marchetti_hydrodynamics_2013]. The context of which these active
+systems emerge has been found in disordered systems, soft matter, as well as
+statistical mechanics, both at and out of equilibrium.
 
-<!-- here the key is not only that energy is exchanged, it is that energy is dissipated (irreversibility) -->
-
-However, unlike other standard non-equilibrium systems, energy exchanges in
-active systems responsible for driving the system out of equilibrium are at the
-level of individual particle's contribution, as opposed to effects at the
-system's boundaries\[@marchetti_hydrodynamics_2013\]. The properties of active
-systems are often emergent collective properties that provide intriguing
-studies,
-
-<!-- maybe they provide for intirguing effects, or phenomena. It is not that interestign if they just yield "studies" -->
-
-from self-motility, synchronous dynamics\[@decamp_what_nodate\],
-order-disorder transitions, pattern formation, swarming, and lots more.
 
 Numerous examples of active systems can be found in biological systems at all
-scales, from fish in a school
+scales, from fish in a school[@yang_dominating_2022] and birds in a flock, to
+algae, bacteria, proteins[@decamp_what_nodate] and actin and microtubules in
+subcellular domains[@marchetti_hydrodynamics_2013]. The general properties of
+active systems are often emergent collective properties that provide intriguing
+phenomena, from self-motility, synchronous dynamics[@decamp_what_nodate],
+order-disorder transitions, pattern formation, swarming, and lots more.
 
-<!-- you can cite a paper for each example, instead of just a review. For teh fish, even my own work can fit here, Yang, Turci et al. PLOS 2022 -->
+## Real-world applications<a name="real-world-applications"></a>
 
-and birds in a flock, to algae, bacteria,
-proteins\[@decamp_what_nodate\] and actin and microtubules in subcellular
-domains\[@marchetti_hydrodynamics_2013\].
+First, in practical applications, we might want borrow or mimic strategies from
+biological systems, with the goal of creating new synthetic materials, devices,
+robotics and medicine[@bechinger_active_2016]. Here, the use of models is
+integral to provide insight into how to engineer synthetic systems. For this,
+the models are performed both _in vitro_ (nanomachines) and _in silico_
+(numerical modelling). Although active systems have a parameter space far from
+minimal, by using appropriate approximations to form our models, even with
+minimal ones, we can seek to derive large-scale
+generality[@marchetti_hydrodynamics_2013; @flenner_active_2020]. These systems
+have group-level properties derived from macroscopic orders, phases, and phase
+transitions, that are independent of the scale of its constituents.
 
-<!-- You do not need to start with "There are several reasons". Enunciate the reasons, getting directly to the bigger questions.  -->
 
-There are several reasons to study active systems. For once, it could reveal
-new physics, as the domain of non-equilibrium systems is not fully
-well-understood.
+For instance, a good yet minimal approximation would be a model by Viscek _et.
+al_[@buhl_disorder_2006; @vicsek_novel_1995]. Here, clustering is induced
+through a combination of self-propulsion and self-orientation in response to
+its neighbours. The system evolves with a two-step iteration process, and the
+whole system is controlled by 3 parameters. Yet, its central prediction shows
+phase transition from disordered, individual motion to ordered, collective
+motion, dictated through its minimal set of parameters[@buhl_disorder_2006].
 
-<!-- It would be better to explain what is not understood. You can be more concrete: the difficulty is that while at equilibrium we have a theory that tells us about macrostates and their likelihood, contorlled by their energy and the boltzmann factor, out of equilibrium it is not clear how to construct quantities that are equivalent to free energies -->
 
-In applications, it allows us to borrow or mimic strategies
-from biological systems in order to create to new synthetic materials, devices,
-robotics and medicine\[@bechinger_active_2016\].
+While it cannot be assumed that the models used _in vitro_ translate directly
+to what is observed in reality, they are still crucial components that when
+combined with more sophisticated rules or understanding from other fields,
+would enable useful real-world applications, an example being controlling
+insect pest outbreaks[@buhl_disorder_2006].
 
-One effective way to study active matter is to model it _in vitro_ or _in
-silico_.
+## New physics at non-equilibrium<a name="new-physics-at-non-equilibrium"></a>
 
-<!-- the next sentence is a bit vague. -->
+While we can study emergent behaviours, one challenge out of these models is to
+address the inverse problem; to determine the rules that lead to a desired
+collective state[@gompper_2020_2020]. In this domain, powerful tools like
+machine learning can be deployed to build a robust framework analogous to
+equilibrium statistical thermodynamics, ultimately with the aim of providing
+fundamental insight into a microscopic-emergent
+connection[@rassolov_predicting_2022].
 
-However, the overall high complexity of living systems means providing
-a theoretical description with generality is not entirely
-achievable\[@marchetti_hydrodynamics_2013\]; the parameter space to be taken into
-account is far from minimal, let alone in non-equilibrium.
-
-<!--  which approximations do you want to refer to precisely? Maybe giev soem examples? -->
-
-However, with
-appropriate approximations\[@flenner_active_2020\], it remains fruitful to study
-emergent collective behaviour of minimal systems in both physical and
-computational setting (e.g. synthetic nanomachine and numerical modelling).
-
-<!-- provie some examples of such fruits? what kind of insights do we glean from minimal modelling? (this is a broad question of epistemological nature) -->
-
-While we can study emergent behaviours, out of these models, one challenge is
-to address the inverse problem; to determine the rules that lead to a desired
-collective state\[@gompper_2020_2020\], with one motivation being to control such
-systems in applications. In this domain, powerful tools like machine learning
-can be deployed to build a robust framework analogous to equilibrium
-statistical thermodynamics, ultimately with the aim of providing fundamental
-insight into a microscopic-emergent connection\[@rassolov_predicting_2022\].
-
-<!-- very good -->
-
-<!-- this is a bit imprecise, but you are capturing the idea: it is interesting to study the macroscopic phases of active matter as they can reveal interstign, large-scale behaviour that weakly depends on the details of its constituens (even if, in active matter, it is not alwys clear how such details can be coarse-graiend out) -->
-
-In addition, studies of active matter as materials yield a catalogue of generic
-properties and behaviours, many of which are
-universal\[@marchetti_hydrodynamics_2013\] when examined as collective properties
-such as orders, phases, phase transitions\[@ramaswamy_mechanics_2010\].
-
-<!-- this last block is rather vague and it seems to be repeating earlier information -->
-
-Devising
-these universal classes has many useful implications. For the engineers and
-manufacturers, this allows for reliable imitations without the need of biological components, and for the biologists and ecologists, it is interesting to match the generalized behaviours of systems _in vitro_ to living systems _in
-vivo_, unveiling group-level properties that are independent of the type of animal or its scale\[@buhl_disorder_2006\]. For the theoreticians, it allowsbetter fundamental understanding of non-equilibrium systems.
+Non-equilibrium results when energy exchanges and dissipation at the level of
+individual particles' contribution lead to irreversibility
+within[@bechinger_active_2016;@ramaswamy_mechanics_2010]. This is contrasted
+with at-equilibrium systems, where energy effects are found at the system's
+boundaries[@marchetti_hydrodynamics_2013]. Whereas we have the laws of
+thermodynamics and statistical mechanics in the latter type of systems that
+tell us about their macrostates (from their energy) and likelihood (from their
+Boltzmann distribution), it is not clear for the former type of systems. The
+difficulty lies in constructing analogues to these theories using quantities
+equivalent to the system's free energies. Therefore, new physics can emerge
+in studying this so not-well understood phenomena.
