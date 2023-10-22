@@ -2,70 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/run-and-tumble.html</loc>
-    <lastmod>2023-10-19T10:29:05.204Z</lastmod>
+    <lastmod>2023-10-22T18:58:58.454Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/active-brownian-particles.html</loc>
-    <lastmod>2023-10-19T10:29:04.664Z</lastmod>
+    <lastmod>2023-10-22T18:58:57.878Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/sitemap.html</loc>
-    <lastmod>2023-10-19T10:29:04.105Z</lastmod>
+    <lastmod>2023-10-22T18:58:57.318Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/writings/motivation.html</loc>
-    <lastmod>2023-10-19T10:29:03.518Z</lastmod>
+    <lastmod>2023-10-22T18:58:56.714Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_3.html</loc>
-    <lastmod>2023-10-19T10:29:01.565Z</lastmod>
+    <lastmod>2023-10-22T18:58:54.934Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_2.html</loc>
-    <lastmod>2023-10-19T10:29:00.958Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/repo.html</loc>
-    <lastmod>2023-10-19T10:29:00.445Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/deadlines.html</loc>
-    <lastmod>2023-10-19T10:28:59.872Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/index.html</loc>
-    <lastmod>2023-10-19T10:28:59.321Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/gitinfo.html</loc>
-    <lastmod>2023-10-19T10:28:59.628Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/cluster.html</loc>
-    <lastmod>2023-10-19T10:29:00.142Z</lastmod>
+    <lastmod>2023-10-22T18:58:54.314Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/Colab.html</loc>
-    <lastmod>2023-10-19T10:29:00.675Z</lastmod>
+    <lastmod>2023-10-22T18:58:53.711Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/repo.html</loc>
+    <lastmod>2023-10-22T18:58:53.201Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/deadlines.html</loc>
+    <lastmod>2023-10-22T18:58:52.458Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/index.html</loc>
+    <lastmod>2023-10-22T18:58:51.898Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/gitinfo.html</loc>
+    <lastmod>2023-10-22T18:58:52.198Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/cluster.html</loc>
+    <lastmod>2023-10-22T18:58:52.708Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/label.html</loc>
+    <lastmod>2023-10-22T18:58:53.478Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_4.html</loc>
+    <lastmod>2023-10-22T18:58:54.038Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/landing.html</loc>
-    <lastmod>2023-10-19T10:29:01.268Z</lastmod>
+    <lastmod>2023-10-22T18:58:54.624Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_1.html</loc>
-    <lastmod>2023-10-19T10:29:01.828Z</lastmod>
+    <lastmod>2023-10-22T18:58:55.218Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/writings/landing.html</loc>
-    <lastmod>2023-10-19T10:29:03.775Z</lastmod>
+    <lastmod>2023-10-22T18:58:56.974Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/motile-active-matter-intro.html</loc>
-    <lastmod>2023-10-19T10:29:04.368Z</lastmod>
+    <lastmod>2023-10-22T18:58:57.601Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/landing.html</loc>
-    <lastmod>2023-10-19T10:29:04.934Z</lastmod>
+    <lastmod>2023-10-22T18:58:58.164Z</lastmod>
   </url>
 </urlset>

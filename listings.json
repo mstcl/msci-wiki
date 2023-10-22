@@ -16,6 +16,7 @@
       "/activity_log/week_1.html",
       "/activity_log/week_2.html",
       "/activity_log/week_3.html",
+      "/activity_log/week_4.html",
       "/writings/motivation.html",
       "/writings/landing.html"
     ]
@@ -25,7 +26,8 @@
     "items": [
       "/activity_log/week_1.html",
       "/activity_log/week_2.html",
-      "/activity_log/week_3.html"
+      "/activity_log/week_3.html",
+      "/activity_log/week_4.html"
     ]
   },
   {

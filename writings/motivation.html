@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="NP">
-<meta name="dcterms.date" content="2023-10-11">
+<meta name="dcterms.date" content="2023-10-22">
 
 <title>Dissipation Learning in Active Matter - What is active matter and why do we study it?</title>
 <style>
@@ -198,6 +198,12 @@ div.csl-indent {
  <span class="menu-text">Week 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -273,6 +279,12 @@ div.csl-indent {
  <span class="menu-text">Link to colab notebook</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/ftnotes/label.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Minimal cluster analysis</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -323,7 +335,15 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Content</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a><a name="introduction" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#real-world-applications" id="toc-real-world-applications" class="nav-link" data-scroll-target="#real-world-applications">Real-world applications</a><a name="real-world-applications" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#new-physics-at-non-equilibrium" id="toc-new-physics-at-non-equilibrium" class="nav-link" data-scroll-target="#new-physics-at-non-equilibrium">New physics at non-equilibrium</a><a name="new-physics-at-non-equilibrium" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/writings/motivation.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/writings/motivation.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -347,7 +367,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 11, 2023</p>
+      <p class="date">October 22, 2023</p>
     </div>
   </div>
   
@@ -357,42 +377,63 @@ div.csl-indent {
 
 </header>
 
-<!-- FT: You can maybe provide a wider context, referring to disordered systems, soft matter and statistical mechanics at and out of equilibrium as areas in which active matter has emerged-->
-<p>An active matter system is characterised by its constituent self-propelling and self-directional units that are individually capable of extracting and dissipating free energy to result in complex, systematic behaviours<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. Allowing a material to exchange energy with its environment and interact with other particles can result in a system far from equilibrium<span class="citation" data-cites="bechinger_active_2016 ramaswamy_mechanics_2010">&nbsp;[<a href="#ref-bechinger_active_2016" role="doc-biblioref">2</a>,<a href="#ref-ramaswamy_mechanics_2010" role="doc-biblioref">3</a>]</span>. <!-- here the key is not only that energy is exchanged, it is that energy is dissipated (irreversibility) --> However, unlike other standard non-equilibrium systems, energy exchanges in active systems responsible for driving the system out of equilibrium are at the level of individual particle’s contribution, as opposed to effects at the system’s boundaries<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. The properties of active systems are often emergent collective properties that provide intriguing studies, <!-- maybe they provide for intirguing effects, or phenomena. It is not that interestign if they just yield "studies" --> from self-motility, synchronous dynamics<span class="citation" data-cites="decamp_what_nodate">&nbsp;[<a href="#ref-decamp_what_nodate" role="doc-biblioref">4</a>]</span>, order-disorder transitions, pattern formation, swarming, and lots more.</p>
-<p>Numerous examples of active systems can be found in biological systems at all scales, from fish in a school <!-- you can cite a paper for each example, instead of just a review. For teh fish, even my own work can fit here, Yang, Turci et al. PLOS 2022 --> and birds in a flock, to algae, bacteria, proteins<span class="citation" data-cites="decamp_what_nodate">&nbsp;[<a href="#ref-decamp_what_nodate" role="doc-biblioref">4</a>]</span> and actin and microtubules in subcellular domains<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>.</p>
-<!-- You do not need to start with "There are several reasons". Enunciate the reasons, getting directly to the bigger questions.  -->
-<p>There are several reasons to study active systems. For once, it could reveal new physics, as the domain of non-equilibrium systems is not fully well-understood. <!-- It would be better to explain what is not understood. You can be more concrete: the difficulty is that while at equilibrium we have a theory that tells us about macrostates and their likelihood, contorlled by their energy and the boltzmann factor, out of equilibrium it is not clear how to construct quantities that are equivalent to free energies --> In applications, it allows us to borrow or mimic strategies from biological systems in order to create to new synthetic materials, devices, robotics and medicine<span class="citation" data-cites="bechinger_active_2016">&nbsp;[<a href="#ref-bechinger_active_2016" role="doc-biblioref">2</a>]</span>.</p>
-<p>One effective way to study active matter is to model it <em>in vitro</em> or <em>in silico</em>. <!-- the next sentence is a bit vague. --> However, the overall high complexity of living systems means providing a theoretical description with generality is not entirely achievable<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>; the parameter space to be taken into account is far from minimal, let alone in non-equilibrium. <!--  which approximations do you want to refer to precisely? Maybe giev soem examples? --> However, with appropriate approximations<span class="citation" data-cites="flenner_active_2020">&nbsp;[<a href="#ref-flenner_active_2020" role="doc-biblioref">5</a>]</span>, it remains fruitful to study emergent collective behaviour of minimal systems in both physical and computational setting (e.g.&nbsp;synthetic nanomachine and numerical modelling). <!-- provie some examples of such fruits? what kind of insights do we glean from minimal modelling? (this is a broad question of epistemological nature) --> While we can study emergent behaviours, out of these models, one challenge is to address the inverse problem; to determine the rules that lead to a desired collective state<span class="citation" data-cites="gompper_2020_2020">&nbsp;[<a href="#ref-gompper_2020_2020" role="doc-biblioref">6</a>]</span>, with one motivation being to control such systems in applications. In this domain, powerful tools like machine learning can be deployed to build a robust framework analogous to equilibrium statistical thermodynamics, ultimately with the aim of providing fundamental insight into a microscopic-emergent connection<span class="citation" data-cites="rassolov_predicting_2022">&nbsp;[<a href="#ref-rassolov_predicting_2022" role="doc-biblioref">7</a>]</span>. <!-- very good --></p>
-<!-- this is a bit imprecise, but you are capturing the idea: it is interesting to study the macroscopic phases of active matter as they can reveal interstign, large-scale behaviour that weakly depends on the details of its constituens (even if, in active matter, it is not alwys clear how such details can be coarse-graiend out) -->
-<p>In addition, studies of active matter as materials yield a catalogue of generic properties and behaviours, many of which are universal<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span> when examined as collective properties such as orders, phases, phase transitions<span class="citation" data-cites="ramaswamy_mechanics_2010">&nbsp;[<a href="#ref-ramaswamy_mechanics_2010" role="doc-biblioref">3</a>]</span>. <!-- this last block is rather vague and it seems to be repeating earlier information --> Devising these universal classes has many useful implications. For the engineers and manufacturers, this allows for reliable imitations without the need of biological components, and for the biologists and ecologists, it is interesting to match the generalized behaviours of systems <em>in vitro</em> to living systems <em>in vivo</em>, unveiling group-level properties that are independent of the type of animal or its scale<span class="citation" data-cites="buhl_disorder_2006">&nbsp;[<a href="#ref-buhl_disorder_2006" role="doc-biblioref">8</a>]</span>. For the theoreticians, it allowsbetter fundamental understanding of non-equilibrium systems.</p>
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#real-world-applications">Real-world applications</a></li>
+<li><a href="#new-physics-at-non-equilibrium">New physics at non-equilibrium</a></li>
+</ul>
+<!-- mdformat-toc end -->
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction<a name="introduction"></a></h2>
+<p>An active matter system is characterised by its constituent self-propelling and self-directional units that are individually capable of extracting and dissipating free energy to result in complex, systematic behaviours<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. The context of which these active systems emerge has been found in disordered systems, soft matter, as well as statistical mechanics, both at and out of equilibrium.</p>
+<p>Numerous examples of active systems can be found in biological systems at all scales, from fish in a school<span class="citation" data-cites="yang_dominating_2022">&nbsp;[<a href="#ref-yang_dominating_2022" role="doc-biblioref">2</a>]</span> and birds in a flock, to algae, bacteria, proteins<span class="citation" data-cites="decamp_what_nodate">&nbsp;[<a href="#ref-decamp_what_nodate" role="doc-biblioref">3</a>]</span> and actin and microtubules in subcellular domains<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. The general properties of active systems are often emergent collective properties that provide intriguing phenomena, from self-motility, synchronous dynamics<span class="citation" data-cites="decamp_what_nodate">&nbsp;[<a href="#ref-decamp_what_nodate" role="doc-biblioref">3</a>]</span>, order-disorder transitions, pattern formation, swarming, and lots more.</p>
+</section>
+<section id="real-world-applications" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-applications">Real-world applications<a name="real-world-applications"></a></h2>
+<p>First, in practical applications, we might want borrow or mimic strategies from biological systems, with the goal of creating new synthetic materials, devices, robotics and medicine<span class="citation" data-cites="bechinger_active_2016">&nbsp;[<a href="#ref-bechinger_active_2016" role="doc-biblioref">4</a>]</span>. Here, the use of models is integral to provide insight into how to engineer synthetic systems. For this, the models are performed both <em>in vitro</em> (nanomachines) and <em>in silico</em> (numerical modelling). Although active systems have a parameter space far from minimal, by using appropriate approximations to form our models, even with minimal ones, we can seek to derive large-scale generality<span class="citation" data-cites="marchetti_hydrodynamics_2013 flenner_active_2020">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>,<a href="#ref-flenner_active_2020" role="doc-biblioref">5</a>]</span>. These systems have group-level properties derived from macroscopic orders, phases, and phase transitions, that are independent of the scale of its constituents.</p>
+<p>For instance, a good yet minimal approximation would be a model by Viscek <em>et. al</em><span class="citation" data-cites="buhl_disorder_2006 vicsek_novel_1995">&nbsp;[<a href="#ref-buhl_disorder_2006" role="doc-biblioref">6</a>,<a href="#ref-vicsek_novel_1995" role="doc-biblioref">7</a>]</span>. Here, clustering is induced through a combination of self-propulsion and self-orientation in response to its neighbours. The system evolves with a two-step iteration process, and the whole system is controlled by 3 parameters. Yet, its central prediction shows phase transition from disordered, individual motion to ordered, collective motion, dictated through its minimal set of parameters<span class="citation" data-cites="buhl_disorder_2006">&nbsp;[<a href="#ref-buhl_disorder_2006" role="doc-biblioref">6</a>]</span>.</p>
+<p>While it cannot be assumed that the models used <em>in vitro</em> translate directly to what is observed in reality, they are still crucial components that when combined with more sophisticated rules or understanding from other fields, would enable useful real-world applications, an example being controlling insect pest outbreaks<span class="citation" data-cites="buhl_disorder_2006">&nbsp;[<a href="#ref-buhl_disorder_2006" role="doc-biblioref">6</a>]</span>.</p>
+</section>
+<section id="new-physics-at-non-equilibrium" class="level2">
+<h2 class="anchored" data-anchor-id="new-physics-at-non-equilibrium">New physics at non-equilibrium<a name="new-physics-at-non-equilibrium"></a></h2>
+<p>While we can study emergent behaviours, one challenge out of these models is to address the inverse problem; to determine the rules that lead to a desired collective state<span class="citation" data-cites="gompper_2020_2020">&nbsp;[<a href="#ref-gompper_2020_2020" role="doc-biblioref">8</a>]</span>. In this domain, powerful tools like machine learning can be deployed to build a robust framework analogous to equilibrium statistical thermodynamics, ultimately with the aim of providing fundamental insight into a microscopic-emergent connection<span class="citation" data-cites="rassolov_predicting_2022">&nbsp;[<a href="#ref-rassolov_predicting_2022" role="doc-biblioref">9</a>]</span>.</p>
+<p>Non-equilibrium results when energy exchanges and dissipation at the level of individual particles’ contribution lead to irreversibility within<span class="citation" data-cites="bechinger_active_2016 ramaswamy_mechanics_2010">&nbsp;[<a href="#ref-bechinger_active_2016" role="doc-biblioref">4</a>,<a href="#ref-ramaswamy_mechanics_2010" role="doc-biblioref">10</a>]</span>. This is contrasted with at-equilibrium systems, where energy effects are found at the system’s boundaries<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. Whereas we have the laws of thermodynamics and statistical mechanics in the latter type of systems that tell us about their macrostates (from their energy) and likelihood (from their Boltzmann distribution), it is not clear for the former type of systems. The difficulty lies in constructing analogues to these theories using quantities equivalent to the system’s free energies. Therefore, new physics can emerge in studying this so not-well understood phenomena.</p>
 
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
 <div id="ref-marchetti_hydrodynamics_2013" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. C. Marchetti, J. F. Joanny, S. Ramaswamy, T. B. Liverpool, J. Prost, M. Rao, and R. A. Simha, <em><a href="https://doi.org/10.1103/RevModPhys.85.1143">Hydrodynamics of Soft Active Matter</a></em>, Reviews of Modern Physics <strong>85</strong>, 1143 (2013).</div>
 </div>
-<div id="ref-bechinger_active_2016" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">C. Bechinger, R. Di Leonardo, H. Löwen, C. Reichhardt, G. Volpe, and G. Volpe, <em><a href="https://doi.org/10.1103/RevModPhys.88.045006">Active <span>Particles</span> in <span>Complex</span> and <span>Crowded</span> <span>Environments</span></a></em>, Reviews of Modern Physics <strong>88</strong>, 045006 (2016).</div>
-</div>
-<div id="ref-ramaswamy_mechanics_2010" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">S. Ramaswamy, <em><a href="https://doi.org/10.1146/annurev-conmatphys-070909-104101">The <span>Mechanics</span> and <span>Statistics</span> of <span>Active</span> <span>Matter</span></a></em>, Annual Review of Condensed Matter Physics <strong>1</strong>, 323 (2010).</div>
+<div id="ref-yang_dominating_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Y. Yang, F. Turci, E. Kague, C. L. Hammond, J. Russo, and C. P. Royall, <em><a href="https://doi.org/10.1371/journal.pcbi.1009394">Dominating Lengthscales of Zebrafish Collective Behaviour</a></em>, PLOS Computational Biology <strong>18</strong>, e1009394 (2022).</div>
 </div>
 <div id="ref-decamp_what_nodate" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">S. Decamp, <em><a href="https://www.stephenjdecamp.com/what-is-active-matter.html">What Is <span>Active</span> <span>Matter</span>?</a></em>, Stephen j. Decamp (n.d.).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">S. Decamp, <em><a href="https://www.stephenjdecamp.com/what-is-active-matter.html">What Is <span>Active</span> <span>Matter</span>?</a></em>, Stephen j. Decamp (n.d.).</div>
+</div>
+<div id="ref-bechinger_active_2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">C. Bechinger, R. D. Leonardo, H. Löwen, C. Reichhardt, G. Volpe, and G. Volpe, <em><a href="https://doi.org/10.1103/RevModPhys.88.045006">Active <span>Particles</span> in <span>Complex</span> and <span>Crowded</span> <span>Environments</span></a></em>, Reviews of Modern Physics <strong>88</strong>, 045006 (2016).</div>
 </div>
 <div id="ref-flenner_active_2020" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">E. Flenner and G. Szamel, <em><a href="https://doi.org/10.1103/PhysRevE.102.022607">Active Matter: Quantifying the Departure from Equilibrium</a></em>, Physical Review E <strong>102</strong>, 022607 (2020).</div>
 </div>
+<div id="ref-buhl_disorder_2006" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">J. Buhl, D. J. T. Sumpter, I. D. Couzin, J. J. Hale, E. Despland, E. R. Miller, and S. J. Simpson, <em><a href="https://doi.org/10.1126/science.1125142">From <span>Disorder</span> to <span>Order</span> in <span>Marching</span> <span>Locusts</span></a></em>, Science <strong>312</strong>, 1402 (2006).</div>
+</div>
+<div id="ref-vicsek_novel_1995" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">T. Vicsek, A. Czirók, E. Ben-Jacob, I. Cohen, and O. Shochet, <em><a href="https://doi.org/10.1103/PhysRevLett.75.1226">Novel <span>Type</span> of <span>Phase</span> <span>Transition</span> in a <span>System</span> of <span>Self</span>-<span> Driven</span> <span>Particles</span></a></em>, Physical Review Letters <strong>75</strong>, 1226 (1995).</div>
+</div>
 <div id="ref-gompper_2020_2020" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">G. Gompper et al., <em><a href="https://doi.org/10.1088/1361-648X/ab6348">The 2020 Motile Active Matter Roadmap</a></em>, Journal of Physics: Condensed Matter <strong>32</strong>, 193001 (2020).</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">G. Gompper et al., <em><a href="https://doi.org/10.1088/1361-648X/ab6348">The 2020 Motile Active Matter Roadmap</a></em>, Journal of Physics: Condensed Matter <strong>32</strong>, 193001 (2020).</div>
 </div>
 <div id="ref-rassolov_predicting_2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">G. Rassolov, L. Tociu, É. Fodor, and S. Vaikuntanathan, <em><a href="https://doi.org/10.1063/5.0097863">From Predicting to Learning Dissipation from Pair Correlations of Active Liquids</a></em>, The Journal of Chemical Physics <strong>157</strong>, 054901 (2022).</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">G. Rassolov, L. Tociu, É. Fodor, and S. Vaikuntanathan, <em><a href="https://doi.org/10.1063/5.0097863">From Predicting to Learning Dissipation from Pair Correlations of Active Liquids</a></em>, The Journal of Chemical Physics <strong>157</strong>, 054901 (2022).</div>
 </div>
-<div id="ref-buhl_disorder_2006" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J. Buhl, D. J. T. Sumpter, I. D. Couzin, J. J. Hale, E. Despland, E. R. Miller, and S. J. Simpson, <em><a href="https://doi.org/10.1126/science.1125142">From <span>Disorder</span> to <span>Order</span> in <span>Marching</span> <span>Locusts</span></a></em>, Science <strong>312</strong>, 1402 (2006).</div>
+<div id="ref-ramaswamy_mechanics_2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">S. Ramaswamy, <em><a href="https://doi.org/10.1146/annurev-conmatphys-070909-104101">The <span>Mechanics</span> and <span>Statistics</span> of <span>Active</span> <span>Matter</span></a></em>, Annual Review of Condensed Matter Physics <strong>1</strong>, 323 (2010).</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -770,7 +811,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://creativecommons.org/licenses/by-nd/4.0/">License</a>
   </li>  
 </ul>
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/writings/motivation.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/writings/motivation.qmd" class="toc-action">View source</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
