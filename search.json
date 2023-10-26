@@ -235,14 +235,21 @@
     "href": "activity_log/week_4.html",
     "title": "Week 4",
     "section": "",
-    "text": "Act on feedback on writing from last week.\nWe can aim to make a density map of snapshots (\\(\\alpha / \\phi\\)), on a \\(3 \\times 3\\) grid.\n\nRange of \\(\\alpha \\in [0.01, 0.5]\\), 10 values in total, split between my and CP.\nUse scikit-learn to detect clusters and cluster size.\nSee this notebook for a demo."
+    "text": "Act on feedback on writing from last week.\nWe can aim to make a density map of snapshots (\\(\\alpha / \\phi\\)), on a 3x3 grid.\n\nRange of \\(\\alpha\\): [0.01, 0.5], 10 values in total, split between me and CP.\nUse scikit-learn to detect clusters and cluster size.\nSee this notebook for a demo.\nI didn’t get enough time to do any cluster analysis, just the grid of snapshots."
   },
   {
     "objectID": "activity_log/week_4.html#tasks",
     "href": "activity_log/week_4.html#tasks",
     "title": "Week 4",
     "section": "",
-    "text": "Act on feedback on writing from last week.\nWe can aim to make a density map of snapshots (\\(\\alpha / \\phi\\)), on a \\(3 \\times 3\\) grid.\n\nRange of \\(\\alpha \\in [0.01, 0.5]\\), 10 values in total, split between my and CP.\nUse scikit-learn to detect clusters and cluster size.\nSee this notebook for a demo."
+    "text": "Act on feedback on writing from last week.\nWe can aim to make a density map of snapshots (\\(\\alpha / \\phi\\)), on a 3x3 grid.\n\nRange of \\(\\alpha\\): [0.01, 0.5], 10 values in total, split between me and CP.\nUse scikit-learn to detect clusters and cluster size.\nSee this notebook for a demo.\nI didn’t get enough time to do any cluster analysis, just the grid of snapshots."
+  },
+  {
+    "objectID": "activity_log/week_4.html#summary",
+    "href": "activity_log/week_4.html#summary",
+    "title": "Week 4",
+    "section": "Summary",
+    "text": "Summary\n\nGeneral\n\nI acted on the feedback, which is reflected here.\nWe decided on a range \\(\\alpha\\), which is 10 values spaced logarithmically (base 2) in the range [2-6,2-1]. We thought this would be a sensible range for the snapshot grid, and we weren’t sure whether to go with log-spacing or normal spacing. In the end, we went with log-spacing.\nFor \\(\\phi\\) (density), we decided on a range of [0.05,0.5], with intervals of 0.05, giving a total of 10 values.\nWe modified sampler.py to reflect this, and regenerated the data so that we get a set of static datasets to work on creating this grid, ensuring the plot can be reproduced. I ran everything on the cluster this time.\n\n\n\nPlotting snapshots\n\nI began making plots of a selection of these datasets (a 3x5 grid), first as individual plots to before I spend more time and place them all on one figure. Then, I put them altogether on one grid:\n\n\n\n\nThe three values of \\(\\phi\\) here are (left to right) 0.05, 0.25 and 0.45 (all in units-2). The five values of \\(\\alpha\\) here are (top to bottom) 0.023, 0.050, 0.107, 0.231, 0.500.\n\n\n\nI tried to add figure x and y labels but the matplotlib I was using was too old to support fig.supxlabel or fig.supylabel. I also need to add labels for each block to indicate the value \\((\\phi, \\alpha)\\)."
   },
   {
     "objectID": "activity_log/landing.html",
@@ -277,7 +284,7 @@
     "href": "writings/landing.html",
     "title": "Writings listing",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 22, 2023\n\n\nWhat is active matter and why do we study it?\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 26, 2023\n\n\nWhat is active matter and why do we study it?\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "literature_notes/motile-active-matter-intro.html",

@@ -322,6 +322,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_4.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_4.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -361,15 +362,43 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
 <li><input type="checkbox" checked="">Act on feedback on <a href="../writings/motivation.html">writing</a> from last week.</li>
-<li><input type="checkbox">We can aim to make a density map of snapshots (<span class="math inline">\(\alpha / \phi\)</span>), on a <span class="math inline">\(3 \times 3\)</span> grid.
+<li><input type="checkbox">We can aim to make a density map of snapshots (<span class="math inline">\(\alpha / \phi\)</span>), on a 3x3 grid.
 <ul>
-<li>Range of <span class="math inline">\(\alpha \in [0.01, 0.5]\)</span>, 10 values in total, split between my and CP.</li>
+<li>Range of <span class="math inline">\(\alpha\)</span>: [0.01, 0.5], 10 values in total, split between me and CP.</li>
 <li>Use scikit-learn to detect clusters and cluster size.</li>
 <li>See <a href="../shared/ftnotes/label.html">this notebook</a> for a demo.</li>
+<li>I didn’t get enough time to do any cluster analysis, just the grid of snapshots.</li>
 </ul></li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="general" class="level3">
+<h3 class="anchored" data-anchor-id="general">General</h3>
+<ul>
+<li>I acted on the feedback, which is reflected <a href="../writings/motivation.html">here</a>.</li>
+<li>We decided on a range <span class="math inline">\(\alpha\)</span>, which is 10 values spaced logarithmically (base 2) in the range [2<sup>-6</sup>,2<sup>-1</sup>]. We thought this would be a sensible range for the snapshot grid, and we weren’t sure whether to go with log-spacing or normal spacing. In the end, we went with log-spacing.</li>
+<li>For <span class="math inline">\(\phi\)</span> (density), we decided on a range of [0.05,0.5], with intervals of 0.05, giving a total of 10 values.</li>
+<li>We modified <code>sampler.py</code> to reflect this, and regenerated the data so that we get a set of static datasets to work on creating this grid, ensuring the plot can be reproduced. I ran everything on the cluster this time.</li>
+</ul>
+</section>
+<section id="plotting-snapshots" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-snapshots">Plotting snapshots</h3>
+<ul>
+<li>I began making plots of a selection of these datasets (a 3x5 grid), first as individual plots to before I spend more time and place them all on one figure. Then, I put them altogether on one grid:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/grid.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The three values of <span class="math inline">\(\phi\)</span> here are (left to right) 0.05, 0.25 and 0.45 (all in units<sup>-2</sup>). The five values of <span class="math inline">\(\alpha\)</span> here are (top to bottom) 0.023, 0.050, 0.107, 0.231, 0.500.</figcaption>
+</figure>
+</div>
+<ul>
+<li>I tried to add figure x and y labels but the matplotlib I was using was too old to support <code>fig.supxlabel</code> or <code>fig.supylabel</code>. I also need to add labels for each block to indicate the value <span class="math inline">\((\phi, \alpha)\)</span>.</li>
 </ul>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
