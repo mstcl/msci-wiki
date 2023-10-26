@@ -4,6 +4,9 @@ date: last-modified
 author: NP
 csl: ../assets/physical-review-letters.csl
 bibliography: ../assets/references.bib
+format:
+    html: default
+    pdf: default
 ---
 
 <!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
@@ -22,7 +25,6 @@ dissipating free energy to result in complex, systematic
 behaviours[@marchetti_hydrodynamics_2013]. The context of which these active
 systems emerge has been found in disordered systems, soft matter, as well as
 statistical mechanics, both at and out of equilibrium.
-
 
 Numerous examples of active systems can be found in biological systems at all
 scales, from fish in a school[@yang_dominating_2022] and birds in a flock, to
