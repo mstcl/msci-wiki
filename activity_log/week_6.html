@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="NP">
-<meta name="dcterms.date" content="2023-11-06">
+<meta name="dcterms.date" content="2023-10-13">
 
-<title>Dissipation Learning in Active Matter - What is active matter and why do we study it?</title>
+<title>Dissipation Learning in Active Matter - Week 6</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,26 +56,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,8 +66,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../shared/ftnotes/Colab.html" rel="next">
-<link href="../literature_notes/run-and-tumble.html" rel="prev">
+<link href="../activity_log/week_5.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -120,6 +100,8 @@ div.csl-indent {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -132,7 +114,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../writings/motivation.html">Writings</a></li><li class="breadcrumb-item"><a href="../writings/motivation.html">What is active matter and why do we study it?</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Administration</li><li class="breadcrumb-item"><a href="../activity_log/week_1.html">Activity Log</a></li><li class="breadcrumb-item"><a href="../activity_log/week_6.html">Week 6</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -207,13 +189,13 @@ div.csl-indent {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Activity Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../activity_log/week_1.html" class="sidebar-item-text sidebar-link">
@@ -246,7 +228,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_6.html" class="sidebar-item-text sidebar-link">
+  <a href="../activity_log/week_6.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 6</span></a>
   </div>
 </li>
@@ -295,16 +277,16 @@ div.csl-indent {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link active">
+  <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is active matter and why do we study it?</span></a>
   </div>
 </li>
@@ -385,18 +367,21 @@ div.csl-indent {
     <h2 id="toc-title">Content</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a><a name="introduction" class="nav-link" data-scroll-target="undefined"></a></li>
-  <li><a href="#real-world-applications" id="toc-real-world-applications" class="nav-link" data-scroll-target="#real-world-applications">Real-world applications</a><a name="real-world-applications" class="nav-link" data-scroll-target="undefined"></a></li>
-  <li><a href="#new-physics-at-non-equilibrium" id="toc-new-physics-at-non-equilibrium" class="nav-link" data-scroll-target="#new-physics-at-non-equilibrium">New physics at non-equilibrium</a><a name="new-physics-at-non-equilibrium" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#a-problem-with-the-h5-files" id="toc-a-problem-with-the-h5-files" class="nav-link" data-scroll-target="#a-problem-with-the-h5-files">A problem with the h5 files</a></li>
+  <li><a href="#steady-state-in-orientation" id="toc-steady-state-in-orientation" class="nav-link" data-scroll-target="#steady-state-in-orientation">Steady-state in orientation</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/writings/motivation.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/writings/motivation.qmd" class="toc-action">View source</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="motivation.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_6.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_6.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">What is active matter and why do we study it?</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Week 6</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
 </div>
 
 
@@ -413,7 +398,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 6, 2023</p>
+      <p class="date">October 13, 2023</p>
     </div>
   </div>
   
@@ -423,67 +408,130 @@ div.csl-indent {
 
 </header>
 
-<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#real-world-applications">Real-world applications</a></li>
-<li><a href="#new-physics-at-non-equilibrium">New physics at non-equilibrium</a></li>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Part of this week was the school of arts’ reading week so I only set out to do a few things.</p>
+</div>
+</div>
+</div>
+<section id="tasks" class="level2">
+<h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
+<ul class="task-list">
+<li><input type="checkbox" checked="">Update the plot on <a href="../activity_log/week_4.html#plotting-snapshots">Week 4</a> with axis labels.</li>
+<li><input type="checkbox" checked="">Update PEP’s docs. See <a href="https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md">README.md</a>.</li>
+<li><input type="checkbox">Regenerate dataset with new orientation fix.</li>
 </ul>
-<!-- mdformat-toc end -->
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction<a name="introduction"></a></h2>
-<p>An active matter system is characterised by its constituent self-propelling and self-directional units that are individually capable of extracting and dissipating free energy to result in complex, systematic behaviours<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. The context of which these active systems emerge has been found in disordered systems, soft matter, as well as statistical mechanics, both at and out of equilibrium.</p>
-<p>Numerous examples of active systems can be found in biological systems at all scales, from fish in a school<span class="citation" data-cites="yang_dominating_2022">&nbsp;[<a href="#ref-yang_dominating_2022" role="doc-biblioref">2</a>]</span> and birds in a flock, to algae, bacteria, proteins<span class="citation" data-cites="decamp_what_nodate">&nbsp;[<a href="#ref-decamp_what_nodate" role="doc-biblioref">3</a>]</span> and actin and microtubules in subcellular domains<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. The general properties of active systems are often emergent collective properties that provide intriguing phenomena, from self-motility, synchronous dynamics<span class="citation" data-cites="decamp_what_nodate">&nbsp;[<a href="#ref-decamp_what_nodate" role="doc-biblioref">3</a>]</span>, order-disorder transitions, pattern formation, swarming, and lots more.</p>
 </section>
-<section id="real-world-applications" class="level2">
-<h2 class="anchored" data-anchor-id="real-world-applications">Real-world applications<a name="real-world-applications"></a></h2>
-<p>First, in practical applications, we might want borrow or mimic strategies from biological systems, with the goal of creating new synthetic materials, devices, robotics and medicine<span class="citation" data-cites="bechinger_active_2016">&nbsp;[<a href="#ref-bechinger_active_2016" role="doc-biblioref">4</a>]</span>. Here, the use of models is integral to provide insight into how to engineer synthetic systems. For this, the models are performed both <em>in vitro</em> (nanomachines) and <em>in silico</em> (numerical modelling). Although active systems have a parameter space far from minimal, by using appropriate approximations to form our models, even with minimal ones, we can seek to derive large-scale generality<span class="citation" data-cites="marchetti_hydrodynamics_2013 flenner_active_2020">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>,<a href="#ref-flenner_active_2020" role="doc-biblioref">5</a>]</span>. These systems have group-level properties derived from macroscopic orders, phases, and phase transitions, that are independent of the scale of its constituents.</p>
-<p>For instance, a good yet minimal approximation would be a model by Viscek <em>et. al</em><span class="citation" data-cites="buhl_disorder_2006 vicsek_novel_1995">&nbsp;[<a href="#ref-buhl_disorder_2006" role="doc-biblioref">6</a>,<a href="#ref-vicsek_novel_1995" role="doc-biblioref">7</a>]</span>. Here, clustering is induced through a combination of self-propulsion and self-orientation in response to its neighbours. The system evolves with a two-step iteration process, and the whole system is controlled by 3 parameters. Yet, its central prediction shows phase transition from disordered, individual motion to ordered, collective motion, dictated through its minimal set of parameters<span class="citation" data-cites="buhl_disorder_2006">&nbsp;[<a href="#ref-buhl_disorder_2006" role="doc-biblioref">6</a>]</span>.</p>
-<p>While it cannot be assumed that the models used <em>in vitro</em> translate directly to what is observed in reality, they are still crucial components that when combined with more sophisticated rules or understanding from other fields, would enable useful real-world applications, an example being controlling insect pest outbreaks<span class="citation" data-cites="buhl_disorder_2006">&nbsp;[<a href="#ref-buhl_disorder_2006" role="doc-biblioref">6</a>]</span>.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="a-problem-with-the-h5-files" class="level3">
+<h3 class="anchored" data-anchor-id="a-problem-with-the-h5-files">A problem with the h5 files</h3>
+<p>While doing this, I found out that the matrix is being saved with the background at 0, and the 4 orientation are 0, 1, 2, 3. This means the 0<sup>th</sup> orientation is confused with the background. To fix this, I modified the <code>image()</code> method of the <code>Lattice</code> object (in <code>lattice.py</code>) to add 1 to the orientation: so they start at 1 (to 4) instead:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>lattice.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> image(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="co">"""Define the (x,y) lattice array</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">        :param self: object's attributes</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">        :returns: the lattice array [np.ndarray]</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">        ------</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">        # Explanation</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">        Create a matrix of physical size [`n_x`, `n_y`] and fill it as follows:</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">        * get the coordinates of all particles with positions()</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">        * set those coordinates to the orientation</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">        """</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>    matrix <span class="op">=</span> np.zeros((<span class="va">self</span>.n_x, <span class="va">self</span>.n_y))</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    x_pos, y_pos <span class="op">=</span> <span class="va">self</span>.positions()</span>
+<span id="cb1-19"><a href="#cb1-19"></a>    matrix[x_pos, y_pos] <span class="op">=</span> <span class="va">self</span>.orientation <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="cf">return</span> matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Thus, I had to regenerate all the dataset on BluePebble. Snippet to batch run all SLURM scripts in a directory (I had a separate script for each density):</p>
+<div class="sourceCode" id="cb2" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span>.sbat<span class="kw">;</span> <span class="cf">do</span> <span class="ex">sbatch</span> <span class="va">$file</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="new-physics-at-non-equilibrium" class="level2">
-<h2 class="anchored" data-anchor-id="new-physics-at-non-equilibrium">New physics at non-equilibrium<a name="new-physics-at-non-equilibrium"></a></h2>
-<p>While we can study emergent behaviours, one challenge out of these models is to address the inverse problem; to determine the rules that lead to a desired collective state<span class="citation" data-cites="gompper_2020_2020">&nbsp;[<a href="#ref-gompper_2020_2020" role="doc-biblioref">8</a>]</span>. In this domain, powerful tools like machine learning can be deployed to build a robust framework analogous to equilibrium statistical thermodynamics, ultimately with the aim of providing fundamental insight into a microscopic-emergent connection<span class="citation" data-cites="rassolov_predicting_2022">&nbsp;[<a href="#ref-rassolov_predicting_2022" role="doc-biblioref">9</a>]</span>.</p>
-<p>Non-equilibrium results when energy exchanges and dissipation at the level of individual particles’ contribution lead to irreversibility within<span class="citation" data-cites="bechinger_active_2016 ramaswamy_mechanics_2010">&nbsp;[<a href="#ref-bechinger_active_2016" role="doc-biblioref">4</a>,<a href="#ref-ramaswamy_mechanics_2010" role="doc-biblioref">10</a>]</span>. This is contrasted with at-equilibrium systems, where energy effects are found at the system’s boundaries<span class="citation" data-cites="marchetti_hydrodynamics_2013">&nbsp;[<a href="#ref-marchetti_hydrodynamics_2013" role="doc-biblioref">1</a>]</span>. Whereas we have the laws of thermodynamics and statistical mechanics in the latter type of systems that tell us about their macrostates (from their energy) and likelihood (from their Boltzmann distribution), it is not clear for the former type of systems. The difficulty lies in constructing analogues to these theories using quantities equivalent to the system’s free energies. Therefore, new physics can emerge in studying this so not-well understood phenomena.</p>
+<section id="steady-state-in-orientation" class="level3">
+<h3 class="anchored" data-anchor-id="steady-state-in-orientation">Steady-state in orientation</h3>
+<p>Here, I plotted the average orientation of a snapshot, plotting its accumulated mean over time, for this particular dataset, <span class="math inline">\(\alpha = 0.23\)</span> and <span class="math inline">\(\phi = 0.25\)</span>.</p>
+<p>This first part of the code is part of <code>utils.py</code>;</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> re</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> h5py</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">def</span> get_ds_iters(key_list: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="co">"""</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">    Get all the unique iteration numbers</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">    :param key_list: a list of all the possible dataset keys/names</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">    :returns: a list of unique iterations</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">    """</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>    iter_n <span class="op">=</span> []</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="cf">for</span> val <span class="kw">in</span> key_list:</span>
+<span id="cb3-17"><a href="#cb3-17"></a>        <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
+<span id="cb3-18"><a href="#cb3-18"></a>            iter_n.append(<span class="bu">int</span>(val[<span class="dv">5</span>:]))</span>
+<span id="cb3-19"><a href="#cb3-19"></a>    <span class="cf">return</span> <span class="bu">sorted</span>(iter_n)</span>
+<span id="cb3-20"><a href="#cb3-20"></a></span>
+<span id="cb3-21"><a href="#cb3-21"></a></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="kw">def</span> get_mean_orientation(<span class="bu">file</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb3-23"><a href="#cb3-23"></a>    <span class="co">"""</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="co">    Get the mean orientation at each iteration</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="co">    :param file: the h5 file to open [str]</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="co">    :returns: mean orientation of length 1000 [list]</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="co">    """</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb3-30"><a href="#cb3-30"></a>    key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
+<span id="cb3-31"><a href="#cb3-31"></a>    iter_n <span class="op">=</span> get_ds_iters(key_list)</span>
+<span id="cb3-32"><a href="#cb3-32"></a>    ori <span class="op">=</span> []</span>
+<span id="cb3-33"><a href="#cb3-33"></a>    ori_acm <span class="op">=</span> []</span>
+<span id="cb3-34"><a href="#cb3-34"></a>    <span class="cf">for</span> idx, val <span class="kw">in</span> <span class="bu">enumerate</span>(iter_n):</span>
+<span id="cb3-35"><a href="#cb3-35"></a>        sshot <span class="op">=</span> np.array(hf[<span class="ss">f"conf_</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">"</span>]).flatten()</span>
+<span id="cb3-36"><a href="#cb3-36"></a>        avg_ori <span class="op">=</span> np.average(sshot[np.where(sshot <span class="op">!=</span> <span class="dv">0</span>)[<span class="dv">0</span>]] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb3-37"><a href="#cb3-37"></a>        ori.append(avg_ori)</span>
+<span id="cb3-38"><a href="#cb3-38"></a>        ori_acm.append(np.mean(ori))</span>
+<span id="cb3-39"><a href="#cb3-39"></a>    <span class="cf">return</span> ori_acm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We now plot using those two functions:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">5.5</span>, <span class="dv">3</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>ax.set_xlabel(<span class="st">"Number of iterations"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>ax.set_ylabel(<span class="st">"Average orientation"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>ax.scatter(</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    get_ds_iters(hf.keys()),</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    get_mean_orientation(<span class="bu">file</span>),</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    c<span class="op">=</span><span class="st">"k"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    s<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="week_6_files/figure-html/cell-3-output-1.png" width="539" height="299"></p>
+</div>
+</div>
 
 
 <!-- -->
 
-
+</section>
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
-<div id="ref-marchetti_hydrodynamics_2013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. C. Marchetti, J. F. Joanny, S. Ramaswamy, T. B. Liverpool, J. Prost, M. Rao, and R. A. Simha, <em><a href="https://doi.org/10.1103/RevModPhys.85.1143">Hydrodynamics of Soft Active Matter</a></em>, Reviews of Modern Physics <strong>85</strong>, 1143 (2013).</div>
-</div>
-<div id="ref-yang_dominating_2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Y. Yang, F. Turci, E. Kague, C. L. Hammond, J. Russo, and C. P. Royall, <em><a href="https://doi.org/10.1371/journal.pcbi.1009394">Dominating Lengthscales of Zebrafish Collective Behaviour</a></em>, PLOS Computational Biology <strong>18</strong>, e1009394 (2022).</div>
-</div>
-<div id="ref-decamp_what_nodate" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">S. Decamp, <em><a href="https://www.stephenjdecamp.com/what-is-active-matter.html">What Is <span>Active</span> <span>Matter</span>?</a></em>, Stephen j. Decamp (n.d.).</div>
-</div>
-<div id="ref-bechinger_active_2016" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">C. Bechinger, R. D. Leonardo, H. Löwen, C. Reichhardt, G. Volpe, and G. Volpe, <em><a href="https://doi.org/10.1103/RevModPhys.88.045006">Active <span>Particles</span> in <span>Complex</span> and <span>Crowded</span> <span>Environments</span></a></em>, Reviews of Modern Physics <strong>88</strong>, 045006 (2016).</div>
-</div>
-<div id="ref-flenner_active_2020" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">E. Flenner and G. Szamel, <em><a href="https://doi.org/10.1103/PhysRevE.102.022607">Active Matter: Quantifying the Departure from Equilibrium</a></em>, Physical Review E <strong>102</strong>, 022607 (2020).</div>
-</div>
-<div id="ref-buhl_disorder_2006" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">J. Buhl, D. J. T. Sumpter, I. D. Couzin, J. J. Hale, E. Despland, E. R. Miller, and S. J. Simpson, <em><a href="https://doi.org/10.1126/science.1125142">From <span>Disorder</span> to <span>Order</span> in <span>Marching</span> <span>Locusts</span></a></em>, Science <strong>312</strong>, 1402 (2006).</div>
-</div>
-<div id="ref-vicsek_novel_1995" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">T. Vicsek, A. Czirók, E. Ben-Jacob, I. Cohen, and O. Shochet, <em><a href="https://doi.org/10.1103/PhysRevLett.75.1226">Novel <span>Type</span> of <span>Phase</span> <span>Transition</span> in a <span>System</span> of <span>Self</span>-<span> Driven</span> <span>Particles</span></a></em>, Physical Review Letters <strong>75</strong>, 1226 (1995).</div>
-</div>
-<div id="ref-gompper_2020_2020" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">G. Gompper et al., <em><a href="https://doi.org/10.1088/1361-648X/ab6348">The 2020 Motile Active Matter Roadmap</a></em>, Journal of Physics: Condensed Matter <strong>32</strong>, 193001 (2020).</div>
-</div>
-<div id="ref-rassolov_predicting_2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">G. Rassolov, L. Tociu, É. Fodor, and S. Vaikuntanathan, <em><a href="https://doi.org/10.1063/5.0097863">From Predicting to Learning Dissipation from Pair Correlations of Active Liquids</a></em>, The Journal of Chemical Physics <strong>157</strong>, 054901 (2022).</div>
-</div>
-<div id="ref-ramaswamy_mechanics_2010" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">S. Ramaswamy, <em><a href="https://doi.org/10.1146/annurev-conmatphys-070909-104101">The <span>Mechanics</span> and <span>Statistics</span> of <span>Active</span> <span>Matter</span></a></em>, Annual Review of Condensed Matter Physics <strong>1</strong>, 323 (2010).</div>
-</div>
-</div></section></div></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -885,103 +933,141 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../literature_notes/run-and-tumble.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</span>
+      <a href="../activity_log/week_5.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 5</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../shared/ftnotes/Colab.html" class="pagination-link">
-        <span class="nav-page-text">Link to colab notebook</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> What is active matter and why do we study it?</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="an">date:</span><span class="co"> last-modified</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="an">csl:</span><span class="co"> ../assets/physical-review-letters.csl</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="an">bibliography:</span><span class="co"> ../assets/references.bib</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="an">format:</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">    html: default</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">    pdf: default</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">---</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">&lt;!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 --&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Introduction</span><span class="co">](#introduction)</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Real-world applications</span><span class="co">](#real-world-applications)</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="ss">- </span><span class="co">[</span><span class="ot">New physics at non-equilibrium</span><span class="co">](#new-physics-at-non-equilibrium)</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">&lt;!-- mdformat-toc end --&gt;</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="fu">## Introduction&lt;a name="introduction"&gt;&lt;/a&gt;</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a>An active matter system is characterised by its constituent self-propelling and</span>
-<span id="cb1-23"><a href="#cb1-23"></a>self-directional units that are individually capable of extracting and</span>
-<span id="cb1-24"><a href="#cb1-24"></a>dissipating free energy to result in complex, systematic</span>
-<span id="cb1-25"><a href="#cb1-25"></a>behaviours<span class="co">[</span><span class="ot">@marchetti_hydrodynamics_2013</span><span class="co">]</span>. The context of which these active</span>
-<span id="cb1-26"><a href="#cb1-26"></a>systems emerge has been found in disordered systems, soft matter, as well as</span>
-<span id="cb1-27"><a href="#cb1-27"></a>statistical mechanics, both at and out of equilibrium.</span>
-<span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a>Numerous examples of active systems can be found in biological systems at all</span>
-<span id="cb1-30"><a href="#cb1-30"></a>scales, from fish in a school<span class="co">[</span><span class="ot">@yang_dominating_2022</span><span class="co">]</span> and birds in a flock, to</span>
-<span id="cb1-31"><a href="#cb1-31"></a>algae, bacteria, proteins<span class="co">[</span><span class="ot">@decamp_what_nodate</span><span class="co">]</span> and actin and microtubules in</span>
-<span id="cb1-32"><a href="#cb1-32"></a>subcellular domains<span class="co">[</span><span class="ot">@marchetti_hydrodynamics_2013</span><span class="co">]</span>. The general properties of</span>
-<span id="cb1-33"><a href="#cb1-33"></a>active systems are often emergent collective properties that provide intriguing</span>
-<span id="cb1-34"><a href="#cb1-34"></a>phenomena, from self-motility, synchronous dynamics<span class="co">[</span><span class="ot">@decamp_what_nodate</span><span class="co">]</span>,</span>
-<span id="cb1-35"><a href="#cb1-35"></a>order-disorder transitions, pattern formation, swarming, and lots more.</span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="fu">## Real-world applications&lt;a name="real-world-applications"&gt;&lt;/a&gt;</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a>First, in practical applications, we might want borrow or mimic strategies from</span>
-<span id="cb1-40"><a href="#cb1-40"></a>biological systems, with the goal of creating new synthetic materials, devices,</span>
-<span id="cb1-41"><a href="#cb1-41"></a>robotics and medicine<span class="co">[</span><span class="ot">@bechinger_active_2016</span><span class="co">]</span>. Here, the use of models is</span>
-<span id="cb1-42"><a href="#cb1-42"></a>integral to provide insight into how to engineer synthetic systems. For this,</span>
-<span id="cb1-43"><a href="#cb1-43"></a>the models are performed both _in vitro_ (nanomachines) and _in silico_</span>
-<span id="cb1-44"><a href="#cb1-44"></a>(numerical modelling). Although active systems have a parameter space far from</span>
-<span id="cb1-45"><a href="#cb1-45"></a>minimal, by using appropriate approximations to form our models, even with</span>
-<span id="cb1-46"><a href="#cb1-46"></a>minimal ones, we can seek to derive large-scale</span>
-<span id="cb1-47"><a href="#cb1-47"></a>generality<span class="co">[</span><span class="ot">@marchetti_hydrodynamics_2013; @flenner_active_2020</span><span class="co">]</span>. These systems</span>
-<span id="cb1-48"><a href="#cb1-48"></a>have group-level properties derived from macroscopic orders, phases, and phase</span>
-<span id="cb1-49"><a href="#cb1-49"></a>transitions, that are independent of the scale of its constituents.</span>
-<span id="cb1-50"><a href="#cb1-50"></a></span>
-<span id="cb1-51"><a href="#cb1-51"></a></span>
-<span id="cb1-52"><a href="#cb1-52"></a>For instance, a good yet minimal approximation would be a model by Viscek _et.</span>
-<span id="cb1-53"><a href="#cb1-53"></a>al_<span class="co">[</span><span class="ot">@buhl_disorder_2006; @vicsek_novel_1995</span><span class="co">]</span>. Here, clustering is induced</span>
-<span id="cb1-54"><a href="#cb1-54"></a>through a combination of self-propulsion and self-orientation in response to</span>
-<span id="cb1-55"><a href="#cb1-55"></a>its neighbours. The system evolves with a two-step iteration process, and the</span>
-<span id="cb1-56"><a href="#cb1-56"></a>whole system is controlled by 3 parameters. Yet, its central prediction shows</span>
-<span id="cb1-57"><a href="#cb1-57"></a>phase transition from disordered, individual motion to ordered, collective</span>
-<span id="cb1-58"><a href="#cb1-58"></a>motion, dictated through its minimal set of parameters<span class="co">[</span><span class="ot">@buhl_disorder_2006</span><span class="co">]</span>.</span>
-<span id="cb1-59"><a href="#cb1-59"></a></span>
-<span id="cb1-60"><a href="#cb1-60"></a></span>
-<span id="cb1-61"><a href="#cb1-61"></a>While it cannot be assumed that the models used _in vitro_ translate directly</span>
-<span id="cb1-62"><a href="#cb1-62"></a>to what is observed in reality, they are still crucial components that when</span>
-<span id="cb1-63"><a href="#cb1-63"></a>combined with more sophisticated rules or understanding from other fields,</span>
-<span id="cb1-64"><a href="#cb1-64"></a>would enable useful real-world applications, an example being controlling</span>
-<span id="cb1-65"><a href="#cb1-65"></a>insect pest outbreaks<span class="co">[</span><span class="ot">@buhl_disorder_2006</span><span class="co">]</span>.</span>
-<span id="cb1-66"><a href="#cb1-66"></a></span>
-<span id="cb1-67"><a href="#cb1-67"></a><span class="fu">## New physics at non-equilibrium&lt;a name="new-physics-at-non-equilibrium"&gt;&lt;/a&gt;</span></span>
-<span id="cb1-68"><a href="#cb1-68"></a></span>
-<span id="cb1-69"><a href="#cb1-69"></a>While we can study emergent behaviours, one challenge out of these models is to</span>
-<span id="cb1-70"><a href="#cb1-70"></a>address the inverse problem; to determine the rules that lead to a desired</span>
-<span id="cb1-71"><a href="#cb1-71"></a>collective state<span class="co">[</span><span class="ot">@gompper_2020_2020</span><span class="co">]</span>. In this domain, powerful tools like</span>
-<span id="cb1-72"><a href="#cb1-72"></a>machine learning can be deployed to build a robust framework analogous to</span>
-<span id="cb1-73"><a href="#cb1-73"></a>equilibrium statistical thermodynamics, ultimately with the aim of providing</span>
-<span id="cb1-74"><a href="#cb1-74"></a>fundamental insight into a microscopic-emergent</span>
-<span id="cb1-75"><a href="#cb1-75"></a>connection<span class="co">[</span><span class="ot">@rassolov_predicting_2022</span><span class="co">]</span>.</span>
-<span id="cb1-76"><a href="#cb1-76"></a></span>
-<span id="cb1-77"><a href="#cb1-77"></a>Non-equilibrium results when energy exchanges and dissipation at the level of</span>
-<span id="cb1-78"><a href="#cb1-78"></a>individual particles' contribution lead to irreversibility</span>
-<span id="cb1-79"><a href="#cb1-79"></a>within<span class="co">[</span><span class="ot">@bechinger_active_2016;@ramaswamy_mechanics_2010</span><span class="co">]</span>. This is contrasted</span>
-<span id="cb1-80"><a href="#cb1-80"></a>with at-equilibrium systems, where energy effects are found at the system's</span>
-<span id="cb1-81"><a href="#cb1-81"></a>boundaries<span class="co">[</span><span class="ot">@marchetti_hydrodynamics_2013</span><span class="co">]</span>. Whereas we have the laws of</span>
-<span id="cb1-82"><a href="#cb1-82"></a>thermodynamics and statistical mechanics in the latter type of systems that</span>
-<span id="cb1-83"><a href="#cb1-83"></a>tell us about their macrostates (from their energy) and likelihood (from their</span>
-<span id="cb1-84"><a href="#cb1-84"></a>Boltzmann distribution), it is not clear for the former type of systems. The</span>
-<span id="cb1-85"><a href="#cb1-85"></a>difficulty lies in constructing analogues to these theories using quantities</span>
-<span id="cb1-86"><a href="#cb1-86"></a>equivalent to the system's free energies. Therefore, new physics can emerge</span>
-<span id="cb1-87"><a href="#cb1-87"></a>in studying this so not-well understood phenomena.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="an">title:</span><span class="co"> Week 6</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="an">date:</span><span class="co"> 2023-10-13</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">---</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>::: {.callout-note appearance="simple"}</span>
+<span id="cb5-9"><a href="#cb5-9"></a>Part of this week was the school of arts' reading week so I only set out to do</span>
+<span id="cb5-10"><a href="#cb5-10"></a>a few things.</span>
+<span id="cb5-11"><a href="#cb5-11"></a>:::</span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="fu">## Tasks</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="ss">- </span><span class="va">[x]</span> Update the plot on <span class="co">[</span><span class="ot">Week 4</span><span class="co">](./week_4.qmd#plotting-snapshots)</span> with axis labels.</span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="ss">- </span><span class="va">[x]</span> Update PEP's docs. See</span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">[</span><span class="ot">README.md</span><span class="co">](https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md)</span>.</span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="ss">- </span><span class="va">[ ]</span> Regenerate dataset with new orientation fix.</span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="fu">## Summary</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="fu">### A problem with the h5 files</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a></span>
+<span id="cb5-24"><a href="#cb5-24"></a>While doing this, I found out that the matrix is being saved with the</span>
+<span id="cb5-25"><a href="#cb5-25"></a>background at 0, and the 4 orientation are 0, 1, 2, 3. This means the 0^th^</span>
+<span id="cb5-26"><a href="#cb5-26"></a>orientation is confused with the background. To fix this, I modified the</span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="in">`image()`</span> method of the <span class="in">`Lattice`</span> object (in <span class="in">`lattice.py`</span>) to add 1 to the</span>
+<span id="cb5-28"><a href="#cb5-28"></a>orientation: so they start at 1 (to 4) instead:</span>
+<span id="cb5-29"><a href="#cb5-29"></a></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="in">```{.python filename="lattice.py"}</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="kw">def</span> image(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray:</span>
+<span id="cb5-32"><a href="#cb5-32"></a>    <span class="co">"""Define the (x,y) lattice array</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="co">        :param self: object's attributes</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="co">        :returns: the lattice array [np.ndarray]</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a></span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="co">        ------</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a></span>
+<span id="cb5-39"><a href="#cb5-39"></a><span class="co">        # Explanation</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a></span>
+<span id="cb5-41"><a href="#cb5-41"></a><span class="co">        Create a matrix of physical size [`n_x`, `n_y`] and fill it as follows:</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a></span>
+<span id="cb5-43"><a href="#cb5-43"></a><span class="co">        * get the coordinates of all particles with positions()</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a><span class="co">        * set those coordinates to the orientation</span></span>
+<span id="cb5-45"><a href="#cb5-45"></a></span>
+<span id="cb5-46"><a href="#cb5-46"></a><span class="co">        """</span></span>
+<span id="cb5-47"><a href="#cb5-47"></a>    matrix <span class="op">=</span> np.zeros((<span class="va">self</span>.n_x, <span class="va">self</span>.n_y))</span>
+<span id="cb5-48"><a href="#cb5-48"></a>    x_pos, y_pos <span class="op">=</span> <span class="va">self</span>.positions()</span>
+<span id="cb5-49"><a href="#cb5-49"></a>    matrix[x_pos, y_pos] <span class="op">=</span> <span class="va">self</span>.orientation <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb5-50"><a href="#cb5-50"></a>    <span class="cf">return</span> matrix</span>
+<span id="cb5-51"><a href="#cb5-51"></a><span class="in">```</span></span>
+<span id="cb5-52"><a href="#cb5-52"></a></span>
+<span id="cb5-53"><a href="#cb5-53"></a>Thus, I had to regenerate all the dataset on BluePebble. Snippet to batch run all</span>
+<span id="cb5-54"><a href="#cb5-54"></a>SLURM scripts in a directory (I had a separate script for each density):</span>
+<span id="cb5-55"><a href="#cb5-55"></a></span>
+<span id="cb5-56"><a href="#cb5-56"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
+<span id="cb5-57"><a href="#cb5-57"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span>.sbat<span class="kw">;</span> <span class="cf">do</span> <span class="ex">sbatch</span> <span class="va">$file</span><span class="kw">;</span> <span class="cf">done</span></span>
+<span id="cb5-58"><a href="#cb5-58"></a><span class="in">```</span></span>
+<span id="cb5-59"><a href="#cb5-59"></a></span>
+<span id="cb5-60"><a href="#cb5-60"></a><span class="fu">### Steady-state in orientation</span></span>
+<span id="cb5-61"><a href="#cb5-61"></a></span>
+<span id="cb5-62"><a href="#cb5-62"></a>Here, I plotted the average orientation of a snapshot, plotting its accumulated</span>
+<span id="cb5-63"><a href="#cb5-63"></a>mean over time, for this particular dataset, $\alpha = 0.23$ and $\phi = 0.25$.</span>
+<span id="cb5-64"><a href="#cb5-64"></a></span>
+<span id="cb5-65"><a href="#cb5-65"></a>This first part of the code is part of <span class="in">`utils.py`</span>;</span>
+<span id="cb5-66"><a href="#cb5-66"></a></span>
+<span id="cb5-67"><a href="#cb5-67"></a></span>
+<span id="cb5-70"><a href="#cb5-70"></a><span class="in">```{python}</span></span>
+<span id="cb5-71"><a href="#cb5-71"></a><span class="im">import</span> re</span>
+<span id="cb5-72"><a href="#cb5-72"></a></span>
+<span id="cb5-73"><a href="#cb5-73"></a><span class="im">import</span> h5py</span>
+<span id="cb5-74"><a href="#cb5-74"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-75"><a href="#cb5-75"></a></span>
+<span id="cb5-76"><a href="#cb5-76"></a></span>
+<span id="cb5-77"><a href="#cb5-77"></a><span class="kw">def</span> get_ds_iters(key_list: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb5-78"><a href="#cb5-78"></a>    <span class="co">"""</span></span>
+<span id="cb5-79"><a href="#cb5-79"></a><span class="co">    Get all the unique iteration numbers</span></span>
+<span id="cb5-80"><a href="#cb5-80"></a></span>
+<span id="cb5-81"><a href="#cb5-81"></a><span class="co">    :param key_list: a list of all the possible dataset keys/names</span></span>
+<span id="cb5-82"><a href="#cb5-82"></a></span>
+<span id="cb5-83"><a href="#cb5-83"></a><span class="co">    :returns: a list of unique iterations</span></span>
+<span id="cb5-84"><a href="#cb5-84"></a><span class="co">    """</span></span>
+<span id="cb5-85"><a href="#cb5-85"></a>    iter_n <span class="op">=</span> []</span>
+<span id="cb5-86"><a href="#cb5-86"></a>    <span class="cf">for</span> val <span class="kw">in</span> key_list:</span>
+<span id="cb5-87"><a href="#cb5-87"></a>        <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
+<span id="cb5-88"><a href="#cb5-88"></a>            iter_n.append(<span class="bu">int</span>(val[<span class="dv">5</span>:]))</span>
+<span id="cb5-89"><a href="#cb5-89"></a>    <span class="cf">return</span> <span class="bu">sorted</span>(iter_n)</span>
+<span id="cb5-90"><a href="#cb5-90"></a></span>
+<span id="cb5-91"><a href="#cb5-91"></a></span>
+<span id="cb5-92"><a href="#cb5-92"></a><span class="kw">def</span> get_mean_orientation(<span class="bu">file</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb5-93"><a href="#cb5-93"></a>    <span class="co">"""</span></span>
+<span id="cb5-94"><a href="#cb5-94"></a><span class="co">    Get the mean orientation at each iteration</span></span>
+<span id="cb5-95"><a href="#cb5-95"></a></span>
+<span id="cb5-96"><a href="#cb5-96"></a><span class="co">    :param file: the h5 file to open [str]</span></span>
+<span id="cb5-97"><a href="#cb5-97"></a><span class="co">    :returns: mean orientation of length 1000 [list]</span></span>
+<span id="cb5-98"><a href="#cb5-98"></a><span class="co">    """</span></span>
+<span id="cb5-99"><a href="#cb5-99"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb5-100"><a href="#cb5-100"></a>    key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
+<span id="cb5-101"><a href="#cb5-101"></a>    iter_n <span class="op">=</span> get_ds_iters(key_list)</span>
+<span id="cb5-102"><a href="#cb5-102"></a>    ori <span class="op">=</span> []</span>
+<span id="cb5-103"><a href="#cb5-103"></a>    ori_acm <span class="op">=</span> []</span>
+<span id="cb5-104"><a href="#cb5-104"></a>    <span class="cf">for</span> idx, val <span class="kw">in</span> <span class="bu">enumerate</span>(iter_n):</span>
+<span id="cb5-105"><a href="#cb5-105"></a>        sshot <span class="op">=</span> np.array(hf[<span class="ss">f"conf_</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">"</span>]).flatten()</span>
+<span id="cb5-106"><a href="#cb5-106"></a>        avg_ori <span class="op">=</span> np.average(sshot[np.where(sshot <span class="op">!=</span> <span class="dv">0</span>)[<span class="dv">0</span>]] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-107"><a href="#cb5-107"></a>        ori.append(avg_ori)</span>
+<span id="cb5-108"><a href="#cb5-108"></a>        ori_acm.append(np.mean(ori))</span>
+<span id="cb5-109"><a href="#cb5-109"></a>    <span class="cf">return</span> ori_acm</span>
+<span id="cb5-110"><a href="#cb5-110"></a><span class="in">```</span></span>
+<span id="cb5-111"><a href="#cb5-111"></a></span>
+<span id="cb5-112"><a href="#cb5-112"></a>We now plot using those two functions:</span>
+<span id="cb5-113"><a href="#cb5-113"></a></span>
+<span id="cb5-116"><a href="#cb5-116"></a><span class="in">```{python}</span></span>
+<span id="cb5-117"><a href="#cb5-117"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-118"><a href="#cb5-118"></a></span>
+<span id="cb5-119"><a href="#cb5-119"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span></span>
+<span id="cb5-120"><a href="#cb5-120"></a>hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb5-121"><a href="#cb5-121"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">5.5</span>, <span class="dv">3</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-122"><a href="#cb5-122"></a>ax.set_xlabel(<span class="st">"Number of iterations"</span>)</span>
+<span id="cb5-123"><a href="#cb5-123"></a>ax.set_ylabel(<span class="st">"Average orientation"</span>)</span>
+<span id="cb5-124"><a href="#cb5-124"></a>ax.scatter(</span>
+<span id="cb5-125"><a href="#cb5-125"></a>    get_ds_iters(hf.keys()),</span>
+<span id="cb5-126"><a href="#cb5-126"></a>    get_mean_orientation(<span class="bu">file</span>),</span>
+<span id="cb5-127"><a href="#cb5-127"></a>    c<span class="op">=</span><span class="st">"k"</span>,</span>
+<span id="cb5-128"><a href="#cb5-128"></a>    s<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb5-129"><a href="#cb5-129"></a>)</span>
+<span id="cb5-130"><a href="#cb5-130"></a>plt.show()</span>
+<span id="cb5-131"><a href="#cb5-131"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

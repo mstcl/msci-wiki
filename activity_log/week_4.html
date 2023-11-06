@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,6 +66,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../activity_log/week_5.html" rel="next">
 <link href="../activity_log/week_3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -186,6 +221,18 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Week 4</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -320,9 +367,13 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Content</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
+  <li><a href="#plotting-snapshots" id="toc-plotting-snapshots" class="nav-link" data-scroll-target="#plotting-snapshots">Plotting snapshots</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_4.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_4.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -331,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 4</h1>
+<div class="quarto-title-block"><div><h1 class="title">Week 4</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
 </div>
 
 
@@ -362,7 +413,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
 <li><input type="checkbox" checked="">Act on feedback on <a href="../writings/motivation.html">writing</a> from last week.</li>
-<li><input type="checkbox">We can aim to make a density map of snapshots (<span class="math inline">\(\alpha / \phi\)</span>), on a 3x3 grid.
+<li><input type="checkbox" checked="">We can aim to make a density map of snapshots (<span class="math inline">\(\alpha / \phi\)</span>), on a 3x3 grid.
 <ul>
 <li>Range of <span class="math inline">\(\alpha\)</span>: [0.01, 0.5], 10 values in total, split between me and CP.</li>
 <li>Use scikit-learn to detect clusters and cluster size.</li>
@@ -390,13 +441,17 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/grid.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">The three values of <span class="math inline">\(\phi\)</span> here are (left to right) 0.05, 0.25 and 0.45 (all in units<sup>-2</sup>). The five values of <span class="math inline">\(\alpha\)</span> here are (top to bottom) 0.023, 0.050, 0.107, 0.231, 0.500.</figcaption>
+<figcaption class="figure-caption">The three values of here are (left to right) 0.05, 0.25 and 0.45 (all in units<sup>-2</sup>). The five values of here are (top to bottom) 0.023, 0.050, 0.107, 0.231, 0.500.</figcaption>
 </figure>
 </div>
 <ul>
+<li>Percolation is observed clearly in top right figures. This is an exotic feature of phase transition.</li>
 <li>I tried to add figure x and y labels but the matplotlib I was using was too old to support <code>fig.supxlabel</code> or <code>fig.supylabel</code>. I also need to add labels for each block to indicate the value <span class="math inline">\((\phi, \alpha)\)</span>.</li>
+<li><strong>Update 2023-11-06: labels have now been added.</strong></li>
 </ul>
 
+
+<!-- -->
 
 </section>
 </section>
@@ -596,6 +651,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -757,8 +863,59 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../activity_log/week_5.html" class="pagination-link">
+        <span class="nav-page-text">Week 5</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> Week 4</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="an">date:</span><span class="co"> 2023-10-13</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">---</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">## Tasks</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ss">- </span><span class="va">[x]</span> Act on feedback on <span class="co">[</span><span class="ot">writing</span><span class="co">](../writings/motivation.qmd)</span> from last week.</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ss">- </span><span class="va">[x]</span> We can aim to make a density map of snapshots ($\alpha / \phi$), on a 3x3 grid.</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ss">  - </span>Range of $\alpha$: <span class="sc">\[</span>0.01, 0.5<span class="sc">\]</span>, 10 values in total, split between me</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    and CP.</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="ss">  - </span>Use scikit-learn to detect clusters and cluster size.</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="ss">  - </span>See <span class="co">[</span><span class="ot">this notebook</span><span class="co">](../shared/ftnotes/label.ipynb)</span> for a demo.</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="ss">  - </span>I didn't get enough time to do any cluster analysis, just the grid of snapshots.</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="fu">## Summary</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="fu">### General</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="ss">- </span>I acted on the feedback, which is reflected <span class="co">[</span><span class="ot">here</span><span class="co">](../writings/motivation.qmd)</span>.</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="ss">- </span>We decided on a range $\alpha$, which is 10 values spaced logarithmically</span>
+<span id="cb1-23"><a href="#cb1-23"></a>  (base 2) in the range <span class="sc">\[</span>2^-6^,2^-1^<span class="sc">\]</span>. We thought this would be a sensible</span>
+<span id="cb1-24"><a href="#cb1-24"></a>  range for the snapshot grid, and we weren't sure whether to go with</span>
+<span id="cb1-25"><a href="#cb1-25"></a>  log-spacing or normal spacing. In the end, we went with log-spacing.</span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="ss">- </span>For $\phi$ (density), we decided on a range of <span class="sc">\[</span>0.05,0.5<span class="sc">\]</span>, with intervals of 0.05,</span>
+<span id="cb1-27"><a href="#cb1-27"></a>  giving a total of 10 values.</span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="ss">- </span>We modified <span class="in">`sampler.py`</span> to reflect this, and regenerated the data so that we</span>
+<span id="cb1-29"><a href="#cb1-29"></a>  get a set of static datasets to work on creating this grid, ensuring the plot</span>
+<span id="cb1-30"><a href="#cb1-30"></a>  can be reproduced. I ran everything on the cluster this time.</span>
+<span id="cb1-31"><a href="#cb1-31"></a></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="fu">### Plotting snapshots</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="ss">- </span>I began making plots of a selection of these datasets (a 3x5 grid), first as</span>
+<span id="cb1-35"><a href="#cb1-35"></a>  individual plots to before I spend more time and place them all on one figure.</span>
+<span id="cb1-36"><a href="#cb1-36"></a>  Then, I put them altogether on one grid:</span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>![The three values of  here are (left to right) 0.05, 0.25 and 0.45 (all</span>
+<span id="cb1-39"><a href="#cb1-39"></a>in units^-2^). The five values of  here are (top to bottom) 0.023,</span>
+<span id="cb1-40"><a href="#cb1-40"></a>0.050, 0.107, 0.231, 0.500.](../assets/grid.png)</span>
+<span id="cb1-41"><a href="#cb1-41"></a></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="ss">- </span>Percolation is observed clearly in top right figures. This is an exotic</span>
+<span id="cb1-43"><a href="#cb1-43"></a>  feature of phase transition.</span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="ss">- </span>I tried to add figure x and y labels but the matplotlib I was using was too old</span>
+<span id="cb1-45"><a href="#cb1-45"></a>  to support <span class="in">`fig.supxlabel`</span> or <span class="in">`fig.supylabel`</span>. I also need to add labels for each</span>
+<span id="cb1-46"><a href="#cb1-46"></a>  block to indicate the value $(\phi, \alpha)$.</span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="ss">- </span>**Update 2023-11-06: labels have now been added.**</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
