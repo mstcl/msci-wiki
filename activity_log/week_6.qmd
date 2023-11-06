@@ -1,0 +1,127 @@
+---
+title: Week 6
+date: 2023-10-13
+author: NP
+jupyter: python3
+---
+
+::: {.callout-note appearance="simple"}
+Part of this week was the school of arts' reading week so I only set out to do
+a few things.
+:::
+
+## Tasks
+
+- [x] Update the plot on [Week 4](./week_4.qmd#plotting-snapshots) with axis labels.
+- [x] Update PEP's docs. See
+[README.md](https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md).
+- [ ] Regenerate dataset with new orientation fix.
+
+## Summary
+
+### A problem with the h5 files
+
+While doing this, I found out that the matrix is being saved with the
+background at 0, and the 4 orientation are 0, 1, 2, 3. This means the 0^th^
+orientation is confused with the background. To fix this, I modified the
+`image()` method of the `Lattice` object (in `lattice.py`) to add 1 to the
+orientation: so they start at 1 (to 4) instead:
+
+```{.python filename="lattice.py"}
+def image(self) -> np.ndarray:
+    """Define the (x,y) lattice array
+
+        :param self: object's attributes
+        :returns: the lattice array [np.ndarray]
+
+        ------
+
+        # Explanation
+
+        Create a matrix of physical size [`n_x`, `n_y`] and fill it as follows:
+
+        * get the coordinates of all particles with positions()
+        * set those coordinates to the orientation
+
+        """
+    matrix = np.zeros((self.n_x, self.n_y))
+    x_pos, y_pos = self.positions()
+    matrix[x_pos, y_pos] = self.orientation + 1
+    return matrix
+```
+
+Thus, I had to regenerate all the dataset on BluePebble. Snippet to batch run all
+SLURM scripts in a directory (I had a separate script for each density):
+
+```{.bash code-line-numbers="false"}
+for file in *.sbat; do sbatch $file; done
+```
+
+### Steady-state in orientation
+
+Here, I plotted the average orientation of a snapshot, plotting its accumulated
+mean over time, for this particular dataset, $\alpha = 0.23$ and $\phi = 0.25$.
+
+This first part of the code is part of `utils.py`;
+
+
+```{python}
+import re
+
+import h5py
+import numpy as np
+
+
+def get_ds_iters(key_list: list) -> list:
+    """
+    Get all the unique iteration numbers
+
+    :param key_list: a list of all the possible dataset keys/names
+
+    :returns: a list of unique iterations
+    """
+    iter_n = []
+    for val in key_list:
+        if re.search("^conf_\d+$", val):
+            iter_n.append(int(val[5:]))
+    return sorted(iter_n)
+
+
+def get_mean_orientation(file) -> list:
+    """
+    Get the mean orientation at each iteration
+
+    :param file: the h5 file to open [str]
+    :returns: mean orientation of length 1000 [list]
+    """
+    hf = h5py.File(file, "r")
+    key_list = list(hf.keys())
+    iter_n = get_ds_iters(key_list)
+    ori = []
+    ori_acm = []
+    for idx, val in enumerate(iter_n):
+        sshot = np.array(hf[f"conf_{val}"]).flatten()
+        avg_ori = np.average(sshot[np.where(sshot != 0)[0]] - 1)
+        ori.append(avg_ori)
+        ori_acm.append(np.mean(ori))
+    return ori_acm
+```
+
+We now plot using those two functions:
+
+```{python}
+import matplotlib.pyplot as plt
+
+file = '../assets/dataset_tumble_0.023_0.25.h5'
+hf = h5py.File(file, "r")
+fig, ax = plt.subplots(figsize=(5.5, 3), constrained_layout=True)
+ax.set_xlabel("Number of iterations")
+ax.set_ylabel("Average orientation")
+ax.scatter(
+    get_ds_iters(hf.keys()),
+    get_mean_orientation(file),
+    c="k",
+    s=1
+)
+plt.show()
+```

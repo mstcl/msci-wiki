@@ -1,0 +1,63 @@
+---
+title: Week 5
+date: 2023-10-13
+author: NP
+jupyter: python3
+---
+
+## Tasks
+
+- Most of this week was reading week for the school of arts so only set out to
+do a few things
+- In general, tasks to do up to week 9's interim report is to carry on working on
+  analysing the clusters.
+  - Examine size distribution over time for $(\alpha, \phi)$
+  - Examine mean orientation over time for $(\alpha, \phi)$
+
+## Summary
+
+I moved to python 3.9.13 (`module load lang/python/3.9.13`) to use more recent
+features in matplotlib.
+
+I looked at what is being saved in the h5 binaries. Some remarks:
+
+- For all files, they have a length of 14000.
+- Every unique snapshot appears to "roll" through the square grid 13 times
+  - I got this number from the size of `np.arange(0,128,10)`, where 128 is just
+  the size of the grid. This bit of code is in `sampler.py` and I'm not quite
+  sure why the additional "clones" are there. My guess is that it is for
+  training?
+
+### What to run to look into h5 files
+
+I did this in the python3 console. Import a random data file, can check with
+another one by repeating this whole process:
+
+
+```{python}
+import re
+import h5py
+
+hf = h5py.File("../assets/dataset_tumble_0.023_0.25.h5", "r")
+print(len(hf))  # gives 14000
+k = list(hf.keys())
+print(k)  # gives a bunch of strings like 'conf_9900_10'
+```
+
+The unique snapshots won't have the last number, like `conf_9820`.
+To get the list of all iterations:
+
+```{python}
+iter_n = []
+for val in k:
+    if re.search("^conf_\d+$", val):
+        iter_n.append(int(val[5:]))
+print(sorted(iter_n))  # gives sorted unique snapshots
+```
+
+If I want to plot the penultimate snapshot, I would retrieve that by doing:
+
+```python
+img = hf[f"conf_{sorted(iter_n[-2])}"]
+axis.matshow(img, cmap=cmap)  # just snippet of code, need to declare axis first
+```

@@ -73,13 +73,19 @@ website:
 format:
   html:
     toc: true
-    toc-depth: 2
+    toc-depth: 3
+    code-line-numbers: true
+    highlight-style: gruvbox
     toc-title: Content
     code-fold: false
     page-layout: article
     html-math-method: mathjax
     anchor-sections: true
     smooth-scroll: true
+    code-tools:
+      source: true
+      toggle: true
+      caption: none
     mainfont: sans-serif
     # linkcolor: rgb(213,43,43)
 jupyter: python3
