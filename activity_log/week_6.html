@@ -373,6 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-problem-with-how-the-h5-binaries-were-saved" id="toc-a-problem-with-how-the-h5-binaries-were-saved" class="nav-link" data-scroll-target="#a-problem-with-how-the-h5-binaries-were-saved">A problem with how the h5 binaries were saved</a></li>
   <li><a href="#steady-state-in-orientation" id="toc-steady-state-in-orientation" class="nav-link" data-scroll-target="#steady-state-in-orientation">Steady-state in orientation</a></li>
   <li><a href="#cluster-analysis" id="toc-cluster-analysis" class="nav-link" data-scroll-target="#cluster-analysis">Cluster analysis</a></li>
+  <li><a href="#cluster-size-distribution-grid" id="toc-cluster-size-distribution-grid" class="nav-link" data-scroll-target="#cluster-size-distribution-grid">Cluster size distribution grid</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_6.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_6.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -558,6 +559,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="week_6_files/figure-html/cell-4-output-2.png" width="782" height="299"></p>
 </div>
 </div>
+<p>I think it’s worth rerunning this analysis where the number of iterations is the same in both (so h5 size and length takes the form of the one with the most iterations, <span class="math inline">\(\alpha = 0.023\)</span> in this case), just so the x-scale matches.</p>
 </section>
 <section id="cluster-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="cluster-analysis">Cluster analysis</h3>
@@ -582,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-17"><a href="#cb7-17"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
 <span id="cb7-18"><a href="#cb7-18"></a>    ax1.matshow(img, cmap<span class="op">=</span>cmap)</span>
 <span id="cb7-19"><a href="#cb7-19"></a></span>
-<span id="cb7-20"><a href="#cb7-20"></a>    kernel <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]]</span>
+<span id="cb7-20"><a href="#cb7-20"></a>    kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
 <span id="cb7-21"><a href="#cb7-21"></a>    labelled, nlabels <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
 <span id="cb7-22"><a href="#cb7-22"></a>    ax2.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
 <span id="cb7-23"><a href="#cb7-23"></a></span>
@@ -610,9 +612,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="week_6_files/figure-html/cell-6-output-1.png" width="947" height="299"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="week_6_files/figure-html/cell-6-output-2.png" width="948" height="299"></p>
+<p><img src="week_6_files/figure-html/cell-6-output-2.png" width="947" height="299"></p>
 </div>
 </div>
+</section>
+<section id="cluster-size-distribution-grid" class="level3">
+<h3 class="anchored" data-anchor-id="cluster-size-distribution-grid">Cluster size distribution grid</h3>
+<p>Same values <a href="../activity_log/week_4.html#plotting-snapshots">this one</a>, but with the above cluster size analysis for the last iteration of each dataset</p>
+<p><img src="../assets/csize.png" class="img-fluid"></p>
+<p>In addition, we can also look at how the number of cluster varies.</p>
 
 
 <!-- -->
@@ -1179,56 +1187,69 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-154"><a href="#cb9-154"></a>plot_mean_ori(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>)</span>
 <span id="cb9-155"><a href="#cb9-155"></a><span class="in">```</span></span>
 <span id="cb9-156"><a href="#cb9-156"></a></span>
-<span id="cb9-157"><a href="#cb9-157"></a><span class="fu">### Cluster analysis</span></span>
-<span id="cb9-158"><a href="#cb9-158"></a></span>
-<span id="cb9-159"><a href="#cb9-159"></a>Using sample code from <span class="co">[</span><span class="ot">this notebook</span><span class="co">](../shared/ftnotes/label.ipynb)</span>.</span>
+<span id="cb9-157"><a href="#cb9-157"></a>I think it's worth rerunning this analysis where the number of iterations is the</span>
+<span id="cb9-158"><a href="#cb9-158"></a>same in both (so h5 size and length takes the form of the one with the most</span>
+<span id="cb9-159"><a href="#cb9-159"></a>iterations, $\alpha = 0.023$ in this case), just so the x-scale matches.</span>
 <span id="cb9-160"><a href="#cb9-160"></a></span>
-<span id="cb9-163"><a href="#cb9-163"></a><span class="in">```{python}</span></span>
-<span id="cb9-164"><a href="#cb9-164"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb9-165"><a href="#cb9-165"></a></span>
-<span id="cb9-166"><a href="#cb9-166"></a><span class="kw">def</span> label_cluster(<span class="bu">file</span>):</span>
-<span id="cb9-167"><a href="#cb9-167"></a>    cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.bilbaoS'</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb9-168"><a href="#cb9-168"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.actonS'</span>)</span>
-<span id="cb9-169"><a href="#cb9-169"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
-<span id="cb9-170"><a href="#cb9-170"></a>    fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(</span>
-<span id="cb9-171"><a href="#cb9-171"></a>        <span class="dv">1</span>,</span>
-<span id="cb9-172"><a href="#cb9-172"></a>        <span class="dv">3</span>,</span>
-<span id="cb9-173"><a href="#cb9-173"></a>        figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>),</span>
-<span id="cb9-174"><a href="#cb9-174"></a>        width_ratios<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">1.3</span>),</span>
-<span id="cb9-175"><a href="#cb9-175"></a>        constrained_layout<span class="op">=</span><span class="va">True</span></span>
-<span id="cb9-176"><a href="#cb9-176"></a>    )</span>
-<span id="cb9-177"><a href="#cb9-177"></a>    iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb9-178"><a href="#cb9-178"></a>    fig.suptitle(<span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(<span class="bu">file</span>[<span class="dv">25</span>:<span class="dv">30</span>]))</span>
-<span id="cb9-179"><a href="#cb9-179"></a></span>
-<span id="cb9-180"><a href="#cb9-180"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb9-181"><a href="#cb9-181"></a>    ax1.matshow(img, cmap<span class="op">=</span>cmap)</span>
-<span id="cb9-182"><a href="#cb9-182"></a></span>
-<span id="cb9-183"><a href="#cb9-183"></a>    kernel <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]]</span>
-<span id="cb9-184"><a href="#cb9-184"></a>    labelled, nlabels <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
-<span id="cb9-185"><a href="#cb9-185"></a>    ax2.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
+<span id="cb9-161"><a href="#cb9-161"></a><span class="fu">### Cluster analysis</span></span>
+<span id="cb9-162"><a href="#cb9-162"></a></span>
+<span id="cb9-163"><a href="#cb9-163"></a>Using sample code from <span class="co">[</span><span class="ot">this notebook</span><span class="co">](../shared/ftnotes/label.ipynb)</span>.</span>
+<span id="cb9-164"><a href="#cb9-164"></a></span>
+<span id="cb9-167"><a href="#cb9-167"></a><span class="in">```{python}</span></span>
+<span id="cb9-168"><a href="#cb9-168"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
+<span id="cb9-169"><a href="#cb9-169"></a></span>
+<span id="cb9-170"><a href="#cb9-170"></a><span class="kw">def</span> label_cluster(<span class="bu">file</span>):</span>
+<span id="cb9-171"><a href="#cb9-171"></a>    cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.bilbaoS'</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb9-172"><a href="#cb9-172"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.actonS'</span>)</span>
+<span id="cb9-173"><a href="#cb9-173"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb9-174"><a href="#cb9-174"></a>    fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(</span>
+<span id="cb9-175"><a href="#cb9-175"></a>        <span class="dv">1</span>,</span>
+<span id="cb9-176"><a href="#cb9-176"></a>        <span class="dv">3</span>,</span>
+<span id="cb9-177"><a href="#cb9-177"></a>        figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>),</span>
+<span id="cb9-178"><a href="#cb9-178"></a>        width_ratios<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">1.3</span>),</span>
+<span id="cb9-179"><a href="#cb9-179"></a>        constrained_layout<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-180"><a href="#cb9-180"></a>    )</span>
+<span id="cb9-181"><a href="#cb9-181"></a>    iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
+<span id="cb9-182"><a href="#cb9-182"></a>    fig.suptitle(<span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(<span class="bu">file</span>[<span class="dv">25</span>:<span class="dv">30</span>]))</span>
+<span id="cb9-183"><a href="#cb9-183"></a></span>
+<span id="cb9-184"><a href="#cb9-184"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb9-185"><a href="#cb9-185"></a>    ax1.matshow(img, cmap<span class="op">=</span>cmap)</span>
 <span id="cb9-186"><a href="#cb9-186"></a></span>
-<span id="cb9-187"><a href="#cb9-187"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
-<span id="cb9-188"><a href="#cb9-188"></a>    min_c <span class="op">=</span> cluster_sizes.<span class="bu">min</span>()</span>
-<span id="cb9-189"><a href="#cb9-189"></a>    max_c <span class="op">=</span> cluster_sizes.<span class="bu">max</span>()</span>
-<span id="cb9-190"><a href="#cb9-190"></a>    <span class="co"># one can also make bins in log space, in Soto (2014) the base range is 1-1.5</span></span>
-<span id="cb9-191"><a href="#cb9-191"></a>    <span class="co"># bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 30, base=2)</span></span>
-<span id="cb9-192"><a href="#cb9-192"></a>    bin_edges <span class="op">=</span> np.linspace(min_c, max_c, <span class="dv">100</span>)</span>
-<span id="cb9-193"><a href="#cb9-193"></a>    counts, _ <span class="op">=</span> np.histogram(cluster_sizes, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-194"><a href="#cb9-194"></a>    ax3.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
-<span id="cb9-195"><a href="#cb9-195"></a>    ax3.set_axisbelow(<span class="va">True</span>)</span>
-<span id="cb9-196"><a href="#cb9-196"></a>    ax3.scatter(bin_edges[:<span class="op">-</span><span class="dv">1</span>], counts, edgecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), facecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">.3</span>))</span>
-<span id="cb9-197"><a href="#cb9-197"></a>    ax3.set_yscale(<span class="st">"log"</span>), ax3.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb9-198"><a href="#cb9-198"></a>    ax3.set_xlabel(<span class="st">"Cluster size"</span>)</span>
-<span id="cb9-199"><a href="#cb9-199"></a></span>
-<span id="cb9-200"><a href="#cb9-200"></a>    fig.colorbar(plt.cm.ScalarMappable(cmap<span class="op">=</span>cmap), ax<span class="op">=</span>ax1)</span>
-<span id="cb9-201"><a href="#cb9-201"></a>    <span class="co"># fig.colorbar(plt.cm.ScalarMappable(cmap=cmap_label), ax=ax2)</span></span>
-<span id="cb9-202"><a href="#cb9-202"></a>    plt.show()</span>
-<span id="cb9-203"><a href="#cb9-203"></a><span class="in">```</span></span>
-<span id="cb9-204"><a href="#cb9-204"></a></span>
-<span id="cb9-207"><a href="#cb9-207"></a><span class="in">```{python}</span></span>
-<span id="cb9-208"><a href="#cb9-208"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>)</span>
-<span id="cb9-209"><a href="#cb9-209"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>)</span>
-<span id="cb9-210"><a href="#cb9-210"></a><span class="in">```</span></span>
+<span id="cb9-187"><a href="#cb9-187"></a>    kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
+<span id="cb9-188"><a href="#cb9-188"></a>    labelled, nlabels <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
+<span id="cb9-189"><a href="#cb9-189"></a>    ax2.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
+<span id="cb9-190"><a href="#cb9-190"></a></span>
+<span id="cb9-191"><a href="#cb9-191"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
+<span id="cb9-192"><a href="#cb9-192"></a>    min_c <span class="op">=</span> cluster_sizes.<span class="bu">min</span>()</span>
+<span id="cb9-193"><a href="#cb9-193"></a>    max_c <span class="op">=</span> cluster_sizes.<span class="bu">max</span>()</span>
+<span id="cb9-194"><a href="#cb9-194"></a>    <span class="co"># one can also make bins in log space, in Soto (2014) the base range is 1-1.5</span></span>
+<span id="cb9-195"><a href="#cb9-195"></a>    <span class="co"># bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 30, base=2)</span></span>
+<span id="cb9-196"><a href="#cb9-196"></a>    bin_edges <span class="op">=</span> np.linspace(min_c, max_c, <span class="dv">100</span>)</span>
+<span id="cb9-197"><a href="#cb9-197"></a>    counts, _ <span class="op">=</span> np.histogram(cluster_sizes, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-198"><a href="#cb9-198"></a>    ax3.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
+<span id="cb9-199"><a href="#cb9-199"></a>    ax3.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb9-200"><a href="#cb9-200"></a>    ax3.scatter(bin_edges[:<span class="op">-</span><span class="dv">1</span>], counts, edgecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), facecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">.3</span>))</span>
+<span id="cb9-201"><a href="#cb9-201"></a>    ax3.set_yscale(<span class="st">"log"</span>), ax3.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb9-202"><a href="#cb9-202"></a>    ax3.set_xlabel(<span class="st">"Cluster size"</span>)</span>
+<span id="cb9-203"><a href="#cb9-203"></a></span>
+<span id="cb9-204"><a href="#cb9-204"></a>    fig.colorbar(plt.cm.ScalarMappable(cmap<span class="op">=</span>cmap), ax<span class="op">=</span>ax1)</span>
+<span id="cb9-205"><a href="#cb9-205"></a>    <span class="co"># fig.colorbar(plt.cm.ScalarMappable(cmap=cmap_label), ax=ax2)</span></span>
+<span id="cb9-206"><a href="#cb9-206"></a>    plt.show()</span>
+<span id="cb9-207"><a href="#cb9-207"></a><span class="in">```</span></span>
+<span id="cb9-208"><a href="#cb9-208"></a></span>
+<span id="cb9-211"><a href="#cb9-211"></a><span class="in">```{python}</span></span>
+<span id="cb9-212"><a href="#cb9-212"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>)</span>
+<span id="cb9-213"><a href="#cb9-213"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>)</span>
+<span id="cb9-214"><a href="#cb9-214"></a><span class="in">```</span></span>
+<span id="cb9-215"><a href="#cb9-215"></a></span>
+<span id="cb9-216"><a href="#cb9-216"></a><span class="fu">### Cluster size distribution grid</span></span>
+<span id="cb9-217"><a href="#cb9-217"></a></span>
+<span id="cb9-218"><a href="#cb9-218"></a>Same values <span class="co">[</span><span class="ot">this one</span><span class="co">](./week_4.qmd#plotting-snapshots)</span>, but with the above</span>
+<span id="cb9-219"><a href="#cb9-219"></a>cluster size analysis for the last iteration of each dataset</span>
+<span id="cb9-220"><a href="#cb9-220"></a></span>
+<span id="cb9-221"><a href="#cb9-221"></a><span class="al">![](../assets/csize.png)</span></span>
+<span id="cb9-222"><a href="#cb9-222"></a></span>
+<span id="cb9-223"><a href="#cb9-223"></a>In addition, we can also look at how the number of cluster varies.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
