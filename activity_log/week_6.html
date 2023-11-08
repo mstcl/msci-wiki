@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="NP">
-<meta name="dcterms.date" content="2023-10-13">
+<meta name="dcterms.date" content="2023-11-08">
 
 <title>Dissipation Learning in Active Matter - Week 6</title>
 <style>
@@ -370,8 +370,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
-  <li><a href="#a-problem-with-the-h5-files" id="toc-a-problem-with-the-h5-files" class="nav-link" data-scroll-target="#a-problem-with-the-h5-files">A problem with the h5 files</a></li>
+  <li><a href="#a-problem-with-how-the-h5-binaries-were-saved" id="toc-a-problem-with-how-the-h5-binaries-were-saved" class="nav-link" data-scroll-target="#a-problem-with-how-the-h5-binaries-were-saved">A problem with how the h5 binaries were saved</a></li>
   <li><a href="#steady-state-in-orientation" id="toc-steady-state-in-orientation" class="nav-link" data-scroll-target="#steady-state-in-orientation">Steady-state in orientation</a></li>
+  <li><a href="#cluster-analysis" id="toc-cluster-analysis" class="nav-link" data-scroll-target="#cluster-analysis">Cluster analysis</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_6.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_6.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -398,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2023</p>
+      <p class="date">November 8, 2023</p>
     </div>
   </div>
   
@@ -420,16 +421,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
+<ul>
+<li>Some chores
 <ul class="task-list">
 <li><input type="checkbox" checked="">Update the plot on <a href="../activity_log/week_4.html#plotting-snapshots">Week 4</a> with axis labels.</li>
 <li><input type="checkbox" checked="">Update PEP’s docs. See <a href="https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md">README.md</a>.</li>
-<li><input type="checkbox">Regenerate dataset with new orientation fix.</li>
+<li><input type="checkbox" checked="">Regenerate dataset with new orientation fix.</li>
+</ul></li>
+<li>Continue with data analysis.
+<ul class="task-list">
+<li><input type="checkbox" checked="">Demo of mean orientation over time.</li>
+<li><input type="checkbox" checked="">Demo of cluster labelling and size distribution.</li>
+</ul></li>
 </ul>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<section id="a-problem-with-the-h5-files" class="level3">
-<h3 class="anchored" data-anchor-id="a-problem-with-the-h5-files">A problem with the h5 files</h3>
+<section id="a-problem-with-how-the-h5-binaries-were-saved" class="level3">
+<h3 class="anchored" data-anchor-id="a-problem-with-how-the-h5-binaries-were-saved">A problem with how the h5 binaries were saved</h3>
 <p>While doing this, I found out that the matrix is being saved with the background at 0, and the 4 orientation are 0, 1, 2, 3. This means the 0<sup>th</sup> orientation is confused with the background. To fix this, I modified the <code>image()</code> method of the <code>Lattice</code> object (in <code>lattice.py</code>) to add 1 to the orientation: so they start at 1 (to 4) instead:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -438,19 +447,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> image(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray:</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="co">"""Define the (x,y) lattice array</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">        :param self: object's attributes</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">        :returns: the lattice array [np.ndarray]</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">    :param self: object's attributes</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">    :returns: the lattice array [np.ndarray]</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">        ------</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">    ------</span></span>
 <span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">        # Explanation</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">    # Explanation</span></span>
 <span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">        Create a matrix of physical size [`n_x`, `n_y`] and fill it as follows:</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">    Create a matrix of physical size [`n_x`, `n_y`] and fill it as follows:</span></span>
 <span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">        * get the coordinates of all particles with positions()</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">        * set those coordinates to the orientation</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">    * get the coordinates of all particles with positions()</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">    * set those coordinates to the orientation</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">        """</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">    """</span></span>
 <span id="cb1-17"><a href="#cb1-17"></a>    matrix <span class="op">=</span> np.zeros((<span class="va">self</span>.n_x, <span class="va">self</span>.n_y))</span>
 <span id="cb1-18"><a href="#cb1-18"></a>    x_pos, y_pos <span class="op">=</span> <span class="va">self</span>.positions()</span>
 <span id="cb1-19"><a href="#cb1-19"></a>    matrix[x_pos, y_pos] <span class="op">=</span> <span class="va">self</span>.orientation <span class="op">+</span> <span class="dv">1</span></span>
@@ -503,25 +512,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-37"><a href="#cb3-37"></a>        ori.append(avg_ori)</span>
 <span id="cb3-38"><a href="#cb3-38"></a>        ori_acm.append(np.mean(ori))</span>
 <span id="cb3-39"><a href="#cb3-39"></a>    <span class="cf">return</span> ori_acm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/lib/python3.11/site-packages/h5py/__init__.py:36: UserWarning: h5py is running against HDF5 1.14.3 when it was built against 1.14.2, this may cause problems
+  _warn(("h5py is running against HDF5 {0} when it was built against {1}, "</code></pre>
+</div>
 </div>
 <p>We now plot using those two functions:</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">5.5</span>, <span class="dv">3</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>ax.set_xlabel(<span class="st">"Number of iterations"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>ax.set_ylabel(<span class="st">"Average orientation"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>ax.scatter(</span>
-<span id="cb4-9"><a href="#cb4-9"></a>    get_ds_iters(hf.keys()),</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    get_mean_orientation(<span class="bu">file</span>),</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    c<span class="op">=</span><span class="st">"k"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    s<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>)</span>
-<span id="cb4-14"><a href="#cb4-14"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">def</span> plot_mean_ori(<span class="bu">file</span>):</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.bilbaoS'</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    fig, (ax1, ax2) <span class="op">=</span> plt.subplots(</span>
+<span id="cb5-8"><a href="#cb5-8"></a>        <span class="dv">1</span>,</span>
+<span id="cb5-9"><a href="#cb5-9"></a>        <span class="dv">2</span>,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>        figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">3</span>),</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        width_ratios <span class="op">=</span> [<span class="dv">1</span>,<span class="fl">1.25</span>],</span>
+<span id="cb5-12"><a href="#cb5-12"></a>        constrained_layout<span class="op">=</span><span class="va">True</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>    )</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    fig.colorbar(plt.cm.ScalarMappable(cmap<span class="op">=</span>cmap), ax<span class="op">=</span>ax1)</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    ax1.matshow(img, cmap<span class="op">=</span>cmap)</span>
+<span id="cb5-18"><a href="#cb5-18"></a>    ax2.set_xlabel(<span class="st">"Number of iterations"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    ax2.set_ylabel(<span class="st">"Average orientation"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>    ax2.plot(</span>
+<span id="cb5-21"><a href="#cb5-21"></a>        iters,</span>
+<span id="cb5-22"><a href="#cb5-22"></a>        get_mean_orientation(<span class="bu">file</span>),</span>
+<span id="cb5-23"><a href="#cb5-23"></a>        c<span class="op">=</span><span class="st">"k"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24"></a>    )</span>
+<span id="cb5-25"><a href="#cb5-25"></a>    fig.suptitle(<span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(<span class="bu">file</span>[<span class="dv">25</span>:<span class="dv">30</span>]))</span>
+<span id="cb5-26"><a href="#cb5-26"></a>    ax2.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
+<span id="cb5-27"><a href="#cb5-27"></a>    ax2.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>plot_mean_ori(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>plot_mean_ori(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="week_6_files/figure-html/cell-3-output-1.png" width="539" height="299"></p>
+<p><img src="week_6_files/figure-html/cell-4-output-1.png" width="785" height="299"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="week_6_files/figure-html/cell-4-output-2.png" width="782" height="299"></p>
+</div>
+</div>
+</section>
+<section id="cluster-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="cluster-analysis">Cluster analysis</h3>
+<p>Using sample code from <a href="../shared/ftnotes/label.html">this notebook</a>.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">def</span> label_cluster(<span class="bu">file</span>):</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.bilbaoS'</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.actonS'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7"></a>    fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(</span>
+<span id="cb7-8"><a href="#cb7-8"></a>        <span class="dv">1</span>,</span>
+<span id="cb7-9"><a href="#cb7-9"></a>        <span class="dv">3</span>,</span>
+<span id="cb7-10"><a href="#cb7-10"></a>        figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>),</span>
+<span id="cb7-11"><a href="#cb7-11"></a>        width_ratios<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">1.3</span>),</span>
+<span id="cb7-12"><a href="#cb7-12"></a>        constrained_layout<span class="op">=</span><span class="va">True</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>    )</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
+<span id="cb7-15"><a href="#cb7-15"></a>    fig.suptitle(<span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(<span class="bu">file</span>[<span class="dv">25</span>:<span class="dv">30</span>]))</span>
+<span id="cb7-16"><a href="#cb7-16"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb7-18"><a href="#cb7-18"></a>    ax1.matshow(img, cmap<span class="op">=</span>cmap)</span>
+<span id="cb7-19"><a href="#cb7-19"></a></span>
+<span id="cb7-20"><a href="#cb7-20"></a>    kernel <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]]</span>
+<span id="cb7-21"><a href="#cb7-21"></a>    labelled, nlabels <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
+<span id="cb7-22"><a href="#cb7-22"></a>    ax2.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
+<span id="cb7-23"><a href="#cb7-23"></a></span>
+<span id="cb7-24"><a href="#cb7-24"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
+<span id="cb7-25"><a href="#cb7-25"></a>    min_c <span class="op">=</span> cluster_sizes.<span class="bu">min</span>()</span>
+<span id="cb7-26"><a href="#cb7-26"></a>    max_c <span class="op">=</span> cluster_sizes.<span class="bu">max</span>()</span>
+<span id="cb7-27"><a href="#cb7-27"></a>    <span class="co"># one can also make bins in log space, in Soto (2014) the base range is 1-1.5</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a>    <span class="co"># bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 30, base=2)</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a>    bin_edges <span class="op">=</span> np.linspace(min_c, max_c, <span class="dv">100</span>)</span>
+<span id="cb7-30"><a href="#cb7-30"></a>    counts, _ <span class="op">=</span> np.histogram(cluster_sizes, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-31"><a href="#cb7-31"></a>    ax3.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
+<span id="cb7-32"><a href="#cb7-32"></a>    ax3.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb7-33"><a href="#cb7-33"></a>    ax3.scatter(bin_edges[:<span class="op">-</span><span class="dv">1</span>], counts, edgecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), facecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">.3</span>))</span>
+<span id="cb7-34"><a href="#cb7-34"></a>    ax3.set_yscale(<span class="st">"log"</span>), ax3.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb7-35"><a href="#cb7-35"></a>    ax3.set_xlabel(<span class="st">"Cluster size"</span>)</span>
+<span id="cb7-36"><a href="#cb7-36"></a></span>
+<span id="cb7-37"><a href="#cb7-37"></a>    fig.colorbar(plt.cm.ScalarMappable(cmap<span class="op">=</span>cmap), ax<span class="op">=</span>ax1)</span>
+<span id="cb7-38"><a href="#cb7-38"></a>    <span class="co"># fig.colorbar(plt.cm.ScalarMappable(cmap=cmap_label), ax=ax2)</span></span>
+<span id="cb7-39"><a href="#cb7-39"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="week_6_files/figure-html/cell-6-output-1.png" width="947" height="299"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="week_6_files/figure-html/cell-6-output-2.png" width="948" height="299"></p>
 </div>
 </div>
 
@@ -940,133 +1029,206 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-next">
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="an">title:</span><span class="co"> Week 6</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="an">date:</span><span class="co"> 2023-10-13</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">---</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a>::: {.callout-note appearance="simple"}</span>
-<span id="cb5-9"><a href="#cb5-9"></a>Part of this week was the school of arts' reading week so I only set out to do</span>
-<span id="cb5-10"><a href="#cb5-10"></a>a few things.</span>
-<span id="cb5-11"><a href="#cb5-11"></a>:::</span>
-<span id="cb5-12"><a href="#cb5-12"></a></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="fu">## Tasks</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="ss">- </span><span class="va">[x]</span> Update the plot on <span class="co">[</span><span class="ot">Week 4</span><span class="co">](./week_4.qmd#plotting-snapshots)</span> with axis labels.</span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="ss">- </span><span class="va">[x]</span> Update PEP's docs. See</span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">[</span><span class="ot">README.md</span><span class="co">](https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md)</span>.</span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="ss">- </span><span class="va">[ ]</span> Regenerate dataset with new orientation fix.</span>
-<span id="cb5-19"><a href="#cb5-19"></a></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="fu">## Summary</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="fu">### A problem with the h5 files</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a></span>
-<span id="cb5-24"><a href="#cb5-24"></a>While doing this, I found out that the matrix is being saved with the</span>
-<span id="cb5-25"><a href="#cb5-25"></a>background at 0, and the 4 orientation are 0, 1, 2, 3. This means the 0^th^</span>
-<span id="cb5-26"><a href="#cb5-26"></a>orientation is confused with the background. To fix this, I modified the</span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="in">`image()`</span> method of the <span class="in">`Lattice`</span> object (in <span class="in">`lattice.py`</span>) to add 1 to the</span>
-<span id="cb5-28"><a href="#cb5-28"></a>orientation: so they start at 1 (to 4) instead:</span>
-<span id="cb5-29"><a href="#cb5-29"></a></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="in">```{.python filename="lattice.py"}</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="kw">def</span> image(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray:</span>
-<span id="cb5-32"><a href="#cb5-32"></a>    <span class="co">"""Define the (x,y) lattice array</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a></span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="co">        :param self: object's attributes</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="co">        :returns: the lattice array [np.ndarray]</span></span>
-<span id="cb5-36"><a href="#cb5-36"></a></span>
-<span id="cb5-37"><a href="#cb5-37"></a><span class="co">        ------</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a></span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="co">        # Explanation</span></span>
-<span id="cb5-40"><a href="#cb5-40"></a></span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="co">        Create a matrix of physical size [`n_x`, `n_y`] and fill it as follows:</span></span>
-<span id="cb5-42"><a href="#cb5-42"></a></span>
-<span id="cb5-43"><a href="#cb5-43"></a><span class="co">        * get the coordinates of all particles with positions()</span></span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="co">        * set those coordinates to the orientation</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a></span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="co">        """</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a>    matrix <span class="op">=</span> np.zeros((<span class="va">self</span>.n_x, <span class="va">self</span>.n_y))</span>
-<span id="cb5-48"><a href="#cb5-48"></a>    x_pos, y_pos <span class="op">=</span> <span class="va">self</span>.positions()</span>
-<span id="cb5-49"><a href="#cb5-49"></a>    matrix[x_pos, y_pos] <span class="op">=</span> <span class="va">self</span>.orientation <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb5-50"><a href="#cb5-50"></a>    <span class="cf">return</span> matrix</span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="in">```</span></span>
-<span id="cb5-52"><a href="#cb5-52"></a></span>
-<span id="cb5-53"><a href="#cb5-53"></a>Thus, I had to regenerate all the dataset on BluePebble. Snippet to batch run all</span>
-<span id="cb5-54"><a href="#cb5-54"></a>SLURM scripts in a directory (I had a separate script for each density):</span>
-<span id="cb5-55"><a href="#cb5-55"></a></span>
-<span id="cb5-56"><a href="#cb5-56"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb5-57"><a href="#cb5-57"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span>.sbat<span class="kw">;</span> <span class="cf">do</span> <span class="ex">sbatch</span> <span class="va">$file</span><span class="kw">;</span> <span class="cf">done</span></span>
-<span id="cb5-58"><a href="#cb5-58"></a><span class="in">```</span></span>
-<span id="cb5-59"><a href="#cb5-59"></a></span>
-<span id="cb5-60"><a href="#cb5-60"></a><span class="fu">### Steady-state in orientation</span></span>
-<span id="cb5-61"><a href="#cb5-61"></a></span>
-<span id="cb5-62"><a href="#cb5-62"></a>Here, I plotted the average orientation of a snapshot, plotting its accumulated</span>
-<span id="cb5-63"><a href="#cb5-63"></a>mean over time, for this particular dataset, $\alpha = 0.23$ and $\phi = 0.25$.</span>
-<span id="cb5-64"><a href="#cb5-64"></a></span>
-<span id="cb5-65"><a href="#cb5-65"></a>This first part of the code is part of <span class="in">`utils.py`</span>;</span>
-<span id="cb5-66"><a href="#cb5-66"></a></span>
-<span id="cb5-67"><a href="#cb5-67"></a></span>
-<span id="cb5-70"><a href="#cb5-70"></a><span class="in">```{python}</span></span>
-<span id="cb5-71"><a href="#cb5-71"></a><span class="im">import</span> re</span>
-<span id="cb5-72"><a href="#cb5-72"></a></span>
-<span id="cb5-73"><a href="#cb5-73"></a><span class="im">import</span> h5py</span>
-<span id="cb5-74"><a href="#cb5-74"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-75"><a href="#cb5-75"></a></span>
-<span id="cb5-76"><a href="#cb5-76"></a></span>
-<span id="cb5-77"><a href="#cb5-77"></a><span class="kw">def</span> get_ds_iters(key_list: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
-<span id="cb5-78"><a href="#cb5-78"></a>    <span class="co">"""</span></span>
-<span id="cb5-79"><a href="#cb5-79"></a><span class="co">    Get all the unique iteration numbers</span></span>
-<span id="cb5-80"><a href="#cb5-80"></a></span>
-<span id="cb5-81"><a href="#cb5-81"></a><span class="co">    :param key_list: a list of all the possible dataset keys/names</span></span>
-<span id="cb5-82"><a href="#cb5-82"></a></span>
-<span id="cb5-83"><a href="#cb5-83"></a><span class="co">    :returns: a list of unique iterations</span></span>
-<span id="cb5-84"><a href="#cb5-84"></a><span class="co">    """</span></span>
-<span id="cb5-85"><a href="#cb5-85"></a>    iter_n <span class="op">=</span> []</span>
-<span id="cb5-86"><a href="#cb5-86"></a>    <span class="cf">for</span> val <span class="kw">in</span> key_list:</span>
-<span id="cb5-87"><a href="#cb5-87"></a>        <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
-<span id="cb5-88"><a href="#cb5-88"></a>            iter_n.append(<span class="bu">int</span>(val[<span class="dv">5</span>:]))</span>
-<span id="cb5-89"><a href="#cb5-89"></a>    <span class="cf">return</span> <span class="bu">sorted</span>(iter_n)</span>
-<span id="cb5-90"><a href="#cb5-90"></a></span>
-<span id="cb5-91"><a href="#cb5-91"></a></span>
-<span id="cb5-92"><a href="#cb5-92"></a><span class="kw">def</span> get_mean_orientation(<span class="bu">file</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
-<span id="cb5-93"><a href="#cb5-93"></a>    <span class="co">"""</span></span>
-<span id="cb5-94"><a href="#cb5-94"></a><span class="co">    Get the mean orientation at each iteration</span></span>
-<span id="cb5-95"><a href="#cb5-95"></a></span>
-<span id="cb5-96"><a href="#cb5-96"></a><span class="co">    :param file: the h5 file to open [str]</span></span>
-<span id="cb5-97"><a href="#cb5-97"></a><span class="co">    :returns: mean orientation of length 1000 [list]</span></span>
-<span id="cb5-98"><a href="#cb5-98"></a><span class="co">    """</span></span>
-<span id="cb5-99"><a href="#cb5-99"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
-<span id="cb5-100"><a href="#cb5-100"></a>    key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
-<span id="cb5-101"><a href="#cb5-101"></a>    iter_n <span class="op">=</span> get_ds_iters(key_list)</span>
-<span id="cb5-102"><a href="#cb5-102"></a>    ori <span class="op">=</span> []</span>
-<span id="cb5-103"><a href="#cb5-103"></a>    ori_acm <span class="op">=</span> []</span>
-<span id="cb5-104"><a href="#cb5-104"></a>    <span class="cf">for</span> idx, val <span class="kw">in</span> <span class="bu">enumerate</span>(iter_n):</span>
-<span id="cb5-105"><a href="#cb5-105"></a>        sshot <span class="op">=</span> np.array(hf[<span class="ss">f"conf_</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">"</span>]).flatten()</span>
-<span id="cb5-106"><a href="#cb5-106"></a>        avg_ori <span class="op">=</span> np.average(sshot[np.where(sshot <span class="op">!=</span> <span class="dv">0</span>)[<span class="dv">0</span>]] <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb5-107"><a href="#cb5-107"></a>        ori.append(avg_ori)</span>
-<span id="cb5-108"><a href="#cb5-108"></a>        ori_acm.append(np.mean(ori))</span>
-<span id="cb5-109"><a href="#cb5-109"></a>    <span class="cf">return</span> ori_acm</span>
-<span id="cb5-110"><a href="#cb5-110"></a><span class="in">```</span></span>
-<span id="cb5-111"><a href="#cb5-111"></a></span>
-<span id="cb5-112"><a href="#cb5-112"></a>We now plot using those two functions:</span>
-<span id="cb5-113"><a href="#cb5-113"></a></span>
-<span id="cb5-116"><a href="#cb5-116"></a><span class="in">```{python}</span></span>
-<span id="cb5-117"><a href="#cb5-117"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-118"><a href="#cb5-118"></a></span>
-<span id="cb5-119"><a href="#cb5-119"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span></span>
-<span id="cb5-120"><a href="#cb5-120"></a>hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
-<span id="cb5-121"><a href="#cb5-121"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">5.5</span>, <span class="dv">3</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-122"><a href="#cb5-122"></a>ax.set_xlabel(<span class="st">"Number of iterations"</span>)</span>
-<span id="cb5-123"><a href="#cb5-123"></a>ax.set_ylabel(<span class="st">"Average orientation"</span>)</span>
-<span id="cb5-124"><a href="#cb5-124"></a>ax.scatter(</span>
-<span id="cb5-125"><a href="#cb5-125"></a>    get_ds_iters(hf.keys()),</span>
-<span id="cb5-126"><a href="#cb5-126"></a>    get_mean_orientation(<span class="bu">file</span>),</span>
-<span id="cb5-127"><a href="#cb5-127"></a>    c<span class="op">=</span><span class="st">"k"</span>,</span>
-<span id="cb5-128"><a href="#cb5-128"></a>    s<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb5-129"><a href="#cb5-129"></a>)</span>
-<span id="cb5-130"><a href="#cb5-130"></a>plt.show()</span>
-<span id="cb5-131"><a href="#cb5-131"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="an">title:</span><span class="co"> Week 6</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="an">date:</span><span class="co"> 2023-11-08</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">---</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>::: {.callout-note appearance="simple"}</span>
+<span id="cb9-9"><a href="#cb9-9"></a>Part of this week was the school of arts' reading week so I only set out to do</span>
+<span id="cb9-10"><a href="#cb9-10"></a>a few things.</span>
+<span id="cb9-11"><a href="#cb9-11"></a>:::</span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="fu">## Tasks</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="ss">- </span>Some chores</span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="ss">  - </span><span class="va">[x]</span> Update the plot on <span class="co">[</span><span class="ot">Week 4</span><span class="co">](./week_4.qmd#plotting-snapshots)</span> with axis labels.</span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="ss">  - </span><span class="va">[x]</span> Update PEP's docs. See</span>
+<span id="cb9-18"><a href="#cb9-18"></a>    <span class="co">[</span><span class="ot">README.md</span><span class="co">](https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md)</span>.</span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="ss">  - </span><span class="va">[x]</span> Regenerate dataset with new orientation fix.</span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="ss">- </span>Continue with data analysis.</span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="ss">  - </span><span class="va">[x]</span> Demo of mean orientation over time.</span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="ss">  - </span><span class="va">[x]</span> Demo of cluster labelling and size distribution.</span>
+<span id="cb9-23"><a href="#cb9-23"></a></span>
+<span id="cb9-24"><a href="#cb9-24"></a><span class="fu">## Summary</span></span>
+<span id="cb9-25"><a href="#cb9-25"></a></span>
+<span id="cb9-26"><a href="#cb9-26"></a><span class="fu">### A problem with how the h5 binaries were saved</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a></span>
+<span id="cb9-28"><a href="#cb9-28"></a>While doing this, I found out that the matrix is being saved with the</span>
+<span id="cb9-29"><a href="#cb9-29"></a>background at 0, and the 4 orientation are 0, 1, 2, 3. This means the 0^th^</span>
+<span id="cb9-30"><a href="#cb9-30"></a>orientation is confused with the background. To fix this, I modified the</span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="in">`image()`</span> method of the <span class="in">`Lattice`</span> object (in <span class="in">`lattice.py`</span>) to add 1 to the</span>
+<span id="cb9-32"><a href="#cb9-32"></a>orientation: so they start at 1 (to 4) instead:</span>
+<span id="cb9-33"><a href="#cb9-33"></a></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="in">```{.python filename="lattice.py"}</span></span>
+<span id="cb9-35"><a href="#cb9-35"></a><span class="kw">def</span> image(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray:</span>
+<span id="cb9-36"><a href="#cb9-36"></a>    <span class="co">"""Define the (x,y) lattice array</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a></span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="co">    :param self: object's attributes</span></span>
+<span id="cb9-39"><a href="#cb9-39"></a><span class="co">    :returns: the lattice array [np.ndarray]</span></span>
+<span id="cb9-40"><a href="#cb9-40"></a></span>
+<span id="cb9-41"><a href="#cb9-41"></a><span class="co">    ------</span></span>
+<span id="cb9-42"><a href="#cb9-42"></a></span>
+<span id="cb9-43"><a href="#cb9-43"></a><span class="co">    # Explanation</span></span>
+<span id="cb9-44"><a href="#cb9-44"></a></span>
+<span id="cb9-45"><a href="#cb9-45"></a><span class="co">    Create a matrix of physical size [`n_x`, `n_y`] and fill it as follows:</span></span>
+<span id="cb9-46"><a href="#cb9-46"></a></span>
+<span id="cb9-47"><a href="#cb9-47"></a><span class="co">    * get the coordinates of all particles with positions()</span></span>
+<span id="cb9-48"><a href="#cb9-48"></a><span class="co">    * set those coordinates to the orientation</span></span>
+<span id="cb9-49"><a href="#cb9-49"></a></span>
+<span id="cb9-50"><a href="#cb9-50"></a><span class="co">    """</span></span>
+<span id="cb9-51"><a href="#cb9-51"></a>    matrix <span class="op">=</span> np.zeros((<span class="va">self</span>.n_x, <span class="va">self</span>.n_y))</span>
+<span id="cb9-52"><a href="#cb9-52"></a>    x_pos, y_pos <span class="op">=</span> <span class="va">self</span>.positions()</span>
+<span id="cb9-53"><a href="#cb9-53"></a>    matrix[x_pos, y_pos] <span class="op">=</span> <span class="va">self</span>.orientation <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb9-54"><a href="#cb9-54"></a>    <span class="cf">return</span> matrix</span>
+<span id="cb9-55"><a href="#cb9-55"></a><span class="in">```</span></span>
+<span id="cb9-56"><a href="#cb9-56"></a></span>
+<span id="cb9-57"><a href="#cb9-57"></a>Thus, I had to regenerate all the dataset on BluePebble. Snippet to batch run all</span>
+<span id="cb9-58"><a href="#cb9-58"></a>SLURM scripts in a directory (I had a separate script for each density):</span>
+<span id="cb9-59"><a href="#cb9-59"></a></span>
+<span id="cb9-60"><a href="#cb9-60"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
+<span id="cb9-61"><a href="#cb9-61"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span>.sbat<span class="kw">;</span> <span class="cf">do</span> <span class="ex">sbatch</span> <span class="va">$file</span><span class="kw">;</span> <span class="cf">done</span></span>
+<span id="cb9-62"><a href="#cb9-62"></a><span class="in">```</span></span>
+<span id="cb9-63"><a href="#cb9-63"></a></span>
+<span id="cb9-64"><a href="#cb9-64"></a><span class="fu">### Steady-state in orientation</span></span>
+<span id="cb9-65"><a href="#cb9-65"></a></span>
+<span id="cb9-66"><a href="#cb9-66"></a>Here, I plotted the average orientation of a snapshot, plotting its accumulated</span>
+<span id="cb9-67"><a href="#cb9-67"></a>mean over time, for this particular dataset, $\alpha = 0.23$ and $\phi = 0.25$.</span>
+<span id="cb9-68"><a href="#cb9-68"></a></span>
+<span id="cb9-69"><a href="#cb9-69"></a>This first part of the code is part of <span class="in">`utils.py`</span>;</span>
+<span id="cb9-70"><a href="#cb9-70"></a></span>
+<span id="cb9-73"><a href="#cb9-73"></a><span class="in">```{python}</span></span>
+<span id="cb9-74"><a href="#cb9-74"></a><span class="im">import</span> re</span>
+<span id="cb9-75"><a href="#cb9-75"></a></span>
+<span id="cb9-76"><a href="#cb9-76"></a><span class="im">import</span> h5py</span>
+<span id="cb9-77"><a href="#cb9-77"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-78"><a href="#cb9-78"></a></span>
+<span id="cb9-79"><a href="#cb9-79"></a></span>
+<span id="cb9-80"><a href="#cb9-80"></a><span class="kw">def</span> get_ds_iters(key_list: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb9-81"><a href="#cb9-81"></a>    <span class="co">"""</span></span>
+<span id="cb9-82"><a href="#cb9-82"></a><span class="co">    Get all the unique iteration numbers</span></span>
+<span id="cb9-83"><a href="#cb9-83"></a></span>
+<span id="cb9-84"><a href="#cb9-84"></a><span class="co">    :param key_list: a list of all the possible dataset keys/names</span></span>
+<span id="cb9-85"><a href="#cb9-85"></a></span>
+<span id="cb9-86"><a href="#cb9-86"></a><span class="co">    :returns: a list of unique iterations</span></span>
+<span id="cb9-87"><a href="#cb9-87"></a><span class="co">    """</span></span>
+<span id="cb9-88"><a href="#cb9-88"></a>    iter_n <span class="op">=</span> []</span>
+<span id="cb9-89"><a href="#cb9-89"></a>    <span class="cf">for</span> val <span class="kw">in</span> key_list:</span>
+<span id="cb9-90"><a href="#cb9-90"></a>        <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
+<span id="cb9-91"><a href="#cb9-91"></a>            iter_n.append(<span class="bu">int</span>(val[<span class="dv">5</span>:]))</span>
+<span id="cb9-92"><a href="#cb9-92"></a>    <span class="cf">return</span> <span class="bu">sorted</span>(iter_n)</span>
+<span id="cb9-93"><a href="#cb9-93"></a></span>
+<span id="cb9-94"><a href="#cb9-94"></a></span>
+<span id="cb9-95"><a href="#cb9-95"></a><span class="kw">def</span> get_mean_orientation(<span class="bu">file</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb9-96"><a href="#cb9-96"></a>    <span class="co">"""</span></span>
+<span id="cb9-97"><a href="#cb9-97"></a><span class="co">    Get the mean orientation at each iteration</span></span>
+<span id="cb9-98"><a href="#cb9-98"></a></span>
+<span id="cb9-99"><a href="#cb9-99"></a><span class="co">    :param file: the h5 file to open [str]</span></span>
+<span id="cb9-100"><a href="#cb9-100"></a><span class="co">    :returns: mean orientation of length 1000 [list]</span></span>
+<span id="cb9-101"><a href="#cb9-101"></a><span class="co">    """</span></span>
+<span id="cb9-102"><a href="#cb9-102"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb9-103"><a href="#cb9-103"></a>    key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
+<span id="cb9-104"><a href="#cb9-104"></a>    iter_n <span class="op">=</span> get_ds_iters(key_list)</span>
+<span id="cb9-105"><a href="#cb9-105"></a>    ori <span class="op">=</span> []</span>
+<span id="cb9-106"><a href="#cb9-106"></a>    ori_acm <span class="op">=</span> []</span>
+<span id="cb9-107"><a href="#cb9-107"></a>    <span class="cf">for</span> idx, val <span class="kw">in</span> <span class="bu">enumerate</span>(iter_n):</span>
+<span id="cb9-108"><a href="#cb9-108"></a>        sshot <span class="op">=</span> np.array(hf[<span class="ss">f"conf_</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">"</span>]).flatten()</span>
+<span id="cb9-109"><a href="#cb9-109"></a>        avg_ori <span class="op">=</span> np.average(sshot[np.where(sshot <span class="op">!=</span> <span class="dv">0</span>)[<span class="dv">0</span>]] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-110"><a href="#cb9-110"></a>        ori.append(avg_ori)</span>
+<span id="cb9-111"><a href="#cb9-111"></a>        ori_acm.append(np.mean(ori))</span>
+<span id="cb9-112"><a href="#cb9-112"></a>    <span class="cf">return</span> ori_acm</span>
+<span id="cb9-113"><a href="#cb9-113"></a><span class="in">```</span></span>
+<span id="cb9-114"><a href="#cb9-114"></a></span>
+<span id="cb9-115"><a href="#cb9-115"></a>We now plot using those two functions:</span>
+<span id="cb9-116"><a href="#cb9-116"></a></span>
+<span id="cb9-119"><a href="#cb9-119"></a><span class="in">```{python}</span></span>
+<span id="cb9-120"><a href="#cb9-120"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-121"><a href="#cb9-121"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb9-122"><a href="#cb9-122"></a></span>
+<span id="cb9-123"><a href="#cb9-123"></a><span class="kw">def</span> plot_mean_ori(<span class="bu">file</span>):</span>
+<span id="cb9-124"><a href="#cb9-124"></a>    cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.bilbaoS'</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb9-125"><a href="#cb9-125"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb9-126"><a href="#cb9-126"></a>    fig, (ax1, ax2) <span class="op">=</span> plt.subplots(</span>
+<span id="cb9-127"><a href="#cb9-127"></a>        <span class="dv">1</span>,</span>
+<span id="cb9-128"><a href="#cb9-128"></a>        <span class="dv">2</span>,</span>
+<span id="cb9-129"><a href="#cb9-129"></a>        figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">3</span>),</span>
+<span id="cb9-130"><a href="#cb9-130"></a>        width_ratios <span class="op">=</span> [<span class="dv">1</span>,<span class="fl">1.25</span>],</span>
+<span id="cb9-131"><a href="#cb9-131"></a>        constrained_layout<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-132"><a href="#cb9-132"></a>    )</span>
+<span id="cb9-133"><a href="#cb9-133"></a>    iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
+<span id="cb9-134"><a href="#cb9-134"></a>    fig.colorbar(plt.cm.ScalarMappable(cmap<span class="op">=</span>cmap), ax<span class="op">=</span>ax1)</span>
+<span id="cb9-135"><a href="#cb9-135"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb9-136"><a href="#cb9-136"></a>    ax1.matshow(img, cmap<span class="op">=</span>cmap)</span>
+<span id="cb9-137"><a href="#cb9-137"></a>    ax2.set_xlabel(<span class="st">"Number of iterations"</span>)</span>
+<span id="cb9-138"><a href="#cb9-138"></a>    ax2.set_ylabel(<span class="st">"Average orientation"</span>)</span>
+<span id="cb9-139"><a href="#cb9-139"></a>    ax2.plot(</span>
+<span id="cb9-140"><a href="#cb9-140"></a>        iters,</span>
+<span id="cb9-141"><a href="#cb9-141"></a>        get_mean_orientation(<span class="bu">file</span>),</span>
+<span id="cb9-142"><a href="#cb9-142"></a>        c<span class="op">=</span><span class="st">"k"</span>,</span>
+<span id="cb9-143"><a href="#cb9-143"></a>    )</span>
+<span id="cb9-144"><a href="#cb9-144"></a>    fig.suptitle(<span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(<span class="bu">file</span>[<span class="dv">25</span>:<span class="dv">30</span>]))</span>
+<span id="cb9-145"><a href="#cb9-145"></a>    ax2.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
+<span id="cb9-146"><a href="#cb9-146"></a>    ax2.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb9-147"><a href="#cb9-147"></a>    plt.show()</span>
+<span id="cb9-148"><a href="#cb9-148"></a><span class="in">```</span></span>
+<span id="cb9-149"><a href="#cb9-149"></a></span>
+<span id="cb9-152"><a href="#cb9-152"></a><span class="in">```{python}</span></span>
+<span id="cb9-153"><a href="#cb9-153"></a>plot_mean_ori(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>)</span>
+<span id="cb9-154"><a href="#cb9-154"></a>plot_mean_ori(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>)</span>
+<span id="cb9-155"><a href="#cb9-155"></a><span class="in">```</span></span>
+<span id="cb9-156"><a href="#cb9-156"></a></span>
+<span id="cb9-157"><a href="#cb9-157"></a><span class="fu">### Cluster analysis</span></span>
+<span id="cb9-158"><a href="#cb9-158"></a></span>
+<span id="cb9-159"><a href="#cb9-159"></a>Using sample code from <span class="co">[</span><span class="ot">this notebook</span><span class="co">](../shared/ftnotes/label.ipynb)</span>.</span>
+<span id="cb9-160"><a href="#cb9-160"></a></span>
+<span id="cb9-163"><a href="#cb9-163"></a><span class="in">```{python}</span></span>
+<span id="cb9-164"><a href="#cb9-164"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
+<span id="cb9-165"><a href="#cb9-165"></a></span>
+<span id="cb9-166"><a href="#cb9-166"></a><span class="kw">def</span> label_cluster(<span class="bu">file</span>):</span>
+<span id="cb9-167"><a href="#cb9-167"></a>    cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.bilbaoS'</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb9-168"><a href="#cb9-168"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.actonS'</span>)</span>
+<span id="cb9-169"><a href="#cb9-169"></a>    hf <span class="op">=</span> h5py.File(<span class="bu">file</span>, <span class="st">"r"</span>)</span>
+<span id="cb9-170"><a href="#cb9-170"></a>    fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(</span>
+<span id="cb9-171"><a href="#cb9-171"></a>        <span class="dv">1</span>,</span>
+<span id="cb9-172"><a href="#cb9-172"></a>        <span class="dv">3</span>,</span>
+<span id="cb9-173"><a href="#cb9-173"></a>        figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>),</span>
+<span id="cb9-174"><a href="#cb9-174"></a>        width_ratios<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">1.3</span>),</span>
+<span id="cb9-175"><a href="#cb9-175"></a>        constrained_layout<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-176"><a href="#cb9-176"></a>    )</span>
+<span id="cb9-177"><a href="#cb9-177"></a>    iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
+<span id="cb9-178"><a href="#cb9-178"></a>    fig.suptitle(<span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(<span class="bu">file</span>[<span class="dv">25</span>:<span class="dv">30</span>]))</span>
+<span id="cb9-179"><a href="#cb9-179"></a></span>
+<span id="cb9-180"><a href="#cb9-180"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb9-181"><a href="#cb9-181"></a>    ax1.matshow(img, cmap<span class="op">=</span>cmap)</span>
+<span id="cb9-182"><a href="#cb9-182"></a></span>
+<span id="cb9-183"><a href="#cb9-183"></a>    kernel <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]]</span>
+<span id="cb9-184"><a href="#cb9-184"></a>    labelled, nlabels <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
+<span id="cb9-185"><a href="#cb9-185"></a>    ax2.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
+<span id="cb9-186"><a href="#cb9-186"></a></span>
+<span id="cb9-187"><a href="#cb9-187"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
+<span id="cb9-188"><a href="#cb9-188"></a>    min_c <span class="op">=</span> cluster_sizes.<span class="bu">min</span>()</span>
+<span id="cb9-189"><a href="#cb9-189"></a>    max_c <span class="op">=</span> cluster_sizes.<span class="bu">max</span>()</span>
+<span id="cb9-190"><a href="#cb9-190"></a>    <span class="co"># one can also make bins in log space, in Soto (2014) the base range is 1-1.5</span></span>
+<span id="cb9-191"><a href="#cb9-191"></a>    <span class="co"># bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 30, base=2)</span></span>
+<span id="cb9-192"><a href="#cb9-192"></a>    bin_edges <span class="op">=</span> np.linspace(min_c, max_c, <span class="dv">100</span>)</span>
+<span id="cb9-193"><a href="#cb9-193"></a>    counts, _ <span class="op">=</span> np.histogram(cluster_sizes, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-194"><a href="#cb9-194"></a>    ax3.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
+<span id="cb9-195"><a href="#cb9-195"></a>    ax3.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb9-196"><a href="#cb9-196"></a>    ax3.scatter(bin_edges[:<span class="op">-</span><span class="dv">1</span>], counts, edgecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), facecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">.3</span>))</span>
+<span id="cb9-197"><a href="#cb9-197"></a>    ax3.set_yscale(<span class="st">"log"</span>), ax3.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb9-198"><a href="#cb9-198"></a>    ax3.set_xlabel(<span class="st">"Cluster size"</span>)</span>
+<span id="cb9-199"><a href="#cb9-199"></a></span>
+<span id="cb9-200"><a href="#cb9-200"></a>    fig.colorbar(plt.cm.ScalarMappable(cmap<span class="op">=</span>cmap), ax<span class="op">=</span>ax1)</span>
+<span id="cb9-201"><a href="#cb9-201"></a>    <span class="co"># fig.colorbar(plt.cm.ScalarMappable(cmap=cmap_label), ax=ax2)</span></span>
+<span id="cb9-202"><a href="#cb9-202"></a>    plt.show()</span>
+<span id="cb9-203"><a href="#cb9-203"></a><span class="in">```</span></span>
+<span id="cb9-204"><a href="#cb9-204"></a></span>
+<span id="cb9-207"><a href="#cb9-207"></a><span class="in">```{python}</span></span>
+<span id="cb9-208"><a href="#cb9-208"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>)</span>
+<span id="cb9-209"><a href="#cb9-209"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>)</span>
+<span id="cb9-210"><a href="#cb9-210"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
