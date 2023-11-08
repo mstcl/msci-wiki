@@ -35,13 +35,11 @@ author: NP
   individual plots to before I spend more time and place them all on one figure.
   Then, I put them altogether on one grid:
 
-![The three values of  here are (left to right) 0.05, 0.25 and 0.45 (all
-in units^-2^). The five values of  here are (top to bottom) 0.023,
-0.050, 0.107, 0.231, 0.500.](../assets/grid.png)
+![Various values of $\alpha$ and $\phi$.](../assets/grid.png)
 
 - Percolation is observed clearly in top right figures. This is an exotic
   feature of phase transition.
 - I tried to add figure x and y labels but the matplotlib I was using was too old
   to support `fig.supxlabel` or `fig.supylabel`. I also need to add labels for each
   block to indicate the value $(\phi, \alpha)$.
-- **Update 2023-11-06: labels have now been added.**
+- **Update 2023-11-06: labels added.**

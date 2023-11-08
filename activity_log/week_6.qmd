@@ -148,6 +148,10 @@ plot_mean_ori('../assets/dataset_tumble_0.023_0.25.h5')
 plot_mean_ori('../assets/dataset_tumble_0.500_0.25.h5')
 ```
 
+I think it's worth rerunning this analysis where the number of iterations is the
+same in both (so h5 size and length takes the form of the one with the most
+iterations, $\alpha = 0.023$ in this case), just so the x-scale matches.
+
 ### Cluster analysis
 
 Using sample code from [this notebook](../shared/ftnotes/label.ipynb).
@@ -172,7 +176,7 @@ def label_cluster(file):
     img = hf[f"conf_{iters[-1]}"]
     ax1.matshow(img, cmap=cmap)
 
-    kernel = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+    kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
     labelled, nlabels = ndimage.label(img, structure=kernel)
     ax2.matshow(labelled, cmap=cmap_label)
 
@@ -198,3 +202,12 @@ def label_cluster(file):
 label_cluster('../assets/dataset_tumble_0.023_0.25.h5')
 label_cluster('../assets/dataset_tumble_0.500_0.25.h5')
 ```
+
+### Cluster size distribution grid
+
+Same values [this one](./week_4.qmd#plotting-snapshots), but with the above
+cluster size analysis for the last iteration of each dataset
+
+![](../assets/csize.png)
+
+In addition, we can also look at how the number of cluster varies.
