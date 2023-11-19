@@ -1,0 +1,81 @@
+---
+title: Week 7
+date: 2023-11-13
+author: NP
+---
+
+::: {.callout-note appearance="simple"}
+Part of this week was the school of arts' reading week so I only set out to do
+a few things.
+:::
+
+## Tasks
+
+- Start the interim report (writings are both synced in under "Writings" and on
+  [Overleaf](https://www.overleaf.com/read/tczpxpzmsrrm#e56017))
+- Figures for interim report
+  - [x] Snapshot grid (3x3 and better font sizes).
+  - [ ] Orientation (one plot with multiple values, fixed density, and same scale)
+    - This requires making new datasets, so probably will be left for next week.
+  - [x] Cluster labelling (separate plot to demonstrate)
+  - [ ] Cluster size distribution (one plot with multiple values of fit, low
+    alpha data points, with data binning to demonstrate power law)
+    - [A good resource for data binning](https://rubendewitte.be/blogposts/DataBinning.html).
+  - [x] Number of clusters (need to write code for this)
+    - it's actually just returned by `ndimage.label()`
+
+## Summary
+
+This week I started writing up the interim report, there were a few things to discuss
+and notes were taken with regard to plans, as well as the PEP code.
+
+### PEP code
+
+We had a discussion on whether or not the random, independent tumbling
+mechanism is justified. For a continuous model, the new orientation is a value
+between 0 and 2$\pi$, and strictly speaking the probability to get any single
+value is 0. However, for a discrete case, it's one in four of (up, down, left,
+right), thus, 25% of the time there is the case that the particle 'tumbles' but
+it actually just carries on in a straight line. We wonder what the effect of
+this might be, compared to if we re-roll until it is no longer facing the same
+direction. It is important to keep in mind what this model models, which are
+bacteria like _E. coli._, so in a way there is still some kind of feedback
+even if the bacteria 'tumbles' on the spot (it continues to go in a straight line).
+I don't know if what I'm saying is truly correct, though.
+
+### Project outline
+
+We had a discussion on what the project should consist of (roughly speaking,
+since we are projecting into the future):
+
+First, there are a few things we want to focus on to characterise our model:
+
+- timescales
+- cluster drift
+- percolation
+- alpha-phi diagram
+- pair correlations (orientation)
+
+Then, there comes to neural network component, where we construct a minimal CNN
+for two cases:
+
+1. where we ignore orientation (exp-like)
+1. where we include full information
+
+and compare between the two. Here, Rassolov (2022) is built upon. We also define
+dissipation as the breaking of detailed balance, and there are some relations we
+can use to 'measure it'.
+
+Then, we validate the architecture in terms of how well it predicts. We keep in mind:
+
+- the number of layers, the feature map, other options
+- how much data it needs? Can we minimise
+- how much it can extrapolate?
+
+Then, we consider the explicability of the model and method.
+
+- look into feature maps and find correlations
+- does it have the pair-correlations + more?
+
+And finally, we can also consider its robustness, which ties in prediction and
+explanation

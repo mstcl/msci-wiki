@@ -6,7 +6,6 @@ csl: ../assets/physical-review-letters.csl
 bibliography: ../assets/references.bib
 format:
     html: default
-    pdf: default
 ---
 
 <!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
@@ -16,6 +15,9 @@ format:
 - [New physics at non-equilibrium](#new-physics-at-non-equilibrium)
 
 <!-- mdformat-toc end -->
+
+This first part aims to address generalities surrounding the studies of active
+matter, providing motivations from both practical and theoretical domains.
 
 ## Introduction<a name="introduction"></a>
 
@@ -48,15 +50,13 @@ generality[@marchetti_hydrodynamics_2013; @flenner_active_2020]. These systems
 have group-level properties derived from macroscopic orders, phases, and phase
 transitions, that are independent of the scale of its constituents.
 
-
 For instance, a good yet minimal approximation would be a model by Viscek _et.
-al_[@buhl_disorder_2006; @vicsek_novel_1995]. Here, clustering is induced
+al._[@buhl_disorder_2006; @vicsek_novel_1995]. Here, clustering is induced
 through a combination of self-propulsion and self-orientation in response to
 its neighbours. The system evolves with a two-step iteration process, and the
 whole system is controlled by 3 parameters. Yet, its central prediction shows
 phase transition from disordered, individual motion to ordered, collective
 motion, dictated through its minimal set of parameters[@buhl_disorder_2006].
-
 
 While it cannot be assumed that the models used _in vitro_ translate directly
 to what is observed in reality, they are still crucial components that when
@@ -66,16 +66,16 @@ insect pest outbreaks[@buhl_disorder_2006].
 
 ## New physics at non-equilibrium<a name="new-physics-at-non-equilibrium"></a>
 
-While we can study emergent behaviours, one challenge out of these models is to
-address the inverse problem; to determine the rules that lead to a desired
-collective state[@gompper_2020_2020]. In this domain, powerful tools like
-machine learning can be deployed to build a robust framework analogous to
+First, while we can study emergent behaviours, one challenge out of these
+models is to address the inverse problem; to determine the rules that lead to a
+desired collective state[@gompper_2020_2020]. In this domain, powerful tools
+like machine learning can be deployed to build a robust framework analogous to
 equilibrium statistical thermodynamics, ultimately with the aim of providing
 fundamental insight into a microscopic-emergent
 connection[@rassolov_predicting_2022].
 
-Non-equilibrium results when energy exchanges and dissipation at the level of
-individual particles' contribution lead to irreversibility
+Secondly, non-equilibrium results when energy exchanges and dissipation at the
+level of individual particles' contribution lead to irreversibility
 within[@bechinger_active_2016;@ramaswamy_mechanics_2010]. This is contrasted
 with at-equilibrium systems, where energy effects are found at the system's
 boundaries[@marchetti_hydrodynamics_2013]. Whereas we have the laws of
@@ -83,5 +83,5 @@ thermodynamics and statistical mechanics in the latter type of systems that
 tell us about their macrostates (from their energy) and likelihood (from their
 Boltzmann distribution), it is not clear for the former type of systems. The
 difficulty lies in constructing analogues to these theories using quantities
-equivalent to the system's free energies. Therefore, new physics can emerge
-in studying this so not-well understood phenomena.
+equivalent to the system's free energies. With new theoretical analogues, new
+ways of understanding this regime.

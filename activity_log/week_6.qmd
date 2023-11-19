@@ -116,7 +116,7 @@ We now plot using those two functions:
 import matplotlib.pyplot as plt
 from cmcrameri import cm
 
-def plot_mean_ori(file):
+def plot_mean_ori(file, let):
     cmap = plt.get_cmap(name='cmc.bilbaoS', lut=5)
     hf = h5py.File(file, "r")
     fig, (ax1, ax2) = plt.subplots(
@@ -130,22 +130,27 @@ def plot_mean_ori(file):
     fig.colorbar(plt.cm.ScalarMappable(cmap=cmap), ax=ax1)
     img = hf[f"conf_{iters[-1]}"]
     ax1.matshow(img, cmap=cmap)
-    ax2.set_xlabel("Number of iterations")
+    ax2.set_xlabel(r"Number of iterations, $N$")
     ax2.set_ylabel("Average orientation")
     ax2.plot(
         iters,
         get_mean_orientation(file),
         c="k",
     )
-    fig.suptitle(r"$\alpha = {}$".format(file[25:30]))
+    fig.suptitle(
+        r"({}) $\alpha = {}$".format(let, file[25:30]),
+        x=0.15,
+        ha="left",
+        fontweight="bold"
+    )
     ax2.grid(alpha=.3)
     ax2.set_axisbelow(True)
     plt.show()
 ```
 
 ```{python}
-plot_mean_ori('../assets/dataset_tumble_0.023_0.25.h5')
-plot_mean_ori('../assets/dataset_tumble_0.500_0.25.h5')
+plot_mean_ori('../assets/dataset_tumble_0.023_0.25.h5', "a")
+plot_mean_ori('../assets/dataset_tumble_0.500_0.25.h5', "b")
 ```
 
 I think it's worth rerunning this analysis where the number of iterations is the
@@ -159,7 +164,7 @@ Using sample code from [this notebook](../shared/ftnotes/label.ipynb).
 ```{python}
 from scipy import ndimage
 
-def label_cluster(file):
+def label_cluster(file, let):
     cmap = plt.get_cmap(name='cmc.bilbaoS', lut=5)
     cmap_label = plt.get_cmap(name='cmc.actonS')
     hf = h5py.File(file, "r")
@@ -171,7 +176,12 @@ def label_cluster(file):
         constrained_layout=True
     )
     iters = get_ds_iters(hf.keys())
-    fig.suptitle(r"$\alpha = {}$".format(file[25:30]))
+    fig.suptitle(
+        r"({}) $\alpha = {}$".format(let, file[25:30]),
+        x=0.1,
+        ha="left",
+        fontweight="bold"
+    )
 
     img = hf[f"conf_{iters[-1]}"]
     ax1.matshow(img, cmap=cmap)
@@ -199,8 +209,8 @@ def label_cluster(file):
 ```
 
 ```{python}
-label_cluster('../assets/dataset_tumble_0.023_0.25.h5')
-label_cluster('../assets/dataset_tumble_0.500_0.25.h5')
+label_cluster('../assets/dataset_tumble_0.023_0.25.h5', "a")
+label_cluster('../assets/dataset_tumble_0.500_0.25.h5', "b")
 ```
 
 ### Cluster size distribution grid
