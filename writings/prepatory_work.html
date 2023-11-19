@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-10">
+<meta name="author" content="NP">
+<meta name="dcterms.date" content="2023-11-13">
 
-<title>Dissipation Learning in Active Matter - Cluster information</title>
+<title>Dissipation Learning in Active Matter - Prepratory work, discussion, and plan for the future</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,7 +56,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -65,8 +85,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../activity_log/week_1.html" rel="next">
-<link href="../shared/repo.html" rel="prev">
+<link href="../shared/ftnotes/Colab.html" rel="next">
+<link href="../writings/motivation.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,6 +120,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -112,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Administration</li><li class="breadcrumb-item"><a href="../shared/deadlines.html">Project information</a></li><li class="breadcrumb-item"><a href="../shared/cluster.html">Cluster</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../writings/motivation.html">Writings</a></li><li class="breadcrumb-item"><a href="../writings/prepatory_work.html">Prepratory work, discussion, and plan for the future</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -158,13 +180,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
@@ -179,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../shared/cluster.html" class="sidebar-item-text sidebar-link active">
+  <a href="../shared/cluster.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster</span></a>
   </div>
 </li>
@@ -281,13 +303,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
@@ -296,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../writings/prepatory_work.html" class="sidebar-item-text sidebar-link">
+  <a href="../writings/prepatory_work.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Prepratory work, discussion, and plan for the future</span></a>
   </div>
 </li>
@@ -379,25 +401,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Content</h2>
+   
+  <ul>
+  <li><a href="#current-progress" id="toc-current-progress" class="nav-link active" data-scroll-target="#current-progress">Current progress</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/writings/prepatory_work.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/writings/prepatory_work.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Cluster information</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Prepratory work, discussion, and plan for the future</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>NP </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 10, 2023</p>
+      <p class="date">November 13, 2023</p>
     </div>
   </div>
   
@@ -407,13 +441,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><strong>Project code:</strong> PHYS030564</p>
+<!--
+- Preparatory work up to now [500 words]
+
+  - brief reference to the in-house code
+  - validation of the code
+  - tests in different conditions
+  - first measurements (orientation, cluster sizes, cluster distributions)
+  - compare with Soto?
+
+- look back critically: discussion [200 words]
+
+- Plan for the future [200 words]
+-->
+<p>The last section aims to detail progress made up to now, a discussion on the results from this preparatory work, and from this, plan for how the project will proceed going forward.</p>
+<section id="current-progress" class="level2">
+<h2 class="anchored" data-anchor-id="current-progress">Current progress</h2>
+<p>Over the initial 7 weeks of the project, we have worked through the in-house code package<span class="citation" data-cites="noauthor_persistent_2023">&nbsp;[<a href="#ref-noauthor_persistent_2023" role="doc-biblioref">1</a>]</span> (referred to as the PEP code here onwards), annotating and documenting what it does step by step. The code is a Python implementation (with <code>ctypes</code>) of the PEP process (see the PEP section). In short, it is a stochastic, lattice implementation where every particle has 4 degrees of freedom (up, down, left, right). Its robustness is controlled by the lattice size, <span class="math inline">\(L\)</span> (or density <span class="math inline">\(\phi\)</span>), as well as the tumbling rate <span class="math inline">\(\alpha\)</span>. In each iteration, each particle either stays in its run state, or has a chance of undergoing tumbling, where it changes direction (with uniform probability for all 4 degrees of freedom). Each lattice site can have exactly one occupancy, that is, multiple particles cannot be on the same site at once.</p>
+<p>The PEP code was validated and tested at a range of values for each of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\phi\)</span>. Specifically, <span class="math inline">\(\alpha\)</span> was chosen to be within the range <span class="math inline">\(2^{n},\, n \in [-6 \mathrel{{.}\,{.}} -1]\)</span>, and <span class="math inline">\(\phi\)</span> was chosen to be within the range <span class="math inline">\(0.05 m,\, m \in [1 \mathrel{{.}\,{.}} 10]\)</span>. A grid of various pairs of <span class="math inline">\((\alpha, \phi)\)</span> is plotted below in Fig. XYZ. For all datasets, snapshots are saved, spaced proportional to the activity (which is proportional to <span class="math inline">\(\alpha\)</span>), so for low values of <span class="math inline">\(\alpha\)</span>, the system underwent more iterations. This is so that “steady-state” regimes in lower <span class="math inline">\(\alpha\)</span> can be observed, as it is expected that systems with lower activity will take longer to reach some sort of “steady-state”.</p>
+<p>Some measurements were taken, these would be (1) mean system orientation (Fig. XYZ) (characterised as the average over <span class="math inline">\(N\)</span> iterations), (2) the cluster size distributions at different <span class="math inline">\((\alpha, \phi)\)</span> (Fig. XYZ), and (3), the number of cluster (Fig. XYZ).</p>
 
 
 <!-- -->
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-noauthor_persistent_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://github.com/dlactivematter/persistent-exclusion-process">Persistent <span>Exclusion</span> <span>Process</span></a></em>, (2023).</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -815,22 +873,73 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../shared/repo.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Repository</span>
+      <a href="../writings/motivation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is active matter and why do we study it?</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../activity_log/week_1.html" class="pagination-link">
-        <span class="nav-page-text">Week 1</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../shared/ftnotes/Colab.html" class="pagination-link">
+        <span class="nav-page-text">Link to colab notebook</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Cluster information"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="an">date:</span><span class="co"> 2023-10-10</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>**Project code:** PHYS030564</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> Prepratory work, discussion, and plan for the future</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="an">date:</span><span class="co"> last-modified</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="an">csl:</span><span class="co"> ../assets/physical-review-letters.csl</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="an">bibliography:</span><span class="co"> ../assets/references.bib</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="an">format:</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">    html: default</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">---</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">&lt;!--</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">- Preparatory work up to now [500 words]</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">  - brief reference to the in-house code</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">  - validation of the code</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">  - tests in different conditions</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">  - first measurements (orientation, cluster sizes, cluster distributions)</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">  - compare with Soto?</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">- look back critically: discussion [200 words]</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">- Plan for the future [200 words]</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">--&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>The last section aims to detail progress made up to now, a discussion on the</span>
+<span id="cb1-26"><a href="#cb1-26"></a>results from this preparatory work, and from this, plan for how the project</span>
+<span id="cb1-27"><a href="#cb1-27"></a>will proceed going forward.</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="fu">## Current progress</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>Over the initial 7 weeks of the project, we have worked through the in-house</span>
+<span id="cb1-32"><a href="#cb1-32"></a>code package<span class="co">[</span><span class="ot">@noauthor_persistent_2023</span><span class="co">]</span> (referred to as the PEP code here</span>
+<span id="cb1-33"><a href="#cb1-33"></a>onwards), annotating and documenting what it does step by step. The code is a</span>
+<span id="cb1-34"><a href="#cb1-34"></a>Python implementation (with <span class="in">`ctypes`</span>) of the PEP process (see the PEP section).</span>
+<span id="cb1-35"><a href="#cb1-35"></a>In short, it is a stochastic, lattice implementation where every particle has 4</span>
+<span id="cb1-36"><a href="#cb1-36"></a>degrees of freedom (up, down, left, right). Its robustness is controlled by the</span>
+<span id="cb1-37"><a href="#cb1-37"></a>lattice size, $L$ (or density $\phi$), as well as the tumbling rate $\alpha$.</span>
+<span id="cb1-38"><a href="#cb1-38"></a>In each iteration, each particle either stays in its run state, or has a chance</span>
+<span id="cb1-39"><a href="#cb1-39"></a>of undergoing tumbling, where it changes direction (with uniform probability</span>
+<span id="cb1-40"><a href="#cb1-40"></a>for all 4 degrees of freedom). Each lattice site can have exactly one</span>
+<span id="cb1-41"><a href="#cb1-41"></a>occupancy, that is, multiple particles cannot be on the same site at once.</span>
+<span id="cb1-42"><a href="#cb1-42"></a></span>
+<span id="cb1-43"><a href="#cb1-43"></a>The PEP code was validated and tested at a range of values for each of $\alpha$</span>
+<span id="cb1-44"><a href="#cb1-44"></a>and $\phi$. Specifically, $\alpha$ was chosen to be within the range $2^{n},\, n</span>
+<span id="cb1-45"><a href="#cb1-45"></a>\in <span class="co">[</span><span class="ot">-6 \mathrel{{.}\,{.}} -1</span><span class="co">]</span>$, and $\phi$ was chosen to be within the range</span>
+<span id="cb1-46"><a href="#cb1-46"></a>$0.05 m,\, m \in <span class="co">[</span><span class="ot">1 \mathrel{{.}\,{.}} 10</span><span class="co">]</span>$. A grid of various pairs of $(\alpha,</span>
+<span id="cb1-47"><a href="#cb1-47"></a>\phi)$ is plotted below in Fig. XYZ. For all datasets, snapshots are saved,</span>
+<span id="cb1-48"><a href="#cb1-48"></a>spaced proportional to the activity (which is proportional to $\alpha$), so for</span>
+<span id="cb1-49"><a href="#cb1-49"></a>low values of $\alpha$,  the system underwent more iterations. This is so that</span>
+<span id="cb1-50"><a href="#cb1-50"></a>"steady-state" regimes in lower $\alpha$ can be observed, as it is expected</span>
+<span id="cb1-51"><a href="#cb1-51"></a>that systems with lower activity will take longer to reach some sort of</span>
+<span id="cb1-52"><a href="#cb1-52"></a>"steady-state".</span>
+<span id="cb1-53"><a href="#cb1-53"></a></span>
+<span id="cb1-54"><a href="#cb1-54"></a>Some measurements were taken, these would be (1) mean system orientation (Fig.</span>
+<span id="cb1-55"><a href="#cb1-55"></a>XYZ) (characterised as the average over $N$ iterations), (2) the cluster size</span>
+<span id="cb1-56"><a href="#cb1-56"></a>distributions at different $(\alpha, \phi)$ (Fig. XYZ), and (3), the number of</span>
+<span id="cb1-57"><a href="#cb1-57"></a>cluster (Fig. XYZ).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -847,7 +956,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://creativecommons.org/licenses/by-nd/4.0/">License</a>
   </li>  
 </ul>
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/shared/cluster.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/shared/cluster.qmd" class="toc-action">View source</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

@@ -10,6 +10,7 @@
       "/index.html",
       "/shared/ftnotes/Colab.html",
       "/literature_notes/landing.html",
+      "/writings/prepatory_work.html",
       "/shared/repo.html",
       "/literature_notes/run-and-tumble.html",
       "/shared/gitinfo.html",
@@ -19,8 +20,17 @@
       "/activity_log/week_4.html",
       "/activity_log/week_5.html",
       "/activity_log/week_6.html",
+      "/activity_log/week_7.html",
       "/writings/motivation.html",
-      "/writings/landing.html"
+      "/writings/landing.html",
+      "/shared/ftnotes/interim-report-structure.html"
+    ]
+  },
+  {
+    "listing": "/writings/landing.html",
+    "items": [
+      "/writings/motivation.html",
+      "/writings/prepatory_work.html"
     ]
   },
   {
@@ -31,13 +41,8 @@
       "/activity_log/week_3.html",
       "/activity_log/week_4.html",
       "/activity_log/week_5.html",
-      "/activity_log/week_6.html"
-    ]
-  },
-  {
-    "listing": "/writings/landing.html",
-    "items": [
-      "/writings/motivation.html"
+      "/activity_log/week_6.html",
+      "/activity_log/week_7.html"
     ]
   },
   {
