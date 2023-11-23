@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dissipation Learning in Active Matter – gitinfo</title>
+<title>Dissipation Learning in Active Matter - Cluster size fitting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,6 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../plots/csize_grid.html" rel="next">
+<link href="../activity_log/week_7.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,6 +99,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -109,9 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Dissipation Learning in Active Matter
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Cluster size fitting</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -210,16 +212,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Plots</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plots/cluster_size_fitting.html" class="sidebar-item-text sidebar-link">
+  <a href="../plots/cluster_size_fitting.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Cluster size fitting</span></a>
   </div>
 </li>
@@ -412,68 +414,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Content</h2>
    
   <ul>
-  <li><a href="#useful-commands-and-information-for-shared-github-activity" id="toc-useful-commands-and-information-for-shared-github-activity" class="nav-link active" data-scroll-target="#useful-commands-and-information-for-shared-github-activity">Useful Commands and Information for Shared Github Activity</a></li>
-  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
-  <li><a href="#cloning" id="toc-cloning" class="nav-link" data-scroll-target="#cloning">2. Cloning</a></li>
-  <li><a href="#basic-git-commands" id="toc-basic-git-commands" class="nav-link" data-scroll-target="#basic-git-commands">3. Basic Git Commands</a></li>
-  <li><a href="#basic-quarto-commands" id="toc-basic-quarto-commands" class="nav-link" data-scroll-target="#basic-quarto-commands">4. Basic Quarto Commands</a></li>
+  <li><a href="#getting-the-curve-fit-parameters" id="toc-getting-the-curve-fit-parameters" class="nav-link active" data-scroll-target="#getting-the-curve-fit-parameters">Getting the curve fit parameters</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/shared/gitinfo.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/shared/gitinfo.qmd" class="toc-action">View source</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mstcl/msci-wiki/edit/np/plots/cluster_size_fitting.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/cluster_size_fitting.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><div class="quarto-title-block"><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Cluster size fitting</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+</div>
 
 
 
-<section id="useful-commands-and-information-for-shared-github-activity" class="level1">
-<h1>Useful Commands and Information for Shared Github Activity</h1>
-</section>
-<section id="table-of-contents" class="level1">
-<h1>Table of Contents</h1>
-<ol start="0" type="1">
-<li>Table of Contents</li>
-<li>Introduction</li>
-<li>Cloning</li>
-<li>Basic Git Commands</li>
-<li>Basic Quarto Commands</li>
-</ol>
-</section>
-<section id="introduction" class="level1">
-<h1>1. Introduction</h1>
-<p>This page is an attempt to take commands that pop up in the course of sharing our activity (whether it’s passing it collectively or publishing it to an easily accessible site). Everything here is subject to change and addition as we discover more commands that need remembering. This page should be as standardised and explanatory as possible; when deemed necessary, examples should be given alongside the basic command structure.</p>
-</section>
-<section id="cloning" class="level1">
-<h1>2. Cloning</h1>
-<p>When cloning a repository, use:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you didn’t use <code>ssh url</code> while cloning, change remote before pushing:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">git</span> remote set-url origin git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For instance, cloning the persistent exclusion process example script:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">git</span> remote set-url origin git@github:dlactivematter/persistent-exclusion-process.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If in doubt, use the following to show all the available remotes:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="basic-git-commands" class="level1">
-<h1>3. Basic Git Commands</h1>
-<p>Check which branch you are on (and also other available branches):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Add new file to current branch</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Commit new file to current branch (prompts adding a commit comment)</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> commit <span class="op">&lt;</span>filename<span class="op">&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Push all changes to branch</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="basic-quarto-commands" class="level1">
-<h1>4. Basic Quarto Commands</h1>
-<p>Note: only works on .qmd files</p>
-<p>Preview <code>.qmd</code> document in browser</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">quarto</span> preview <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Render all <code>.qmd</code> files into html (usually not necessary)</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Render all <code>.qmd</code> files into html and publish them to the <code>gh-pages</code> branch</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>According to Soto &amp; Golestanian (2014), the cluster size distribution can be modeled as:</p>
+<p><span class="math display">\[F_c = cA^{-ν}e^{−A/A_c}\]</span></p>
+<p>where it was found that <span class="math inline">\(v\)</span> lies in the range 1 to 1.5 for 2D lattices.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> utils <span class="im">import</span> get_cluster_labels</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> glob</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>files <span class="op">=</span> glob.glob(<span class="st">"../bp_data/dataset*"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="getting-the-curve-fit-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-curve-fit-parameters">Getting the curve fit parameters</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> dist(x, v):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">return</span> x<span class="op">**</span>(<span class="op">-</span>v)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">def</span> get_colours(alpha):</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">return</span> cm.batlow(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">9</span>), alpha)</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb2-10"><a href="#cb2-10"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a>fig, (axis) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-15"><a href="#cb2-15"></a>axis.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb2-16"><a href="#cb2-16"></a>axis.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a>fits <span class="op">=</span> {}</span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="cf">for</span> idx, f <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">sorted</span>(files)):</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(f, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb2-22"><a href="#cb2-22"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
+<span id="cb2-23"><a href="#cb2-23"></a>    min_c <span class="op">=</span> cluster_sizes.<span class="bu">min</span>()</span>
+<span id="cb2-24"><a href="#cb2-24"></a>    max_c <span class="op">=</span> cluster_sizes.<span class="bu">max</span>()</span>
+<span id="cb2-25"><a href="#cb2-25"></a>    bin_edges <span class="op">=</span> np.logspace(np.log2(min_c), np.log2(max_c), <span class="dv">32</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-26"><a href="#cb2-26"></a>    counts, _ <span class="op">=</span> np.histogram(cluster_sizes, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-27"><a href="#cb2-27"></a>    good_idx <span class="op">=</span> np.where(counts <span class="op">!=</span> <span class="fl">0e0</span>)[<span class="dv">0</span>]</span>
+<span id="cb2-28"><a href="#cb2-28"></a>    bin_edges <span class="op">=</span> bin_edges[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-29"><a href="#cb2-29"></a>    bin_edges <span class="op">=</span> bin_edges[good_idx]</span>
+<span id="cb2-30"><a href="#cb2-30"></a>    counts <span class="op">=</span> counts[good_idx]</span>
+<span id="cb2-31"><a href="#cb2-31"></a>    cfit, _ <span class="op">=</span> np.polyfit(np.log(bin_edges), np.log(counts), <span class="dv">1</span>)</span>
+<span id="cb2-32"><a href="#cb2-32"></a>    fits[f] <span class="op">=</span> cfit</span>
+<span id="cb2-33"><a href="#cb2-33"></a>    axis.plot(</span>
+<span id="cb2-34"><a href="#cb2-34"></a>        np.log(bin_edges),</span>
+<span id="cb2-35"><a href="#cb2-35"></a>        np.log(counts),</span>
+<span id="cb2-36"><a href="#cb2-36"></a>        linestyle<span class="op">=</span><span class="st">'none'</span>,</span>
+<span id="cb2-37"><a href="#cb2-37"></a>        marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb2-38"><a href="#cb2-38"></a>        markerfacecolor<span class="op">=</span>get_colours(<span class="fl">0.1</span>)[idx],</span>
+<span id="cb2-39"><a href="#cb2-39"></a>        markeredgecolor<span class="op">=</span>get_colours(<span class="fl">0.4</span>)[idx],</span>
+<span id="cb2-40"><a href="#cb2-40"></a>    )</span>
+<span id="cb2-41"><a href="#cb2-41"></a>    axis.plot(</span>
+<span id="cb2-42"><a href="#cb2-42"></a>        np.log(bin_edges),</span>
+<span id="cb2-43"><a href="#cb2-43"></a>        cfit<span class="op">*</span>np.log(bin_edges) <span class="op">+</span> np.log(counts[<span class="dv">0</span>]),</span>
+<span id="cb2-44"><a href="#cb2-44"></a>        c<span class="op">=</span>get_colours(<span class="dv">1</span>)[idx]</span>
+<span id="cb2-45"><a href="#cb2-45"></a>    )</span>
+<span id="cb2-46"><a href="#cb2-46"></a><span class="bu">print</span>(fits.items())</span>
+<span id="cb2-47"><a href="#cb2-47"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dict_items([('../bp_data/dataset_tumble_0.023_0.05.h5', -2.8738748050943705), ('../bp_data/dataset_tumble_0.023_0.25.h5', -1.7400055595298818), ('../bp_data/dataset_tumble_0.023_0.45.h5', -1.563627149146759), ('../bp_data/dataset_tumble_0.107_0.05.h5', -3.7622731430926906), ('../bp_data/dataset_tumble_0.107_0.25.h5', -2.4386619256681867), ('../bp_data/dataset_tumble_0.107_0.45.h5', -1.8016678212792716), ('../bp_data/dataset_tumble_0.500_0.05.h5', -5.188506501489991), ('../bp_data/dataset_tumble_0.500_0.25.h5', -3.2121069212441595), ('../bp_data/dataset_tumble_0.500_0.45.h5', -2.04623380697245)])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cluster_size_fitting_files/figure-html/cell-3-output-2.png" width="587" height="395"></p>
+</div>
+</div>
 
 
 <!-- -->
@@ -879,82 +919,102 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb12" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu"># Useful Commands and Information for Shared Github Activity</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu"># Table of Contents</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="ss">0. </span>Table of Contents</span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="ss">1. </span>Introduction</span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="ss">2. </span>Cloning</span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="ss">3. </span>Basic Git Commands</span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="ss">4. </span>Basic Quarto Commands</span>
-<span id="cb12-9"><a href="#cb12-9"></a></span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="fu"># 1. Introduction</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a></span>
-<span id="cb12-12"><a href="#cb12-12"></a>This page is an attempt to take commands that pop up in the course of sharing our activity (whether it's passing it collectively or publishing it to an easily accessible site). Everything here is subject to change and addition as we discover more commands that need remembering. This page should be as standardised and explanatory as possible; when deemed necessary, examples should be given alongside the basic command structure.</span>
-<span id="cb12-13"><a href="#cb12-13"></a></span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="fu"># 2. Cloning</span></span>
-<span id="cb12-15"><a href="#cb12-15"></a></span>
-<span id="cb12-16"><a href="#cb12-16"></a>When cloning a repository, use:</span>
-<span id="cb12-17"><a href="#cb12-17"></a></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="in">```bash</span></span>
-<span id="cb12-19"><a href="#cb12-19"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span>
-<span id="cb12-20"><a href="#cb12-20"></a><span class="in">```</span></span>
-<span id="cb12-21"><a href="#cb12-21"></a></span>
-<span id="cb12-22"><a href="#cb12-22"></a>If you didn't use <span class="in">`ssh url`</span> while cloning, change remote before pushing:</span>
-<span id="cb12-23"><a href="#cb12-23"></a><span class="in">```bash</span></span>
-<span id="cb12-24"><a href="#cb12-24"></a><span class="fu">git</span> remote set-url origin git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span>
-<span id="cb12-25"><a href="#cb12-25"></a><span class="in">```</span></span>
-<span id="cb12-26"><a href="#cb12-26"></a>For instance, cloning the persistent exclusion process example script:</span>
-<span id="cb12-27"><a href="#cb12-27"></a><span class="in">```bash</span></span>
-<span id="cb12-28"><a href="#cb12-28"></a><span class="fu">git</span> remote set-url origin git@github:dlactivematter/persistent-exclusion-process.git</span>
-<span id="cb12-29"><a href="#cb12-29"></a><span class="in">```</span></span>
-<span id="cb12-30"><a href="#cb12-30"></a></span>
-<span id="cb12-31"><a href="#cb12-31"></a>If in doubt, use the following to show all the available remotes:</span>
-<span id="cb12-32"><a href="#cb12-32"></a><span class="in">```bash</span></span>
-<span id="cb12-33"><a href="#cb12-33"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
-<span id="cb12-34"><a href="#cb12-34"></a><span class="in">```</span></span>
-<span id="cb12-35"><a href="#cb12-35"></a></span>
-<span id="cb12-36"><a href="#cb12-36"></a><span class="fu"># 3. Basic Git Commands</span></span>
-<span id="cb12-37"><a href="#cb12-37"></a></span>
-<span id="cb12-38"><a href="#cb12-38"></a>Check which branch you are on (and also other available branches):</span>
-<span id="cb12-39"><a href="#cb12-39"></a><span class="in">```bash</span></span>
-<span id="cb12-40"><a href="#cb12-40"></a><span class="fu">git</span> status</span>
-<span id="cb12-41"><a href="#cb12-41"></a><span class="in">```</span></span>
-<span id="cb12-42"><a href="#cb12-42"></a></span>
-<span id="cb12-43"><a href="#cb12-43"></a>Add new file to current branch</span>
-<span id="cb12-44"><a href="#cb12-44"></a><span class="in">```bash</span></span>
-<span id="cb12-45"><a href="#cb12-45"></a><span class="fu">git</span> add <span class="op">&lt;</span>filename<span class="op">&gt;</span></span>
-<span id="cb12-46"><a href="#cb12-46"></a><span class="in">```</span></span>
-<span id="cb12-47"><a href="#cb12-47"></a></span>
-<span id="cb12-48"><a href="#cb12-48"></a>Commit new file to current branch (prompts adding a commit comment)</span>
-<span id="cb12-49"><a href="#cb12-49"></a><span class="in">```bash</span></span>
-<span id="cb12-50"><a href="#cb12-50"></a><span class="fu">git</span> commit <span class="op">&lt;</span>filename<span class="op">&gt;</span> </span>
-<span id="cb12-51"><a href="#cb12-51"></a><span class="in">```</span></span>
-<span id="cb12-52"><a href="#cb12-52"></a></span>
-<span id="cb12-53"><a href="#cb12-53"></a>Push all changes to branch</span>
-<span id="cb12-54"><a href="#cb12-54"></a><span class="in">```bash</span></span>
-<span id="cb12-55"><a href="#cb12-55"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>branch<span class="op">&gt;</span></span>
-<span id="cb12-56"><a href="#cb12-56"></a><span class="in">```</span></span>
-<span id="cb12-57"><a href="#cb12-57"></a></span>
-<span id="cb12-58"><a href="#cb12-58"></a><span class="fu"># 4. Basic Quarto Commands</span></span>
-<span id="cb12-59"><a href="#cb12-59"></a></span>
-<span id="cb12-60"><a href="#cb12-60"></a>Note: only works on .qmd files</span>
-<span id="cb12-61"><a href="#cb12-61"></a></span>
-<span id="cb12-62"><a href="#cb12-62"></a>Preview <span class="in">`.qmd`</span> document in browser</span>
-<span id="cb12-63"><a href="#cb12-63"></a><span class="in">```bash</span></span>
-<span id="cb12-64"><a href="#cb12-64"></a><span class="ex">quarto</span> preview <span class="op">&lt;</span>filename<span class="op">&gt;</span></span>
-<span id="cb12-65"><a href="#cb12-65"></a><span class="in">```</span></span>
-<span id="cb12-66"><a href="#cb12-66"></a></span>
-<span id="cb12-67"><a href="#cb12-67"></a>Render all <span class="in">`.qmd`</span> files into html (usually not necessary)</span>
-<span id="cb12-68"><a href="#cb12-68"></a><span class="in">```bash</span></span>
-<span id="cb12-69"><a href="#cb12-69"></a><span class="ex">quarto</span> render</span>
-<span id="cb12-70"><a href="#cb12-70"></a><span class="in">```</span></span>
-<span id="cb12-71"><a href="#cb12-71"></a></span>
-<span id="cb12-72"><a href="#cb12-72"></a>Render all <span class="in">`.qmd`</span> files into html and publish them to the <span class="in">`gh-pages`</span> branch</span>
-<span id="cb12-73"><a href="#cb12-73"></a><span class="in">```bash</span></span>
-<span id="cb12-74"><a href="#cb12-74"></a><span class="ex">quarto</span> publish gh-pages</span>
-<span id="cb12-75"><a href="#cb12-75"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../activity_log/week_7.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 7</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../plots/csize_grid.html" class="pagination-link">
+        <span class="nav-page-text">Cluster size grid</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="an">title:</span><span class="co"> Cluster size fitting</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="an">execute:</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">  cache: true</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">---</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>According to Soto &amp; Golestanian (2014), the cluster size distribution can be modeled as:</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a>$$F_c = cA^{-ν}e^{−A/A_c}$$</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>where it was found that $v$ lies in the range 1 to 1.5 for 2D lattices.</span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="in">```{python}</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="im">import</span> os</span>
+<span id="cb4-19"><a href="#cb4-19"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="im">from</span> utils <span class="im">import</span> get_cluster_labels</span>
+<span id="cb4-22"><a href="#cb4-22"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb4-23"><a href="#cb4-23"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="im">import</span> glob</span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-30"><a href="#cb4-30"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a>files <span class="op">=</span> glob.glob(<span class="st">"../bp_data/dataset*"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="in">```</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a></span>
+<span id="cb4-34"><a href="#cb4-34"></a><span class="fu">## Getting the curve fit parameters</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a></span>
+<span id="cb4-38"><a href="#cb4-38"></a><span class="in">```{python}</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a><span class="kw">def</span> dist(x, v):</span>
+<span id="cb4-40"><a href="#cb4-40"></a>    <span class="cf">return</span> x<span class="op">**</span>(<span class="op">-</span>v)</span>
+<span id="cb4-41"><a href="#cb4-41"></a></span>
+<span id="cb4-42"><a href="#cb4-42"></a></span>
+<span id="cb4-43"><a href="#cb4-43"></a><span class="kw">def</span> get_colours(alpha):</span>
+<span id="cb4-44"><a href="#cb4-44"></a>    <span class="cf">return</span> cm.batlow(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">9</span>), alpha)</span>
+<span id="cb4-45"><a href="#cb4-45"></a></span>
+<span id="cb4-46"><a href="#cb4-46"></a></span>
+<span id="cb4-47"><a href="#cb4-47"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb4-48"><a href="#cb4-48"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb4-51"><a href="#cb4-51"></a></span>
+<span id="cb4-52"><a href="#cb4-52"></a>fig, (axis) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-53"><a href="#cb4-53"></a>axis.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb4-54"><a href="#cb4-54"></a>axis.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb4-55"><a href="#cb4-55"></a></span>
+<span id="cb4-56"><a href="#cb4-56"></a>fits <span class="op">=</span> {}</span>
+<span id="cb4-57"><a href="#cb4-57"></a></span>
+<span id="cb4-58"><a href="#cb4-58"></a><span class="cf">for</span> idx, f <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">sorted</span>(files)):</span>
+<span id="cb4-59"><a href="#cb4-59"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(f, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb4-60"><a href="#cb4-60"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
+<span id="cb4-61"><a href="#cb4-61"></a>    min_c <span class="op">=</span> cluster_sizes.<span class="bu">min</span>()</span>
+<span id="cb4-62"><a href="#cb4-62"></a>    max_c <span class="op">=</span> cluster_sizes.<span class="bu">max</span>()</span>
+<span id="cb4-63"><a href="#cb4-63"></a>    bin_edges <span class="op">=</span> np.logspace(np.log2(min_c), np.log2(max_c), <span class="dv">32</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-64"><a href="#cb4-64"></a>    counts, _ <span class="op">=</span> np.histogram(cluster_sizes, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-65"><a href="#cb4-65"></a>    good_idx <span class="op">=</span> np.where(counts <span class="op">!=</span> <span class="fl">0e0</span>)[<span class="dv">0</span>]</span>
+<span id="cb4-66"><a href="#cb4-66"></a>    bin_edges <span class="op">=</span> bin_edges[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-67"><a href="#cb4-67"></a>    bin_edges <span class="op">=</span> bin_edges[good_idx]</span>
+<span id="cb4-68"><a href="#cb4-68"></a>    counts <span class="op">=</span> counts[good_idx]</span>
+<span id="cb4-69"><a href="#cb4-69"></a>    cfit, _ <span class="op">=</span> np.polyfit(np.log(bin_edges), np.log(counts), <span class="dv">1</span>)</span>
+<span id="cb4-70"><a href="#cb4-70"></a>    fits[f] <span class="op">=</span> cfit</span>
+<span id="cb4-71"><a href="#cb4-71"></a>    axis.plot(</span>
+<span id="cb4-72"><a href="#cb4-72"></a>        np.log(bin_edges),</span>
+<span id="cb4-73"><a href="#cb4-73"></a>        np.log(counts),</span>
+<span id="cb4-74"><a href="#cb4-74"></a>        linestyle<span class="op">=</span><span class="st">'none'</span>,</span>
+<span id="cb4-75"><a href="#cb4-75"></a>        marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb4-76"><a href="#cb4-76"></a>        markerfacecolor<span class="op">=</span>get_colours(<span class="fl">0.1</span>)[idx],</span>
+<span id="cb4-77"><a href="#cb4-77"></a>        markeredgecolor<span class="op">=</span>get_colours(<span class="fl">0.4</span>)[idx],</span>
+<span id="cb4-78"><a href="#cb4-78"></a>    )</span>
+<span id="cb4-79"><a href="#cb4-79"></a>    axis.plot(</span>
+<span id="cb4-80"><a href="#cb4-80"></a>        np.log(bin_edges),</span>
+<span id="cb4-81"><a href="#cb4-81"></a>        cfit<span class="op">*</span>np.log(bin_edges) <span class="op">+</span> np.log(counts[<span class="dv">0</span>]),</span>
+<span id="cb4-82"><a href="#cb4-82"></a>        c<span class="op">=</span>get_colours(<span class="dv">1</span>)[idx]</span>
+<span id="cb4-83"><a href="#cb4-83"></a>    )</span>
+<span id="cb4-84"><a href="#cb4-84"></a><span class="bu">print</span>(fits.items())</span>
+<span id="cb4-85"><a href="#cb4-85"></a>plt.show()</span>
+<span id="cb4-86"><a href="#cb4-86"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
