@@ -1,0 +1,82 @@
+---
+title: Cluster size fitting
+jupyter: python3
+execute:
+  cache: true
+---
+
+According to Soto & Golestanian (2014), the cluster size distribution can be modeled as:
+
+$$F_c = cA^{-ν}e^{−A/A_c}$$
+
+where it was found that $v$ lies in the range 1 to 1.5 for 2D lattices.
+
+
+```{python}
+import os
+os.chdir("/hades/projects/persistent-exclusion-process/src")
+
+from utils import get_cluster_labels
+from plot_utils import get_plot_configs
+
+import glob
+
+import matplotlib.pyplot as plt
+from cmcrameri import cm
+from scipy.optimize import curve_fit
+import numpy as np
+
+files = glob.glob("../bp_data/dataset*")
+```
+
+## Getting the curve fit parameters
+
+```{python}
+def dist(x, v):
+    return x**(-v)
+
+
+def get_colours(alpha):
+    return cm.batlow(np.linspace(0, 1, 9), alpha)
+
+
+plot_configs = get_plot_configs()
+plot_configs["xtick.labelsize"] = 12
+plot_configs["ytick.labelsize"] = 12
+plt.rcParams.update(plot_configs)
+
+fig, (axis) = plt.subplots(1, 1, figsize=(6, 4), constrained_layout=True)
+axis.grid(alpha=0.3)
+axis.set_axisbelow(True)
+
+fits = {}
+
+for idx, f in enumerate(sorted(files)):
+    labelled, _ = get_cluster_labels(f, -1)
+    cluster_sizes = np.bincount(labelled.flatten())[1:]
+    min_c = cluster_sizes.min()
+    max_c = cluster_sizes.max()
+    bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 32, base=2)
+    counts, _ = np.histogram(cluster_sizes, bins=bin_edges, density=True)
+    good_idx = np.where(counts != 0e0)[0]
+    bin_edges = bin_edges[:-1]
+    bin_edges = bin_edges[good_idx]
+    counts = counts[good_idx]
+    cfit, _ = np.polyfit(np.log(bin_edges), np.log(counts), 1)
+    fits[f] = cfit
+    axis.plot(
+        np.log(bin_edges),
+        np.log(counts),
+        linestyle='none',
+        marker="o",
+        markerfacecolor=get_colours(0.1)[idx],
+        markeredgecolor=get_colours(0.4)[idx],
+    )
+    axis.plot(
+        np.log(bin_edges),
+        cfit*np.log(bin_edges) + np.log(counts[0]),
+        c=get_colours(1)[idx]
+    )
+print(fits.items())
+plt.show()
+```

@@ -1,0 +1,58 @@
+---
+title: Number of clusters
+jupyter: python3
+execute:
+  cache: true
+---
+
+```{python}
+import os
+os.chdir("/hades/projects/persistent-exclusion-process/src")
+
+from utils import get_ds_iters
+from plot_utils import get_plot_configs
+
+import h5py
+import glob
+
+from scipy import ndimage
+import matplotlib.pyplot as plt
+from cmcrameri import cm
+import numpy as np
+
+plot_configs = get_plot_configs()
+plot_configs["xtick.labelsize"] = 12
+plot_configs["ytick.labelsize"] = 12
+plt.rcParams.update(plot_configs)
+
+fig, (axis) = plt.subplots(
+    1,
+    1,
+    figsize=(4, 3),
+    constrained_layout=True
+)
+axis.set_xscale("log")
+files = glob.glob("../bp_data/dataset*")
+sizes = np.zeros_like(files, dtype=np.float_)
+kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+for idx, f in enumerate(sorted(files)):
+    hf = h5py.File(f, "r")
+    iters = get_ds_iters(hf.keys())
+    num = []
+    for iter in range(len(iters)):
+        img = hf[f"conf_{iters[iter]}"]
+        _, nlabels = ndimage.label(img, structure=kernel)
+        num.append(nlabels)
+    sizes[idx] = np.mean(num)
+
+axis.plot([0.023, 0.107, 0.500], sizes[0::3], marker="o", c=cm.batlowS(2), mfc=cm.batlowS(2,0.3), mec=cm.batlowS(2))
+axis.text(x=0.6, y=0.18, rotation=3, transform=axis.transAxes, s=r"$\phi = 0.05$", c=cm.batlowS(2))
+axis.plot([0.023, 0.107, 0.500], sizes[1::3], marker="o", c=cm.batlowS(3), mfc=cm.batlowS(3,0.3), mec=cm.batlowS(3))
+axis.text(x=0.5, y=0.68, rotation=30, transform=axis.transAxes, s=r"$\phi = 0.25$", c=cm.batlowS(3))
+axis.plot([0.023, 0.107, 0.500], sizes[2::3], marker="o", c=cm.batlowS(4), mfc=cm.batlowS(4,0.3), mec=cm.batlowS(4))
+axis.text(x=0.55, y=0.4, rotation=24, transform=axis.transAxes, s=r"$\phi = 0.45$", c=cm.batlowS(4))
+axis.set_xlabel(r"Tumbling rate, $\alpha$")
+axis.set_ylabel(r"Number of clusters")
+axis.set_xticks([0.023, 0.107, 0.500], labels=[0.023, 0.107, 0.500])
+fig.savefig("../plots/num_labels.pdf")
+```

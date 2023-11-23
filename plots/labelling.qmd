@@ -1,0 +1,55 @@
+---
+title: Demo of labels
+jupyter: python3
+---
+
+```{python}
+import os
+os.chdir("/hades/projects/persistent-exclusion-process/src")
+
+from utils import get_cluster_labels
+from plot_utils import get_plot_configs
+
+import matplotlib.pyplot as plt
+import cmcrameri
+
+plot_configs = get_plot_configs()
+plot_configs["xtick.labelsize"] = 12
+plot_configs["ytick.labelsize"] = 12
+plt.rcParams.update(plot_configs)
+
+def label_cluster(axis, file, sshot_idx):
+    cmap_label = plt.get_cmap(name='cmc.actonS')
+    labelled, _ = get_cluster_labels(file, sshot_idx)
+    axis.matshow(labelled, cmap=cmap_label)
+    return axis
+```
+
+```{python}
+sshot_idx = -1
+
+fig, (ax1, ax2) = plt.subplots(
+    1,
+    2,
+    figsize=(6, 3),
+    constrained_layout=True
+)
+ax1 = label_cluster(ax1, "../data/dataset_tumble_0.023_0.25.h5", sshot_idx)
+ax1.text(
+    y=-0.1,
+    x=1,
+    transform=ax1.transAxes,
+    ha="right",
+    s=r"$\alpha = 0.023$",
+)
+ax2 = label_cluster(ax2, "../data/dataset_tumble_0.500_0.25.h5", sshot_idx)
+ax2.text(
+    y=-0.1,
+    x=1,
+    transform=ax2.transAxes,
+    ha="right",
+    s=r"$\alpha = 0.500$",
+)
+plt.show()
+fig.savefig("../plots/labelling_demo.pdf")
+```
