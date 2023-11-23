@@ -32,25 +32,24 @@ website:
     style: "docked"
     contents:
       - text: "---"
-      - section: "Administration"
-        contents:
-          - section: "Project information"
-            contents:
-              - text: "Deadlines"
-                file: shared/deadlines.qmd
-              - text: "Repository"
-                file: shared/repo.qmd
-              - text: "Cluster"
-                file: shared/cluster.qmd
-          - auto: activity_log/!(landing).*md
-      - text: "---"
       - section: "Main content"
         contents:
+          - auto: activity_log/!(landing).*md
+          - auto: plots/!(landing).*md
           - auto: "literature_notes/!(landing).*md"
           - auto: writings/!(landing).*md
           - section: "FT notes"
             contents:
               - auto: shared/ftnotes/*
+      - text: "---"
+      - section: "Project information"
+        contents:
+          - text: "Deadlines"
+            file: shared/deadlines.qmd
+          - text: "Repository"
+            file: shared/repo.qmd
+          - text: "Cluster"
+            file: shared/cluster.qmd
       - text: "---"
       - section: "External tools"
         contents:
@@ -87,5 +86,6 @@ format:
       toggle: true
       caption: none
     mainfont: sans-serif
+    monofont: monospace
     # linkcolor: rgb(213,43,43)
 jupyter: python3
