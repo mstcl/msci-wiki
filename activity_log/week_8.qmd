@@ -1,0 +1,42 @@
+---
+title: Week 8-12
+date: 2024-01-17
+author: NP
+---
+
+## Task for these weeks
+
+- [x] Finish and submit interim report
+
+## Future tasks
+
+- [x] Test GPU on BluePebble
+  - Output of `tf.config.list_physical_devices("GPU")`:
+```
+2024-01-22 13:23:44.131160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:0 with 9804 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
+2024-01-22 13:23:44.136637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:1 with 9804 MB memory:  -> device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:af:00.0, compute capability: 7.5
+```
+  - I got weird errors and info even though the above works:
+```
+cpu-bind=MASK - bp1-gpu002, task  0  0 [170146]: mask 0x2020 set
+2024-01-22 13:23:28.279274: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-01-22 13:23:28.279380: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-01-22 13:23:28.279429: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-01-22 13:23:28.294544: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+```
+- [x] Fit the cluster size distribution
+- [ ] Look at cluster distribution over time
+  - This provides timescale for stationarity
+  - Already doing the average, adapt code to do over time
+- [ ] Look at percolation condition
+  - For a given $\alpha$, at what $\phi$ do you get a cluster that is as large as $L$?
+    - Requires combing through may $\phi$'s, which means combining our data.
+- [ ] Look at convergence of cluster distribution. (???)
+- [x] Quantify percolation
+  - Percolation **true**: increase $L$ increases largest cluster size
+    (physical dimension is the limiting factor).
+  - Percolation **false**: increase $L$ does not affect "biggest" cluster size.
+  - Can't implement this in code because we cannot modify physical dimension without
+    making new datasets?
+```

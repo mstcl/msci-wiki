@@ -15,10 +15,9 @@ a few things.
   [Overleaf](https://www.overleaf.com/read/tczpxpzmsrrm#e56017))
 - Figures for interim report
   - [x] Snapshot grid (3x3 and better font sizes).
-  - [ ] Orientation (one plot with multiple values, fixed density, and same scale)
-    - This requires making new datasets, so probably will be left for next week.
+  - [ ] ~~Orientation (one plot with multiple values, fixed density, and same scale)~~
   - [x] Cluster labelling (separate plot to demonstrate)
-  - [ ] Cluster size distribution (one plot with multiple values of fit, low
+  - [x] Cluster size distribution (one plot with multiple values of fit, low
     alpha data points, with data binning to demonstrate power law)
     - [A good resource for data binning](https://rubendewitte.be/blogposts/DataBinning.html).
   - [x] Number of clusters (need to write code for this)
