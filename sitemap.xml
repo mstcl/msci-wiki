@@ -2,122 +2,130 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/run-and-tumble.html</loc>
-    <lastmod>2024-01-24T21:49:27.019Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.224Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/active-brownian-particles.html</loc>
-    <lastmod>2024-01-24T21:49:26.363Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.200Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/sitemap.html</loc>
-    <lastmod>2024-01-24T21:49:25.629Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.364Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/writings/landing.html</loc>
-    <lastmod>2024-01-24T21:49:24.039Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.384Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_1.html</loc>
-    <lastmod>2024-01-24T21:49:22.353Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.117Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_7.html</loc>
-    <lastmod>2024-01-24T21:49:21.656Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.144Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/landing.html</loc>
-    <lastmod>2024-01-24T21:49:09.962Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.107Z</lastmod>
   </url>
   <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_2.html</loc>
-    <lastmod>2024-01-24T21:49:04.389Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_8.html</loc>
-    <lastmod>2024-01-24T21:49:03.566Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/label.html</loc>
-    <lastmod>2024-01-24T21:49:02.909Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/repo.html</loc>
-    <lastmod>2024-01-24T21:49:02.282Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/deadlines.html</loc>
-    <lastmod>2024-01-24T21:49:01.272Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/index.html</loc>
-    <lastmod>2024-01-24T21:49:00.515Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/labelling.html</loc>
-    <lastmod>2024-01-24T21:48:59.069Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/number_of_cluster.html</loc>
-    <lastmod>2024-01-24T21:48:43.378Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/cluster_size_fitting.html</loc>
-    <lastmod>2024-01-24T21:48:42.452Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/csize_grid.html</loc>
-    <lastmod>2024-01-24T21:48:50.315Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/evo.html</loc>
-    <lastmod>2024-01-24T21:49:00.142Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/gitinfo.html</loc>
-    <lastmod>2024-01-24T21:49:00.942Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/cluster.html</loc>
-    <lastmod>2024-01-24T21:49:01.575Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/interim-report-structure.html</loc>
-    <lastmod>2024-01-24T21:49:02.619Z</lastmod>
-  </url>
-  <url>
-    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/Colab.html</loc>
-    <lastmod>2024-01-24T21:49:03.179Z</lastmod>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_14.html</loc>
+    <lastmod>2024-02-02T16:21:54.207Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_4.html</loc>
-    <lastmod>2024-01-24T21:49:04.056Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.130Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/Colab.html</loc>
+    <lastmod>2024-01-24T21:50:19.287Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/interim-report-structure.html</loc>
+    <lastmod>2024-01-24T21:50:19.314Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/cluster.html</loc>
+    <lastmod>2024-01-24T21:50:19.244Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/gitinfo.html</loc>
+    <lastmod>2024-01-24T21:50:19.354Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/evo.html</loc>
+    <lastmod>2024-02-02T16:42:15.424Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/csize_grid.html</loc>
+    <lastmod>2024-02-02T16:42:03.973Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/cluster_size_fitting.html</loc>
+    <lastmod>2024-02-02T16:42:45.557Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/percolation_ratio_rho.html</loc>
+    <lastmod>2024-02-02T19:05:11.514Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/number_of_cluster.html</loc>
+    <lastmod>2024-01-24T21:50:19.224Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/plots/labelling.html</loc>
+    <lastmod>2024-02-02T16:42:29.254Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/index.html</loc>
+    <lastmod>2024-02-02T16:53:48.227Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/deadlines.html</loc>
+    <lastmod>2024-01-24T21:50:19.274Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/repo.html</loc>
+    <lastmod>2024-01-24T21:50:19.364Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/shared/ftnotes/label.html</loc>
+    <lastmod>2024-01-24T21:50:19.334Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_8.html</loc>
+    <lastmod>2024-02-02T19:06:24.252Z</lastmod>
+  </url>
+  <url>
+    <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_2.html</loc>
+    <lastmod>2024-01-24T21:50:19.117Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_5.html</loc>
-    <lastmod>2024-01-24T21:49:09.569Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.134Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_6.html</loc>
-    <lastmod>2024-01-24T21:49:21.199Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.144Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/activity_log/week_3.html</loc>
-    <lastmod>2024-01-24T21:49:22.043Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.124Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/writings/motivation.html</loc>
-    <lastmod>2024-01-24T21:49:23.739Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.384Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/writings/prepatory_work.html</loc>
-    <lastmod>2024-01-24T21:49:25.193Z</lastmod>
+    <lastmod>2023-11-13T18:16:09.283Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/motile-active-matter-intro.html</loc>
-    <lastmod>2024-01-24T21:49:25.979Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.204Z</lastmod>
   </url>
   <url>
     <loc>ssh://git@bimbox:88/repos/msci_wiki.git/literature_notes/landing.html</loc>
-    <lastmod>2024-01-24T21:49:26.669Z</lastmod>
+    <lastmod>2024-01-24T21:50:19.200Z</lastmod>
   </url>
 </urlset>
