@@ -1,31 +1,23 @@
 ---
-title: Week 8-12
+title: Week 8-13
 date: 2024-01-17
 author: NP
 ---
 
-## Task for these weeks
+Across these weeks were a mix of interim report writing, other courseworks, as
+well as the winter break. Below are some tasks we could look at over the break.
+Because tasks were done sporadically and not ordered across weeks, they are all
+included within one entry to make more sense.
+
+## Task for week 8-12
 
 - [x] Finish and submit interim report
+- [x] Have a chat with our assessor over our report
 
-## Future tasks
+## Task for the break up to week 13
 
 - [x] Test GPU on BluePebble
-  - Output of `tf.config.list_physical_devices("GPU")`:
-```
-2024-01-22 13:23:44.131160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:0 with 9804 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
-2024-01-22 13:23:44.136637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:1 with 9804 MB memory:  -> device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:af:00.0, compute capability: 7.5
-```
-  - I got weird errors and info even though the above works:
-```
-cpu-bind=MASK - bp1-gpu002, task  0  0 [170146]: mask 0x2020 set
-2024-01-22 13:23:28.279274: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-01-22 13:23:28.279380: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-01-22 13:23:28.279429: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-01-22 13:23:28.294544: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-```
-- [x] Fit the cluster size distribution
+- [x] Fit the cluster size distribution (see [here](../plots/csize_grid.qmd))
 - [ ] Look at cluster distribution over time
   - This provides timescale for stationarity
   - Already doing the average, adapt code to do over time
@@ -34,9 +26,92 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
     - Requires combing through may $\phi$'s, which means combining our data.
 - [ ] Look at convergence of cluster distribution. (???)
 - [x] Quantify percolation
-  - Percolation **true**: increase $L$ increases largest cluster size
-    (physical dimension is the limiting factor).
-  - Percolation **false**: increase $L$ does not affect "biggest" cluster size.
-  - Can't implement this in code because we cannot modify physical dimension without
-    making new datasets?
+
+## Project plan and outline
+
+- characterisation: this is to set the landscape through PEP analysis, contrasted to
+  a data-driven method with ML
+  - timescales
+  - cluster drift
+  - percolation
+  - alpha-phi diagram
+  - pair correlations (linking with dissipation), which we have not looked at
+- Construction: a minimal CNN model with two approaches
+  1. ignore orientation (experiment-like) and only using positions
+  1. all information, positions and orientation
+- Validation: of the architecture (in terms of prediction)
+  - number of layers, the feature map, options
+  - how much data (can we minimise it?)
+  - how does it extrapolate?
+- Explainability
+  - look into feature maps and find correlations
+  - does it have the pair-correlations + more? Check with these explicit ways
+    of measuring dissipation
+- Robustness:
+  - Can we get robustness?
+    - Different systems
+    - Non-steady state
+    - Off-lattice?
+
+## Tensorflow and GPU testing
+
+Need to install tensorflow with CUDA like this
+
+```bash
+pip install tensorflow[and-cuda]
 ```
+
+Include these directives to SLURM GPU jobs:
+
+```bash
+#SBATCH --gres=gpu:2
+#SBATCH --partition gpu
+```
+
+This is the output of `tf.config.list_physical_devices("GPU")`:
+
+```
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:0 with 9804 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:1 with 9804 MB memory:  -> device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:af:00.0, compute capability: 7.5
+```
+
+In addition to this, I got weird errors and info even though the above works:
+
+```
+cpu-bind=MASK - bp1-gpu002, task  0  0 [170146]: mask 0x2020 set
+E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+```
+
+Importing keras and other tensorflow modules seem to work fine. The error
+appears at the start. Maybe it might be an issue later on.
+
+## Quantifying percolation
+
+Here was our initial assumption on percolation:
+
+- Percolation: increase $L$ increases largest cluster size
+  (physical dimension is the limiting factor).
+- No percolation: increase $L$ does not affect "biggest" cluster size.
+
+We can't implement this in code because we cannot modify physical dimension
+without making new datasets at different system sizes. Instead, we looked at
+how $\rho$ affect the biggest cluster size, measured as the ratio to the system
+size.
+
+See [here](../plots/percolation_ratio_rho.qmd) for plots.
+
+### Problem
+
+The issue with this approach is it doesn't quite capture percolation, as
+what we care more about is the edge-to-edge connectedness. For this,
+we look not at its bulk size but its size from one edge to the other,
+and calculate its fractal dimension, which will indicate whether or not
+its smooth or has more complex details.
+
+By only looking at the bulk size, we miss out on the details. At some point, we
+should return to this percolation analysis and calculate the fractal dimension
+as a link to percolation.

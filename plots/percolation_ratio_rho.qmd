@@ -1,0 +1,66 @@
+---
+title: Ratio of biggest cluster over density
+jupyter: python3
+execute:
+  cache: true
+---
+
+```{python}
+import os
+os.chdir("/hades/projects/persistent-exclusion-process/src")
+
+import glob
+
+import h5py
+import matplotlib.pyplot as plt
+import numpy as np
+from cmcrameri import cm
+from scipy import ndimage
+import pandas as pd
+
+from plot_utils import get_plot_configs
+from stringato import extract_floats
+from utils import get_ds_iters, get_cluster_labels
+
+files = sorted(glob.glob("../no_roll_data/dataset*"))
+stuff = []
+densities = []
+for file in files:
+    tumble = float(extract_floats(file)[0])
+    density = float(extract_floats(file)[1])
+    stuff.append((tumble, density))
+    densities.append(density)
+densities = sorted(set(densities))
+
+
+plot_configs = get_plot_configs()
+plot_configs["xtick.labelsize"] = 12
+plot_configs["ytick.labelsize"] = 12
+plt.rcParams.update(plot_configs)
+fig, axis = plt.subplots(figsize=(9,6), constrained_layout=True)
+
+colors = cm.batlow(np.linspace(0,5,len(densities)))
+ctr = 0
+ratios = []
+map_size = 128*128
+
+for idx, file in enumerate(files):
+    noot = idx % len(densities)
+    labelled, _ = get_cluster_labels(file, -1)
+    cluster_sizes = np.bincount(labelled.flatten())[1:]
+    biggest_cluster = np.max(cluster_sizes)
+    ratios.append(biggest_cluster/map_size)
+    if (noot == len(densities) - 1):
+        axis.plot(densities,ratios, c=colors[ctr], marker='o')
+        axis.annotate(
+            text=f"{stuff[idx][0]}",
+            xy=(densities[-1],ratios[-3]),
+            xytext=(20.5,15.5),
+            textcoords="offset points",
+            backgroundcolor=colors[ctr],
+            color=("white" if ctr in (0,1) else "black")
+        )
+        ratios = []
+        ctr += 1
+fig.show()
+```

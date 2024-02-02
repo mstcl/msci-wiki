@@ -2,7 +2,7 @@
 title: Home
 ---
 
-::: {layout-nrow=2}
+::: {layout-nrow=1}
 
 ![Rail Bridge Swarm of Starlings. Licensed under [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).](./assets/swarm.jpg)
 

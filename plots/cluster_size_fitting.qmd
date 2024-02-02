@@ -1,5 +1,5 @@
 ---
-title: Cluster size fitting
+title: Fitting cluster distribution
 jupyter: python3
 execute:
   cache: true

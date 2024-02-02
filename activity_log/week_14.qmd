@@ -1,0 +1,23 @@
+---
+title: Week 14
+date: 2024-02-02
+author: NP
+---
+
+## Tasks
+
+- [ ] Regenerate datasets without the rolling to reduce filesizes and complexity
+- [ ] Quantify where cluster distribution stabilises
+
+## No rolling
+
+To remove the extra snapshots (look at [Week 5](./week_5.qmdk) for an
+explanation of this), we remove the final loop in `sampler.py`, create a new
+version for this, which we named sampler_no_roll.py, and regenerated the
+datasets, each only 66 MB in size (reduced from 220 MB!).
+
+A one-liner for this:
+
+```bash
+for i in $(seq 0.0.5 0.05 0.5); do python3 sampler_no_roll.py --odd --density $i; done
+```

@@ -1,5 +1,5 @@
 ---
-title: Cluster evolution
+title: Snapshot evolution
 jupyter: python3
 execute:
   cache: true

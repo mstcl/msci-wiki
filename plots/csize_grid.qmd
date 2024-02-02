@@ -1,5 +1,5 @@
 ---
-title: Cluster size grid
+title: Cluster distribution grid
 jupyter: python3
 execute:
   cache: true
