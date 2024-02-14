@@ -215,6 +215,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 15</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -288,6 +294,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../plots/labelling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster labelling demo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Single density network</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -534,7 +546,7 @@ window.Quarto = {
 <section id="what-to-run-to-look-into-h5-files" class="level3">
 <h3 class="anchored" data-anchor-id="what-to-run-to-look-into-h5-files">What to run to look into h5 files</h3>
 <p>I did this in the python3 console. Import a random data file, can check with another one by repeating this whole process:</p>
-<div id="dceb0cff" class="cell" data-execution_count="1">
+<div id="eed09a42" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> re</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> h5py</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -548,7 +560,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The unique snapshots won’t have the last number, like <code>conf_9820</code>. To get the list of all iterations:</p>
-<div id="c41cc2fc" class="cell" data-execution_count="2">
+<div id="46cb2182" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>iter_n <span class="op">=</span> []</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="cf">for</span> val <span class="kw">in</span> k:</span>
 <span id="cb3-3"><a href="#cb3-3"></a>    <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
