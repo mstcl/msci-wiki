@@ -1,0 +1,123 @@
+---
+title: Week 15
+date: 2024-02-12
+author: NP
+---
+
+## Tasks
+
+- [x] Play with different layers in Keras and train some models
+
+## Summary
+
+We are currently doing this on our personal machines as doing interactive mode
+is not possible on BluePebble (unclear about BlueCrystal). Playing with the CNNs
+on a local notebook is the best method for now to be able to prototype quickly.
+
+### Basics on the architecture of CNN
+
+See the results of this week's tinkering [here](../plots/network_demo_1.qmd).
+
+We feed our snapshots in, but to represent it as a tensor. Our snapshot has one
+channel depth, so the tensor shape is `(128,128,1)`.
+
+We start out with the **convolutional layer**. This layer performs a convolution,
+scanning the input with a number of filters with a smaller size than the input
+image itself, the size of the filter is determined by the kernel size. And the
+output of shape of the convolutional layer is of shape `(128,128,N)` where `N`
+is the number of filters applied.
+
+- Kernel size `(x,y)` is the window size that scans the image at each
+iteration.
+- Stride `(x,y)` is the step length to jump at each iteration.
+- Each filter produces a feature map, every filter added captures more complex
+patterns.
+- We increase filter size with subsequent layers to capture more more
+combinations.
+
+A **flatten layer** will turn the input shape `(x,y,c)` into `(x*y*c)`, i.e. a
+1D vector.
+
+A **dense layer** (or fully-connected), map all input neurons to output neurons.
+It takes in the number of units (neurons) and turn the input shape `(x,y,c)`
+into `(x,y,units)`.
+
+- Linear activation is pass-through (does nothing).
+
+A **pooling layer** reduces dimensions of the feature maps, which reduces the
+number of parameters. We have max pooling and average pooling (max takes
+maximum value from the kernel window and average takes the mean).
+
+A **dropout layer** randomly drops a fraction (the input parameter) of the
+input units to 0.
+
+A **batch normalization** layer normalizes the output. This helps with training
+speed.
+
+To help reduce overfitting:
+
+- Increase training data
+- Use pooling, batch normalization, and dropout layers
+
+### A simple network to start with
+
+I used this in the single density notebook as the "basic" network:
+
+```python
+model = Sequential()
+
+model.add(
+    Conv2D(
+        filters=3,
+        kernel_size=(3, 3),
+        padding="same",
+        strides=(3, 3),
+        activation="relu",
+        input_shape=shape,
+    )
+)
+model.add(Flatten())
+model.add(Dense(units=1, activation="linear"))
+```
+
+### A more complicated network
+
+I used this in the single density notebook to compare the effect of the dropout
+layers:
+
+```python
+model = Sequential()
+
+model.add(
+    Conv2D(
+        filters=3,
+        kernel_size=(3, 3),
+        padding="same",
+        strides=(3, 3),
+        activation="relu",
+        input_shape=shape,
+    )
+)
+model.add(BatchNormalization())
+model.add(Conv2D(filters=3, kernel_size=(3, 3), padding="same", input_shape=shape))
+model.add(BatchNormalization())
+
+model.add(MaxPooling2D(pool_size=(3, 3)))
+
+model.add(Conv2D(filters=6, kernel_size=(3, 3), padding="same"))
+model.add(BatchNormalization())
+
+model.add(Conv2D(filters=6, kernel_size=(3, 3), padding="same"))
+model.add(BatchNormalization())
+
+model.add(MaxPooling2D(pool_size=(3, 3)))
+
+model.add(Dense(units=128, activation="relu"))
+
+with options({"layout_optimizer": False}):
+    model.add(Dropout(0.2))
+model.add(Dense(units=10, activation="softmax"))
+
+model.add(Flatten())
+model.add(Dense(units=1, activation="linear"))
+```

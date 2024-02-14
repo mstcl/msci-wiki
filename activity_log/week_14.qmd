@@ -6,7 +6,7 @@ author: NP
 
 ## Tasks
 
-- [ ] Regenerate datasets without the rolling to reduce filesizes and complexity
+- [x] Regenerate datasets without the rolling to reduce filesizes and complexity
 - [ ] Quantify where cluster distribution stabilises
 
 ## No rolling
