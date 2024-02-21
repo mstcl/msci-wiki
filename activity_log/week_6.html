@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -221,6 +221,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 16</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -299,7 +305,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Single density network</span></a>
+ <span class="menu-text">Dropout and convolution demo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -368,6 +374,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training logbook</span></a>
+  </div>
+</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
@@ -587,7 +599,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="steady-state-in-orientation">Steady-state in orientation</h3>
 <p>Here, I plotted the average orientation of a snapshot, plotting its accumulated mean over time, for this particular dataset, <span class="math inline">\(\alpha = 0.23\)</span> and <span class="math inline">\(\phi = 0.25\)</span>.</p>
 <p>This first part of the code is part of <code>utils.py</code>;</p>
-<div id="eeb6a695" class="cell" data-execution_count="1">
+<div id="25e87501" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> re</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> h5py</span>
@@ -629,7 +641,7 @@ window.Quarto = {
 <span id="cb3-39"><a href="#cb3-39"></a>    <span class="cf">return</span> ori_acm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now plot using those two functions:</p>
-<div id="afd6e8eb" class="cell" data-execution_count="2">
+<div id="75ccac52" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -664,7 +676,7 @@ window.Quarto = {
 <span id="cb4-32"><a href="#cb4-32"></a>    ax2.set_axisbelow(<span class="va">True</span>)</span>
 <span id="cb4-33"><a href="#cb4-33"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b10ccebd" class="cell" data-execution_count="3">
+<div id="57c2f902" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>plot_mean_ori(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>, <span class="st">"a"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>plot_mean_ori(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>, <span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -687,7 +699,7 @@ window.Quarto = {
 <section id="cluster-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="cluster-analysis">Cluster analysis</h3>
 <p>Using sample code from <a href="../shared/ftnotes/label.html">this notebook</a>.</p>
-<div id="6c64fe73" class="cell" data-execution_count="4">
+<div id="36916389" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="kw">def</span> label_cluster(<span class="bu">file</span>, let):</span>
@@ -733,7 +745,7 @@ window.Quarto = {
 <span id="cb6-43"><a href="#cb6-43"></a>    <span class="co"># fig.colorbar(plt.cm.ScalarMappable(cmap=cmap_label), ax=ax2)</span></span>
 <span id="cb6-44"><a href="#cb6-44"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="70fb624d" class="cell" data-execution_count="5">
+<div id="ae13d249" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.023_0.25.h5'</span>, <span class="st">"a"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>label_cluster(<span class="st">'../assets/dataset_tumble_0.500_0.25.h5'</span>, <span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1349,7 +1361,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../activity_log/week_5.html" class="pagination-link  aria-label=" week="" 5"="">
+      <a href="../activity_log/week_5.html" class="pagination-link" aria-label="Week 5">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 5</span>
       </a>          
   </div>

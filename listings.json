@@ -9,6 +9,7 @@
       "/shared/cluster.html",
       "/plots/labelling.html",
       "/shared/deadlines.html",
+      "/plots/network_demo_1.html",
       "/plots/cluster_size_fitting.html",
       "/index.html",
       "/shared/ftnotes/Colab.html",
@@ -18,12 +19,12 @@
       "/plots/percolation_ratio_rho.html",
       "/shared/repo.html",
       "/literature_notes/run-and-tumble.html",
-      "/plots/network_demo_1.html",
       "/plots/evo.html",
       "/shared/gitinfo.html",
       "/activity_log/week_1.html",
       "/activity_log/week_14.html",
       "/activity_log/week_15.html",
+      "/activity_log/week_16.html",
       "/activity_log/week_2.html",
       "/activity_log/week_3.html",
       "/activity_log/week_4.html",
@@ -55,7 +56,8 @@
       "/activity_log/week_7.html",
       "/activity_log/week_8.html",
       "/activity_log/week_14.html",
-      "/activity_log/week_15.html"
+      "/activity_log/week_15.html",
+      "/activity_log/week_16.html"
     ]
   },
   {

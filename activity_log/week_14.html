@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -192,6 +192,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 16</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -270,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Single density network</span></a>
+ <span class="menu-text">Dropout and convolution demo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -339,6 +345,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training logbook</span></a>
+  </div>
+</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
@@ -451,7 +463,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
-  <li><a href="#no-rolling" id="toc-no-rolling" class="nav-link" data-scroll-target="#no-rolling">No rolling</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#remove-the-hardcoded-augmentation-function" id="toc-remove-the-hardcoded-augmentation-function" class="nav-link" data-scroll-target="#remove-the-hardcoded-augmentation-function">Remove the hardcoded augmentation function</a></li>
+  </ul></li>
+  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_14.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_14.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -493,14 +509,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
 <li><label><input type="checkbox" checked="">Regenerate datasets without the rolling to reduce filesizes and complexity</label></li>
-<li><label><input type="checkbox">Quantify where cluster distribution stabilises</label></li>
+<li><label><input type="checkbox">Quantify where cluster distribution stabilises</label>
+<ul>
+<li>An aside for now as we wrap up analysis to focus on the neural network</li>
+</ul></li>
 </ul>
 </section>
-<section id="no-rolling" class="level2">
-<h2 class="anchored" data-anchor-id="no-rolling">No rolling</h2>
-<p>To remove the extra snapshots (look at <a href="./week_5.qmdk">Week 5</a> for an explanation of this), we remove the final loop in <code>sampler.py</code>, create a new version for this, which we named sampler_no_roll.py, and regenerated the datasets, each only 66 MB in size (reduced from 220 MB!).</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="remove-the-hardcoded-augmentation-function" class="level3">
+<h3 class="anchored" data-anchor-id="remove-the-hardcoded-augmentation-function">Remove the hardcoded augmentation function</h3>
+<p>To remove the extra snapshots (look at <a href="./week_5.qmdk">Week 5</a> for an explanation of this), we remove the final loop in <code>sampler.py</code>, create a new version for this, which we named <code>sampler_no_roll.py</code>, and regenerated the datasets, each only 66 MB in size (reduced from 220 MB!).</p>
 <p>A one-liner for this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="va">$(</span><span class="fu">seq</span> 0.0.5 0.05 0.5<span class="va">)</span><span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> sampler_no_roll.py <span class="at">--odd</span> <span class="at">--density</span> <span class="va">$i</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I think augmentation can be added in when we clean up and prepare data for the neural network, instead of being saved on disk.</p>
+<p>The rest of this week was spent wrapping up the analysis, and doing some reading on neural network, and convolutional neural networks.</p>
+</section>
+</section>
+<section id="reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
+<ul>
+<li><a href="https://www.deeplearningbook.org/">Deep learning book (MIT Press)</a> (good for references)</li>
+<li><a href="http://neuralnetworksanddeeplearning.com/">Neural networks and deep learning</a> (nicely written)</li>
+<li><a href="https://www.tensorflow.org/tutorials">TF tutorial</a> (hands-on)</li>
+</ul>
 
 
 <!-- -->
@@ -1092,7 +1124,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../activity_log/week_1.html" class="pagination-link  aria-label=" week="" 1"="">
+      <a href="../activity_log/week_1.html" class="pagination-link" aria-label="Week 1">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 1</span>
       </a>          
   </div>
@@ -1112,19 +1144,36 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-8"><a href="#cb2-8"></a></span>
 <span id="cb2-9"><a href="#cb2-9"></a><span class="ss">- </span><span class="va">[x]</span> Regenerate datasets without the rolling to reduce filesizes and complexity</span>
 <span id="cb2-10"><a href="#cb2-10"></a><span class="ss">- </span><span class="va">[ ]</span> Quantify where cluster distribution stabilises</span>
-<span id="cb2-11"><a href="#cb2-11"></a></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="fu">## No rolling</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a>To remove the extra snapshots (look at <span class="co">[</span><span class="ot">Week 5</span><span class="co">](./week_5.qmdk)</span> for an</span>
-<span id="cb2-15"><a href="#cb2-15"></a>explanation of this), we remove the final loop in <span class="in">`sampler.py`</span>, create a new</span>
-<span id="cb2-16"><a href="#cb2-16"></a>version for this, which we named sampler_no_roll.py, and regenerated the</span>
-<span id="cb2-17"><a href="#cb2-17"></a>datasets, each only 66 MB in size (reduced from 220 MB!).</span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a>A one-liner for this:</span>
-<span id="cb2-20"><a href="#cb2-20"></a></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="in">```bash</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="va">$(</span><span class="fu">seq</span> 0.0.5 0.05 0.5<span class="va">)</span><span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> sampler_no_roll.py <span class="at">--odd</span> <span class="at">--density</span> <span class="va">$i</span><span class="kw">;</span> <span class="cf">done</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="ss">    - </span>An aside for now as we wrap up analysis to focus on the neural network</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="fu">## Summary</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="fu">### Remove the hardcoded augmentation function</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>To remove the extra snapshots (look at <span class="co">[</span><span class="ot">Week 5</span><span class="co">](./week_5.qmdk)</span> for an</span>
+<span id="cb2-18"><a href="#cb2-18"></a>explanation of this), we remove the final loop in <span class="in">`sampler.py`</span>, create a new</span>
+<span id="cb2-19"><a href="#cb2-19"></a>version for this, which we named <span class="in">`sampler_no_roll.py`</span>, and regenerated the</span>
+<span id="cb2-20"><a href="#cb2-20"></a>datasets, each only 66 MB in size (reduced from 220 MB!).</span>
+<span id="cb2-21"><a href="#cb2-21"></a></span>
+<span id="cb2-22"><a href="#cb2-22"></a>A one-liner for this:</span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="in">```bash</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="va">$(</span><span class="fu">seq</span> 0.0.5 0.05 0.5<span class="va">)</span><span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> sampler_no_roll.py <span class="at">--odd</span> <span class="at">--density</span> <span class="va">$i</span><span class="kw">;</span> <span class="cf">done</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="in">```</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a></span>
+<span id="cb2-28"><a href="#cb2-28"></a>I think augmentation can be added in when we clean up and prepare data for the</span>
+<span id="cb2-29"><a href="#cb2-29"></a>neural network, instead of being saved on disk.</span>
+<span id="cb2-30"><a href="#cb2-30"></a></span>
+<span id="cb2-31"><a href="#cb2-31"></a>The rest of this week was spent wrapping up the analysis, and doing some</span>
+<span id="cb2-32"><a href="#cb2-32"></a>reading on neural network, and convolutional neural networks.</span>
+<span id="cb2-33"><a href="#cb2-33"></a></span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="fu">## Reference materials</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a></span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Deep learning book (MIT Press)</span><span class="co">](https://www.deeplearningbook.org/)</span> (good for</span>
+<span id="cb2-37"><a href="#cb2-37"></a>references)</span>
+<span id="cb2-38"><a href="#cb2-38"></a><span class="ss">- </span>[Neural networks and deep</span>
+<span id="cb2-39"><a href="#cb2-39"></a>learning](http://neuralnetworksanddeeplearning.com/) (nicely written)</span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="ss">- </span><span class="co">[</span><span class="ot">TF tutorial</span><span class="co">](https://www.tensorflow.org/tutorials)</span> (hands-on)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

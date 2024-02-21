@@ -1,1 +1,1 @@
-Sitemap: ssh://git@bimbox:88/repos/msci_wiki.git/sitemap.xml
+Sitemap: https://mstcl.github.io/msci-wiki/sitemap.xml

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../activity_log/week_2.html" rel="next">
+<link href="../activity_log/week_16.html" rel="next">
 <link href="../activity_log/week_14.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -192,6 +221,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 16</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -270,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Single density network</span></a>
+ <span class="menu-text">Dropout and convolution demo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -339,6 +374,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training logbook</span></a>
+  </div>
+</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
@@ -454,9 +495,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
   <li><a href="#basics-on-the-architecture-of-cnn" id="toc-basics-on-the-architecture-of-cnn" class="nav-link" data-scroll-target="#basics-on-the-architecture-of-cnn">Basics on the architecture of CNN</a></li>
-  <li><a href="#a-simple-network-to-start-with" id="toc-a-simple-network-to-start-with" class="nav-link" data-scroll-target="#a-simple-network-to-start-with">A simple network to start with</a></li>
-  <li><a href="#a-more-complicated-network" id="toc-a-more-complicated-network" class="nav-link" data-scroll-target="#a-more-complicated-network">A more complicated network</a></li>
+  <li><a href="#classifying-our-modelproblem" id="toc-classifying-our-modelproblem" class="nav-link" data-scroll-target="#classifying-our-modelproblem">Classifying our model/problem</a></li>
+  <li><a href="#initial-strategy" id="toc-initial-strategy" class="nav-link" data-scroll-target="#initial-strategy">Initial strategy</a></li>
+  <li><a href="#experiment-summary" id="toc-experiment-summary" class="nav-link" data-scroll-target="#experiment-summary">Experiment summary</a></li>
   </ul></li>
+  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_15.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_15.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -505,7 +548,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We are currently doing this on our personal machines as doing interactive mode is not possible on BluePebble (unclear about BlueCrystal). Playing with the CNNs on a local notebook is the best method for now to be able to prototype quickly.</p>
 <section id="basics-on-the-architecture-of-cnn" class="level3">
 <h3 class="anchored" data-anchor-id="basics-on-the-architecture-of-cnn">Basics on the architecture of CNN</h3>
-<p>See the results of this week’s tinkering <a href="../plots/network_demo_1.html">here</a>.</p>
 <p>We feed our snapshots in, but to represent it as a tensor. Our snapshot has one channel depth, so the tensor shape is <code>(128,128,1)</code>.</p>
 <p>We start out with the <strong>convolutional layer</strong>. This layer performs a convolution, scanning the input with a number of filters with a smaller size than the input image itself, the size of the filter is determined by the kernel size. And the output of shape of the convolutional layer is of shape <code>(128,128,N)</code> where <code>N</code> is the number of filters applied.</p>
 <ul>
@@ -528,8 +570,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use pooling, batch normalization, and dropout layers</li>
 </ul>
 </section>
-<section id="a-simple-network-to-start-with" class="level3">
-<h3 class="anchored" data-anchor-id="a-simple-network-to-start-with">A simple network to start with</h3>
+<section id="classifying-our-modelproblem" class="level3">
+<h3 class="anchored" data-anchor-id="classifying-our-modelproblem">Classifying our model/problem</h3>
+<p>For this week, we start building the network. Our network is a regression problem, predicting a continuous parameter, our tumbling rate <span class="math inline">\(\alpha\)</span>.</p>
+<p>For this to work, we choose a loss function such as mean absolute error and mean squared error. We picked mean absolute error for now.</p>
+<p>Effectively, we want the model to minimise the mean absolute error (MAE from now on). From some precursor research, regression done on non-image data typically use only fully-connected layers. We have image data that we wish to apply convolution on, therefore we have to combine both.</p>
+<p>The input is an image, but we have to output a 1D vector that maps to predictions for one parameter (continuous). To do this, we apply <code>Flatten()</code> and <code>Dense(1, activation="linear")</code> at the end.</p>
+</section>
+<section id="initial-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="initial-strategy">Initial strategy</h3>
+<p>We begin with a simple model with one <code>Conv2D</code> layer:</p>
+<section id="a-simple-network-to-start-with-model-a" class="level4">
+<h4 class="anchored" data-anchor-id="a-simple-network-to-start-with-model-a">A simple network to start with: Model A</h4>
 <p>I used this in the single density notebook as the “basic” network:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>model <span class="op">=</span> Sequential()</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -545,10 +597,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12"></a>)</span>
 <span id="cb1-13"><a href="#cb1-13"></a>model.add(Flatten())</span>
 <span id="cb1-14"><a href="#cb1-14"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We compare this with a slightly more complicated one.</p>
 </section>
-<section id="a-more-complicated-network" class="level3">
-<h3 class="anchored" data-anchor-id="a-more-complicated-network">A more complicated network</h3>
-<p>I used this in the single density notebook to compare the effect of the dropout layers:</p>
+<section id="a-more-complicated-network-model-b" class="level4">
+<h4 class="anchored" data-anchor-id="a-more-complicated-network-model-b">A more complicated network: Model B</h4>
+<p>Based on <a href="https://scribe.rip/@msgold/predicting-images-with-a-cnn-90a25a9e4509">this blog post</a>, where they work on a classification problem, so we need to be careful with the output.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>model <span class="op">=</span> Sequential()</span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a>model.add(</span>
@@ -583,11 +636,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-32"><a href="#cb2-32"></a></span>
 <span id="cb2-33"><a href="#cb2-33"></a>model.add(Flatten())</span>
 <span id="cb2-34"><a href="#cb2-34"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I was interested in the effect of dropout, so I used Model B with and without dropout to compare the results.</p>
+</section>
+</section>
+<section id="experiment-summary" class="level3">
+<h3 class="anchored" data-anchor-id="experiment-summary">Experiment summary</h3>
+<p>See the results of this week’s tinkering <a href="../plots/network_demo_1.html">here</a>.</p>
+<section id="comparing-model-a-to-model-b" class="level4">
+<h4 class="anchored" data-anchor-id="comparing-model-a-to-model-b">Comparing Model A to Model B</h4>
+<ul>
+<li>Both seem to exhibit correlation to the actual values.</li>
+<li>Model A has significantly more spread than Model B</li>
+<li>Dropout doesn’t reduce spread but make the average of each <span class="math inline">\(\alpha\)</span> less centred around the actual value.</li>
+<li>Dropout adds a lot of spread to the first <span class="math inline">\(\alpha\)</span>.</li>
+<li>Model A performs poorly on <span class="math inline">\(\phi \neq 0.15\)</span> (which it was trained on).</li>
+<li>Model B performs poorly only on <span class="math inline">\(\phi = 0.45\)</span> (it does well on <span class="math inline">\(\phi = 0.25\)</span>)</li>
+<li>But turning off dropout for B makes it perform better on <span class="math inline">\(\phi = 0.45\)</span>.</li>
+</ul>
+<p>Dropout seems to reduce overfit by a lot. I don’t know if setting it to 0.2 here is too much dropout.</p>
+</section>
+</section>
+</section>
+<section id="reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
+<ul>
+<li><a href="https://pyimagesearch.com/2019/01/28/keras-regression-and-cnns/">House price regression 1</a></li>
+<li><a href="https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/">House price regression 2</a></li>
+<li><a href="https://www.tensorflow.org/tutorials/keras/regression">TF Regression tutorial</a></li>
+<li><a href="https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression">StackOverflow</a></li>
+<li><a href="https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value">StackOverflow 2</a></li>
+<li><a href="https://www.tensorflow.org/tutorials/keras/regression">TDS pytorch on CNN to predict a continous property</a></li>
+<li><a href="https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html">CNN with regression</a></li>
+</ul>
 
 
 <!-- -->
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1175,13 +1259,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../activity_log/week_14.html" class="pagination-link  aria-label=" week="" 14"="">
+      <a href="../activity_log/week_14.html" class="pagination-link" aria-label="Week 14">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 14</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../activity_log/week_2.html" class="pagination-link" aria-label="Week 2">
-        <span class="nav-page-text">Week 2</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../activity_log/week_16.html" class="pagination-link" aria-label="Week 16">
+        <span class="nav-page-text">Week 16</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -1203,111 +1287,169 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-16"><a href="#cb3-16"></a></span>
 <span id="cb3-17"><a href="#cb3-17"></a><span class="fu">### Basics on the architecture of CNN</span></span>
 <span id="cb3-18"><a href="#cb3-18"></a></span>
-<span id="cb3-19"><a href="#cb3-19"></a>See the results of this week's tinkering <span class="co">[</span><span class="ot">here</span><span class="co">](../plots/network_demo_1.qmd)</span>.</span>
-<span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a>We feed our snapshots in, but to represent it as a tensor. Our snapshot has one</span>
-<span id="cb3-22"><a href="#cb3-22"></a>channel depth, so the tensor shape is <span class="in">`(128,128,1)`</span>.</span>
-<span id="cb3-23"><a href="#cb3-23"></a></span>
-<span id="cb3-24"><a href="#cb3-24"></a>We start out with the **convolutional layer**. This layer performs a convolution,</span>
-<span id="cb3-25"><a href="#cb3-25"></a>scanning the input with a number of filters with a smaller size than the input</span>
-<span id="cb3-26"><a href="#cb3-26"></a>image itself, the size of the filter is determined by the kernel size. And the</span>
-<span id="cb3-27"><a href="#cb3-27"></a>output of shape of the convolutional layer is of shape <span class="in">`(128,128,N)`</span> where <span class="in">`N`</span></span>
-<span id="cb3-28"><a href="#cb3-28"></a>is the number of filters applied.</span>
-<span id="cb3-29"><a href="#cb3-29"></a></span>
-<span id="cb3-30"><a href="#cb3-30"></a><span class="ss">- </span>Kernel size <span class="in">`(x,y)`</span> is the window size that scans the image at each</span>
-<span id="cb3-31"><a href="#cb3-31"></a>iteration.</span>
-<span id="cb3-32"><a href="#cb3-32"></a><span class="ss">- </span>Stride <span class="in">`(x,y)`</span> is the step length to jump at each iteration.</span>
-<span id="cb3-33"><a href="#cb3-33"></a><span class="ss">- </span>Each filter produces a feature map, every filter added captures more complex</span>
-<span id="cb3-34"><a href="#cb3-34"></a>patterns.</span>
-<span id="cb3-35"><a href="#cb3-35"></a><span class="ss">- </span>We increase filter size with subsequent layers to capture more more</span>
-<span id="cb3-36"><a href="#cb3-36"></a>combinations.</span>
-<span id="cb3-37"><a href="#cb3-37"></a></span>
-<span id="cb3-38"><a href="#cb3-38"></a>A **flatten layer** will turn the input shape <span class="in">`(x,y,c)`</span> into <span class="in">`(x*y*c)`</span>, i.e. a</span>
-<span id="cb3-39"><a href="#cb3-39"></a>1D vector.</span>
-<span id="cb3-40"><a href="#cb3-40"></a></span>
-<span id="cb3-41"><a href="#cb3-41"></a>A **dense layer** (or fully-connected), map all input neurons to output neurons.</span>
-<span id="cb3-42"><a href="#cb3-42"></a>It takes in the number of units (neurons) and turn the input shape <span class="in">`(x,y,c)`</span></span>
-<span id="cb3-43"><a href="#cb3-43"></a>into <span class="in">`(x,y,units)`</span>.</span>
+<span id="cb3-19"><a href="#cb3-19"></a>We feed our snapshots in, but to represent it as a tensor. Our snapshot has one</span>
+<span id="cb3-20"><a href="#cb3-20"></a>channel depth, so the tensor shape is <span class="in">`(128,128,1)`</span>.</span>
+<span id="cb3-21"><a href="#cb3-21"></a></span>
+<span id="cb3-22"><a href="#cb3-22"></a>We start out with the **convolutional layer**. This layer performs a convolution,</span>
+<span id="cb3-23"><a href="#cb3-23"></a>scanning the input with a number of filters with a smaller size than the input</span>
+<span id="cb3-24"><a href="#cb3-24"></a>image itself, the size of the filter is determined by the kernel size. And the</span>
+<span id="cb3-25"><a href="#cb3-25"></a>output of shape of the convolutional layer is of shape <span class="in">`(128,128,N)`</span> where <span class="in">`N`</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>is the number of filters applied.</span>
+<span id="cb3-27"><a href="#cb3-27"></a></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="ss">- </span>Kernel size <span class="in">`(x,y)`</span> is the window size that scans the image at each</span>
+<span id="cb3-29"><a href="#cb3-29"></a>  iteration.</span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="ss">- </span>Stride <span class="in">`(x,y)`</span> is the step length to jump at each iteration.</span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="ss">- </span>Each filter produces a feature map, every filter added captures more complex</span>
+<span id="cb3-32"><a href="#cb3-32"></a>  patterns.</span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="ss">- </span>We increase filter size with subsequent layers to capture more more</span>
+<span id="cb3-34"><a href="#cb3-34"></a>  combinations.</span>
+<span id="cb3-35"><a href="#cb3-35"></a></span>
+<span id="cb3-36"><a href="#cb3-36"></a>A **flatten layer** will turn the input shape <span class="in">`(x,y,c)`</span> into <span class="in">`(x*y*c)`</span>, i.e. a</span>
+<span id="cb3-37"><a href="#cb3-37"></a>1D vector.</span>
+<span id="cb3-38"><a href="#cb3-38"></a></span>
+<span id="cb3-39"><a href="#cb3-39"></a>A **dense layer** (or fully-connected), map all input neurons to output neurons.</span>
+<span id="cb3-40"><a href="#cb3-40"></a>It takes in the number of units (neurons) and turn the input shape <span class="in">`(x,y,c)`</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>into <span class="in">`(x,y,units)`</span>.</span>
+<span id="cb3-42"><a href="#cb3-42"></a></span>
+<span id="cb3-43"><a href="#cb3-43"></a><span class="ss">- </span>Linear activation is pass-through (does nothing).</span>
 <span id="cb3-44"><a href="#cb3-44"></a></span>
-<span id="cb3-45"><a href="#cb3-45"></a><span class="ss">- </span>Linear activation is pass-through (does nothing).</span>
-<span id="cb3-46"><a href="#cb3-46"></a></span>
-<span id="cb3-47"><a href="#cb3-47"></a>A **pooling layer** reduces dimensions of the feature maps, which reduces the</span>
-<span id="cb3-48"><a href="#cb3-48"></a>number of parameters. We have max pooling and average pooling (max takes</span>
-<span id="cb3-49"><a href="#cb3-49"></a>maximum value from the kernel window and average takes the mean).</span>
-<span id="cb3-50"><a href="#cb3-50"></a></span>
-<span id="cb3-51"><a href="#cb3-51"></a>A **dropout layer** randomly drops a fraction (the input parameter) of the</span>
-<span id="cb3-52"><a href="#cb3-52"></a>input units to 0.</span>
-<span id="cb3-53"><a href="#cb3-53"></a></span>
-<span id="cb3-54"><a href="#cb3-54"></a>A **batch normalization** layer normalizes the output. This helps with training</span>
-<span id="cb3-55"><a href="#cb3-55"></a>speed.</span>
+<span id="cb3-45"><a href="#cb3-45"></a>A **pooling layer** reduces dimensions of the feature maps, which reduces the</span>
+<span id="cb3-46"><a href="#cb3-46"></a>number of parameters. We have max pooling and average pooling (max takes</span>
+<span id="cb3-47"><a href="#cb3-47"></a>maximum value from the kernel window and average takes the mean).</span>
+<span id="cb3-48"><a href="#cb3-48"></a></span>
+<span id="cb3-49"><a href="#cb3-49"></a>A **dropout layer** randomly drops a fraction (the input parameter) of the</span>
+<span id="cb3-50"><a href="#cb3-50"></a>input units to 0.</span>
+<span id="cb3-51"><a href="#cb3-51"></a></span>
+<span id="cb3-52"><a href="#cb3-52"></a>A **batch normalization** layer normalizes the output. This helps with training</span>
+<span id="cb3-53"><a href="#cb3-53"></a>speed.</span>
+<span id="cb3-54"><a href="#cb3-54"></a></span>
+<span id="cb3-55"><a href="#cb3-55"></a>To help reduce overfitting:</span>
 <span id="cb3-56"><a href="#cb3-56"></a></span>
-<span id="cb3-57"><a href="#cb3-57"></a>To help reduce overfitting:</span>
-<span id="cb3-58"><a href="#cb3-58"></a></span>
-<span id="cb3-59"><a href="#cb3-59"></a><span class="ss">- </span>Increase training data</span>
-<span id="cb3-60"><a href="#cb3-60"></a><span class="ss">- </span>Use pooling, batch normalization, and dropout layers</span>
+<span id="cb3-57"><a href="#cb3-57"></a><span class="ss">- </span>Increase training data</span>
+<span id="cb3-58"><a href="#cb3-58"></a><span class="ss">- </span>Use pooling, batch normalization, and dropout layers</span>
+<span id="cb3-59"><a href="#cb3-59"></a></span>
+<span id="cb3-60"><a href="#cb3-60"></a><span class="fu">### Classifying our model/problem</span></span>
 <span id="cb3-61"><a href="#cb3-61"></a></span>
-<span id="cb3-62"><a href="#cb3-62"></a><span class="fu">### A simple network to start with</span></span>
-<span id="cb3-63"><a href="#cb3-63"></a></span>
-<span id="cb3-64"><a href="#cb3-64"></a>I used this in the single density notebook as the "basic" network:</span>
-<span id="cb3-65"><a href="#cb3-65"></a></span>
-<span id="cb3-66"><a href="#cb3-66"></a><span class="in">```python</span></span>
-<span id="cb3-67"><a href="#cb3-67"></a>model <span class="op">=</span> Sequential()</span>
-<span id="cb3-68"><a href="#cb3-68"></a></span>
-<span id="cb3-69"><a href="#cb3-69"></a>model.add(</span>
-<span id="cb3-70"><a href="#cb3-70"></a>    Conv2D(</span>
-<span id="cb3-71"><a href="#cb3-71"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb3-72"><a href="#cb3-72"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-73"><a href="#cb3-73"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
-<span id="cb3-74"><a href="#cb3-74"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-75"><a href="#cb3-75"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
-<span id="cb3-76"><a href="#cb3-76"></a>        input_shape<span class="op">=</span>shape,</span>
-<span id="cb3-77"><a href="#cb3-77"></a>    )</span>
-<span id="cb3-78"><a href="#cb3-78"></a>)</span>
-<span id="cb3-79"><a href="#cb3-79"></a>model.add(Flatten())</span>
-<span id="cb3-80"><a href="#cb3-80"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
-<span id="cb3-81"><a href="#cb3-81"></a><span class="in">```</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a>For this week, we start building the network. Our network is a regression</span>
+<span id="cb3-63"><a href="#cb3-63"></a>problem, predicting a continuous parameter, our tumbling rate $\alpha$.</span>
+<span id="cb3-64"><a href="#cb3-64"></a></span>
+<span id="cb3-65"><a href="#cb3-65"></a>For this to work, we choose a loss function such as mean absolute error and</span>
+<span id="cb3-66"><a href="#cb3-66"></a>mean squared error. We picked mean absolute error for now.</span>
+<span id="cb3-67"><a href="#cb3-67"></a></span>
+<span id="cb3-68"><a href="#cb3-68"></a>Effectively, we want the model to minimise the mean absolute error (MAE from</span>
+<span id="cb3-69"><a href="#cb3-69"></a>now on). From some precursor research, regression done on non-image data</span>
+<span id="cb3-70"><a href="#cb3-70"></a>typically use only fully-connected layers. We have image data that we wish to</span>
+<span id="cb3-71"><a href="#cb3-71"></a>apply convolution on, therefore we have to combine both.</span>
+<span id="cb3-72"><a href="#cb3-72"></a></span>
+<span id="cb3-73"><a href="#cb3-73"></a>The input is an image, but we have to output a 1D vector that maps to</span>
+<span id="cb3-74"><a href="#cb3-74"></a>predictions for one parameter (continuous). To do this, we apply <span class="in">`Flatten()`</span></span>
+<span id="cb3-75"><a href="#cb3-75"></a>and <span class="in">`Dense(1, activation="linear")`</span> at the end.</span>
+<span id="cb3-76"><a href="#cb3-76"></a></span>
+<span id="cb3-77"><a href="#cb3-77"></a><span class="fu">### Initial strategy</span></span>
+<span id="cb3-78"><a href="#cb3-78"></a></span>
+<span id="cb3-79"><a href="#cb3-79"></a>We begin with a simple model with one <span class="in">`Conv2D`</span> layer:</span>
+<span id="cb3-80"><a href="#cb3-80"></a></span>
+<span id="cb3-81"><a href="#cb3-81"></a><span class="fu">#### A simple network to start with: Model A</span></span>
 <span id="cb3-82"><a href="#cb3-82"></a></span>
-<span id="cb3-83"><a href="#cb3-83"></a><span class="fu">### A more complicated network</span></span>
+<span id="cb3-83"><a href="#cb3-83"></a>I used this in the single density notebook as the "basic" network:</span>
 <span id="cb3-84"><a href="#cb3-84"></a></span>
-<span id="cb3-85"><a href="#cb3-85"></a>I used this in the single density notebook to compare the effect of the dropout</span>
-<span id="cb3-86"><a href="#cb3-86"></a>layers:</span>
+<span id="cb3-85"><a href="#cb3-85"></a><span class="in">```python</span></span>
+<span id="cb3-86"><a href="#cb3-86"></a>model <span class="op">=</span> Sequential()</span>
 <span id="cb3-87"><a href="#cb3-87"></a></span>
-<span id="cb3-88"><a href="#cb3-88"></a><span class="in">```python</span></span>
-<span id="cb3-89"><a href="#cb3-89"></a>model <span class="op">=</span> Sequential()</span>
-<span id="cb3-90"><a href="#cb3-90"></a></span>
-<span id="cb3-91"><a href="#cb3-91"></a>model.add(</span>
-<span id="cb3-92"><a href="#cb3-92"></a>    Conv2D(</span>
-<span id="cb3-93"><a href="#cb3-93"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb3-94"><a href="#cb3-94"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-95"><a href="#cb3-95"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
-<span id="cb3-96"><a href="#cb3-96"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-97"><a href="#cb3-97"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
-<span id="cb3-98"><a href="#cb3-98"></a>        input_shape<span class="op">=</span>shape,</span>
-<span id="cb3-99"><a href="#cb3-99"></a>    )</span>
-<span id="cb3-100"><a href="#cb3-100"></a>)</span>
-<span id="cb3-101"><a href="#cb3-101"></a>model.add(BatchNormalization())</span>
-<span id="cb3-102"><a href="#cb3-102"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
-<span id="cb3-103"><a href="#cb3-103"></a>model.add(BatchNormalization())</span>
-<span id="cb3-104"><a href="#cb3-104"></a></span>
-<span id="cb3-105"><a href="#cb3-105"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
-<span id="cb3-106"><a href="#cb3-106"></a></span>
-<span id="cb3-107"><a href="#cb3-107"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb3-108"><a href="#cb3-108"></a>model.add(BatchNormalization())</span>
-<span id="cb3-109"><a href="#cb3-109"></a></span>
-<span id="cb3-110"><a href="#cb3-110"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb3-111"><a href="#cb3-111"></a>model.add(BatchNormalization())</span>
-<span id="cb3-112"><a href="#cb3-112"></a></span>
-<span id="cb3-113"><a href="#cb3-113"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
-<span id="cb3-114"><a href="#cb3-114"></a></span>
-<span id="cb3-115"><a href="#cb3-115"></a>model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb3-116"><a href="#cb3-116"></a></span>
-<span id="cb3-117"><a href="#cb3-117"></a><span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
-<span id="cb3-118"><a href="#cb3-118"></a>    model.add(Dropout(<span class="fl">0.2</span>))</span>
-<span id="cb3-119"><a href="#cb3-119"></a>model.add(Dense(units<span class="op">=</span><span class="dv">10</span>, activation<span class="op">=</span><span class="st">"softmax"</span>))</span>
-<span id="cb3-120"><a href="#cb3-120"></a></span>
-<span id="cb3-121"><a href="#cb3-121"></a>model.add(Flatten())</span>
-<span id="cb3-122"><a href="#cb3-122"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
-<span id="cb3-123"><a href="#cb3-123"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-88"><a href="#cb3-88"></a>model.add(</span>
+<span id="cb3-89"><a href="#cb3-89"></a>    Conv2D(</span>
+<span id="cb3-90"><a href="#cb3-90"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb3-91"><a href="#cb3-91"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb3-92"><a href="#cb3-92"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
+<span id="cb3-93"><a href="#cb3-93"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb3-94"><a href="#cb3-94"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
+<span id="cb3-95"><a href="#cb3-95"></a>        input_shape<span class="op">=</span>shape,</span>
+<span id="cb3-96"><a href="#cb3-96"></a>    )</span>
+<span id="cb3-97"><a href="#cb3-97"></a>)</span>
+<span id="cb3-98"><a href="#cb3-98"></a>model.add(Flatten())</span>
+<span id="cb3-99"><a href="#cb3-99"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
+<span id="cb3-100"><a href="#cb3-100"></a><span class="in">```</span></span>
+<span id="cb3-101"><a href="#cb3-101"></a></span>
+<span id="cb3-102"><a href="#cb3-102"></a>We compare this with a slightly more complicated one.</span>
+<span id="cb3-103"><a href="#cb3-103"></a></span>
+<span id="cb3-104"><a href="#cb3-104"></a><span class="fu">#### A more complicated network: Model B</span></span>
+<span id="cb3-105"><a href="#cb3-105"></a></span>
+<span id="cb3-106"><a href="#cb3-106"></a>Based on [this blog</span>
+<span id="cb3-107"><a href="#cb3-107"></a>post](https://scribe.rip/@msgold/predicting-images-with-a-cnn-90a25a9e4509),</span>
+<span id="cb3-108"><a href="#cb3-108"></a>where they work on a classification problem, so we need to be careful with the</span>
+<span id="cb3-109"><a href="#cb3-109"></a>output.</span>
+<span id="cb3-110"><a href="#cb3-110"></a></span>
+<span id="cb3-111"><a href="#cb3-111"></a><span class="in">```python</span></span>
+<span id="cb3-112"><a href="#cb3-112"></a>model <span class="op">=</span> Sequential()</span>
+<span id="cb3-113"><a href="#cb3-113"></a></span>
+<span id="cb3-114"><a href="#cb3-114"></a>model.add(</span>
+<span id="cb3-115"><a href="#cb3-115"></a>    Conv2D(</span>
+<span id="cb3-116"><a href="#cb3-116"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb3-117"><a href="#cb3-117"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb3-118"><a href="#cb3-118"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
+<span id="cb3-119"><a href="#cb3-119"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb3-120"><a href="#cb3-120"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
+<span id="cb3-121"><a href="#cb3-121"></a>        input_shape<span class="op">=</span>shape,</span>
+<span id="cb3-122"><a href="#cb3-122"></a>    )</span>
+<span id="cb3-123"><a href="#cb3-123"></a>)</span>
+<span id="cb3-124"><a href="#cb3-124"></a>model.add(BatchNormalization())</span>
+<span id="cb3-125"><a href="#cb3-125"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
+<span id="cb3-126"><a href="#cb3-126"></a>model.add(BatchNormalization())</span>
+<span id="cb3-127"><a href="#cb3-127"></a></span>
+<span id="cb3-128"><a href="#cb3-128"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
+<span id="cb3-129"><a href="#cb3-129"></a></span>
+<span id="cb3-130"><a href="#cb3-130"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb3-131"><a href="#cb3-131"></a>model.add(BatchNormalization())</span>
+<span id="cb3-132"><a href="#cb3-132"></a></span>
+<span id="cb3-133"><a href="#cb3-133"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb3-134"><a href="#cb3-134"></a>model.add(BatchNormalization())</span>
+<span id="cb3-135"><a href="#cb3-135"></a></span>
+<span id="cb3-136"><a href="#cb3-136"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
+<span id="cb3-137"><a href="#cb3-137"></a></span>
+<span id="cb3-138"><a href="#cb3-138"></a>model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb3-139"><a href="#cb3-139"></a></span>
+<span id="cb3-140"><a href="#cb3-140"></a><span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
+<span id="cb3-141"><a href="#cb3-141"></a>    model.add(Dropout(<span class="fl">0.2</span>))</span>
+<span id="cb3-142"><a href="#cb3-142"></a>model.add(Dense(units<span class="op">=</span><span class="dv">10</span>, activation<span class="op">=</span><span class="st">"softmax"</span>))</span>
+<span id="cb3-143"><a href="#cb3-143"></a></span>
+<span id="cb3-144"><a href="#cb3-144"></a>model.add(Flatten())</span>
+<span id="cb3-145"><a href="#cb3-145"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
+<span id="cb3-146"><a href="#cb3-146"></a><span class="in">```</span></span>
+<span id="cb3-147"><a href="#cb3-147"></a></span>
+<span id="cb3-148"><a href="#cb3-148"></a>I was interested in the effect of dropout, so I used Model B with and without dropout</span>
+<span id="cb3-149"><a href="#cb3-149"></a>to compare the results.</span>
+<span id="cb3-150"><a href="#cb3-150"></a></span>
+<span id="cb3-151"><a href="#cb3-151"></a><span class="fu">### Experiment summary</span></span>
+<span id="cb3-152"><a href="#cb3-152"></a></span>
+<span id="cb3-153"><a href="#cb3-153"></a>See the results of this week's tinkering <span class="co">[</span><span class="ot">here</span><span class="co">](../plots/network_demo_1.qmd)</span>.</span>
+<span id="cb3-154"><a href="#cb3-154"></a></span>
+<span id="cb3-155"><a href="#cb3-155"></a><span class="fu">#### Comparing Model A to Model B</span></span>
+<span id="cb3-156"><a href="#cb3-156"></a></span>
+<span id="cb3-157"><a href="#cb3-157"></a><span class="ss">- </span>Both seem to exhibit correlation to the actual values.</span>
+<span id="cb3-158"><a href="#cb3-158"></a><span class="ss">- </span>Model A has significantly more spread than Model B</span>
+<span id="cb3-159"><a href="#cb3-159"></a><span class="ss">- </span>Dropout doesn't reduce spread but make the average of each $\alpha$ less</span>
+<span id="cb3-160"><a href="#cb3-160"></a>  centred around the actual value.</span>
+<span id="cb3-161"><a href="#cb3-161"></a><span class="ss">- </span>Dropout adds a lot of spread to the first $\alpha$.</span>
+<span id="cb3-162"><a href="#cb3-162"></a><span class="ss">- </span>Model A performs poorly on $\phi \neq 0.15$ (which it was trained on).</span>
+<span id="cb3-163"><a href="#cb3-163"></a><span class="ss">- </span>Model B performs poorly only on $\phi = 0.45$ (it does well on $\phi = 0.25$)</span>
+<span id="cb3-164"><a href="#cb3-164"></a><span class="ss">- </span>But turning off dropout for B makes it perform better on $\phi = 0.45$.</span>
+<span id="cb3-165"><a href="#cb3-165"></a></span>
+<span id="cb3-166"><a href="#cb3-166"></a>Dropout seems to reduce overfit by a lot. I don't know if setting it to 0.2</span>
+<span id="cb3-167"><a href="#cb3-167"></a>here is too much dropout.</span>
+<span id="cb3-168"><a href="#cb3-168"></a></span>
+<span id="cb3-169"><a href="#cb3-169"></a><span class="fu">## Reference materials</span></span>
+<span id="cb3-170"><a href="#cb3-170"></a></span>
+<span id="cb3-171"><a href="#cb3-171"></a><span class="ss">- </span>[House price</span>
+<span id="cb3-172"><a href="#cb3-172"></a>  regression 1](https://pyimagesearch.com/2019/01/28/keras-regression-and-cnns/)</span>
+<span id="cb3-173"><a href="#cb3-173"></a><span class="ss">- </span><span class="co">[</span><span class="ot">House price regression 2</span><span class="co">](https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/)</span></span>
+<span id="cb3-174"><a href="#cb3-174"></a><span class="ss">- </span><span class="co">[</span><span class="ot">TF Regression tutorial</span><span class="co">](https://www.tensorflow.org/tutorials/keras/regression)</span></span>
+<span id="cb3-175"><a href="#cb3-175"></a><span class="ss">- </span><span class="co">[</span><span class="ot">StackOverflow</span><span class="co">](https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression)</span></span>
+<span id="cb3-176"><a href="#cb3-176"></a><span class="ss">- </span>[StackOverflow</span>
+<span id="cb3-177"><a href="#cb3-177"></a>  2](https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value)</span>
+<span id="cb3-178"><a href="#cb3-178"></a><span class="ss">- </span>[TDS pytorch on CNN to predict a continous</span>
+<span id="cb3-179"><a href="#cb3-179"></a>  property](https://www.tensorflow.org/tutorials/keras/regression)</span>
+<span id="cb3-180"><a href="#cb3-180"></a><span class="ss">- </span>[CNN with</span>
+<span id="cb3-181"><a href="#cb3-181"></a>  regression](https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

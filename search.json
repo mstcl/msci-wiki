@@ -64,7 +64,7 @@
     "href": "sitemap.html",
     "title": "Sitemap",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\n\n\n\n\n2020 Motile Active Matter Introduction\n\n\n\n\nActive Brownian particles: from collective phenomona to fundamental physics\n\n\n\n\nActivity log listing\n\n\n\n\nCluster distribution grid\n\n\n\n\nCluster information\n\n\n\n\nCluster labelling demo\n\n\n\n\nDeadline information\n\n\n\n\nFitting cluster distribution\n\n\n\n\nHome\n\n\n\n\nLink to colab notebook\n\n\n\n\nLiterature notes listing\n\n\n\n\nNumber of clusters\n\n\n\n\nPrepratory work, discussion, and plan for the future\n\n\n\n\nRatio of biggest cluster over density\n\n\n\n\nRepository information\n\n\n\n\nRun-and-tumble dynamics in a crowded environment: PEP for swimmers\n\n\n\n\nSingle density network\n\n\n\n\nSnapshot evolution\n\n\n\n\nUseful Commands and Information for Shared Github Activity\n\n\n\n\nWeek 1\n\n\n\n\nWeek 14\n\n\n\n\nWeek 15\n\n\n\n\nWeek 2\n\n\n\n\nWeek 3\n\n\n\n\nWeek 4\n\n\n\n\nWeek 5\n\n\n\n\nWeek 6\n\n\n\n\nWeek 7\n\n\n\n\nWeek 8-13\n\n\n\n\nWhat is active matter and why do we study it?\n\n\n\n\nWritings listing\n\n\n\n\n \n\n\n\n\n\nNo matching items\n\n\n  \n\n Back to top",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\n\n\n\n\n2020 Motile Active Matter Introduction\n\n\n\n\nActive Brownian particles: from collective phenomona to fundamental physics\n\n\n\n\nActivity log listing\n\n\n\n\nCluster distribution grid\n\n\n\n\nCluster information\n\n\n\n\nCluster labelling demo\n\n\n\n\nDeadline information\n\n\n\n\nDropout and convolution demo\n\n\n\n\nFitting cluster distribution\n\n\n\n\nHome\n\n\n\n\nLink to colab notebook\n\n\n\n\nLiterature notes listing\n\n\n\n\nNumber of clusters\n\n\n\n\nPrepratory work, discussion, and plan for the future\n\n\n\n\nRatio of biggest cluster over density\n\n\n\n\nRepository information\n\n\n\n\nRun-and-tumble dynamics in a crowded environment: PEP for swimmers\n\n\n\n\nSnapshot evolution\n\n\n\n\nUseful Commands and Information for Shared Github Activity\n\n\n\n\nWeek 1\n\n\n\n\nWeek 14\n\n\n\n\nWeek 15\n\n\n\n\nWeek 16\n\n\n\n\nWeek 2\n\n\n\n\nWeek 3\n\n\n\n\nWeek 4\n\n\n\n\nWeek 5\n\n\n\n\nWeek 6\n\n\n\n\nWeek 7\n\n\n\n\nWeek 8-13\n\n\n\n\nWhat is active matter and why do we study it?\n\n\n\n\nWritings listing\n\n\n\n\n \n\n\n\n\n\nNo matching items\n\n\n  \n\n Back to top",
     "crumbs": [
       "All pages"
     ]
@@ -74,7 +74,7 @@
     "href": "writings/landing.html",
     "title": "Writings listing",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 13, 2023\n\n\nPrepratory work, discussion, and plan for the future\n\n\nNP \n\n\n\n\nFeb 2, 2024\n\n\nWhat is active matter and why do we study it?\n\n\nNP \n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 13, 2023\n\n\nPrepratory work, discussion, and plan for the future\n\n\nNP \n\n\n\n\nFeb 14, 2024\n\n\nWhat is active matter and why do we study it?\n\n\nNP \n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "activity_log/week_1.html",
@@ -341,15 +341,265 @@
     ]
   },
   {
-    "objectID": "shared/ftnotes/label.html",
-    "href": "shared/ftnotes/label.html",
-    "title": "Minimal cluster analysis",
+    "objectID": "shared/ftnotes/Colab.html",
+    "href": "shared/ftnotes/Colab.html",
+    "title": "",
     "section": "",
-    "text": "Minimal cluster analysis\n\nfrom scipy import ndimage\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nI create a random binary image (through thresholding).\n\nimage = np.random.uniform(0, 1, (128, 128))\nim = (image &gt; 0.8).astype(int)\n\nplt.matshow(im)\n\n\n\n\n\n\n\n\nI can then label connected regions, by specifying the structuring element (kernel).\n\nkernel = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]\nlabelled, nlabels = ndimage.label(im, structure=kernel)\n\n\nplt.imshow(labelled, cmap=plt.cm.rainbow)\nplt.colorbar()\n\n\n\n\n\n\n\n\nI count the number of pixels with a certain label (ignoring label 0 because it is the background)\n\ncluster_sizes = np.bincount(labelled.flatten())[1:]\n\nAnd plot the probability distribution with logarithmically spaced bins\n\nminimum = cluster_sizes.min()\nmaximum = cluster_sizes.max()\nbin_edges = np.logspace(np.log2(minimum), np.log2(maximum), 32, base=2)\nhist, edges = np.histogram(cluster_sizes, bins=bin_edges, density=True)\nplt.plot(2 ** bin_edges[:-1], hist, \"o\")\nplt.yscale(\"log\")\nplt.xscale(\"log\")\nplt.xlabel(\"cluster sizes\")\nplt.ylabel(\"pdf\")\n\nText(0, 0.5, 'pdf')\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "Main contentFT notesLink to colab notebook\n\n\n\n\n\nLink to colab notebook\nThis is an experimental notebook for the training of the convolutional neural network onto the data from the Persistence Exclusion Process\nhttps://colab.research.google.com/drive/1B0vXEyb2GG4Mjc5dbd45LIrfcQbReFCr?usp=sharing\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Main content",
       "FT notes",
-      "Minimal cluster analysis"
+      "Link to colab notebook"
+    ]
+  },
+  {
+    "objectID": "shared/ftnotes/interim-report-structure.html",
+    "href": "shared/ftnotes/interim-report-structure.html",
+    "title": "",
+    "section": "",
+    "text": "Main contentFT notesInterim Report Structure\n\n\n\n\n\nGeneralities [700 words]\nModelling of active matter [300 words]\n\nparticle-based (active Brownian particles or active OrnsteinUhlenbeck particles)\nfield theories (Model B+ , Tjhung et al 2023)\n\nLattice models ( Soto, Telo de Gama) [200 words]\nFocus on Persistent Exclusion Process (Background and main results) [200 words]\nAnticipate the overall goal (linking structure to activity), mention the precedent of Rassolov et al. 2022 [200 words]\nPreparatory work up to now [500 words]\n\nbrief reference to the in-house code\nvalidation of the code\ntests in different conditions\nfirst measurements (orientation, cluster sizes, cluster distributions)\ncompare with Soto?\n\nlook back critically: discussion [200 words]\nPlan for the future [200 words]\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Main content",
+      "FT notes",
+      "Interim Report Structure"
+    ]
+  },
+  {
+    "objectID": "shared/cluster.html",
+    "href": "shared/cluster.html",
+    "title": "Cluster information",
+    "section": "",
+    "text": "Project code: PHYS030564\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Project information",
+      "Cluster"
+    ]
+  },
+  {
+    "objectID": "shared/gitinfo.html",
+    "href": "shared/gitinfo.html",
+    "title": "",
+    "section": "",
+    "text": "Useful Commands and Information for Shared Github Activity\n\n\nTable of Contents\n\nTable of Contents\nIntroduction\nCloning\nBasic Git Commands\nBasic Quarto Commands\n\n\n\n1. Introduction\nThis page is an attempt to take commands that pop up in the course of sharing our activity (whether it’s passing it collectively or publishing it to an easily accessible site). Everything here is subject to change and addition as we discover more commands that need remembering. This page should be as standardised and explanatory as possible; when deemed necessary, examples should be given alongside the basic command structure.\n\n\n2. Cloning\nWhen cloning a repository, use:\ngit clone git@github.com:&lt;user&gt;/&lt;repo&gt;\nIf you didn’t use ssh url while cloning, change remote before pushing:\ngit remote set-url origin git@github.com:&lt;user&gt;/&lt;repo&gt;\nFor instance, cloning the persistent exclusion process example script:\ngit remote set-url origin git@github:dlactivematter/persistent-exclusion-process.git\nIf in doubt, use the following to show all the available remotes:\ngit remote -v\n\n\n3. Basic Git Commands\nCheck which branch you are on (and also other available branches):\ngit status\nAdd new file to current branch\ngit add &lt;filename&gt;\nCommit new file to current branch (prompts adding a commit comment)\ngit commit &lt;filename&gt; \nPush all changes to branch\ngit push origin &lt;branch&gt;\n\n\n4. Basic Quarto Commands\nNote: only works on .qmd files\nPreview .qmd document in browser\nquarto preview &lt;filename&gt;\nRender all .qmd files into html (usually not necessary)\nquarto render\nRender all .qmd files into html and publish them to the gh-pages branch\nquarto publish gh-pages\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "plots/evo.html",
+    "href": "plots/evo.html",
+    "title": "Snapshot evolution",
+    "section": "",
+    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom plot_utils import get_plot_configs\n\nimport cmcrameri\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom scipy import ndimage\nfrom matplotlib.patches import ConnectionPatch\nfrom mpl_toolkits.axes_grid1.inset_locator import InsetPosition, inset_axes\n\nimport lattice\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\ndef plot_img(ax, img, tau):\n    ax.set_xlim(0, n_x)\n    ax.set_ylim(0, n_y)\n    ax.set_aspect(\"equal\", \"box\")\n    ax.tick_params(\n        axis = \"both\",\n        which = \"both\",\n        length = 0,\n        labelleft = False,\n        labelbottom = False,\n    )\n    ax.matshow(img, cmap=plt.get_cmap(name=\"cmc.grayCS\", lut=5))\n    ax.set_title(r\"$\\tau = {}$\".format(tau))\n    return ax\n\ndef plot_lb(img, ax):\n    cmap=plt.get_cmap(\"cmc.lipariS\")\n    cl = cmap.__dict__['colors']\n    new_cls = np.concatenate((cl,cl[1:],cl[1:],cl[1:]))\n    cmap.__dict__[\"colors\"] = new_cls\n    cmap.__dict__[\"colors\"][0] = np.array([1,1,1])\n    cmap.__dict__[\"N\"] = len(new_cls)\n    kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\n    lb, _ = ndimage.label(img, structure=kernel)\n    ax.tick_params(\n        axis = \"both\",\n        which = \"both\",\n        length = 0,\n        labelleft = False,\n        labelbottom = False,\n    )\n    ax.matshow(np.flipud(lb), cmap=cmap)\n    return ax\n\nn_x = n_y = 128\nn_p = int(0.45 * n_x * n_y)\ntumble = 0.023\nspeed = 1\nlat = lattice.Lattice(n_x * n_y, n_p)\nlat.set_square_connectivity(n_x, n_y)\nlat.reset_random_occupancy()\nlat.reset_orientations()\nplt.rcParams[\"figure.autolayout\"] = False\n\nfig, (ax1, ax2, ax3) = plt.subplots(\n    3,\n    1,\n    figsize=(4, 9),\n)\n\nfor idx in range(201):\n    if idx == 0:\n        ima = lat.image()\n        ax1 = plot_img(ax1, ima, idx)\n    if idx == 20:\n        ax2 = plot_img(ax2, lat.image(), idx)\n    if idx == 200:\n        imb = lat.image()\n        ax3 = plot_img(ax3, imb, idx)\n        break\n    lat.c_move(tumble, speed)\n\nkernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\nlba, _ = ndimage.label(ima, structure=kernel)\nlbb, _ = ndimage.label(imb, structure=kernel)\n\naxi1 = inset_axes(ax1, width=\"100%\", height=\"100%\", borderpad=1)\naxi1.set_axes_locator(InsetPosition(ax1, [1.1, -0.65, 1.5, 1.5]))\naxi1 = plot_lb(ima, axi1)\n\naxi3 = inset_axes(ax3, width=\"100%\", height=\"100%\", borderpad=1)\naxi3.set_axes_locator(InsetPosition(ax3, [1.1, 0.15, 1.5, 1.5]))\naxi3 = plot_lb(imb, axi3)\n\nkwg = {\"alpha\":.3, \"zorder\":0, \"color\": \"k\"}\n\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(0, 0),\n        coordsA=ax1.transAxes,\n        xyB=(0, 0),\n        coordsB=axi1.transAxes,\n        **kwg\n    )\n)\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(1, 1),\n        coordsA=ax1.transAxes,\n        xyB=(1, 1),\n        coordsB=axi1.transAxes,\n        **kwg\n    )\n)\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(1, 0),\n        coordsA=ax3.transAxes,\n        xyB=(1, 0),\n        coordsB=axi3.transAxes,\n        **kwg\n    )\n)\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(0, 1),\n        coordsA=ax3.transAxes,\n        xyB=(0, 1),\n        coordsB=axi3.transAxes,\n        **kwg\n    )\n)\nfig.savefig(\"../plots/evo.pdf\", bbox_inches='tight')\n\n/tmp/ipykernel_75291/1039025301.py:87: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axi1.set_axes_locator(InsetPosition(ax1, [1.1, -0.65, 1.5, 1.5]))\n/tmp/ipykernel_75291/1039025301.py:91: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axi3.set_axes_locator(InsetPosition(ax3, [1.1, 0.15, 1.5, 1.5]))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Snapshot evolution"
+    ]
+  },
+  {
+    "objectID": "plots/network_demo_1.html",
+    "href": "plots/network_demo_1.html",
+    "title": "Dropout and convolution demo",
+    "section": "",
+    "text": "We train all three models (A, B with dropout, B without dropout) on one value of \\(\\phi=0.15\\) for a large number of \\(\\alpha\\)’s, and try and predict it for the same \\(\\phi\\), as well as two different ones.",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Dropout and convolution demo"
+    ]
+  },
+  {
+    "objectID": "plots/network_demo_1.html#import-and-define-functions",
+    "href": "plots/network_demo_1.html#import-and-define-functions",
+    "title": "Dropout and convolution demo",
+    "section": "Import and define functions",
+    "text": "Import and define functions\n\n\nCode\nimport os\nos.chdir(\"/hades/projects/persistent-exclusion-process/\")\nimport numpy as np\nimport h5py\nimport glob\nimport re\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom keras import backend as K\nimport gc\nimport matplotlib.pyplot as plt\nfrom scipy.stats import pearsonr\n\nnp.set_printoptions(precision=3, suppress=True)\n\n\n2024-02-14 13:00:19.548198: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered\n2024-02-14 13:00:19.548225: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered\n2024-02-14 13:00:19.548691: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered\n2024-02-14 13:00:19.552653: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.\nTo enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.\n\n\n\n\nCode\ndef reset(all=False):\n    K.clear_session()\n    global prediction, x, y, x_train, y_train, x_val, y_val\n    del prediction\n    if all:\n        del x\n        del y\n        del x_train\n        del y_train\n        del x_val\n        del y_val\n    print(\"Collected: \", gc.collect())\n\n\ndef extract_floats(string):\n    return re.findall(r\"[-+]?\\d*\\.\\d+|\\d+\", string)\n\n\ndef data_load(density):\n    files = glob.glob(f\"no_roll_data/dataset_tumble_*_{density}.h5\")\n    inputs,outputs = [],[]\n    for f in files:\n        tumble = float(extract_floats(f)[0])\n        with h5py.File(f, \"r\") as fin:\n          count = 0\n          for key in fin.keys():\n              img = fin[key][:]\n              img = img.reshape((img.shape[0], img.shape[1],1))\n              shape = img.shape\n              inputs.append(img)\n              outputs.append(tumble)\n              count+=1\n\n    # Scramble the dataset\n    order = np.arange(len(outputs)).astype(int)\n    order = np.random.permutation(order)\n    return np.array(inputs)[order],np.array(outputs)[order],shape\n\n\ndef split_dataset(x,y,last=2000):\n    print(\"Number of unique alpha: \", len(np.unique(y)))\n    print(\"Shape of x: \", np.shape(x))\n    print(\"Shape of y: \", np.shape(y))\n\n    x_train, y_train = x[:-last], y[:-last]\n    x_val,y_val = x[-last:],y[-last:]\n\n    print(\"Size of training data: \", len(x_train))\n    print(\"Size of validation data: \", len(x_val))\n    return x_train, y_train, x_val, y_val\n\n\ndef get_model_prediction(name,x_val):\n    model = tf.keras.models.load_model(f'models/{name}.keras')\n    prediction = model.predict(x_val, batch_size=64)\n    return prediction\n\ndef make_plot(y_val, prediction):\n    plt.plot(y_val, prediction.T[0], 'o', c='k', alpha=0.25)\n    plt.plot(y_val, y_val, 'o', color='r')\n\n    print(\"Pearson's correlation coeff: \", pearsonr(y_val, prediction.T[0]).statistic)\n    plt.xlabel(\"Input turning rate\")\n    plt.ylabel(\"Predicted turning rate\")\n    plt.axis(\"equal\")\n    plt.xscale(\"log\")\n    plt.yscale(\"log\")\n    plt.show()",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Dropout and convolution demo"
+    ]
+  },
+  {
+    "objectID": "plots/network_demo_1.html#predict-with-the-same-density",
+    "href": "plots/network_demo_1.html#predict-with-the-same-density",
+    "title": "Dropout and convolution demo",
+    "section": "Predict with the same density",
+    "text": "Predict with the same density\n\ndensity = 0.15\nvalidation_size = 2000\nx,y,shape = data_load(density=density)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)\n\nNumber of unique alpha:  10\nShape of x:  (10000, 128, 128, 1)\nShape of y:  (10000,)\nSize of training data:  8000\nSize of validation data:  2000\n\n\n\nBasic model (Model A)\n\nprediction = get_model_prediction(\"basic_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n2024-02-14 13:00:22.132142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 738 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:07:00.0, compute capability: 7.5\n2024-02-14 13:00:22.132585: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.\n2024-02-14 13:00:22.358263: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8907\n\n\n 1/32 [..............................] - ETA: 5s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.8804409564189938\n\n\n\n\n\n\n\n\n\n\n\nWith a dropout layer (Model B)\n\nreset()\n\nCollected:  16355\n\n\n\nprediction = get_model_prediction(\"with_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 8s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b21/32 [==================&gt;...........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 5ms/step\nPearson's correlation coeff:  0.9395980538241302\n\n\n\n\n\n\n\n\n\n\n\nWithout a dropout layer (Model B)\n\nreset()\n\nCollected:  21887\n\n\n\nprediction = get_model_prediction(\"without_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 2s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b24/32 [=====================&gt;........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9145147857848576",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Dropout and convolution demo"
+    ]
+  },
+  {
+    "objectID": "plots/network_demo_1.html#predict-with-slightly-higher-density",
+    "href": "plots/network_demo_1.html#predict-with-slightly-higher-density",
+    "title": "Dropout and convolution demo",
+    "section": "Predict with slightly higher density",
+    "text": "Predict with slightly higher density\n\nreset(all=True)\n\nCollected:  17175\n\n\n\ndensity = 0.25\nvalidation_size = 2000\nx,y,shape = data_load(density=density)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)\n\nNumber of unique alpha:  10\nShape of x:  (10000, 128, 128, 1)\nShape of y:  (10000,)\nSize of training data:  8000\nSize of validation data:  2000\n\n\n\nBasic model (Model A)\n\nprediction = get_model_prediction(\"basic_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 1s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.7203530612047393\n\n\n\n\n\n\n\n\n\n\n\nWith a dropout layer (Model B)\n\nreset()\n\nCollected:  16649\n\n\n\nprediction = get_model_prediction(\"with_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 3s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b18/32 [===============&gt;..............] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 3ms/step\nPearson's correlation coeff:  0.9585366393714269\n\n\n\n\n\n\n\n\n\n\n\nWithout a dropout layer (Model B)\n\nreset()\n\nCollected:  20636\n\n\n\nprediction = get_model_prediction(\"without_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 2s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b24/32 [=====================&gt;........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9399503604198602",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Dropout and convolution demo"
+    ]
+  },
+  {
+    "objectID": "plots/network_demo_1.html#predict-with-much-higher-density",
+    "href": "plots/network_demo_1.html#predict-with-much-higher-density",
+    "title": "Dropout and convolution demo",
+    "section": "Predict with much higher density",
+    "text": "Predict with much higher density\n\nreset(all=True)\n\nCollected:  14930\n\n\n\ndensity = 0.45\nvalidation_size = 2000\nx,y,shape = data_load(density=density)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)\n\nNumber of unique alpha:  10\nShape of x:  (10000, 128, 128, 1)\nShape of y:  (10000,)\nSize of training data:  8000\nSize of validation data:  2000\n\n\n\nBasic model (Model A)\n\nprediction = get_model_prediction(\"basic_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 1s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.33890517352501803\n\n\n\n\n\n\n\n\n\n\n\nWith a dropout layer (Model B)\n\nreset()\n\nCollected:  20598\n\n\n\nprediction = get_model_prediction(\"with_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 3s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b22/32 [===================&gt;..........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9259360601518425\n\n\n\n\n\n\n\n\n\n\n\nWithout a dropout layer (Model B)\n\nreset()\n\nCollected:  23008\n\n\n\nprediction = get_model_prediction(\"without_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 2s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b24/32 [=====================&gt;........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9227368213522993",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Dropout and convolution demo"
+    ]
+  },
+  {
+    "objectID": "plots/number_of_cluster.html",
+    "href": "plots/number_of_cluster.html",
+    "title": "Number of clusters",
+    "section": "",
+    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom utils import get_ds_iters\nfrom plot_utils import get_plot_configs\n\nimport h5py\nimport glob\n\nfrom scipy import ndimage\nimport matplotlib.pyplot as plt\nfrom cmcrameri import cm\nimport numpy as np\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\nfig, (axis) = plt.subplots(\n    1,\n    1,\n    figsize=(4, 3),\n    constrained_layout=True\n)\naxis.set_xscale(\"log\")\nfiles = glob.glob(\"../bp_data/dataset*\")\nsizes = np.zeros_like(files, dtype=np.float_)\nkernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\nfor idx, f in enumerate(sorted(files)):\n    hf = h5py.File(f, \"r\")\n    iters = get_ds_iters(hf.keys())\n    num = []\n    for iter in range(len(iters)):\n        img = hf[f\"conf_{iters[iter]}\"]\n        _, nlabels = ndimage.label(img, structure=kernel)\n        num.append(nlabels)\n    sizes[idx] = np.mean(num)\n\naxis.plot([0.023, 0.107, 0.500], sizes[0::3], marker=\"o\", c=cm.batlowS(2), mfc=cm.batlowS(2,0.3), mec=cm.batlowS(2))\naxis.text(x=0.6, y=0.18, rotation=3, transform=axis.transAxes, s=r\"$\\phi = 0.05$\", c=cm.batlowS(2))\naxis.plot([0.023, 0.107, 0.500], sizes[1::3], marker=\"o\", c=cm.batlowS(3), mfc=cm.batlowS(3,0.3), mec=cm.batlowS(3))\naxis.text(x=0.5, y=0.68, rotation=30, transform=axis.transAxes, s=r\"$\\phi = 0.25$\", c=cm.batlowS(3))\naxis.plot([0.023, 0.107, 0.500], sizes[2::3], marker=\"o\", c=cm.batlowS(4), mfc=cm.batlowS(4,0.3), mec=cm.batlowS(4))\naxis.text(x=0.55, y=0.4, rotation=24, transform=axis.transAxes, s=r\"$\\phi = 0.45$\", c=cm.batlowS(4))\naxis.set_xlabel(r\"Tumbling rate, $\\alpha$\")\naxis.set_ylabel(r\"Number of clusters\")\naxis.set_xticks([0.023, 0.107, 0.500], labels=[0.023, 0.107, 0.500])\nfig.savefig(\"../plots/num_labels.pdf\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Number of clusters"
+    ]
+  },
+  {
+    "objectID": "plots/percolation_ratio_rho.html",
+    "href": "plots/percolation_ratio_rho.html",
+    "title": "Ratio of biggest cluster over density",
+    "section": "",
+    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nimport glob\n\nimport h5py\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom cmcrameri import cm\nfrom scipy import ndimage\nimport pandas as pd\n\nfrom plot_utils import get_plot_configs\nfrom stringato import extract_floats\nfrom utils import get_ds_iters, get_cluster_labels\n\nfiles = sorted(glob.glob(\"../no_roll_data/dataset*\"))\nstuff = []\ndensities = []\nfor file in files:\n    tumble = float(extract_floats(file)[0])\n    density = float(extract_floats(file)[1])\n    stuff.append((tumble, density))\n    densities.append(density)\ndensities = sorted(set(densities))\n\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\nfig, axis = plt.subplots(figsize=(9,6), constrained_layout=True)\n\ncolors = cm.batlow(np.linspace(0,5,len(densities)))\nctr = 0\nratios = []\nmap_size = 128*128\n\nfor idx, file in enumerate(files):\n    noot = idx % len(densities)\n    labelled, _ = get_cluster_labels(file, -1)\n    cluster_sizes = np.bincount(labelled.flatten())[1:]\n    biggest_cluster = np.max(cluster_sizes)\n    ratios.append(biggest_cluster/map_size)\n    if (noot == len(densities) - 1):\n        axis.plot(densities,ratios, c=colors[ctr], marker='o')\n        axis.annotate(\n            text=f\"{stuff[idx][0]}\",\n            xy=(densities[-1],ratios[-3]),\n            xytext=(20.5,15.5),\n            textcoords=\"offset points\",\n            backgroundcolor=colors[ctr],\n            color=(\"white\" if ctr in (0,1) else \"black\")\n        )\n        ratios = []\n        ctr += 1\nfig.show()\n\n/tmp/ipykernel_94518/1907392936.py:57: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown\n  fig.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Ratio of biggest cluster over density"
+    ]
+  },
+  {
+    "objectID": "plots/cluster_size_fitting.html",
+    "href": "plots/cluster_size_fitting.html",
+    "title": "Fitting cluster distribution",
+    "section": "",
+    "text": "According to Soto & Golestanian (2014), the cluster size distribution can be modeled as:\n\\[F_c = cA^{-ν}e^{−A/A_c}\\]\nwhere it was found that \\(v\\) lies in the range 1 to 1.5 for 2D lattices.\nimport os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom utils import get_cluster_labels\nfrom plot_utils import get_plot_configs\n\nimport glob\n\nimport matplotlib.pyplot as plt\nfrom cmcrameri import cm\nfrom scipy.optimize import curve_fit\nimport numpy as np\n\nfiles = glob.glob(\"../bp_data/dataset*\")",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Fitting cluster distribution"
+    ]
+  },
+  {
+    "objectID": "plots/cluster_size_fitting.html#getting-the-curve-fit-parameters",
+    "href": "plots/cluster_size_fitting.html#getting-the-curve-fit-parameters",
+    "title": "Fitting cluster distribution",
+    "section": "Getting the curve fit parameters",
+    "text": "Getting the curve fit parameters\n\ndef dist(x, v):\n    return x**(-v)\n\n\ndef get_colours(alpha):\n    return cm.batlow(np.linspace(0, 1, 9), alpha)\n\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\nfig, (axis) = plt.subplots(1, 1, figsize=(6, 4), constrained_layout=True)\naxis.grid(alpha=0.3)\naxis.set_axisbelow(True)\n\nfits = {}\n\nfor idx, f in enumerate(sorted(files)):\n    labelled, _ = get_cluster_labels(f, -1)\n    cluster_sizes = np.bincount(labelled.flatten())[1:]\n    min_c = cluster_sizes.min()\n    max_c = cluster_sizes.max()\n    bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 32, base=2)\n    counts, _ = np.histogram(cluster_sizes, bins=bin_edges, density=True)\n    good_idx = np.where(counts != 0e0)[0]\n    bin_edges = bin_edges[:-1]\n    bin_edges = bin_edges[good_idx]\n    counts = counts[good_idx]\n    cfit, _ = np.polyfit(np.log(bin_edges), np.log(counts), 1)\n    fits[f] = cfit\n    axis.plot(\n        np.log(bin_edges),\n        np.log(counts),\n        linestyle='none',\n        marker=\"o\",\n        markerfacecolor=get_colours(0.1)[idx],\n        markeredgecolor=get_colours(0.4)[idx],\n    )\n    axis.plot(\n        np.log(bin_edges),\n        cfit*np.log(bin_edges) + np.log(counts[0]),\n        c=get_colours(1)[idx]\n    )\nprint(fits.items())\nplt.show()\n\ndict_items([('../bp_data/dataset_tumble_0.023_0.05.h5', -2.8738748050943705), ('../bp_data/dataset_tumble_0.023_0.25.h5', -1.7400055595298818), ('../bp_data/dataset_tumble_0.023_0.45.h5', -1.563627149146759), ('../bp_data/dataset_tumble_0.107_0.05.h5', -3.7622731430926906), ('../bp_data/dataset_tumble_0.107_0.25.h5', -2.4386619256681867), ('../bp_data/dataset_tumble_0.107_0.45.h5', -1.8016678212792716), ('../bp_data/dataset_tumble_0.500_0.05.h5', -5.188506501489991), ('../bp_data/dataset_tumble_0.500_0.25.h5', -3.2121069212441595), ('../bp_data/dataset_tumble_0.500_0.45.h5', -2.04623380697245)])",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Fitting cluster distribution"
+    ]
+  },
+  {
+    "objectID": "plots/csize_grid.html",
+    "href": "plots/csize_grid.html",
+    "title": "Cluster distribution grid",
+    "section": "",
+    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nimport glob\n\nimport h5py\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.axes_grid1.inset_locator import InsetPosition, inset_axes\nimport numpy as np\nfrom cmcrameri import cm\nfrom scipy import ndimage\nimport pandas as pd\n\nfrom plot_utils import get_plot_configs\nfrom stringato import extract_floats\nfrom utils import get_ds_iters, get_cluster_labels",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Cluster distribution grid"
+    ]
+  },
+  {
+    "objectID": "plots/csize_grid.html#import",
+    "href": "plots/csize_grid.html#import",
+    "title": "Cluster distribution grid",
+    "section": "",
+    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nimport glob\n\nimport h5py\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.axes_grid1.inset_locator import InsetPosition, inset_axes\nimport numpy as np\nfrom cmcrameri import cm\nfrom scipy import ndimage\nimport pandas as pd\n\nfrom plot_utils import get_plot_configs\nfrom stringato import extract_floats\nfrom utils import get_ds_iters, get_cluster_labels",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Cluster distribution grid"
+    ]
+  },
+  {
+    "objectID": "plots/csize_grid.html#save-data-points",
+    "href": "plots/csize_grid.html#save-data-points",
+    "title": "Cluster distribution grid",
+    "section": "Save data points",
+    "text": "Save data points\nfiles = sorted(glob.glob(\"../bp_data/dataset*\"))\nstuff = []\nfor file in files:\n    tumble = float(extract_floats(file)[0])\n    density = float(extract_floats(file)[1])\n    stuff.append((tumble, density))\nall_alphas, all_phis, all_bin_edges, all_counts = [], [], [], []\nkernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\nfor idx in range(3):\n    for jdx in range(3):\n        ctr = idx*3 + jdx\n        hf = h5py.File(files[ctr], \"r\")\n        key_list = list(hf.keys())\n        iters = get_ds_iters(key_list)\n        all_cs = np.array([])\n        for iter in range(len(iters)):\n            im = hf[f\"conf_{iters[iter]}\"]\n            labelled, _ = ndimage.label(im, structure=kernel)\n            cluster_sizes = np.bincount(labelled.flatten())[1:]\n            all_cs = np.hstack((all_cs,cluster_sizes))\n        min_c = np.min(all_cs)\n        max_c = np.max(all_cs)\n        bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 32, base=2)\n        counts, _ = np.histogram(\n            all_cs, bins=bin_edges, density=True\n        )\n        all_alphas.append(stuff[ctr][0])\n        all_phis.append(stuff[ctr][1])\n        all_bin_edges.append(bin_edges[:-1].tolist())\n        all_counts.append(counts.tolist())\ncsv_out = pd.DataFrame()\ncsv_out.insert(0, \"alphas\", all_alphas)\ncsv_out.insert(1, \"phis\", all_phis)\ncsv_out.insert(2, \"bin edges\", all_bin_edges)\ncsv_out.insert(3, \"counts\", all_counts)\nname = \"csize_avg\"\ncsv_out.to_csv(f\"../plots/{name}.csv\")",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Cluster distribution grid"
+    ]
+  },
+  {
+    "objectID": "plots/csize_grid.html#plot",
+    "href": "plots/csize_grid.html#plot",
+    "title": "Cluster distribution grid",
+    "section": "Plot",
+    "text": "Plot\n\ndef func(x, a, b, c):\n    return c*x**(-a)*np.e**(-x/b)\n\nx_lim = (1, 5e3)\nx = np.logspace(np.log10(x_lim[0]),np.log10(x_lim[1]),500,base=10)\nfiles = sorted(glob.glob(\"../bp_data/dataset*\"))\nstats = pd.read_csv(\"../plots/csize_avg.csv\")\nfits = pd.read_csv(\"../plots/fit_values.csv\")\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\nfig = plt.figure(figsize=(9, 9), constrained_layout=True)\ngspec = fig.add_gridspec(3, 3, wspace=0.08, hspace=0.08)\ncmap = plt.get_cmap(name=\"cmc.glasgowS\", lut=5)\ntext_kwrgs = {\"ha\": \"left\", \"fontsize\": \"medium\", \"fontfamily\": \"serif\"}\nfor idx in range(3):\n    for jdx in range(3):\n        ctr = idx*3 + jdx\n        axis = fig.add_subplot(gspec[idx, jdx])\n        axins = inset_axes(axis, width=\"100%\", height=\"100%\", borderpad=1)\n        axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n        text_kwrgs[\"s\"] = r\"$\\alpha = {:.3f}, \\phi = {:.2f}$\".format(\n            stats[\"alphas\"][ctr], stats[\"phis\"][ctr]\n        )\n        hf = h5py.File(files[ctr], \"r\")\n        key_list = list(hf.keys())\n        iters = get_ds_iters(key_list)\n        img = hf[f\"conf_{iters[-1]}\"]\n        axins.matshow(img, cmap=cmap)\n        axins.set_yticks([])\n        axins.set_xticks([])\n        axis.plot(\n            x,\n            func(x, fits[\"a\"][ctr], fits[\"b\"][ctr], fits[\"c\"][ctr]),\n            color=\"k\",\n            alpha=0.5,\n            zorder=1\n        )\n        axis.scatter(\n            list(map(float,stats[\"bin edges\"][ctr][1:-1].split(\",\"))),\n            list(map(float,stats[\"counts\"][ctr][1:-1].split(\",\"))),\n            edgecolor=(0, 0, 0, 1),\n            facecolor=(0, 0, 0, 0.3),\n            zorder=2\n        )\n        axis.grid(alpha=.3)\n        axis.set_axisbelow(True)\n        axis.set_yscale(\"log\"), axis.set_xscale(\"log\")\n        axis.text(\n            y=1.05,\n            x=0,\n            transform=axis.transAxes,\n            **text_kwrgs,\n        )\n        axis.set_ylim((8e-9, 4e1))\n        axis.set_xlim(x_lim)\n        # axis.set_yticks([10**idx for idx in range(-8, 2, 2)])\n        # axis.set_xticks([10**idx for idx in range(0, 5)])\n        fig.supxlabel(r\"Cluster size, $a^{2}$\")\n        fig.supylabel(\"Frequency density\")\n        if jdx != 0:\n            axis.set_yticklabels([])\n        if idx != 2:\n            axis.set_xticklabels([])\nname = \"csize_avg\"\nplt.show()\nfig.savefig(f\"../plots/{name}.pdf\", bbox_inches=\"tight\")\nfig.savefig(f\"../plots/{name}.png\", bbox_inches=\"tight\")\n\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Cluster distribution grid"
+    ]
+  },
+  {
+    "objectID": "plots/labelling.html",
+    "href": "plots/labelling.html",
+    "title": "Cluster labelling demo",
+    "section": "",
+    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom utils import get_cluster_labels\nfrom plot_utils import get_plot_configs\n\nimport matplotlib.pyplot as plt\nimport cmcrameri\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\ndef label_cluster(axis, file, sshot_idx):\n    cmap_label = plt.get_cmap(name='cmc.actonS')\n    labelled, _ = get_cluster_labels(file, sshot_idx)\n    axis.matshow(labelled, cmap=cmap_label)\n    return axis\n\n\nsshot_idx = -1\n\nfig, (ax1, ax2) = plt.subplots(\n    1,\n    2,\n    figsize=(6, 3),\n    constrained_layout=True\n)\nax1 = label_cluster(ax1, \"../data/dataset_tumble_0.023_0.25.h5\", sshot_idx)\nax1.text(\n    y=-0.1,\n    x=1,\n    transform=ax1.transAxes,\n    ha=\"right\",\n    s=r\"$\\alpha = 0.023$\",\n)\nax2 = label_cluster(ax2, \"../data/dataset_tumble_0.500_0.25.h5\", sshot_idx)\nax2.text(\n    y=-0.1,\n    x=1,\n    transform=ax2.transAxes,\n    ha=\"right\",\n    s=r\"$\\alpha = 0.500$\",\n)\nplt.show()\nfig.savefig(\"../plots/labelling_demo.pdf\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Main content",
+      "Plots",
+      "Cluster labelling demo"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Rail Bridge Swarm of Starlings. Licensed under CC BY-SA 2.0.\n\n\n\n\n\n\n\nSchooling anchovies. Licensed under CC BY-SA 2.5.\n\n\n\n\n\n\n\nCrowds around Altrock, police protecting him, 1906. Licensed under CC BY-SA 2.0.\n\n\n\n\n\n\n\nKilobot swarm. Licensed under CC BY-SA 4.0.\n\n\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "shared/deadlines.html",
+    "href": "shared/deadlines.html",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided",
+    "crumbs": [
+      "Project information",
+      "Deadlines"
+    ]
+  },
+  {
+    "objectID": "shared/deadlines.html#weekly-meeting",
+    "href": "shared/deadlines.html#weekly-meeting",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided",
+    "crumbs": [
+      "Project information",
+      "Deadlines"
+    ]
+  },
+  {
+    "objectID": "shared/deadlines.html#deadlines",
+    "href": "shared/deadlines.html#deadlines",
+    "title": "Deadline information",
+    "section": "Deadlines",
+    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews",
+    "crumbs": [
+      "Project information",
+      "Deadlines"
     ]
   },
   {
@@ -441,265 +691,63 @@
     ]
   },
   {
-    "objectID": "shared/deadlines.html",
-    "href": "shared/deadlines.html",
-    "title": "Deadline information",
+    "objectID": "shared/ftnotes/label.html",
+    "href": "shared/ftnotes/label.html",
+    "title": "Minimal cluster analysis",
     "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided",
-    "crumbs": [
-      "Project information",
-      "Deadlines"
-    ]
-  },
-  {
-    "objectID": "shared/deadlines.html#weekly-meeting",
-    "href": "shared/deadlines.html#weekly-meeting",
-    "title": "Deadline information",
-    "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided",
-    "crumbs": [
-      "Project information",
-      "Deadlines"
-    ]
-  },
-  {
-    "objectID": "shared/deadlines.html#deadlines",
-    "href": "shared/deadlines.html#deadlines",
-    "title": "Deadline information",
-    "section": "Deadlines",
-    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews",
-    "crumbs": [
-      "Project information",
-      "Deadlines"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
-    "section": "",
-    "text": "Rail Bridge Swarm of Starlings. Licensed under CC BY-SA 2.0.\n\n\n\n\n\n\n\nSchooling anchovies. Licensed under CC BY-SA 2.5.\n\n\n\n\n\n\n\nCrowds around Altrock, police protecting him, 1906. Licensed under CC BY-SA 2.0.\n\n\n\n\n\n\n\nKilobot swarm. Licensed under CC BY-SA 4.0.\n\n\n\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "plots/labelling.html",
-    "href": "plots/labelling.html",
-    "title": "Cluster labelling demo",
-    "section": "",
-    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom utils import get_cluster_labels\nfrom plot_utils import get_plot_configs\n\nimport matplotlib.pyplot as plt\nimport cmcrameri\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\ndef label_cluster(axis, file, sshot_idx):\n    cmap_label = plt.get_cmap(name='cmc.actonS')\n    labelled, _ = get_cluster_labels(file, sshot_idx)\n    axis.matshow(labelled, cmap=cmap_label)\n    return axis\n\n\nsshot_idx = -1\n\nfig, (ax1, ax2) = plt.subplots(\n    1,\n    2,\n    figsize=(6, 3),\n    constrained_layout=True\n)\nax1 = label_cluster(ax1, \"../data/dataset_tumble_0.023_0.25.h5\", sshot_idx)\nax1.text(\n    y=-0.1,\n    x=1,\n    transform=ax1.transAxes,\n    ha=\"right\",\n    s=r\"$\\alpha = 0.023$\",\n)\nax2 = label_cluster(ax2, \"../data/dataset_tumble_0.500_0.25.h5\", sshot_idx)\nax2.text(\n    y=-0.1,\n    x=1,\n    transform=ax2.transAxes,\n    ha=\"right\",\n    s=r\"$\\alpha = 0.500$\",\n)\nplt.show()\nfig.savefig(\"../plots/labelling_demo.pdf\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Cluster labelling demo"
-    ]
-  },
-  {
-    "objectID": "plots/csize_grid.html",
-    "href": "plots/csize_grid.html",
-    "title": "Cluster distribution grid",
-    "section": "",
-    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nimport glob\n\nimport h5py\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.axes_grid1.inset_locator import InsetPosition, inset_axes\nimport numpy as np\nfrom cmcrameri import cm\nfrom scipy import ndimage\nimport pandas as pd\n\nfrom plot_utils import get_plot_configs\nfrom stringato import extract_floats\nfrom utils import get_ds_iters, get_cluster_labels",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Cluster distribution grid"
-    ]
-  },
-  {
-    "objectID": "plots/csize_grid.html#import",
-    "href": "plots/csize_grid.html#import",
-    "title": "Cluster distribution grid",
-    "section": "",
-    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nimport glob\n\nimport h5py\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.axes_grid1.inset_locator import InsetPosition, inset_axes\nimport numpy as np\nfrom cmcrameri import cm\nfrom scipy import ndimage\nimport pandas as pd\n\nfrom plot_utils import get_plot_configs\nfrom stringato import extract_floats\nfrom utils import get_ds_iters, get_cluster_labels",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Cluster distribution grid"
-    ]
-  },
-  {
-    "objectID": "plots/csize_grid.html#save-data-points",
-    "href": "plots/csize_grid.html#save-data-points",
-    "title": "Cluster distribution grid",
-    "section": "Save data points",
-    "text": "Save data points\nfiles = sorted(glob.glob(\"../bp_data/dataset*\"))\nstuff = []\nfor file in files:\n    tumble = float(extract_floats(file)[0])\n    density = float(extract_floats(file)[1])\n    stuff.append((tumble, density))\nall_alphas, all_phis, all_bin_edges, all_counts = [], [], [], []\nkernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\nfor idx in range(3):\n    for jdx in range(3):\n        ctr = idx*3 + jdx\n        hf = h5py.File(files[ctr], \"r\")\n        key_list = list(hf.keys())\n        iters = get_ds_iters(key_list)\n        all_cs = np.array([])\n        for iter in range(len(iters)):\n            im = hf[f\"conf_{iters[iter]}\"]\n            labelled, _ = ndimage.label(im, structure=kernel)\n            cluster_sizes = np.bincount(labelled.flatten())[1:]\n            all_cs = np.hstack((all_cs,cluster_sizes))\n        min_c = np.min(all_cs)\n        max_c = np.max(all_cs)\n        bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 32, base=2)\n        counts, _ = np.histogram(\n            all_cs, bins=bin_edges, density=True\n        )\n        all_alphas.append(stuff[ctr][0])\n        all_phis.append(stuff[ctr][1])\n        all_bin_edges.append(bin_edges[:-1].tolist())\n        all_counts.append(counts.tolist())\ncsv_out = pd.DataFrame()\ncsv_out.insert(0, \"alphas\", all_alphas)\ncsv_out.insert(1, \"phis\", all_phis)\ncsv_out.insert(2, \"bin edges\", all_bin_edges)\ncsv_out.insert(3, \"counts\", all_counts)\nname = \"csize_avg\"\ncsv_out.to_csv(f\"../plots/{name}.csv\")",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Cluster distribution grid"
-    ]
-  },
-  {
-    "objectID": "plots/csize_grid.html#plot",
-    "href": "plots/csize_grid.html#plot",
-    "title": "Cluster distribution grid",
-    "section": "Plot",
-    "text": "Plot\n\ndef func(x, a, b, c):\n    return c*x**(-a)*np.e**(-x/b)\n\nx_lim = (1, 5e3)\nx = np.logspace(np.log10(x_lim[0]),np.log10(x_lim[1]),500,base=10)\nfiles = sorted(glob.glob(\"../bp_data/dataset*\"))\nstats = pd.read_csv(\"../plots/csize_avg.csv\")\nfits = pd.read_csv(\"../plots/fit_values.csv\")\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\nfig = plt.figure(figsize=(9, 9), constrained_layout=True)\ngspec = fig.add_gridspec(3, 3, wspace=0.08, hspace=0.08)\ncmap = plt.get_cmap(name=\"cmc.glasgowS\", lut=5)\ntext_kwrgs = {\"ha\": \"left\", \"fontsize\": \"medium\", \"fontfamily\": \"serif\"}\nfor idx in range(3):\n    for jdx in range(3):\n        ctr = idx*3 + jdx\n        axis = fig.add_subplot(gspec[idx, jdx])\n        axins = inset_axes(axis, width=\"100%\", height=\"100%\", borderpad=1)\n        axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n        text_kwrgs[\"s\"] = r\"$\\alpha = {:.3f}, \\phi = {:.2f}$\".format(\n            stats[\"alphas\"][ctr], stats[\"phis\"][ctr]\n        )\n        hf = h5py.File(files[ctr], \"r\")\n        key_list = list(hf.keys())\n        iters = get_ds_iters(key_list)\n        img = hf[f\"conf_{iters[-1]}\"]\n        axins.matshow(img, cmap=cmap)\n        axins.set_yticks([])\n        axins.set_xticks([])\n        axis.plot(\n            x,\n            func(x, fits[\"a\"][ctr], fits[\"b\"][ctr], fits[\"c\"][ctr]),\n            color=\"k\",\n            alpha=0.5,\n            zorder=1\n        )\n        axis.scatter(\n            list(map(float,stats[\"bin edges\"][ctr][1:-1].split(\",\"))),\n            list(map(float,stats[\"counts\"][ctr][1:-1].split(\",\"))),\n            edgecolor=(0, 0, 0, 1),\n            facecolor=(0, 0, 0, 0.3),\n            zorder=2\n        )\n        axis.grid(alpha=.3)\n        axis.set_axisbelow(True)\n        axis.set_yscale(\"log\"), axis.set_xscale(\"log\")\n        axis.text(\n            y=1.05,\n            x=0,\n            transform=axis.transAxes,\n            **text_kwrgs,\n        )\n        axis.set_ylim((8e-9, 4e1))\n        axis.set_xlim(x_lim)\n        # axis.set_yticks([10**idx for idx in range(-8, 2, 2)])\n        # axis.set_xticks([10**idx for idx in range(0, 5)])\n        fig.supxlabel(r\"Cluster size, $a^{2}$\")\n        fig.supylabel(\"Frequency density\")\n        if jdx != 0:\n            axis.set_yticklabels([])\n        if idx != 2:\n            axis.set_xticklabels([])\nname = \"csize_avg\"\nplt.show()\nfig.savefig(f\"../plots/{name}.pdf\", bbox_inches=\"tight\")\nfig.savefig(f\"../plots/{name}.png\", bbox_inches=\"tight\")\n\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))\n/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Cluster distribution grid"
-    ]
-  },
-  {
-    "objectID": "plots/cluster_size_fitting.html",
-    "href": "plots/cluster_size_fitting.html",
-    "title": "Fitting cluster distribution",
-    "section": "",
-    "text": "According to Soto & Golestanian (2014), the cluster size distribution can be modeled as:\n\\[F_c = cA^{-ν}e^{−A/A_c}\\]\nwhere it was found that \\(v\\) lies in the range 1 to 1.5 for 2D lattices.\nimport os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom utils import get_cluster_labels\nfrom plot_utils import get_plot_configs\n\nimport glob\n\nimport matplotlib.pyplot as plt\nfrom cmcrameri import cm\nfrom scipy.optimize import curve_fit\nimport numpy as np\n\nfiles = glob.glob(\"../bp_data/dataset*\")",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Fitting cluster distribution"
-    ]
-  },
-  {
-    "objectID": "plots/cluster_size_fitting.html#getting-the-curve-fit-parameters",
-    "href": "plots/cluster_size_fitting.html#getting-the-curve-fit-parameters",
-    "title": "Fitting cluster distribution",
-    "section": "Getting the curve fit parameters",
-    "text": "Getting the curve fit parameters\n\ndef dist(x, v):\n    return x**(-v)\n\n\ndef get_colours(alpha):\n    return cm.batlow(np.linspace(0, 1, 9), alpha)\n\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\nfig, (axis) = plt.subplots(1, 1, figsize=(6, 4), constrained_layout=True)\naxis.grid(alpha=0.3)\naxis.set_axisbelow(True)\n\nfits = {}\n\nfor idx, f in enumerate(sorted(files)):\n    labelled, _ = get_cluster_labels(f, -1)\n    cluster_sizes = np.bincount(labelled.flatten())[1:]\n    min_c = cluster_sizes.min()\n    max_c = cluster_sizes.max()\n    bin_edges = np.logspace(np.log2(min_c), np.log2(max_c), 32, base=2)\n    counts, _ = np.histogram(cluster_sizes, bins=bin_edges, density=True)\n    good_idx = np.where(counts != 0e0)[0]\n    bin_edges = bin_edges[:-1]\n    bin_edges = bin_edges[good_idx]\n    counts = counts[good_idx]\n    cfit, _ = np.polyfit(np.log(bin_edges), np.log(counts), 1)\n    fits[f] = cfit\n    axis.plot(\n        np.log(bin_edges),\n        np.log(counts),\n        linestyle='none',\n        marker=\"o\",\n        markerfacecolor=get_colours(0.1)[idx],\n        markeredgecolor=get_colours(0.4)[idx],\n    )\n    axis.plot(\n        np.log(bin_edges),\n        cfit*np.log(bin_edges) + np.log(counts[0]),\n        c=get_colours(1)[idx]\n    )\nprint(fits.items())\nplt.show()\n\ndict_items([('../bp_data/dataset_tumble_0.023_0.05.h5', -2.8738748050943705), ('../bp_data/dataset_tumble_0.023_0.25.h5', -1.7400055595298818), ('../bp_data/dataset_tumble_0.023_0.45.h5', -1.563627149146759), ('../bp_data/dataset_tumble_0.107_0.05.h5', -3.7622731430926906), ('../bp_data/dataset_tumble_0.107_0.25.h5', -2.4386619256681867), ('../bp_data/dataset_tumble_0.107_0.45.h5', -1.8016678212792716), ('../bp_data/dataset_tumble_0.500_0.05.h5', -5.188506501489991), ('../bp_data/dataset_tumble_0.500_0.25.h5', -3.2121069212441595), ('../bp_data/dataset_tumble_0.500_0.45.h5', -2.04623380697245)])",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Fitting cluster distribution"
-    ]
-  },
-  {
-    "objectID": "plots/percolation_ratio_rho.html",
-    "href": "plots/percolation_ratio_rho.html",
-    "title": "Ratio of biggest cluster over density",
-    "section": "",
-    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nimport glob\n\nimport h5py\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom cmcrameri import cm\nfrom scipy import ndimage\nimport pandas as pd\n\nfrom plot_utils import get_plot_configs\nfrom stringato import extract_floats\nfrom utils import get_ds_iters, get_cluster_labels\n\nfiles = sorted(glob.glob(\"../no_roll_data/dataset*\"))\nstuff = []\ndensities = []\nfor file in files:\n    tumble = float(extract_floats(file)[0])\n    density = float(extract_floats(file)[1])\n    stuff.append((tumble, density))\n    densities.append(density)\ndensities = sorted(set(densities))\n\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\nfig, axis = plt.subplots(figsize=(9,6), constrained_layout=True)\n\ncolors = cm.batlow(np.linspace(0,5,len(densities)))\nctr = 0\nratios = []\nmap_size = 128*128\n\nfor idx, file in enumerate(files):\n    noot = idx % len(densities)\n    labelled, _ = get_cluster_labels(file, -1)\n    cluster_sizes = np.bincount(labelled.flatten())[1:]\n    biggest_cluster = np.max(cluster_sizes)\n    ratios.append(biggest_cluster/map_size)\n    if (noot == len(densities) - 1):\n        axis.plot(densities,ratios, c=colors[ctr], marker='o')\n        axis.annotate(\n            text=f\"{stuff[idx][0]}\",\n            xy=(densities[-1],ratios[-3]),\n            xytext=(20.5,15.5),\n            textcoords=\"offset points\",\n            backgroundcolor=colors[ctr],\n            color=(\"white\" if ctr in (0,1) else \"black\")\n        )\n        ratios = []\n        ctr += 1\nfig.show()\n\n/tmp/ipykernel_94518/1907392936.py:57: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown\n  fig.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Ratio of biggest cluster over density"
-    ]
-  },
-  {
-    "objectID": "plots/number_of_cluster.html",
-    "href": "plots/number_of_cluster.html",
-    "title": "Number of clusters",
-    "section": "",
-    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom utils import get_ds_iters\nfrom plot_utils import get_plot_configs\n\nimport h5py\nimport glob\n\nfrom scipy import ndimage\nimport matplotlib.pyplot as plt\nfrom cmcrameri import cm\nimport numpy as np\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\nfig, (axis) = plt.subplots(\n    1,\n    1,\n    figsize=(4, 3),\n    constrained_layout=True\n)\naxis.set_xscale(\"log\")\nfiles = glob.glob(\"../bp_data/dataset*\")\nsizes = np.zeros_like(files, dtype=np.float_)\nkernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\nfor idx, f in enumerate(sorted(files)):\n    hf = h5py.File(f, \"r\")\n    iters = get_ds_iters(hf.keys())\n    num = []\n    for iter in range(len(iters)):\n        img = hf[f\"conf_{iters[iter]}\"]\n        _, nlabels = ndimage.label(img, structure=kernel)\n        num.append(nlabels)\n    sizes[idx] = np.mean(num)\n\naxis.plot([0.023, 0.107, 0.500], sizes[0::3], marker=\"o\", c=cm.batlowS(2), mfc=cm.batlowS(2,0.3), mec=cm.batlowS(2))\naxis.text(x=0.6, y=0.18, rotation=3, transform=axis.transAxes, s=r\"$\\phi = 0.05$\", c=cm.batlowS(2))\naxis.plot([0.023, 0.107, 0.500], sizes[1::3], marker=\"o\", c=cm.batlowS(3), mfc=cm.batlowS(3,0.3), mec=cm.batlowS(3))\naxis.text(x=0.5, y=0.68, rotation=30, transform=axis.transAxes, s=r\"$\\phi = 0.25$\", c=cm.batlowS(3))\naxis.plot([0.023, 0.107, 0.500], sizes[2::3], marker=\"o\", c=cm.batlowS(4), mfc=cm.batlowS(4,0.3), mec=cm.batlowS(4))\naxis.text(x=0.55, y=0.4, rotation=24, transform=axis.transAxes, s=r\"$\\phi = 0.45$\", c=cm.batlowS(4))\naxis.set_xlabel(r\"Tumbling rate, $\\alpha$\")\naxis.set_ylabel(r\"Number of clusters\")\naxis.set_xticks([0.023, 0.107, 0.500], labels=[0.023, 0.107, 0.500])\nfig.savefig(\"../plots/num_labels.pdf\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Number of clusters"
-    ]
-  },
-  {
-    "objectID": "plots/network_demo_1.html",
-    "href": "plots/network_demo_1.html",
-    "title": "Single density network",
-    "section": "",
-    "text": "Code\nimport os\nos.chdir(\"/hades/projects/persistent-exclusion-process/\")\nimport numpy as np\nimport h5py\nimport glob\nimport re\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom keras import backend as K\nimport gc\nimport matplotlib.pyplot as plt\nfrom scipy.stats import pearsonr\n\nnp.set_printoptions(precision=3, suppress=True)\n\n\n2024-02-14 13:00:19.548198: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered\n2024-02-14 13:00:19.548225: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered\n2024-02-14 13:00:19.548691: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered\n2024-02-14 13:00:19.552653: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.\nTo enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.\n\n\n\n\nCode\ndef reset(all=False):\n    K.clear_session()\n    global prediction, x, y, x_train, y_train, x_val, y_val\n    del prediction\n    if all:\n        del x\n        del y\n        del x_train\n        del y_train\n        del x_val\n        del y_val\n    print(\"Collected: \", gc.collect())\n\n\ndef extract_floats(string):\n    return re.findall(r\"[-+]?\\d*\\.\\d+|\\d+\", string)\n\n\ndef data_load(density):\n    files = glob.glob(f\"no_roll_data/dataset_tumble_*_{density}.h5\")\n    inputs,outputs = [],[]\n    for f in files:\n        tumble = float(extract_floats(f)[0])\n        with h5py.File(f, \"r\") as fin:\n          count = 0\n          for key in fin.keys():\n              img = fin[key][:]\n              img = img.reshape((img.shape[0], img.shape[1],1))\n              shape = img.shape\n              inputs.append(img)\n              outputs.append(tumble)\n              count+=1\n\n    # Scramble the dataset\n    order = np.arange(len(outputs)).astype(int)\n    order = np.random.permutation(order)\n    return np.array(inputs)[order],np.array(outputs)[order],shape\n\n\ndef split_dataset(x,y,last=2000):\n    print(\"Number of unique alpha: \", len(np.unique(y)))\n    print(\"Shape of x: \", np.shape(x))\n    print(\"Shape of y: \", np.shape(y))\n\n    x_train, y_train = x[:-last], y[:-last]\n    x_val,y_val = x[-last:],y[-last:]\n\n    print(\"Size of training data: \", len(x_train))\n    print(\"Size of validation data: \", len(x_val))\n    return x_train, y_train, x_val, y_val\n\n\ndef get_model_prediction(name,x_val):\n    model = tf.keras.models.load_model(f'models/{name}.keras')\n    prediction = model.predict(x_val, batch_size=64)\n    return prediction\n\ndef make_plot(y_val, prediction):\n    plt.plot(y_val, prediction.T[0], 'o', c='k', alpha=0.25)\n    plt.plot(y_val, y_val, 'o', color='r')\n\n    print(\"Pearson's correlation coeff: \", pearsonr(y_val, prediction.T[0]).statistic)\n    plt.xlabel(\"Input turning rate\")\n    plt.ylabel(\"Predicted turning rate\")\n    plt.axis(\"equal\")\n    plt.xscale(\"log\")\n    plt.yscale(\"log\")\n    plt.show()",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Single density network"
-    ]
-  },
-  {
-    "objectID": "plots/network_demo_1.html#import-and-define-functions",
-    "href": "plots/network_demo_1.html#import-and-define-functions",
-    "title": "Single density network",
-    "section": "",
-    "text": "Code\nimport os\nos.chdir(\"/hades/projects/persistent-exclusion-process/\")\nimport numpy as np\nimport h5py\nimport glob\nimport re\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom keras import backend as K\nimport gc\nimport matplotlib.pyplot as plt\nfrom scipy.stats import pearsonr\n\nnp.set_printoptions(precision=3, suppress=True)\n\n\n2024-02-14 13:00:19.548198: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered\n2024-02-14 13:00:19.548225: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered\n2024-02-14 13:00:19.548691: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered\n2024-02-14 13:00:19.552653: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.\nTo enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.\n\n\n\n\nCode\ndef reset(all=False):\n    K.clear_session()\n    global prediction, x, y, x_train, y_train, x_val, y_val\n    del prediction\n    if all:\n        del x\n        del y\n        del x_train\n        del y_train\n        del x_val\n        del y_val\n    print(\"Collected: \", gc.collect())\n\n\ndef extract_floats(string):\n    return re.findall(r\"[-+]?\\d*\\.\\d+|\\d+\", string)\n\n\ndef data_load(density):\n    files = glob.glob(f\"no_roll_data/dataset_tumble_*_{density}.h5\")\n    inputs,outputs = [],[]\n    for f in files:\n        tumble = float(extract_floats(f)[0])\n        with h5py.File(f, \"r\") as fin:\n          count = 0\n          for key in fin.keys():\n              img = fin[key][:]\n              img = img.reshape((img.shape[0], img.shape[1],1))\n              shape = img.shape\n              inputs.append(img)\n              outputs.append(tumble)\n              count+=1\n\n    # Scramble the dataset\n    order = np.arange(len(outputs)).astype(int)\n    order = np.random.permutation(order)\n    return np.array(inputs)[order],np.array(outputs)[order],shape\n\n\ndef split_dataset(x,y,last=2000):\n    print(\"Number of unique alpha: \", len(np.unique(y)))\n    print(\"Shape of x: \", np.shape(x))\n    print(\"Shape of y: \", np.shape(y))\n\n    x_train, y_train = x[:-last], y[:-last]\n    x_val,y_val = x[-last:],y[-last:]\n\n    print(\"Size of training data: \", len(x_train))\n    print(\"Size of validation data: \", len(x_val))\n    return x_train, y_train, x_val, y_val\n\n\ndef get_model_prediction(name,x_val):\n    model = tf.keras.models.load_model(f'models/{name}.keras')\n    prediction = model.predict(x_val, batch_size=64)\n    return prediction\n\ndef make_plot(y_val, prediction):\n    plt.plot(y_val, prediction.T[0], 'o', c='k', alpha=0.25)\n    plt.plot(y_val, y_val, 'o', color='r')\n\n    print(\"Pearson's correlation coeff: \", pearsonr(y_val, prediction.T[0]).statistic)\n    plt.xlabel(\"Input turning rate\")\n    plt.ylabel(\"Predicted turning rate\")\n    plt.axis(\"equal\")\n    plt.xscale(\"log\")\n    plt.yscale(\"log\")\n    plt.show()",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Single density network"
-    ]
-  },
-  {
-    "objectID": "plots/network_demo_1.html#predict-with-the-same-density",
-    "href": "plots/network_demo_1.html#predict-with-the-same-density",
-    "title": "Single density network",
-    "section": "Predict with the same density",
-    "text": "Predict with the same density\n\ndensity = 0.15\nvalidation_size = 2000\nx,y,shape = data_load(density=density)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)\n\nNumber of unique alpha:  10\nShape of x:  (10000, 128, 128, 1)\nShape of y:  (10000,)\nSize of training data:  8000\nSize of validation data:  2000\n\n\n\nBasic model\n\nprediction = get_model_prediction(\"basic_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n2024-02-14 13:00:22.132142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 738 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:07:00.0, compute capability: 7.5\n2024-02-14 13:00:22.132585: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.\n2024-02-14 13:00:22.358263: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8907\n\n\n 1/32 [..............................] - ETA: 5s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.8804409564189938\n\n\n\n\n\n\n\n\n\n\n\nWith a dropout layer\n\nreset()\n\nCollected:  16355\n\n\n\nprediction = get_model_prediction(\"with_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 8s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b21/32 [==================&gt;...........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 5ms/step\nPearson's correlation coeff:  0.9395980538241302\n\n\n\n\n\n\n\n\n\n\n\nWithout a dropout layer\n\nreset()\n\nCollected:  21887\n\n\n\nprediction = get_model_prediction(\"without_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 2s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b24/32 [=====================&gt;........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9145147857848576",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Single density network"
-    ]
-  },
-  {
-    "objectID": "plots/network_demo_1.html#predict-with-slightly-higher-density",
-    "href": "plots/network_demo_1.html#predict-with-slightly-higher-density",
-    "title": "Single density network",
-    "section": "Predict with slightly higher density",
-    "text": "Predict with slightly higher density\n\nreset(all=True)\n\nCollected:  17175\n\n\n\ndensity = 0.25\nvalidation_size = 2000\nx,y,shape = data_load(density=density)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)\n\nNumber of unique alpha:  10\nShape of x:  (10000, 128, 128, 1)\nShape of y:  (10000,)\nSize of training data:  8000\nSize of validation data:  2000\n\n\n\nBasic model\n\nprediction = get_model_prediction(\"basic_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 1s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.7203530612047393\n\n\n\n\n\n\n\n\n\n\n\nWith a dropout layer\n\nreset()\n\nCollected:  16649\n\n\n\nprediction = get_model_prediction(\"with_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 3s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b18/32 [===============&gt;..............] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 3ms/step\nPearson's correlation coeff:  0.9585366393714269\n\n\n\n\n\n\n\n\n\n\n\nWithout a dropout layer\n\nreset()\n\nCollected:  20636\n\n\n\nprediction = get_model_prediction(\"without_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 2s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b24/32 [=====================&gt;........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9399503604198602",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Single density network"
-    ]
-  },
-  {
-    "objectID": "plots/network_demo_1.html#predict-with-much-higher-density",
-    "href": "plots/network_demo_1.html#predict-with-much-higher-density",
-    "title": "Single density network",
-    "section": "Predict with much higher density",
-    "text": "Predict with much higher density\n\nreset(all=True)\n\nCollected:  14930\n\n\n\ndensity = 0.45\nvalidation_size = 2000\nx,y,shape = data_load(density=density)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)\n\nNumber of unique alpha:  10\nShape of x:  (10000, 128, 128, 1)\nShape of y:  (10000,)\nSize of training data:  8000\nSize of validation data:  2000\n\n\n\nBasic model\n\nprediction = get_model_prediction(\"basic_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 1s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.33890517352501803\n\n\n\n\n\n\n\n\n\n\n\nWith a dropout layer\n\nreset()\n\nCollected:  20598\n\n\n\nprediction = get_model_prediction(\"with_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 3s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b22/32 [===================&gt;..........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9259360601518425\n\n\n\n\n\n\n\n\n\n\n\nWithout a dropout layer\n\nreset()\n\nCollected:  23008\n\n\n\nprediction = get_model_prediction(\"without_dropout_0.15\", x_val)\nmake_plot(y_val, prediction)\n\n 1/32 [..............................] - ETA: 2s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b24/32 [=====================&gt;........] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b32/32 [==============================] - 0s 2ms/step\nPearson's correlation coeff:  0.9227368213522993",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Single density network"
-    ]
-  },
-  {
-    "objectID": "plots/evo.html",
-    "href": "plots/evo.html",
-    "title": "Snapshot evolution",
-    "section": "",
-    "text": "import os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom plot_utils import get_plot_configs\n\nimport cmcrameri\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom scipy import ndimage\nfrom matplotlib.patches import ConnectionPatch\nfrom mpl_toolkits.axes_grid1.inset_locator import InsetPosition, inset_axes\n\nimport lattice\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\ndef plot_img(ax, img, tau):\n    ax.set_xlim(0, n_x)\n    ax.set_ylim(0, n_y)\n    ax.set_aspect(\"equal\", \"box\")\n    ax.tick_params(\n        axis = \"both\",\n        which = \"both\",\n        length = 0,\n        labelleft = False,\n        labelbottom = False,\n    )\n    ax.matshow(img, cmap=plt.get_cmap(name=\"cmc.grayCS\", lut=5))\n    ax.set_title(r\"$\\tau = {}$\".format(tau))\n    return ax\n\ndef plot_lb(img, ax):\n    cmap=plt.get_cmap(\"cmc.lipariS\")\n    cl = cmap.__dict__['colors']\n    new_cls = np.concatenate((cl,cl[1:],cl[1:],cl[1:]))\n    cmap.__dict__[\"colors\"] = new_cls\n    cmap.__dict__[\"colors\"][0] = np.array([1,1,1])\n    cmap.__dict__[\"N\"] = len(new_cls)\n    kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\n    lb, _ = ndimage.label(img, structure=kernel)\n    ax.tick_params(\n        axis = \"both\",\n        which = \"both\",\n        length = 0,\n        labelleft = False,\n        labelbottom = False,\n    )\n    ax.matshow(np.flipud(lb), cmap=cmap)\n    return ax\n\nn_x = n_y = 128\nn_p = int(0.45 * n_x * n_y)\ntumble = 0.023\nspeed = 1\nlat = lattice.Lattice(n_x * n_y, n_p)\nlat.set_square_connectivity(n_x, n_y)\nlat.reset_random_occupancy()\nlat.reset_orientations()\nplt.rcParams[\"figure.autolayout\"] = False\n\nfig, (ax1, ax2, ax3) = plt.subplots(\n    3,\n    1,\n    figsize=(4, 9),\n)\n\nfor idx in range(201):\n    if idx == 0:\n        ima = lat.image()\n        ax1 = plot_img(ax1, ima, idx)\n    if idx == 20:\n        ax2 = plot_img(ax2, lat.image(), idx)\n    if idx == 200:\n        imb = lat.image()\n        ax3 = plot_img(ax3, imb, idx)\n        break\n    lat.c_move(tumble, speed)\n\nkernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\nlba, _ = ndimage.label(ima, structure=kernel)\nlbb, _ = ndimage.label(imb, structure=kernel)\n\naxi1 = inset_axes(ax1, width=\"100%\", height=\"100%\", borderpad=1)\naxi1.set_axes_locator(InsetPosition(ax1, [1.1, -0.65, 1.5, 1.5]))\naxi1 = plot_lb(ima, axi1)\n\naxi3 = inset_axes(ax3, width=\"100%\", height=\"100%\", borderpad=1)\naxi3.set_axes_locator(InsetPosition(ax3, [1.1, 0.15, 1.5, 1.5]))\naxi3 = plot_lb(imb, axi3)\n\nkwg = {\"alpha\":.3, \"zorder\":0, \"color\": \"k\"}\n\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(0, 0),\n        coordsA=ax1.transAxes,\n        xyB=(0, 0),\n        coordsB=axi1.transAxes,\n        **kwg\n    )\n)\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(1, 1),\n        coordsA=ax1.transAxes,\n        xyB=(1, 1),\n        coordsB=axi1.transAxes,\n        **kwg\n    )\n)\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(1, 0),\n        coordsA=ax3.transAxes,\n        xyB=(1, 0),\n        coordsB=axi3.transAxes,\n        **kwg\n    )\n)\nfig.add_artist(\n    ConnectionPatch(\n        xyA=(0, 1),\n        coordsA=ax3.transAxes,\n        xyB=(0, 1),\n        coordsB=axi3.transAxes,\n        **kwg\n    )\n)\nfig.savefig(\"../plots/evo.pdf\", bbox_inches='tight')\n\n/tmp/ipykernel_75291/1039025301.py:87: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axi1.set_axes_locator(InsetPosition(ax1, [1.1, -0.65, 1.5, 1.5]))\n/tmp/ipykernel_75291/1039025301.py:91: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.\n  axi3.set_axes_locator(InsetPosition(ax3, [1.1, 0.15, 1.5, 1.5]))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Main content",
-      "Plots",
-      "Snapshot evolution"
-    ]
-  },
-  {
-    "objectID": "shared/gitinfo.html",
-    "href": "shared/gitinfo.html",
-    "title": "",
-    "section": "",
-    "text": "Useful Commands and Information for Shared Github Activity\n\n\nTable of Contents\n\nTable of Contents\nIntroduction\nCloning\nBasic Git Commands\nBasic Quarto Commands\n\n\n\n1. Introduction\nThis page is an attempt to take commands that pop up in the course of sharing our activity (whether it’s passing it collectively or publishing it to an easily accessible site). Everything here is subject to change and addition as we discover more commands that need remembering. This page should be as standardised and explanatory as possible; when deemed necessary, examples should be given alongside the basic command structure.\n\n\n2. Cloning\nWhen cloning a repository, use:\ngit clone git@github.com:&lt;user&gt;/&lt;repo&gt;\nIf you didn’t use ssh url while cloning, change remote before pushing:\ngit remote set-url origin git@github.com:&lt;user&gt;/&lt;repo&gt;\nFor instance, cloning the persistent exclusion process example script:\ngit remote set-url origin git@github:dlactivematter/persistent-exclusion-process.git\nIf in doubt, use the following to show all the available remotes:\ngit remote -v\n\n\n3. Basic Git Commands\nCheck which branch you are on (and also other available branches):\ngit status\nAdd new file to current branch\ngit add &lt;filename&gt;\nCommit new file to current branch (prompts adding a commit comment)\ngit commit &lt;filename&gt; \nPush all changes to branch\ngit push origin &lt;branch&gt;\n\n\n4. Basic Quarto Commands\nNote: only works on .qmd files\nPreview .qmd document in browser\nquarto preview &lt;filename&gt;\nRender all .qmd files into html (usually not necessary)\nquarto render\nRender all .qmd files into html and publish them to the gh-pages branch\nquarto publish gh-pages\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "shared/cluster.html",
-    "href": "shared/cluster.html",
-    "title": "Cluster information",
-    "section": "",
-    "text": "Project code: PHYS030564\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Project information",
-      "Cluster"
-    ]
-  },
-  {
-    "objectID": "shared/ftnotes/interim-report-structure.html",
-    "href": "shared/ftnotes/interim-report-structure.html",
-    "title": "",
-    "section": "",
-    "text": "Main contentFT notesInterim Report Structure\n\n\n\n\n\nGeneralities [700 words]\nModelling of active matter [300 words]\n\nparticle-based (active Brownian particles or active OrnsteinUhlenbeck particles)\nfield theories (Model B+ , Tjhung et al 2023)\n\nLattice models ( Soto, Telo de Gama) [200 words]\nFocus on Persistent Exclusion Process (Background and main results) [200 words]\nAnticipate the overall goal (linking structure to activity), mention the precedent of Rassolov et al. 2022 [200 words]\nPreparatory work up to now [500 words]\n\nbrief reference to the in-house code\nvalidation of the code\ntests in different conditions\nfirst measurements (orientation, cluster sizes, cluster distributions)\ncompare with Soto?\n\nlook back critically: discussion [200 words]\nPlan for the future [200 words]\n\n\n\n\n\n\n Back to top",
+    "text": "Minimal cluster analysis\n\nfrom scipy import ndimage\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nI create a random binary image (through thresholding).\n\nimage = np.random.uniform(0, 1, (128, 128))\nim = (image &gt; 0.8).astype(int)\n\nplt.matshow(im)\n\n\n\n\n\n\n\n\nI can then label connected regions, by specifying the structuring element (kernel).\n\nkernel = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]\nlabelled, nlabels = ndimage.label(im, structure=kernel)\n\n\nplt.imshow(labelled, cmap=plt.cm.rainbow)\nplt.colorbar()\n\n\n\n\n\n\n\n\nI count the number of pixels with a certain label (ignoring label 0 because it is the background)\n\ncluster_sizes = np.bincount(labelled.flatten())[1:]\n\nAnd plot the probability distribution with logarithmically spaced bins\n\nminimum = cluster_sizes.min()\nmaximum = cluster_sizes.max()\nbin_edges = np.logspace(np.log2(minimum), np.log2(maximum), 32, base=2)\nhist, edges = np.histogram(cluster_sizes, bins=bin_edges, density=True)\nplt.plot(2 ** bin_edges[:-1], hist, \"o\")\nplt.yscale(\"log\")\nplt.xscale(\"log\")\nplt.xlabel(\"cluster sizes\")\nplt.ylabel(\"pdf\")\n\nText(0, 0.5, 'pdf')\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Main content",
       "FT notes",
-      "Interim Report Structure"
+      "Minimal cluster analysis"
     ]
   },
   {
-    "objectID": "shared/ftnotes/Colab.html",
-    "href": "shared/ftnotes/Colab.html",
-    "title": "",
+    "objectID": "activity_log/week_16.html",
+    "href": "activity_log/week_16.html",
+    "title": "Week 16",
     "section": "",
-    "text": "Main contentFT notesLink to colab notebook\n\n\n\n\n\nLink to colab notebook\nThis is an experimental notebook for the training of the convolutional neural network onto the data from the Persistence Exclusion Process\nhttps://colab.research.google.com/drive/1B0vXEyb2GG4Mjc5dbd45LIrfcQbReFCr?usp=sharing\n\n\n\n\n\n\n Back to top",
+    "text": "Try and tune/optimize the models we’ve tested\nCome up with a set of metrics to evaluate our experiments",
     "crumbs": [
       "Main content",
-      "FT notes",
-      "Link to colab notebook"
+      "Activity Log",
+      "Week 16"
+    ]
+  },
+  {
+    "objectID": "activity_log/week_16.html#tasks",
+    "href": "activity_log/week_16.html#tasks",
+    "title": "Week 16",
+    "section": "",
+    "text": "Try and tune/optimize the models we’ve tested\nCome up with a set of metrics to evaluate our experiments",
+    "crumbs": [
+      "Main content",
+      "Activity Log",
+      "Week 16"
+    ]
+  },
+  {
+    "objectID": "activity_log/week_16.html#summary",
+    "href": "activity_log/week_16.html#summary",
+    "title": "Week 16",
+    "section": "Summary",
+    "text": "Summary\n\nTracking progress systematically\nWe made a spreadsheet table to log and track different changes, and start anew, as last week we only designed basic experiments to see what we can potentially do.\n\n\nMetrics\nTo evaluate the models, we established some metrics and threshold:\n\nMean absolute error\n\n\\(MAE &lt; 0.01\\)\n\nStandard deviation (minimum, maxmimum and average of all \\(\\alpha\\)’s)\n\n\\(\\sigma_{max} &lt; 0.02\\)\n\\(\\sigma_{mean} &lt; 0.01\\)\n\nOverlap ratio within \\(10^{-4}\\) (whether the prediction ranges cover the actual value)\n\n\\(O = 1\\)\n\nPearson’s \\(r\\) (this is only affective on a handful of \\(\\alpha\\)’s, using it on one or two data points is not very indicative of the model’s performance)\n\n\\(r &gt; 0.975\\)\n\n\n\n\nPrevious progress and old strategy\nFrom last week, model B was okay. It didn’t improve after 10 epochs. This prompted us to tweak it slightly. Here were the different attempts:\n\nInstead of training on one \\(\\phi\\), train on similar values to add to it more data\n\nGenerally lower spread but not much difference. Still failing to descend after 10 or 15 epochs.\n\nIncreasing the number of filters and kernel size in the convolutional layer\n\nNo improvement, if not slightly worse, slow training times as there are now many more parameters. Still not descending after 10 epochs or so.\n\nUse LeakyReLU (ReLU but with small gradient when unit is inactive, apparently works well on regression)\n\nLeakyReLU seems to be worse. We stick to ReLU for now.\n\nApply a separate ReLU() layer after Conv2D() (which now has no activation). Apply MaxPooling2D() in between to reduce parameters.\n\nThis helps training speed but doesn’t improve nor degrade performance. For simple model we don’t need to use pooling so we can apply it when we declare the Conv2D layer.\n\nAdding more dense layers with non-linear activation.\n\nSignificantly more parameters, reduce training speed, no improvement\n\n\n# Before\nmodel.add(\n    Conv2D(\n        filters=3,\n        kernel_size=(3, 3),\n        padding=\"same\",\n        activation=\"relu\",\n        input_shape=shape,\n    )\n)\nmodel.add(BatchNormalization())\n\n# After\nmodel.add(Conv2D(filters=3, kernel_size=(3, 3), padding=\"same\", input_shape=shape))\nmodel.add(MaxPooling2D(pool_size=(2, 2), padding=\"same\"))\nmodel.add(ReLU())\nmodel.add(BatchNormalization())\n\nDead end?\nOverall, even with minor tweaks, the performance is just okay, there is a lot of spread still, all of the attempts effectively looks like this:\n\n\nCode\nimport os\nos.chdir(\"/hades/projects/persistent-exclusion-process/\")\nimport numpy as np\nimport h5py\nimport glob\nimport re\nimport tensorflow as tf\n\nimport matplotlib.pyplot as plt\nimport matplotlib.ticker as ticker\nfrom scipy.stats import pearsonr\n\nnp.set_printoptions(precision=3, suppress=True)\n\n\n\n\nCode\ndef extract_floats(string):\n    return re.findall(r\"[-+]?\\d*\\.\\d+|\\d+\", string)\n\n\ndef data_load(alphas,densities):\n    files = []\n    for alp in alphas:\n        for val in densities:\n            files += glob.glob(f\"no_roll_data/dataset_tumble_{alp:.3f}_{val}.h5\")\n    inputs,outputs = [],[]\n    for f in files:\n        tumble = float(extract_floats(f)[0])\n        with h5py.File(f, \"r\") as fin:\n          count = 0\n          for key in fin.keys():\n              img = fin[key][:]\n              img[img &gt; 0] = 1\n              img = img.reshape((img.shape[0], img.shape[1],1))\n              shape = img.shape\n              inputs.append(img)\n              outputs.append(tumble)\n              count+=1\n\n    # Scramble the dataset\n    order = np.arange(len(outputs)).astype(int)\n    order = np.random.permutation(order)\n    return np.array(inputs)[order],np.array(outputs)[order],shape\n\n\ndef plot(y_val,prediction):\n    from cmcrameri import cm\n\n    bins = np.logspace(-6,-1,10, base=2)*0.85\n\n    v = prediction.T[0]\n\n    colors = cm.batlowS(np.digitize(v, bins))\n    colors_actual = cm.batlowS(np.digitize(np.unique(y_val),bins))\n\n    fig, ax = plt.subplots()\n    ax.scatter(y_val, v, c=colors, alpha=0.25)\n    ax.scatter(np.unique(y_val), np.unique(y_val), marker=\"_\", color='k', s=200)\n\n    ax.set_xscale(\"log\")\n    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())\n    ax.set_xticks(np.unique(y_val))\n\n    ax.set_facecolor([0.98,0.98,0.98,1])\n\n    for val in bins:\n        ax.axvline(val, alpha=0.05, c='k')\n\n    ax.set_xlabel(\"Input turning rate\")\n    ax.set_ylabel(\"Predicted turning rate\")\n\n    std = []\n    overlap = []\n    accuracy = 1e-4\n    for val in np.unique(y_val):\n        v_mapped = v[np.where(y_val == val)]\n        std.append(np.std(v_mapped))\n        overlap.append((val + accuracy &gt;= np.min(v_mapped)) & (val - accuracy &lt;= np.max(v_mapped)))\n\n    print(\"Overlap ratio:\", np.sum(overlap)/len(overlap))\n    print(\"(Min, Max, Avg) STD:\", np.min(std), np.max(std), np.mean(std))\n    print(\"Pearson's correlation coeff: \", pearsonr(y_val, v).statistic)\n\n\ndef split_dataset(x,y,last=2000):\n    print(\"Number of unique alpha: \", len(np.unique(y)))\n    print(\"Shape of x: \", np.shape(x))\n    print(\"Shape of y: \", np.shape(y))\n\n    x_train, y_train = x[:-last], y[:-last]\n    x_val,y_val = x[-last:],y[-last:]\n\n    print(\"Size of training data: \", len(x_train))\n    print(\"Size of validation data: \", len(x_val))\n    return x_train, y_train, x_val, y_val\n\n\ndef plot(y_val,prediction):\n    from cmcrameri import cm\n\n    bins = np.logspace(-6,-1,10, base=2)*0.85\n\n    v = prediction.T[0]\n\n    colors = cm.batlowS(np.digitize(v, bins))\n    colors_actual = cm.batlowS(np.digitize(np.unique(y_val),bins))\n\n    fig, ax = plt.subplots()\n    ax.scatter(y_val, v, c=colors, alpha=0.25)\n    ax.scatter(np.unique(y_val), np.unique(y_val), marker=\"_\", color='k', s=200)\n\n    ax.set_xscale(\"log\")\n    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())\n    ax.set_xticks(np.unique(y_val))\n\n    ax.set_facecolor([0.98,0.98,0.98,1])\n\n    for val in bins:\n        ax.axvline(val, alpha=0.05, c='k')\n\n    ax.set_xlabel(\"Input turning rate\")\n    ax.set_ylabel(\"Predicted turning rate\")\n\n    std = []\n    overlap = []\n    accuracy = 1e-4\n    for val in np.unique(y_val):\n        v_mapped = v[np.where(y_val == val)]\n        std.append(np.std(v_mapped))\n        overlap.append((val + accuracy &gt;= np.min(v_mapped)) & (val - accuracy &lt;= np.max(v_mapped)))\n\n    print(\"Overlap ratio:\", np.sum(overlap)/len(overlap))\n    print(\"(Min, Max, Avg) STD:\", np.min(std), np.max(std), np.mean(std))\n    print(\"Pearson's correlation coeff: \", pearsonr(y_val, v).statistic)\n\n\n\n\nCode\nx,y,shape = data_load(\n    alphas=[0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500],\n    densities=[0.25]\n)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=int(len(x)*0.2))\n\nname = \"rock8943\"\nmodel = tf.keras.models.load_model(f'models/{name}.keras')\nmodel.summary()\nprediction = model.predict(x_val)\nplot(y_val,prediction)\n\n\nNumber of unique alpha:  10\nShape of x:  (10000, 128, 128, 1)\nShape of y:  (10000,)\nSize of training data:  8000\nSize of validation data:  2000\nModel: \"sequential_1\"\n_________________________________________________________________\n Layer (type)                Output Shape              Param #   \n=================================================================\n conv2d_3 (Conv2D)           (None, 128, 128, 3)       30        \n                                                                 \n max_pooling2d_3 (MaxPooling  (None, 64, 64, 3)        0         \n 2D)                                                             \n                                                                 \n re_lu_3 (ReLU)              (None, 64, 64, 3)         0         \n                                                                 \n batch_normalization_3 (Batc  (None, 64, 64, 3)        12        \n hNormalization)                                                 \n                                                                 \n conv2d_4 (Conv2D)           (None, 64, 64, 4)         196       \n                                                                 \n max_pooling2d_4 (MaxPooling  (None, 32, 32, 4)        0         \n 2D)                                                             \n                                                                 \n re_lu_4 (ReLU)              (None, 32, 32, 4)         0         \n                                                                 \n batch_normalization_4 (Batc  (None, 32, 32, 4)        16        \n hNormalization)                                                 \n                                                                 \n conv2d_5 (Conv2D)           (None, 32, 32, 9)         909       \n                                                                 \n max_pooling2d_5 (MaxPooling  (None, 16, 16, 9)        0         \n 2D)                                                             \n                                                                 \n re_lu_5 (ReLU)              (None, 16, 16, 9)         0         \n                                                                 \n batch_normalization_5 (Batc  (None, 16, 16, 9)        36        \n hNormalization)                                                 \n                                                                 \n global_average_pooling2d_1   (None, 9)                0         \n (GlobalAveragePooling2D)                                        \n                                                                 \n dropout_2 (Dropout)         (None, 9)                 0         \n                                                                 \n dense_3 (Dense)             (None, 128)               1280      \n                                                                 \n dropout_3 (Dropout)         (None, 128)               0         \n                                                                 \n dense_4 (Dense)             (None, 3)                 387       \n                                                                 \n flatten_1 (Flatten)         (None, 3)                 0         \n                                                                 \n dense_5 (Dense)             (None, 1)                 4         \n                                                                 \n=================================================================\nTotal params: 2,870\nTrainable params: 2,838\nNon-trainable params: 32\n_________________________________________________________________\n 1/63 [..............................] - ETA: 5s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b27/63 [===========&gt;..................] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b52/63 [=======================&gt;......] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b63/63 [==============================] - 0s 2ms/step\nOverlap ratio: 0.9\n(Min, Max, Avg) STD: 0.00214659 0.034032185 0.0127004115\nPearson's correlation coeff:  0.9893322916789618\n\n\n\n\n\n\n\n\n\n\n\n\nOverfitting one data point to tune learning rate\n\n\nCode\nx,y,shape = data_load(\n    alphas=[0.023],\n    densities=[0.2]\n)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=int(len(x)*0.2))\n\nname = \"recite9661\"\nmodel = tf.keras.models.load_model(f'models/{name}.keras')\nmodel.summary()\nprediction = model.predict(x_val)\nplot(y_val,prediction)\n\n\nNumber of unique alpha:  1\nShape of x:  (1000, 128, 128, 1)\nShape of y:  (1000,)\nSize of training data:  800\nSize of validation data:  200\nModel: \"sequential\"\n_________________________________________________________________\n Layer (type)                Output Shape              Param #   \n=================================================================\n conv2d (Conv2D)             (None, 128, 128, 3)       30        \n                                                                 \n batch_normalization (BatchN  (None, 128, 128, 3)      12        \n ormalization)                                                   \n                                                                 \n dense (Dense)               (None, 128, 128, 3)       12        \n                                                                 \n flatten (Flatten)           (None, 49152)             0         \n                                                                 \n dense_1 (Dense)             (None, 1)                 49153     \n                                                                 \n=================================================================\nTotal params: 49,207\nTrainable params: 49,201\nNon-trainable params: 6\n_________________________________________________________________\n1/7 [===&gt;..........................] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b7/7 [==============================] - 0s 2ms/step\nOverlap ratio: 1.0\n(Min, Max, Avg) STD: 5.174399e-05 5.174399e-05 5.174399e-05\nPearson's correlation coeff:  nan\n\n\n/tmp/ipykernel_89121/2675970344.py:118: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.\n  print(\"Pearson's correlation coeff: \", pearsonr(y_val, v).statistic)\n\n\n\n\n\n\n\n\n\n\n\nOverfitting two data points to tune learning rate\nThis one uses SGD with learning rate (0.0003) and took 180 epochs before it stops descending\n\n\nCode\nx,y,shape = data_load(\n    alphas=[0.023,0.034],\n    densities=[0.2]\n)\nx_train, y_train, x_val, y_val = split_dataset(x,y,last=int(len(x)*0.2))\n\nname = \"shamrock2212\"\nmodel = tf.keras.models.load_model(f'models/{name}.keras')\nmodel.summary()\nprediction = model.predict(x_val)\nplot(y_val,prediction)\n\n\nNumber of unique alpha:  2\nShape of x:  (2000, 128, 128, 1)\nShape of y:  (2000,)\nSize of training data:  1600\nSize of validation data:  400\nModel: \"sequential\"\n_________________________________________________________________\n Layer (type)                Output Shape              Param #   \n=================================================================\n conv2d (Conv2D)             (None, 128, 128, 3)       30        \n                                                                 \n batch_normalization (BatchN  (None, 128, 128, 3)      12        \n ormalization)                                                   \n                                                                 \n conv2d_1 (Conv2D)           (None, 128, 128, 3)       84        \n                                                                 \n batch_normalization_1 (Batc  (None, 128, 128, 3)      12        \n hNormalization)                                                 \n                                                                 \n max_pooling2d (MaxPooling2D  (None, 64, 64, 3)        0         \n )                                                               \n                                                                 \n dense (Dense)               (None, 64, 64, 3)         12        \n                                                                 \n flatten (Flatten)           (None, 12288)             0         \n                                                                 \n dense_1 (Dense)             (None, 1)                 12289     \n                                                                 \n=================================================================\nTotal params: 12,439\nTrainable params: 12,427\nNon-trainable params: 12\n_________________________________________________________________\n 1/13 [=&gt;............................] - ETA: 1s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b13/13 [==============================] - ETA: 0s\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b13/13 [==============================] - 0s 10ms/step\nOverlap ratio: 1.0\n(Min, Max, Avg) STD: 0.007312789 0.0073565524 0.007334671\nPearson's correlation coeff:  -0.03504739682166748",
+    "crumbs": [
+      "Main content",
+      "Activity Log",
+      "Week 16"
+    ]
+  },
+  {
+    "objectID": "activity_log/week_16.html#reference-materials",
+    "href": "activity_log/week_16.html#reference-materials",
+    "title": "Week 16",
+    "section": "Reference materials",
+    "text": "Reference materials\n\nLeakyReLU vs ReLU\nA lot of good tips",
+    "crumbs": [
+      "Main content",
+      "Activity Log",
+      "Week 16"
     ]
   },
   {
@@ -743,7 +791,7 @@
     "href": "activity_log/week_14.html",
     "title": "Week 14",
     "section": "",
-    "text": "Regenerate datasets without the rolling to reduce filesizes and complexity\nQuantify where cluster distribution stabilises",
+    "text": "Regenerate datasets without the rolling to reduce filesizes and complexity\nQuantify where cluster distribution stabilises\n\nAn aside for now as we wrap up analysis to focus on the neural network",
     "crumbs": [
       "Main content",
       "Activity Log",
@@ -755,7 +803,7 @@
     "href": "activity_log/week_14.html#tasks",
     "title": "Week 14",
     "section": "",
-    "text": "Regenerate datasets without the rolling to reduce filesizes and complexity\nQuantify where cluster distribution stabilises",
+    "text": "Regenerate datasets without the rolling to reduce filesizes and complexity\nQuantify where cluster distribution stabilises\n\nAn aside for now as we wrap up analysis to focus on the neural network",
     "crumbs": [
       "Main content",
       "Activity Log",
@@ -763,11 +811,23 @@
     ]
   },
   {
-    "objectID": "activity_log/week_14.html#no-rolling",
-    "href": "activity_log/week_14.html#no-rolling",
+    "objectID": "activity_log/week_14.html#summary",
+    "href": "activity_log/week_14.html#summary",
     "title": "Week 14",
-    "section": "No rolling",
-    "text": "No rolling\nTo remove the extra snapshots (look at Week 5 for an explanation of this), we remove the final loop in sampler.py, create a new version for this, which we named sampler_no_roll.py, and regenerated the datasets, each only 66 MB in size (reduced from 220 MB!).\nA one-liner for this:\nfor i in $(seq 0.0.5 0.05 0.5); do python3 sampler_no_roll.py --odd --density $i; done",
+    "section": "Summary",
+    "text": "Summary\n\nRemove the hardcoded augmentation function\nTo remove the extra snapshots (look at Week 5 for an explanation of this), we remove the final loop in sampler.py, create a new version for this, which we named sampler_no_roll.py, and regenerated the datasets, each only 66 MB in size (reduced from 220 MB!).\nA one-liner for this:\nfor i in $(seq 0.0.5 0.05 0.5); do python3 sampler_no_roll.py --odd --density $i; done\nI think augmentation can be added in when we clean up and prepare data for the neural network, instead of being saved on disk.\nThe rest of this week was spent wrapping up the analysis, and doing some reading on neural network, and convolutional neural networks.",
+    "crumbs": [
+      "Main content",
+      "Activity Log",
+      "Week 14"
+    ]
+  },
+  {
+    "objectID": "activity_log/week_14.html#reference-materials",
+    "href": "activity_log/week_14.html#reference-materials",
+    "title": "Week 14",
+    "section": "Reference materials",
+    "text": "Reference materials\n\nDeep learning book (MIT Press) (good for references)\nNeural networks and deep learning (nicely written)\nTF tutorial (hands-on)",
     "crumbs": [
       "Main content",
       "Activity Log",
@@ -779,7 +839,7 @@
     "href": "activity_log/landing.html",
     "title": "Activity log listing",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\nOct 10, 2023\n\n\nWeek 2\n\n\nNP \n\n\n\n\nOct 13, 2023\n\n\nWeek 3\n\n\nNP \n\n\n\n\nOct 13, 2023\n\n\nWeek 4\n\n\nNP \n\n\n\n\nOct 13, 2023\n\n\nWeek 5\n\n\nNP \n\n\n\n\nNov 8, 2023\n\n\nWeek 6\n\n\nNP \n\n\n\n\nNov 13, 2023\n\n\nWeek 7\n\n\nNP \n\n\n\n\nJan 17, 2024\n\n\nWeek 8-13\n\n\nNP \n\n\n\n\nFeb 2, 2024\n\n\nWeek 14\n\n\nNP \n\n\n\n\nFeb 12, 2024\n\n\nWeek 15\n\n\nNP \n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\nOct 10, 2023\n\n\nWeek 2\n\n\nNP \n\n\n\n\nOct 13, 2023\n\n\nWeek 3\n\n\nNP \n\n\n\n\nOct 13, 2023\n\n\nWeek 4\n\n\nNP \n\n\n\n\nOct 13, 2023\n\n\nWeek 5\n\n\nNP \n\n\n\n\nNov 8, 2023\n\n\nWeek 6\n\n\nNP \n\n\n\n\nNov 13, 2023\n\n\nWeek 7\n\n\nNP \n\n\n\n\nJan 17, 2024\n\n\nWeek 8-13\n\n\nNP \n\n\n\n\nFeb 2, 2024\n\n\nWeek 14\n\n\nNP \n\n\n\n\nFeb 12, 2024\n\n\nWeek 15\n\n\nNP \n\n\n\n\nFeb 21, 2024\n\n\nWeek 16\n\n\nNP \n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "activity_log/week_15.html",
@@ -810,7 +870,19 @@
     "href": "activity_log/week_15.html#summary",
     "title": "Week 15",
     "section": "Summary",
-    "text": "Summary\nWe are currently doing this on our personal machines as doing interactive mode is not possible on BluePebble (unclear about BlueCrystal). Playing with the CNNs on a local notebook is the best method for now to be able to prototype quickly.\n\nBasics on the architecture of CNN\nSee the results of this week’s tinkering here.\nWe feed our snapshots in, but to represent it as a tensor. Our snapshot has one channel depth, so the tensor shape is (128,128,1).\nWe start out with the convolutional layer. This layer performs a convolution, scanning the input with a number of filters with a smaller size than the input image itself, the size of the filter is determined by the kernel size. And the output of shape of the convolutional layer is of shape (128,128,N) where N is the number of filters applied.\n\nKernel size (x,y) is the window size that scans the image at each iteration.\nStride (x,y) is the step length to jump at each iteration.\nEach filter produces a feature map, every filter added captures more complex patterns.\nWe increase filter size with subsequent layers to capture more more combinations.\n\nA flatten layer will turn the input shape (x,y,c) into (x*y*c), i.e. a 1D vector.\nA dense layer (or fully-connected), map all input neurons to output neurons. It takes in the number of units (neurons) and turn the input shape (x,y,c) into (x,y,units).\n\nLinear activation is pass-through (does nothing).\n\nA pooling layer reduces dimensions of the feature maps, which reduces the number of parameters. We have max pooling and average pooling (max takes maximum value from the kernel window and average takes the mean).\nA dropout layer randomly drops a fraction (the input parameter) of the input units to 0.\nA batch normalization layer normalizes the output. This helps with training speed.\nTo help reduce overfitting:\n\nIncrease training data\nUse pooling, batch normalization, and dropout layers\n\n\n\nA simple network to start with\nI used this in the single density notebook as the “basic” network:\nmodel = Sequential()\n\nmodel.add(\n    Conv2D(\n        filters=3,\n        kernel_size=(3, 3),\n        padding=\"same\",\n        strides=(3, 3),\n        activation=\"relu\",\n        input_shape=shape,\n    )\n)\nmodel.add(Flatten())\nmodel.add(Dense(units=1, activation=\"linear\"))\n\n\nA more complicated network\nI used this in the single density notebook to compare the effect of the dropout layers:\nmodel = Sequential()\n\nmodel.add(\n    Conv2D(\n        filters=3,\n        kernel_size=(3, 3),\n        padding=\"same\",\n        strides=(3, 3),\n        activation=\"relu\",\n        input_shape=shape,\n    )\n)\nmodel.add(BatchNormalization())\nmodel.add(Conv2D(filters=3, kernel_size=(3, 3), padding=\"same\", input_shape=shape))\nmodel.add(BatchNormalization())\n\nmodel.add(MaxPooling2D(pool_size=(3, 3)))\n\nmodel.add(Conv2D(filters=6, kernel_size=(3, 3), padding=\"same\"))\nmodel.add(BatchNormalization())\n\nmodel.add(Conv2D(filters=6, kernel_size=(3, 3), padding=\"same\"))\nmodel.add(BatchNormalization())\n\nmodel.add(MaxPooling2D(pool_size=(3, 3)))\n\nmodel.add(Dense(units=128, activation=\"relu\"))\n\nwith options({\"layout_optimizer\": False}):\n    model.add(Dropout(0.2))\nmodel.add(Dense(units=10, activation=\"softmax\"))\n\nmodel.add(Flatten())\nmodel.add(Dense(units=1, activation=\"linear\"))",
+    "text": "Summary\nWe are currently doing this on our personal machines as doing interactive mode is not possible on BluePebble (unclear about BlueCrystal). Playing with the CNNs on a local notebook is the best method for now to be able to prototype quickly.\n\nBasics on the architecture of CNN\nWe feed our snapshots in, but to represent it as a tensor. Our snapshot has one channel depth, so the tensor shape is (128,128,1).\nWe start out with the convolutional layer. This layer performs a convolution, scanning the input with a number of filters with a smaller size than the input image itself, the size of the filter is determined by the kernel size. And the output of shape of the convolutional layer is of shape (128,128,N) where N is the number of filters applied.\n\nKernel size (x,y) is the window size that scans the image at each iteration.\nStride (x,y) is the step length to jump at each iteration.\nEach filter produces a feature map, every filter added captures more complex patterns.\nWe increase filter size with subsequent layers to capture more more combinations.\n\nA flatten layer will turn the input shape (x,y,c) into (x*y*c), i.e. a 1D vector.\nA dense layer (or fully-connected), map all input neurons to output neurons. It takes in the number of units (neurons) and turn the input shape (x,y,c) into (x,y,units).\n\nLinear activation is pass-through (does nothing).\n\nA pooling layer reduces dimensions of the feature maps, which reduces the number of parameters. We have max pooling and average pooling (max takes maximum value from the kernel window and average takes the mean).\nA dropout layer randomly drops a fraction (the input parameter) of the input units to 0.\nA batch normalization layer normalizes the output. This helps with training speed.\nTo help reduce overfitting:\n\nIncrease training data\nUse pooling, batch normalization, and dropout layers\n\n\n\nClassifying our model/problem\nFor this week, we start building the network. Our network is a regression problem, predicting a continuous parameter, our tumbling rate \\(\\alpha\\).\nFor this to work, we choose a loss function such as mean absolute error and mean squared error. We picked mean absolute error for now.\nEffectively, we want the model to minimise the mean absolute error (MAE from now on). From some precursor research, regression done on non-image data typically use only fully-connected layers. We have image data that we wish to apply convolution on, therefore we have to combine both.\nThe input is an image, but we have to output a 1D vector that maps to predictions for one parameter (continuous). To do this, we apply Flatten() and Dense(1, activation=\"linear\") at the end.\n\n\nInitial strategy\nWe begin with a simple model with one Conv2D layer:\n\nA simple network to start with: Model A\nI used this in the single density notebook as the “basic” network:\nmodel = Sequential()\n\nmodel.add(\n    Conv2D(\n        filters=3,\n        kernel_size=(3, 3),\n        padding=\"same\",\n        strides=(3, 3),\n        activation=\"relu\",\n        input_shape=shape,\n    )\n)\nmodel.add(Flatten())\nmodel.add(Dense(units=1, activation=\"linear\"))\nWe compare this with a slightly more complicated one.\n\n\nA more complicated network: Model B\nBased on this blog post, where they work on a classification problem, so we need to be careful with the output.\nmodel = Sequential()\n\nmodel.add(\n    Conv2D(\n        filters=3,\n        kernel_size=(3, 3),\n        padding=\"same\",\n        strides=(3, 3),\n        activation=\"relu\",\n        input_shape=shape,\n    )\n)\nmodel.add(BatchNormalization())\nmodel.add(Conv2D(filters=3, kernel_size=(3, 3), padding=\"same\", input_shape=shape))\nmodel.add(BatchNormalization())\n\nmodel.add(MaxPooling2D(pool_size=(3, 3)))\n\nmodel.add(Conv2D(filters=6, kernel_size=(3, 3), padding=\"same\"))\nmodel.add(BatchNormalization())\n\nmodel.add(Conv2D(filters=6, kernel_size=(3, 3), padding=\"same\"))\nmodel.add(BatchNormalization())\n\nmodel.add(MaxPooling2D(pool_size=(3, 3)))\n\nmodel.add(Dense(units=128, activation=\"relu\"))\n\nwith options({\"layout_optimizer\": False}):\n    model.add(Dropout(0.2))\nmodel.add(Dense(units=10, activation=\"softmax\"))\n\nmodel.add(Flatten())\nmodel.add(Dense(units=1, activation=\"linear\"))\nI was interested in the effect of dropout, so I used Model B with and without dropout to compare the results.\n\n\n\nExperiment summary\nSee the results of this week’s tinkering here.\n\nComparing Model A to Model B\n\nBoth seem to exhibit correlation to the actual values.\nModel A has significantly more spread than Model B\nDropout doesn’t reduce spread but make the average of each \\(\\alpha\\) less centred around the actual value.\nDropout adds a lot of spread to the first \\(\\alpha\\).\nModel A performs poorly on \\(\\phi \\neq 0.15\\) (which it was trained on).\nModel B performs poorly only on \\(\\phi = 0.45\\) (it does well on \\(\\phi = 0.25\\))\nBut turning off dropout for B makes it perform better on \\(\\phi = 0.45\\).\n\nDropout seems to reduce overfit by a lot. I don’t know if setting it to 0.2 here is too much dropout.",
+    "crumbs": [
+      "Main content",
+      "Activity Log",
+      "Week 15"
+    ]
+  },
+  {
+    "objectID": "activity_log/week_15.html#reference-materials",
+    "href": "activity_log/week_15.html#reference-materials",
+    "title": "Week 15",
+    "section": "Reference materials",
+    "text": "Reference materials\n\nHouse price regression 1\nHouse price regression 2\nTF Regression tutorial\nStackOverflow\nStackOverflow 2\nTDS pytorch on CNN to predict a continous property\nCNN with regression",
     "crumbs": [
       "Main content",
       "Activity Log",
