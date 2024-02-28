@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../plots/network_demo_1.html" rel="next">
+<link href="../plots/number_of_cluster.html" rel="next">
 <link href="../plots/evo.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -196,6 +196,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 17</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -273,12 +279,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dropout and convolution demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Number of clusters</span></a>
   </div>
@@ -343,12 +343,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Training logbook</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
@@ -414,12 +408,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">External tools</span></a>
+ <span class="menu-text">External links</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
+</i> 
+ <span class="menu-text">Network logbook</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -480,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="304cf13b" class="cell" data-execution_count="1">
+<div id="c96af3c0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -501,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-18"><a href="#cb1-18"></a>    axis.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
 <span id="cb1-19"><a href="#cb1-19"></a>    <span class="cf">return</span> axis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f3ebe2c4" class="cell" data-execution_count="2">
+<div id="5c994e18" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>sshot_idx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(</span>
@@ -816,6 +817,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/.mstcl\.github.io\/msci-wiki");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1131,66 +1152,68 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../plots/network_demo_1.html" class="pagination-link" aria-label="Dropout and convolution demo">
-        <span class="nav-page-text">Dropout and convolution demo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../plots/number_of_cluster.html" class="pagination-link" aria-label="Number of clusters">
+        <span class="nav-page-text">Number of clusters</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="an">title:</span><span class="co"> Cluster labelling demo</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">---</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="in">```{python}</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="im">import</span> os</span>
-<span id="cb3-10"><a href="#cb3-10"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="im">from</span> utils <span class="im">import</span> get_cluster_labels</span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb3-14"><a href="#cb3-14"></a></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="im">import</span> cmcrameri</span>
-<span id="cb3-17"><a href="#cb3-17"></a></span>
-<span id="cb3-18"><a href="#cb3-18"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb3-19"><a href="#cb3-19"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb3-22"><a href="#cb3-22"></a></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="kw">def</span> label_cluster(axis, <span class="bu">file</span>, sshot_idx):</span>
-<span id="cb3-24"><a href="#cb3-24"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.actonS'</span>)</span>
-<span id="cb3-25"><a href="#cb3-25"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, sshot_idx)</span>
-<span id="cb3-26"><a href="#cb3-26"></a>    axis.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
-<span id="cb3-27"><a href="#cb3-27"></a>    <span class="cf">return</span> axis</span>
-<span id="cb3-28"><a href="#cb3-28"></a><span class="in">```</span></span>
-<span id="cb3-29"><a href="#cb3-29"></a></span>
-<span id="cb3-32"><a href="#cb3-32"></a><span class="in">```{python}</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a>sshot_idx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb3-34"><a href="#cb3-34"></a></span>
-<span id="cb3-35"><a href="#cb3-35"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(</span>
-<span id="cb3-36"><a href="#cb3-36"></a>    <span class="dv">1</span>,</span>
-<span id="cb3-37"><a href="#cb3-37"></a>    <span class="dv">2</span>,</span>
-<span id="cb3-38"><a href="#cb3-38"></a>    figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">3</span>),</span>
-<span id="cb3-39"><a href="#cb3-39"></a>    constrained_layout<span class="op">=</span><span class="va">True</span></span>
-<span id="cb3-40"><a href="#cb3-40"></a>)</span>
-<span id="cb3-41"><a href="#cb3-41"></a>ax1 <span class="op">=</span> label_cluster(ax1, <span class="st">"../data/dataset_tumble_0.023_0.25.h5"</span>, sshot_idx)</span>
-<span id="cb3-42"><a href="#cb3-42"></a>ax1.text(</span>
-<span id="cb3-43"><a href="#cb3-43"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
-<span id="cb3-44"><a href="#cb3-44"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb3-45"><a href="#cb3-45"></a>    transform<span class="op">=</span>ax1.transAxes,</span>
-<span id="cb3-46"><a href="#cb3-46"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb3-47"><a href="#cb3-47"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.023$"</span>,</span>
-<span id="cb3-48"><a href="#cb3-48"></a>)</span>
-<span id="cb3-49"><a href="#cb3-49"></a>ax2 <span class="op">=</span> label_cluster(ax2, <span class="st">"../data/dataset_tumble_0.500_0.25.h5"</span>, sshot_idx)</span>
-<span id="cb3-50"><a href="#cb3-50"></a>ax2.text(</span>
-<span id="cb3-51"><a href="#cb3-51"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
-<span id="cb3-52"><a href="#cb3-52"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb3-53"><a href="#cb3-53"></a>    transform<span class="op">=</span>ax2.transAxes,</span>
-<span id="cb3-54"><a href="#cb3-54"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb3-55"><a href="#cb3-55"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.500$"</span>,</span>
-<span id="cb3-56"><a href="#cb3-56"></a>)</span>
-<span id="cb3-57"><a href="#cb3-57"></a>plt.show()</span>
-<span id="cb3-58"><a href="#cb3-58"></a>fig.savefig(<span class="st">"../plots/labelling_demo.pdf"</span>)</span>
-<span id="cb3-59"><a href="#cb3-59"></a><span class="in">```</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="an">execute:</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">  cache: true</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">---</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="in">```{python}</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="im">import</span> os</span>
+<span id="cb3-12"><a href="#cb3-12"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="im">from</span> utils <span class="im">import</span> get_cluster_labels</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="im">import</span> cmcrameri</span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb3-21"><a href="#cb3-21"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="kw">def</span> label_cluster(axis, <span class="bu">file</span>, sshot_idx):</span>
+<span id="cb3-26"><a href="#cb3-26"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">'cmc.actonS'</span>)</span>
+<span id="cb3-27"><a href="#cb3-27"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, sshot_idx)</span>
+<span id="cb3-28"><a href="#cb3-28"></a>    axis.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
+<span id="cb3-29"><a href="#cb3-29"></a>    <span class="cf">return</span> axis</span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="in">```</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a></span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="in">```{python}</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a>sshot_idx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a></span>
+<span id="cb3-37"><a href="#cb3-37"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(</span>
+<span id="cb3-38"><a href="#cb3-38"></a>    <span class="dv">1</span>,</span>
+<span id="cb3-39"><a href="#cb3-39"></a>    <span class="dv">2</span>,</span>
+<span id="cb3-40"><a href="#cb3-40"></a>    figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">3</span>),</span>
+<span id="cb3-41"><a href="#cb3-41"></a>    constrained_layout<span class="op">=</span><span class="va">True</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>)</span>
+<span id="cb3-43"><a href="#cb3-43"></a>ax1 <span class="op">=</span> label_cluster(ax1, <span class="st">"../data/dataset_tumble_0.023_0.25.h5"</span>, sshot_idx)</span>
+<span id="cb3-44"><a href="#cb3-44"></a>ax1.text(</span>
+<span id="cb3-45"><a href="#cb3-45"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
+<span id="cb3-46"><a href="#cb3-46"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb3-47"><a href="#cb3-47"></a>    transform<span class="op">=</span>ax1.transAxes,</span>
+<span id="cb3-48"><a href="#cb3-48"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
+<span id="cb3-49"><a href="#cb3-49"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.023$"</span>,</span>
+<span id="cb3-50"><a href="#cb3-50"></a>)</span>
+<span id="cb3-51"><a href="#cb3-51"></a>ax2 <span class="op">=</span> label_cluster(ax2, <span class="st">"../data/dataset_tumble_0.500_0.25.h5"</span>, sshot_idx)</span>
+<span id="cb3-52"><a href="#cb3-52"></a>ax2.text(</span>
+<span id="cb3-53"><a href="#cb3-53"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
+<span id="cb3-54"><a href="#cb3-54"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb3-55"><a href="#cb3-55"></a>    transform<span class="op">=</span>ax2.transAxes,</span>
+<span id="cb3-56"><a href="#cb3-56"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
+<span id="cb3-57"><a href="#cb3-57"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.500$"</span>,</span>
+<span id="cb3-58"><a href="#cb3-58"></a>)</span>
+<span id="cb3-59"><a href="#cb3-59"></a>plt.show()</span>
+<span id="cb3-60"><a href="#cb3-60"></a>fig.savefig(<span class="st">"../plots/labelling_demo.pdf"</span>)</span>
+<span id="cb3-61"><a href="#cb3-61"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

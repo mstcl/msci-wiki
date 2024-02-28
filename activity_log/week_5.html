@@ -227,6 +227,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 17</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -304,12 +310,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dropout and convolution demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Number of clusters</span></a>
   </div>
@@ -374,12 +374,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Training logbook</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
@@ -445,12 +439,19 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">External tools</span></a>
+ <span class="menu-text">External links</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
+</i> 
+ <span class="menu-text">Network logbook</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -558,7 +559,7 @@ window.Quarto = {
 <section id="what-to-run-to-look-into-h5-files" class="level3">
 <h3 class="anchored" data-anchor-id="what-to-run-to-look-into-h5-files">What to run to look into h5 files</h3>
 <p>I did this in the python3 console. Import a random data file, can check with another one by repeating this whole process:</p>
-<div id="21a2e323" class="cell" data-execution_count="1">
+<div id="57c37c22" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> re</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> h5py</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -572,7 +573,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The unique snapshots won’t have the last number, like <code>conf_9820</code>. To get the list of all iterations:</p>
-<div id="df2006bb" class="cell" data-execution_count="2">
+<div id="6ef54cff" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>iter_n <span class="op">=</span> []</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="cf">for</span> val <span class="kw">in</span> k:</span>
 <span id="cb3-3"><a href="#cb3-3"></a>    <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
@@ -867,6 +868,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/.mstcl\.github.io\/msci-wiki");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1192,64 +1213,66 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-3"><a href="#cb6-3"></a><span class="an">date:</span><span class="co"> 2023-10-13</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">---</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">## Tasks</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="an">execute:</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">  cache: true</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">---</span></span>
 <span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="ss">- </span>Most of this week was reading week for the school of arts so only set out to</span>
-<span id="cb6-11"><a href="#cb6-11"></a>do a few things</span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="ss">- </span>In general, tasks to do up to week 9's interim report is to carry on working on</span>
-<span id="cb6-13"><a href="#cb6-13"></a>  analysing the clusters.</span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="ss">  - </span>Examine size distribution over time for $(\alpha, \phi)$</span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="ss">  - </span>Examine mean orientation over time for $(\alpha, \phi)$</span>
-<span id="cb6-16"><a href="#cb6-16"></a></span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="fu">## Summary</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="fu">## Tasks</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="ss">- </span>Most of this week was reading week for the school of arts so only set out to</span>
+<span id="cb6-13"><a href="#cb6-13"></a>do a few things</span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="ss">- </span>In general, tasks to do up to week 9's interim report is to carry on working on</span>
+<span id="cb6-15"><a href="#cb6-15"></a>  analysing the clusters.</span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="ss">  - </span>Examine size distribution over time for $(\alpha, \phi)$</span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="ss">  - </span>Examine mean orientation over time for $(\alpha, \phi)$</span>
 <span id="cb6-18"><a href="#cb6-18"></a></span>
-<span id="cb6-19"><a href="#cb6-19"></a>I moved to python 3.9.13 (<span class="in">`module load lang/python/3.9.13`</span>) to use more recent</span>
-<span id="cb6-20"><a href="#cb6-20"></a>features in matplotlib.</span>
-<span id="cb6-21"><a href="#cb6-21"></a></span>
-<span id="cb6-22"><a href="#cb6-22"></a>I looked at what is being saved in the h5 binaries. Some remarks:</span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="fu">## Summary</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a></span>
+<span id="cb6-21"><a href="#cb6-21"></a>I moved to python 3.9.13 (<span class="in">`module load lang/python/3.9.13`</span>) to use more recent</span>
+<span id="cb6-22"><a href="#cb6-22"></a>features in matplotlib.</span>
 <span id="cb6-23"><a href="#cb6-23"></a></span>
-<span id="cb6-24"><a href="#cb6-24"></a><span class="ss">- </span>For all files, they have a length of 14000.</span>
-<span id="cb6-25"><a href="#cb6-25"></a><span class="ss">- </span>Every unique snapshot appears to "roll" through the square grid 13 times</span>
-<span id="cb6-26"><a href="#cb6-26"></a><span class="ss">  - </span>I got this number from the size of <span class="in">`np.arange(0,128,10)`</span>, where 128 is just</span>
-<span id="cb6-27"><a href="#cb6-27"></a>  the size of the grid. This bit of code is in <span class="in">`sampler.py`</span> and I'm not quite</span>
-<span id="cb6-28"><a href="#cb6-28"></a>  sure why the additional "clones" are there. My guess is that it is for</span>
-<span id="cb6-29"><a href="#cb6-29"></a>  training?</span>
-<span id="cb6-30"><a href="#cb6-30"></a></span>
-<span id="cb6-31"><a href="#cb6-31"></a><span class="fu">### What to run to look into h5 files</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a>I looked at what is being saved in the h5 binaries. Some remarks:</span>
+<span id="cb6-25"><a href="#cb6-25"></a></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="ss">- </span>For all files, they have a length of 14000.</span>
+<span id="cb6-27"><a href="#cb6-27"></a><span class="ss">- </span>Every unique snapshot appears to "roll" through the square grid 13 times</span>
+<span id="cb6-28"><a href="#cb6-28"></a><span class="ss">  - </span>I got this number from the size of <span class="in">`np.arange(0,128,10)`</span>, where 128 is just</span>
+<span id="cb6-29"><a href="#cb6-29"></a>  the size of the grid. This bit of code is in <span class="in">`sampler.py`</span> and I'm not quite</span>
+<span id="cb6-30"><a href="#cb6-30"></a>  sure why the additional "clones" are there. My guess is that it is for</span>
+<span id="cb6-31"><a href="#cb6-31"></a>  training?</span>
 <span id="cb6-32"><a href="#cb6-32"></a></span>
-<span id="cb6-33"><a href="#cb6-33"></a>I did this in the python3 console. Import a random data file, can check with</span>
-<span id="cb6-34"><a href="#cb6-34"></a>another one by repeating this whole process:</span>
-<span id="cb6-35"><a href="#cb6-35"></a></span>
-<span id="cb6-36"><a href="#cb6-36"></a></span>
-<span id="cb6-39"><a href="#cb6-39"></a><span class="in">```{python}</span></span>
-<span id="cb6-40"><a href="#cb6-40"></a><span class="im">import</span> re</span>
-<span id="cb6-41"><a href="#cb6-41"></a><span class="im">import</span> h5py</span>
-<span id="cb6-42"><a href="#cb6-42"></a></span>
-<span id="cb6-43"><a href="#cb6-43"></a>hf <span class="op">=</span> h5py.File(<span class="st">"../assets/dataset_tumble_0.023_0.25.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb6-44"><a href="#cb6-44"></a><span class="bu">print</span>(<span class="bu">len</span>(hf))  <span class="co"># gives 14000</span></span>
-<span id="cb6-45"><a href="#cb6-45"></a>k <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
-<span id="cb6-46"><a href="#cb6-46"></a><span class="bu">print</span>(k)  <span class="co"># gives a bunch of strings like 'conf_9900_10'</span></span>
-<span id="cb6-47"><a href="#cb6-47"></a><span class="in">```</span></span>
-<span id="cb6-48"><a href="#cb6-48"></a></span>
-<span id="cb6-49"><a href="#cb6-49"></a>The unique snapshots won't have the last number, like <span class="in">`conf_9820`</span>.</span>
-<span id="cb6-50"><a href="#cb6-50"></a>To get the list of all iterations:</span>
-<span id="cb6-51"><a href="#cb6-51"></a></span>
-<span id="cb6-54"><a href="#cb6-54"></a><span class="in">```{python}</span></span>
-<span id="cb6-55"><a href="#cb6-55"></a>iter_n <span class="op">=</span> []</span>
-<span id="cb6-56"><a href="#cb6-56"></a><span class="cf">for</span> val <span class="kw">in</span> k:</span>
-<span id="cb6-57"><a href="#cb6-57"></a>    <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
-<span id="cb6-58"><a href="#cb6-58"></a>        iter_n.append(<span class="bu">int</span>(val[<span class="dv">5</span>:]))</span>
-<span id="cb6-59"><a href="#cb6-59"></a><span class="bu">print</span>(<span class="bu">sorted</span>(iter_n))  <span class="co"># gives sorted unique snapshots</span></span>
-<span id="cb6-60"><a href="#cb6-60"></a><span class="in">```</span></span>
-<span id="cb6-61"><a href="#cb6-61"></a></span>
-<span id="cb6-62"><a href="#cb6-62"></a>If I want to plot the penultimate snapshot, I would retrieve that by doing:</span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="fu">### What to run to look into h5 files</span></span>
+<span id="cb6-34"><a href="#cb6-34"></a></span>
+<span id="cb6-35"><a href="#cb6-35"></a>I did this in the python3 console. Import a random data file, can check with</span>
+<span id="cb6-36"><a href="#cb6-36"></a>another one by repeating this whole process:</span>
+<span id="cb6-37"><a href="#cb6-37"></a></span>
+<span id="cb6-38"><a href="#cb6-38"></a></span>
+<span id="cb6-41"><a href="#cb6-41"></a><span class="in">```{python}</span></span>
+<span id="cb6-42"><a href="#cb6-42"></a><span class="im">import</span> re</span>
+<span id="cb6-43"><a href="#cb6-43"></a><span class="im">import</span> h5py</span>
+<span id="cb6-44"><a href="#cb6-44"></a></span>
+<span id="cb6-45"><a href="#cb6-45"></a>hf <span class="op">=</span> h5py.File(<span class="st">"../assets/dataset_tumble_0.023_0.25.h5"</span>, <span class="st">"r"</span>)</span>
+<span id="cb6-46"><a href="#cb6-46"></a><span class="bu">print</span>(<span class="bu">len</span>(hf))  <span class="co"># gives 14000</span></span>
+<span id="cb6-47"><a href="#cb6-47"></a>k <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
+<span id="cb6-48"><a href="#cb6-48"></a><span class="bu">print</span>(k)  <span class="co"># gives a bunch of strings like 'conf_9900_10'</span></span>
+<span id="cb6-49"><a href="#cb6-49"></a><span class="in">```</span></span>
+<span id="cb6-50"><a href="#cb6-50"></a></span>
+<span id="cb6-51"><a href="#cb6-51"></a>The unique snapshots won't have the last number, like <span class="in">`conf_9820`</span>.</span>
+<span id="cb6-52"><a href="#cb6-52"></a>To get the list of all iterations:</span>
+<span id="cb6-53"><a href="#cb6-53"></a></span>
+<span id="cb6-56"><a href="#cb6-56"></a><span class="in">```{python}</span></span>
+<span id="cb6-57"><a href="#cb6-57"></a>iter_n <span class="op">=</span> []</span>
+<span id="cb6-58"><a href="#cb6-58"></a><span class="cf">for</span> val <span class="kw">in</span> k:</span>
+<span id="cb6-59"><a href="#cb6-59"></a>    <span class="cf">if</span> re.search(<span class="st">"^conf_\d+$"</span>, val):</span>
+<span id="cb6-60"><a href="#cb6-60"></a>        iter_n.append(<span class="bu">int</span>(val[<span class="dv">5</span>:]))</span>
+<span id="cb6-61"><a href="#cb6-61"></a><span class="bu">print</span>(<span class="bu">sorted</span>(iter_n))  <span class="co"># gives sorted unique snapshots</span></span>
+<span id="cb6-62"><a href="#cb6-62"></a><span class="in">```</span></span>
 <span id="cb6-63"><a href="#cb6-63"></a></span>
-<span id="cb6-64"><a href="#cb6-64"></a><span class="in">```python</span></span>
-<span id="cb6-65"><a href="#cb6-65"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span><span class="bu">sorted</span>(iter_n[<span class="op">-</span><span class="dv">2</span>])<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb6-66"><a href="#cb6-66"></a>axis.matshow(img, cmap<span class="op">=</span>cmap)  <span class="co"># just snippet of code, need to declare axis first</span></span>
-<span id="cb6-67"><a href="#cb6-67"></a><span class="in">```</span></span>
+<span id="cb6-64"><a href="#cb6-64"></a>If I want to plot the penultimate snapshot, I would retrieve that by doing:</span>
+<span id="cb6-65"><a href="#cb6-65"></a></span>
+<span id="cb6-66"><a href="#cb6-66"></a><span class="in">```python</span></span>
+<span id="cb6-67"><a href="#cb6-67"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span><span class="bu">sorted</span>(iter_n[<span class="op">-</span><span class="dv">2</span>])<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb6-68"><a href="#cb6-68"></a>axis.matshow(img, cmap<span class="op">=</span>cmap)  <span class="co"># just snippet of code, need to declare axis first</span></span>
+<span id="cb6-69"><a href="#cb6-69"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

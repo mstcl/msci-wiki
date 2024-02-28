@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dissipation Learning in Active Matter - Dropout and convolution demo</title>
+<title>Dissipation Learning in Active Matter</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,35 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -146,7 +117,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/network_demo_1.html">Dropout and convolution demo</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/network_demo_1.html">Network Demo 1</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -221,6 +192,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 16</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 17</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -303,7 +280,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Dropout and convolution demo</span></a>
+ <span class="menu-text">Network Demo 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -485,424 +462,18 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Content</h2>
-   
-  <ul>
-  <li><a href="#import-and-define-functions" id="toc-import-and-define-functions" class="nav-link active" data-scroll-target="#import-and-define-functions">Import and define functions</a></li>
-  <li><a href="#predict-with-the-same-density" id="toc-predict-with-the-same-density" class="nav-link" data-scroll-target="#predict-with-the-same-density">Predict with the same density</a>
-  <ul class="collapse">
-  <li><a href="#basic-model-model-a" id="toc-basic-model-model-a" class="nav-link" data-scroll-target="#basic-model-model-a">Basic model (Model A)</a></li>
-  <li><a href="#with-a-dropout-layer-model-b" id="toc-with-a-dropout-layer-model-b" class="nav-link" data-scroll-target="#with-a-dropout-layer-model-b">With a dropout layer (Model B)</a></li>
-  <li><a href="#without-a-dropout-layer-model-b" id="toc-without-a-dropout-layer-model-b" class="nav-link" data-scroll-target="#without-a-dropout-layer-model-b">Without a dropout layer (Model B)</a></li>
-  </ul></li>
-  <li><a href="#predict-with-slightly-higher-density" id="toc-predict-with-slightly-higher-density" class="nav-link" data-scroll-target="#predict-with-slightly-higher-density">Predict with slightly higher density</a>
-  <ul class="collapse">
-  <li><a href="#basic-model-model-a-1" id="toc-basic-model-model-a-1" class="nav-link" data-scroll-target="#basic-model-model-a-1">Basic model (Model A)</a></li>
-  <li><a href="#with-a-dropout-layer-model-b-1" id="toc-with-a-dropout-layer-model-b-1" class="nav-link" data-scroll-target="#with-a-dropout-layer-model-b-1">With a dropout layer (Model B)</a></li>
-  <li><a href="#without-a-dropout-layer-model-b-1" id="toc-without-a-dropout-layer-model-b-1" class="nav-link" data-scroll-target="#without-a-dropout-layer-model-b-1">Without a dropout layer (Model B)</a></li>
-  </ul></li>
-  <li><a href="#predict-with-much-higher-density" id="toc-predict-with-much-higher-density" class="nav-link" data-scroll-target="#predict-with-much-higher-density">Predict with much higher density</a>
-  <ul class="collapse">
-  <li><a href="#basic-model-model-a-2" id="toc-basic-model-model-a-2" class="nav-link" data-scroll-target="#basic-model-model-a-2">Basic model (Model A)</a></li>
-  <li><a href="#with-a-dropout-layer-model-b-2" id="toc-with-a-dropout-layer-model-b-2" class="nav-link" data-scroll-target="#with-a-dropout-layer-model-b-2">With a dropout layer (Model B)</a></li>
-  <li><a href="#without-a-dropout-layer-model-b-2" id="toc-without-a-dropout-layer-model-b-2" class="nav-link" data-scroll-target="#without-a-dropout-layer-model-b-2">Without a dropout layer (Model B)</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/plots/network_demo_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/network_demo_1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/network_demo_1.html">Dropout and convolution demo</a></li></ol></nav>
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Dropout and convolution demo</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
-</div>
+<main class="content" id="quarto-document-content"><div class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/network_demo_1.html">Network Demo 1</a></li></ol></nav><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>We train all three models (A, B with dropout, B without dropout) on one value of <span class="math inline">\(\phi=0.15\)</span> for a large number of <span class="math inline">\(\alpha\)</span>’s, and try and predict it for the same <span class="math inline">\(\phi\)</span>, as well as two different ones.</p>
-<section id="import-and-define-functions" class="level2">
-<h2 class="anchored" data-anchor-id="import-and-define-functions">Import and define functions</h2>
-<div id="65097cce" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> h5py</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> glob</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> re</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="im">import</span> gc</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-14 13:00:19.548198: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-02-14 13:00:19.548225: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-02-14 13:00:19.548691: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-02-14 13:00:19.552653: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.</code></pre>
-</div>
-</div>
-<div id="c150d601" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> reset(<span class="bu">all</span><span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    K.clear_session()</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    <span class="kw">global</span> prediction, x, y, x_train, y_train, x_val, y_val</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="kw">del</span> prediction</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="cf">if</span> <span class="bu">all</span>:</span>
-<span id="cb3-6"><a href="#cb3-6"></a>        <span class="kw">del</span> x</span>
-<span id="cb3-7"><a href="#cb3-7"></a>        <span class="kw">del</span> y</span>
-<span id="cb3-8"><a href="#cb3-8"></a>        <span class="kw">del</span> x_train</span>
-<span id="cb3-9"><a href="#cb3-9"></a>        <span class="kw">del</span> y_train</span>
-<span id="cb3-10"><a href="#cb3-10"></a>        <span class="kw">del</span> x_val</span>
-<span id="cb3-11"><a href="#cb3-11"></a>        <span class="kw">del</span> y_val</span>
-<span id="cb3-12"><a href="#cb3-12"></a>    <span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span>
-<span id="cb3-13"><a href="#cb3-13"></a></span>
-<span id="cb3-14"><a href="#cb3-14"></a></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="kw">def</span> extract_floats(string):</span>
-<span id="cb3-16"><a href="#cb3-16"></a>    <span class="cf">return</span> re.findall(<span class="vs">r"[-+]?\d*\.\d+|\d+"</span>, string)</span>
-<span id="cb3-17"><a href="#cb3-17"></a></span>
-<span id="cb3-18"><a href="#cb3-18"></a></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="kw">def</span> data_load(density):</span>
-<span id="cb3-20"><a href="#cb3-20"></a>    files <span class="op">=</span> glob.glob(<span class="ss">f"no_roll_data/dataset_tumble_*_</span><span class="sc">{</span>density<span class="sc">}</span><span class="ss">.h5"</span>)</span>
-<span id="cb3-21"><a href="#cb3-21"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
-<span id="cb3-22"><a href="#cb3-22"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
-<span id="cb3-23"><a href="#cb3-23"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
-<span id="cb3-24"><a href="#cb3-24"></a>        <span class="cf">with</span> h5py.File(f, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
-<span id="cb3-25"><a href="#cb3-25"></a>          count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a>          <span class="cf">for</span> key <span class="kw">in</span> fin.keys():</span>
-<span id="cb3-27"><a href="#cb3-27"></a>              img <span class="op">=</span> fin[key][:]</span>
-<span id="cb3-28"><a href="#cb3-28"></a>              img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>],<span class="dv">1</span>))</span>
-<span id="cb3-29"><a href="#cb3-29"></a>              shape <span class="op">=</span> img.shape</span>
-<span id="cb3-30"><a href="#cb3-30"></a>              inputs.append(img)</span>
-<span id="cb3-31"><a href="#cb3-31"></a>              outputs.append(tumble)</span>
-<span id="cb3-32"><a href="#cb3-32"></a>              count<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a></span>
-<span id="cb3-34"><a href="#cb3-34"></a>    <span class="co"># Scramble the dataset</span></span>
-<span id="cb3-35"><a href="#cb3-35"></a>    order <span class="op">=</span> np.arange(<span class="bu">len</span>(outputs)).astype(<span class="bu">int</span>)</span>
-<span id="cb3-36"><a href="#cb3-36"></a>    order <span class="op">=</span> np.random.permutation(order)</span>
-<span id="cb3-37"><a href="#cb3-37"></a>    <span class="cf">return</span> np.array(inputs)[order],np.array(outputs)[order],shape</span>
-<span id="cb3-38"><a href="#cb3-38"></a></span>
-<span id="cb3-39"><a href="#cb3-39"></a></span>
-<span id="cb3-40"><a href="#cb3-40"></a><span class="kw">def</span> split_dataset(x,y,last<span class="op">=</span><span class="dv">2000</span>):</span>
-<span id="cb3-41"><a href="#cb3-41"></a>    <span class="bu">print</span>(<span class="st">"Number of unique alpha: "</span>, <span class="bu">len</span>(np.unique(y)))</span>
-<span id="cb3-42"><a href="#cb3-42"></a>    <span class="bu">print</span>(<span class="st">"Shape of x: "</span>, np.shape(x))</span>
-<span id="cb3-43"><a href="#cb3-43"></a>    <span class="bu">print</span>(<span class="st">"Shape of y: "</span>, np.shape(y))</span>
-<span id="cb3-44"><a href="#cb3-44"></a></span>
-<span id="cb3-45"><a href="#cb3-45"></a>    x_train, y_train <span class="op">=</span> x[:<span class="op">-</span>last], y[:<span class="op">-</span>last]</span>
-<span id="cb3-46"><a href="#cb3-46"></a>    x_val,y_val <span class="op">=</span> x[<span class="op">-</span>last:],y[<span class="op">-</span>last:]</span>
-<span id="cb3-47"><a href="#cb3-47"></a></span>
-<span id="cb3-48"><a href="#cb3-48"></a>    <span class="bu">print</span>(<span class="st">"Size of training data: "</span>, <span class="bu">len</span>(x_train))</span>
-<span id="cb3-49"><a href="#cb3-49"></a>    <span class="bu">print</span>(<span class="st">"Size of validation data: "</span>, <span class="bu">len</span>(x_val))</span>
-<span id="cb3-50"><a href="#cb3-50"></a>    <span class="cf">return</span> x_train, y_train, x_val, y_val</span>
-<span id="cb3-51"><a href="#cb3-51"></a></span>
-<span id="cb3-52"><a href="#cb3-52"></a></span>
-<span id="cb3-53"><a href="#cb3-53"></a><span class="kw">def</span> get_model_prediction(name,x_val):</span>
-<span id="cb3-54"><a href="#cb3-54"></a>    model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb3-55"><a href="#cb3-55"></a>    prediction <span class="op">=</span> model.predict(x_val, batch_size<span class="op">=</span><span class="dv">64</span>)</span>
-<span id="cb3-56"><a href="#cb3-56"></a>    <span class="cf">return</span> prediction</span>
-<span id="cb3-57"><a href="#cb3-57"></a></span>
-<span id="cb3-58"><a href="#cb3-58"></a><span class="kw">def</span> make_plot(y_val, prediction):</span>
-<span id="cb3-59"><a href="#cb3-59"></a>    plt.plot(y_val, prediction.T[<span class="dv">0</span>], <span class="st">'o'</span>, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb3-60"><a href="#cb3-60"></a>    plt.plot(y_val, y_val, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb3-61"><a href="#cb3-61"></a></span>
-<span id="cb3-62"><a href="#cb3-62"></a>    <span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, prediction.T[<span class="dv">0</span>]).statistic)</span>
-<span id="cb3-63"><a href="#cb3-63"></a>    plt.xlabel(<span class="st">"Input turning rate"</span>)</span>
-<span id="cb3-64"><a href="#cb3-64"></a>    plt.ylabel(<span class="st">"Predicted turning rate"</span>)</span>
-<span id="cb3-65"><a href="#cb3-65"></a>    plt.axis(<span class="st">"equal"</span>)</span>
-<span id="cb3-66"><a href="#cb3-66"></a>    plt.xscale(<span class="st">"log"</span>)</span>
-<span id="cb3-67"><a href="#cb3-67"></a>    plt.yscale(<span class="st">"log"</span>)</span>
-<span id="cb3-68"><a href="#cb3-68"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="predict-with-the-same-density" class="level2">
-<h2 class="anchored" data-anchor-id="predict-with-the-same-density">Predict with the same density</h2>
-<div id="9f9493f5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>density <span class="op">=</span> <span class="fl">0.15</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of unique alpha:  10
-Shape of x:  (10000, 128, 128, 1)
-Shape of y:  (10000,)
-Size of training data:  8000
-Size of validation data:  2000</code></pre>
-</div>
-</div>
-<section id="basic-model-model-a" class="level3">
-<h3 class="anchored" data-anchor-id="basic-model-model-a">Basic model (Model A)</h3>
-<div id="c5e46db0" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"basic_0.15"</span>, x_val)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-14 13:00:22.132142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 738 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:07:00.0, compute capability: 7.5
-2024-02-14 13:00:22.132585: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
-2024-02-14 13:00:22.358263: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8907</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 5s32/32 [==============================] - ETA: 0s32/32 [==============================] - 0s 2ms/step
-Pearson's correlation coeff:  0.8804409564189938</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-5-output-3.png" width="599" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="with-a-dropout-layer-model-b" class="level3">
-<h3 class="anchored" data-anchor-id="with-a-dropout-layer-model-b">With a dropout layer (Model B)</h3>
-<div id="1504d357" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  16355</code></pre>
-</div>
-</div>
-<div id="6d9c3c5d" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"with_dropout_0.15"</span>, x_val)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 8s21/32 [==================&gt;...........] - ETA: 0s32/32 [==============================] - ETA: 0s32/32 [==============================] - 0s 5ms/step
-Pearson's correlation coeff:  0.9395980538241302</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-7-output-2.png" width="600" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="without-a-dropout-layer-model-b" class="level3">
-<h3 class="anchored" data-anchor-id="without-a-dropout-layer-model-b">Without a dropout layer (Model B)</h3>
-<div id="ecefb11d" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  21887</code></pre>
-</div>
-</div>
-<div id="47cd7881" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"without_dropout_0.15"</span>, x_val)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 2s24/32 [=====================&gt;........] - ETA: 0s32/32 [==============================] - 0s 2ms/step
-Pearson's correlation coeff:  0.9145147857848576</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-9-output-2.png" width="599" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="predict-with-slightly-higher-density" class="level2">
-<h2 class="anchored" data-anchor-id="predict-with-slightly-higher-density">Predict with slightly higher density</h2>
-<div id="4df2f740" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  17175</code></pre>
-</div>
-</div>
-<div id="53db2779" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>density <span class="op">=</span> <span class="fl">0.25</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb19-4"><a href="#cb19-4"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of unique alpha:  10
-Shape of x:  (10000, 128, 128, 1)
-Shape of y:  (10000,)
-Size of training data:  8000
-Size of validation data:  2000</code></pre>
-</div>
-</div>
-<section id="basic-model-model-a-1" class="level3">
-<h3 class="anchored" data-anchor-id="basic-model-model-a-1">Basic model (Model A)</h3>
-<div id="d320baff" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"basic_0.15"</span>, x_val)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 1s32/32 [==============================] - 0s 2ms/step
-Pearson's correlation coeff:  0.7203530612047393</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-12-output-2.png" width="599" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="with-a-dropout-layer-model-b-1" class="level3">
-<h3 class="anchored" data-anchor-id="with-a-dropout-layer-model-b-1">With a dropout layer (Model B)</h3>
-<div id="2c409e36" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  16649</code></pre>
-</div>
-</div>
-<div id="3fffd7b5" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"with_dropout_0.15"</span>, x_val)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 3s18/32 [===============&gt;..............] - ETA: 0s32/32 [==============================] - 0s 3ms/step
-Pearson's correlation coeff:  0.9585366393714269</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-14-output-2.png" width="599" height="434" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="without-a-dropout-layer-model-b-1" class="level3">
-<h3 class="anchored" data-anchor-id="without-a-dropout-layer-model-b-1">Without a dropout layer (Model B)</h3>
-<div id="f74b76c6" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  20636</code></pre>
-</div>
-</div>
-<div id="534ae7fe" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"without_dropout_0.15"</span>, x_val)</span>
-<span id="cb29-2"><a href="#cb29-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 2s24/32 [=====================&gt;........] - ETA: 0s32/32 [==============================] - 0s 2ms/step
-Pearson's correlation coeff:  0.9399503604198602</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-16-output-2.png" width="599" height="435" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="predict-with-much-higher-density" class="level2">
-<h2 class="anchored" data-anchor-id="predict-with-much-higher-density">Predict with much higher density</h2>
-<div id="8a7b2946" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  14930</code></pre>
-</div>
-</div>
-<div id="f8b2fa60" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>density <span class="op">=</span> <span class="fl">0.45</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb33-4"><a href="#cb33-4"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of unique alpha:  10
-Shape of x:  (10000, 128, 128, 1)
-Shape of y:  (10000,)
-Size of training data:  8000
-Size of validation data:  2000</code></pre>
-</div>
-</div>
-<section id="basic-model-model-a-2" class="level3">
-<h3 class="anchored" data-anchor-id="basic-model-model-a-2">Basic model (Model A)</h3>
-<div id="657a4374" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"basic_0.15"</span>, x_val)</span>
-<span id="cb35-2"><a href="#cb35-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 1s32/32 [==============================] - 0s 2ms/step
-Pearson's correlation coeff:  0.33890517352501803</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-19-output-2.png" width="599" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="with-a-dropout-layer-model-b-2" class="level3">
-<h3 class="anchored" data-anchor-id="with-a-dropout-layer-model-b-2">With a dropout layer (Model B)</h3>
-<div id="bc3e8a75" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  20598</code></pre>
-</div>
-</div>
-<div id="b5da2143" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"with_dropout_0.15"</span>, x_val)</span>
-<span id="cb39-2"><a href="#cb39-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 3s22/32 [===================&gt;..........] - ETA: 0s32/32 [==============================] - 0s 2ms/step
-Pearson's correlation coeff:  0.9259360601518425</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-21-output-2.png" width="599" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="without-a-dropout-layer-model-b-2" class="level3">
-<h3 class="anchored" data-anchor-id="without-a-dropout-layer-model-b-2">Without a dropout layer (Model B)</h3>
-<div id="9b2bebb4" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collected:  23008</code></pre>
-</div>
-</div>
-<div id="19941875" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"without_dropout_0.15"</span>, x_val)</span>
-<span id="cb43-2"><a href="#cb43-2"></a>make_plot(y_val, prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 1/32 [..............................] - ETA: 2s24/32 [=====================&gt;........] - ETA: 0s32/32 [==============================] - 0s 2ms/step
-Pearson's correlation coeff:  0.9227368213522993</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="network_demo_1_files/figure-html/cell-23-output-2.png" width="599" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 
 
 <!-- -->
 
-</section>
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1499,231 +1070,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb45" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1"></a><span class="co">---</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="an">title:</span><span class="co"> Dropout and convolution demo</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb45-4"><a href="#cb45-4"></a><span class="an">execute:</span></span>
-<span id="cb45-5"><a href="#cb45-5"></a><span class="co">  cache: true</span></span>
-<span id="cb45-6"><a href="#cb45-6"></a><span class="co">---</span></span>
-<span id="cb45-7"><a href="#cb45-7"></a></span>
-<span id="cb45-8"><a href="#cb45-8"></a>We train all three models (A, B with dropout, B without dropout) on one value</span>
-<span id="cb45-9"><a href="#cb45-9"></a>of $\phi=0.15$ for a large number of $\alpha$'s, and try and predict it for the</span>
-<span id="cb45-10"><a href="#cb45-10"></a>same $\phi$, as well as two different ones.</span>
-<span id="cb45-11"><a href="#cb45-11"></a></span>
-<span id="cb45-12"><a href="#cb45-12"></a><span class="fu">## Import and define functions</span></span>
-<span id="cb45-13"><a href="#cb45-13"></a></span>
-<span id="cb45-16"><a href="#cb45-16"></a><span class="in">```{python}</span></span>
-<span id="cb45-17"><a href="#cb45-17"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb45-18"><a href="#cb45-18"></a><span class="im">import</span> os</span>
-<span id="cb45-19"><a href="#cb45-19"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
-<span id="cb45-20"><a href="#cb45-20"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb45-21"><a href="#cb45-21"></a><span class="im">import</span> h5py</span>
-<span id="cb45-22"><a href="#cb45-22"></a><span class="im">import</span> glob</span>
-<span id="cb45-23"><a href="#cb45-23"></a><span class="im">import</span> re</span>
-<span id="cb45-24"><a href="#cb45-24"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb45-25"><a href="#cb45-25"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
-<span id="cb45-26"><a href="#cb45-26"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
-<span id="cb45-27"><a href="#cb45-27"></a><span class="im">import</span> gc</span>
-<span id="cb45-28"><a href="#cb45-28"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb45-29"><a href="#cb45-29"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
-<span id="cb45-30"><a href="#cb45-30"></a></span>
-<span id="cb45-31"><a href="#cb45-31"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb45-32"><a href="#cb45-32"></a><span class="in">```</span></span>
-<span id="cb45-33"><a href="#cb45-33"></a></span>
-<span id="cb45-36"><a href="#cb45-36"></a><span class="in">```{python}</span></span>
-<span id="cb45-37"><a href="#cb45-37"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb45-38"><a href="#cb45-38"></a><span class="kw">def</span> reset(<span class="bu">all</span><span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb45-39"><a href="#cb45-39"></a>    K.clear_session()</span>
-<span id="cb45-40"><a href="#cb45-40"></a>    <span class="kw">global</span> prediction, x, y, x_train, y_train, x_val, y_val</span>
-<span id="cb45-41"><a href="#cb45-41"></a>    <span class="kw">del</span> prediction</span>
-<span id="cb45-42"><a href="#cb45-42"></a>    <span class="cf">if</span> <span class="bu">all</span>:</span>
-<span id="cb45-43"><a href="#cb45-43"></a>        <span class="kw">del</span> x</span>
-<span id="cb45-44"><a href="#cb45-44"></a>        <span class="kw">del</span> y</span>
-<span id="cb45-45"><a href="#cb45-45"></a>        <span class="kw">del</span> x_train</span>
-<span id="cb45-46"><a href="#cb45-46"></a>        <span class="kw">del</span> y_train</span>
-<span id="cb45-47"><a href="#cb45-47"></a>        <span class="kw">del</span> x_val</span>
-<span id="cb45-48"><a href="#cb45-48"></a>        <span class="kw">del</span> y_val</span>
-<span id="cb45-49"><a href="#cb45-49"></a>    <span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span>
-<span id="cb45-50"><a href="#cb45-50"></a></span>
-<span id="cb45-51"><a href="#cb45-51"></a></span>
-<span id="cb45-52"><a href="#cb45-52"></a><span class="kw">def</span> extract_floats(string):</span>
-<span id="cb45-53"><a href="#cb45-53"></a>    <span class="cf">return</span> re.findall(<span class="vs">r"[-+]?\d*\.\d+|\d+"</span>, string)</span>
-<span id="cb45-54"><a href="#cb45-54"></a></span>
-<span id="cb45-55"><a href="#cb45-55"></a></span>
-<span id="cb45-56"><a href="#cb45-56"></a><span class="kw">def</span> data_load(density):</span>
-<span id="cb45-57"><a href="#cb45-57"></a>    files <span class="op">=</span> glob.glob(<span class="ss">f"no_roll_data/dataset_tumble_*_</span><span class="sc">{</span>density<span class="sc">}</span><span class="ss">.h5"</span>)</span>
-<span id="cb45-58"><a href="#cb45-58"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
-<span id="cb45-59"><a href="#cb45-59"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
-<span id="cb45-60"><a href="#cb45-60"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
-<span id="cb45-61"><a href="#cb45-61"></a>        <span class="cf">with</span> h5py.File(f, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
-<span id="cb45-62"><a href="#cb45-62"></a>          count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb45-63"><a href="#cb45-63"></a>          <span class="cf">for</span> key <span class="kw">in</span> fin.keys():</span>
-<span id="cb45-64"><a href="#cb45-64"></a>              img <span class="op">=</span> fin[key][:]</span>
-<span id="cb45-65"><a href="#cb45-65"></a>              img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>],<span class="dv">1</span>))</span>
-<span id="cb45-66"><a href="#cb45-66"></a>              shape <span class="op">=</span> img.shape</span>
-<span id="cb45-67"><a href="#cb45-67"></a>              inputs.append(img)</span>
-<span id="cb45-68"><a href="#cb45-68"></a>              outputs.append(tumble)</span>
-<span id="cb45-69"><a href="#cb45-69"></a>              count<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb45-70"><a href="#cb45-70"></a></span>
-<span id="cb45-71"><a href="#cb45-71"></a>    <span class="co"># Scramble the dataset</span></span>
-<span id="cb45-72"><a href="#cb45-72"></a>    order <span class="op">=</span> np.arange(<span class="bu">len</span>(outputs)).astype(<span class="bu">int</span>)</span>
-<span id="cb45-73"><a href="#cb45-73"></a>    order <span class="op">=</span> np.random.permutation(order)</span>
-<span id="cb45-74"><a href="#cb45-74"></a>    <span class="cf">return</span> np.array(inputs)[order],np.array(outputs)[order],shape</span>
-<span id="cb45-75"><a href="#cb45-75"></a></span>
-<span id="cb45-76"><a href="#cb45-76"></a></span>
-<span id="cb45-77"><a href="#cb45-77"></a><span class="kw">def</span> split_dataset(x,y,last<span class="op">=</span><span class="dv">2000</span>):</span>
-<span id="cb45-78"><a href="#cb45-78"></a>    <span class="bu">print</span>(<span class="st">"Number of unique alpha: "</span>, <span class="bu">len</span>(np.unique(y)))</span>
-<span id="cb45-79"><a href="#cb45-79"></a>    <span class="bu">print</span>(<span class="st">"Shape of x: "</span>, np.shape(x))</span>
-<span id="cb45-80"><a href="#cb45-80"></a>    <span class="bu">print</span>(<span class="st">"Shape of y: "</span>, np.shape(y))</span>
-<span id="cb45-81"><a href="#cb45-81"></a></span>
-<span id="cb45-82"><a href="#cb45-82"></a>    x_train, y_train <span class="op">=</span> x[:<span class="op">-</span>last], y[:<span class="op">-</span>last]</span>
-<span id="cb45-83"><a href="#cb45-83"></a>    x_val,y_val <span class="op">=</span> x[<span class="op">-</span>last:],y[<span class="op">-</span>last:]</span>
-<span id="cb45-84"><a href="#cb45-84"></a></span>
-<span id="cb45-85"><a href="#cb45-85"></a>    <span class="bu">print</span>(<span class="st">"Size of training data: "</span>, <span class="bu">len</span>(x_train))</span>
-<span id="cb45-86"><a href="#cb45-86"></a>    <span class="bu">print</span>(<span class="st">"Size of validation data: "</span>, <span class="bu">len</span>(x_val))</span>
-<span id="cb45-87"><a href="#cb45-87"></a>    <span class="cf">return</span> x_train, y_train, x_val, y_val</span>
-<span id="cb45-88"><a href="#cb45-88"></a></span>
-<span id="cb45-89"><a href="#cb45-89"></a></span>
-<span id="cb45-90"><a href="#cb45-90"></a><span class="kw">def</span> get_model_prediction(name,x_val):</span>
-<span id="cb45-91"><a href="#cb45-91"></a>    model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb45-92"><a href="#cb45-92"></a>    prediction <span class="op">=</span> model.predict(x_val, batch_size<span class="op">=</span><span class="dv">64</span>)</span>
-<span id="cb45-93"><a href="#cb45-93"></a>    <span class="cf">return</span> prediction</span>
-<span id="cb45-94"><a href="#cb45-94"></a></span>
-<span id="cb45-95"><a href="#cb45-95"></a><span class="kw">def</span> make_plot(y_val, prediction):</span>
-<span id="cb45-96"><a href="#cb45-96"></a>    plt.plot(y_val, prediction.T[<span class="dv">0</span>], <span class="st">'o'</span>, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb45-97"><a href="#cb45-97"></a>    plt.plot(y_val, y_val, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb45-98"><a href="#cb45-98"></a></span>
-<span id="cb45-99"><a href="#cb45-99"></a>    <span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, prediction.T[<span class="dv">0</span>]).statistic)</span>
-<span id="cb45-100"><a href="#cb45-100"></a>    plt.xlabel(<span class="st">"Input turning rate"</span>)</span>
-<span id="cb45-101"><a href="#cb45-101"></a>    plt.ylabel(<span class="st">"Predicted turning rate"</span>)</span>
-<span id="cb45-102"><a href="#cb45-102"></a>    plt.axis(<span class="st">"equal"</span>)</span>
-<span id="cb45-103"><a href="#cb45-103"></a>    plt.xscale(<span class="st">"log"</span>)</span>
-<span id="cb45-104"><a href="#cb45-104"></a>    plt.yscale(<span class="st">"log"</span>)</span>
-<span id="cb45-105"><a href="#cb45-105"></a>    plt.show()</span>
-<span id="cb45-106"><a href="#cb45-106"></a><span class="in">```</span></span>
-<span id="cb45-107"><a href="#cb45-107"></a></span>
-<span id="cb45-108"><a href="#cb45-108"></a><span class="fu">## Predict with the same density</span></span>
-<span id="cb45-109"><a href="#cb45-109"></a></span>
-<span id="cb45-112"><a href="#cb45-112"></a><span class="in">```{python}</span></span>
-<span id="cb45-113"><a href="#cb45-113"></a>density <span class="op">=</span> <span class="fl">0.15</span></span>
-<span id="cb45-114"><a href="#cb45-114"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb45-115"><a href="#cb45-115"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb45-116"><a href="#cb45-116"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span>
-<span id="cb45-117"><a href="#cb45-117"></a><span class="in">```</span></span>
-<span id="cb45-118"><a href="#cb45-118"></a></span>
-<span id="cb45-119"><a href="#cb45-119"></a><span class="fu">### Basic model (Model A)</span></span>
-<span id="cb45-120"><a href="#cb45-120"></a></span>
-<span id="cb45-123"><a href="#cb45-123"></a><span class="in">```{python}</span></span>
-<span id="cb45-124"><a href="#cb45-124"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"basic_0.15"</span>, x_val)</span>
-<span id="cb45-125"><a href="#cb45-125"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-126"><a href="#cb45-126"></a><span class="in">```</span></span>
-<span id="cb45-127"><a href="#cb45-127"></a></span>
-<span id="cb45-128"><a href="#cb45-128"></a><span class="fu">### With a dropout layer (Model B)</span></span>
-<span id="cb45-129"><a href="#cb45-129"></a></span>
-<span id="cb45-132"><a href="#cb45-132"></a><span class="in">```{python}</span></span>
-<span id="cb45-133"><a href="#cb45-133"></a>reset()</span>
-<span id="cb45-134"><a href="#cb45-134"></a><span class="in">```</span></span>
-<span id="cb45-135"><a href="#cb45-135"></a></span>
-<span id="cb45-138"><a href="#cb45-138"></a><span class="in">```{python}</span></span>
-<span id="cb45-139"><a href="#cb45-139"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"with_dropout_0.15"</span>, x_val)</span>
-<span id="cb45-140"><a href="#cb45-140"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-141"><a href="#cb45-141"></a><span class="in">```</span></span>
-<span id="cb45-142"><a href="#cb45-142"></a></span>
-<span id="cb45-143"><a href="#cb45-143"></a><span class="fu">### Without a dropout layer (Model B)</span></span>
-<span id="cb45-144"><a href="#cb45-144"></a></span>
-<span id="cb45-147"><a href="#cb45-147"></a><span class="in">```{python}</span></span>
-<span id="cb45-148"><a href="#cb45-148"></a>reset()</span>
-<span id="cb45-149"><a href="#cb45-149"></a><span class="in">```</span></span>
-<span id="cb45-150"><a href="#cb45-150"></a></span>
-<span id="cb45-153"><a href="#cb45-153"></a><span class="in">```{python}</span></span>
-<span id="cb45-154"><a href="#cb45-154"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"without_dropout_0.15"</span>, x_val)</span>
-<span id="cb45-155"><a href="#cb45-155"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-156"><a href="#cb45-156"></a><span class="in">```</span></span>
-<span id="cb45-157"><a href="#cb45-157"></a></span>
-<span id="cb45-158"><a href="#cb45-158"></a><span class="fu">## Predict with slightly higher density</span></span>
-<span id="cb45-159"><a href="#cb45-159"></a></span>
-<span id="cb45-162"><a href="#cb45-162"></a><span class="in">```{python}</span></span>
-<span id="cb45-163"><a href="#cb45-163"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb45-164"><a href="#cb45-164"></a><span class="in">```</span></span>
-<span id="cb45-165"><a href="#cb45-165"></a></span>
-<span id="cb45-168"><a href="#cb45-168"></a><span class="in">```{python}</span></span>
-<span id="cb45-169"><a href="#cb45-169"></a>density <span class="op">=</span> <span class="fl">0.25</span></span>
-<span id="cb45-170"><a href="#cb45-170"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb45-171"><a href="#cb45-171"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb45-172"><a href="#cb45-172"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span>
-<span id="cb45-173"><a href="#cb45-173"></a><span class="in">```</span></span>
-<span id="cb45-174"><a href="#cb45-174"></a></span>
-<span id="cb45-175"><a href="#cb45-175"></a><span class="fu">### Basic model (Model A)</span></span>
-<span id="cb45-176"><a href="#cb45-176"></a></span>
-<span id="cb45-179"><a href="#cb45-179"></a><span class="in">```{python}</span></span>
-<span id="cb45-180"><a href="#cb45-180"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"basic_0.15"</span>, x_val)</span>
-<span id="cb45-181"><a href="#cb45-181"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-182"><a href="#cb45-182"></a><span class="in">```</span></span>
-<span id="cb45-183"><a href="#cb45-183"></a></span>
-<span id="cb45-184"><a href="#cb45-184"></a><span class="fu">### With a dropout layer (Model B)</span></span>
-<span id="cb45-185"><a href="#cb45-185"></a></span>
-<span id="cb45-188"><a href="#cb45-188"></a><span class="in">```{python}</span></span>
-<span id="cb45-189"><a href="#cb45-189"></a>reset()</span>
-<span id="cb45-190"><a href="#cb45-190"></a><span class="in">```</span></span>
-<span id="cb45-191"><a href="#cb45-191"></a></span>
-<span id="cb45-194"><a href="#cb45-194"></a><span class="in">```{python}</span></span>
-<span id="cb45-195"><a href="#cb45-195"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"with_dropout_0.15"</span>, x_val)</span>
-<span id="cb45-196"><a href="#cb45-196"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-197"><a href="#cb45-197"></a><span class="in">```</span></span>
-<span id="cb45-198"><a href="#cb45-198"></a></span>
-<span id="cb45-199"><a href="#cb45-199"></a><span class="fu">### Without a dropout layer (Model B)</span></span>
-<span id="cb45-200"><a href="#cb45-200"></a></span>
-<span id="cb45-203"><a href="#cb45-203"></a><span class="in">```{python}</span></span>
-<span id="cb45-204"><a href="#cb45-204"></a>reset()</span>
-<span id="cb45-205"><a href="#cb45-205"></a><span class="in">```</span></span>
-<span id="cb45-206"><a href="#cb45-206"></a></span>
-<span id="cb45-209"><a href="#cb45-209"></a><span class="in">```{python}</span></span>
-<span id="cb45-210"><a href="#cb45-210"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"without_dropout_0.15"</span>, x_val)</span>
-<span id="cb45-211"><a href="#cb45-211"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-212"><a href="#cb45-212"></a><span class="in">```</span></span>
-<span id="cb45-213"><a href="#cb45-213"></a></span>
-<span id="cb45-214"><a href="#cb45-214"></a><span class="fu">## Predict with much higher density</span></span>
-<span id="cb45-215"><a href="#cb45-215"></a></span>
-<span id="cb45-218"><a href="#cb45-218"></a><span class="in">```{python}</span></span>
-<span id="cb45-219"><a href="#cb45-219"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb45-220"><a href="#cb45-220"></a><span class="in">```</span></span>
-<span id="cb45-221"><a href="#cb45-221"></a></span>
-<span id="cb45-224"><a href="#cb45-224"></a><span class="in">```{python}</span></span>
-<span id="cb45-225"><a href="#cb45-225"></a>density <span class="op">=</span> <span class="fl">0.45</span></span>
-<span id="cb45-226"><a href="#cb45-226"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb45-227"><a href="#cb45-227"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb45-228"><a href="#cb45-228"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span>
-<span id="cb45-229"><a href="#cb45-229"></a><span class="in">```</span></span>
-<span id="cb45-230"><a href="#cb45-230"></a></span>
-<span id="cb45-231"><a href="#cb45-231"></a><span class="fu">### Basic model (Model A)</span></span>
-<span id="cb45-232"><a href="#cb45-232"></a></span>
-<span id="cb45-235"><a href="#cb45-235"></a><span class="in">```{python}</span></span>
-<span id="cb45-236"><a href="#cb45-236"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"basic_0.15"</span>, x_val)</span>
-<span id="cb45-237"><a href="#cb45-237"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-238"><a href="#cb45-238"></a><span class="in">```</span></span>
-<span id="cb45-239"><a href="#cb45-239"></a></span>
-<span id="cb45-240"><a href="#cb45-240"></a><span class="fu">### With a dropout layer (Model B)</span></span>
-<span id="cb45-241"><a href="#cb45-241"></a></span>
-<span id="cb45-244"><a href="#cb45-244"></a><span class="in">```{python}</span></span>
-<span id="cb45-245"><a href="#cb45-245"></a>reset()</span>
-<span id="cb45-246"><a href="#cb45-246"></a><span class="in">```</span></span>
-<span id="cb45-247"><a href="#cb45-247"></a></span>
-<span id="cb45-250"><a href="#cb45-250"></a><span class="in">```{python}</span></span>
-<span id="cb45-251"><a href="#cb45-251"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"with_dropout_0.15"</span>, x_val)</span>
-<span id="cb45-252"><a href="#cb45-252"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-253"><a href="#cb45-253"></a><span class="in">```</span></span>
-<span id="cb45-254"><a href="#cb45-254"></a></span>
-<span id="cb45-255"><a href="#cb45-255"></a><span class="fu">### Without a dropout layer (Model B)</span></span>
-<span id="cb45-256"><a href="#cb45-256"></a></span>
-<span id="cb45-259"><a href="#cb45-259"></a><span class="in">```{python}</span></span>
-<span id="cb45-260"><a href="#cb45-260"></a>reset()</span>
-<span id="cb45-261"><a href="#cb45-261"></a><span class="in">```</span></span>
-<span id="cb45-262"><a href="#cb45-262"></a></span>
-<span id="cb45-265"><a href="#cb45-265"></a><span class="in">```{python}</span></span>
-<span id="cb45-266"><a href="#cb45-266"></a>prediction <span class="op">=</span> get_model_prediction(<span class="st">"without_dropout_0.15"</span>, x_val)</span>
-<span id="cb45-267"><a href="#cb45-267"></a>make_plot(y_val, prediction)</span>
-<span id="cb45-268"><a href="#cb45-268"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -1744,7 +1091,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/plots/network_demo_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/network_demo_1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/plots/network_demo_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/network_demo_1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

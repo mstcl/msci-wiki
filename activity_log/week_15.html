@@ -227,6 +227,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 17</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -304,12 +310,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plots/network_demo_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dropout and convolution demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Number of clusters</span></a>
   </div>
@@ -374,12 +374,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Training logbook</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
@@ -445,12 +439,19 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">External tools</span></a>
+ <span class="menu-text">External links</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
+</i> 
+ <span class="menu-text">Network logbook</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -497,7 +498,11 @@ window.Quarto = {
   <li><a href="#basics-on-the-architecture-of-cnn" id="toc-basics-on-the-architecture-of-cnn" class="nav-link" data-scroll-target="#basics-on-the-architecture-of-cnn">Basics on the architecture of CNN</a></li>
   <li><a href="#classifying-our-modelproblem" id="toc-classifying-our-modelproblem" class="nav-link" data-scroll-target="#classifying-our-modelproblem">Classifying our model/problem</a></li>
   <li><a href="#initial-strategy" id="toc-initial-strategy" class="nav-link" data-scroll-target="#initial-strategy">Initial strategy</a></li>
-  <li><a href="#experiment-summary" id="toc-experiment-summary" class="nav-link" data-scroll-target="#experiment-summary">Experiment summary</a></li>
+  <li><a href="#model-a-trained-on-one-density-predicting-the-same-density." id="toc-model-a-trained-on-one-density-predicting-the-same-density." class="nav-link" data-scroll-target="#model-a-trained-on-one-density-predicting-the-same-density.">Model A trained on one density, predicting the same density.</a></li>
+  <li><a href="#model-b-trained-on-one-density-predicting-the-same-density" id="toc-model-b-trained-on-one-density-predicting-the-same-density" class="nav-link" data-scroll-target="#model-b-trained-on-one-density-predicting-the-same-density">Model B, trained on one density, predicting the same density</a></li>
+  <li><a href="#model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density" id="toc-model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density" class="nav-link" data-scroll-target="#model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density">Model B, without dropout layer, trained on one density, predicting the same density</a></li>
+  <li><a href="#predicting-novel-densities" id="toc-predicting-novel-densities" class="nav-link" data-scroll-target="#predicting-novel-densities">Predicting novel densities</a></li>
+  <li><a href="#comparing-model-a-to-model-b" id="toc-comparing-model-a-to-model-b" class="nav-link" data-scroll-target="#comparing-model-a-to-model-b">Comparing Model A to Model B</a></li>
   </ul></li>
   <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
@@ -508,7 +513,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../activity_log/week_1.html">Activity Log</a></li><li class="breadcrumb-item"><a href="../activity_log/week_15.html">Week 15</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Week 15</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Week 15</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -541,6 +546,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
 <li><label><input type="checkbox" checked="">Play with different layers in Keras and train some models</label></li>
+<li><label><input type="checkbox" checked="">Make some utility functions to reuse for training</label></li>
 </ul>
 </section>
 <section id="summary" class="level2">
@@ -573,13 +579,18 @@ window.Quarto = {
 <section id="classifying-our-modelproblem" class="level3">
 <h3 class="anchored" data-anchor-id="classifying-our-modelproblem">Classifying our model/problem</h3>
 <p>For this week, we start building the network. Our network is a regression problem, predicting a continuous parameter, our tumbling rate <span class="math inline">\(\alpha\)</span>.</p>
-<p>For this to work, we choose a loss function such as mean absolute error and mean squared error. We picked mean absolute error for now.</p>
+<p>For this to work, we choose a loss function such as mean absolute error and mean squared error. We picked mean absolute error for now. This means the neural network will try and optimize this function, and this metric will be a good indication of how well we’ve designed the architecture and everything surrounding it.</p>
+<p>The equation for mean absolute error is:</p>
+<p><span class="math display">\[
+\delta = \frac{\sum_{i=0}^{N}|y_i - y_p|}{N},
+\]</span></p>
+<p>where <span class="math inline">\(y_i\)</span> is the actual value and <span class="math inline">\(y_p\)</span> is the predicted value.</p>
 <p>Effectively, we want the model to minimise the mean absolute error (MAE from now on). From some precursor research, regression done on non-image data typically use only fully-connected layers. We have image data that we wish to apply convolution on, therefore we have to combine both.</p>
 <p>The input is an image, but we have to output a 1D vector that maps to predictions for one parameter (continuous). To do this, we apply <code>Flatten()</code> and <code>Dense(1, activation="linear")</code> at the end.</p>
 </section>
 <section id="initial-strategy" class="level3">
 <h3 class="anchored" data-anchor-id="initial-strategy">Initial strategy</h3>
-<p>We begin with a simple model with one <code>Conv2D</code> layer:</p>
+<p>We begin with a simple model with one <code>Conv2D</code> layer, and train it on data that is not experimental-like, i.e.&nbsp;orientation is still encoded as colours. We shall later consider training without this, or seeing the effect without it:</p>
 <section id="a-simple-network-to-start-with-model-a" class="level4">
 <h4 class="anchored" data-anchor-id="a-simple-network-to-start-with-model-a">A simple network to start with: Model A</h4>
 <p>I used this in the single density notebook as the “basic” network:</p>
@@ -615,7 +626,7 @@ window.Quarto = {
 <span id="cb2-11"><a href="#cb2-11"></a>    )</span>
 <span id="cb2-12"><a href="#cb2-12"></a>)</span>
 <span id="cb2-13"><a href="#cb2-13"></a>model.add(BatchNormalization())</span>
-<span id="cb2-14"><a href="#cb2-14"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
+<span id="cb2-14"><a href="#cb2-14"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
 <span id="cb2-15"><a href="#cb2-15"></a>model.add(BatchNormalization())</span>
 <span id="cb2-16"><a href="#cb2-16"></a></span>
 <span id="cb2-17"><a href="#cb2-17"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
@@ -636,14 +647,372 @@ window.Quarto = {
 <span id="cb2-32"><a href="#cb2-32"></a></span>
 <span id="cb2-33"><a href="#cb2-33"></a>model.add(Flatten())</span>
 <span id="cb2-34"><a href="#cb2-34"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I was interested in the effect of dropout, so I used Model B with and without dropout to compare the results.</p>
+<p>I was interested in the effect of dropout, so I used Model B with and without dropout to compare the results. We expect dropout to produce distributions that are more centred around the actual value.</p>
 </section>
 </section>
-<section id="experiment-summary" class="level3">
-<h3 class="anchored" data-anchor-id="experiment-summary">Experiment summary</h3>
-<p>See the results of this week’s tinkering <a href="../plots/network_demo_1.html">here</a>.</p>
-<section id="comparing-model-a-to-model-b" class="level4">
-<h4 class="anchored" data-anchor-id="comparing-model-a-to-model-b">Comparing Model A to Model B</h4>
+<section id="model-a-trained-on-one-density-predicting-the-same-density." class="level3">
+<h3 class="anchored" data-anchor-id="model-a-trained-on-one-density-predicting-the-same-density.">Model A trained on one density, predicting the same density.</h3>
+<div id="d6580b5a" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> gc</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> os</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> glob</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> h5py</span>
+<span id="cb3-5"><a href="#cb3-5"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="im">from</span> src.training_utils <span class="im">import</span> extract_floats, split_dataset, predict_and_plot</span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># Use a custom data_load here because the one finally saved now normalizes the</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># data, which messes up the model</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="kw">def</span> data_load(density):</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    files <span class="op">=</span> glob.glob(<span class="ss">f"no_roll_data/dataset_tumble_*_</span><span class="sc">{</span>density<span class="sc">}</span><span class="ss">.h5"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb3-19"><a href="#cb3-19"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
+<span id="cb3-20"><a href="#cb3-20"></a>        <span class="cf">with</span> h5py.File(f, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
+<span id="cb3-21"><a href="#cb3-21"></a>          count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>          <span class="cf">for</span> key <span class="kw">in</span> fin.keys():</span>
+<span id="cb3-23"><a href="#cb3-23"></a>              img <span class="op">=</span> fin[key][:]</span>
+<span id="cb3-24"><a href="#cb3-24"></a>              img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>],<span class="dv">1</span>))</span>
+<span id="cb3-25"><a href="#cb3-25"></a>              shape <span class="op">=</span> img.shape</span>
+<span id="cb3-26"><a href="#cb3-26"></a>              inputs.append(img)</span>
+<span id="cb3-27"><a href="#cb3-27"></a>              outputs.append(tumble)</span>
+<span id="cb3-28"><a href="#cb3-28"></a>              count<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a></span>
+<span id="cb3-30"><a href="#cb3-30"></a>    <span class="co"># Scramble the dataset</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>    order <span class="op">=</span> np.arange(<span class="bu">len</span>(outputs)).astype(<span class="bu">int</span>)</span>
+<span id="cb3-32"><a href="#cb3-32"></a>    order <span class="op">=</span> np.random.permutation(order)</span>
+<span id="cb3-33"><a href="#cb3-33"></a>    <span class="cf">return</span> np.array(inputs)[order],np.array(outputs)[order],shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="3c4091c9" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> reset(<span class="bu">all</span><span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    K.clear_session()</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">global</span> prediction, x, y, x_train, y_train, x_val, y_val</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">if</span> <span class="bu">all</span>:</span>
+<span id="cb4-5"><a href="#cb4-5"></a>        <span class="kw">del</span> x</span>
+<span id="cb4-6"><a href="#cb4-6"></a>        <span class="kw">del</span> y</span>
+<span id="cb4-7"><a href="#cb4-7"></a>        <span class="kw">del</span> x_train</span>
+<span id="cb4-8"><a href="#cb4-8"></a>        <span class="kw">del</span> y_train</span>
+<span id="cb4-9"><a href="#cb4-9"></a>        <span class="kw">del</span> x_val</span>
+<span id="cb4-10"><a href="#cb4-10"></a>        <span class="kw">del</span> y_val</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="e81b5a2b" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>density <span class="op">=</span> <span class="fl">0.15</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of unique alpha:  10
+Shape of x:  (10000, 128, 128, 1)
+Shape of y:  (10000,)
+Size of training data:  8000
+Size of validation data:  2000</code></pre>
+</div>
+</div>
+<div id="9cd798a8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 1/63 [..............................] - ETA: 2s41/63 [==================&gt;...........] - ETA: 0s63/63 [==============================] - 0s 1ms/step
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.03649922 0.08168805 0.049839772
+Pearson's correlation coeff:  0.8748437569039451
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.03649922 0.08168805 0.049839772
+Pearson's correlation coeff:  0.8748437569039451</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-5-output-2.png" width="600" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-b-trained-on-one-density-predicting-the-same-density" class="level3">
+<h3 class="anchored" data-anchor-id="model-b-trained-on-one-density-predicting-the-same-density">Model B, trained on one density, predicting the same density</h3>
+<div id="842bff07" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>reset()</span>
+<span id="cb9-2"><a href="#cb9-2"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  7365
+ 1/63 [..............................] - ETA: 7s23/63 [=========&gt;....................] - ETA: 0s46/63 [====================&gt;.........] - ETA: 0s63/63 [==============================] - 0s 2ms/step
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.0037262198 0.06500089 0.031655632
+Pearson's correlation coeff:  0.9384582070738373
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.0037262198 0.06500089 0.031655632
+Pearson's correlation coeff:  0.9384582070738373</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-6-output-2.png" width="589" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density" class="level3">
+<h3 class="anchored" data-anchor-id="model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density">Model B, without dropout layer, trained on one density, predicting the same density</h3>
+<div id="186e4f36" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>reset()</span>
+<span id="cb11-2"><a href="#cb11-2"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  9044
+ 1/63 [..............................] - ETA: 6s27/63 [===========&gt;..................] - ETA: 0s53/63 [========================&gt;.....] - ETA: 0s63/63 [==============================] - 0s 2ms/step
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.012121738 0.06822996 0.03387434
+Pearson's correlation coeff:  0.903605172911424
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.012121738 0.06822996 0.03387434
+Pearson's correlation coeff:  0.903605172911424</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-7-output-2.png" width="589" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="predicting-novel-densities" class="level3">
+<h3 class="anchored" data-anchor-id="predicting-novel-densities">Predicting novel densities</h3>
+<p>We previously trained on <span class="math inline">\(\phi = 0.15\)</span> and try to predict the validation set also for the same <span class="math inline">\(\phi\)</span>. What happens if we try and predict it on a different value for <span class="math inline">\(\phi\)</span>? We expect it to still be somewhat accurate for a slightly different value, but not perform at all for very different value.</p>
+<p>We think this is because there are thresholds for <span class="math inline">\(\phi\)</span> where the behaviour of cluster changes, they can consistently enter percolation regime (for high <span class="math inline">\(\phi\)</span>) and can have extremely big cluster sizes (also for high <span class="math inline">\(\phi\)</span>). This would present to the network novel situations not seen at <span class="math inline">\(\phi = 0.15\)</span>, where we don’t expect percolation as it is very unlikely.</p>
+<p>We use <span class="math inline">\(\phi = 0.25\)</span> for the “slightly” different density and <span class="math inline">\(\phi = 0.45\)</span> for the “very” different density. As of now we don’t have a metric to evaluate our model (this is planned for next week), so comparisons are done qualitatively.</p>
+<section id="model-a-on-phi0.25" class="level4">
+<h4 class="anchored" data-anchor-id="model-a-on-phi0.25">Model A on <span class="math inline">\(\phi=0.25\)</span></h4>
+<div id="47a177fb" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>density <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  10678
+Number of unique alpha:  10
+Shape of x:  (10000, 128, 128, 1)
+Shape of y:  (10000,)
+Size of training data:  8000
+Size of validation data:  2000</code></pre>
+</div>
+</div>
+<div id="d77b010e" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 1/63 [..............................] - ETA: 2s43/63 [===================&gt;..........] - ETA: 0s63/63 [==============================] - 0s 1ms/step
+Overlap ratio: 0.9
+(Min, Max, Avg) STD: 0.05743553 0.09258267 0.07360389
+Pearson's correlation coeff:  0.7287073323248344
+Overlap ratio: 0.9
+(Min, Max, Avg) STD: 0.05743553 0.09258267 0.07360389
+Pearson's correlation coeff:  0.7287073323248344</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-9-output-2.png" width="600" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-b-on-phi0.25" class="level4">
+<h4 class="anchored" data-anchor-id="model-b-on-phi0.25">Model B on <span class="math inline">\(\phi=0.25\)</span></h4>
+<div id="cf288824" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>reset()</span>
+<span id="cb17-2"><a href="#cb17-2"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  10549
+ 1/63 [..............................] - ETA: 6s24/63 [==========&gt;...................] - ETA: 0s48/63 [=====================&gt;........] - ETA: 0s63/63 [==============================] - 0s 2ms/step
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.003805781 0.07385732 0.03241602
+Pearson's correlation coeff:  0.9579937419765887
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.003805781 0.07385732 0.03241602
+Pearson's correlation coeff:  0.9579937419765887</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-10-output-2.png" width="589" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-b-without-dropout-layer-on-phi0.25" class="level4">
+<h4 class="anchored" data-anchor-id="model-b-without-dropout-layer-on-phi0.25">Model B, without dropout layer, on <span class="math inline">\(\phi=0.25\)</span></h4>
+<div id="d89ba05d" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>reset()</span>
+<span id="cb19-2"><a href="#cb19-2"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  9139
+ 1/63 [..............................] - ETA: 5s28/63 [============&gt;.................] - ETA: 0s56/63 [=========================&gt;....] - ETA: 0s63/63 [==============================] - 0s 2ms/step
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.01234379 0.08327133 0.042383652
+Pearson's correlation coeff:  0.9381903589661934
+Overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.01234379 0.08327133 0.042383652
+Pearson's correlation coeff:  0.9381903589661934</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-11-output-2.png" width="589" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-a-on-phi0.45" class="level4">
+<h4 class="anchored" data-anchor-id="model-a-on-phi0.45">Model A on <span class="math inline">\(\phi=0.45\)</span></h4>
+<div id="95b16620" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>density <span class="op">=</span> <span class="fl">0.45</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
+<span id="cb21-5"><a href="#cb21-5"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  10577
+Number of unique alpha:  10
+Shape of x:  (10000, 128, 128, 1)
+Shape of y:  (10000,)
+Size of training data:  8000
+Size of validation data:  2000</code></pre>
+</div>
+</div>
+<div id="679a0c51" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> 1/63 [..............................] - ETA: 2s41/63 [==================&gt;...........] - ETA: 0s63/63 [==============================] - 0s 1ms/step
+Overlap ratio: 0.1
+(Min, Max, Avg) STD: 0.062074456 0.09105668 0.07905867
+Pearson's correlation coeff:  0.37289409476532065
+Overlap ratio: 0.1
+(Min, Max, Avg) STD: 0.062074456 0.09105668 0.07905867
+Pearson's correlation coeff:  0.37289409476532065</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-13-output-2.png" width="600" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-b-on-phi0.45" class="level4">
+<h4 class="anchored" data-anchor-id="model-b-on-phi0.45">Model B on <span class="math inline">\(\phi=0.45\)</span></h4>
+<div id="5a314ff0" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>reset()</span>
+<span id="cb25-2"><a href="#cb25-2"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  10101
+ 1/63 [..............................] - ETA: 6s24/63 [==========&gt;...................] - ETA: 0s47/63 [=====================&gt;........] - ETA: 0s63/63 [==============================] - 0s 2ms/step
+Overlap ratio: 0.0
+(Min, Max, Avg) STD: 0.003280147 0.05064188 0.014989456
+Pearson's correlation coeff:  0.9263580381405537
+Overlap ratio: 0.0
+(Min, Max, Avg) STD: 0.003280147 0.05064188 0.014989456
+Pearson's correlation coeff:  0.9263580381405537</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-14-output-2.png" width="589" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-b-without-dropout-layer-on-phi0.45" class="level4">
+<h4 class="anchored" data-anchor-id="model-b-without-dropout-layer-on-phi0.45">Model B, without dropout layer, on <span class="math inline">\(\phi=0.45\)</span></h4>
+<div id="c68b4306" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>reset()</span>
+<span id="cb27-2"><a href="#cb27-2"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collected:  8806
+ 1/63 [..............................] - ETA: 5s28/63 [============&gt;.................] - ETA: 0s54/63 [========================&gt;.....] - ETA: 0s63/63 [==============================] - 0s 2ms/step
+Overlap ratio: 0.9
+(Min, Max, Avg) STD: 0.013358538 0.06343014 0.02944007
+Pearson's correlation coeff:  0.9233295979255991
+Overlap ratio: 0.9
+(Min, Max, Avg) STD: 0.013358538 0.06343014 0.02944007
+Pearson's correlation coeff:  0.9233295979255991</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_15_files/figure-html/cell-15-output-2.png" width="589" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="comparing-model-a-to-model-b" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-model-a-to-model-b">Comparing Model A to Model B</h3>
 <ul>
 <li>Both seem to exhibit correlation to the actual values.</li>
 <li>Model A has significantly more spread than Model B</li>
@@ -653,8 +1022,7 @@ window.Quarto = {
 <li>Model B performs poorly only on <span class="math inline">\(\phi = 0.45\)</span> (it does well on <span class="math inline">\(\phi = 0.25\)</span>)</li>
 <li>But turning off dropout for B makes it perform better on <span class="math inline">\(\phi = 0.45\)</span>.</li>
 </ul>
-<p>Dropout seems to reduce overfit by a lot. I don’t know if setting it to 0.2 here is too much dropout.</p>
-</section>
+<p>Dropout seems to reduce overfit by a lot. I don’t know if setting it to 0.2 here is too much dropout. In the next iteration of the network, I think we can work with 0.1.</p>
 </section>
 </section>
 <section id="reference-materials" class="level2">
@@ -665,7 +1033,7 @@ window.Quarto = {
 <li><a href="https://www.tensorflow.org/tutorials/keras/regression">TF Regression tutorial</a></li>
 <li><a href="https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression">StackOverflow</a></li>
 <li><a href="https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value">StackOverflow 2</a></li>
-<li><a href="https://www.tensorflow.org/tutorials/keras/regression">TDS pytorch on CNN to predict a continous property</a></li>
+<li><a href="https://www.tensorflow.org/tutorials/keras/regression">TDS pytorch on CNN to predict a continuous property</a></li>
 <li><a href="https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html">CNN with regression</a></li>
 </ul>
 
@@ -949,6 +1317,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/.mstcl\.github.io\/msci-wiki");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1269,187 +1657,386 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="an">title:</span><span class="co"> Week 15</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="an">date:</span><span class="co"> 2024-02-12</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">---</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="fu">## Tasks</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="ss">- </span><span class="va">[x]</span> Play with different layers in Keras and train some models</span>
-<span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="fu">## Summary</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a>We are currently doing this on our personal machines as doing interactive mode</span>
-<span id="cb3-14"><a href="#cb3-14"></a>is not possible on BluePebble (unclear about BlueCrystal). Playing with the CNNs</span>
-<span id="cb3-15"><a href="#cb3-15"></a>on a local notebook is the best method for now to be able to prototype quickly.</span>
-<span id="cb3-16"><a href="#cb3-16"></a></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="fu">### Basics on the architecture of CNN</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a></span>
-<span id="cb3-19"><a href="#cb3-19"></a>We feed our snapshots in, but to represent it as a tensor. Our snapshot has one</span>
-<span id="cb3-20"><a href="#cb3-20"></a>channel depth, so the tensor shape is <span class="in">`(128,128,1)`</span>.</span>
-<span id="cb3-21"><a href="#cb3-21"></a></span>
-<span id="cb3-22"><a href="#cb3-22"></a>We start out with the **convolutional layer**. This layer performs a convolution,</span>
-<span id="cb3-23"><a href="#cb3-23"></a>scanning the input with a number of filters with a smaller size than the input</span>
-<span id="cb3-24"><a href="#cb3-24"></a>image itself, the size of the filter is determined by the kernel size. And the</span>
-<span id="cb3-25"><a href="#cb3-25"></a>output of shape of the convolutional layer is of shape <span class="in">`(128,128,N)`</span> where <span class="in">`N`</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a>is the number of filters applied.</span>
-<span id="cb3-27"><a href="#cb3-27"></a></span>
-<span id="cb3-28"><a href="#cb3-28"></a><span class="ss">- </span>Kernel size <span class="in">`(x,y)`</span> is the window size that scans the image at each</span>
-<span id="cb3-29"><a href="#cb3-29"></a>  iteration.</span>
-<span id="cb3-30"><a href="#cb3-30"></a><span class="ss">- </span>Stride <span class="in">`(x,y)`</span> is the step length to jump at each iteration.</span>
-<span id="cb3-31"><a href="#cb3-31"></a><span class="ss">- </span>Each filter produces a feature map, every filter added captures more complex</span>
-<span id="cb3-32"><a href="#cb3-32"></a>  patterns.</span>
-<span id="cb3-33"><a href="#cb3-33"></a><span class="ss">- </span>We increase filter size with subsequent layers to capture more more</span>
-<span id="cb3-34"><a href="#cb3-34"></a>  combinations.</span>
-<span id="cb3-35"><a href="#cb3-35"></a></span>
-<span id="cb3-36"><a href="#cb3-36"></a>A **flatten layer** will turn the input shape <span class="in">`(x,y,c)`</span> into <span class="in">`(x*y*c)`</span>, i.e. a</span>
-<span id="cb3-37"><a href="#cb3-37"></a>1D vector.</span>
-<span id="cb3-38"><a href="#cb3-38"></a></span>
-<span id="cb3-39"><a href="#cb3-39"></a>A **dense layer** (or fully-connected), map all input neurons to output neurons.</span>
-<span id="cb3-40"><a href="#cb3-40"></a>It takes in the number of units (neurons) and turn the input shape <span class="in">`(x,y,c)`</span></span>
-<span id="cb3-41"><a href="#cb3-41"></a>into <span class="in">`(x,y,units)`</span>.</span>
-<span id="cb3-42"><a href="#cb3-42"></a></span>
-<span id="cb3-43"><a href="#cb3-43"></a><span class="ss">- </span>Linear activation is pass-through (does nothing).</span>
-<span id="cb3-44"><a href="#cb3-44"></a></span>
-<span id="cb3-45"><a href="#cb3-45"></a>A **pooling layer** reduces dimensions of the feature maps, which reduces the</span>
-<span id="cb3-46"><a href="#cb3-46"></a>number of parameters. We have max pooling and average pooling (max takes</span>
-<span id="cb3-47"><a href="#cb3-47"></a>maximum value from the kernel window and average takes the mean).</span>
-<span id="cb3-48"><a href="#cb3-48"></a></span>
-<span id="cb3-49"><a href="#cb3-49"></a>A **dropout layer** randomly drops a fraction (the input parameter) of the</span>
-<span id="cb3-50"><a href="#cb3-50"></a>input units to 0.</span>
-<span id="cb3-51"><a href="#cb3-51"></a></span>
-<span id="cb3-52"><a href="#cb3-52"></a>A **batch normalization** layer normalizes the output. This helps with training</span>
-<span id="cb3-53"><a href="#cb3-53"></a>speed.</span>
-<span id="cb3-54"><a href="#cb3-54"></a></span>
-<span id="cb3-55"><a href="#cb3-55"></a>To help reduce overfitting:</span>
-<span id="cb3-56"><a href="#cb3-56"></a></span>
-<span id="cb3-57"><a href="#cb3-57"></a><span class="ss">- </span>Increase training data</span>
-<span id="cb3-58"><a href="#cb3-58"></a><span class="ss">- </span>Use pooling, batch normalization, and dropout layers</span>
-<span id="cb3-59"><a href="#cb3-59"></a></span>
-<span id="cb3-60"><a href="#cb3-60"></a><span class="fu">### Classifying our model/problem</span></span>
-<span id="cb3-61"><a href="#cb3-61"></a></span>
-<span id="cb3-62"><a href="#cb3-62"></a>For this week, we start building the network. Our network is a regression</span>
-<span id="cb3-63"><a href="#cb3-63"></a>problem, predicting a continuous parameter, our tumbling rate $\alpha$.</span>
-<span id="cb3-64"><a href="#cb3-64"></a></span>
-<span id="cb3-65"><a href="#cb3-65"></a>For this to work, we choose a loss function such as mean absolute error and</span>
-<span id="cb3-66"><a href="#cb3-66"></a>mean squared error. We picked mean absolute error for now.</span>
-<span id="cb3-67"><a href="#cb3-67"></a></span>
-<span id="cb3-68"><a href="#cb3-68"></a>Effectively, we want the model to minimise the mean absolute error (MAE from</span>
-<span id="cb3-69"><a href="#cb3-69"></a>now on). From some precursor research, regression done on non-image data</span>
-<span id="cb3-70"><a href="#cb3-70"></a>typically use only fully-connected layers. We have image data that we wish to</span>
-<span id="cb3-71"><a href="#cb3-71"></a>apply convolution on, therefore we have to combine both.</span>
-<span id="cb3-72"><a href="#cb3-72"></a></span>
-<span id="cb3-73"><a href="#cb3-73"></a>The input is an image, but we have to output a 1D vector that maps to</span>
-<span id="cb3-74"><a href="#cb3-74"></a>predictions for one parameter (continuous). To do this, we apply <span class="in">`Flatten()`</span></span>
-<span id="cb3-75"><a href="#cb3-75"></a>and <span class="in">`Dense(1, activation="linear")`</span> at the end.</span>
-<span id="cb3-76"><a href="#cb3-76"></a></span>
-<span id="cb3-77"><a href="#cb3-77"></a><span class="fu">### Initial strategy</span></span>
-<span id="cb3-78"><a href="#cb3-78"></a></span>
-<span id="cb3-79"><a href="#cb3-79"></a>We begin with a simple model with one <span class="in">`Conv2D`</span> layer:</span>
-<span id="cb3-80"><a href="#cb3-80"></a></span>
-<span id="cb3-81"><a href="#cb3-81"></a><span class="fu">#### A simple network to start with: Model A</span></span>
-<span id="cb3-82"><a href="#cb3-82"></a></span>
-<span id="cb3-83"><a href="#cb3-83"></a>I used this in the single density notebook as the "basic" network:</span>
-<span id="cb3-84"><a href="#cb3-84"></a></span>
-<span id="cb3-85"><a href="#cb3-85"></a><span class="in">```python</span></span>
-<span id="cb3-86"><a href="#cb3-86"></a>model <span class="op">=</span> Sequential()</span>
-<span id="cb3-87"><a href="#cb3-87"></a></span>
-<span id="cb3-88"><a href="#cb3-88"></a>model.add(</span>
-<span id="cb3-89"><a href="#cb3-89"></a>    Conv2D(</span>
-<span id="cb3-90"><a href="#cb3-90"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb3-91"><a href="#cb3-91"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-92"><a href="#cb3-92"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
-<span id="cb3-93"><a href="#cb3-93"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-94"><a href="#cb3-94"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
-<span id="cb3-95"><a href="#cb3-95"></a>        input_shape<span class="op">=</span>shape,</span>
-<span id="cb3-96"><a href="#cb3-96"></a>    )</span>
-<span id="cb3-97"><a href="#cb3-97"></a>)</span>
-<span id="cb3-98"><a href="#cb3-98"></a>model.add(Flatten())</span>
-<span id="cb3-99"><a href="#cb3-99"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
-<span id="cb3-100"><a href="#cb3-100"></a><span class="in">```</span></span>
-<span id="cb3-101"><a href="#cb3-101"></a></span>
-<span id="cb3-102"><a href="#cb3-102"></a>We compare this with a slightly more complicated one.</span>
-<span id="cb3-103"><a href="#cb3-103"></a></span>
-<span id="cb3-104"><a href="#cb3-104"></a><span class="fu">#### A more complicated network: Model B</span></span>
-<span id="cb3-105"><a href="#cb3-105"></a></span>
-<span id="cb3-106"><a href="#cb3-106"></a>Based on [this blog</span>
-<span id="cb3-107"><a href="#cb3-107"></a>post](https://scribe.rip/@msgold/predicting-images-with-a-cnn-90a25a9e4509),</span>
-<span id="cb3-108"><a href="#cb3-108"></a>where they work on a classification problem, so we need to be careful with the</span>
-<span id="cb3-109"><a href="#cb3-109"></a>output.</span>
-<span id="cb3-110"><a href="#cb3-110"></a></span>
-<span id="cb3-111"><a href="#cb3-111"></a><span class="in">```python</span></span>
-<span id="cb3-112"><a href="#cb3-112"></a>model <span class="op">=</span> Sequential()</span>
-<span id="cb3-113"><a href="#cb3-113"></a></span>
-<span id="cb3-114"><a href="#cb3-114"></a>model.add(</span>
-<span id="cb3-115"><a href="#cb3-115"></a>    Conv2D(</span>
-<span id="cb3-116"><a href="#cb3-116"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb3-117"><a href="#cb3-117"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-118"><a href="#cb3-118"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
-<span id="cb3-119"><a href="#cb3-119"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb3-120"><a href="#cb3-120"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
-<span id="cb3-121"><a href="#cb3-121"></a>        input_shape<span class="op">=</span>shape,</span>
-<span id="cb3-122"><a href="#cb3-122"></a>    )</span>
-<span id="cb3-123"><a href="#cb3-123"></a>)</span>
-<span id="cb3-124"><a href="#cb3-124"></a>model.add(BatchNormalization())</span>
-<span id="cb3-125"><a href="#cb3-125"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
-<span id="cb3-126"><a href="#cb3-126"></a>model.add(BatchNormalization())</span>
-<span id="cb3-127"><a href="#cb3-127"></a></span>
-<span id="cb3-128"><a href="#cb3-128"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
-<span id="cb3-129"><a href="#cb3-129"></a></span>
-<span id="cb3-130"><a href="#cb3-130"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb3-131"><a href="#cb3-131"></a>model.add(BatchNormalization())</span>
-<span id="cb3-132"><a href="#cb3-132"></a></span>
-<span id="cb3-133"><a href="#cb3-133"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb3-134"><a href="#cb3-134"></a>model.add(BatchNormalization())</span>
-<span id="cb3-135"><a href="#cb3-135"></a></span>
-<span id="cb3-136"><a href="#cb3-136"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
-<span id="cb3-137"><a href="#cb3-137"></a></span>
-<span id="cb3-138"><a href="#cb3-138"></a>model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb3-139"><a href="#cb3-139"></a></span>
-<span id="cb3-140"><a href="#cb3-140"></a><span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
-<span id="cb3-141"><a href="#cb3-141"></a>    model.add(Dropout(<span class="fl">0.2</span>))</span>
-<span id="cb3-142"><a href="#cb3-142"></a>model.add(Dense(units<span class="op">=</span><span class="dv">10</span>, activation<span class="op">=</span><span class="st">"softmax"</span>))</span>
-<span id="cb3-143"><a href="#cb3-143"></a></span>
-<span id="cb3-144"><a href="#cb3-144"></a>model.add(Flatten())</span>
-<span id="cb3-145"><a href="#cb3-145"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
-<span id="cb3-146"><a href="#cb3-146"></a><span class="in">```</span></span>
-<span id="cb3-147"><a href="#cb3-147"></a></span>
-<span id="cb3-148"><a href="#cb3-148"></a>I was interested in the effect of dropout, so I used Model B with and without dropout</span>
-<span id="cb3-149"><a href="#cb3-149"></a>to compare the results.</span>
-<span id="cb3-150"><a href="#cb3-150"></a></span>
-<span id="cb3-151"><a href="#cb3-151"></a><span class="fu">### Experiment summary</span></span>
-<span id="cb3-152"><a href="#cb3-152"></a></span>
-<span id="cb3-153"><a href="#cb3-153"></a>See the results of this week's tinkering <span class="co">[</span><span class="ot">here</span><span class="co">](../plots/network_demo_1.qmd)</span>.</span>
-<span id="cb3-154"><a href="#cb3-154"></a></span>
-<span id="cb3-155"><a href="#cb3-155"></a><span class="fu">#### Comparing Model A to Model B</span></span>
-<span id="cb3-156"><a href="#cb3-156"></a></span>
-<span id="cb3-157"><a href="#cb3-157"></a><span class="ss">- </span>Both seem to exhibit correlation to the actual values.</span>
-<span id="cb3-158"><a href="#cb3-158"></a><span class="ss">- </span>Model A has significantly more spread than Model B</span>
-<span id="cb3-159"><a href="#cb3-159"></a><span class="ss">- </span>Dropout doesn't reduce spread but make the average of each $\alpha$ less</span>
-<span id="cb3-160"><a href="#cb3-160"></a>  centred around the actual value.</span>
-<span id="cb3-161"><a href="#cb3-161"></a><span class="ss">- </span>Dropout adds a lot of spread to the first $\alpha$.</span>
-<span id="cb3-162"><a href="#cb3-162"></a><span class="ss">- </span>Model A performs poorly on $\phi \neq 0.15$ (which it was trained on).</span>
-<span id="cb3-163"><a href="#cb3-163"></a><span class="ss">- </span>Model B performs poorly only on $\phi = 0.45$ (it does well on $\phi = 0.25$)</span>
-<span id="cb3-164"><a href="#cb3-164"></a><span class="ss">- </span>But turning off dropout for B makes it perform better on $\phi = 0.45$.</span>
-<span id="cb3-165"><a href="#cb3-165"></a></span>
-<span id="cb3-166"><a href="#cb3-166"></a>Dropout seems to reduce overfit by a lot. I don't know if setting it to 0.2</span>
-<span id="cb3-167"><a href="#cb3-167"></a>here is too much dropout.</span>
-<span id="cb3-168"><a href="#cb3-168"></a></span>
-<span id="cb3-169"><a href="#cb3-169"></a><span class="fu">## Reference materials</span></span>
-<span id="cb3-170"><a href="#cb3-170"></a></span>
-<span id="cb3-171"><a href="#cb3-171"></a><span class="ss">- </span>[House price</span>
-<span id="cb3-172"><a href="#cb3-172"></a>  regression 1](https://pyimagesearch.com/2019/01/28/keras-regression-and-cnns/)</span>
-<span id="cb3-173"><a href="#cb3-173"></a><span class="ss">- </span><span class="co">[</span><span class="ot">House price regression 2</span><span class="co">](https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/)</span></span>
-<span id="cb3-174"><a href="#cb3-174"></a><span class="ss">- </span><span class="co">[</span><span class="ot">TF Regression tutorial</span><span class="co">](https://www.tensorflow.org/tutorials/keras/regression)</span></span>
-<span id="cb3-175"><a href="#cb3-175"></a><span class="ss">- </span><span class="co">[</span><span class="ot">StackOverflow</span><span class="co">](https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression)</span></span>
-<span id="cb3-176"><a href="#cb3-176"></a><span class="ss">- </span>[StackOverflow</span>
-<span id="cb3-177"><a href="#cb3-177"></a>  2](https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value)</span>
-<span id="cb3-178"><a href="#cb3-178"></a><span class="ss">- </span>[TDS pytorch on CNN to predict a continous</span>
-<span id="cb3-179"><a href="#cb3-179"></a>  property](https://www.tensorflow.org/tutorials/keras/regression)</span>
-<span id="cb3-180"><a href="#cb3-180"></a><span class="ss">- </span>[CNN with</span>
-<span id="cb3-181"><a href="#cb3-181"></a>  regression](https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">---</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="an">title:</span><span class="co"> Week 15</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="an">date:</span><span class="co"> 2024-02-12</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="an">execute:</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="co">  cache: true</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co">---</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="fu">## Tasks</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a></span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="ss">- </span><span class="va">[x]</span> Play with different layers in Keras and train some models</span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="ss">- </span><span class="va">[x]</span> Make some utility functions to reuse for training</span>
+<span id="cb29-14"><a href="#cb29-14"></a></span>
+<span id="cb29-15"><a href="#cb29-15"></a><span class="fu">## Summary</span></span>
+<span id="cb29-16"><a href="#cb29-16"></a></span>
+<span id="cb29-17"><a href="#cb29-17"></a>We are currently doing this on our personal machines as doing interactive mode</span>
+<span id="cb29-18"><a href="#cb29-18"></a>is not possible on BluePebble (unclear about BlueCrystal). Playing with the CNNs</span>
+<span id="cb29-19"><a href="#cb29-19"></a>on a local notebook is the best method for now to be able to prototype quickly.</span>
+<span id="cb29-20"><a href="#cb29-20"></a></span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="fu">### Basics on the architecture of CNN</span></span>
+<span id="cb29-22"><a href="#cb29-22"></a></span>
+<span id="cb29-23"><a href="#cb29-23"></a>We feed our snapshots in, but to represent it as a tensor. Our snapshot has one</span>
+<span id="cb29-24"><a href="#cb29-24"></a>channel depth, so the tensor shape is <span class="in">`(128,128,1)`</span>.</span>
+<span id="cb29-25"><a href="#cb29-25"></a></span>
+<span id="cb29-26"><a href="#cb29-26"></a>We start out with the **convolutional layer**. This layer performs a convolution,</span>
+<span id="cb29-27"><a href="#cb29-27"></a>scanning the input with a number of filters with a smaller size than the input</span>
+<span id="cb29-28"><a href="#cb29-28"></a>image itself, the size of the filter is determined by the kernel size. And the</span>
+<span id="cb29-29"><a href="#cb29-29"></a>output of shape of the convolutional layer is of shape <span class="in">`(128,128,N)`</span> where <span class="in">`N`</span></span>
+<span id="cb29-30"><a href="#cb29-30"></a>is the number of filters applied.</span>
+<span id="cb29-31"><a href="#cb29-31"></a></span>
+<span id="cb29-32"><a href="#cb29-32"></a><span class="ss">- </span>Kernel size <span class="in">`(x,y)`</span> is the window size that scans the image at each</span>
+<span id="cb29-33"><a href="#cb29-33"></a>  iteration.</span>
+<span id="cb29-34"><a href="#cb29-34"></a><span class="ss">- </span>Stride <span class="in">`(x,y)`</span> is the step length to jump at each iteration.</span>
+<span id="cb29-35"><a href="#cb29-35"></a><span class="ss">- </span>Each filter produces a feature map, every filter added captures more complex</span>
+<span id="cb29-36"><a href="#cb29-36"></a>  patterns.</span>
+<span id="cb29-37"><a href="#cb29-37"></a><span class="ss">- </span>We increase filter size with subsequent layers to capture more more</span>
+<span id="cb29-38"><a href="#cb29-38"></a>  combinations.</span>
+<span id="cb29-39"><a href="#cb29-39"></a></span>
+<span id="cb29-40"><a href="#cb29-40"></a>A **flatten layer** will turn the input shape <span class="in">`(x,y,c)`</span> into <span class="in">`(x*y*c)`</span>, i.e. a</span>
+<span id="cb29-41"><a href="#cb29-41"></a>1D vector.</span>
+<span id="cb29-42"><a href="#cb29-42"></a></span>
+<span id="cb29-43"><a href="#cb29-43"></a>A **dense layer** (or fully-connected), map all input neurons to output neurons.</span>
+<span id="cb29-44"><a href="#cb29-44"></a>It takes in the number of units (neurons) and turn the input shape <span class="in">`(x,y,c)`</span></span>
+<span id="cb29-45"><a href="#cb29-45"></a>into <span class="in">`(x,y,units)`</span>.</span>
+<span id="cb29-46"><a href="#cb29-46"></a></span>
+<span id="cb29-47"><a href="#cb29-47"></a><span class="ss">- </span>Linear activation is pass-through (does nothing).</span>
+<span id="cb29-48"><a href="#cb29-48"></a></span>
+<span id="cb29-49"><a href="#cb29-49"></a>A **pooling layer** reduces dimensions of the feature maps, which reduces the</span>
+<span id="cb29-50"><a href="#cb29-50"></a>number of parameters. We have max pooling and average pooling (max takes</span>
+<span id="cb29-51"><a href="#cb29-51"></a>maximum value from the kernel window and average takes the mean).</span>
+<span id="cb29-52"><a href="#cb29-52"></a></span>
+<span id="cb29-53"><a href="#cb29-53"></a>A **dropout layer** randomly drops a fraction (the input parameter) of the</span>
+<span id="cb29-54"><a href="#cb29-54"></a>input units to 0.</span>
+<span id="cb29-55"><a href="#cb29-55"></a></span>
+<span id="cb29-56"><a href="#cb29-56"></a>A **batch normalization** layer normalizes the output. This helps with training</span>
+<span id="cb29-57"><a href="#cb29-57"></a>speed.</span>
+<span id="cb29-58"><a href="#cb29-58"></a></span>
+<span id="cb29-59"><a href="#cb29-59"></a>To help reduce overfitting:</span>
+<span id="cb29-60"><a href="#cb29-60"></a></span>
+<span id="cb29-61"><a href="#cb29-61"></a><span class="ss">- </span>Increase training data</span>
+<span id="cb29-62"><a href="#cb29-62"></a><span class="ss">- </span>Use pooling, batch normalization, and dropout layers</span>
+<span id="cb29-63"><a href="#cb29-63"></a></span>
+<span id="cb29-64"><a href="#cb29-64"></a><span class="fu">### Classifying our model/problem</span></span>
+<span id="cb29-65"><a href="#cb29-65"></a></span>
+<span id="cb29-66"><a href="#cb29-66"></a>For this week, we start building the network. Our network is a regression</span>
+<span id="cb29-67"><a href="#cb29-67"></a>problem, predicting a continuous parameter, our tumbling rate $\alpha$.</span>
+<span id="cb29-68"><a href="#cb29-68"></a></span>
+<span id="cb29-69"><a href="#cb29-69"></a>For this to work, we choose a loss function such as mean absolute error and</span>
+<span id="cb29-70"><a href="#cb29-70"></a>mean squared error. We picked mean absolute error for now. This means the</span>
+<span id="cb29-71"><a href="#cb29-71"></a>neural network will try and optimize this function, and this metric will be a</span>
+<span id="cb29-72"><a href="#cb29-72"></a>good indication of how well we've designed the architecture and everything</span>
+<span id="cb29-73"><a href="#cb29-73"></a>surrounding it.</span>
+<span id="cb29-74"><a href="#cb29-74"></a></span>
+<span id="cb29-75"><a href="#cb29-75"></a>The equation for mean absolute error is:</span>
+<span id="cb29-76"><a href="#cb29-76"></a></span>
+<span id="cb29-77"><a href="#cb29-77"></a>$$</span>
+<span id="cb29-78"><a href="#cb29-78"></a>\delta = \frac{\sum_{i=0}^{N}|y_i - y_p|}{N},</span>
+<span id="cb29-79"><a href="#cb29-79"></a>$$</span>
+<span id="cb29-80"><a href="#cb29-80"></a></span>
+<span id="cb29-81"><a href="#cb29-81"></a>where $y_i$ is the actual value and $y_p$ is the predicted value.</span>
+<span id="cb29-82"><a href="#cb29-82"></a></span>
+<span id="cb29-83"><a href="#cb29-83"></a>Effectively, we want the model to minimise the mean absolute error (MAE from</span>
+<span id="cb29-84"><a href="#cb29-84"></a>now on). From some precursor research, regression done on non-image data</span>
+<span id="cb29-85"><a href="#cb29-85"></a>typically use only fully-connected layers. We have image data that we wish to</span>
+<span id="cb29-86"><a href="#cb29-86"></a>apply convolution on, therefore we have to combine both.</span>
+<span id="cb29-87"><a href="#cb29-87"></a></span>
+<span id="cb29-88"><a href="#cb29-88"></a>The input is an image, but we have to output a 1D vector that maps to</span>
+<span id="cb29-89"><a href="#cb29-89"></a>predictions for one parameter (continuous). To do this, we apply <span class="in">`Flatten()`</span></span>
+<span id="cb29-90"><a href="#cb29-90"></a>and <span class="in">`Dense(1, activation="linear")`</span> at the end.</span>
+<span id="cb29-91"><a href="#cb29-91"></a></span>
+<span id="cb29-92"><a href="#cb29-92"></a><span class="fu">### Initial strategy</span></span>
+<span id="cb29-93"><a href="#cb29-93"></a></span>
+<span id="cb29-94"><a href="#cb29-94"></a>We begin with a simple model with one <span class="in">`Conv2D`</span> layer, and train it on data that</span>
+<span id="cb29-95"><a href="#cb29-95"></a>is not experimental-like, i.e. orientation is still encoded as colours. We</span>
+<span id="cb29-96"><a href="#cb29-96"></a>shall later consider training without this, or seeing the effect without it:</span>
+<span id="cb29-97"><a href="#cb29-97"></a></span>
+<span id="cb29-98"><a href="#cb29-98"></a><span class="fu">#### A simple network to start with: Model A</span></span>
+<span id="cb29-99"><a href="#cb29-99"></a></span>
+<span id="cb29-100"><a href="#cb29-100"></a>I used this in the single density notebook as the "basic" network:</span>
+<span id="cb29-101"><a href="#cb29-101"></a></span>
+<span id="cb29-102"><a href="#cb29-102"></a><span class="in">```python</span></span>
+<span id="cb29-103"><a href="#cb29-103"></a>model <span class="op">=</span> Sequential()</span>
+<span id="cb29-104"><a href="#cb29-104"></a></span>
+<span id="cb29-105"><a href="#cb29-105"></a>model.add(</span>
+<span id="cb29-106"><a href="#cb29-106"></a>    Conv2D(</span>
+<span id="cb29-107"><a href="#cb29-107"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb29-108"><a href="#cb29-108"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb29-109"><a href="#cb29-109"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
+<span id="cb29-110"><a href="#cb29-110"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb29-111"><a href="#cb29-111"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
+<span id="cb29-112"><a href="#cb29-112"></a>        input_shape<span class="op">=</span>shape,</span>
+<span id="cb29-113"><a href="#cb29-113"></a>    )</span>
+<span id="cb29-114"><a href="#cb29-114"></a>)</span>
+<span id="cb29-115"><a href="#cb29-115"></a>model.add(Flatten())</span>
+<span id="cb29-116"><a href="#cb29-116"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
+<span id="cb29-117"><a href="#cb29-117"></a><span class="in">```</span></span>
+<span id="cb29-118"><a href="#cb29-118"></a></span>
+<span id="cb29-119"><a href="#cb29-119"></a>We compare this with a slightly more complicated one.</span>
+<span id="cb29-120"><a href="#cb29-120"></a></span>
+<span id="cb29-121"><a href="#cb29-121"></a><span class="fu">#### A more complicated network: Model B</span></span>
+<span id="cb29-122"><a href="#cb29-122"></a></span>
+<span id="cb29-123"><a href="#cb29-123"></a>Based on [this blog</span>
+<span id="cb29-124"><a href="#cb29-124"></a>post](https://scribe.rip/@msgold/predicting-images-with-a-cnn-90a25a9e4509),</span>
+<span id="cb29-125"><a href="#cb29-125"></a>where they work on a classification problem, so we need to be careful with the</span>
+<span id="cb29-126"><a href="#cb29-126"></a>output.</span>
+<span id="cb29-127"><a href="#cb29-127"></a></span>
+<span id="cb29-128"><a href="#cb29-128"></a><span class="in">```python</span></span>
+<span id="cb29-129"><a href="#cb29-129"></a>model <span class="op">=</span> Sequential()</span>
+<span id="cb29-130"><a href="#cb29-130"></a></span>
+<span id="cb29-131"><a href="#cb29-131"></a>model.add(</span>
+<span id="cb29-132"><a href="#cb29-132"></a>    Conv2D(</span>
+<span id="cb29-133"><a href="#cb29-133"></a>        filters<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb29-134"><a href="#cb29-134"></a>        kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb29-135"><a href="#cb29-135"></a>        padding<span class="op">=</span><span class="st">"same"</span>,</span>
+<span id="cb29-136"><a href="#cb29-136"></a>        strides<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb29-137"><a href="#cb29-137"></a>        activation<span class="op">=</span><span class="st">"relu"</span>,</span>
+<span id="cb29-138"><a href="#cb29-138"></a>        input_shape<span class="op">=</span>shape,</span>
+<span id="cb29-139"><a href="#cb29-139"></a>    )</span>
+<span id="cb29-140"><a href="#cb29-140"></a>)</span>
+<span id="cb29-141"><a href="#cb29-141"></a>model.add(BatchNormalization())</span>
+<span id="cb29-142"><a href="#cb29-142"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb29-143"><a href="#cb29-143"></a>model.add(BatchNormalization())</span>
+<span id="cb29-144"><a href="#cb29-144"></a></span>
+<span id="cb29-145"><a href="#cb29-145"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
+<span id="cb29-146"><a href="#cb29-146"></a></span>
+<span id="cb29-147"><a href="#cb29-147"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb29-148"><a href="#cb29-148"></a>model.add(BatchNormalization())</span>
+<span id="cb29-149"><a href="#cb29-149"></a></span>
+<span id="cb29-150"><a href="#cb29-150"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb29-151"><a href="#cb29-151"></a>model.add(BatchNormalization())</span>
+<span id="cb29-152"><a href="#cb29-152"></a></span>
+<span id="cb29-153"><a href="#cb29-153"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)))</span>
+<span id="cb29-154"><a href="#cb29-154"></a></span>
+<span id="cb29-155"><a href="#cb29-155"></a>model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb29-156"><a href="#cb29-156"></a></span>
+<span id="cb29-157"><a href="#cb29-157"></a><span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
+<span id="cb29-158"><a href="#cb29-158"></a>    model.add(Dropout(<span class="fl">0.2</span>))</span>
+<span id="cb29-159"><a href="#cb29-159"></a>model.add(Dense(units<span class="op">=</span><span class="dv">10</span>, activation<span class="op">=</span><span class="st">"softmax"</span>))</span>
+<span id="cb29-160"><a href="#cb29-160"></a></span>
+<span id="cb29-161"><a href="#cb29-161"></a>model.add(Flatten())</span>
+<span id="cb29-162"><a href="#cb29-162"></a>model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
+<span id="cb29-163"><a href="#cb29-163"></a><span class="in">```</span></span>
+<span id="cb29-164"><a href="#cb29-164"></a></span>
+<span id="cb29-165"><a href="#cb29-165"></a>I was interested in the effect of dropout, so I used Model B with and without</span>
+<span id="cb29-166"><a href="#cb29-166"></a>dropout to compare the results. We expect dropout to produce distributions that</span>
+<span id="cb29-167"><a href="#cb29-167"></a>are more centred around the actual value.</span>
+<span id="cb29-168"><a href="#cb29-168"></a></span>
+<span id="cb29-169"><a href="#cb29-169"></a><span class="fu">### Model A trained on one density, predicting the same density.</span></span>
+<span id="cb29-170"><a href="#cb29-170"></a></span>
+<span id="cb29-173"><a href="#cb29-173"></a><span class="in">```{python}</span></span>
+<span id="cb29-174"><a href="#cb29-174"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-175"><a href="#cb29-175"></a><span class="im">import</span> gc</span>
+<span id="cb29-176"><a href="#cb29-176"></a><span class="im">import</span> os</span>
+<span id="cb29-177"><a href="#cb29-177"></a><span class="im">import</span> glob</span>
+<span id="cb29-178"><a href="#cb29-178"></a><span class="im">import</span> h5py</span>
+<span id="cb29-179"><a href="#cb29-179"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
+<span id="cb29-180"><a href="#cb29-180"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-181"><a href="#cb29-181"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
+<span id="cb29-182"><a href="#cb29-182"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb29-183"><a href="#cb29-183"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb29-184"><a href="#cb29-184"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
+<span id="cb29-185"><a href="#cb29-185"></a><span class="im">from</span> src.training_utils <span class="im">import</span> extract_floats, split_dataset, predict_and_plot</span>
+<span id="cb29-186"><a href="#cb29-186"></a></span>
+<span id="cb29-187"><a href="#cb29-187"></a><span class="co"># Use a custom data_load here because the one finally saved now normalizes the</span></span>
+<span id="cb29-188"><a href="#cb29-188"></a><span class="co"># data, which messes up the model</span></span>
+<span id="cb29-189"><a href="#cb29-189"></a><span class="kw">def</span> data_load(density):</span>
+<span id="cb29-190"><a href="#cb29-190"></a>    files <span class="op">=</span> glob.glob(<span class="ss">f"no_roll_data/dataset_tumble_*_</span><span class="sc">{</span>density<span class="sc">}</span><span class="ss">.h5"</span>)</span>
+<span id="cb29-191"><a href="#cb29-191"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
+<span id="cb29-192"><a href="#cb29-192"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb29-193"><a href="#cb29-193"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
+<span id="cb29-194"><a href="#cb29-194"></a>        <span class="cf">with</span> h5py.File(f, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
+<span id="cb29-195"><a href="#cb29-195"></a>          count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb29-196"><a href="#cb29-196"></a>          <span class="cf">for</span> key <span class="kw">in</span> fin.keys():</span>
+<span id="cb29-197"><a href="#cb29-197"></a>              img <span class="op">=</span> fin[key][:]</span>
+<span id="cb29-198"><a href="#cb29-198"></a>              img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>],<span class="dv">1</span>))</span>
+<span id="cb29-199"><a href="#cb29-199"></a>              shape <span class="op">=</span> img.shape</span>
+<span id="cb29-200"><a href="#cb29-200"></a>              inputs.append(img)</span>
+<span id="cb29-201"><a href="#cb29-201"></a>              outputs.append(tumble)</span>
+<span id="cb29-202"><a href="#cb29-202"></a>              count<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb29-203"><a href="#cb29-203"></a></span>
+<span id="cb29-204"><a href="#cb29-204"></a>    <span class="co"># Scramble the dataset</span></span>
+<span id="cb29-205"><a href="#cb29-205"></a>    order <span class="op">=</span> np.arange(<span class="bu">len</span>(outputs)).astype(<span class="bu">int</span>)</span>
+<span id="cb29-206"><a href="#cb29-206"></a>    order <span class="op">=</span> np.random.permutation(order)</span>
+<span id="cb29-207"><a href="#cb29-207"></a>    <span class="cf">return</span> np.array(inputs)[order],np.array(outputs)[order],shape</span>
+<span id="cb29-208"><a href="#cb29-208"></a><span class="in">```</span></span>
+<span id="cb29-209"><a href="#cb29-209"></a></span>
+<span id="cb29-212"><a href="#cb29-212"></a><span class="in">```{python}</span></span>
+<span id="cb29-213"><a href="#cb29-213"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-214"><a href="#cb29-214"></a><span class="kw">def</span> reset(<span class="bu">all</span><span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb29-215"><a href="#cb29-215"></a>    K.clear_session()</span>
+<span id="cb29-216"><a href="#cb29-216"></a>    <span class="kw">global</span> prediction, x, y, x_train, y_train, x_val, y_val</span>
+<span id="cb29-217"><a href="#cb29-217"></a>    <span class="cf">if</span> <span class="bu">all</span>:</span>
+<span id="cb29-218"><a href="#cb29-218"></a>        <span class="kw">del</span> x</span>
+<span id="cb29-219"><a href="#cb29-219"></a>        <span class="kw">del</span> y</span>
+<span id="cb29-220"><a href="#cb29-220"></a>        <span class="kw">del</span> x_train</span>
+<span id="cb29-221"><a href="#cb29-221"></a>        <span class="kw">del</span> y_train</span>
+<span id="cb29-222"><a href="#cb29-222"></a>        <span class="kw">del</span> x_val</span>
+<span id="cb29-223"><a href="#cb29-223"></a>        <span class="kw">del</span> y_val</span>
+<span id="cb29-224"><a href="#cb29-224"></a>    <span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span>
+<span id="cb29-225"><a href="#cb29-225"></a><span class="in">```</span></span>
+<span id="cb29-226"><a href="#cb29-226"></a></span>
+<span id="cb29-227"><a href="#cb29-227"></a></span>
+<span id="cb29-230"><a href="#cb29-230"></a><span class="in">```{python}</span></span>
+<span id="cb29-231"><a href="#cb29-231"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-232"><a href="#cb29-232"></a>density <span class="op">=</span> <span class="fl">0.15</span></span>
+<span id="cb29-233"><a href="#cb29-233"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb29-234"><a href="#cb29-234"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
+<span id="cb29-235"><a href="#cb29-235"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span>
+<span id="cb29-236"><a href="#cb29-236"></a><span class="in">```</span></span>
+<span id="cb29-237"><a href="#cb29-237"></a></span>
+<span id="cb29-240"><a href="#cb29-240"></a><span class="in">```{python}</span></span>
+<span id="cb29-241"><a href="#cb29-241"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
+<span id="cb29-242"><a href="#cb29-242"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-243"><a href="#cb29-243"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-244"><a href="#cb29-244"></a><span class="in">```</span></span>
+<span id="cb29-245"><a href="#cb29-245"></a></span>
+<span id="cb29-246"><a href="#cb29-246"></a><span class="fu">### Model B, trained on one density, predicting the same density</span></span>
+<span id="cb29-247"><a href="#cb29-247"></a></span>
+<span id="cb29-248"><a href="#cb29-248"></a></span>
+<span id="cb29-251"><a href="#cb29-251"></a><span class="in">```{python}</span></span>
+<span id="cb29-252"><a href="#cb29-252"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-253"><a href="#cb29-253"></a>reset()</span>
+<span id="cb29-254"><a href="#cb29-254"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
+<span id="cb29-255"><a href="#cb29-255"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-256"><a href="#cb29-256"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-257"><a href="#cb29-257"></a><span class="in">```</span></span>
+<span id="cb29-258"><a href="#cb29-258"></a></span>
+<span id="cb29-259"><a href="#cb29-259"></a><span class="fu">### Model B, without dropout layer, trained on one density, predicting the same density</span></span>
+<span id="cb29-260"><a href="#cb29-260"></a></span>
+<span id="cb29-263"><a href="#cb29-263"></a><span class="in">```{python}</span></span>
+<span id="cb29-264"><a href="#cb29-264"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-265"><a href="#cb29-265"></a>reset()</span>
+<span id="cb29-266"><a href="#cb29-266"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
+<span id="cb29-267"><a href="#cb29-267"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-268"><a href="#cb29-268"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-269"><a href="#cb29-269"></a><span class="in">```</span></span>
+<span id="cb29-270"><a href="#cb29-270"></a></span>
+<span id="cb29-271"><a href="#cb29-271"></a><span class="fu">### Predicting novel densities</span></span>
+<span id="cb29-272"><a href="#cb29-272"></a></span>
+<span id="cb29-273"><a href="#cb29-273"></a>We previously trained on $\phi = 0.15$ and try to predict the validation set</span>
+<span id="cb29-274"><a href="#cb29-274"></a>also for the same $\phi$. What happens if we try and predict it on a different</span>
+<span id="cb29-275"><a href="#cb29-275"></a>value for $\phi$? We expect it to still be somewhat accurate for a slightly</span>
+<span id="cb29-276"><a href="#cb29-276"></a>different value, but not perform at all for very different value.</span>
+<span id="cb29-277"><a href="#cb29-277"></a></span>
+<span id="cb29-278"><a href="#cb29-278"></a>We think this is because there are thresholds for $\phi$ where the behaviour of</span>
+<span id="cb29-279"><a href="#cb29-279"></a>cluster changes, they can consistently enter percolation regime (for high</span>
+<span id="cb29-280"><a href="#cb29-280"></a>$\phi$) and can have extremely big cluster sizes (also for high $\phi$). This</span>
+<span id="cb29-281"><a href="#cb29-281"></a>would present to the network novel situations not seen at $\phi = 0.15$, where</span>
+<span id="cb29-282"><a href="#cb29-282"></a>we don't expect percolation as it is very unlikely.</span>
+<span id="cb29-283"><a href="#cb29-283"></a></span>
+<span id="cb29-284"><a href="#cb29-284"></a>We use $\phi = 0.25$ for the "slightly" different density and $\phi = 0.45$ for</span>
+<span id="cb29-285"><a href="#cb29-285"></a>the "very" different density. As of now we don't have a metric to evaluate our model (this is planned for next week), so comparisons are done qualitatively.</span>
+<span id="cb29-286"><a href="#cb29-286"></a></span>
+<span id="cb29-287"><a href="#cb29-287"></a><span class="fu">#### Model A on $\phi=0.25$</span></span>
+<span id="cb29-288"><a href="#cb29-288"></a></span>
+<span id="cb29-289"><a href="#cb29-289"></a></span>
+<span id="cb29-292"><a href="#cb29-292"></a><span class="in">```{python}</span></span>
+<span id="cb29-293"><a href="#cb29-293"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-294"><a href="#cb29-294"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb29-295"><a href="#cb29-295"></a>density <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb29-296"><a href="#cb29-296"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb29-297"><a href="#cb29-297"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
+<span id="cb29-298"><a href="#cb29-298"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span>
+<span id="cb29-299"><a href="#cb29-299"></a><span class="in">```</span></span>
+<span id="cb29-300"><a href="#cb29-300"></a></span>
+<span id="cb29-303"><a href="#cb29-303"></a><span class="in">```{python}</span></span>
+<span id="cb29-304"><a href="#cb29-304"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
+<span id="cb29-305"><a href="#cb29-305"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-306"><a href="#cb29-306"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-307"><a href="#cb29-307"></a><span class="in">```</span></span>
+<span id="cb29-308"><a href="#cb29-308"></a></span>
+<span id="cb29-309"><a href="#cb29-309"></a><span class="fu">#### Model B on $\phi=0.25$</span></span>
+<span id="cb29-310"><a href="#cb29-310"></a></span>
+<span id="cb29-313"><a href="#cb29-313"></a><span class="in">```{python}</span></span>
+<span id="cb29-314"><a href="#cb29-314"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-315"><a href="#cb29-315"></a>reset()</span>
+<span id="cb29-316"><a href="#cb29-316"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
+<span id="cb29-317"><a href="#cb29-317"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-318"><a href="#cb29-318"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-319"><a href="#cb29-319"></a><span class="in">```</span></span>
+<span id="cb29-320"><a href="#cb29-320"></a></span>
+<span id="cb29-321"><a href="#cb29-321"></a><span class="fu">#### Model B, without dropout layer, on $\phi=0.25$</span></span>
+<span id="cb29-322"><a href="#cb29-322"></a></span>
+<span id="cb29-325"><a href="#cb29-325"></a><span class="in">```{python}</span></span>
+<span id="cb29-326"><a href="#cb29-326"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-327"><a href="#cb29-327"></a>reset()</span>
+<span id="cb29-328"><a href="#cb29-328"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
+<span id="cb29-329"><a href="#cb29-329"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-330"><a href="#cb29-330"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-331"><a href="#cb29-331"></a><span class="in">```</span></span>
+<span id="cb29-332"><a href="#cb29-332"></a></span>
+<span id="cb29-333"><a href="#cb29-333"></a><span class="fu">#### Model A on $\phi=0.45$</span></span>
+<span id="cb29-334"><a href="#cb29-334"></a></span>
+<span id="cb29-337"><a href="#cb29-337"></a><span class="in">```{python}</span></span>
+<span id="cb29-338"><a href="#cb29-338"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-339"><a href="#cb29-339"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb29-340"><a href="#cb29-340"></a>density <span class="op">=</span> <span class="fl">0.45</span></span>
+<span id="cb29-341"><a href="#cb29-341"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb29-342"><a href="#cb29-342"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
+<span id="cb29-343"><a href="#cb29-343"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span>
+<span id="cb29-344"><a href="#cb29-344"></a><span class="in">```</span></span>
+<span id="cb29-345"><a href="#cb29-345"></a></span>
+<span id="cb29-348"><a href="#cb29-348"></a><span class="in">```{python}</span></span>
+<span id="cb29-349"><a href="#cb29-349"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-350"><a href="#cb29-350"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
+<span id="cb29-351"><a href="#cb29-351"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-352"><a href="#cb29-352"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-353"><a href="#cb29-353"></a><span class="in">```</span></span>
+<span id="cb29-354"><a href="#cb29-354"></a></span>
+<span id="cb29-355"><a href="#cb29-355"></a><span class="fu">#### Model B on $\phi=0.45$</span></span>
+<span id="cb29-356"><a href="#cb29-356"></a></span>
+<span id="cb29-357"><a href="#cb29-357"></a></span>
+<span id="cb29-360"><a href="#cb29-360"></a><span class="in">```{python}</span></span>
+<span id="cb29-361"><a href="#cb29-361"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-362"><a href="#cb29-362"></a>reset()</span>
+<span id="cb29-363"><a href="#cb29-363"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
+<span id="cb29-364"><a href="#cb29-364"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-365"><a href="#cb29-365"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-366"><a href="#cb29-366"></a><span class="in">```</span></span>
+<span id="cb29-367"><a href="#cb29-367"></a></span>
+<span id="cb29-368"><a href="#cb29-368"></a><span class="fu">#### Model B, without dropout layer, on $\phi=0.45$</span></span>
+<span id="cb29-369"><a href="#cb29-369"></a></span>
+<span id="cb29-372"><a href="#cb29-372"></a><span class="in">```{python}</span></span>
+<span id="cb29-373"><a href="#cb29-373"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-374"><a href="#cb29-374"></a>reset()</span>
+<span id="cb29-375"><a href="#cb29-375"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
+<span id="cb29-376"><a href="#cb29-376"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb29-377"><a href="#cb29-377"></a>predict_and_plot(model, x_val, y_val)</span>
+<span id="cb29-378"><a href="#cb29-378"></a><span class="in">```</span></span>
+<span id="cb29-379"><a href="#cb29-379"></a></span>
+<span id="cb29-380"><a href="#cb29-380"></a><span class="fu">### Comparing Model A to Model B</span></span>
+<span id="cb29-381"><a href="#cb29-381"></a></span>
+<span id="cb29-382"><a href="#cb29-382"></a><span class="ss">- </span>Both seem to exhibit correlation to the actual values.</span>
+<span id="cb29-383"><a href="#cb29-383"></a><span class="ss">- </span>Model A has significantly more spread than Model B</span>
+<span id="cb29-384"><a href="#cb29-384"></a><span class="ss">- </span>Dropout doesn't reduce spread but make the average of each $\alpha$ less</span>
+<span id="cb29-385"><a href="#cb29-385"></a>  centred around the actual value.</span>
+<span id="cb29-386"><a href="#cb29-386"></a><span class="ss">- </span>Dropout adds a lot of spread to the first $\alpha$.</span>
+<span id="cb29-387"><a href="#cb29-387"></a><span class="ss">- </span>Model A performs poorly on $\phi \neq 0.15$ (which it was trained on).</span>
+<span id="cb29-388"><a href="#cb29-388"></a><span class="ss">- </span>Model B performs poorly only on $\phi = 0.45$ (it does well on $\phi = 0.25$)</span>
+<span id="cb29-389"><a href="#cb29-389"></a><span class="ss">- </span>But turning off dropout for B makes it perform better on $\phi = 0.45$.</span>
+<span id="cb29-390"><a href="#cb29-390"></a></span>
+<span id="cb29-391"><a href="#cb29-391"></a>Dropout seems to reduce overfit by a lot. I don't know if setting it to 0.2</span>
+<span id="cb29-392"><a href="#cb29-392"></a>here is too much dropout. In the next iteration of the network, I think we can</span>
+<span id="cb29-393"><a href="#cb29-393"></a>work with 0.1.</span>
+<span id="cb29-394"><a href="#cb29-394"></a></span>
+<span id="cb29-395"><a href="#cb29-395"></a><span class="fu">## Reference materials</span></span>
+<span id="cb29-396"><a href="#cb29-396"></a></span>
+<span id="cb29-397"><a href="#cb29-397"></a><span class="ss">- </span>[House price</span>
+<span id="cb29-398"><a href="#cb29-398"></a>  regression 1](https://pyimagesearch.com/2019/01/28/keras-regression-and-cnns/)</span>
+<span id="cb29-399"><a href="#cb29-399"></a><span class="ss">- </span><span class="co">[</span><span class="ot">House price regression 2</span><span class="co">](https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/)</span></span>
+<span id="cb29-400"><a href="#cb29-400"></a><span class="ss">- </span><span class="co">[</span><span class="ot">TF Regression tutorial</span><span class="co">](https://www.tensorflow.org/tutorials/keras/regression)</span></span>
+<span id="cb29-401"><a href="#cb29-401"></a><span class="ss">- </span><span class="co">[</span><span class="ot">StackOverflow</span><span class="co">](https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression)</span></span>
+<span id="cb29-402"><a href="#cb29-402"></a><span class="ss">- </span>[StackOverflow</span>
+<span id="cb29-403"><a href="#cb29-403"></a>  2](https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value)</span>
+<span id="cb29-404"><a href="#cb29-404"></a><span class="ss">- </span>[TDS pytorch on CNN to predict a continuous</span>
+<span id="cb29-405"><a href="#cb29-405"></a>  property](https://www.tensorflow.org/tutorials/keras/regression)</span>
+<span id="cb29-406"><a href="#cb29-406"></a><span class="ss">- </span>[CNN with</span>
+<span id="cb29-407"><a href="#cb29-407"></a>  regression](https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html)</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
