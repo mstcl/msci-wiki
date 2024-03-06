@@ -114,8 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     const options = {
       valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      page: 30,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
@@ -223,142 +222,12 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Activity Log</span></a>
+ <span class="menu-text">Literature Notes</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 14</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 15</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 16</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 17</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./activity_log/week_8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8-13</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Plots</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./plots/cluster_size_fitting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fitting cluster distribution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./plots/csize_grid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster distribution grid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./plots/evo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snapshot evolution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./plots/labelling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster labelling demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Number of clusters</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./plots/percolation_ratio_rho.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ratio of biggest cluster over density</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Literature Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
@@ -381,36 +250,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./writings/motivation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is active matter and why do we study it?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./writings/prepatory_work.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepratory work, discussion, and plan for the future</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
@@ -436,13 +282,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shared/deadlines.html" class="sidebar-item-text sidebar-link">
@@ -466,13 +312,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">External links</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -590,181 +436,139 @@ window.Quarto = {
 <a href="./activity_log/landing.html" class="title listing-title">Activity log listing</a>
 </td>
 </tr>
-<tr data-index="3" data-listing-file-modified-sort="1707919601608" data-listing-reading-time-sort="5" data-listing-word-count-sort="893" data-listing-title-sort="Cluster distribution grid" data-listing-filename-sort="csize_grid.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/csize_grid.html" class="title listing-title">Cluster distribution grid</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1707919601631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Cluster information" data-listing-filename-sort="cluster.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1707919601631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Cluster information" data-listing-filename-sort="cluster.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/cluster.html" class="title listing-title">Cluster information</a>
 </td>
 </tr>
-<tr data-index="5" data-listing-file-modified-sort="1709085458378" data-listing-reading-time-sort="1" data-listing-word-count-sort="120" data-listing-title-sort="Cluster labelling demo" data-listing-filename-sort="labelling.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/labelling.html" class="title listing-title">Cluster labelling demo</a>
-</td>
-</tr>
-<tr data-index="6" data-listing-file-modified-sort="1707919601654" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="Deadline information" data-listing-filename-sort="deadlines.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="4" data-listing-file-modified-sort="1707919601654" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="Deadline information" data-listing-filename-sort="deadlines.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/deadlines.html" class="title listing-title">Deadline information</a>
 </td>
 </tr>
-<tr data-index="7" data-listing-file-modified-sort="1707919601608" data-listing-reading-time-sort="2" data-listing-word-count-sort="263" data-listing-title-sort="Fitting cluster distribution" data-listing-filename-sort="cluster_size_fitting.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/cluster_size_fitting.html" class="title listing-title">Fitting cluster distribution</a>
-</td>
-</tr>
-<tr data-index="8" data-listing-file-modified-sort="1707919601554" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="Home" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="5" data-listing-file-modified-sort="1707919601554" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="Home" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./index.html" class="title listing-title">Home</a>
 </td>
 </tr>
-<tr data-index="9" data-listing-file-modified-sort="1707919601661" data-listing-reading-time-sort="1" data-listing-word-count-sort="23" data-listing-title-sort="Link to colab notebook" data-listing-filename-sort="Colab.md" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="6" data-listing-file-modified-sort="1707919601661" data-listing-reading-time-sort="1" data-listing-word-count-sort="23" data-listing-title-sort="Link to colab notebook" data-listing-filename-sort="Colab.md" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/ftnotes/Colab.html" class="title listing-title">Link to colab notebook</a>
 </td>
 </tr>
-<tr data-index="10" data-listing-file-modified-sort="1707919601574" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Literature notes listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="7" data-listing-file-modified-sort="1707919601574" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Literature notes listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./literature_notes/landing.html" class="title listing-title">Literature notes listing</a>
 </td>
 </tr>
-<tr data-index="11" data-listing-file-modified-sort="1707919601621" data-listing-reading-time-sort="1" data-listing-word-count-sort="180" data-listing-title-sort="Number of clusters" data-listing-filename-sort="number_of_cluster.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/number_of_cluster.html" class="title listing-title">Number of clusters</a>
-</td>
-</tr>
-<tr data-index="12" data-listing-date-sort="1699899369000" data-listing-file-modified-sort="1699899369283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="Prepratory work, discussion, and plan for the future" data-listing-filename-sort="prepatory_work.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="8" data-listing-date-sort="1699899369000" data-listing-file-modified-sort="1699899369283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="Prepratory work, discussion, and plan for the future" data-listing-filename-sort="prepatory_work.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./writings/prepatory_work.html" class="title listing-title">Prepratory work, discussion, and plan for the future</a>
 </td>
 </tr>
-<tr data-index="13" data-listing-file-modified-sort="1707919601621" data-listing-reading-time-sort="2" data-listing-word-count-sort="249" data-listing-title-sort="Ratio of biggest cluster over density" data-listing-filename-sort="percolation_ratio_rho.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/percolation_ratio_rho.html" class="title listing-title">Ratio of biggest cluster over density</a>
-</td>
-</tr>
-<tr data-index="14" data-listing-file-modified-sort="1707919601738" data-listing-reading-time-sort="3" data-listing-word-count-sort="450" data-listing-title-sort="Repository information" data-listing-filename-sort="repo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="9" data-listing-file-modified-sort="1707919601738" data-listing-reading-time-sort="3" data-listing-word-count-sort="450" data-listing-title-sort="Repository information" data-listing-filename-sort="repo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/repo.html" class="title listing-title">Repository information</a>
 </td>
 </tr>
-<tr data-index="15" data-listing-date-sort="1696019400000" data-listing-file-modified-sort="1707919601594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="Run-and-tumble dynamics in a crowded environment: PEP for swimmers" data-listing-filename-sort="run-and-tumble.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="10" data-listing-date-sort="1696019400000" data-listing-file-modified-sort="1707919601594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="Run-and-tumble dynamics in a crowded environment: PEP for swimmers" data-listing-filename-sort="run-and-tumble.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./literature_notes/run-and-tumble.html" class="title listing-title">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</a>
 </td>
 </tr>
-<tr data-index="16" data-listing-file-modified-sort="1707919601608" data-listing-reading-time-sort="4" data-listing-word-count-sort="629" data-listing-title-sort="Snapshot evolution" data-listing-filename-sort="evo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/evo.html" class="title listing-title">Snapshot evolution</a>
-</td>
-</tr>
-<tr data-index="17" data-listing-file-modified-sort="1707919601728" data-listing-reading-time-sort="2" data-listing-word-count-sort="213" data-listing-title-sort="Useful Commands and Information for Shared Github Activity" data-listing-filename-sort="gitinfo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="11" data-listing-file-modified-sort="1707919601728" data-listing-reading-time-sort="2" data-listing-word-count-sort="213" data-listing-title-sort="Useful Commands and Information for Shared Github Activity" data-listing-filename-sort="gitinfo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/gitinfo.html" class="title listing-title">Useful Commands and Information for Shared Github Activity</a>
 </td>
 </tr>
-<tr data-index="18" data-listing-date-sort="1695855600000" data-listing-file-modified-sort="1707919601454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="148" data-listing-title-sort="Week 1" data-listing-filename-sort="week_1.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="12" data-listing-date-sort="1695855600000" data-listing-file-modified-sort="1707919601454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="148" data-listing-title-sort="Week 1" data-listing-filename-sort="week_1.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_1.html" class="title listing-title">Week 1</a>
 </td>
 </tr>
-<tr data-index="19" data-listing-date-sort="1706832000000" data-listing-file-modified-sort="1708527307130" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="161" data-listing-title-sort="Week 14" data-listing-filename-sort="week_14.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="13" data-listing-date-sort="1706832000000" data-listing-file-modified-sort="1708527307130" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="161" data-listing-title-sort="Week 14" data-listing-filename-sort="week_14.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_14.html" class="title listing-title">Week 14</a>
 </td>
 </tr>
-<tr data-index="20" data-listing-date-sort="1707696000000" data-listing-file-modified-sort="1709066923254" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1527" data-listing-title-sort="Week 15" data-listing-filename-sort="week_15.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="14" data-listing-date-sort="1707696000000" data-listing-file-modified-sort="1709066923254" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1527" data-listing-title-sort="Week 15" data-listing-filename-sort="week_15.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_15.html" class="title listing-title">Week 15</a>
 </td>
 </tr>
-<tr data-index="21" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1709068893307" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1194" data-listing-title-sort="Week 16" data-listing-filename-sort="week_16.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="15" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1709068893307" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1194" data-listing-title-sort="Week 16" data-listing-filename-sort="week_16.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_16.html" class="title listing-title">Week 16</a>
 </td>
 </tr>
-<tr data-index="22" data-listing-date-sort="1708992000000" data-listing-file-modified-sort="1709085504318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="677" data-listing-title-sort="Week 17" data-listing-filename-sort="week_17.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./activity_log/week_17.html" class="title listing-title">Week 17</a>
-</td>
-</tr>
-<tr data-index="23" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1707919601458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160" data-listing-title-sort="Week 2" data-listing-filename-sort="week_2.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="16" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1707919601458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160" data-listing-title-sort="Week 2" data-listing-filename-sort="week_2.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_2.html" class="title listing-title">Week 2</a>
 </td>
 </tr>
-<tr data-index="24" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1707919601461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="319" data-listing-title-sort="Week 3" data-listing-filename-sort="week_3.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="17" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1707919601461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="319" data-listing-title-sort="Week 3" data-listing-filename-sort="week_3.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_3.html" class="title listing-title">Week 3</a>
 </td>
 </tr>
-<tr data-index="25" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1707919601471" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="315" data-listing-title-sort="Week 4" data-listing-filename-sort="week_4.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="18" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1707919601471" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="315" data-listing-title-sort="Week 4" data-listing-filename-sort="week_4.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_4.html" class="title listing-title">Week 4</a>
 </td>
 </tr>
-<tr data-index="26" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1709085456074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273" data-listing-title-sort="Week 5" data-listing-filename-sort="week_5.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="19" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1709085456074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273" data-listing-title-sort="Week 5" data-listing-filename-sort="week_5.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_5.html" class="title listing-title">Week 5</a>
 </td>
 </tr>
-<tr data-index="27" data-listing-date-sort="1699401600000" data-listing-file-modified-sort="1709085445297" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1098" data-listing-title-sort="Week 6" data-listing-filename-sort="week_6.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="20" data-listing-date-sort="1699401600000" data-listing-file-modified-sort="1709085445297" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1098" data-listing-title-sort="Week 6" data-listing-filename-sort="week_6.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_6.html" class="title listing-title">Week 6</a>
 </td>
 </tr>
-<tr data-index="28" data-listing-date-sort="1699833600000" data-listing-file-modified-sort="1707919601494" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Week 7" data-listing-filename-sort="week_7.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="21" data-listing-date-sort="1699833600000" data-listing-file-modified-sort="1707919601494" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Week 7" data-listing-filename-sort="week_7.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_7.html" class="title listing-title">Week 7</a>
 </td>
 </tr>
-<tr data-index="29" data-listing-date-sort="1705449600000" data-listing-file-modified-sort="1707919601501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687" data-listing-title-sort="Week 8-13" data-listing-filename-sort="week_8.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="22" data-listing-date-sort="1705449600000" data-listing-file-modified-sort="1707919601501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687" data-listing-title-sort="Week 8-13" data-listing-filename-sort="week_8.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_8.html" class="title listing-title">Week 8-13</a>
 </td>
 </tr>
-<tr data-index="30" data-listing-date-sort="1707919601000" data-listing-file-modified-sort="1707919601754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="501" data-listing-title-sort="What is active matter and why do we study it?" data-listing-filename-sort="motivation.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="23" data-listing-date-sort="1707919601000" data-listing-file-modified-sort="1707919601754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="501" data-listing-title-sort="What is active matter and why do we study it?" data-listing-filename-sort="motivation.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./writings/motivation.html" class="title listing-title">What is active matter and why do we study it?</a>
 </td>
 </tr>
-<tr data-index="31" data-listing-file-modified-sort="1707919601754" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Writings listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="24" data-listing-file-modified-sort="1707919601754" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Writings listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./writings/landing.html" class="title listing-title">Writings listing</a>
 </td>
 </tr>
-<tr data-index="32" data-listing-file-modified-sort="1707919601684" data-listing-reading-time-sort="1" data-listing-word-count-sort="125" data-listing-filename-sort="interim-report-structure.md" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="25" data-listing-file-modified-sort="1707919601684" data-listing-reading-time-sort="1" data-listing-word-count-sort="125" data-listing-filename-sort="interim-report-structure.md" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/ftnotes/interim-report-structure.html" class="title listing-title">&nbsp;</a>
@@ -775,9 +579,6 @@ window.Quarto = {
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

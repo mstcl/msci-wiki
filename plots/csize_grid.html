@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../plots/evo.html" rel="next">
-<link href="../plots/cluster_size_fitting.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +115,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/csize_grid.html">Cluster distribution grid</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Dissipation Learning in Active Matter
+      </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -164,142 +164,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Activity Log</span></a>
+ <span class="menu-text">Literature Notes</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 14</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 15</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 16</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 17</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8-13</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Plots</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/cluster_size_fitting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fitting cluster distribution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/csize_grid.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Cluster distribution grid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/evo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snapshot evolution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/labelling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster labelling demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Number of clusters</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/percolation_ratio_rho.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ratio of biggest cluster over density</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Literature Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
@@ -322,36 +192,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is active matter and why do we study it?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/prepatory_work.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepratory work, discussion, and plan for the future</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
@@ -377,13 +224,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
@@ -407,13 +254,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">External links</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -457,22 +304,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Content</h2>
-   
-  <ul>
-  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">Import</a></li>
-  <li><a href="#save-data-points" id="toc-save-data-points" class="nav-link" data-scroll-target="#save-data-points">Save data points</a></li>
-  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/plots/csize_grid.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/csize_grid.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/csize_grid.html">Cluster distribution grid</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Cluster distribution grid</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Cluster distribution grid</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -489,11 +328,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="import" class="level2">
-<h2 class="anchored" data-anchor-id="import">Import</h2>
-<div id="6a43c501" class="cell" data-execution_count="2">
+<div id="cell-1" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> glob</span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
@@ -505,154 +344,140 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
 <span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> stringato <span class="im">import</span> extract_floats</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="im">from</span> utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> src.stringato <span class="im">import</span> extract_floats</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="im">from</span> src.utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</section>
-<section id="save-data-points" class="level2">
-<h2 class="anchored" data-anchor-id="save-data-points">Save data points</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"../bp_data/dataset*"</span>))</span>
-<span id="cb2-2"><a href="#cb2-2"></a>stuff <span class="op">=</span> []</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">0</span>])</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    density <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">1</span>])</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    stuff.append((tumble, density))</span>
-<span id="cb2-7"><a href="#cb2-7"></a>all_alphas, all_phis, all_bin_edges, all_counts <span class="op">=</span> [], [], [], []</span>
-<span id="cb2-8"><a href="#cb2-8"></a>kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb2-11"><a href="#cb2-11"></a>        ctr <span class="op">=</span> idx<span class="op">*</span><span class="dv">3</span> <span class="op">+</span> jdx</span>
-<span id="cb2-12"><a href="#cb2-12"></a>        hf <span class="op">=</span> h5py.File(files[ctr], <span class="st">"r"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>        key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
-<span id="cb2-14"><a href="#cb2-14"></a>        iters <span class="op">=</span> get_ds_iters(key_list)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>        all_cs <span class="op">=</span> np.array([])</span>
-<span id="cb2-16"><a href="#cb2-16"></a>        <span class="cf">for</span> <span class="bu">iter</span> <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(iters)):</span>
-<span id="cb2-17"><a href="#cb2-17"></a>            im <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="bu">iter</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb2-18"><a href="#cb2-18"></a>            labelled, _ <span class="op">=</span> ndimage.label(im, structure<span class="op">=</span>kernel)</span>
-<span id="cb2-19"><a href="#cb2-19"></a>            cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
-<span id="cb2-20"><a href="#cb2-20"></a>            all_cs <span class="op">=</span> np.hstack((all_cs,cluster_sizes))</span>
-<span id="cb2-21"><a href="#cb2-21"></a>        min_c <span class="op">=</span> np.<span class="bu">min</span>(all_cs)</span>
-<span id="cb2-22"><a href="#cb2-22"></a>        max_c <span class="op">=</span> np.<span class="bu">max</span>(all_cs)</span>
-<span id="cb2-23"><a href="#cb2-23"></a>        bin_edges <span class="op">=</span> np.logspace(np.log2(min_c), np.log2(max_c), <span class="dv">32</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb2-24"><a href="#cb2-24"></a>        counts, _ <span class="op">=</span> np.histogram(</span>
-<span id="cb2-25"><a href="#cb2-25"></a>            all_cs, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a>        )</span>
-<span id="cb2-27"><a href="#cb2-27"></a>        all_alphas.append(stuff[ctr][<span class="dv">0</span>])</span>
-<span id="cb2-28"><a href="#cb2-28"></a>        all_phis.append(stuff[ctr][<span class="dv">1</span>])</span>
-<span id="cb2-29"><a href="#cb2-29"></a>        all_bin_edges.append(bin_edges[:<span class="op">-</span><span class="dv">1</span>].tolist())</span>
-<span id="cb2-30"><a href="#cb2-30"></a>        all_counts.append(counts.tolist())</span>
-<span id="cb2-31"><a href="#cb2-31"></a>csv_out <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb2-32"><a href="#cb2-32"></a>csv_out.insert(<span class="dv">0</span>, <span class="st">"alphas"</span>, all_alphas)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>csv_out.insert(<span class="dv">1</span>, <span class="st">"phis"</span>, all_phis)</span>
-<span id="cb2-34"><a href="#cb2-34"></a>csv_out.insert(<span class="dv">2</span>, <span class="st">"bin edges"</span>, all_bin_edges)</span>
-<span id="cb2-35"><a href="#cb2-35"></a>csv_out.insert(<span class="dv">3</span>, <span class="st">"counts"</span>, all_counts)</span>
-<span id="cb2-36"><a href="#cb2-36"></a>name <span class="op">=</span> <span class="st">"csize_avg"</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a>csv_out.to_csv(<span class="ss">f"../plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="plot" class="level2">
-<h2 class="anchored" data-anchor-id="plot">Plot</h2>
-<div id="bf5bbd27" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> func(x, a, b, c):</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">return</span> c<span class="op">*</span>x<span class="op">**</span>(<span class="op">-</span>a)<span class="op">*</span>np.e<span class="op">**</span>(<span class="op">-</span>x<span class="op">/</span>b)</span>
+<div id="cell-2" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> save_points():</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"bp_data/dataset*"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    stuff <span class="op">=</span> []</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb2-5"><a href="#cb2-5"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">0</span>])</span>
+<span id="cb2-6"><a href="#cb2-6"></a>        density <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">1</span>])</span>
+<span id="cb2-7"><a href="#cb2-7"></a>        stuff.append((tumble, density))</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    all_alphas, all_phis, all_bin_edges, all_counts <span class="op">=</span> [], [], [], []</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb2-11"><a href="#cb2-11"></a>        <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb2-12"><a href="#cb2-12"></a>            ctr <span class="op">=</span> idx<span class="op">*</span><span class="dv">3</span> <span class="op">+</span> jdx</span>
+<span id="cb2-13"><a href="#cb2-13"></a>            hf <span class="op">=</span> h5py.File(files[ctr], <span class="st">"r"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14"></a>            key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
+<span id="cb2-15"><a href="#cb2-15"></a>            iters <span class="op">=</span> get_ds_iters(key_list)</span>
+<span id="cb2-16"><a href="#cb2-16"></a>            all_cs <span class="op">=</span> np.array([])</span>
+<span id="cb2-17"><a href="#cb2-17"></a>            <span class="cf">for</span> <span class="bu">iter</span> <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(iters)):</span>
+<span id="cb2-18"><a href="#cb2-18"></a>                im <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="bu">iter</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb2-19"><a href="#cb2-19"></a>                labelled, _ <span class="op">=</span> ndimage.label(im, structure<span class="op">=</span>kernel)</span>
+<span id="cb2-20"><a href="#cb2-20"></a>                cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
+<span id="cb2-21"><a href="#cb2-21"></a>                all_cs <span class="op">=</span> np.hstack((all_cs,cluster_sizes))</span>
+<span id="cb2-22"><a href="#cb2-22"></a>            min_c <span class="op">=</span> np.<span class="bu">min</span>(all_cs)</span>
+<span id="cb2-23"><a href="#cb2-23"></a>            max_c <span class="op">=</span> np.<span class="bu">max</span>(all_cs)</span>
+<span id="cb2-24"><a href="#cb2-24"></a>            bin_edges <span class="op">=</span> np.logspace(np.log2(min_c), np.log2(max_c), <span class="dv">32</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-25"><a href="#cb2-25"></a>            counts, _ <span class="op">=</span> np.histogram(</span>
+<span id="cb2-26"><a href="#cb2-26"></a>                all_cs, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>            )</span>
+<span id="cb2-28"><a href="#cb2-28"></a>            all_alphas.append(stuff[ctr][<span class="dv">0</span>])</span>
+<span id="cb2-29"><a href="#cb2-29"></a>            all_phis.append(stuff[ctr][<span class="dv">1</span>])</span>
+<span id="cb2-30"><a href="#cb2-30"></a>            all_bin_edges.append(bin_edges[:<span class="op">-</span><span class="dv">1</span>].tolist())</span>
+<span id="cb2-31"><a href="#cb2-31"></a>            all_counts.append(counts.tolist())</span>
+<span id="cb2-32"><a href="#cb2-32"></a>    csv_out <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb2-33"><a href="#cb2-33"></a>    csv_out.insert(<span class="dv">0</span>, <span class="st">"alphas"</span>, all_alphas)</span>
+<span id="cb2-34"><a href="#cb2-34"></a>    csv_out.insert(<span class="dv">1</span>, <span class="st">"phis"</span>, all_phis)</span>
+<span id="cb2-35"><a href="#cb2-35"></a>    csv_out.insert(<span class="dv">2</span>, <span class="st">"bin edges"</span>, all_bin_edges)</span>
+<span id="cb2-36"><a href="#cb2-36"></a>    csv_out.insert(<span class="dv">3</span>, <span class="st">"counts"</span>, all_counts)</span>
+<span id="cb2-37"><a href="#cb2-37"></a>    name <span class="op">=</span> <span class="st">"csize_avg"</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a>    csv_out.to_csv(<span class="ss">f"plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-3" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> warnings</span>
+<span id="cb3-2"><a href="#cb3-2"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>x_lim <span class="op">=</span> (<span class="dv">1</span>, <span class="fl">5e3</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>x <span class="op">=</span> np.logspace(np.log10(x_lim[<span class="dv">0</span>]),np.log10(x_lim[<span class="dv">1</span>]),<span class="dv">500</span>,base<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"../bp_data/dataset*"</span>))</span>
-<span id="cb3-7"><a href="#cb3-7"></a>stats <span class="op">=</span> pd.read_csv(<span class="st">"../plots/csize_avg.csv"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a>fits <span class="op">=</span> pd.read_csv(<span class="st">"../plots/fit_values.csv"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb3-10"><a href="#cb3-10"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb3-13"><a href="#cb3-13"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-14"><a href="#cb3-14"></a>gspec <span class="op">=</span> fig.add_gridspec(<span class="dv">3</span>, <span class="dv">3</span>, wspace<span class="op">=</span><span class="fl">0.08</span>, hspace<span class="op">=</span><span class="fl">0.08</span>)</span>
-<span id="cb3-15"><a href="#cb3-15"></a>cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">"cmc.glasgowS"</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb3-16"><a href="#cb3-16"></a>text_kwrgs <span class="op">=</span> {<span class="st">"ha"</span>: <span class="st">"left"</span>, <span class="st">"fontsize"</span>: <span class="st">"medium"</span>, <span class="st">"fontfamily"</span>: <span class="st">"serif"</span>}</span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb3-18"><a href="#cb3-18"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb3-19"><a href="#cb3-19"></a>        ctr <span class="op">=</span> idx<span class="op">*</span><span class="dv">3</span> <span class="op">+</span> jdx</span>
-<span id="cb3-20"><a href="#cb3-20"></a>        axis <span class="op">=</span> fig.add_subplot(gspec[idx, jdx])</span>
-<span id="cb3-21"><a href="#cb3-21"></a>        axins <span class="op">=</span> inset_axes(axis, width<span class="op">=</span><span class="st">"100%"</span>, height<span class="op">=</span><span class="st">"100%"</span>, borderpad<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-22"><a href="#cb3-22"></a>        axins.set_axes_locator(InsetPosition(axis, [<span class="fl">0.525</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.49</span>]))</span>
-<span id="cb3-23"><a href="#cb3-23"></a>        text_kwrgs[<span class="st">"s"</span>] <span class="op">=</span> <span class="vs">r"$\alpha = </span><span class="sc">{:.3f}</span><span class="vs">, \phi = </span><span class="sc">{:.2f}</span><span class="vs">$"</span>.<span class="bu">format</span>(</span>
-<span id="cb3-24"><a href="#cb3-24"></a>            stats[<span class="st">"alphas"</span>][ctr], stats[<span class="st">"phis"</span>][ctr]</span>
-<span id="cb3-25"><a href="#cb3-25"></a>        )</span>
-<span id="cb3-26"><a href="#cb3-26"></a>        hf <span class="op">=</span> h5py.File(files[ctr], <span class="st">"r"</span>)</span>
-<span id="cb3-27"><a href="#cb3-27"></a>        key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
-<span id="cb3-28"><a href="#cb3-28"></a>        iters <span class="op">=</span> get_ds_iters(key_list)</span>
-<span id="cb3-29"><a href="#cb3-29"></a>        img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb3-30"><a href="#cb3-30"></a>        axins.matshow(img, cmap<span class="op">=</span>cmap)</span>
-<span id="cb3-31"><a href="#cb3-31"></a>        axins.set_yticks([])</span>
-<span id="cb3-32"><a href="#cb3-32"></a>        axins.set_xticks([])</span>
-<span id="cb3-33"><a href="#cb3-33"></a>        axis.plot(</span>
-<span id="cb3-34"><a href="#cb3-34"></a>            x,</span>
-<span id="cb3-35"><a href="#cb3-35"></a>            func(x, fits[<span class="st">"a"</span>][ctr], fits[<span class="st">"b"</span>][ctr], fits[<span class="st">"c"</span>][ctr]),</span>
-<span id="cb3-36"><a href="#cb3-36"></a>            color<span class="op">=</span><span class="st">"k"</span>,</span>
-<span id="cb3-37"><a href="#cb3-37"></a>            alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
-<span id="cb3-38"><a href="#cb3-38"></a>            zorder<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb3-39"><a href="#cb3-39"></a>        )</span>
-<span id="cb3-40"><a href="#cb3-40"></a>        axis.scatter(</span>
-<span id="cb3-41"><a href="#cb3-41"></a>            <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>,stats[<span class="st">"bin edges"</span>][ctr][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split(<span class="st">","</span>))),</span>
-<span id="cb3-42"><a href="#cb3-42"></a>            <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>,stats[<span class="st">"counts"</span>][ctr][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split(<span class="st">","</span>))),</span>
-<span id="cb3-43"><a href="#cb3-43"></a>            edgecolor<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb3-44"><a href="#cb3-44"></a>            facecolor<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.3</span>),</span>
-<span id="cb3-45"><a href="#cb3-45"></a>            zorder<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb3-46"><a href="#cb3-46"></a>        )</span>
-<span id="cb3-47"><a href="#cb3-47"></a>        axis.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
-<span id="cb3-48"><a href="#cb3-48"></a>        axis.set_axisbelow(<span class="va">True</span>)</span>
-<span id="cb3-49"><a href="#cb3-49"></a>        axis.set_yscale(<span class="st">"log"</span>), axis.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb3-50"><a href="#cb3-50"></a>        axis.text(</span>
-<span id="cb3-51"><a href="#cb3-51"></a>            y<span class="op">=</span><span class="fl">1.05</span>,</span>
-<span id="cb3-52"><a href="#cb3-52"></a>            x<span class="op">=</span><span class="dv">0</span>,</span>
-<span id="cb3-53"><a href="#cb3-53"></a>            transform<span class="op">=</span>axis.transAxes,</span>
-<span id="cb3-54"><a href="#cb3-54"></a>            <span class="op">**</span>text_kwrgs,</span>
-<span id="cb3-55"><a href="#cb3-55"></a>        )</span>
-<span id="cb3-56"><a href="#cb3-56"></a>        axis.set_ylim((<span class="fl">8e-9</span>, <span class="fl">4e1</span>))</span>
-<span id="cb3-57"><a href="#cb3-57"></a>        axis.set_xlim(x_lim)</span>
-<span id="cb3-58"><a href="#cb3-58"></a>        <span class="co"># axis.set_yticks([10**idx for idx in range(-8, 2, 2)])</span></span>
-<span id="cb3-59"><a href="#cb3-59"></a>        <span class="co"># axis.set_xticks([10**idx for idx in range(0, 5)])</span></span>
-<span id="cb3-60"><a href="#cb3-60"></a>        fig.supxlabel(<span class="vs">r"Cluster size, $a^</span><span class="sc">{2}</span><span class="vs">$"</span>)</span>
-<span id="cb3-61"><a href="#cb3-61"></a>        fig.supylabel(<span class="st">"Frequency density"</span>)</span>
-<span id="cb3-62"><a href="#cb3-62"></a>        <span class="cf">if</span> jdx <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb3-63"><a href="#cb3-63"></a>            axis.set_yticklabels([])</span>
-<span id="cb3-64"><a href="#cb3-64"></a>        <span class="cf">if</span> idx <span class="op">!=</span> <span class="dv">2</span>:</span>
-<span id="cb3-65"><a href="#cb3-65"></a>            axis.set_xticklabels([])</span>
-<span id="cb3-66"><a href="#cb3-66"></a>name <span class="op">=</span> <span class="st">"csize_avg"</span></span>
-<span id="cb3-67"><a href="#cb3-67"></a>plt.show()</span>
-<span id="cb3-68"><a href="#cb3-68"></a>fig.savefig(<span class="ss">f"../plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
-<span id="cb3-69"><a href="#cb3-69"></a>fig.savefig(<span class="ss">f"../plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.png"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))
-/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))
-/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))
-/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))
-/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))
-/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))
-/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))
-/tmp/ipykernel_75126/3047808653.py:22: MatplotlibDeprecationWarning: The InsetPosition class was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use Axes.inset_axes instead.
-  axins.set_axes_locator(InsetPosition(axis, [0.525, 0.51, 0.49, 0.49]))</code></pre>
-</div>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">def</span> func(x, a, b, c):</span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="cf">return</span> c<span class="op">*</span>x<span class="op">**</span>(<span class="op">-</span>a)<span class="op">*</span>np.e<span class="op">**</span>(<span class="op">-</span>x<span class="op">/</span>b)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>x_lim <span class="op">=</span> (<span class="dv">1</span>, <span class="fl">5e3</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>x <span class="op">=</span> np.logspace(np.log10(x_lim[<span class="dv">0</span>]),np.log10(x_lim[<span class="dv">1</span>]),<span class="dv">500</span>,base<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"bp_data/dataset*"</span>))</span>
+<span id="cb3-10"><a href="#cb3-10"></a>stats <span class="op">=</span> pd.read_csv(<span class="st">"plots/csize_avg.csv"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>fits <span class="op">=</span> pd.read_csv(<span class="st">"plots/fit_values.csv"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb3-13"><a href="#cb3-13"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb3-16"><a href="#cb3-16"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-17"><a href="#cb3-17"></a>gspec <span class="op">=</span> fig.add_gridspec(<span class="dv">3</span>, <span class="dv">3</span>, wspace<span class="op">=</span><span class="fl">0.08</span>, hspace<span class="op">=</span><span class="fl">0.08</span>)</span>
+<span id="cb3-18"><a href="#cb3-18"></a>cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">"cmc.glasgowS"</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a>text_kwrgs <span class="op">=</span> {<span class="st">"ha"</span>: <span class="st">"left"</span>, <span class="st">"fontsize"</span>: <span class="st">"medium"</span>, <span class="st">"fontfamily"</span>: <span class="st">"serif"</span>}</span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb3-22"><a href="#cb3-22"></a>        ctr <span class="op">=</span> idx<span class="op">*</span><span class="dv">3</span> <span class="op">+</span> jdx</span>
+<span id="cb3-23"><a href="#cb3-23"></a>        axis <span class="op">=</span> fig.add_subplot(gspec[idx, jdx])</span>
+<span id="cb3-24"><a href="#cb3-24"></a>        axins <span class="op">=</span> inset_axes(axis, width<span class="op">=</span><span class="st">"100%"</span>, height<span class="op">=</span><span class="st">"100%"</span>, borderpad<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-25"><a href="#cb3-25"></a>        axins.set_axes_locator(InsetPosition(axis, [<span class="fl">0.525</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.49</span>]))</span>
+<span id="cb3-26"><a href="#cb3-26"></a>        text_kwrgs[<span class="st">"s"</span>] <span class="op">=</span> <span class="vs">r"$\alpha = </span><span class="sc">{:.3f}</span><span class="vs">, \phi = </span><span class="sc">{:.2f}</span><span class="vs">$"</span>.<span class="bu">format</span>(</span>
+<span id="cb3-27"><a href="#cb3-27"></a>            stats[<span class="st">"alphas"</span>][ctr], stats[<span class="st">"phis"</span>][ctr]</span>
+<span id="cb3-28"><a href="#cb3-28"></a>        )</span>
+<span id="cb3-29"><a href="#cb3-29"></a>        hf <span class="op">=</span> h5py.File(files[ctr], <span class="st">"r"</span>)</span>
+<span id="cb3-30"><a href="#cb3-30"></a>        key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
+<span id="cb3-31"><a href="#cb3-31"></a>        iters <span class="op">=</span> get_ds_iters(key_list)</span>
+<span id="cb3-32"><a href="#cb3-32"></a>        img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb3-33"><a href="#cb3-33"></a>        axins.matshow(img, cmap<span class="op">=</span>cmap)</span>
+<span id="cb3-34"><a href="#cb3-34"></a>        axins.set_yticks([])</span>
+<span id="cb3-35"><a href="#cb3-35"></a>        axins.set_xticks([])</span>
+<span id="cb3-36"><a href="#cb3-36"></a>        axis.plot(</span>
+<span id="cb3-37"><a href="#cb3-37"></a>            x,</span>
+<span id="cb3-38"><a href="#cb3-38"></a>            func(x, fits[<span class="st">"a"</span>][ctr], fits[<span class="st">"b"</span>][ctr], fits[<span class="st">"c"</span>][ctr]),</span>
+<span id="cb3-39"><a href="#cb3-39"></a>            color<span class="op">=</span><span class="st">"k"</span>,</span>
+<span id="cb3-40"><a href="#cb3-40"></a>            alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb3-41"><a href="#cb3-41"></a>            zorder<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>        )</span>
+<span id="cb3-43"><a href="#cb3-43"></a>        axis.scatter(</span>
+<span id="cb3-44"><a href="#cb3-44"></a>            <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>,stats[<span class="st">"bin edges"</span>][ctr][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split(<span class="st">","</span>))),</span>
+<span id="cb3-45"><a href="#cb3-45"></a>            <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>,stats[<span class="st">"counts"</span>][ctr][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split(<span class="st">","</span>))),</span>
+<span id="cb3-46"><a href="#cb3-46"></a>            edgecolor<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb3-47"><a href="#cb3-47"></a>            facecolor<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.3</span>),</span>
+<span id="cb3-48"><a href="#cb3-48"></a>            zorder<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a>        )</span>
+<span id="cb3-50"><a href="#cb3-50"></a>        axis.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
+<span id="cb3-51"><a href="#cb3-51"></a>        axis.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb3-52"><a href="#cb3-52"></a>        axis.set_yscale(<span class="st">"log"</span>), axis.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb3-53"><a href="#cb3-53"></a>        axis.text(</span>
+<span id="cb3-54"><a href="#cb3-54"></a>            y<span class="op">=</span><span class="fl">1.05</span>,</span>
+<span id="cb3-55"><a href="#cb3-55"></a>            x<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb3-56"><a href="#cb3-56"></a>            transform<span class="op">=</span>axis.transAxes,</span>
+<span id="cb3-57"><a href="#cb3-57"></a>            <span class="op">**</span>text_kwrgs,</span>
+<span id="cb3-58"><a href="#cb3-58"></a>        )</span>
+<span id="cb3-59"><a href="#cb3-59"></a>        axis.set_ylim((<span class="fl">8e-9</span>, <span class="fl">4e1</span>))</span>
+<span id="cb3-60"><a href="#cb3-60"></a>        axis.set_xlim(x_lim)</span>
+<span id="cb3-61"><a href="#cb3-61"></a>        <span class="co"># axis.set_yticks([10**idx for idx in range(-8, 2, 2)])</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a>        <span class="co"># axis.set_xticks([10**idx for idx in range(0, 5)])</span></span>
+<span id="cb3-63"><a href="#cb3-63"></a>        fig.supxlabel(<span class="vs">r"Cluster size, $a^</span><span class="sc">{2}</span><span class="vs">$"</span>)</span>
+<span id="cb3-64"><a href="#cb3-64"></a>        fig.supylabel(<span class="st">"Frequency density"</span>)</span>
+<span id="cb3-65"><a href="#cb3-65"></a>        <span class="cf">if</span> jdx <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb3-66"><a href="#cb3-66"></a>            axis.set_yticklabels([])</span>
+<span id="cb3-67"><a href="#cb3-67"></a>        <span class="cf">if</span> idx <span class="op">!=</span> <span class="dv">2</span>:</span>
+<span id="cb3-68"><a href="#cb3-68"></a>            axis.set_xticklabels([])</span>
+<span id="cb3-69"><a href="#cb3-69"></a>name <span class="op">=</span> <span class="st">"csize_avg"</span></span>
+<span id="cb3-70"><a href="#cb3-70"></a>plt.show()</span>
+<span id="cb3-71"><a href="#cb3-71"></a>fig.savefig(<span class="ss">f"plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb3-72"><a href="#cb3-72"></a>fig.savefig(<span class="ss">f"plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.png"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="csize_grid_files/figure-html/cell-3-output-2.png" width="875" height="875" class="figure-img"></p>
+<p><img src="csize_grid_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
-<!-- -->
-
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1257,162 +1082,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../plots/cluster_size_fitting.html" class="pagination-link" aria-label="Fitting cluster distribution">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Fitting cluster distribution</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../plots/evo.html" class="pagination-link" aria-label="Snapshot evolution">
-        <span class="nav-page-text">Snapshot evolution</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="an">title:</span><span class="co"> Cluster distribution grid</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="an">execute:</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">  cache: true</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">---</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="fu">## Import</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="in">```{python}</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="im">import</span> os</span>
-<span id="cb5-14"><a href="#cb5-14"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15"></a></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="im">import</span> glob</span>
-<span id="cb5-17"><a href="#cb5-17"></a></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="im">import</span> h5py</span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="im">from</span> mpl_toolkits.axes_grid1.inset_locator <span class="im">import</span> InsetPosition, inset_axes</span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-25"><a href="#cb5-25"></a></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="im">from</span> stringato <span class="im">import</span> extract_floats</span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="im">from</span> utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="in">```</span></span>
-<span id="cb5-30"><a href="#cb5-30"></a></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="fu">## Save data points</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a></span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="in">```python</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"../bp_data/dataset*"</span>))</span>
-<span id="cb5-35"><a href="#cb5-35"></a>stuff <span class="op">=</span> []</span>
-<span id="cb5-36"><a href="#cb5-36"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb5-37"><a href="#cb5-37"></a>    tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">0</span>])</span>
-<span id="cb5-38"><a href="#cb5-38"></a>    density <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">1</span>])</span>
-<span id="cb5-39"><a href="#cb5-39"></a>    stuff.append((tumble, density))</span>
-<span id="cb5-40"><a href="#cb5-40"></a>all_alphas, all_phis, all_bin_edges, all_counts <span class="op">=</span> [], [], [], []</span>
-<span id="cb5-41"><a href="#cb5-41"></a>kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
-<span id="cb5-42"><a href="#cb5-42"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb5-43"><a href="#cb5-43"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb5-44"><a href="#cb5-44"></a>        ctr <span class="op">=</span> idx<span class="op">*</span><span class="dv">3</span> <span class="op">+</span> jdx</span>
-<span id="cb5-45"><a href="#cb5-45"></a>        hf <span class="op">=</span> h5py.File(files[ctr], <span class="st">"r"</span>)</span>
-<span id="cb5-46"><a href="#cb5-46"></a>        key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
-<span id="cb5-47"><a href="#cb5-47"></a>        iters <span class="op">=</span> get_ds_iters(key_list)</span>
-<span id="cb5-48"><a href="#cb5-48"></a>        all_cs <span class="op">=</span> np.array([])</span>
-<span id="cb5-49"><a href="#cb5-49"></a>        <span class="cf">for</span> <span class="bu">iter</span> <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(iters)):</span>
-<span id="cb5-50"><a href="#cb5-50"></a>            im <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="bu">iter</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb5-51"><a href="#cb5-51"></a>            labelled, _ <span class="op">=</span> ndimage.label(im, structure<span class="op">=</span>kernel)</span>
-<span id="cb5-52"><a href="#cb5-52"></a>            cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
-<span id="cb5-53"><a href="#cb5-53"></a>            all_cs <span class="op">=</span> np.hstack((all_cs,cluster_sizes))</span>
-<span id="cb5-54"><a href="#cb5-54"></a>        min_c <span class="op">=</span> np.<span class="bu">min</span>(all_cs)</span>
-<span id="cb5-55"><a href="#cb5-55"></a>        max_c <span class="op">=</span> np.<span class="bu">max</span>(all_cs)</span>
-<span id="cb5-56"><a href="#cb5-56"></a>        bin_edges <span class="op">=</span> np.logspace(np.log2(min_c), np.log2(max_c), <span class="dv">32</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb5-57"><a href="#cb5-57"></a>        counts, _ <span class="op">=</span> np.histogram(</span>
-<span id="cb5-58"><a href="#cb5-58"></a>            all_cs, bins<span class="op">=</span>bin_edges, density<span class="op">=</span><span class="va">True</span></span>
-<span id="cb5-59"><a href="#cb5-59"></a>        )</span>
-<span id="cb5-60"><a href="#cb5-60"></a>        all_alphas.append(stuff[ctr][<span class="dv">0</span>])</span>
-<span id="cb5-61"><a href="#cb5-61"></a>        all_phis.append(stuff[ctr][<span class="dv">1</span>])</span>
-<span id="cb5-62"><a href="#cb5-62"></a>        all_bin_edges.append(bin_edges[:<span class="op">-</span><span class="dv">1</span>].tolist())</span>
-<span id="cb5-63"><a href="#cb5-63"></a>        all_counts.append(counts.tolist())</span>
-<span id="cb5-64"><a href="#cb5-64"></a>csv_out <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb5-65"><a href="#cb5-65"></a>csv_out.insert(<span class="dv">0</span>, <span class="st">"alphas"</span>, all_alphas)</span>
-<span id="cb5-66"><a href="#cb5-66"></a>csv_out.insert(<span class="dv">1</span>, <span class="st">"phis"</span>, all_phis)</span>
-<span id="cb5-67"><a href="#cb5-67"></a>csv_out.insert(<span class="dv">2</span>, <span class="st">"bin edges"</span>, all_bin_edges)</span>
-<span id="cb5-68"><a href="#cb5-68"></a>csv_out.insert(<span class="dv">3</span>, <span class="st">"counts"</span>, all_counts)</span>
-<span id="cb5-69"><a href="#cb5-69"></a>name <span class="op">=</span> <span class="st">"csize_avg"</span></span>
-<span id="cb5-70"><a href="#cb5-70"></a>csv_out.to_csv(<span class="ss">f"../plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.csv"</span>)</span>
-<span id="cb5-71"><a href="#cb5-71"></a><span class="in">```</span></span>
-<span id="cb5-72"><a href="#cb5-72"></a><span class="fu">## Plot</span></span>
-<span id="cb5-73"><a href="#cb5-73"></a></span>
-<span id="cb5-76"><a href="#cb5-76"></a><span class="in">```{python}</span></span>
-<span id="cb5-77"><a href="#cb5-77"></a><span class="kw">def</span> func(x, a, b, c):</span>
-<span id="cb5-78"><a href="#cb5-78"></a>    <span class="cf">return</span> c<span class="op">*</span>x<span class="op">**</span>(<span class="op">-</span>a)<span class="op">*</span>np.e<span class="op">**</span>(<span class="op">-</span>x<span class="op">/</span>b)</span>
-<span id="cb5-79"><a href="#cb5-79"></a></span>
-<span id="cb5-80"><a href="#cb5-80"></a>x_lim <span class="op">=</span> (<span class="dv">1</span>, <span class="fl">5e3</span>)</span>
-<span id="cb5-81"><a href="#cb5-81"></a>x <span class="op">=</span> np.logspace(np.log10(x_lim[<span class="dv">0</span>]),np.log10(x_lim[<span class="dv">1</span>]),<span class="dv">500</span>,base<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb5-82"><a href="#cb5-82"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"../bp_data/dataset*"</span>))</span>
-<span id="cb5-83"><a href="#cb5-83"></a>stats <span class="op">=</span> pd.read_csv(<span class="st">"../plots/csize_avg.csv"</span>)</span>
-<span id="cb5-84"><a href="#cb5-84"></a>fits <span class="op">=</span> pd.read_csv(<span class="st">"../plots/fit_values.csv"</span>)</span>
-<span id="cb5-85"><a href="#cb5-85"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb5-86"><a href="#cb5-86"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb5-87"><a href="#cb5-87"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb5-88"><a href="#cb5-88"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb5-89"><a href="#cb5-89"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-90"><a href="#cb5-90"></a>gspec <span class="op">=</span> fig.add_gridspec(<span class="dv">3</span>, <span class="dv">3</span>, wspace<span class="op">=</span><span class="fl">0.08</span>, hspace<span class="op">=</span><span class="fl">0.08</span>)</span>
-<span id="cb5-91"><a href="#cb5-91"></a>cmap <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">"cmc.glasgowS"</span>, lut<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb5-92"><a href="#cb5-92"></a>text_kwrgs <span class="op">=</span> {<span class="st">"ha"</span>: <span class="st">"left"</span>, <span class="st">"fontsize"</span>: <span class="st">"medium"</span>, <span class="st">"fontfamily"</span>: <span class="st">"serif"</span>}</span>
-<span id="cb5-93"><a href="#cb5-93"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb5-94"><a href="#cb5-94"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb5-95"><a href="#cb5-95"></a>        ctr <span class="op">=</span> idx<span class="op">*</span><span class="dv">3</span> <span class="op">+</span> jdx</span>
-<span id="cb5-96"><a href="#cb5-96"></a>        axis <span class="op">=</span> fig.add_subplot(gspec[idx, jdx])</span>
-<span id="cb5-97"><a href="#cb5-97"></a>        axins <span class="op">=</span> inset_axes(axis, width<span class="op">=</span><span class="st">"100%"</span>, height<span class="op">=</span><span class="st">"100%"</span>, borderpad<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-98"><a href="#cb5-98"></a>        axins.set_axes_locator(InsetPosition(axis, [<span class="fl">0.525</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.49</span>]))</span>
-<span id="cb5-99"><a href="#cb5-99"></a>        text_kwrgs[<span class="st">"s"</span>] <span class="op">=</span> <span class="vs">r"$\alpha = </span><span class="sc">{:.3f}</span><span class="vs">, \phi = </span><span class="sc">{:.2f}</span><span class="vs">$"</span>.<span class="bu">format</span>(</span>
-<span id="cb5-100"><a href="#cb5-100"></a>            stats[<span class="st">"alphas"</span>][ctr], stats[<span class="st">"phis"</span>][ctr]</span>
-<span id="cb5-101"><a href="#cb5-101"></a>        )</span>
-<span id="cb5-102"><a href="#cb5-102"></a>        hf <span class="op">=</span> h5py.File(files[ctr], <span class="st">"r"</span>)</span>
-<span id="cb5-103"><a href="#cb5-103"></a>        key_list <span class="op">=</span> <span class="bu">list</span>(hf.keys())</span>
-<span id="cb5-104"><a href="#cb5-104"></a>        iters <span class="op">=</span> get_ds_iters(key_list)</span>
-<span id="cb5-105"><a href="#cb5-105"></a>        img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb5-106"><a href="#cb5-106"></a>        axins.matshow(img, cmap<span class="op">=</span>cmap)</span>
-<span id="cb5-107"><a href="#cb5-107"></a>        axins.set_yticks([])</span>
-<span id="cb5-108"><a href="#cb5-108"></a>        axins.set_xticks([])</span>
-<span id="cb5-109"><a href="#cb5-109"></a>        axis.plot(</span>
-<span id="cb5-110"><a href="#cb5-110"></a>            x,</span>
-<span id="cb5-111"><a href="#cb5-111"></a>            func(x, fits[<span class="st">"a"</span>][ctr], fits[<span class="st">"b"</span>][ctr], fits[<span class="st">"c"</span>][ctr]),</span>
-<span id="cb5-112"><a href="#cb5-112"></a>            color<span class="op">=</span><span class="st">"k"</span>,</span>
-<span id="cb5-113"><a href="#cb5-113"></a>            alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
-<span id="cb5-114"><a href="#cb5-114"></a>            zorder<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb5-115"><a href="#cb5-115"></a>        )</span>
-<span id="cb5-116"><a href="#cb5-116"></a>        axis.scatter(</span>
-<span id="cb5-117"><a href="#cb5-117"></a>            <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>,stats[<span class="st">"bin edges"</span>][ctr][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split(<span class="st">","</span>))),</span>
-<span id="cb5-118"><a href="#cb5-118"></a>            <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>,stats[<span class="st">"counts"</span>][ctr][<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split(<span class="st">","</span>))),</span>
-<span id="cb5-119"><a href="#cb5-119"></a>            edgecolor<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb5-120"><a href="#cb5-120"></a>            facecolor<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.3</span>),</span>
-<span id="cb5-121"><a href="#cb5-121"></a>            zorder<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb5-122"><a href="#cb5-122"></a>        )</span>
-<span id="cb5-123"><a href="#cb5-123"></a>        axis.grid(alpha<span class="op">=</span><span class="fl">.3</span>)</span>
-<span id="cb5-124"><a href="#cb5-124"></a>        axis.set_axisbelow(<span class="va">True</span>)</span>
-<span id="cb5-125"><a href="#cb5-125"></a>        axis.set_yscale(<span class="st">"log"</span>), axis.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb5-126"><a href="#cb5-126"></a>        axis.text(</span>
-<span id="cb5-127"><a href="#cb5-127"></a>            y<span class="op">=</span><span class="fl">1.05</span>,</span>
-<span id="cb5-128"><a href="#cb5-128"></a>            x<span class="op">=</span><span class="dv">0</span>,</span>
-<span id="cb5-129"><a href="#cb5-129"></a>            transform<span class="op">=</span>axis.transAxes,</span>
-<span id="cb5-130"><a href="#cb5-130"></a>            <span class="op">**</span>text_kwrgs,</span>
-<span id="cb5-131"><a href="#cb5-131"></a>        )</span>
-<span id="cb5-132"><a href="#cb5-132"></a>        axis.set_ylim((<span class="fl">8e-9</span>, <span class="fl">4e1</span>))</span>
-<span id="cb5-133"><a href="#cb5-133"></a>        axis.set_xlim(x_lim)</span>
-<span id="cb5-134"><a href="#cb5-134"></a>        <span class="co"># axis.set_yticks([10**idx for idx in range(-8, 2, 2)])</span></span>
-<span id="cb5-135"><a href="#cb5-135"></a>        <span class="co"># axis.set_xticks([10**idx for idx in range(0, 5)])</span></span>
-<span id="cb5-136"><a href="#cb5-136"></a>        fig.supxlabel(<span class="vs">r"Cluster size, $a^</span><span class="sc">{2}</span><span class="vs">$"</span>)</span>
-<span id="cb5-137"><a href="#cb5-137"></a>        fig.supylabel(<span class="st">"Frequency density"</span>)</span>
-<span id="cb5-138"><a href="#cb5-138"></a>        <span class="cf">if</span> jdx <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb5-139"><a href="#cb5-139"></a>            axis.set_yticklabels([])</span>
-<span id="cb5-140"><a href="#cb5-140"></a>        <span class="cf">if</span> idx <span class="op">!=</span> <span class="dv">2</span>:</span>
-<span id="cb5-141"><a href="#cb5-141"></a>            axis.set_xticklabels([])</span>
-<span id="cb5-142"><a href="#cb5-142"></a>name <span class="op">=</span> <span class="st">"csize_avg"</span></span>
-<span id="cb5-143"><a href="#cb5-143"></a>plt.show()</span>
-<span id="cb5-144"><a href="#cb5-144"></a>fig.savefig(<span class="ss">f"../plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
-<span id="cb5-145"><a href="#cb5-145"></a>fig.savefig(<span class="ss">f"../plots/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.png"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
-<span id="cb5-146"><a href="#cb5-146"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1432,7 +1101,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/plots/csize_grid.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/csize_grid.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/mstcl/msci-wiki/blob/np/plots/csize_grid.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/csize_grid.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

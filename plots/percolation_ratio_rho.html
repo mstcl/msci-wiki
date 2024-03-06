@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../literature_notes/active-brownian-particles.html" rel="next">
-<link href="../plots/number_of_cluster.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +115,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/percolation_ratio_rho.html">Ratio of biggest cluster over density</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Dissipation Learning in Active Matter
+      </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -164,142 +164,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Activity Log</span></a>
+ <span class="menu-text">Literature Notes</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 14</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 15</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 16</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 17</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8-13</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Plots</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/cluster_size_fitting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fitting cluster distribution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/csize_grid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster distribution grid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/evo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snapshot evolution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/labelling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster labelling demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Number of clusters</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/percolation_ratio_rho.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Ratio of biggest cluster over density</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Literature Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
@@ -322,36 +192,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is active matter and why do we study it?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/prepatory_work.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepratory work, discussion, and plan for the future</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
@@ -377,13 +224,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
@@ -407,13 +254,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">External links</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -462,9 +309,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/cluster_size_fitting.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/percolation_ratio_rho.html">Ratio of biggest cluster over density</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Ratio of biggest cluster over density</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Ratio of biggest cluster over density</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -481,79 +328,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="48bf3f65" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
+<div id="cell-1" class="cell" data-execution_count="45">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-2"><a href="#cb1-2"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> glob</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> h5py</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> stringato <span class="im">import</span> extract_floats</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"../no_roll_data/dataset*"</span>))</span>
-<span id="cb1-18"><a href="#cb1-18"></a>stuff <span class="op">=</span> []</span>
-<span id="cb1-19"><a href="#cb1-19"></a>densities <span class="op">=</span> []</span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb1-21"><a href="#cb1-21"></a>    tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">0</span>])</span>
-<span id="cb1-22"><a href="#cb1-22"></a>    density <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">1</span>])</span>
-<span id="cb1-23"><a href="#cb1-23"></a>    stuff.append((tumble, density))</span>
-<span id="cb1-24"><a href="#cb1-24"></a>    densities.append(density)</span>
-<span id="cb1-25"><a href="#cb1-25"></a>densities <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">set</span>(densities))</span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a></span>
-<span id="cb1-28"><a href="#cb1-28"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb1-29"><a href="#cb1-29"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb1-32"><a href="#cb1-32"></a>fig, axis <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">6</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-33"><a href="#cb1-33"></a></span>
-<span id="cb1-34"><a href="#cb1-34"></a>colors <span class="op">=</span> cm.batlow(np.linspace(<span class="dv">0</span>,<span class="dv">5</span>,<span class="bu">len</span>(densities)))</span>
-<span id="cb1-35"><a href="#cb1-35"></a>ctr <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a>ratios <span class="op">=</span> []</span>
-<span id="cb1-37"><a href="#cb1-37"></a>map_size <span class="op">=</span> <span class="dv">128</span><span class="op">*</span><span class="dv">128</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="cf">for</span> idx, <span class="bu">file</span> <span class="kw">in</span> <span class="bu">enumerate</span>(files):</span>
-<span id="cb1-40"><a href="#cb1-40"></a>    noot <span class="op">=</span> idx <span class="op">%</span> <span class="bu">len</span>(densities)</span>
-<span id="cb1-41"><a href="#cb1-41"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb1-42"><a href="#cb1-42"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
-<span id="cb1-43"><a href="#cb1-43"></a>    biggest_cluster <span class="op">=</span> np.<span class="bu">max</span>(cluster_sizes)</span>
-<span id="cb1-44"><a href="#cb1-44"></a>    ratios.append(biggest_cluster<span class="op">/</span>map_size)</span>
-<span id="cb1-45"><a href="#cb1-45"></a>    <span class="cf">if</span> (noot <span class="op">==</span> <span class="bu">len</span>(densities) <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb1-46"><a href="#cb1-46"></a>        axis.plot(densities,ratios, c<span class="op">=</span>colors[ctr], marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb1-47"><a href="#cb1-47"></a>        axis.annotate(</span>
-<span id="cb1-48"><a href="#cb1-48"></a>            text<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>stuff[idx][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>,</span>
-<span id="cb1-49"><a href="#cb1-49"></a>            xy<span class="op">=</span>(densities[<span class="op">-</span><span class="dv">1</span>],ratios[<span class="op">-</span><span class="dv">3</span>]),</span>
-<span id="cb1-50"><a href="#cb1-50"></a>            xytext<span class="op">=</span>(<span class="fl">20.5</span>,<span class="fl">15.5</span>),</span>
-<span id="cb1-51"><a href="#cb1-51"></a>            textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
-<span id="cb1-52"><a href="#cb1-52"></a>            backgroundcolor<span class="op">=</span>colors[ctr],</span>
-<span id="cb1-53"><a href="#cb1-53"></a>            color<span class="op">=</span>(<span class="st">"white"</span> <span class="cf">if</span> ctr <span class="kw">in</span> (<span class="dv">0</span>,<span class="dv">1</span>) <span class="cf">else</span> <span class="st">"black"</span>)</span>
-<span id="cb1-54"><a href="#cb1-54"></a>        )</span>
-<span id="cb1-55"><a href="#cb1-55"></a>        ratios <span class="op">=</span> []</span>
-<span id="cb1-56"><a href="#cb1-56"></a>        ctr <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-57"><a href="#cb1-57"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_94518/1907392936.py:57: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
-  fig.show()</code></pre>
-</div>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> glob</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> h5py</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="im">from</span> src.stringato <span class="im">import</span> extract_floats</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="im">from</span> src.utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"no_roll_data/dataset*"</span>))</span>
+<span id="cb1-21"><a href="#cb1-21"></a>stuff <span class="op">=</span> []</span>
+<span id="cb1-22"><a href="#cb1-22"></a>densities <span class="op">=</span> []</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb1-24"><a href="#cb1-24"></a>    tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">0</span>])</span>
+<span id="cb1-25"><a href="#cb1-25"></a>    density <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">1</span>])</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    stuff.append((tumble, density))</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    densities.append(density)</span>
+<span id="cb1-28"><a href="#cb1-28"></a>densities <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">set</span>(densities))</span>
+<span id="cb1-29"><a href="#cb1-29"></a></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb1-32"><a href="#cb1-32"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb1-35"><a href="#cb1-35"></a>fig, axis <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">9</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-36"><a href="#cb1-36"></a></span>
+<span id="cb1-37"><a href="#cb1-37"></a>colors <span class="op">=</span> cm.batlow(np.linspace(<span class="dv">0</span>,<span class="dv">2</span>,<span class="bu">len</span>(densities)))</span>
+<span id="cb1-38"><a href="#cb1-38"></a>ctr <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>ratios <span class="op">=</span> []</span>
+<span id="cb1-40"><a href="#cb1-40"></a>map_size <span class="op">=</span> <span class="dv">128</span><span class="op">*</span><span class="dv">128</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="cf">for</span> idx, <span class="bu">file</span> <span class="kw">in</span> <span class="bu">enumerate</span>(files):</span>
+<span id="cb1-43"><a href="#cb1-43"></a>    noot <span class="op">=</span> idx <span class="op">%</span> <span class="bu">len</span>(densities)</span>
+<span id="cb1-44"><a href="#cb1-44"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb1-45"><a href="#cb1-45"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
+<span id="cb1-46"><a href="#cb1-46"></a>    biggest_cluster <span class="op">=</span> np.<span class="bu">max</span>(cluster_sizes)</span>
+<span id="cb1-47"><a href="#cb1-47"></a>    ratios.append(biggest_cluster<span class="op">/</span>map_size)</span>
+<span id="cb1-48"><a href="#cb1-48"></a>    <span class="cf">if</span> (noot <span class="op">==</span> <span class="bu">len</span>(densities) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb1-49"><a href="#cb1-49"></a>        axis.plot(densities,ratios, c<span class="op">=</span>colors[ctr], marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50"></a>        axis.annotate(</span>
+<span id="cb1-51"><a href="#cb1-51"></a>            text<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>stuff[idx][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb1-52"><a href="#cb1-52"></a>            xy<span class="op">=</span>(densities[<span class="op">-</span><span class="dv">1</span>],np.<span class="bu">max</span>(ratios)),</span>
+<span id="cb1-53"><a href="#cb1-53"></a>            xytext<span class="op">=</span>(<span class="fl">25.5</span>,<span class="dv">0</span>),</span>
+<span id="cb1-54"><a href="#cb1-54"></a>            fontsize<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb1-55"><a href="#cb1-55"></a>            textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
+<span id="cb1-56"><a href="#cb1-56"></a>            backgroundcolor<span class="op">=</span>colors[ctr],</span>
+<span id="cb1-57"><a href="#cb1-57"></a>            color<span class="op">=</span>(<span class="st">"white"</span> <span class="cf">if</span> ctr <span class="kw">in</span> (<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="cf">else</span> <span class="st">"black"</span>)</span>
+<span id="cb1-58"><a href="#cb1-58"></a>        )</span>
+<span id="cb1-59"><a href="#cb1-59"></a>        ratios <span class="op">=</span> []</span>
+<span id="cb1-60"><a href="#cb1-60"></a>        ctr <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-61"><a href="#cb1-61"></a>fig.show()</span>
+<span id="cb1-62"><a href="#cb1-62"></a>fig.savefig(<span class="st">"plots/perc_rho.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="percolation_ratio_rho_files/figure-html/cell-2-output-2.png" width="875" height="587" class="figure-img"></p>
+<p><img src="percolation_ratio_rho_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
-
-<!-- -->
 
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1159,86 +1008,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../plots/number_of_cluster.html" class="pagination-link" aria-label="Number of clusters">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Number of clusters</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../literature_notes/active-brownian-particles.html" class="pagination-link" aria-label="Active Brownian particles: from collective phenomona to fundamental physics">
-        <span class="nav-page-text">Active Brownian particles: from collective phenomona to fundamental physics</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="an">title:</span><span class="co"> Ratio of biggest cluster over density</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="an">execute:</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">  cache: true</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">---</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="in">```{python}</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="im">import</span> os</span>
-<span id="cb3-12"><a href="#cb3-12"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/src"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13"></a></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="im">import</span> glob</span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="im">import</span> h5py</span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-18"><a href="#cb3-18"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-22"><a href="#cb3-22"></a></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="im">from</span> plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="im">from</span> stringato <span class="im">import</span> extract_floats</span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="im">from</span> utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span>
-<span id="cb3-26"><a href="#cb3-26"></a></span>
-<span id="cb3-27"><a href="#cb3-27"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"../no_roll_data/dataset*"</span>))</span>
-<span id="cb3-28"><a href="#cb3-28"></a>stuff <span class="op">=</span> []</span>
-<span id="cb3-29"><a href="#cb3-29"></a>densities <span class="op">=</span> []</span>
-<span id="cb3-30"><a href="#cb3-30"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb3-31"><a href="#cb3-31"></a>    tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">0</span>])</span>
-<span id="cb3-32"><a href="#cb3-32"></a>    density <span class="op">=</span> <span class="bu">float</span>(extract_floats(<span class="bu">file</span>)[<span class="dv">1</span>])</span>
-<span id="cb3-33"><a href="#cb3-33"></a>    stuff.append((tumble, density))</span>
-<span id="cb3-34"><a href="#cb3-34"></a>    densities.append(density)</span>
-<span id="cb3-35"><a href="#cb3-35"></a>densities <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">set</span>(densities))</span>
-<span id="cb3-36"><a href="#cb3-36"></a></span>
-<span id="cb3-37"><a href="#cb3-37"></a></span>
-<span id="cb3-38"><a href="#cb3-38"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb3-39"><a href="#cb3-39"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb3-40"><a href="#cb3-40"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb3-41"><a href="#cb3-41"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb3-42"><a href="#cb3-42"></a>fig, axis <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">6</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-43"><a href="#cb3-43"></a></span>
-<span id="cb3-44"><a href="#cb3-44"></a>colors <span class="op">=</span> cm.batlow(np.linspace(<span class="dv">0</span>,<span class="dv">5</span>,<span class="bu">len</span>(densities)))</span>
-<span id="cb3-45"><a href="#cb3-45"></a>ctr <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-46"><a href="#cb3-46"></a>ratios <span class="op">=</span> []</span>
-<span id="cb3-47"><a href="#cb3-47"></a>map_size <span class="op">=</span> <span class="dv">128</span><span class="op">*</span><span class="dv">128</span></span>
-<span id="cb3-48"><a href="#cb3-48"></a></span>
-<span id="cb3-49"><a href="#cb3-49"></a><span class="cf">for</span> idx, <span class="bu">file</span> <span class="kw">in</span> <span class="bu">enumerate</span>(files):</span>
-<span id="cb3-50"><a href="#cb3-50"></a>    noot <span class="op">=</span> idx <span class="op">%</span> <span class="bu">len</span>(densities)</span>
-<span id="cb3-51"><a href="#cb3-51"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb3-52"><a href="#cb3-52"></a>    cluster_sizes <span class="op">=</span> np.bincount(labelled.flatten())[<span class="dv">1</span>:]</span>
-<span id="cb3-53"><a href="#cb3-53"></a>    biggest_cluster <span class="op">=</span> np.<span class="bu">max</span>(cluster_sizes)</span>
-<span id="cb3-54"><a href="#cb3-54"></a>    ratios.append(biggest_cluster<span class="op">/</span>map_size)</span>
-<span id="cb3-55"><a href="#cb3-55"></a>    <span class="cf">if</span> (noot <span class="op">==</span> <span class="bu">len</span>(densities) <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb3-56"><a href="#cb3-56"></a>        axis.plot(densities,ratios, c<span class="op">=</span>colors[ctr], marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb3-57"><a href="#cb3-57"></a>        axis.annotate(</span>
-<span id="cb3-58"><a href="#cb3-58"></a>            text<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>stuff[idx][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>,</span>
-<span id="cb3-59"><a href="#cb3-59"></a>            xy<span class="op">=</span>(densities[<span class="op">-</span><span class="dv">1</span>],ratios[<span class="op">-</span><span class="dv">3</span>]),</span>
-<span id="cb3-60"><a href="#cb3-60"></a>            xytext<span class="op">=</span>(<span class="fl">20.5</span>,<span class="fl">15.5</span>),</span>
-<span id="cb3-61"><a href="#cb3-61"></a>            textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
-<span id="cb3-62"><a href="#cb3-62"></a>            backgroundcolor<span class="op">=</span>colors[ctr],</span>
-<span id="cb3-63"><a href="#cb3-63"></a>            color<span class="op">=</span>(<span class="st">"white"</span> <span class="cf">if</span> ctr <span class="kw">in</span> (<span class="dv">0</span>,<span class="dv">1</span>) <span class="cf">else</span> <span class="st">"black"</span>)</span>
-<span id="cb3-64"><a href="#cb3-64"></a>        )</span>
-<span id="cb3-65"><a href="#cb3-65"></a>        ratios <span class="op">=</span> []</span>
-<span id="cb3-66"><a href="#cb3-66"></a>        ctr <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-67"><a href="#cb3-67"></a>fig.show()</span>
-<span id="cb3-68"><a href="#cb3-68"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1258,7 +1027,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/plots/percolation_ratio_rho.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/percolation_ratio_rho.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/mstcl/msci-wiki/blob/np/plots/percolation_ratio_rho.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/percolation_ratio_rho.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
