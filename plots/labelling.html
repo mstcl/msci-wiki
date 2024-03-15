@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dissipation Learning in Active Matter - Cluster labelling</title>
+<title>Dissipation Learning in Active Matter - Cluster manipulation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/csize_grid.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/labelling.html">Cluster labelling</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/acf.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/labelling.html">Cluster manipulation</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -208,6 +208,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activity_log/week_19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 19</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
@@ -261,6 +267,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../plots/acf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stability check</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../plots/cluster_count_and_biggest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Number of cluster and biggest cluster size</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../plots/csize_grid.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster distribution grid</span></a>
   </div>
@@ -274,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../plots/labelling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Cluster labelling</span></a>
+ <span class="menu-text">Cluster manipulation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -294,12 +312,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Literature Notes</span></a>
+ <span class="menu-text">Training</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../training/training_with_orientation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training with orientation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../training/training_without_orientation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training without orientation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../training/visualize_with_orientation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing CNN layers with orientation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../training/visualize_without_orientation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing CNN layers without orientation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Literature Notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
@@ -322,13 +375,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
@@ -345,13 +398,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
@@ -377,13 +430,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
@@ -407,13 +460,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
  <span class="menu-text">External links</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -457,20 +510,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Content</h2>
-   
-  <ul>
-  <li><a href="#percolation-check" id="toc-percolation-check" class="nav-link active" data-scroll-target="#percolation-check">Percolation check</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/mstcl/msci-wiki/blob/np/plots/labelling.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/labelling.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/csize_grid.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/labelling.html">Cluster labelling</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../plots/acf.html">Plots</a></li><li class="breadcrumb-item"><a href="../plots/labelling.html">Cluster manipulation</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Cluster labelling</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Cluster manipulation</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -487,54 +534,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="52f87314" class="cell" data-execution_count="6">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-2"><a href="#cb1-2"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
-<span id="cb1-4"><a href="#cb1-4"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> os</span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> cmcrameri</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">from</span> src.utils <span class="im">import</span> get_cluster_labels, get_ds_iters</span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb1-13"><a href="#cb1-13"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> cmcrameri</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="im">import</span> h5py</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> src.utils <span class="im">import</span> get_cluster_labels, get_ds_iters</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
 <span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="kw">def</span> plot_labelled_cluster(axis, <span class="bu">file</span>, sshot_idx):</span>
-<span id="cb1-19"><a href="#cb1-19"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">"cmc.actonS"</span>)</span>
-<span id="cb1-20"><a href="#cb1-20"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, sshot_idx)</span>
-<span id="cb1-21"><a href="#cb1-21"></a>    axis.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
-<span id="cb1-22"><a href="#cb1-22"></a>    <span class="cf">return</span> axis</span>
-<span id="cb1-23"><a href="#cb1-23"></a></span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a>sshot_idx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">3</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-28"><a href="#cb1-28"></a>ax1 <span class="op">=</span> plot_labelled_cluster(ax1, <span class="st">"no_roll_data/dataset_tumble_0.023_0.25.h5"</span>, sshot_idx)</span>
-<span id="cb1-29"><a href="#cb1-29"></a>ax1.text(</span>
-<span id="cb1-30"><a href="#cb1-30"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
-<span id="cb1-31"><a href="#cb1-31"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb1-32"><a href="#cb1-32"></a>    transform<span class="op">=</span>ax1.transAxes,</span>
-<span id="cb1-33"><a href="#cb1-33"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb1-34"><a href="#cb1-34"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.023$"</span>,</span>
-<span id="cb1-35"><a href="#cb1-35"></a>)</span>
-<span id="cb1-36"><a href="#cb1-36"></a>ax2 <span class="op">=</span> plot_labelled_cluster(ax2, <span class="st">"no_roll_data/dataset_tumble_0.500_0.25.h5"</span>, sshot_idx)</span>
-<span id="cb1-37"><a href="#cb1-37"></a>ax2.text(</span>
-<span id="cb1-38"><a href="#cb1-38"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
-<span id="cb1-39"><a href="#cb1-39"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb1-40"><a href="#cb1-40"></a>    transform<span class="op">=</span>ax2.transAxes,</span>
-<span id="cb1-41"><a href="#cb1-41"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb1-42"><a href="#cb1-42"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.500$"</span>,</span>
-<span id="cb1-43"><a href="#cb1-43"></a>)</span>
-<span id="cb1-44"><a href="#cb1-44"></a>plt.show()</span>
-<span id="cb1-45"><a href="#cb1-45"></a>fig.savefig(<span class="st">"plots/labelling_demo.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb1-18"><a href="#cb1-18"></a>plot_configs[<span class="st">"xtick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>plot_configs[<span class="st">"ytick.labelsize"</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb1-21"><a href="#cb1-21"></a></span>
+<span id="cb1-22"><a href="#cb1-22"></a></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="kw">def</span> plot_labelled_cluster(axis, <span class="bu">file</span>, sshot_idx):</span>
+<span id="cb1-24"><a href="#cb1-24"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">"cmc.actonS"</span>)</span>
+<span id="cb1-25"><a href="#cb1-25"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, sshot_idx)</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    axis.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="cf">return</span> axis</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a></span>
+<span id="cb1-30"><a href="#cb1-30"></a>sshot_idx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a></span>
+<span id="cb1-32"><a href="#cb1-32"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">3</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-33"><a href="#cb1-33"></a>ax1 <span class="op">=</span> plot_labelled_cluster(ax1, <span class="st">"no_roll_data/dataset_tumble_0.023_0.25.h5"</span>, sshot_idx)</span>
+<span id="cb1-34"><a href="#cb1-34"></a>ax1.text(</span>
+<span id="cb1-35"><a href="#cb1-35"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
+<span id="cb1-36"><a href="#cb1-36"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-37"><a href="#cb1-37"></a>    transform<span class="op">=</span>ax1.transAxes,</span>
+<span id="cb1-38"><a href="#cb1-38"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
+<span id="cb1-39"><a href="#cb1-39"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.023$"</span>,</span>
+<span id="cb1-40"><a href="#cb1-40"></a>)</span>
+<span id="cb1-41"><a href="#cb1-41"></a>ax2 <span class="op">=</span> plot_labelled_cluster(ax2, <span class="st">"no_roll_data/dataset_tumble_0.500_0.25.h5"</span>, sshot_idx)</span>
+<span id="cb1-42"><a href="#cb1-42"></a>ax2.text(</span>
+<span id="cb1-43"><a href="#cb1-43"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
+<span id="cb1-44"><a href="#cb1-44"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-45"><a href="#cb1-45"></a>    transform<span class="op">=</span>ax2.transAxes,</span>
+<span id="cb1-46"><a href="#cb1-46"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
+<span id="cb1-47"><a href="#cb1-47"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.500$"</span>,</span>
+<span id="cb1-48"><a href="#cb1-48"></a>)</span>
+<span id="cb1-49"><a href="#cb1-49"></a>plt.show()</span>
+<span id="cb1-50"><a href="#cb1-50"></a>fig.savefig(<span class="st">"plots/labelling_demo.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -544,39 +596,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="f458b6c5" class="cell" data-execution_count="7">
+<div id="cell-2" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> h5py</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> ListedColormap</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>hf <span class="op">=</span> h5py.File(<span class="st">"no_roll_data/dataset_tumble_0.023_0.3.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb2-9"><a href="#cb2-9"></a>kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
-<span id="cb2-10"><a href="#cb2-10"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb2-11"><a href="#cb2-11"></a>labelled, _ <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>lb <span class="op">=</span> labelled.flatten()</span>
-<span id="cb2-13"><a href="#cb2-13"></a>cluster_sizes <span class="op">=</span> np.bincount(lb)[<span class="dv">1</span>:]</span>
-<span id="cb2-14"><a href="#cb2-14"></a>biggest_cluster_id <span class="op">=</span> np.argmax(cluster_sizes)<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>not_c <span class="op">=</span> labelled<span class="op">==</span>biggest_cluster_id</span>
-<span id="cb2-16"><a href="#cb2-16"></a>biggest_only <span class="op">=</span> img<span class="op">*</span>not_c</span>
-<span id="cb2-17"><a href="#cb2-17"></a></span>
-<span id="cb2-18"><a href="#cb2-18"></a>colors <span class="op">=</span> ListedColormap([<span class="st">'k'</span>,<span class="st">'r'</span>,<span class="st">'yellow'</span>,<span class="st">'g'</span>,<span class="st">'b'</span>])</span>
-<span id="cb2-19"><a href="#cb2-19"></a></span>
-<span id="cb2-20"><a href="#cb2-20"></a>plt.matshow(biggest_only, cmap<span class="op">=</span>colors)</span>
-<span id="cb2-21"><a href="#cb2-21"></a>coords <span class="op">=</span> np.argwhere(biggest_only <span class="op">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb2-22"><a href="#cb2-22"></a>x_min, y_min <span class="op">=</span> coords.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-23"><a href="#cb2-23"></a>x_max, y_max <span class="op">=</span> coords.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-24"><a href="#cb2-24"></a>cropped <span class="op">=</span> biggest_only[x_min:x_max<span class="op">+</span><span class="dv">2</span>, y_min:y_max<span class="op">+</span><span class="dv">2</span>]</span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="bu">print</span>(np.shape(cropped))</span>
-<span id="cb2-26"><a href="#cb2-26"></a>plt.matshow(cropped, cmap<span class="op">=</span>colors)</span>
-<span id="cb2-27"><a href="#cb2-27"></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> get_biggest_cluster(img):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    labelled, _ <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    lb <span class="op">=</span> labelled.flatten()</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    cluster_sizes <span class="op">=</span> np.bincount(lb)[<span class="dv">1</span>:]</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    biggest_cluster_id <span class="op">=</span> np.argmax(cluster_sizes)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    loc <span class="op">=</span> ndimage.find_objects(labelled)[biggest_cluster_id]</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    labelled_crop <span class="op">=</span> labelled[loc]</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    img_crop <span class="op">=</span> img[loc]</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    labelled_crop[labelled_crop <span class="op">!=</span> biggest_cluster_id<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    labelled_crop[labelled_crop <span class="op">==</span> biggest_cluster_id<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    img_crop <span class="op">*=</span> labelled_crop</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="cf">return</span> img_crop, ndimage.center_of_mass(labelled_crop)</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="kw">def</span> get_edges(img):</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    img_threshold <span class="op">=</span> np.zeros_like(img)</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    img_threshold[img <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    edges <span class="op">=</span> ndimage.laplace(img_threshold)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    edges[edges <span class="op">&gt;</span> <span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>    edges[edges <span class="op">!=</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    edges <span class="op">*=</span> img</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">return</span> edges</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="kw">def</span> map_ori(ori):</span>
+<span id="cb2-24"><a href="#cb2-24"></a>    ori_mapped <span class="op">=</span> np.zeros_like(ori, dtype<span class="op">=</span>np.float_)</span>
+<span id="cb2-25"><a href="#cb2-25"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> np.pi</span>
+<span id="cb2-26"><a href="#cb2-26"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">2</span>] <span class="op">=</span> np.pi<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">3</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">4</span>] <span class="op">=</span> <span class="op">-</span>np.pi<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>    <span class="cf">return</span> ori_mapped</span>
+<span id="cb2-30"><a href="#cb2-30"></a></span>
+<span id="cb2-31"><a href="#cb2-31"></a></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="co"># 0: y, 1: x</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="kw">def</span> get_ori_and_loc(edges,com):</span>
+<span id="cb2-34"><a href="#cb2-34"></a>    positions <span class="op">=</span> edges.nonzero()</span>
+<span id="cb2-35"><a href="#cb2-35"></a>    edges_ori <span class="op">=</span> map_ori(edges[positions[<span class="dv">0</span>],positions[<span class="dv">1</span>]])</span>
+<span id="cb2-36"><a href="#cb2-36"></a>    edges_loc <span class="op">=</span> np.arctan2((com[<span class="dv">0</span>]<span class="op">-</span>positions[<span class="dv">0</span>]),(positions[<span class="dv">1</span>]<span class="op">-</span>com[<span class="dv">1</span>]))</span>
+<span id="cb2-37"><a href="#cb2-37"></a></span>
+<span id="cb2-38"><a href="#cb2-38"></a>    <span class="co"># CHECK CODE</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a>    <span class="co"># colors = ListedColormap(["k", "r", "yellow", "g", "b"])</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a>    <span class="co"># edges[edges == 0] = -4</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a>    <span class="co"># edges[positions[0],positions[1]] = edges_loc</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a>    plt.matshow(edges)</span>
+<span id="cb2-43"><a href="#cb2-43"></a>    plt.colorbar()</span>
+<span id="cb2-44"><a href="#cb2-44"></a>    plt.axvline(com[<span class="dv">1</span>], c<span class="op">=</span><span class="st">'w'</span>)</span>
+<span id="cb2-45"><a href="#cb2-45"></a>    plt.axhline(com[<span class="dv">0</span>], c<span class="op">=</span><span class="st">'w'</span>)</span>
+<span id="cb2-46"><a href="#cb2-46"></a></span>
+<span id="cb2-47"><a href="#cb2-47"></a>    <span class="cf">return</span> edges_ori, edges_loc</span>
+<span id="cb2-48"><a href="#cb2-48"></a></span>
+<span id="cb2-49"><a href="#cb2-49"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.034_0.5.h5"</span>, <span class="st">"r"</span>)</span>
+<span id="cb2-50"><a href="#cb2-50"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
+<span id="cb2-51"><a href="#cb2-51"></a>kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
+<span id="cb2-52"><a href="#cb2-52"></a>oris, locs <span class="op">=</span> [], []</span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="cf">for</span> val <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">5</span>):</span>
+<span id="cb2-54"><a href="#cb2-54"></a>    img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[val]<span class="sc">}</span><span class="ss">"</span>]</span>
+<span id="cb2-55"><a href="#cb2-55"></a>    img_crop, com <span class="op">=</span> get_biggest_cluster(img)</span>
+<span id="cb2-56"><a href="#cb2-56"></a>    edges <span class="op">=</span> get_edges(img_crop)</span>
+<span id="cb2-57"><a href="#cb2-57"></a>    ori, loc <span class="op">=</span> get_ori_and_loc(edges,com)</span>
+<span id="cb2-58"><a href="#cb2-58"></a>    oris.append(ori)</span>
+<span id="cb2-59"><a href="#cb2-59"></a>    locs.append(loc)</span>
+<span id="cb2-60"><a href="#cb2-60"></a>oris <span class="op">=</span> np.concatenate(oris)</span>
+<span id="cb2-61"><a href="#cb2-61"></a>locs <span class="op">=</span> np.concatenate(locs)</span>
+<span id="cb2-62"><a href="#cb2-62"></a>plt.clf()</span>
+<span id="cb2-63"><a href="#cb2-63"></a>plt.xlabel(<span class="st">"Theta"</span>)</span>
+<span id="cb2-64"><a href="#cb2-64"></a>plt.ylabel(<span class="st">"Orientation"</span>)</span>
+<span id="cb2-65"><a href="#cb2-65"></a>plt.scatter(locs, oris, alpha<span class="op">=</span><span class="fl">0.1</span>, c<span class="op">=</span><span class="st">'k'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>(62, 54)</code></pre>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x791c2c50ff70&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -592,45 +682,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="labelling_files/figure-html/cell-3-output-4.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="a2eeb4e0" class="cell" data-execution_count="8">
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="labelling_files/figure-html/cell-3-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="labelling_files/figure-html/cell-3-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="labelling_files/figure-html/cell-3-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="labelling_files/figure-html/cell-3-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="labelling_files/figure-html/cell-3-output-9.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>top_half<span class="op">=</span>np.bincount(np.split(cropped,<span class="dv">2</span>)[<span class="dv">0</span>].flatten())[<span class="dv">1</span>:]</span>
-<span id="cb4-2"><a href="#cb4-2"></a>bottom_half<span class="op">=</span>np.bincount(np.split(cropped,<span class="dv">2</span>)[<span class="dv">1</span>].flatten())[<span class="dv">1</span>:]</span>
-<span id="cb4-3"><a href="#cb4-3"></a>left_half<span class="op">=</span>np.bincount(np.split(cropped,<span class="dv">2</span>,<span class="dv">1</span>)[<span class="dv">0</span>].flatten())[<span class="dv">1</span>:]</span>
-<span id="cb4-4"><a href="#cb4-4"></a>right_half<span class="op">=</span>np.bincount(np.split(cropped,<span class="dv">2</span>,<span class="dv">1</span>)[<span class="dv">1</span>].flatten())[<span class="dv">1</span>:]</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>top_half <span class="op">=</span> np.bincount(np.split(img_crop, <span class="dv">2</span>)[<span class="dv">0</span>].flatten())[<span class="dv">1</span>:]</span>
+<span id="cb4-2"><a href="#cb4-2"></a>bottom_half <span class="op">=</span> np.bincount(np.split(img_cropped, <span class="dv">2</span>)[<span class="dv">1</span>].flatten())[<span class="dv">1</span>:]</span>
+<span id="cb4-3"><a href="#cb4-3"></a>left_half <span class="op">=</span> np.bincount(np.split(img_cropd, <span class="dv">2</span>, <span class="dv">1</span>)[<span class="dv">0</span>].flatten())[<span class="dv">1</span>:]</span>
+<span id="cb4-4"><a href="#cb4-4"></a>right_half <span class="op">=</span> np.bincount(np.split(img_croped, <span class="dv">2</span>, <span class="dv">1</span>)[<span class="dv">1</span>].flatten())[<span class="dv">1</span>:]</span>
 <span id="cb4-5"><a href="#cb4-5"></a></span>
 <span id="cb4-6"><a href="#cb4-6"></a>ori <span class="op">=</span> {<span class="dv">1</span>: <span class="st">"up"</span>, <span class="dv">2</span>: <span class="st">"right"</span>, <span class="dv">3</span>: <span class="st">"down"</span>, <span class="dv">4</span>: <span class="st">"left"</span>}</span>
 <span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">def</span> check(half, o):</span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="bu">print</span>(ori[o])</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>half[o<span class="op">-</span><span class="dv">1</span>]<span class="op">/</span>np<span class="sc">.</span><span class="bu">sum</span>(half)<span class="sc">:.3f}</span><span class="ss">"</span>, ori[o])</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    <span class="bu">print</span>()</span>
-<span id="cb4-12"><a href="#cb4-12"></a></span>
-<span id="cb4-13"><a href="#cb4-13"></a>check(top_half, <span class="dv">1</span>)</span>
-<span id="cb4-14"><a href="#cb4-14"></a>check(bottom_half, <span class="dv">3</span>)</span>
-<span id="cb4-15"><a href="#cb4-15"></a>check(left_half, <span class="dv">4</span>)</span>
-<span id="cb4-16"><a href="#cb4-16"></a>check(right_half, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="kw">def</span> check(half, o):</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="bu">print</span>(ori[o])</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>half[o<span class="op">-</span><span class="dv">1</span>]<span class="op">/</span>np<span class="sc">.</span><span class="bu">sum</span>(half)<span class="sc">:.3f}</span><span class="ss">"</span>, ori[o])</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="bu">print</span>()</span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-15"><a href="#cb4-15"></a>check(top_half, <span class="dv">1</span>)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>check(bottom_half, <span class="dv">3</span>)</span>
+<span id="cb4-17"><a href="#cb4-17"></a>check(left_half, <span class="dv">4</span>)</span>
+<span id="cb4-18"><a href="#cb4-18"></a>check(right_half, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>up
-0.225 up
-
-down
-0.251 down
-
-left
-0.247 left
-
-right
-0.255 right
-</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>ValueError: array split does not result in an equal division</code></pre>
 </div>
 </div>
-<section id="percolation-check" class="level1">
-<h1>Percolation check</h1>
-<div id="244d5dad" class="cell" data-execution_count="9">
+<div id="cell-4" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>hf <span class="op">=</span> h5py.File(<span class="st">"no_roll_data/dataset_tumble_0.016_0.5.h5"</span>, <span class="st">"r"</span>)</span>
@@ -644,21 +765,21 @@ right
 <span id="cb6-9"><a href="#cb6-9"></a>not_c <span class="op">=</span> labelled<span class="op">==</span>biggest_cluster_id</span>
 <span id="cb6-10"><a href="#cb6-10"></a>biggest_only <span class="op">=</span> img<span class="op">*</span>not_c</span>
 <span id="cb6-11"><a href="#cb6-11"></a></span>
-<span id="cb6-12"><a href="#cb6-12"></a>colors <span class="op">=</span> ListedColormap([<span class="st">'k'</span>,<span class="st">'r'</span>,<span class="st">'yellow'</span>,<span class="st">'g'</span>,<span class="st">'b'</span>])</span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a>plt.matshow(biggest_only, cmap<span class="op">=</span>colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-12"><a href="#cb6-12"></a>plt.matshow(biggest_only)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x791c2c589210&gt;</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="labelling_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="labelling_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -935,6 +1056,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/mstcl\.github\.io\/msci-wiki\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -969,7 +1108,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1274,7 +1417,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/mstcl/msci-wiki/blob/np/plots/labelling.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/labelling.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/mstcl/msci-wiki/blob/np/plots/labelling.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/labelling.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
