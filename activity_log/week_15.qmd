@@ -2,11 +2,15 @@
 title: Week 15
 date: 2024-02-12
 author: NP
+jupyter: python3
+execute:
+  cache: true
 ---
 
 ## Tasks
 
 - [x] Play with different layers in Keras and train some models
+- [x] Make some utility functions to reuse for training
 
 ## Summary
 
@@ -15,8 +19,6 @@ is not possible on BluePebble (unclear about BlueCrystal). Playing with the CNNs
 on a local notebook is the best method for now to be able to prototype quickly.
 
 ### Basics on the architecture of CNN
-
-See the results of this week's tinkering [here](../plots/network_demo_1.qmd).
 
 We feed our snapshots in, but to represent it as a tensor. Our snapshot has one
 channel depth, so the tensor shape is `(128,128,1)`.
@@ -28,12 +30,12 @@ output of shape of the convolutional layer is of shape `(128,128,N)` where `N`
 is the number of filters applied.
 
 - Kernel size `(x,y)` is the window size that scans the image at each
-iteration.
+  iteration.
 - Stride `(x,y)` is the step length to jump at each iteration.
 - Each filter produces a feature map, every filter added captures more complex
-patterns.
+  patterns.
 - We increase filter size with subsequent layers to capture more more
-combinations.
+  combinations.
 
 A **flatten layer** will turn the input shape `(x,y,c)` into `(x*y*c)`, i.e. a
 1D vector.
@@ -59,7 +61,41 @@ To help reduce overfitting:
 - Increase training data
 - Use pooling, batch normalization, and dropout layers
 
-### A simple network to start with
+### Classifying our model/problem
+
+For this week, we start building the network. Our network is a regression
+problem, predicting a continuous parameter, our tumbling rate $\alpha$.
+
+For this to work, we choose a loss function such as mean absolute error and
+mean squared error. We picked mean absolute error for now. This means the
+neural network will try and optimize this function, and this metric will be a
+good indication of how well we've designed the architecture and everything
+surrounding it.
+
+The equation for mean absolute error is:
+
+$$
+\delta = \frac{\sum_{i=0}^{N}|y_i - y_p|}{N},
+$$
+
+where $y_i$ is the actual value and $y_p$ is the predicted value.
+
+Effectively, we want the model to minimise the mean absolute error (MAE from
+now on). From some precursor research, regression done on non-image data
+typically use only fully-connected layers. We have image data that we wish to
+apply convolution on, therefore we have to combine both.
+
+The input is an image, but we have to output a 1D vector that maps to
+predictions for one parameter (continuous). To do this, we apply `Flatten()`
+and `Dense(1, activation="linear")` at the end.
+
+### Initial strategy
+
+We begin with a simple model with one `Conv2D` layer, and train it on data that
+is not experimental-like, i.e. orientation is still encoded as colours. We
+shall later consider training without this, or seeing the effect without it:
+
+#### A simple network to start with: Model A
 
 I used this in the single density notebook as the "basic" network:
 
@@ -80,10 +116,14 @@ model.add(Flatten())
 model.add(Dense(units=1, activation="linear"))
 ```
 
-### A more complicated network
+We compare this with a slightly more complicated one.
 
-I used this in the single density notebook to compare the effect of the dropout
-layers:
+#### A more complicated network: Model B
+
+Based on [this blog
+post](https://scribe.rip/@msgold/predicting-images-with-a-cnn-90a25a9e4509),
+where they work on a classification problem, so we need to be careful with the
+output.
 
 ```python
 model = Sequential()
@@ -99,7 +139,7 @@ model.add(
     )
 )
 model.add(BatchNormalization())
-model.add(Conv2D(filters=3, kernel_size=(3, 3), padding="same", input_shape=shape))
+model.add(Conv2D(filters=3, kernel_size=(3, 3), padding="same"))
 model.add(BatchNormalization())
 
 model.add(MaxPooling2D(pool_size=(3, 3)))
@@ -121,3 +161,219 @@ model.add(Dense(units=10, activation="softmax"))
 model.add(Flatten())
 model.add(Dense(units=1, activation="linear"))
 ```
+
+I was interested in the effect of dropout, so I used Model B with and without
+dropout to compare the results. We expect dropout to produce distributions that
+are more centred around the actual value.
+
+### Model A trained on one density, predicting the same density.
+
+```{python}
+#| code-fold: true
+import gc
+import os
+import glob
+import h5py
+os.chdir("/hades/projects/persistent-exclusion-process/")
+import numpy as np
+from keras import backend as K
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+from src.training_utils import extract_floats, split_dataset, predict_and_plot
+
+# Use a custom data_load here because the one finally saved now normalizes the
+# data, which messes up the model
+def data_load(density):
+    files = glob.glob(f"no_roll_data/dataset_tumble_*_{density}.h5")
+    inputs,outputs = [],[]
+    for f in files:
+        tumble = float(extract_floats(f)[0])
+        with h5py.File(f, "r") as fin:
+          count = 0
+          for key in fin.keys():
+              img = fin[key][:]
+              img = img.reshape((img.shape[0], img.shape[1],1))
+              shape = img.shape
+              inputs.append(img)
+              outputs.append(tumble)
+              count+=1
+
+    # Scramble the dataset
+    order = np.arange(len(outputs)).astype(int)
+    order = np.random.permutation(order)
+    return np.array(inputs)[order],np.array(outputs)[order],shape
+```
+
+```{python}
+#| code-fold: true
+def reset(all=False):
+    K.clear_session()
+    global prediction, x, y, x_train, y_train, x_val, y_val
+    if all:
+        del x
+        del y
+        del x_train
+        del y_train
+        del x_val
+        del y_val
+    print("Collected: ", gc.collect())
+```
+
+
+```{python}
+#| code-fold: true
+density = 0.15
+validation_size = 2000
+x,y,shape = data_load(density=density)
+x_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)
+```
+
+```{python}
+name = "basic_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+### Model B, trained on one density, predicting the same density
+
+
+```{python}
+#| code-fold: true
+reset()
+name = "with_dropout_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+### Model B, without dropout layer, trained on one density, predicting the same density
+
+```{python}
+#| code-fold: true
+reset()
+name = "without_dropout_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+### Predicting novel densities
+
+We previously trained on $\phi = 0.15$ and try to predict the validation set
+also for the same $\phi$. What happens if we try and predict it on a different
+value for $\phi$? We expect it to still be somewhat accurate for a slightly
+different value, but not perform at all for very different value.
+
+We think this is because there are thresholds for $\phi$ where the behaviour of
+cluster changes, they can consistently enter percolation regime (for high
+$\phi$) and can have extremely big cluster sizes (also for high $\phi$). This
+would present to the network novel situations not seen at $\phi = 0.15$, where
+we don't expect percolation as it is very unlikely.
+
+We use $\phi = 0.25$ for the "slightly" different density and $\phi = 0.45$ for
+the "very" different density. As of now we don't have a metric to evaluate our model (this is planned for next week), so comparisons are done qualitatively.
+
+#### Model A on $\phi=0.25$
+
+
+```{python}
+#| code-fold: true
+reset(all=True)
+density = 0.25
+validation_size = 2000
+x,y,shape = data_load(density=density)
+x_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)
+```
+
+```{python}
+name = "basic_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+#### Model B on $\phi=0.25$
+
+```{python}
+#| code-fold: true
+reset()
+name = "with_dropout_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+#### Model B, without dropout layer, on $\phi=0.25$
+
+```{python}
+#| code-fold: true
+reset()
+name = "without_dropout_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+#### Model A on $\phi=0.45$
+
+```{python}
+#| code-fold: true
+reset(all=True)
+density = 0.45
+validation_size = 2000
+x,y,shape = data_load(density=density)
+x_train, y_train, x_val, y_val = split_dataset(x,y,last=validation_size)
+```
+
+```{python}
+#| code-fold: true
+name = "basic_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+#### Model B on $\phi=0.45$
+
+
+```{python}
+#| code-fold: true
+reset()
+name = "with_dropout_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+#### Model B, without dropout layer, on $\phi=0.45$
+
+```{python}
+#| code-fold: true
+reset()
+name = "without_dropout_0.15"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+### Comparing Model A to Model B
+
+- Both seem to exhibit correlation to the actual values.
+- Model A has significantly more spread than Model B
+- Dropout doesn't reduce spread but make the average of each $\alpha$ less
+  centred around the actual value.
+- Dropout adds a lot of spread to the first $\alpha$.
+- Model A performs poorly on $\phi \neq 0.15$ (which it was trained on).
+- Model B performs poorly only on $\phi = 0.45$ (it does well on $\phi = 0.25$)
+- But turning off dropout for B makes it perform better on $\phi = 0.45$.
+
+Dropout seems to reduce overfit by a lot. I don't know if setting it to 0.2
+here is too much dropout. In the next iteration of the network, I think we can
+work with 0.1.
+
+## Reference materials
+
+- [House price
+  regression 1](https://pyimagesearch.com/2019/01/28/keras-regression-and-cnns/)
+- [House price regression 2](https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/)
+- [TF Regression tutorial](https://www.tensorflow.org/tutorials/keras/regression)
+- [StackOverflow](https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression)
+- [StackOverflow
+  2](https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value)
+- [TDS pytorch on CNN to predict a continuous
+  property](https://www.tensorflow.org/tutorials/keras/regression)
+- [CNN with
+  regression](https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html)

@@ -1,0 +1,81 @@
+---
+title: Week 19
+date: 2024-03-12
+author: NP
+---
+
+## Tasks
+
+- [x] Attempt the cluster orientation visualization
+- [x] Cluster count and biggest cluster size plot
+- [x] Relaxation time check
+- [x] Mean image plots (+rolling)
+- [x] Retrain each model (now with proper GPU running, finally) with fixed
+  seeds to obtain some averages for comparison.
+- [x] Visualize the activation maps
+
+## Summary
+
+**Stability check**: [click here](../plots/acf.ipynb)
+
+**Cluster count & biggest cluster size**: [click here](../plots/cluster_count_and_biggest.ipynb)
+
+**Cluster orientation visualization**: [click here](../plots/labelling.ipynb)
+
+- This didn't really work out, because the clusters have a lot of detailed
+  structure, taking only the distance from the centre of mass didn't cut it.
+
+**Activation map visualization with orientation**: [click here](../training/visualize_with_orientation.ipynb)
+
+**Activation map visualization without orientation**: [click here](../training/visualize_without_orientation.ipynb)
+
+**Training models with orientation (7/10 models ran)**: [click here](../training/training_with_orientation.ipynb)
+
+**Training models without orientation (7/10 models ran)**: [click here](../training/training_without_orientation.ipynb)
+
+## A more structured idea for these runs
+
+How relevant is orientation (a dynamical feature) in the learning of dissipation?
+
+- Hypothesis: there are no difference in performance between two models, where one is trained on
+  data where orientation is embedded, and one where it isn't.
+- Rigour: 10 independent models for each (so 20 different models, and 10 seeds, one for each pair).
+- Dataset: 1000 per tumbling rate, each augmented twice, giving 3000 configurations.
+  For all densities, this gives 30000, where 24000 goes to training, and 6000 goes to
+  validation.
+- Data preparation:
+  1. For model on orientation: leave as is. Call this (x).
+  1. For model without: where the orientations are effectively removed by reassigning each
+     particle a random orientation, out of the same pool (i.e. it is scrambled, but with a new
+     instance), for each image (out of 3000), the noise is regenerated. Call this (y).
+- Why not threshold? Seems to tamper with the original configuration too much. Network fails
+  to predict potentially because with black and white, it only learns to differentiate the
+  background.
+- Method:
+  - A model has been designed to minimize computationl expense but still has some depth.
+  - Train model 1, predict using (x) original dataset, then predict with (y) dataset
+    prepared for model 2. Train model 2, predict using original dataset.
+- Intuition: 
+  - The cluster edges point towards the centre of the cluster.
+  - This could be picked up by the neural network as a dynamical feature of clusters.
+  - This additional information, alongside their structure, can be used to predict dissipation.
+  - Therefore, (1x) should perform better than (1y).
+  - Because we have made the distribution of the orientation the same for the scrambled dataset
+    (but not their configuration), (2x) should perform just as well as (2y).
+- Conclusion:
+  - Orientation is picked up by the neural network.
+  - The standard deviation for (1x) is better than (2y) at higher tumbling rates.
+  - At low tumbling rates, they are effectively equal, meaning the structural configuration
+    has more weight. For $\alpha$ below $\approx 0.107$, their performances are comparable.
+  - For what it's worth, the predictions are good enough to differentiate
+    very from mildly active systems, and we can always benefit more from a larger sample
+    size plus more tumbling rate, as well as tune the whole architecture better, to
+    improve the metrics. 
+  - The key takeaway is that there is not a substantial improvement
+    to performance trained on orientation at this level and scale, and thus the static
+    configuration is adequate in giving a prediction of the level of activity where
+    it might matter?
+
+## Resources
+
+[Guide on all of this](https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/)

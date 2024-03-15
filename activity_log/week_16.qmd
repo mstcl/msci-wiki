@@ -1,0 +1,313 @@
+---
+title: Week 16
+date: 2024-02-21
+author: NP
+jupyter: python3
+execute:
+  cache: true
+---
+
+## Tasks
+
+- [x] Try and tune/optimize the models we've tested
+- [x] Come up with a set of metrics to evaluate our experiments
+
+## Summary
+
+### Tracking progress systematically
+
+We made a [spreadsheet
+table](https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/)
+to log and track different changes, and start anew, as last week we only
+designed basic experiments to see what we can potentially do. We also give the
+model a unique ID (randomly generated), to refer to them easier.
+
+### Metrics
+
+To evaluate the models, we established some metrics and threshold:
+
+- Mean absolute error
+  - $MAE < 0.01$
+- Standard deviation (minimum, maxmimum and average of all $\alpha$'s)
+  - $\sigma_{max} < 0.02$
+  - $\sigma_{mean} < 0.01$
+- Overlap ratio within $10^{-3}$ (whether the prediction ranges cover the
+  actual value)
+  - $O = 1$
+- Pearson's $r$ (this is only affective on a handful of $\alpha$'s, using it on
+  one or two data points is not very indicative of the model's performance)
+  - $r > 0.975$
+
+### Previous progress and old strategy
+
+From last week, model B was okay. It didn't reduce the spread to the desirable
+metric after 10 epochs. This prompted us to tweak it slightly. Here were the
+different attempts:
+
+- From the previous week, reducing dropout from 0.2 to 0.1.
+- Instead of training on one $\phi$, train on similar values to add to it more
+  data (everything else kept the same).
+  - Not much improvement. But I only compared between two runs, should do two
+    more pairs and take the average.
+- Increasing the number of filters and kernel size in the convolutional layer
+  - No improvement, if not slightly worse, slow training times as there are
+    now many more parameters. Still not descending after 10 epochs or so.
+- Use LeakyReLU (ReLU but with small gradient when unit is inactive, apparently
+  works well on regression)
+  - LeakyReLU seems to be worse. We stick to ReLU for now.
+- Apply a separate `ReLU()` layer after `Conv2D()` (which now has no
+  activation). Apply `MaxPooling2D()` in between to reduce parameters.
+  - This helps training speed but doesn't improve nor degrade performance.
+    For simple model we don't need to use pooling so we can apply it when we
+    declare the `Conv2D` layer.
+- Adding more dense layers with non-linear activation.
+  - Significantly more parameters, reduce training speed, no improvement
+
+```python
+# Before
+model.add(
+    Conv2D(
+        filters=3,
+        kernel_size=(3, 3),
+        padding="same",
+        activation="relu",
+        input_shape=shape,
+    )
+)
+model.add(BatchNormalization())
+
+# After
+model.add(Conv2D(filters=3, kernel_size=(3, 3), padding="same", input_shape=shape))
+model.add(MaxPooling2D(pool_size=(2, 2), padding="same"))
+model.add(ReLU())
+model.add(BatchNormalization())
+```
+Advising the models from
+[here](https://www.kaggle.com/code/guidosalimbeni/regression-with-convolutional-neural-network-keras/notebook)
+and
+(here)[https://github.com/rsyamil/cnn-regression/blob/master/cnn_regression.ipynb].
+We revise last weeks' architecture to give:
+
+```python
+def make_net(shape):
+    model = Sequential()
+
+    model.add(Conv2D(filters=3, kernel_size=(3, 3), padding="same", input_shape=shape))
+    model.add(MaxPooling2D(pool_size=(2, 2), padding="same"))
+    model.add(ReLU())
+    model.add(BatchNormalization())
+
+    model.add(Conv2D(filters=4, kernel_size=(4, 4), padding="same"))
+    model.add(MaxPooling2D(pool_size=(2, 2), padding="same"))
+    model.add(ReLU())
+    model.add(BatchNormalization())
+
+    model.add(Conv2D(filters=6, kernel_size=(5, 5), padding="same"))
+    model.add(MaxPooling2D(pool_size=(2, 2), padding="same"))
+    model.add(ReLU())
+    model.add(BatchNormalization())
+
+    model.add(GlobalAveragePooling2D())
+
+    with options({"layout_optimizer": False}):
+        model.add(Dropout(0.1))
+
+    model.add(Dense(units=128, activation="relu"))
+
+    with options({"layout_optimizer": False}):
+        model.add(Dropout(0.1))
+
+    model.add(Dense(units=3, activation="relu"))
+
+    model.add(Flatten())
+    model.add(Dense(units=1, activation="linear"))
+    return model
+```
+
+#### Overall results
+
+In general, even with minor tweaks, the performance is just okay, there is a
+lot of spread. The run below showcases an "average" spread/distribution of the
+predictions, it was trained on all $\alphas$'s, using the default Adam
+optimizer, ran on 10 epochs (but seemed to have constant loss quickly after 3-4
+epochs).
+
+Model name is `rock8943`.
+
+```{python}
+#| code-fold: true
+import os
+os.chdir("/hades/projects/persistent-exclusion-process/")
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+from src.training_utils import extract_floats, data_load, split_dataset, predict_and_plot
+
+np.set_printoptions(precision=3, suppress=True)
+```
+
+```{python}
+#| code-fold: true
+x,y,shape = data_load(
+    alphas=np.logspace(-6, -1, 10, base=2),
+    densities=[0.25],
+    orientation=False,
+)
+x_train, y_train, x_val, y_val = split_dataset(x,y,last=int(len(x)*0.2))
+
+name = "rock8943"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+### Validating our code (and figuring out the effect of learning rate)
+
+As a sanity check, it's important to make sure our model can learn and overfit
+a few values at a time. Thus, with the same architecture, we start with one
+value of $\alpha$. The models are actually trained on augmented data. To redo
+the predictions here, we remove the augmentation.
+
+#### One $\alpha$
+
+With the chosen network, try training only on one set of $(\alpha, \phi)$ value
+first. It worked fine with the default Adam parameters, loss stopped improving
+after roughly 3-4 epochs.
+
+Model name is `rattle9304`.
+
+
+```{python}
+#| code-fold: true
+x,y,shape = data_load(
+    alphas=[0.023],
+    densities=[0.2],
+    orientation=False,
+)
+x_train, y_train, x_val, y_val = split_dataset(x,y,last=int(len(x)*0.2))
+
+name = "rattle9304"
+model = tf.keras.models.load_model(f'models/{name}.keras')
+predict_and_plot(model, x_val, y_val)
+```
+
+#### Two $\alpha$'s
+
+Also works wonderfully well with default Adam, but now loss stopped improving
+after roughly 17-18 epochs.
+
+Model name is `bake3945`.
+
+```{python}
+#| code-fold: true
+x, y, shape = data_load(
+    alphas=[0.023, 0.231],
+    densities=[0.2],
+    orientation=False,
+)
+x_train, y_train, x_val, y_val = split_dataset(x, y, last=int(len(x) * 0.2))
+
+name = "bake3945"
+model = tf.keras.models.load_model(f"models/{name}.keras")
+predict_and_plot(model, x_val, y_val)
+```
+
+#### Three $\alpha$'s
+
+Starting out with Adam again, but it was getting stuck with 0.001 learning
+rate. Reducing to 0.006 made it converge again, after around 10 epochs. Here,
+we learned that one thing we didn't try earlier was also decreasing the
+learning rate.
+
+Model name is `fish9182`.
+
+```{python}
+#| code-fold: true
+x, y, shape = data_load(
+    alphas=[0.023, 0.073, 0.231],
+    densities=[0.2],
+    orientation=False,
+)
+x_train, y_train, x_val, y_val = split_dataset(x, y, last=int(len(x) * 0.2))
+
+name = "fish9182"
+model = tf.keras.models.load_model(f"models/{name}.keras")
+prediction = model.predict(x_val)
+predict_and_plot(model, x_val, y_val)
+```
+### Filling in the gaps
+
+A model trained on 4 $\alpha$'s with the same architecture as above tries to
+predict the values in between. Here, the learning rate is 0.0002.
+
+Model name is `tart1924`.
+
+```{python}
+#| code-fold: true
+x,y,shape = data_load(
+    alphas=[0.023,0.231,0.073,0.500],
+    densities=[0.2],
+    orientation=False
+)
+x_train, y_train, x_val, y_val = split_dataset(x, y, last=int(len(x) * 0.2))
+
+x_new,y_new,_ = data_load(
+    alphas=[0.340,0.107,0.016,0.157,0.034,0.050],
+    densities=[0.2],
+    orientation=False
+)
+x_new,y_new = x_new[::2], y_new[::2]
+
+name = "tart1924"
+model = tf.keras.models.load_model(f"models/{name}.keras")
+prediction = model.predict(x_val)
+prediction_new = model.predict(x_new)
+
+bins = np.logspace(-6,-1,10, base=2)*0.85
+
+v = prediction.T[0]
+v_new = prediction_new.T[0]
+
+fig, ax = plt.subplots()
+ax.scatter(y_val, v, c='k', alpha=0.25)
+ax.scatter(y_new, v_new, c='k', alpha=0.25)
+ax.scatter(np.unique(y_val), np.unique(y_val), marker="_", color='r', s=200)
+ax.scatter(np.unique(y_new), np.unique(y_new), marker="_", color='b', s=200)
+
+ax.set_xscale("log")
+ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())
+ax.set_xticks(np.unique(y_new))
+
+ax.set_facecolor([0.98,0.98,0.98,1])
+
+for val in bins:
+    ax.axvline(val, alpha=0.05, c='k')
+
+ax.set_xlabel("Input turning rate")
+ax.set_ylabel("Predicted turning rate")
+```
+
+For low values, it does quite poorly, being able to only predict
+values centered around $0.023$. At $0.05, 0.107,0.157,0.340$, it starts to
+spread more, predicting values with range established by the nearest
+$\alpha$'s that was trained on.
+
+The model shows that it is quite specific for each $\alpha$.
+
+We also learn here that we've left the learning rate for our optimizer
+untouched, but this parameter is quite important! The optimizer, often
+stochastic gradient descent (SGD), imparts "momentum" to "unstuck" the network
+from local minima. When traversing the loss landscape, which for us is
+non-trival (i.e. non-convex, so not just one minimum), a learning rate too high
+means we figuratively jump from valley to valley, not converging on anything.
+Too slow and we don't make any progress, and potentially get stuck.
+
+## Reference materials
+
+- [LeakyReLU vs
+  ReLU](https://scribe.rip/mlearning-ai/activation-functions-relu-vs-leaky-relu-b8272dc0b1be)
+- [A lot of good tips](https://stats.stackexchange.com/questions/352036/what-should-i-do-when-my-neural-network-doesnt-learn)
+- [A tip on finding a good learning
+rate](https://scribe.rip/@bijil.subhash/deep-learning-how-to-pick-optimal-learning-rate-using-tensorflow-2-x-af278cadbedb)
+- [One CNN regression model](https://github.com/rsyamil/cnn-regression/blob/master/cnn_regression.ipynb)
+- [Another one, less useful though](https://www.kaggle.com/code/guidosalimbeni/regression-with-convolutional-neural-network-keras/notebook)

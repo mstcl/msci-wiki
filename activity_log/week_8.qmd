@@ -17,7 +17,7 @@ included within one entry to make more sense.
 ## Task for the break up to week 13
 
 - [x] Test GPU on BluePebble
-- [x] Fit the cluster size distribution (see [here](../plots/csize_grid.qmd))
+- [x] Fit the cluster size distribution (see [here](../plots/csize_grid.ipynb))
 - [ ] Look at cluster distribution over time
   - This provides timescale for stationarity
   - Already doing the average, adapt code to do over time
@@ -102,7 +102,7 @@ without making new datasets at different system sizes. Instead, we looked at
 how $\rho$ affect the biggest cluster size, measured as the ratio to the system
 size.
 
-See [here](../plots/percolation_ratio_rho.qmd) for plots.
+See [here](../plots/percolation_ratio_rho.ipynb) for plots.
 
 ### Problem
 

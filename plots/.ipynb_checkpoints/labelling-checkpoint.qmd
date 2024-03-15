@@ -1,6 +1,8 @@
 ---
 title: Cluster labelling demo
 jupyter: python3
+execute:
+  cache: true
 ---
 
 ```{python}

@@ -3,6 +3,8 @@ title: Week 6
 date: 2023-11-08
 author: NP
 jupyter: python3
+execute:
+  cache: true
 ---
 
 ::: {.callout-note appearance="simple"}

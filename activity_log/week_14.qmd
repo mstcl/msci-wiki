@@ -8,12 +8,15 @@ author: NP
 
 - [x] Regenerate datasets without the rolling to reduce filesizes and complexity
 - [ ] Quantify where cluster distribution stabilises
+    - An aside for now as we wrap up analysis to focus on the neural network
 
-## No rolling
+## Summary
+
+### Remove the hardcoded augmentation function
 
 To remove the extra snapshots (look at [Week 5](./week_5.qmdk) for an
 explanation of this), we remove the final loop in `sampler.py`, create a new
-version for this, which we named sampler_no_roll.py, and regenerated the
+version for this, which we named `sampler_no_roll.py`, and regenerated the
 datasets, each only 66 MB in size (reduced from 220 MB!).
 
 A one-liner for this:
@@ -21,3 +24,17 @@ A one-liner for this:
 ```bash
 for i in $(seq 0.0.5 0.05 0.5); do python3 sampler_no_roll.py --odd --density $i; done
 ```
+
+I think augmentation can be added in when we clean up and prepare data for the
+neural network, instead of being saved on disk.
+
+The rest of this week was spent wrapping up the analysis, and doing some
+reading on neural network, and convolutional neural networks.
+
+## Reference materials
+
+- [Deep learning book (MIT Press)](https://www.deeplearningbook.org/) (good for
+references)
+- [Neural networks and deep
+learning](http://neuralnetworksanddeeplearning.com/) (nicely written)
+- [TF tutorial](https://www.tensorflow.org/tutorials) (hands-on)

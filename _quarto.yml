@@ -34,10 +34,11 @@ website:
       - text: "---"
       - section: "Main content"
         contents:
-          - auto: activity_log/!(landing).*md
-          - auto: plots/!(landing).*md
-          - auto: "literature_notes/!(landing).*md"
-          - auto: writings/!(landing).*md
+          - auto: activity_log/!(landing).*
+          - auto: plots/!(landing).*
+          - auto: training/!(landing).*
+          - auto: literature_notes/!(landing).*md
+          - auto: writings/!(landing).*
           - section: "FT notes"
             contents:
               - auto: shared/ftnotes/*
@@ -51,17 +52,17 @@ website:
           - text: "Cluster"
             file: shared/cluster.qmd
       - text: "---"
-      - section: "External tools"
+      - section: "External links"
         contents:
+        - text: "Network logbook"
+          icon: link-45deg
+          href: "https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/"
         - text: "Zotero library"
           icon: link-45deg
           href: "https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library"
         - text: "GitHub mirror"
           icon: link-45deg
           href: "https://github.com/mstcl/msci-wiki"
-        - text: "Codeberg mirror"
-          icon: link-45deg
-          href: "https://codeberg.org/lckdscl/msci-wiki"
       - text: "---"
       - text: "All pages"
         file: sitemap.qmd
@@ -87,5 +88,8 @@ format:
       caption: none
     mainfont: sans-serif
     monofont: monospace
+    # link-external-icon: true
+    # link-external-newwindow: true
+    # link-external-filter: '^(?:http:|https:)\/\/.mstcl\.github.io\/msci-wiki'
     # linkcolor: rgb(213,43,43)
 jupyter: python3
