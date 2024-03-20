@@ -154,11 +154,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Content</h2>
+   
+  <ul>
+  <li><a href="#self-prediction" id="toc-self-prediction" class="nav-link active" data-scroll-target="#self-prediction">Self-prediction</a></li>
+  <li><a href="#cross-predictions" id="toc-cross-predictions" class="nav-link" data-scroll-target="#cross-predictions">Cross predictions</a>
+  <ul class="collapse">
+  <li><a href="#monochrome-on-orientation" id="toc-monochrome-on-orientation" class="nav-link" data-scroll-target="#monochrome-on-orientation">Monochrome on orientation</a></li>
+  <li><a href="#scrambled-on-orientation" id="toc-scrambled-on-orientation" class="nav-link" data-scroll-target="#scrambled-on-orientation">Scrambled on orientation</a></li>
+  </ul></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -167,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -231,7 +243,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-41"><a href="#cb1-41"></a><span class="bu">print</span>(gpu_devices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="9000a820-8d0b-4eca-9eda-ba0c623b6656" class="cell" data-execution_count="2">
+<section id="self-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="self-prediction">Self-prediction</h2>
+<div id="9000a820-8d0b-4eca-9eda-ba0c623b6656" class="cell" data-execution_count="52">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -260,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-24"><a href="#cb2-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="6297159c-4a9d-401c-b62a-af827983aadb" class="cell" data-execution_count="3">
+<div id="6297159c-4a9d-401c-b62a-af827983aadb" class="cell" data-execution_count="53">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>gc.collect()</span>
@@ -288,224 +302,441 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-23"><a href="#cb3-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="99b0a82f-259c-43ab-a17e-5f2ecfcb8cd3" class="cell" data-execution_count="4">
+<div id="60067338-2692-4e2b-bf79-1ec098500f64" class="cell" data-execution_count="54">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
-<span id="cb4-2"><a href="#cb4-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
-<span id="cb4-3"><a href="#cb4-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
-<span id="cb4-4"><a href="#cb4-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
-<span id="cb4-5"><a href="#cb4-5"></a>                  })</span>
-<span id="cb4-6"><a href="#cb4-6"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">"STD"</span>: np.concatenate((df.query(<span class="st">'Context == "Trained with orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>],</span>
-<span id="cb4-7"><a href="#cb4-7"></a>                                           df.query(<span class="st">'Context == "Trained without orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>])),</span>
-<span id="cb4-8"><a href="#cb4-8"></a>                    <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
-<span id="cb4-9"><a href="#cb4-9"></a>                    <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="dv">10</span><span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="dv">10</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
-<span id="cb4-11"><a href="#cb4-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>gc.collect()</span>
+<span id="cb4-2"><a href="#cb4-2"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">False</span>, scrambled<span class="op">=</span><span class="va">False</span>,  series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>_, _, x_val2, y_val2 <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">del</span> x</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">del</span> y</span>
+<span id="cb4-6"><a href="#cb4-6"></a>gc.collect()</span>
+<span id="cb4-7"><a href="#cb4-7"></a>model_names_with_monochrome <span class="op">=</span> [</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="st">"boat1822"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="st">"door9539"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="st">"muffin2409"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="st">"yam8290"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="st">"bacteria9177"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="st">"slash1065"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="st">"pool6730"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="st">"green9392"</span>,</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="st">"neutral7391"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="st">"lukewarm6626"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18"></a>]</span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a>predictions_with_monochrome, actual_with_monochrome <span class="op">=</span> predict_multi_by_name(model_names_with_monochrome, x_val2, y_val2)</span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="kw">del</span> x_val2</span>
+<span id="cb4-22"><a href="#cb4-22"></a><span class="kw">del</span> y_val2</span>
+<span id="cb4-23"><a href="#cb4-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="3b6c3af7-26af-4df7-aa9d-0aa5f793c448" class="cell" data-execution_count="5">
+<div id="99b0a82f-259c-43ab-a17e-5f2ecfcb8cd3" class="cell" data-execution_count="55">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.to_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    {</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="st">"Predicted"</span>: np.concatenate(</span>
+<span id="cb5-4"><a href="#cb5-4"></a>            (</span>
+<span id="cb5-5"><a href="#cb5-5"></a>                predictions_with_orientation <span class="op">-</span> actual_with_orientation,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>                predictions_without_orientation <span class="op">-</span> actual_without_orientation,</span>
+<span id="cb5-7"><a href="#cb5-7"></a>                predictions_with_monochrome <span class="op">-</span> actual_with_monochrome,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>            )</span>
+<span id="cb5-9"><a href="#cb5-9"></a>        ),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>        <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation, actual_without_orientation, actual_with_monochrome)),</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        <span class="st">"Context"</span>: pd.Categorical(</span>
+<span id="cb5-12"><a href="#cb5-12"></a>            [<span class="st">"Trained with orientation"</span>] <span class="op">*</span> <span class="bu">len</span>(actual_with_orientation)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>            <span class="op">+</span> [<span class="st">"Trained without orientation"</span>] <span class="op">*</span> <span class="bu">len</span>(actual_without_orientation)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>            <span class="op">+</span> [<span class="st">"Trained with thresholding"</span>] <span class="op">*</span> <span class="bu">len</span>(actual_with_monochrome),</span>
+<span id="cb5-15"><a href="#cb5-15"></a>            categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>],</span>
+<span id="cb5-16"><a href="#cb5-16"></a>        ),</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    }</span>
+<span id="cb5-18"><a href="#cb5-18"></a>)</span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-20"><a href="#cb5-20"></a>df2 <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    {</span>
+<span id="cb5-22"><a href="#cb5-22"></a>        <span class="st">"STD"</span>: np.concatenate(</span>
+<span id="cb5-23"><a href="#cb5-23"></a>            (</span>
+<span id="cb5-24"><a href="#cb5-24"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb5-25"><a href="#cb5-25"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb5-26"><a href="#cb5-26"></a>                .std()[<span class="st">"Predicted"</span>],</span>
+<span id="cb5-27"><a href="#cb5-27"></a>                df.query(<span class="st">'Context == "Trained without orientation"'</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb5-29"><a href="#cb5-29"></a>                .std()[<span class="st">"Predicted"</span>],</span>
+<span id="cb5-30"><a href="#cb5-30"></a>                df.query(<span class="st">'Context == "Trained with thresholding"'</span>)</span>
+<span id="cb5-31"><a href="#cb5-31"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb5-32"><a href="#cb5-32"></a>                .std()[<span class="st">"Predicted"</span>],</span>
+<span id="cb5-33"><a href="#cb5-33"></a>            )</span>
+<span id="cb5-34"><a href="#cb5-34"></a>        ),</span>
+<span id="cb5-35"><a href="#cb5-35"></a>        <span class="st">"Mean"</span>: np.concatenate(</span>
+<span id="cb5-36"><a href="#cb5-36"></a>            (</span>
+<span id="cb5-37"><a href="#cb5-37"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb5-38"><a href="#cb5-38"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb5-39"><a href="#cb5-39"></a>                .mean()[<span class="st">"Predicted"</span>],</span>
+<span id="cb5-40"><a href="#cb5-40"></a>                df.query(<span class="st">'Context == "Trained without orientation"'</span>)</span>
+<span id="cb5-41"><a href="#cb5-41"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb5-42"><a href="#cb5-42"></a>                .mean()[<span class="st">"Predicted"</span>],</span>
+<span id="cb5-43"><a href="#cb5-43"></a>                df.query(<span class="st">'Context == "Trained with thresholding"'</span>)</span>
+<span id="cb5-44"><a href="#cb5-44"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb5-45"><a href="#cb5-45"></a>                .mean()[<span class="st">"Predicted"</span>],</span>
+<span id="cb5-46"><a href="#cb5-46"></a>            )</span>
+<span id="cb5-47"><a href="#cb5-47"></a>        ),</span>
+<span id="cb5-48"><a href="#cb5-48"></a>        <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">3</span>),</span>
+<span id="cb5-49"><a href="#cb5-49"></a>        <span class="st">"Context"</span>: pd.Categorical(</span>
+<span id="cb5-50"><a href="#cb5-50"></a>            [<span class="st">"Trained with orientation"</span>] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [<span class="st">"Trained without orientation"</span>] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [<span class="st">"Trained with thresholding"</span>] <span class="op">*</span> <span class="dv">10</span>,</span>
+<span id="cb5-51"><a href="#cb5-51"></a>            categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>],</span>
+<span id="cb5-52"><a href="#cb5-52"></a>        ),</span>
+<span id="cb5-53"><a href="#cb5-53"></a>    }</span>
+<span id="cb5-54"><a href="#cb5-54"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1fe9ab58-374e-4f58-92cd-d399d64c2f57" class="cell" data-execution_count="6">
+<div id="3b6c3af7-26af-4df7-aa9d-0aa5f793c448" class="cell" data-execution_count="56">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">del</span> predictions_without_orientation</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">del</span> actual_without_orientation</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">del</span> predictions_with_orientation</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="kw">del</span> actual_with_orientation</span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">del</span> df</span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">del</span> df2</span>
-<span id="cb6-7"><a href="#cb6-7"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.to_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-execution_count="7">
+<div id="1fe9ab58-374e-4f58-92cd-d399d64c2f57" class="cell" data-execution_count="57">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">False</span>, scrambled<span class="op">=</span><span class="va">True</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>_, _, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">del</span> x</span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="kw">del</span> y</span>
-<span id="cb7-7"><a href="#cb7-7"></a>gc.collect()</span>
-<span id="cb7-8"><a href="#cb7-8"></a>model_names_with_orientation <span class="op">=</span> [</span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="st">"helicopter1822"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10"></a>    <span class="st">"wardrobe9539"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11"></a>    <span class="st">"looper2409"</span>,</span>
-<span id="cb7-12"><a href="#cb7-12"></a>    <span class="st">"potato8290"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13"></a>    <span class="st">"cells9177"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14"></a>    <span class="st">"hyphen1065"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15"></a>    <span class="st">"playground6730"</span>,</span>
-<span id="cb7-16"><a href="#cb7-16"></a>]</span>
-<span id="cb7-17"><a href="#cb7-17"></a></span>
-<span id="cb7-18"><a href="#cb7-18"></a>predictions_with_orientation, actual_with_orientation <span class="op">=</span> predict_multi_by_name(model_names_with_orientation, x_val, y_val)</span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="kw">del</span> x_val</span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="kw">del</span> y_val</span>
-<span id="cb7-21"><a href="#cb7-21"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">del</span> predictions_without_orientation</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">del</span> actual_without_orientation</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">del</span> predictions_with_orientation</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="kw">del</span> actual_with_orientation</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">del</span> predictions_with_monochrome</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="kw">del</span> actual_with_monochrome</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">del</span> df</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="kw">del</span> df2</span>
+<span id="cb7-9"><a href="#cb7-9"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-execution_count="8">
+</section>
+<section id="cross-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="cross-predictions">Cross predictions</h2>
+<section id="monochrome-on-orientation" class="level3">
+<h3 class="anchored" data-anchor-id="monochrome-on-orientation">Monochrome on orientation</h3>
+<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-execution_count="89">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>gc.collect()</span>
-<span id="cb8-2"><a href="#cb8-2"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">True</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>_, _, x_val2, y_val2 <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="kw">del</span> x</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">del</span> y</span>
-<span id="cb8-6"><a href="#cb8-6"></a>gc.collect()</span>
-<span id="cb8-7"><a href="#cb8-7"></a>model_names_without_orientation <span class="op">=</span> [</span>
-<span id="cb8-8"><a href="#cb8-8"></a>    <span class="st">"ice1822"</span>,</span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="st">"house9539"</span>,</span>
-<span id="cb8-10"><a href="#cb8-10"></a>    <span class="st">"cake2409"</span>,</span>
-<span id="cb8-11"><a href="#cb8-11"></a>    <span class="st">"carrot8290"</span>,</span>
-<span id="cb8-12"><a href="#cb8-12"></a>    <span class="st">"virus9177"</span>,</span>
-<span id="cb8-13"><a href="#cb8-13"></a>    <span class="st">"comma1065"</span>,</span>
-<span id="cb8-14"><a href="#cb8-14"></a>    <span class="st">"toys6730"</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>]</span>
-<span id="cb8-16"><a href="#cb8-16"></a></span>
-<span id="cb8-17"><a href="#cb8-17"></a>predictions_without_orientation, actual_without_orientation <span class="op">=</span> predict_multi_by_name(model_names_without_orientation, x_val2, y_val2)</span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="kw">del</span> x_val2</span>
-<span id="cb8-19"><a href="#cb8-19"></a><span class="kw">del</span> y_val2</span>
-<span id="cb8-20"><a href="#cb8-20"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">False</span>, scrambled<span class="op">=</span><span class="va">False</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>_, _, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">del</span> x</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="kw">del</span> y</span>
+<span id="cb8-7"><a href="#cb8-7"></a>gc.collect()</span>
+<span id="cb8-8"><a href="#cb8-8"></a>model_names_with_orientation <span class="op">=</span> [</span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="st">"helicopter1822"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10"></a>    <span class="st">"wardrobe9539"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="st">"looper2409"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="st">"potato8290"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="st">"cells9177"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="st">"hyphen1065"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15"></a>    <span class="st">"playground6730"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16"></a>    <span class="st">"blue9392"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17"></a>    <span class="st">"alkaline7391"</span>,</span>
+<span id="cb8-18"><a href="#cb8-18"></a>    <span class="st">"cold6626"</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>]</span>
+<span id="cb8-20"><a href="#cb8-20"></a></span>
+<span id="cb8-21"><a href="#cb8-21"></a>predictions_with_orientation, actual_with_orientation <span class="op">=</span> predict_multi_by_name(model_names_with_orientation, x_val, y_val)</span>
+<span id="cb8-22"><a href="#cb8-22"></a><span class="kw">del</span> x_val</span>
+<span id="cb8-23"><a href="#cb8-23"></a><span class="kw">del</span> y_val</span>
+<span id="cb8-24"><a href="#cb8-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-execution_count="9">
+<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-execution_count="90">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
-<span id="cb9-2"><a href="#cb9-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
-<span id="cb9-3"><a href="#cb9-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
-<span id="cb9-4"><a href="#cb9-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
-<span id="cb9-5"><a href="#cb9-5"></a>                  })</span>
-<span id="cb9-6"><a href="#cb9-6"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">"STD"</span>: np.concatenate((df.query(<span class="st">'Context == "Trained with orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>],</span>
-<span id="cb9-7"><a href="#cb9-7"></a>                                           df.query(<span class="st">'Context == "Trained without orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>])),</span>
-<span id="cb9-8"><a href="#cb9-8"></a>                    <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
-<span id="cb9-9"><a href="#cb9-9"></a>                    <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="dv">10</span><span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="dv">10</span>,</span>
-<span id="cb9-10"><a href="#cb9-10"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
-<span id="cb9-11"><a href="#cb9-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>gc.collect()</span>
+<span id="cb9-2"><a href="#cb9-2"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">True</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>_, _, x_val2, y_val2 <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="kw">del</span> x</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="kw">del</span> y</span>
+<span id="cb9-6"><a href="#cb9-6"></a>gc.collect()</span>
+<span id="cb9-7"><a href="#cb9-7"></a>model_names_without_orientation <span class="op">=</span> [</span>
+<span id="cb9-8"><a href="#cb9-8"></a>    <span class="st">"boat1822"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9"></a>    <span class="st">"door9539"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="st">"muffin2409"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11"></a>    <span class="st">"yam8290"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12"></a>    <span class="st">"bacteria9177"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13"></a>    <span class="st">"slash1065"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14"></a>    <span class="st">"pool6730"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15"></a>    <span class="st">"green9392"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16"></a>    <span class="st">"neutral7391"</span>,</span>
+<span id="cb9-17"><a href="#cb9-17"></a>    <span class="st">"lukewarm6626"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18"></a>]</span>
+<span id="cb9-19"><a href="#cb9-19"></a></span>
+<span id="cb9-20"><a href="#cb9-20"></a>predictions_without_orientation, actual_without_orientation <span class="op">=</span> predict_multi_by_name(model_names_without_orientation, x_val2, y_val2)</span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="kw">del</span> x_val2</span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="kw">del</span> y_val2</span>
+<span id="cb9-23"><a href="#cb9-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-execution_count="10">
+<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-execution_count="91">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
+<span id="cb10-2"><a href="#cb10-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained with thresholding"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained with thresholding"</span>])</span>
+<span id="cb10-5"><a href="#cb10-5"></a>                  })</span>
+<span id="cb10-6"><a href="#cb10-6"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">"STD"</span>: np.concatenate((df.query(<span class="st">'Context == "Trained with orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>],</span>
+<span id="cb10-7"><a href="#cb10-7"></a>                                           df.query(<span class="st">'Context == "Trained with thresholding"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>])),</span>
+<span id="cb10-8"><a href="#cb10-8"></a>                    <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
+<span id="cb10-9"><a href="#cb10-9"></a>                    <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="dv">10</span><span class="op">+</span>[<span class="st">"Trained with thresholding"</span>]<span class="op">*</span><span class="dv">10</span>,</span>
+<span id="cb10-10"><a href="#cb10-10"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained with thresholding"</span>])</span>
+<span id="cb10-11"><a href="#cb10-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4b24e661-2482-48c9-a622-e93b3c739677" class="cell" data-execution_count="11">
+<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-execution_count="92">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb11-6"><a href="#cb11-6"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
-<span id="cb11-7"><a href="#cb11-7"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
-<span id="cb11-8"><a href="#cb11-8"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>, <span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
-<span id="cb11-9"><a href="#cb11-9"></a></span>
-<span id="cb11-10"><a href="#cb11-10"></a></span>
-<span id="cb11-11"><a href="#cb11-11"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb11-12"><a href="#cb11-12"></a></span>
-<span id="cb11-13"><a href="#cb11-13"></a></span>
-<span id="cb11-14"><a href="#cb11-14"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
-<span id="cb11-15"><a href="#cb11-15"></a>    <span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">True</span>, constrained_layout<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="st">"row"</span></span>
-<span id="cb11-16"><a href="#cb11-16"></a>)</span>
-<span id="cb11-17"><a href="#cb11-17"></a>(ax1, ax3), (ax2, ax4) <span class="op">=</span> axes</span>
-<span id="cb11-18"><a href="#cb11-18"></a></span>
-<span id="cb11-19"><a href="#cb11-19"></a></span>
-<span id="cb11-20"><a href="#cb11-20"></a>sns.lineplot(</span>
-<span id="cb11-21"><a href="#cb11-21"></a>    ax<span class="op">=</span>ax1,</span>
-<span id="cb11-22"><a href="#cb11-22"></a>    data<span class="op">=</span>df,</span>
-<span id="cb11-23"><a href="#cb11-23"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb11-24"><a href="#cb11-24"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
-<span id="cb11-25"><a href="#cb11-25"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb11-26"><a href="#cb11-26"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
-<span id="cb11-27"><a href="#cb11-27"></a>    palette<span class="op">=</span><span class="st">"cmc.glasgow"</span>,</span>
-<span id="cb11-28"><a href="#cb11-28"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
-<span id="cb11-29"><a href="#cb11-29"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb11-30"><a href="#cb11-30"></a>)</span>
-<span id="cb11-31"><a href="#cb11-31"></a>ax1.set_ylabel(<span class="vs">r"Error, $y_p - y_a$"</span>)</span>
-<span id="cb11-32"><a href="#cb11-32"></a>sns.lineplot(</span>
-<span id="cb11-33"><a href="#cb11-33"></a>    ax<span class="op">=</span>ax2,</span>
-<span id="cb11-34"><a href="#cb11-34"></a>    data<span class="op">=</span>df2,</span>
-<span id="cb11-35"><a href="#cb11-35"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb11-36"><a href="#cb11-36"></a>    y<span class="op">=</span><span class="st">"STD"</span>,</span>
-<span id="cb11-37"><a href="#cb11-37"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb11-38"><a href="#cb11-38"></a>    palette<span class="op">=</span><span class="st">"cmc.glasgow"</span>,</span>
-<span id="cb11-39"><a href="#cb11-39"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
-<span id="cb11-40"><a href="#cb11-40"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb11-41"><a href="#cb11-41"></a>)</span>
-<span id="cb11-42"><a href="#cb11-42"></a>ax2.set_ylabel(<span class="vs">r"Standard deviation, $\sigma_p$"</span>)</span>
-<span id="cb11-43"><a href="#cb11-43"></a></span>
-<span id="cb11-44"><a href="#cb11-44"></a></span>
-<span id="cb11-45"><a href="#cb11-45"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
-<span id="cb11-46"><a href="#cb11-46"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span>
-<span id="cb11-47"><a href="#cb11-47"></a></span>
-<span id="cb11-48"><a href="#cb11-48"></a></span>
-<span id="cb11-49"><a href="#cb11-49"></a>sns.lineplot(</span>
-<span id="cb11-50"><a href="#cb11-50"></a>    ax<span class="op">=</span>ax3,</span>
-<span id="cb11-51"><a href="#cb11-51"></a>    data<span class="op">=</span>df,</span>
-<span id="cb11-52"><a href="#cb11-52"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb11-53"><a href="#cb11-53"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
-<span id="cb11-54"><a href="#cb11-54"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb11-55"><a href="#cb11-55"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
-<span id="cb11-56"><a href="#cb11-56"></a>    palette<span class="op">=</span><span class="st">"cmc.glasgow"</span>,</span>
-<span id="cb11-57"><a href="#cb11-57"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
-<span id="cb11-58"><a href="#cb11-58"></a>)</span>
-<span id="cb11-59"><a href="#cb11-59"></a>ax1.set_ylabel(<span class="vs">r"Error, $y_p - y_a$"</span>)</span>
-<span id="cb11-60"><a href="#cb11-60"></a>sns.lineplot(</span>
-<span id="cb11-61"><a href="#cb11-61"></a>    ax<span class="op">=</span>ax4,</span>
-<span id="cb11-62"><a href="#cb11-62"></a>    data<span class="op">=</span>df2,</span>
-<span id="cb11-63"><a href="#cb11-63"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb11-64"><a href="#cb11-64"></a>    y<span class="op">=</span><span class="st">"STD"</span>,</span>
-<span id="cb11-65"><a href="#cb11-65"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb11-66"><a href="#cb11-66"></a>    palette<span class="op">=</span><span class="st">"cmc.glasgow"</span>,</span>
-<span id="cb11-67"><a href="#cb11-67"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
-<span id="cb11-68"><a href="#cb11-68"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb11-69"><a href="#cb11-69"></a>)</span>
-<span id="cb11-70"><a href="#cb11-70"></a>ax2.set_ylabel(<span class="vs">r"Standard deviation, $\sigma_p$"</span>)</span>
-<span id="cb11-71"><a href="#cb11-71"></a></span>
-<span id="cb11-72"><a href="#cb11-72"></a></span>
-<span id="cb11-73"><a href="#cb11-73"></a>sns.despine()</span>
-<span id="cb11-74"><a href="#cb11-74"></a></span>
-<span id="cb11-75"><a href="#cb11-75"></a></span>
-<span id="cb11-76"><a href="#cb11-76"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb11-77"><a href="#cb11-77"></a></span>
-<span id="cb11-78"><a href="#cb11-78"></a></span>
-<span id="cb11-79"><a href="#cb11-79"></a>sns.move_legend(</span>
-<span id="cb11-80"><a href="#cb11-80"></a>    ax3, <span class="st">"lower center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">0.04</span>), frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="vs">r"Gradient"</span></span>
-<span id="cb11-81"><a href="#cb11-81"></a>)</span>
-<span id="cb11-82"><a href="#cb11-82"></a></span>
-<span id="cb11-83"><a href="#cb11-83"></a>labels <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"D"</span>]</span>
-<span id="cb11-84"><a href="#cb11-84"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>(axes.ravel()):</span>
-<span id="cb11-85"><a href="#cb11-85"></a>    ax.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb11-86"><a href="#cb11-86"></a>    ax.text(s<span class="op">=</span><span class="ss">f"(</span><span class="sc">{</span>labels[idx]<span class="sc">}</span><span class="ss">)"</span>, transform<span class="op">=</span>ax.transAxes, x<span class="op">=</span><span class="fl">0.1</span>, y<span class="op">=</span><span class="fl">0.83</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
-<span id="cb11-87"><a href="#cb11-87"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb11-88"><a href="#cb11-88"></a>    ax.set_xticks(np.unique(tumbles)[::<span class="dv">2</span>])</span>
-<span id="cb11-89"><a href="#cb11-89"></a>    ax.set_xlabel(<span class="vs">r"Tumbling rates, $\alpha$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross_2.csv"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std_cross_2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+</section>
+<section id="scrambled-on-orientation" class="level3">
+<h3 class="anchored" data-anchor-id="scrambled-on-orientation">Scrambled on orientation</h3>
+<div id="c90fa90e-f507-4c3a-8a59-aeffd7014b28" class="cell" data-execution_count="80">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">False</span>, scrambled<span class="op">=</span><span class="va">True</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a>_, _, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="kw">del</span> x</span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="kw">del</span> y</span>
+<span id="cb12-7"><a href="#cb12-7"></a>gc.collect()</span>
+<span id="cb12-8"><a href="#cb12-8"></a>model_names_with_orientation <span class="op">=</span> [</span>
+<span id="cb12-9"><a href="#cb12-9"></a>    <span class="st">"helicopter1822"</span>,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>    <span class="st">"wardrobe9539"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11"></a>    <span class="st">"looper2409"</span>,</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    <span class="st">"potato8290"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13"></a>    <span class="st">"cells9177"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14"></a>    <span class="st">"hyphen1065"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15"></a>    <span class="st">"playground6730"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16"></a>    <span class="st">"blue9392"</span>,</span>
+<span id="cb12-17"><a href="#cb12-17"></a>    <span class="st">"alkaline7391"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18"></a>    <span class="st">"cold6626"</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>]</span>
+<span id="cb12-20"><a href="#cb12-20"></a></span>
+<span id="cb12-21"><a href="#cb12-21"></a>predictions_with_orientation, actual_with_orientation <span class="op">=</span> predict_multi_by_name(model_names_with_orientation, x_val, y_val)</span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="kw">del</span> x_val</span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="kw">del</span> y_val</span>
+<span id="cb12-24"><a href="#cb12-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="24482c70-f2b6-4798-a599-93b4c9271e1e" class="cell" data-execution_count="81">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>gc.collect()</span>
+<span id="cb13-2"><a href="#cb13-2"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">True</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>_, _, x_val2, y_val2 <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="kw">del</span> x</span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="kw">del</span> y</span>
+<span id="cb13-6"><a href="#cb13-6"></a>gc.collect()</span>
+<span id="cb13-7"><a href="#cb13-7"></a>model_names_without_orientation <span class="op">=</span> [</span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="st">"ice1822"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="st">"house9539"</span>,</span>
+<span id="cb13-10"><a href="#cb13-10"></a>    <span class="st">"cake2409"</span>,</span>
+<span id="cb13-11"><a href="#cb13-11"></a>    <span class="st">"carrot8290"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12"></a>    <span class="st">"virus9177"</span>,</span>
+<span id="cb13-13"><a href="#cb13-13"></a>    <span class="st">"comma1065"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14"></a>    <span class="st">"toys6730"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15"></a>    <span class="st">"red9392"</span>,</span>
+<span id="cb13-16"><a href="#cb13-16"></a>    <span class="st">"acid7391"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17"></a>    <span class="st">"hot6626"</span>,</span>
+<span id="cb13-18"><a href="#cb13-18"></a>]</span>
+<span id="cb13-19"><a href="#cb13-19"></a></span>
+<span id="cb13-20"><a href="#cb13-20"></a>predictions_without_orientation, actual_without_orientation <span class="op">=</span> predict_multi_by_name(model_names_without_orientation, x_val2, y_val2)</span>
+<span id="cb13-21"><a href="#cb13-21"></a><span class="kw">del</span> x_val2</span>
+<span id="cb13-22"><a href="#cb13-22"></a><span class="kw">del</span> y_val2</span>
+<span id="cb13-23"><a href="#cb13-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="5bdf9a0a-4106-456c-b37a-9bcddbc3c6e2" class="cell" data-execution_count="82">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
+<span id="cb14-2"><a href="#cb14-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
+<span id="cb14-3"><a href="#cb14-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
+<span id="cb14-4"><a href="#cb14-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
+<span id="cb14-5"><a href="#cb14-5"></a>                  })</span>
+<span id="cb14-6"><a href="#cb14-6"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">"STD"</span>: np.concatenate((df.query(<span class="st">'Context == "Trained with orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>],</span>
+<span id="cb14-7"><a href="#cb14-7"></a>                                           df.query(<span class="st">'Context == "Trained without orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>])),</span>
+<span id="cb14-8"><a href="#cb14-8"></a>                    <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
+<span id="cb14-9"><a href="#cb14-9"></a>                    <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="dv">10</span><span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="dv">10</span>,</span>
+<span id="cb14-10"><a href="#cb14-10"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
+<span id="cb14-11"><a href="#cb14-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="feb60bcb-03f8-4fda-bc3e-9bc89ea0d044" class="cell" data-execution_count="83">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="0ddb261c-7470-4eea-94be-81ac4480ba8a" class="cell" data-execution_count="93">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">del</span> predictions_without_orientation</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">del</span> actual_without_orientation</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="kw">del</span> predictions_with_orientation</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="kw">del</span> actual_with_orientation</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">del</span> df</span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">del</span> df2</span>
+<span id="cb16-7"><a href="#cb16-7"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="plots" class="level2">
+<h2 class="anchored" data-anchor-id="plots">Plots</h2>
+<div id="53c2d23f-39df-431f-8b54-ad9f931b9ed7" class="cell" data-execution_count="94">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>df3 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4"></a>df4 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5"></a>df5 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_cross_2.csv"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6"></a>df6 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std_cross_2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="4b24e661-2482-48c9-a622-e93b3c739677" class="cell" data-execution_count="104">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb18-2"><a href="#cb18-2"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>, <span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb18-8"><a href="#cb18-8"></a></span>
+<span id="cb18-9"><a href="#cb18-9"></a></span>
+<span id="cb18-10"><a href="#cb18-10"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    <span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">8</span>), sharex<span class="op">=</span><span class="va">True</span>, constrained_layout<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="st">"row"</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>(ax1, ax2, ax3) <span class="op">=</span> axes</span>
+<span id="cb18-14"><a href="#cb18-14"></a></span>
+<span id="cb18-15"><a href="#cb18-15"></a>palette <span class="op">=</span>{<span class="st">"Trained with orientation"</span>: cm.glasgow(<span class="dv">50</span>), <span class="st">"Trained without orientation"</span>: cm.glasgow(<span class="dv">100</span>), <span class="st">"Trained with thresholding"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
+<span id="cb18-16"><a href="#cb18-16"></a></span>
+<span id="cb18-17"><a href="#cb18-17"></a>sns.lineplot(</span>
+<span id="cb18-18"><a href="#cb18-18"></a>    ax<span class="op">=</span>ax1,</span>
+<span id="cb18-19"><a href="#cb18-19"></a>    data<span class="op">=</span>df,</span>
+<span id="cb18-20"><a href="#cb18-20"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-21"><a href="#cb18-21"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-22"><a href="#cb18-22"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-23"><a href="#cb18-23"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
+<span id="cb18-24"><a href="#cb18-24"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-25"><a href="#cb18-25"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb18-26"><a href="#cb18-26"></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb18-27"><a href="#cb18-27"></a>)</span>
+<span id="cb18-28"><a href="#cb18-28"></a><span class="co">#sns.lineplot(</span></span>
+<span id="cb18-29"><a href="#cb18-29"></a><span class="co">#    ax=ax4,</span></span>
+<span id="cb18-30"><a href="#cb18-30"></a><span class="co">#    data=df2,</span></span>
+<span id="cb18-31"><a href="#cb18-31"></a><span class="co">#    x="Actual",</span></span>
+<span id="cb18-32"><a href="#cb18-32"></a><span class="co">#    y="STD",</span></span>
+<span id="cb18-33"><a href="#cb18-33"></a><span class="co">#    hue="Context",</span></span>
+<span id="cb18-34"><a href="#cb18-34"></a><span class="co">#    palette=palette,</span></span>
+<span id="cb18-35"><a href="#cb18-35"></a><span class="co">#    marker="o",</span></span>
+<span id="cb18-36"><a href="#cb18-36"></a><span class="co">#    alpha=0.9,</span></span>
+<span id="cb18-37"><a href="#cb18-37"></a><span class="co">#    legend=False,</span></span>
+<span id="cb18-38"><a href="#cb18-38"></a><span class="co">#)</span></span>
+<span id="cb18-39"><a href="#cb18-39"></a><span class="co">#ax4.set_ylabel(r"Spread, $\sigma_p$")</span></span>
+<span id="cb18-40"><a href="#cb18-40"></a></span>
+<span id="cb18-41"><a href="#cb18-41"></a></span>
+<span id="cb18-42"><a href="#cb18-42"></a>sns.lineplot(</span>
+<span id="cb18-43"><a href="#cb18-43"></a>    ax<span class="op">=</span>ax2,</span>
+<span id="cb18-44"><a href="#cb18-44"></a>    data<span class="op">=</span>df3,</span>
+<span id="cb18-45"><a href="#cb18-45"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-46"><a href="#cb18-46"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-47"><a href="#cb18-47"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-48"><a href="#cb18-48"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
+<span id="cb18-49"><a href="#cb18-49"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-50"><a href="#cb18-50"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb18-51"><a href="#cb18-51"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-52"><a href="#cb18-52"></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb18-53"><a href="#cb18-53"></a>)</span>
+<span id="cb18-54"><a href="#cb18-54"></a></span>
+<span id="cb18-55"><a href="#cb18-55"></a><span class="co">#sns.lineplot(</span></span>
+<span id="cb18-56"><a href="#cb18-56"></a><span class="co">#    ax=ax5,</span></span>
+<span id="cb18-57"><a href="#cb18-57"></a><span class="co">#    data=df4,</span></span>
+<span id="cb18-58"><a href="#cb18-58"></a><span class="co">#    x="Actual",</span></span>
+<span id="cb18-59"><a href="#cb18-59"></a><span class="co">#    y="STD",</span></span>
+<span id="cb18-60"><a href="#cb18-60"></a><span class="co">#    hue="Context",</span></span>
+<span id="cb18-61"><a href="#cb18-61"></a><span class="co">#    palette=palette,</span></span>
+<span id="cb18-62"><a href="#cb18-62"></a><span class="co">#    marker="o",</span></span>
+<span id="cb18-63"><a href="#cb18-63"></a><span class="co">#    legend=False,</span></span>
+<span id="cb18-64"><a href="#cb18-64"></a><span class="co">#)</span></span>
+<span id="cb18-65"><a href="#cb18-65"></a></span>
+<span id="cb18-66"><a href="#cb18-66"></a>sns.lineplot(</span>
+<span id="cb18-67"><a href="#cb18-67"></a>    ax<span class="op">=</span>ax3,</span>
+<span id="cb18-68"><a href="#cb18-68"></a>    data<span class="op">=</span>df5,</span>
+<span id="cb18-69"><a href="#cb18-69"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-70"><a href="#cb18-70"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-71"><a href="#cb18-71"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-72"><a href="#cb18-72"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
+<span id="cb18-73"><a href="#cb18-73"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-74"><a href="#cb18-74"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb18-75"><a href="#cb18-75"></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb18-76"><a href="#cb18-76"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-77"><a href="#cb18-77"></a>)</span>
+<span id="cb18-78"><a href="#cb18-78"></a></span>
+<span id="cb18-79"><a href="#cb18-79"></a><span class="co">#sns.lineplot(</span></span>
+<span id="cb18-80"><a href="#cb18-80"></a><span class="co">#    ax=ax6,</span></span>
+<span id="cb18-81"><a href="#cb18-81"></a><span class="co">#    data=df6,</span></span>
+<span id="cb18-82"><a href="#cb18-82"></a><span class="co">#    x="Actual",</span></span>
+<span id="cb18-83"><a href="#cb18-83"></a><span class="co">#    y="STD",</span></span>
+<span id="cb18-84"><a href="#cb18-84"></a><span class="co">#    hue="Context",</span></span>
+<span id="cb18-85"><a href="#cb18-85"></a><span class="co">#    palette=palette,</span></span>
+<span id="cb18-86"><a href="#cb18-86"></a><span class="co">#    marker="o",</span></span>
+<span id="cb18-87"><a href="#cb18-87"></a><span class="co">#    legend=False,</span></span>
+<span id="cb18-88"><a href="#cb18-88"></a><span class="co">#)</span></span>
+<span id="cb18-89"><a href="#cb18-89"></a></span>
+<span id="cb18-90"><a href="#cb18-90"></a></span>
+<span id="cb18-91"><a href="#cb18-91"></a>sns.despine()</span>
+<span id="cb18-92"><a href="#cb18-92"></a></span>
+<span id="cb18-93"><a href="#cb18-93"></a></span>
+<span id="cb18-94"><a href="#cb18-94"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb18-95"><a href="#cb18-95"></a></span>
+<span id="cb18-96"><a href="#cb18-96"></a>sns.move_legend(</span>
+<span id="cb18-97"><a href="#cb18-97"></a>    ax1, <span class="st">"lower center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.4</span>, <span class="fl">0.02</span>), frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="va">None</span></span>
+<span id="cb18-98"><a href="#cb18-98"></a>)</span>
+<span id="cb18-99"><a href="#cb18-99"></a></span>
+<span id="cb18-100"><a href="#cb18-100"></a>labels <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb18-101"><a href="#cb18-101"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>(axes.ravel()):</span>
+<span id="cb18-102"><a href="#cb18-102"></a>    ax.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb18-103"><a href="#cb18-103"></a>    ax.text(s<span class="op">=</span><span class="ss">f"(</span><span class="sc">{</span>labels[idx]<span class="sc">}</span><span class="ss">)"</span>, transform<span class="op">=</span>ax.transAxes, x<span class="op">=</span><span class="fl">0.1</span>, y<span class="op">=</span><span class="fl">.85</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
+<span id="cb18-104"><a href="#cb18-104"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb18-105"><a href="#cb18-105"></a>    ax.set_xticks(np.unique(tumbles)[::<span class="dv">2</span>])</span>
+<span id="cb18-106"><a href="#cb18-106"></a>    ax.set_xlabel(<span class="vs">r"Tumbling rates, $\alpha$"</span>)</span>
+<span id="cb18-107"><a href="#cb18-107"></a>    ax.set_ylabel(<span class="st">""</span>)</span>
+<span id="cb18-108"><a href="#cb18-108"></a>fig.supylabel(<span class="vs">r"Mean error, $y_p - y_a$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="104">
+<pre><code>Text(0.02, 0.5, 'Mean error, $y_p - y_a$')</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="training_summary_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="training_summary_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="12">
+<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="105">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>fig.savefig(<span class="st">"plots/orientation_summary.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>fig.savefig(<span class="st">"plots/orientation_summary.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -23,6 +23,17 @@
     ]
   },
   {
+    "listing": "/training/landing.html",
+    "items": [
+      "/training/training_summary.html",
+      "/training/training_with_monochrome.html",
+      "/training/training_with_orientation.html",
+      "/training/training_without_orientation.html",
+      "/training/visualize_with_orientation.html",
+      "/training/visualize_without_orientation.html"
+    ]
+  },
+  {
     "listing": "/plots/landing.html",
     "items": [
       "/plots/acf.html",
@@ -53,17 +64,6 @@
       "/activity_log/week_18.html",
       "/activity_log/week_19.html",
       "/activity_log/week_20.html"
-    ]
-  },
-  {
-    "listing": "/training/landing.html",
-    "items": [
-      "/training/training_summary.html",
-      "/training/training_with_bw.html",
-      "/training/training_with_orientation.html",
-      "/training/training_without_orientation.html",
-      "/training/visualize_with_orientation.html",
-      "/training/visualize_without_orientation.html"
     ]
   },
   {
