@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="NP">
 
 <title>Dissipation Learning in Active Matter - Training summary</title>
 <style>
@@ -168,6 +169,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta column-page">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>NP </p>
+          </div>
+  </div>
     
   
     
@@ -178,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="80bbc41e-bff8-4c34-9f40-18d243e98170" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="1">
+<div id="80bbc41e-bff8-4c34-9f40-18d243e98170" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>load_ext autoreload</span>
@@ -223,88 +230,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-40"><a href="#cb1-40"></a>    tf.config.experimental.set_memory_growth(device, <span class="va">True</span>)</span>
 <span id="cb1-41"><a href="#cb1-41"></a><span class="bu">print</span>(gpu_devices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]</code></pre>
-</div>
 </div>
 <div id="9000a820-8d0b-4eca-9eda-ba0c623b6656" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">True</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>_, _, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">del</span> x</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">del</span> y</span>
-<span id="cb3-7"><a href="#cb3-7"></a>gc.collect()</span>
-<span id="cb3-8"><a href="#cb3-8"></a>model_names_with_orientation <span class="op">=</span> [</span>
-<span id="cb3-9"><a href="#cb3-9"></a>    <span class="st">"helicopter1822"</span>,</span>
-<span id="cb3-10"><a href="#cb3-10"></a>    <span class="st">"wardrobe9539"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11"></a>    <span class="st">"looper2409"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12"></a>    <span class="st">"potato8290"</span>,</span>
-<span id="cb3-13"><a href="#cb3-13"></a>    <span class="st">"cells9177"</span>,</span>
-<span id="cb3-14"><a href="#cb3-14"></a>    <span class="st">"hyphen1065"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    <span class="st">"playground6730"</span>,</span>
-<span id="cb3-16"><a href="#cb3-16"></a>    <span class="st">"blue9392"</span>,</span>
-<span id="cb3-17"><a href="#cb3-17"></a>    <span class="st">"alkaline7391"</span>,</span>
-<span id="cb3-18"><a href="#cb3-18"></a>    <span class="st">"cold6626"</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a>]</span>
-<span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a>predictions_with_orientation, actual_with_orientation <span class="op">=</span> predict_multi_by_name(model_names_with_orientation, x_val, y_val)</span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="kw">del</span> x_val</span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="kw">del</span> y_val</span>
-<span id="cb3-24"><a href="#cb3-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">True</span>, series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>_, _, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">del</span> x</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">del</span> y</span>
+<span id="cb2-7"><a href="#cb2-7"></a>gc.collect()</span>
+<span id="cb2-8"><a href="#cb2-8"></a>model_names_with_orientation <span class="op">=</span> [</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="st">"helicopter1822"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="st">"wardrobe9539"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="st">"looper2409"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="st">"potato8290"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="st">"cells9177"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="st">"hyphen1065"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="st">"playground6730"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="st">"blue9392"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17"></a>    <span class="st">"alkaline7391"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    <span class="st">"cold6626"</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>]</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>predictions_with_orientation, actual_with_orientation <span class="op">=</span> predict_multi_by_name(model_names_with_orientation, x_val, y_val)</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="kw">del</span> x_val</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="kw">del</span> y_val</span>
+<span id="cb2-24"><a href="#cb2-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="6297159c-4a9d-401c-b62a-af827983aadb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>gc.collect()</span>
-<span id="cb4-2"><a href="#cb4-2"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">False</span>, scrambled<span class="op">=</span><span class="va">True</span>,  series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>_, _, x_val2, y_val2 <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">del</span> x</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">del</span> y</span>
-<span id="cb4-6"><a href="#cb4-6"></a>gc.collect()</span>
-<span id="cb4-7"><a href="#cb4-7"></a>model_names_without_orientation <span class="op">=</span> [</span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="st">"ice1822"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="st">"house9539"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    <span class="st">"cake2409"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    <span class="st">"carrot8290"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    <span class="st">"virus9177"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="st">"comma1065"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14"></a>    <span class="st">"toys6730"</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a>]</span>
-<span id="cb4-16"><a href="#cb4-16"></a></span>
-<span id="cb4-17"><a href="#cb4-17"></a>predictions_without_orientation, actual_without_orientation <span class="op">=</span> predict_multi_by_name(model_names_without_orientation, x_val2, y_val2)</span>
-<span id="cb4-18"><a href="#cb4-18"></a><span class="kw">del</span> x_val2</span>
-<span id="cb4-19"><a href="#cb4-19"></a><span class="kw">del</span> y_val2</span>
-<span id="cb4-20"><a href="#cb4-20"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>gc.collect()</span>
+<span id="cb3-2"><a href="#cb3-2"></a>x,y,_ <span class="op">=</span> data_load(alphas<span class="op">=</span>tumbles, densities<span class="op">=</span>[<span class="fl">0.25</span>], orientation<span class="op">=</span><span class="va">False</span>, scrambled<span class="op">=</span><span class="va">True</span>,  series<span class="op">=</span><span class="st">"validation_data"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>_, _, x_val2, y_val2 <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">del</span> x</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">del</span> y</span>
+<span id="cb3-6"><a href="#cb3-6"></a>gc.collect()</span>
+<span id="cb3-7"><a href="#cb3-7"></a>model_names_without_orientation <span class="op">=</span> [</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="st">"ice1822"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    <span class="st">"house9539"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="st">"cake2409"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="st">"carrot8290"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="st">"virus9177"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="st">"comma1065"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="st">"toys6730"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="st">"red9392"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="st">"acid7391"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    <span class="st">"hot6626"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18"></a>]</span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a>predictions_without_orientation, actual_without_orientation <span class="op">=</span> predict_multi_by_name(model_names_without_orientation, x_val2, y_val2)</span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="kw">del</span> x_val2</span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="kw">del</span> y_val2</span>
+<span id="cb3-23"><a href="#cb3-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="99b0a82f-259c-43ab-a17e-5f2ecfcb8cd3" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
-<span id="cb5-2"><a href="#cb5-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
-<span id="cb5-3"><a href="#cb5-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
-<span id="cb5-4"><a href="#cb5-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
-<span id="cb5-5"><a href="#cb5-5"></a>                  })</span>
-<span id="cb5-6"><a href="#cb5-6"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">"STD"</span>: np.concatenate((df.query(<span class="st">'Context == "Trained with orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>],</span>
-<span id="cb5-7"><a href="#cb5-7"></a>                                           df.query(<span class="st">'Context == "Trained without orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>])),</span>
-<span id="cb5-8"><a href="#cb5-8"></a>                    <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
-<span id="cb5-9"><a href="#cb5-9"></a>                    <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="dv">10</span><span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="dv">10</span>,</span>
-<span id="cb5-10"><a href="#cb5-10"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
-<span id="cb5-11"><a href="#cb5-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
+<span id="cb4-2"><a href="#cb4-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
+<span id="cb4-3"><a href="#cb4-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                  })</span>
+<span id="cb4-6"><a href="#cb4-6"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">"STD"</span>: np.concatenate((df.query(<span class="st">'Context == "Trained with orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>],</span>
+<span id="cb4-7"><a href="#cb4-7"></a>                                           df.query(<span class="st">'Context == "Trained without orientation"'</span>).groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>].std()[<span class="st">'Predicted'</span>])),</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                    <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                    <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="dv">10</span><span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="dv">10</span>,</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
+<span id="cb4-11"><a href="#cb4-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="3b6c3af7-26af-4df7-aa9d-0aa5f793c448" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.to_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.to_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-execution_count="6">
+<div id="1fe9ab58-374e-4f58-92cd-d399d64c2f57" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">del</span> predictions_without_orientation</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">del</span> actual_without_orientation</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">del</span> predictions_with_orientation</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="kw">del</span> actual_with_orientation</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">del</span> df</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">del</span> df2</span>
+<span id="cb6-7"><a href="#cb6-7"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -330,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-21"><a href="#cb7-21"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-execution_count="7">
+<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>gc.collect()</span>
@@ -355,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-20"><a href="#cb8-20"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-execution_count="8">
+<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
@@ -371,14 +390,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-11"><a href="#cb9-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-execution_count="9">
+<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4b24e661-2482-48c9-a622-e93b3c739677" class="cell" data-execution_count="10">
+<div id="4b24e661-2482-48c9-a622-e93b3c739677" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
@@ -474,12 +493,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="training_summary_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="training_summary_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="11">
+<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>fig.savefig(<span class="st">"plots/orientation_summary.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

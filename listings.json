@@ -23,13 +23,16 @@
     ]
   },
   {
-    "listing": "/training/landing.html",
+    "listing": "/plots/landing.html",
     "items": [
-      "/training/training_summary.html",
-      "/training/training_with_orientation.html",
-      "/training/training_without_orientation.html",
-      "/training/visualize_with_orientation.html",
-      "/training/visualize_without_orientation.html"
+      "/plots/acf.html",
+      "/plots/cluster_count_and_biggest.html",
+      "/plots/csize_grid.html",
+      "/plots/evo.html",
+      "/plots/labelling.html",
+      "/plots/number_of_cluster.html",
+      "/plots/percolation.html",
+      "/plots/percolation_ratio_rho.html"
     ]
   },
   {
@@ -53,16 +56,14 @@
     ]
   },
   {
-    "listing": "/plots/landing.html",
+    "listing": "/training/landing.html",
     "items": [
-      "/plots/acf.html",
-      "/plots/cluster_count_and_biggest.html",
-      "/plots/csize_grid.html",
-      "/plots/evo.html",
-      "/plots/labelling.html",
-      "/plots/number_of_cluster.html",
-      "/plots/percolation.html",
-      "/plots/percolation_ratio_rho.html"
+      "/training/training_summary.html",
+      "/training/training_with_bw.html",
+      "/training/training_with_orientation.html",
+      "/training/training_without_orientation.html",
+      "/training/visualize_with_orientation.html",
+      "/training/visualize_without_orientation.html"
     ]
   },
   {
