@@ -1,0 +1,12 @@
+{
+  "hash": "cb9bfc2e35c33efdddd7e20d1fc4e279",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Cluster labelling demo\nexecute:\n  cache: true\n---\n\n::: {#c96af3c0 .cell execution_count=1}\n``` {.python .cell-code}\nimport os\nos.chdir(\"/hades/projects/persistent-exclusion-process/src\")\n\nfrom utils import get_cluster_labels\nfrom plot_utils import get_plot_configs\n\nimport matplotlib.pyplot as plt\nimport cmcrameri\n\nplot_configs = get_plot_configs()\nplot_configs[\"xtick.labelsize\"] = 12\nplot_configs[\"ytick.labelsize\"] = 12\nplt.rcParams.update(plot_configs)\n\ndef label_cluster(axis, file, sshot_idx):\n    cmap_label = plt.get_cmap(name='cmc.actonS')\n    labelled, _ = get_cluster_labels(file, sshot_idx)\n    axis.matshow(labelled, cmap=cmap_label)\n    return axis\n```\n:::\n\n\n::: {#5c994e18 .cell execution_count=2}\n``` {.python .cell-code}\nsshot_idx = -1\n\nfig, (ax1, ax2) = plt.subplots(\n    1,\n    2,\n    figsize=(6, 3),\n    constrained_layout=True\n)\nax1 = label_cluster(ax1, \"../data/dataset_tumble_0.023_0.25.h5\", sshot_idx)\nax1.text(\n    y=-0.1,\n    x=1,\n    transform=ax1.transAxes,\n    ha=\"right\",\n    s=r\"$\\alpha = 0.023$\",\n)\nax2 = label_cluster(ax2, \"../data/dataset_tumble_0.500_0.25.h5\", sshot_idx)\nax2.text(\n    y=-0.1,\n    x=1,\n    transform=ax2.transAxes,\n    ha=\"right\",\n    s=r\"$\\alpha = 0.500$\",\n)\nplt.show()\nfig.savefig(\"../plots/labelling_demo.pdf\")\n```\n\n::: {.cell-output .cell-output-display}\n![](labelling_files/figure-html/cell-3-output-1.png){width=587 height=311}\n:::\n:::\n\n\n",
+    "supporting": [
+      "labelling_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

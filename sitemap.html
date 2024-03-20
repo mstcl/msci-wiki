@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -71,24 +37,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -114,7 +79,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     const options = {
       valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
+      page: 30,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
@@ -166,62 +132,76 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Dissipation Learning in Active Matter</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./activity_log/landing.html"> 
+<span class="menu-text">Activity log</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./plots/landing.html"> 
+<span class="menu-text">Plots</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./training/landing.html"> 
+<span class="menu-text">CNN</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./writing/landing.html"> 
+<span class="menu-text">Writing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./misc.html"> 
+<span class="menu-text">Misc</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://github.com/mstcl/msci-wiki" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sitemap.html">All pages</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">Sitemap</h1>
+        </a>     
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Dissipation Learning in Active Matter</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Main content</span></a>
+ <span class="menu-text">Activity Log</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Activity Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./activity_log/week_1.html" class="sidebar-item-text sidebar-link">
@@ -272,6 +252,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./activity_log/week_20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 19</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./activity_log/week_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3</span></a>
   </div>
@@ -308,15 +294,15 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Plots</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plots/acf.html" class="sidebar-item-text sidebar-link">
@@ -361,15 +347,21 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Training</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./training/training_summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training summary</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./training/training_with_orientation.html" class="sidebar-item-text sidebar-link">
@@ -396,15 +388,15 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Literature Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
@@ -425,38 +417,44 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Writing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writings/motivation.html" class="sidebar-item-text sidebar-link">
+  <a href="./writing/interim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interim report: Dissipation Learning in Active Matter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing/motivation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is active matter and why do we study it?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writings/prepatory_work.html" class="sidebar-item-text sidebar-link">
+  <a href="./writing/prepatory_work.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prepratory work, discussion, and plan for the future</span></a>
   </div>
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
@@ -477,18 +475,15 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
  <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shared/deadlines.html" class="sidebar-item-text sidebar-link">
@@ -509,16 +504,15 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">External links</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
@@ -546,7 +540,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sitemap.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">All pages</span></a>
+ <span class="menu-text">Sitemap</span></a>
   </div>
 </li>
     </ul>
@@ -562,7 +556,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Sitemap</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<h1 class="title d-none d-lg-block">Sitemap</h1>
 </div>
 
 
@@ -581,8 +575,6 @@ window.Quarto = {
 
 
 
-
-<!-- -->
 
 
 <div class="quarto-listing quarto-listing-container-table" id="listing-listing">
@@ -623,151 +615,181 @@ window.Quarto = {
 <a href="./literature_notes/active-brownian-particles.html" class="title listing-title">Active Brownian particles: from collective phenomona to fundamental physics</a>
 </td>
 </tr>
-<tr data-index="2" data-listing-file-modified-sort="1707919601448" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Activity log listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-listing-file-modified-sort="1710885801788" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Activity log" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="./activity_log/landing.html" class="title listing-title">Activity log listing</a>
+<a href="./activity_log/landing.html" class="title listing-title">Activity log</a>
 </td>
 </tr>
-<tr data-index="3" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1707919601631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Cluster information" data-listing-filename-sort="cluster.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-listing-file-modified-sort="1710885763244" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="CNN" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./training/landing.html" class="title listing-title">CNN</a>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1707919601631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Cluster information" data-listing-filename-sort="cluster.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/cluster.html" class="title listing-title">Cluster information</a>
 </td>
 </tr>
-<tr data-index="4" data-listing-file-modified-sort="1707919601654" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="Deadline information" data-listing-filename-sort="deadlines.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="5" data-listing-file-modified-sort="1707919601654" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="Deadline information" data-listing-filename-sort="deadlines.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/deadlines.html" class="title listing-title">Deadline information</a>
 </td>
 </tr>
-<tr data-index="5" data-listing-file-modified-sort="1707919601554" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="Home" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="6" data-listing-file-modified-sort="1707919601554" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="Home" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./index.html" class="title listing-title">Home</a>
 </td>
 </tr>
-<tr data-index="6" data-listing-file-modified-sort="1707919601661" data-listing-reading-time-sort="1" data-listing-word-count-sort="23" data-listing-title-sort="Link to colab notebook" data-listing-filename-sort="Colab.md" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="7" data-listing-file-modified-sort="1710885602777" data-listing-reading-time-sort="14" data-listing-word-count-sort="2637" data-listing-title-sort="Interim report: Dissipation Learning in Active Matter" data-listing-filename-sort="interim.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./writing/interim.html" class="title listing-title">Interim report: Dissipation Learning in Active Matter</a>
+</td>
+</tr>
+<tr data-index="8" data-listing-file-modified-sort="1707919601661" data-listing-reading-time-sort="1" data-listing-word-count-sort="23" data-listing-title-sort="Link to colab notebook" data-listing-filename-sort="Colab.md" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/ftnotes/Colab.html" class="title listing-title">Link to colab notebook</a>
 </td>
 </tr>
-<tr data-index="7" data-listing-file-modified-sort="1707919601574" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Literature notes listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="9" data-listing-file-modified-sort="1710885828388" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Literature notes" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="./literature_notes/landing.html" class="title listing-title">Literature notes listing</a>
+<a href="./literature_notes/landing.html" class="title listing-title">Literature notes</a>
 </td>
 </tr>
-<tr data-index="8" data-listing-date-sort="1699899369000" data-listing-file-modified-sort="1699899369283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="Prepratory work, discussion, and plan for the future" data-listing-filename-sort="prepatory_work.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="10" data-listing-file-modified-sort="1710885846069" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Misc" data-listing-filename-sort="misc.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="./writings/prepatory_work.html" class="title listing-title">Prepratory work, discussion, and plan for the future</a>
+<a href="./misc.html" class="title listing-title">Misc</a>
 </td>
 </tr>
-<tr data-index="9" data-listing-file-modified-sort="1707919601738" data-listing-reading-time-sort="3" data-listing-word-count-sort="450" data-listing-title-sort="Repository information" data-listing-filename-sort="repo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="11" data-listing-file-modified-sort="1710885481315" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Plots" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./plots/landing.html" class="title listing-title">Plots</a>
+</td>
+</tr>
+<tr data-index="12" data-listing-date-sort="1699899369000" data-listing-file-modified-sort="1699899369283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="Prepratory work, discussion, and plan for the future" data-listing-filename-sort="prepatory_work.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./writing/prepatory_work.html" class="title listing-title">Prepratory work, discussion, and plan for the future</a>
+</td>
+</tr>
+<tr data-index="13" data-listing-file-modified-sort="1707919601738" data-listing-reading-time-sort="3" data-listing-word-count-sort="450" data-listing-title-sort="Repository information" data-listing-filename-sort="repo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/repo.html" class="title listing-title">Repository information</a>
 </td>
 </tr>
-<tr data-index="10" data-listing-date-sort="1696019400000" data-listing-file-modified-sort="1707919601594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="Run-and-tumble dynamics in a crowded environment: PEP for swimmers" data-listing-filename-sort="run-and-tumble.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="14" data-listing-date-sort="1696019400000" data-listing-file-modified-sort="1707919601594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="Run-and-tumble dynamics in a crowded environment: PEP for swimmers" data-listing-filename-sort="run-and-tumble.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./literature_notes/run-and-tumble.html" class="title listing-title">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</a>
 </td>
 </tr>
-<tr data-index="11" data-listing-file-modified-sort="1707919601728" data-listing-reading-time-sort="2" data-listing-word-count-sort="213" data-listing-title-sort="Useful Commands and Information for Shared Github Activity" data-listing-filename-sort="gitinfo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="15" data-listing-file-modified-sort="1707919601728" data-listing-reading-time-sort="2" data-listing-word-count-sort="213" data-listing-title-sort="Useful Commands and Information for Shared Github Activity" data-listing-filename-sort="gitinfo.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/gitinfo.html" class="title listing-title">Useful Commands and Information for Shared Github Activity</a>
 </td>
 </tr>
-<tr data-index="12" data-listing-date-sort="1695855600000" data-listing-file-modified-sort="1707919601454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="148" data-listing-title-sort="Week 1" data-listing-filename-sort="week_1.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="16" data-listing-date-sort="1695855600000" data-listing-file-modified-sort="1707919601454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="148" data-listing-title-sort="Week 1" data-listing-filename-sort="week_1.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_1.html" class="title listing-title">Week 1</a>
 </td>
 </tr>
-<tr data-index="13" data-listing-date-sort="1706832000000" data-listing-file-modified-sort="1708527307130" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="161" data-listing-title-sort="Week 14" data-listing-filename-sort="week_14.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="17" data-listing-date-sort="1706832000000" data-listing-file-modified-sort="1708527307130" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="161" data-listing-title-sort="Week 14" data-listing-filename-sort="week_14.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_14.html" class="title listing-title">Week 14</a>
 </td>
 </tr>
-<tr data-index="14" data-listing-date-sort="1707696000000" data-listing-file-modified-sort="1709835043260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1527" data-listing-title-sort="Week 15" data-listing-filename-sort="week_15.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="18" data-listing-date-sort="1707696000000" data-listing-file-modified-sort="1709835043260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1527" data-listing-title-sort="Week 15" data-listing-filename-sort="week_15.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_15.html" class="title listing-title">Week 15</a>
 </td>
 </tr>
-<tr data-index="15" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1709068893307" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1194" data-listing-title-sort="Week 16" data-listing-filename-sort="week_16.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="19" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1709068893307" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1194" data-listing-title-sort="Week 16" data-listing-filename-sort="week_16.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_16.html" class="title listing-title">Week 16</a>
 </td>
 </tr>
-<tr data-index="16" data-listing-date-sort="1710201600000" data-listing-file-modified-sort="1710469314979" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="606" data-listing-title-sort="Week 19" data-listing-filename-sort="week_19.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="20" data-listing-date-sort="1710201600000" data-listing-file-modified-sort="1710469314979" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="606" data-listing-title-sort="Week 19" data-listing-filename-sort="week_19.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_19.html" class="title listing-title">Week 19</a>
 </td>
 </tr>
-<tr data-index="17" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1707919601458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160" data-listing-title-sort="Week 2" data-listing-filename-sort="week_2.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="21" data-listing-date-sort="1710201600000" data-listing-file-modified-sort="1710883836882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="38" data-listing-title-sort="Week 19" data-listing-filename-sort="week_20.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./activity_log/week_20.html" class="title listing-title">Week 19</a>
+</td>
+</tr>
+<tr data-index="22" data-listing-date-sort="1696892400000" data-listing-file-modified-sort="1710884939401" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160" data-listing-title-sort="Week 2" data-listing-filename-sort="week_2.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_2.html" class="title listing-title">Week 2</a>
 </td>
 </tr>
-<tr data-index="18" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1707919601461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="319" data-listing-title-sort="Week 3" data-listing-filename-sort="week_3.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="23" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1707919601461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="319" data-listing-title-sort="Week 3" data-listing-filename-sort="week_3.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_3.html" class="title listing-title">Week 3</a>
 </td>
 </tr>
-<tr data-index="19" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1707919601471" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="315" data-listing-title-sort="Week 4" data-listing-filename-sort="week_4.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="24" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1710884958001" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="315" data-listing-title-sort="Week 4" data-listing-filename-sort="week_4.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_4.html" class="title listing-title">Week 4</a>
 </td>
 </tr>
-<tr data-index="20" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1709085456074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273" data-listing-title-sort="Week 5" data-listing-filename-sort="week_5.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="25" data-listing-date-sort="1697151600000" data-listing-file-modified-sort="1709085456074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273" data-listing-title-sort="Week 5" data-listing-filename-sort="week_5.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_5.html" class="title listing-title">Week 5</a>
 </td>
 </tr>
-<tr data-index="21" data-listing-date-sort="1699401600000" data-listing-file-modified-sort="1709085445297" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1098" data-listing-title-sort="Week 6" data-listing-filename-sort="week_6.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="26" data-listing-date-sort="1699401600000" data-listing-file-modified-sort="1709085445297" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1098" data-listing-title-sort="Week 6" data-listing-filename-sort="week_6.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_6.html" class="title listing-title">Week 6</a>
 </td>
 </tr>
-<tr data-index="22" data-listing-date-sort="1699833600000" data-listing-file-modified-sort="1707919601494" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Week 7" data-listing-filename-sort="week_7.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="27" data-listing-date-sort="1699833600000" data-listing-file-modified-sort="1710884949464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Week 7" data-listing-filename-sort="week_7.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_7.html" class="title listing-title">Week 7</a>
 </td>
 </tr>
-<tr data-index="23" data-listing-date-sort="1705449600000" data-listing-file-modified-sort="1709735084648" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687" data-listing-title-sort="Week 8-13" data-listing-filename-sort="week_8.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="28" data-listing-date-sort="1705449600000" data-listing-file-modified-sort="1709735084648" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687" data-listing-title-sort="Week 8-13" data-listing-filename-sort="week_8.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./activity_log/week_8.html" class="title listing-title">Week 8-13</a>
 </td>
 </tr>
-<tr data-index="24" data-listing-date-sort="1707919601000" data-listing-file-modified-sort="1707919601754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="501" data-listing-title-sort="What is active matter and why do we study it?" data-listing-filename-sort="motivation.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="29" data-listing-date-sort="1707919601000" data-listing-file-modified-sort="1707919601754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="501" data-listing-title-sort="What is active matter and why do we study it?" data-listing-filename-sort="motivation.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="./writings/motivation.html" class="title listing-title">What is active matter and why do we study it?</a>
+<a href="./writing/motivation.html" class="title listing-title">What is active matter and why do we study it?</a>
 </td>
 </tr>
-<tr data-index="25" data-listing-file-modified-sort="1707919601754" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Writings listing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="30" data-listing-file-modified-sort="1710885615861" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Writing" data-listing-filename-sort="landing.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="./writings/landing.html" class="title listing-title">Writings listing</a>
+<a href="./writing/landing.html" class="title listing-title">Writing</a>
 </td>
 </tr>
-<tr data-index="26" data-listing-file-modified-sort="1707919601684" data-listing-reading-time-sort="1" data-listing-word-count-sort="125" data-listing-filename-sort="interim-report-structure.md" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="31" data-listing-file-modified-sort="1707919601684" data-listing-reading-time-sort="1" data-listing-word-count-sort="125" data-listing-filename-sort="interim-report-structure.md" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./shared/ftnotes/interim-report-structure.html" class="title listing-title">&nbsp;</a>
@@ -778,6 +800,9 @@ window.Quarto = {
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -799,150 +824,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1055,7 +936,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mstcl\.github\.io\/msci-wiki\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1382,17 +1263,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Sitemap"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="an">listing:</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">    contents: "**/*.*md"</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">    type: table</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">    table-hover: true</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">    table-striped: true</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">    fields: [title]</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1402,23 +1273,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="https://quarto.org">
-<p>Made with Quarto</p>
-</a>
-  </li>  
-    <li class="nav-item">
-    <a class="nav-link" href="https://creativecommons.org/licenses/by-nd/4.0/">
-<p>License</p>
-</a>
+ Branch: np
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/sitemap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/sitemap.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    </div>
     <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
- Version: NP
-  </li>  
-</ul>
+      &nbsp;
     </div>
   </div>
 </footer>

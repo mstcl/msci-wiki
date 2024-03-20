@@ -1,0 +1,9 @@
+---
+title: "CNN"
+listing:
+    contents: "*.ipynb"
+    type: table
+    table-hover: true
+    table-striped: true
+    sort: "date"
+---

@@ -66,31 +66,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../plots/acf.html" rel="next">
-<link href="../activity_log/week_7.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -107,428 +104,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../activity_log/week_1.html">Activity Log</a></li><li class="breadcrumb-item"><a href="../activity_log/week_8.html">Week 8-13</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../activity_log/landing.html"> 
+<span class="menu-text">Activity log</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../plots/landing.html"> 
+<span class="menu-text">Plots</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../training/landing.html"> 
+<span class="menu-text">CNN</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../writing/landing.html"> 
+<span class="menu-text">Writing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../misc.html"> 
+<span class="menu-text">Misc</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://github.com/mstcl/msci-wiki" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-git"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">Dissipation Learning in Active Matter</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Main content</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Activity Log</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 14</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 15</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 16</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 17</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_18.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 18</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_19.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 19</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_8.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Week 8-13</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Plots</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Stability check</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/cluster_count_and_biggest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Number of cluster and biggest cluster size</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/csize_grid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster distribution grid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/evo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snapshot evolution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/labelling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster manipulation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Number of clusters</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/percolation_ratio_rho.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ratio of biggest cluster over density</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Training</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/training_with_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Training with orientation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/training_without_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Training without orientation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/visualize_with_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing CNN layers with orientation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/visualize_without_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing CNN layers without orientation</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Literature Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Active Brownian particles: from collective phenomona to fundamental physics</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../literature_notes/motile-active-matter-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2020 Motile Active Matter Introduction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../literature_notes/run-and-tumble.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is active matter and why do we study it?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/prepatory_work.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepratory work, discussion, and plan for the future</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Link to colab notebook</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/ftnotes/interim-report-structure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Interim Report Structure</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/ftnotes/label.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Minimal cluster analysis</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Deadlines</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/repo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repository</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/cluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
- <span class="menu-text">External links</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
-</i> 
- <span class="menu-text">Network logbook</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
-</i> 
- <span class="menu-text">Zotero library</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://github.com/dlactivematter" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
-</i> 
- <span class="menu-text">PEP Repo</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../sitemap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">All pages</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Content</h2>
    
   <ul>
@@ -541,19 +169,19 @@ window.Quarto = {
   <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_8.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Main content</li><li class="breadcrumb-item"><a href="../activity_log/week_1.html">Activity Log</a></li><li class="breadcrumb-item"><a href="../activity_log/week_8.html">Week 8-13</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Week 8-13</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<h1 class="title">Week 8-13</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -597,9 +225,9 @@ window.Quarto = {
 </ul></li>
 <li><label><input type="checkbox">Look at percolation condition</label>
 <ul>
-<li>For a given <span class="math inline">\(\alpha\)</span>, at what <span class="math inline">\(\phi\)</span> do you get a cluster that is as large as <span class="math inline">\(L\)</span>?
+<li>For a given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, at what <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> do you get a cluster that is as large as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>?
 <ul>
-<li>Requires combing through may <span class="math inline">\(\phi\)</span>’s, which means combining our data.</li>
+<li>Requires combing through may <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>’s, which means combining our data.</li>
 </ul></li>
 </ul></li>
 <li><label><input type="checkbox">Look at convergence of cluster distribution. (???)</label></li>
@@ -667,10 +295,10 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 <h2 class="anchored" data-anchor-id="quantifying-percolation">Quantifying percolation</h2>
 <p>Here was our initial assumption on percolation:</p>
 <ul>
-<li>Percolation: increase <span class="math inline">\(L\)</span> increases largest cluster size (physical dimension is the limiting factor).</li>
-<li>No percolation: increase <span class="math inline">\(L\)</span> does not affect “biggest” cluster size.</li>
+<li>Percolation: increase <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math> increases largest cluster size (physical dimension is the limiting factor).</li>
+<li>No percolation: increase <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math> does not affect “biggest” cluster size.</li>
 </ul>
-<p>We can’t implement this in code because we cannot modify physical dimension without making new datasets at different system sizes. Instead, we looked at how <span class="math inline">\(\rho\)</span> affect the biggest cluster size, measured as the ratio to the system size.</p>
+<p>We can’t implement this in code because we cannot modify physical dimension without making new datasets at different system sizes. Instead, we looked at how <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math> affect the biggest cluster size, measured as the ratio to the system size.</p>
 <p>See <a href="../plots/percolation_ratio_rho.html">here</a> for plots.</p>
 <section id="problem" class="level3">
 <h3 class="anchored" data-anchor-id="problem">Problem</h3>
@@ -678,12 +306,10 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 <p>By only looking at the bulk size, we miss out on the details. At some point, we should return to this percolation analysis and calculate the fractal dimension as a link to percolation.</p>
 
 
-<!-- -->
-
 </section>
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -704,150 +330,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1288,165 +770,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../activity_log/week_7.html" class="pagination-link" aria-label="Week 7">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 7</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../plots/acf.html" class="pagination-link" aria-label="Stability check">
-        <span class="nav-page-text">Stability check</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="an">title:</span><span class="co"> Week 8-13</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="an">date:</span><span class="co"> 2024-01-17</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="an">author:</span><span class="co"> NP</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">---</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a>Across these weeks were a mix of interim report writing, other courseworks, as</span>
-<span id="cb5-8"><a href="#cb5-8"></a>well as the winter break. Below are some tasks we could look at over the break.</span>
-<span id="cb5-9"><a href="#cb5-9"></a>Because tasks were done sporadically and not ordered across weeks, they are all</span>
-<span id="cb5-10"><a href="#cb5-10"></a>included within one entry to make more sense.</span>
-<span id="cb5-11"><a href="#cb5-11"></a></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">## Task for week 8-12</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="ss">- </span><span class="va">[x]</span> Finish and submit interim report</span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="ss">- </span><span class="va">[x]</span> Have a chat with our assessor over our report</span>
-<span id="cb5-16"><a href="#cb5-16"></a></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="fu">## Task for the break up to week 13</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="ss">- </span><span class="va">[x]</span> Test GPU on BluePebble</span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="ss">- </span><span class="va">[x]</span> Fit the cluster size distribution (see <span class="co">[</span><span class="ot">here</span><span class="co">](../plots/csize_grid.ipynb)</span>)</span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="ss">- </span><span class="va">[ ]</span> Look at cluster distribution over time</span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="ss">  - </span>This provides timescale for stationarity</span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="ss">  - </span>Already doing the average, adapt code to do over time</span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="ss">- </span><span class="va">[ ]</span> Look at percolation condition</span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="ss">  - </span>For a given $\alpha$, at what $\phi$ do you get a cluster that is as large as $L$?</span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="ss">    - </span>Requires combing through may $\phi$'s, which means combining our data.</span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="ss">- </span><span class="va">[ ]</span> Look at convergence of cluster distribution. (???)</span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="ss">- </span><span class="va">[x]</span> Quantify percolation</span>
-<span id="cb5-29"><a href="#cb5-29"></a></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="fu">## Project plan and outline</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="ss">- </span>characterisation: this is to set the landscape through PEP analysis, contrasted to</span>
-<span id="cb5-33"><a href="#cb5-33"></a>  a data-driven method with ML</span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="ss">  - </span>timescales</span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="ss">  - </span>cluster drift</span>
-<span id="cb5-36"><a href="#cb5-36"></a><span class="ss">  - </span>percolation</span>
-<span id="cb5-37"><a href="#cb5-37"></a><span class="ss">  - </span>alpha-phi diagram</span>
-<span id="cb5-38"><a href="#cb5-38"></a><span class="ss">  - </span>pair correlations (linking with dissipation), which we have not looked at</span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="ss">- </span>Construction: a minimal CNN model with two approaches</span>
-<span id="cb5-40"><a href="#cb5-40"></a><span class="ss">  1. </span>ignore orientation (experiment-like) and only using positions</span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="ss">  1. </span>all information, positions and orientation</span>
-<span id="cb5-42"><a href="#cb5-42"></a><span class="ss">- </span>Validation: of the architecture (in terms of prediction)</span>
-<span id="cb5-43"><a href="#cb5-43"></a><span class="ss">  - </span>number of layers, the feature map, options</span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="ss">  - </span>how much data (can we minimise it?)</span>
-<span id="cb5-45"><a href="#cb5-45"></a><span class="ss">  - </span>how does it extrapolate?</span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="ss">- </span>Explainability</span>
-<span id="cb5-47"><a href="#cb5-47"></a><span class="ss">  - </span>look into feature maps and find correlations</span>
-<span id="cb5-48"><a href="#cb5-48"></a><span class="ss">  - </span>does it have the pair-correlations + more? Check with these explicit ways</span>
-<span id="cb5-49"><a href="#cb5-49"></a>    of measuring dissipation</span>
-<span id="cb5-50"><a href="#cb5-50"></a><span class="ss">- </span>Robustness:</span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="ss">  - </span>Can we get robustness?</span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="ss">    - </span>Different systems</span>
-<span id="cb5-53"><a href="#cb5-53"></a><span class="ss">    - </span>Non-steady state</span>
-<span id="cb5-54"><a href="#cb5-54"></a><span class="ss">    - </span>Off-lattice?</span>
-<span id="cb5-55"><a href="#cb5-55"></a></span>
-<span id="cb5-56"><a href="#cb5-56"></a><span class="fu">## Tensorflow and GPU testing</span></span>
-<span id="cb5-57"><a href="#cb5-57"></a></span>
-<span id="cb5-58"><a href="#cb5-58"></a>Need to install tensorflow with CUDA like this</span>
-<span id="cb5-59"><a href="#cb5-59"></a></span>
-<span id="cb5-60"><a href="#cb5-60"></a><span class="in">```bash</span></span>
-<span id="cb5-61"><a href="#cb5-61"></a><span class="ex">pip</span> install tensorflow<span class="pp">[</span><span class="ss">and</span><span class="pp">-</span><span class="ss">cuda</span><span class="pp">]</span></span>
-<span id="cb5-62"><a href="#cb5-62"></a><span class="in">```</span></span>
-<span id="cb5-63"><a href="#cb5-63"></a></span>
-<span id="cb5-64"><a href="#cb5-64"></a>Include these directives to SLURM GPU jobs:</span>
-<span id="cb5-65"><a href="#cb5-65"></a></span>
-<span id="cb5-66"><a href="#cb5-66"></a><span class="in">```bash</span></span>
-<span id="cb5-67"><a href="#cb5-67"></a><span class="co">#SBATCH --gres=gpu:2</span></span>
-<span id="cb5-68"><a href="#cb5-68"></a><span class="co">#SBATCH --partition gpu</span></span>
-<span id="cb5-69"><a href="#cb5-69"></a><span class="in">```</span></span>
-<span id="cb5-70"><a href="#cb5-70"></a></span>
-<span id="cb5-71"><a href="#cb5-71"></a>This is the output of <span class="in">`tf.config.list_physical_devices("GPU")`</span>:</span>
-<span id="cb5-72"><a href="#cb5-72"></a></span>
-<span id="cb5-73"><a href="#cb5-73"></a><span class="in">```</span></span>
-<span id="cb5-74"><a href="#cb5-74"></a><span class="in">I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:0 with 9804 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5</span></span>
-<span id="cb5-75"><a href="#cb5-75"></a><span class="in">I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:1 with 9804 MB memory:  -&gt; device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:af:00.0, compute capability: 7.5</span></span>
-<span id="cb5-76"><a href="#cb5-76"></a><span class="in">```</span></span>
-<span id="cb5-77"><a href="#cb5-77"></a></span>
-<span id="cb5-78"><a href="#cb5-78"></a>In addition to this, I got weird errors and info even though the above works:</span>
-<span id="cb5-79"><a href="#cb5-79"></a></span>
-<span id="cb5-80"><a href="#cb5-80"></a><span class="in">```</span></span>
-<span id="cb5-81"><a href="#cb5-81"></a><span class="in">cpu-bind=MASK - bp1-gpu002, task  0  0 [170146]: mask 0x2020 set</span></span>
-<span id="cb5-82"><a href="#cb5-82"></a><span class="in">E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered</span></span>
-<span id="cb5-83"><a href="#cb5-83"></a><span class="in">E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered</span></span>
-<span id="cb5-84"><a href="#cb5-84"></a><span class="in">E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered</span></span>
-<span id="cb5-85"><a href="#cb5-85"></a><span class="in">I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.</span></span>
-<span id="cb5-86"><a href="#cb5-86"></a><span class="in">To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.</span></span>
-<span id="cb5-87"><a href="#cb5-87"></a><span class="in">```</span></span>
-<span id="cb5-88"><a href="#cb5-88"></a></span>
-<span id="cb5-89"><a href="#cb5-89"></a>Importing keras and other tensorflow modules seem to work fine. The error</span>
-<span id="cb5-90"><a href="#cb5-90"></a>appears at the start. Maybe it might be an issue later on.</span>
-<span id="cb5-91"><a href="#cb5-91"></a></span>
-<span id="cb5-92"><a href="#cb5-92"></a><span class="fu">## Quantifying percolation</span></span>
-<span id="cb5-93"><a href="#cb5-93"></a></span>
-<span id="cb5-94"><a href="#cb5-94"></a>Here was our initial assumption on percolation:</span>
-<span id="cb5-95"><a href="#cb5-95"></a></span>
-<span id="cb5-96"><a href="#cb5-96"></a><span class="ss">- </span>Percolation: increase $L$ increases largest cluster size</span>
-<span id="cb5-97"><a href="#cb5-97"></a>  (physical dimension is the limiting factor).</span>
-<span id="cb5-98"><a href="#cb5-98"></a><span class="ss">- </span>No percolation: increase $L$ does not affect "biggest" cluster size.</span>
-<span id="cb5-99"><a href="#cb5-99"></a></span>
-<span id="cb5-100"><a href="#cb5-100"></a>We can't implement this in code because we cannot modify physical dimension</span>
-<span id="cb5-101"><a href="#cb5-101"></a>without making new datasets at different system sizes. Instead, we looked at</span>
-<span id="cb5-102"><a href="#cb5-102"></a>how $\rho$ affect the biggest cluster size, measured as the ratio to the system</span>
-<span id="cb5-103"><a href="#cb5-103"></a>size.</span>
-<span id="cb5-104"><a href="#cb5-104"></a></span>
-<span id="cb5-105"><a href="#cb5-105"></a>See <span class="co">[</span><span class="ot">here</span><span class="co">](../plots/percolation_ratio_rho.ipynb)</span> for plots.</span>
-<span id="cb5-106"><a href="#cb5-106"></a></span>
-<span id="cb5-107"><a href="#cb5-107"></a><span class="fu">### Problem</span></span>
-<span id="cb5-108"><a href="#cb5-108"></a></span>
-<span id="cb5-109"><a href="#cb5-109"></a>The issue with this approach is it doesn't quite capture percolation, as</span>
-<span id="cb5-110"><a href="#cb5-110"></a>what we care more about is the edge-to-edge connectedness. For this,</span>
-<span id="cb5-111"><a href="#cb5-111"></a>we look not at its bulk size but its size from one edge to the other,</span>
-<span id="cb5-112"><a href="#cb5-112"></a>and calculate its fractal dimension, which will indicate whether or not</span>
-<span id="cb5-113"><a href="#cb5-113"></a>its smooth or has more complex details.</span>
-<span id="cb5-114"><a href="#cb5-114"></a></span>
-<span id="cb5-115"><a href="#cb5-115"></a>By only looking at the bulk size, we miss out on the details. At some point, we</span>
-<span id="cb5-116"><a href="#cb5-116"></a>should return to this percolation analysis and calculate the fractal dimension</span>
-<span id="cb5-117"><a href="#cb5-117"></a>as a link to percolation.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="https://quarto.org">
-<p>Made with Quarto</p>
-</a>
-  </li>  
-    <li class="nav-item">
-    <a class="nav-link" href="https://creativecommons.org/licenses/by-nd/4.0/">
-<p>License</p>
-</a>
-  </li>  
-</ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/activity_log/week_8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/activity_log/week_8.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
- Version: NP
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 

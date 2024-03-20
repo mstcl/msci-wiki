@@ -1,0 +1,9 @@
+---
+title: "Plots"
+listing:
+    contents: "*"
+    type: table
+    table-hover: true
+    table-striped: true
+    sort: "date"
+---

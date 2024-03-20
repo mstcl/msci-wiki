@@ -1,41 +1,35 @@
 [
   {
-    "listing": "/sitemap.html",
+    "listing": "/misc.html",
     "items": [
-      "/literature_notes/motile-active-matter-intro.html",
-      "/literature_notes/active-brownian-particles.html",
-      "/activity_log/landing.html",
-      "/shared/cluster.html",
-      "/shared/deadlines.html",
-      "/index.html",
-      "/shared/ftnotes/Colab.html",
-      "/literature_notes/landing.html",
-      "/writings/prepatory_work.html",
-      "/shared/repo.html",
       "/literature_notes/run-and-tumble.html",
+      "/literature_notes/active-brownian-particles.html",
+      "/literature_notes/motile-active-matter-intro.html",
+      "/shared/cluster.html",
+      "/shared/ftnotes/Colab.html",
+      "/shared/ftnotes/interim-report-structure.html",
+      "/shared/ftnotes/label.html",
+      "/shared/deadlines.html",
       "/shared/gitinfo.html",
-      "/activity_log/week_1.html",
-      "/activity_log/week_14.html",
-      "/activity_log/week_15.html",
-      "/activity_log/week_16.html",
-      "/activity_log/week_19.html",
-      "/activity_log/week_2.html",
-      "/activity_log/week_3.html",
-      "/activity_log/week_4.html",
-      "/activity_log/week_5.html",
-      "/activity_log/week_6.html",
-      "/activity_log/week_7.html",
-      "/activity_log/week_8.html",
-      "/writings/motivation.html",
-      "/writings/landing.html",
-      "/shared/ftnotes/interim-report-structure.html"
+      "/shared/repo.html"
     ]
   },
   {
-    "listing": "/writings/landing.html",
+    "listing": "/writing/landing.html",
     "items": [
-      "/writings/prepatory_work.html",
-      "/writings/motivation.html"
+      "/writing/prepatory_work.html",
+      "/writing/motivation.html",
+      "/writing/interim.html"
+    ]
+  },
+  {
+    "listing": "/training/landing.html",
+    "items": [
+      "/training/training_summary.html",
+      "/training/training_with_orientation.html",
+      "/training/training_without_orientation.html",
+      "/training/visualize_with_orientation.html",
+      "/training/visualize_without_orientation.html"
     ]
   },
   {
@@ -52,7 +46,23 @@
       "/activity_log/week_14.html",
       "/activity_log/week_15.html",
       "/activity_log/week_16.html",
-      "/activity_log/week_19.html"
+      "/activity_log/week_17.html",
+      "/activity_log/week_18.html",
+      "/activity_log/week_19.html",
+      "/activity_log/week_20.html"
+    ]
+  },
+  {
+    "listing": "/plots/landing.html",
+    "items": [
+      "/plots/acf.html",
+      "/plots/cluster_count_and_biggest.html",
+      "/plots/csize_grid.html",
+      "/plots/evo.html",
+      "/plots/labelling.html",
+      "/plots/number_of_cluster.html",
+      "/plots/percolation.html",
+      "/plots/percolation_ratio_rho.html"
     ]
   },
   {

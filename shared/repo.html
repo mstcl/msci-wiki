@@ -64,31 +64,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../shared/cluster.html" rel="next">
-<link href="../shared/deadlines.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -108,396 +105,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../shared/deadlines.html">Project information</a></li><li class="breadcrumb-item"><a href="../shared/repo.html">Repository</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../activity_log/landing.html"> 
+<span class="menu-text">Activity log</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../plots/landing.html"> 
+<span class="menu-text">Plots</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../training/landing.html"> 
+<span class="menu-text">CNN</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../writing/landing.html"> 
+<span class="menu-text">Writing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../misc.html"> 
+<span class="menu-text">Misc</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://github.com/mstcl/msci-wiki" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-git"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">Dissipation Learning in Active Matter</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Main content</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Activity Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 14</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 15</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 16</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 17</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_18.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 18</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_19.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 19</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../activity_log/week_8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8-13</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Plots</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Stability check</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/cluster_count_and_biggest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Number of cluster and biggest cluster size</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/csize_grid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster distribution grid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/evo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snapshot evolution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/labelling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster manipulation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/number_of_cluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Number of clusters</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../plots/percolation_ratio_rho.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ratio of biggest cluster over density</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Training</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/training_with_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Training with orientation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/training_without_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Training without orientation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/visualize_with_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing CNN layers with orientation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../training/visualize_without_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing CNN layers without orientation</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Literature Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../literature_notes/active-brownian-particles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Active Brownian particles: from collective phenomona to fundamental physics</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../literature_notes/motile-active-matter-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2020 Motile Active Matter Introduction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../literature_notes/run-and-tumble.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Writings</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/motivation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is active matter and why do we study it?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../writings/prepatory_work.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepratory work, discussion, and plan for the future</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/ftnotes/Colab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Link to colab notebook</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/ftnotes/interim-report-structure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Interim Report Structure</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/ftnotes/label.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Minimal cluster analysis</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">Project information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Deadlines</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/repo.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Repository</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../shared/cluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cluster</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
- <span class="menu-text">External links</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
-</i> 
- <span class="menu-text">Network logbook</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
-</i> 
- <span class="menu-text">Zotero library</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://github.com/dlactivematter" class="sidebar-item-text sidebar-link"><i class="bi bi-link-45deg" role="img">
-</i> 
- <span class="menu-text">PEP Repo</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../sitemap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">All pages</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Content</h2>
    
   <ul>
@@ -509,19 +166,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#push-the-changes" id="toc-push-the-changes" class="nav-link" data-scroll-target="#push-the-changes">Push the changes</a><a name="push-the-changes" class="nav-link" data-scroll-target="undefined"></a></li>
   <li><a href="#accessing-the-live-website" id="toc-accessing-the-live-website" class="nav-link" data-scroll-target="#accessing-the-live-website">Accessing the live website</a><a name="accessing-the-live-website" class="nav-link" data-scroll-target="undefined"></a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/shared/repo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/shared/repo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../shared/deadlines.html">Project information</a></li><li class="breadcrumb-item"><a href="../shared/repo.html">Repository</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Repository information</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<h1 class="title">Repository information</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -624,11 +281,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 
 
-<!-- -->
-
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -649,150 +304,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1233,194 +744,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../shared/deadlines.html" class="pagination-link" aria-label="Deadlines">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Deadlines</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../shared/cluster.html" class="pagination-link" aria-label="Cluster">
-        <span class="nav-page-text">Cluster</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="an">title:</span><span class="co"> Repository information</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="co">---</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co">&lt;!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 --&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Forking</span><span class="co">](#forking)</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Local development</span><span class="co">](#local-development)</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Managing branches and commits</span><span class="co">](#managing-branches-and-commits)</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Initialise a Quarto project</span><span class="co">](#initialise-a-quarto-project)</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Building pages</span><span class="co">](#building-pages)</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Push the changes</span><span class="co">](#push-the-changes)</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Accessing the live website</span><span class="co">](#accessing-the-live-website)</span></span>
-<span id="cb10-14"><a href="#cb10-14"></a></span>
-<span id="cb10-15"><a href="#cb10-15"></a><span class="co">&lt;!-- mdformat-toc end --&gt;</span></span>
-<span id="cb10-16"><a href="#cb10-16"></a></span>
-<span id="cb10-17"><a href="#cb10-17"></a>A brief guide on how to setup this website elsewhere and develop the wiki.</span>
-<span id="cb10-18"><a href="#cb10-18"></a></span>
-<span id="cb10-19"><a href="#cb10-19"></a><span class="fu">## Forking&lt;a name="forking"&gt;&lt;/a&gt;</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a></span>
-<span id="cb10-21"><a href="#cb10-21"></a><span class="ss">- </span>If using a **Codeberg** account, fork [this</span>
-<span id="cb10-22"><a href="#cb10-22"></a>  repo](https://codeberg.org/lckdscl/msci-wiki).</span>
-<span id="cb10-23"><a href="#cb10-23"></a><span class="ss">- </span>If using a **GitHub** account, fork [this</span>
-<span id="cb10-24"><a href="#cb10-24"></a>  repo](https://github.com/mstcl/msci-wiki).</span>
-<span id="cb10-25"><a href="#cb10-25"></a></span>
-<span id="cb10-26"><a href="#cb10-26"></a><span class="fu">## Local development&lt;a name="local-development"&gt;&lt;/a&gt;</span></span>
-<span id="cb10-27"><a href="#cb10-27"></a></span>
-<span id="cb10-28"><a href="#cb10-28"></a>It's recommended to use SSH and SSH keys when working with a remote git.</span>
-<span id="cb10-29"><a href="#cb10-29"></a></span>
-<span id="cb10-30"><a href="#cb10-30"></a><span class="ss">- </span>Key generating instructions are found</span>
-<span id="cb10-31"><a href="#cb10-31"></a>  <span class="co">[</span><span class="ot">here</span><span class="co">](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)</span></span>
-<span id="cb10-32"><a href="#cb10-32"></a>  (this is git-server agnostic).</span>
-<span id="cb10-33"><a href="#cb10-33"></a><span class="ss">- </span>For **GitHub**, follow</span>
-<span id="cb10-34"><a href="#cb10-34"></a>  <span class="co">[</span><span class="ot">this</span><span class="co">](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)</span></span>
-<span id="cb10-35"><a href="#cb10-35"></a>  to add your key.</span>
-<span id="cb10-36"><a href="#cb10-36"></a><span class="ss">- </span>For **Codeberg**, it's similar, navigate to [this</span>
-<span id="cb10-37"><a href="#cb10-37"></a>  link](https://codeberg.org/user/settings/keys) when logged in, and then <span class="in">`Add key`</span> under the <span class="in">`Manage SSH Keys`</span> section.</span>
-<span id="cb10-38"><a href="#cb10-38"></a></span>
-<span id="cb10-39"><a href="#cb10-39"></a>Clone the repo locally:</span>
-<span id="cb10-40"><a href="#cb10-40"></a></span>
-<span id="cb10-41"><a href="#cb10-41"></a><span class="ss">- </span>For **Codeberg**:</span>
-<span id="cb10-42"><a href="#cb10-42"></a></span>
-<span id="cb10-43"><a href="#cb10-43"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-44"><a href="#cb10-44"></a><span class="in">git clone git@codeberg.org:&lt;user&gt;/msci-wiki.git</span></span>
-<span id="cb10-45"><a href="#cb10-45"></a><span class="in">```</span></span>
-<span id="cb10-46"><a href="#cb10-46"></a></span>
-<span id="cb10-47"><a href="#cb10-47"></a><span class="ss">- </span>For **GitHub**:</span>
-<span id="cb10-48"><a href="#cb10-48"></a></span>
-<span id="cb10-49"><a href="#cb10-49"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-50"><a href="#cb10-50"></a><span class="in">git clone git@github.com:&lt;user&gt;/msci-wiki.git</span></span>
-<span id="cb10-51"><a href="#cb10-51"></a><span class="in">```</span></span>
-<span id="cb10-52"><a href="#cb10-52"></a></span>
-<span id="cb10-53"><a href="#cb10-53"></a><span class="fu">## Managing branches and commits&lt;a name="managing-branches-and-commits"&gt;&lt;/a&gt;</span></span>
-<span id="cb10-54"><a href="#cb10-54"></a></span>
-<span id="cb10-55"><a href="#cb10-55"></a>Make a **new branch** to build your own website from with</span>
-<span id="cb10-56"><a href="#cb10-56"></a></span>
-<span id="cb10-57"><a href="#cb10-57"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-58"><a href="#cb10-58"></a><span class="in">git checkout -b &lt;make_your_own_unique_name&gt;</span></span>
-<span id="cb10-59"><a href="#cb10-59"></a><span class="in">```</span></span>
-<span id="cb10-60"><a href="#cb10-60"></a></span>
-<span id="cb10-61"><a href="#cb10-61"></a>This branch will contain individual work + shared stuff. It should be the</span>
-<span id="cb10-62"><a href="#cb10-62"></a>source of truth.</span>
-<span id="cb10-63"><a href="#cb10-63"></a></span>
-<span id="cb10-64"><a href="#cb10-64"></a>From now on, we will refer to this branch as <span class="in">`my_branch`</span>.</span>
-<span id="cb10-65"><a href="#cb10-65"></a></span>
-<span id="cb10-66"><a href="#cb10-66"></a>When contributing to **shared** knowledge, switch to <span class="in">`shared`</span> branch with</span>
-<span id="cb10-67"><a href="#cb10-67"></a><span class="in">`git checkout shared`</span>. In this branch, there should be only one directory</span>
-<span id="cb10-68"><a href="#cb10-68"></a>called <span class="in">`shared`</span>. This is the root folder of all shared information. Any further</span>
-<span id="cb10-69"><a href="#cb10-69"></a>directory structuring occurs within this, not outside of it.</span>
-<span id="cb10-70"><a href="#cb10-70"></a></span>
-<span id="cb10-71"><a href="#cb10-71"></a><span class="ss">- </span>**No individual work goes into the <span class="in">`shared`</span> branch to avoid conflicts with</span>
-<span id="cb10-72"><a href="#cb10-72"></a>  filenames!**</span>
-<span id="cb10-73"><a href="#cb10-73"></a></span>
-<span id="cb10-74"><a href="#cb10-74"></a>When merging new commits containing shared information from <span class="in">`shared`</span> to</span>
-<span id="cb10-75"><a href="#cb10-75"></a><span class="in">`my_branch`</span>, switch to <span class="in">`my_branch`</span> with <span class="in">`git checkout my_branch`</span>, and then</span>
-<span id="cb10-76"><a href="#cb10-76"></a>perform a merge with</span>
-<span id="cb10-77"><a href="#cb10-77"></a></span>
-<span id="cb10-78"><a href="#cb10-78"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-79"><a href="#cb10-79"></a><span class="in">git merge shared</span></span>
-<span id="cb10-80"><a href="#cb10-80"></a><span class="in">```</span></span>
-<span id="cb10-81"><a href="#cb10-81"></a></span>
-<span id="cb10-82"><a href="#cb10-82"></a><span class="ss">- </span>**Don't merge from `my_branch` to `shared`!**</span>
-<span id="cb10-83"><a href="#cb10-83"></a></span>
-<span id="cb10-84"><a href="#cb10-84"></a>In the case there are problematic commits in <span class="in">`shared`</span>, future merge can be done with</span>
-<span id="cb10-85"><a href="#cb10-85"></a>cherry-pick. Say this is <span class="in">`shared`</span>:</span>
-<span id="cb10-86"><a href="#cb10-86"></a></span>
-<span id="cb10-87"><a href="#cb10-87"></a><span class="in">```{.txt code-line-numbers="false"}</span></span>
-<span id="cb10-88"><a href="#cb10-88"></a><span class="in">SHA0 (HEAD): I want this commit</span></span>
-<span id="cb10-89"><a href="#cb10-89"></a><span class="in">SHA1: I don't want this commit</span></span>
-<span id="cb10-90"><a href="#cb10-90"></a><span class="in">SHA2: I want this commit</span></span>
-<span id="cb10-91"><a href="#cb10-91"></a><span class="in">```</span></span>
-<span id="cb10-92"><a href="#cb10-92"></a></span>
-<span id="cb10-93"><a href="#cb10-93"></a>Then, in <span class="in">`my_branch`</span>:</span>
-<span id="cb10-94"><a href="#cb10-94"></a></span>
-<span id="cb10-95"><a href="#cb10-95"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-96"><a href="#cb10-96"></a><span class="in">git cherry-pick SHA2</span></span>
-<span id="cb10-97"><a href="#cb10-97"></a><span class="in">git cherry-pick SHA0</span></span>
-<span id="cb10-98"><a href="#cb10-98"></a><span class="in">```</span></span>
-<span id="cb10-99"><a href="#cb10-99"></a></span>
-<span id="cb10-100"><a href="#cb10-100"></a><span class="fu">## Initialise a Quarto project&lt;a name="initialise-a-quarto-project"&gt;&lt;/a&gt;</span></span>
-<span id="cb10-101"><a href="#cb10-101"></a></span>
-<span id="cb10-102"><a href="#cb10-102"></a>In <span class="in">`my_branch`</span>, make a new Quarto project with the website template:</span>
-<span id="cb10-103"><a href="#cb10-103"></a></span>
-<span id="cb10-104"><a href="#cb10-104"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-105"><a href="#cb10-105"></a><span class="in">quarto create project website</span></span>
-<span id="cb10-106"><a href="#cb10-106"></a><span class="in">```</span></span>
-<span id="cb10-107"><a href="#cb10-107"></a></span>
-<span id="cb10-108"><a href="#cb10-108"></a>Take a look at <span class="in">`_quarto.yml`</span> from branch <span class="in">`np`</span> for an example of how to</span>
-<span id="cb10-109"><a href="#cb10-109"></a>configure it.</span>
-<span id="cb10-110"><a href="#cb10-110"></a></span>
-<span id="cb10-111"><a href="#cb10-111"></a><span class="fu">## Building pages&lt;a name="building-pages"&gt;&lt;/a&gt;</span></span>
-<span id="cb10-112"><a href="#cb10-112"></a></span>
-<span id="cb10-113"><a href="#cb10-113"></a>Quarto by default publishes to the branch <span class="in">`gh-pages`</span>.</span>
-<span id="cb10-114"><a href="#cb10-114"></a></span>
-<span id="cb10-115"><a href="#cb10-115"></a>To build the pages, first, run the following:</span>
-<span id="cb10-116"><a href="#cb10-116"></a></span>
-<span id="cb10-117"><a href="#cb10-117"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-118"><a href="#cb10-118"></a><span class="in">quarto publish gh-pages</span></span>
-<span id="cb10-119"><a href="#cb10-119"></a><span class="in">```</span></span>
-<span id="cb10-120"><a href="#cb10-120"></a></span>
-<span id="cb10-121"><a href="#cb10-121"></a>This will build and push to the <span class="in">`gh-pages`</span> branch.</span>
-<span id="cb10-122"><a href="#cb10-122"></a></span>
-<span id="cb10-123"><a href="#cb10-123"></a><span class="ss">- </span>If using **GitHub**, that's</span>
-<span id="cb10-124"><a href="#cb10-124"></a>  all you need to do.</span>
-<span id="cb10-125"><a href="#cb10-125"></a></span>
-<span id="cb10-126"><a href="#cb10-126"></a><span class="ss">- </span>If using **Codeberg**, you can view it by going to</span>
-<span id="cb10-127"><a href="#cb10-127"></a>  <span class="in">`https://username.codeberg.page/@gh-pages`</span></span>
-<span id="cb10-128"><a href="#cb10-128"></a></span>
-<span id="cb10-129"><a href="#cb10-129"></a><span class="fu">## Push the changes&lt;a name="push-the-changes"&gt;&lt;/a&gt;</span></span>
-<span id="cb10-130"><a href="#cb10-130"></a></span>
-<span id="cb10-131"><a href="#cb10-131"></a>Pushing changes to remote servers make rolling back very difficult, make sure</span>
-<span id="cb10-132"><a href="#cb10-132"></a>everything looks correct first. Use <span class="in">`git log`</span> and <span class="in">`git status`</span> to ensure</span>
-<span id="cb10-133"><a href="#cb10-133"></a>everything has been committed. To push everything to a mirror:</span>
-<span id="cb10-134"><a href="#cb10-134"></a></span>
-<span id="cb10-135"><a href="#cb10-135"></a><span class="in">```{.bash code-line-numbers="false"}</span></span>
-<span id="cb10-136"><a href="#cb10-136"></a><span class="in">git push &lt;remote&gt; &lt;branch&gt;</span></span>
-<span id="cb10-137"><a href="#cb10-137"></a><span class="in">```</span></span>
-<span id="cb10-138"><a href="#cb10-138"></a></span>
-<span id="cb10-139"><a href="#cb10-139"></a>**Try to keep all branches up-to-date on all mirrors!**</span>
-<span id="cb10-140"><a href="#cb10-140"></a></span>
-<span id="cb10-141"><a href="#cb10-141"></a><span class="fu">## Accessing the live website&lt;a name="accessing-the-live-website"&gt;&lt;/a&gt;</span></span>
-<span id="cb10-142"><a href="#cb10-142"></a></span>
-<span id="cb10-143"><a href="#cb10-143"></a><span class="ss">- </span>For **Codeberg**, it's <span class="in">`https://username.codeberg.page/msci-wiki/@gh-pages`</span> (more</span>
-<span id="cb10-144"><a href="#cb10-144"></a>  <span class="co">[</span><span class="ot">information</span><span class="co">](https://codeberg.page)</span>).</span>
-<span id="cb10-145"><a href="#cb10-145"></a><span class="ss">- </span>For **GitHub**, it's <span class="in">`https://username.github.io/msci-wiki`</span> (more</span>
-<span id="cb10-146"><a href="#cb10-146"></a>  <span class="co">[</span><span class="ot">information</span><span class="co">](https://pages.github.com/)</span>).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="https://quarto.org">
-<p>Made with Quarto</p>
-</a>
-  </li>  
-    <li class="nav-item">
-    <a class="nav-link" href="https://creativecommons.org/licenses/by-nd/4.0/">
-<p>License</p>
-</a>
-  </li>  
-</ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mstcl/msci-wiki/edit/np/shared/repo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mstcl/msci-wiki/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/mstcl/msci-wiki/blob/np/shared/repo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
- Version: NP
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 
