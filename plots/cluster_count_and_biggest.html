@@ -206,36 +206,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-17"><a href="#cb1-17"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="im">from</span> src.utils <span class="im">import</span> get_ds_iters</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="im">from</span> src.utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span>
 <span id="cb1-20"><a href="#cb1-20"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-2" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="1">
+<div id="cell-2" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>densities <span class="op">=</span> [<span class="fl">0.15</span>,<span class="fl">0.25</span>,<span class="fl">0.35</span>,<span class="fl">0.45</span>]</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>densities <span class="op">=</span> [<span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="fl">0.5</span>]</span>
 <span id="cb2-2"><a href="#cb2-2"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
-<span id="cb2-4"><a href="#cb2-4"></a>num <span class="op">=</span> []</span>
-<span id="cb2-5"><a href="#cb2-5"></a>big <span class="op">=</span> []</span>
-<span id="cb2-6"><a href="#cb2-6"></a>ds <span class="op">=</span> []</span>
-<span id="cb2-7"><a href="#cb2-7"></a>ts <span class="op">=</span> []</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">for</span> idx, d <span class="kw">in</span> <span class="bu">enumerate</span>(densities):</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">for</span> jdx, t <span class="kw">in</span> <span class="bu">enumerate</span>(tumbles):</span>
-<span id="cb2-11"><a href="#cb2-11"></a>        hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_</span><span class="sc">{</span>t<span class="sc">:.3f}</span><span class="ss">_</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>        iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb2-13"><a href="#cb2-13"></a>        <span class="cf">for</span> idx2 <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">300</span>):</span>
-<span id="cb2-14"><a href="#cb2-14"></a>            ds.append(d)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>            ts.append(t)</span>
-<span id="cb2-16"><a href="#cb2-16"></a>            img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[idx2]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb2-17"><a href="#cb2-17"></a>            labelled, nlabels <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
-<span id="cb2-18"><a href="#cb2-18"></a>            lb <span class="op">=</span> labelled.flatten()</span>
-<span id="cb2-19"><a href="#cb2-19"></a>            big.append(np.<span class="bu">max</span>(np.bincount(lb)[<span class="dv">1</span>:]))</span>
-<span id="cb2-20"><a href="#cb2-20"></a>            num.append(nlabels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a>num <span class="op">=</span> []</span>
+<span id="cb2-4"><a href="#cb2-4"></a>big <span class="op">=</span> []</span>
+<span id="cb2-5"><a href="#cb2-5"></a>ds <span class="op">=</span> []</span>
+<span id="cb2-6"><a href="#cb2-6"></a>ts <span class="op">=</span> []</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="cf">for</span> idx, d <span class="kw">in</span> <span class="bu">enumerate</span>(densities):</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="cf">for</span> jdx, t <span class="kw">in</span> <span class="bu">enumerate</span>(tumbles):</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        <span class="bu">file</span> <span class="op">=</span> <span class="ss">f"no_roll_data/dataset_tumble_</span><span class="sc">{</span>t<span class="sc">:.3f}</span><span class="ss">_</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">.h5"</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>        <span class="cf">for</span> idx2 <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>,<span class="dv">1000</span>,<span class="dv">1</span>):</span>
+<span id="cb2-12"><a href="#cb2-12"></a>            ds.append(d)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>            ts.append(t)</span>
+<span id="cb2-14"><a href="#cb2-14"></a>            labelled, nlabels <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, idx2)</span>
+<span id="cb2-15"><a href="#cb2-15"></a>            lb <span class="op">=</span> labelled.flatten()</span>
+<span id="cb2-16"><a href="#cb2-16"></a>            big.append(np.<span class="bu">max</span>(np.bincount(lb)[<span class="dv">1</span>:]))</span>
+<span id="cb2-17"><a href="#cb2-17"></a>            num.append(nlabels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
@@ -247,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7"></a>df.to_csv(<span class="st">"cache/cluster_count_size.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-4" class="cell" data-execution_count="6">
+<div id="cell-4" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
@@ -262,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-10"><a href="#cb4-10"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
 <span id="cb4-11"><a href="#cb4-11"></a>    <span class="dv">2</span>,</span>
 <span id="cb4-12"><a href="#cb4-12"></a>    <span class="dv">1</span>,</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">7</span>),</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">8</span>),</span>
 <span id="cb4-14"><a href="#cb4-14"></a>    constrained_layout<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb4-15"><a href="#cb4-15"></a>    sharex<span class="op">=</span><span class="va">True</span></span>
 <span id="cb4-16"><a href="#cb4-16"></a>)</span>
@@ -279,8 +276,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-27"><a href="#cb4-27"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
 <span id="cb4-28"><a href="#cb4-28"></a>    ax.set_xticks(np.<span class="bu">round</span>(tumbles,<span class="dv">3</span>)[::<span class="dv">2</span>])</span>
 <span id="cb4-29"><a href="#cb4-29"></a></span>
-<span id="cb4-30"><a href="#cb4-30"></a></span>
-<span id="cb4-31"><a href="#cb4-31"></a>sns.move_legend(ax1, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.1</span>, <span class="dv">1</span>), frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="vs">r"Density, $\rho$"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30"></a>ax2.set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb4-31"><a href="#cb4-31"></a>sns.move_legend(ax1, <span class="st">"upper left"</span>, frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="vs">r"Density, $\rho$"</span>)</span>
 <span id="cb4-32"><a href="#cb4-32"></a></span>
 <span id="cb4-33"><a href="#cb4-33"></a>sns.despine()</span>
 <span id="cb4-34"><a href="#cb4-34"></a></span>

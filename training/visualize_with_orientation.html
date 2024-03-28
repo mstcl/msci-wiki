@@ -202,42 +202,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> keras.preprocessing.image <span class="im">import</span> img_to_array</span>
 <span id="cb1-13"><a href="#cb1-13"></a><span class="im">from</span> keras.models <span class="im">import</span> Model</span>
 <span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> numpy <span class="im">import</span> expand_dims</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="im">from</span> src.utils <span class="im">import</span> get_cluster_labels, get_ds_iters</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="im">from</span> src.training_utils <span class="im">import</span> (</span>
-<span id="cb1-19"><a href="#cb1-19"></a>    data_load,</span>
-<span id="cb1-20"><a href="#cb1-20"></a>    split_dataset,</span>
-<span id="cb1-21"><a href="#cb1-21"></a>)</span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="im">from</span> numpy <span class="im">import</span> expand_dims</span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="im">from</span> src.utils <span class="im">import</span> get_cluster_labels, get_ds_iters</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="im">from</span> src.training_utils <span class="im">import</span> (</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    data_load,</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    split_dataset,</span>
+<span id="cb1-22"><a href="#cb1-22"></a>)</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-03-16 21:33:34.336284: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+<pre><code>2024-03-25 17:47:49.859095: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2024-03-16 21:33:34.894808: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT</code></pre>
+2024-03-25 17:47:50.366948: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT</code></pre>
 </div>
 </div>
-<div id="8f8c8663-ce7c-485d-8ac5-21aa88a81df9" class="cell" data-execution_count="10">
+<div id="8f8c8663-ce7c-485d-8ac5-21aa88a81df9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.016_0.25.h5"</span>, <span class="st">"r"</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.073_0.25.h5"</span>, <span class="st">"r"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
 <span id="cb3-3"><a href="#cb3-3"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="dv">300</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
 <span id="cb3-4"><a href="#cb3-4"></a>img <span class="op">=</span> np.array(img)</span>
 <span id="cb3-5"><a href="#cb3-5"></a>img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>], <span class="dv">1</span>))</span>
 <span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.034_0.25.h5"</span>, <span class="st">"r"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.340_0.25.h5"</span>, <span class="st">"r"</span>)</span>
 <span id="cb3-8"><a href="#cb3-8"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
 <span id="cb3-9"><a href="#cb3-9"></a>img2 <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="dv">300</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
 <span id="cb3-10"><a href="#cb3-10"></a>img2 <span class="op">=</span> np.array(img2)</span>
 <span id="cb3-11"><a href="#cb3-11"></a>img2 <span class="op">=</span> img2.reshape((img2.shape[<span class="dv">0</span>], img2.shape[<span class="dv">1</span>], <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="a3ad9b72-1844-48ac-b12f-f39011aecb7c" class="cell" data-execution_count="11">
+<div id="a3ad9b72-1844-48ac-b12f-f39011aecb7c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>plt.matshow(img, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>plt.matshow(img2, cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>plt.matshow(img, cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>plt.xticks([])</span>
+<span id="cb4-3"><a href="#cb4-3"></a>plt.yticks([])</span>
+<span id="cb4-4"><a href="#cb4-4"></a>plt.savefig(<span class="st">'plots/input.svg'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, pad_inches<span class="op">=-</span><span class="fl">0.1</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>plt.matshow(img2, cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -254,34 +258,37 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="32bc9c78-1453-449d-9cfc-5b4744edec7a" class="cell" data-execution_count="12">
+<div id="32bc9c78-1453-449d-9cfc-5b4744edec7a" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="st">'models/hyphen1065.keras'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="f8fcc388-6955-45be-9dd0-49dd7d89b130" class="cell" data-execution_count="13">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">0</span>].output)</span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>j <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>shift <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb6-9"><a href="#cb6-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb6-10"><a href="#cb6-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb6-11"><a href="#cb6-11"></a>        ax.set_xticks([])</span>
-<span id="cb6-12"><a href="#cb6-12"></a>        ax.set_yticks([])</span>
-<span id="cb6-13"><a href="#cb6-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-14"><a href="#cb6-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb6-15"><a href="#cb6-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb6-16"><a href="#cb6-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="st">'models/blue9392.keras'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-03-16 21:34:56.300865: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:432] Loaded cuDNN version 8906</code></pre>
+<pre><code>2024-03-25 17:47:55.974395: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1639] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 4437 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:07:00.0, compute capability: 7.5</code></pre>
+</div>
+</div>
+<div id="f8fcc388-6955-45be-9dd0-49dd7d89b130" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">0</span>].output)</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>j <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>shift <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb7-10"><a href="#cb7-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb7-11"><a href="#cb7-11"></a>        ax.set_xticks([])</span>
+<span id="cb7-12"><a href="#cb7-12"></a>        ax.set_yticks([])</span>
+<span id="cb7-13"><a href="#cb7-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-14"><a href="#cb7-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb7-16"><a href="#cb7-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-03-25 17:47:58.358237: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:432] Loaded cuDNN version 8906</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -291,38 +298,10 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="eb6ce6e6-a245-4970-bdaf-fb749d30a62e" class="cell" data-execution_count="14">
+<div id="eb6ce6e6-a245-4970-bdaf-fb749d30a62e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">1</span>].output)</span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-4"><a href="#cb8-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-5"><a href="#cb8-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>j <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>shift <span class="op">=</span> <span class="dv">64</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb8-10"><a href="#cb8-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb8-11"><a href="#cb8-11"></a>        ax.set_xticks([])</span>
-<span id="cb8-12"><a href="#cb8-12"></a>        ax.set_yticks([])</span>
-<span id="cb8-13"><a href="#cb8-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb8-14"><a href="#cb8-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb8-15"><a href="#cb8-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb8-16"><a href="#cb8-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="visualize_with_orientation_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="19b04fc7-120a-4514-98ef-b14b1631784d" class="cell" data-execution_count="15">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">2</span>].output)</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">1</span>].output)</span>
 <span id="cb9-2"><a href="#cb9-2"></a></span>
 <span id="cb9-3"><a href="#cb9-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb9-4"><a href="#cb9-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
@@ -335,9 +314,37 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 <span id="cb9-11"><a href="#cb9-11"></a>        ax.set_xticks([])</span>
 <span id="cb9-12"><a href="#cb9-12"></a>        ax.set_yticks([])</span>
 <span id="cb9-13"><a href="#cb9-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb9-14"><a href="#cb9-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb9-14"><a href="#cb9-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
 <span id="cb9-15"><a href="#cb9-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb9-16"><a href="#cb9-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-16"><a href="#cb9-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualize_with_orientation_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="19b04fc7-120a-4514-98ef-b14b1631784d" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">2</span>].output)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>j <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>shift <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb10-9"><a href="#cb10-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb10-10"><a href="#cb10-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a>        ax.set_xticks([])</span>
+<span id="cb10-12"><a href="#cb10-12"></a>        ax.set_yticks([])</span>
+<span id="cb10-13"><a href="#cb10-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-14"><a href="#cb10-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb10-15"><a href="#cb10-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb10-16"><a href="#cb10-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -347,25 +354,18 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="28061deb-fab2-48b3-86d0-b0b8cbf3970f" class="cell" data-execution_count="16">
+<div id="cbab56dd-be76-4863-bb77-65b7e326f9a4" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true,&quot;source_hidden&quot;:true}" data-execution_count="48">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">4</span>].output)</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb10-4"><a href="#cb10-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb10-5"><a href="#cb10-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>j <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>shift <span class="op">=</span> <span class="dv">64</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb10-9"><a href="#cb10-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb10-10"><a href="#cb10-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb10-11"><a href="#cb10-11"></a>        ax.set_xticks([])</span>
-<span id="cb10-12"><a href="#cb10-12"></a>        ax.set_yticks([])</span>
-<span id="cb10-13"><a href="#cb10-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb10-14"><a href="#cb10-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb10-15"><a href="#cb10-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb10-16"><a href="#cb10-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">2</span>].output)</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a>shift <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>plt.xticks([])</span>
+<span id="cb11-7"><a href="#cb11-7"></a>plt.yticks([])</span>
+<span id="cb11-8"><a href="#cb11-8"></a>plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, <span class="dv">2</span>], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>plt.savefig(<span class="st">'plots/c1_3.svg'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, pad_inches<span class="op">=-</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -375,25 +375,25 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="4a788742-abc7-4e87-860a-afbb21fa06d8" class="cell" data-execution_count="17">
+<div id="28061deb-fab2-48b3-86d0-b0b8cbf3970f" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">5</span>].output)</span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb11-5"><a href="#cb11-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>j <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a>shift <span class="op">=</span> <span class="dv">32</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb11-9"><a href="#cb11-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb11-10"><a href="#cb11-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb11-11"><a href="#cb11-11"></a>        ax.set_xticks([])</span>
-<span id="cb11-12"><a href="#cb11-12"></a>        ax.set_yticks([])</span>
-<span id="cb11-13"><a href="#cb11-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb11-14"><a href="#cb11-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb11-15"><a href="#cb11-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb11-16"><a href="#cb11-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">4</span>].output)</span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>j <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>shift <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb12-9"><a href="#cb12-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb12-10"><a href="#cb12-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb12-11"><a href="#cb12-11"></a>        ax.set_xticks([])</span>
+<span id="cb12-12"><a href="#cb12-12"></a>        ax.set_yticks([])</span>
+<span id="cb12-13"><a href="#cb12-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb12-14"><a href="#cb12-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb12-15"><a href="#cb12-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb12-16"><a href="#cb12-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -403,25 +403,25 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="a56306af-96cd-4b56-8962-f64e585f34c0" class="cell" data-execution_count="18">
+<div id="4a788742-abc7-4e87-860a-afbb21fa06d8" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">6</span>].output)</span>
-<span id="cb12-2"><a href="#cb12-2"></a></span>
-<span id="cb12-3"><a href="#cb12-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-5"><a href="#cb12-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>j <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>shift <span class="op">=</span> <span class="dv">32</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb12-9"><a href="#cb12-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb12-10"><a href="#cb12-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb12-11"><a href="#cb12-11"></a>        ax.set_xticks([])</span>
-<span id="cb12-12"><a href="#cb12-12"></a>        ax.set_yticks([])</span>
-<span id="cb12-13"><a href="#cb12-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb12-14"><a href="#cb12-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb12-15"><a href="#cb12-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb12-16"><a href="#cb12-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">5</span>].output)</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>j <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>shift <span class="op">=</span> <span class="dv">32</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb13-10"><a href="#cb13-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb13-11"><a href="#cb13-11"></a>        ax.set_xticks([])</span>
+<span id="cb13-12"><a href="#cb13-12"></a>        ax.set_yticks([])</span>
+<span id="cb13-13"><a href="#cb13-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-14"><a href="#cb13-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb13-15"><a href="#cb13-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb13-16"><a href="#cb13-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -431,25 +431,25 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="9699aa41-c460-4d48-a6fe-e2ad39e8278d" class="cell" data-execution_count="19">
+<div id="a56306af-96cd-4b56-8962-f64e585f34c0" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">8</span>].output)</span>
-<span id="cb13-2"><a href="#cb13-2"></a></span>
-<span id="cb13-3"><a href="#cb13-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb13-5"><a href="#cb13-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>j <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>shift <span class="op">=</span> <span class="dv">32</span></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb13-9"><a href="#cb13-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb13-10"><a href="#cb13-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb13-11"><a href="#cb13-11"></a>        ax.set_xticks([])</span>
-<span id="cb13-12"><a href="#cb13-12"></a>        ax.set_yticks([])</span>
-<span id="cb13-13"><a href="#cb13-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb13-14"><a href="#cb13-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb13-15"><a href="#cb13-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb13-16"><a href="#cb13-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">6</span>].output)</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-4"><a href="#cb14-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-5"><a href="#cb14-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>j <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>shift <span class="op">=</span> <span class="dv">32</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb14-9"><a href="#cb14-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb14-10"><a href="#cb14-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb14-11"><a href="#cb14-11"></a>        ax.set_xticks([])</span>
+<span id="cb14-12"><a href="#cb14-12"></a>        ax.set_yticks([])</span>
+<span id="cb14-13"><a href="#cb14-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb14-14"><a href="#cb14-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb14-15"><a href="#cb14-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb14-16"><a href="#cb14-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -459,25 +459,18 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="3ba58d16-e2b4-4bf9-9440-b14006d11ba0" class="cell" data-execution_count="20">
+<div id="82b696b9-4cf8-4c1c-8777-55ebb826e1b8" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true,&quot;source_hidden&quot;:true}" data-execution_count="55">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">9</span>].output)</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>j <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>shift <span class="op">=</span> <span class="dv">16</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb14-9"><a href="#cb14-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb14-10"><a href="#cb14-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb14-11"><a href="#cb14-11"></a>        ax.set_xticks([])</span>
-<span id="cb14-12"><a href="#cb14-12"></a>        ax.set_yticks([])</span>
-<span id="cb14-13"><a href="#cb14-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb14-14"><a href="#cb14-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb14-15"><a href="#cb14-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb14-16"><a href="#cb14-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">6</span>].output)</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>shift <span class="op">=</span> <span class="dv">32</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>plt.xticks([])</span>
+<span id="cb15-7"><a href="#cb15-7"></a>plt.yticks([])</span>
+<span id="cb15-8"><a href="#cb15-8"></a>plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, <span class="dv">3</span>], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9"></a>plt.savefig(<span class="st">'plots/c2_4.svg'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, pad_inches<span class="op">=-</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -487,25 +480,25 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="7b903483-c715-4f1f-9c11-2f0ca39f169f" class="cell" data-execution_count="21">
+<div id="9699aa41-c460-4d48-a6fe-e2ad39e8278d" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">10</span>].output)</span>
-<span id="cb15-2"><a href="#cb15-2"></a></span>
-<span id="cb15-3"><a href="#cb15-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-4"><a href="#cb15-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-5"><a href="#cb15-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>j <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>shift <span class="op">=</span> <span class="dv">16</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
-<span id="cb15-9"><a href="#cb15-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
-<span id="cb15-10"><a href="#cb15-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb15-11"><a href="#cb15-11"></a>        ax.set_xticks([])</span>
-<span id="cb15-12"><a href="#cb15-12"></a>        ax.set_yticks([])</span>
-<span id="cb15-13"><a href="#cb15-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb15-14"><a href="#cb15-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb15-15"><a href="#cb15-15"></a>        <span class="cf">else</span>:</span>
-<span id="cb15-16"><a href="#cb15-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">8</span>].output)</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>j <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>shift <span class="op">=</span> <span class="dv">32</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb16-9"><a href="#cb16-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb16-10"><a href="#cb16-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb16-11"><a href="#cb16-11"></a>        ax.set_xticks([])</span>
+<span id="cb16-12"><a href="#cb16-12"></a>        ax.set_yticks([])</span>
+<span id="cb16-13"><a href="#cb16-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-14"><a href="#cb16-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb16-15"><a href="#cb16-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-16"><a href="#cb16-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -515,16 +508,25 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 </div>
 </div>
-<div id="6fccab92-e92a-4f8b-bca4-b9882911d36f" class="cell" data-execution_count="14">
+<div id="3ba58d16-e2b4-4bf9-9440-b14006d11ba0" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">13</span>].output)</span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(x1[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-4"><a href="#cb16-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(x2[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-5"><a href="#cb16-5"></a></span>
-<span id="cb16-6"><a href="#cb16-6"></a>plt.matshow(np.rot90(feature_maps1[:, :]))</span>
-<span id="cb16-7"><a href="#cb16-7"></a>plt.matshow(np.rot90(feature_maps2[:, :]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">9</span>].output)</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-4"><a href="#cb17-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-5"><a href="#cb17-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>j <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>shift <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb17-9"><a href="#cb17-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb17-10"><a href="#cb17-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb17-11"><a href="#cb17-11"></a>        ax.set_xticks([])</span>
+<span id="cb17-12"><a href="#cb17-12"></a>        ax.set_yticks([])</span>
+<span id="cb17-13"><a href="#cb17-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb17-14"><a href="#cb17-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb17-15"><a href="#cb17-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb17-16"><a href="#cb17-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -533,24 +535,26 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="visualize_with_orientation_files/figure-html/cell-15-output-2.png" class="img-fluid figure-img"></p>
-</figure>
 </div>
-</div>
-</div>
-<div id="9ca16ec2-d3e2-43e9-afff-593b0189c290" class="cell" data-execution_count="15">
+<div id="7b903483-c715-4f1f-9c11-2f0ca39f169f" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">14</span>].output)</span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(x1[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(x2[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb17-5"><a href="#cb17-5"></a></span>
-<span id="cb17-6"><a href="#cb17-6"></a>plt.matshow(feature_maps1[:, :])</span>
-<span id="cb17-7"><a href="#cb17-7"></a>plt.matshow(feature_maps2[:, :])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">10</span>].output)</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-4"><a href="#cb18-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>i <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>j <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>shift <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb18-9"><a href="#cb18-9"></a>    <span class="cf">for</span> jdx <span class="kw">in</span> <span class="bu">range</span>(j):</span>
+<span id="cb18-10"><a href="#cb18-10"></a>        ax <span class="op">=</span> plt.subplot(i, j, idx<span class="op">*</span>j<span class="op">+</span>jdx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb18-11"><a href="#cb18-11"></a>        ax.set_xticks([])</span>
+<span id="cb18-12"><a href="#cb18-12"></a>        ax.set_yticks([])</span>
+<span id="cb18-13"><a href="#cb18-13"></a>        <span class="cf">if</span> idx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb18-14"><a href="#cb18-14"></a>            plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb18-15"><a href="#cb18-15"></a>        <span class="cf">else</span>:</span>
+<span id="cb18-16"><a href="#cb18-16"></a>            plt.imshow(feature_maps2[:shift, :, <span class="dv">0</span>, jdx], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -559,24 +563,19 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="visualize_with_orientation_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
-</figure>
 </div>
-</div>
-</div>
-<div id="768295ad-e131-4157-ade4-34cb4b83e732" class="cell" data-execution_count="16">
+<div id="25df6d8f-1e55-4e2e-aec4-afd54696244a" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true,&quot;source_hidden&quot;:true}" data-execution_count="65">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">16</span>].output)</span>
-<span id="cb18-2"><a href="#cb18-2"></a></span>
-<span id="cb18-3"><a href="#cb18-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(x1[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb18-4"><a href="#cb18-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(x2[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb18-5"><a href="#cb18-5"></a></span>
-<span id="cb18-6"><a href="#cb18-6"></a>plt.matshow(np.rot90(feature_maps1[:, :]))</span>
-<span id="cb18-7"><a href="#cb18-7"></a>plt.matshow(np.rot90(feature_maps2[:, :]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">10</span>].output)</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>shift <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>plt.xticks([])</span>
+<span id="cb19-7"><a href="#cb19-7"></a>plt.yticks([])</span>
+<span id="cb19-8"><a href="#cb19-8"></a>plt.imshow(feature_maps1[:shift, :, <span class="dv">0</span>, <span class="dv">5</span>], cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
+<span id="cb19-9"><a href="#cb19-9"></a>plt.savefig(<span class="st">'plots/c3_6.svg'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, pad_inches<span class="op">=-</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -585,24 +584,18 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="visualize_with_orientation_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
-</figure>
 </div>
-</div>
-</div>
-<div id="2ce6f2fe-fbbd-42bd-9bd8-b051ec110aee" class="cell" data-execution_count="17">
+<div id="6fccab92-e92a-4f8b-bca4-b9882911d36f" class="cell" data-execution_count="59">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">18</span>].output)</span>
-<span id="cb19-2"><a href="#cb19-2"></a></span>
-<span id="cb19-3"><a href="#cb19-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(x1[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb19-4"><a href="#cb19-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(x2[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a>plt.matshow(np.rot90(feature_maps1[:, :]))</span>
-<span id="cb19-7"><a href="#cb19-7"></a>plt.matshow(np.rot90(feature_maps2[:, :]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">12</span>].output)</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb20-4"><a href="#cb20-4"></a></span>
+<span id="cb20-5"><a href="#cb20-5"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a>plt.matshow(np.rot90(feature_maps1[:, :]))</span>
+<span id="cb20-8"><a href="#cb20-8"></a>plt.matshow(np.rot90(feature_maps2[:, :]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -615,6 +608,84 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 <div>
 <figure class="figure">
 <p><img src="visualize_with_orientation_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="9ca16ec2-d3e2-43e9-afff-593b0189c290" class="cell" data-execution_count="33">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">14</span>].output)</span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(img, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb21-4"><a href="#cb21-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(img2, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb21-5"><a href="#cb21-5"></a></span>
+<span id="cb21-6"><a href="#cb21-6"></a>plt.matshow(feature_maps1[:, :])</span>
+<span id="cb21-7"><a href="#cb21-7"></a>plt.matshow(feature_maps2[:, :])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualize_with_orientation_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualize_with_orientation_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="768295ad-e131-4157-ade4-34cb4b83e732" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">16</span>].output)</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(x1[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(x2[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb22-5"><a href="#cb22-5"></a></span>
+<span id="cb22-6"><a href="#cb22-6"></a>plt.matshow(np.rot90(feature_maps1[:, :]))</span>
+<span id="cb22-7"><a href="#cb22-7"></a>plt.matshow(np.rot90(feature_maps2[:, :]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualize_with_orientation_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualize_with_orientation_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="2ce6f2fe-fbbd-42bd-9bd8-b051ec110aee" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>model_mini <span class="op">=</span> Model(inputs<span class="op">=</span>model.inputs, outputs<span class="op">=</span>model.layers[<span class="dv">18</span>].output)</span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a>feature_maps1 <span class="op">=</span> model_mini.predict(x1[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb23-4"><a href="#cb23-4"></a>feature_maps2 <span class="op">=</span> model_mini.predict(x2[<span class="dv">0</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb23-5"><a href="#cb23-5"></a></span>
+<span id="cb23-6"><a href="#cb23-6"></a>plt.matshow(np.rot90(feature_maps1[:, :]))</span>
+<span id="cb23-7"><a href="#cb23-7"></a>plt.matshow(np.rot90(feature_maps2[:, :]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualize_with_orientation_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualize_with_orientation_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

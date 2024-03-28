@@ -170,30 +170,49 @@ ul.task-list li input[type="checkbox"] {
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Attempt the cluster orientation visualization</label></li>
-<li><label><input type="checkbox" checked="">Cluster count and biggest cluster size plot</label></li>
-<li><label><input type="checkbox" checked="">Relaxation time check</label></li>
-<li><label><input type="checkbox" checked="">Mean image plots (+rolling)</label></li>
-<li><label><input type="checkbox" checked="">Retrain each model (now with proper GPU running, finally) with fixed seeds to obtain some averages for comparison.</label></li>
-<li><label><input type="checkbox" checked="">Visualize the activation maps</label></li>
+<li><label><input type="checkbox" checked="">Attempt the cluster orientation visualization</label>
+<ul>
+<li>Resulting code and plots <a href="https://github.com/mstcl/msci-wiki/blob/3d890f3ed1ff3566696e5d7463a658ca4f984fe5/plots/labelling.ipynb">here</a></li>
+<li>This didn’t really work out, because the clusters have a lot of detailed structure (very fractal), taking only the distance from the centre of mass didn’t cut it.</li>
+<li>Perhaps there is a better way, without isolating single clusters (to discuss with FT).</li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Cluster count and biggest cluster size plot</label>
+<ul>
+<li>See <a href="../plots/cluster_count_and_biggest.html">here</a></li>
+<li>Noticed linear relationship between biggest cluster size and the tumbling rate.</li>
+<li>It does link with cluster distribution grid plotted <a href="../plots/csize_grid.html">here</a>. But hard to put into words how.</li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Relaxation time check</label>
+<ul>
+<li>See <a href="../plots/acf.html">here</a> (will change and undergo revisions for report).</li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Mean image plots (+rolling)</label>
+<ul>
+<li>Also in the notebook above. It doesn’t seem like there are drastic fluctuations, but it is very clear that as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> gets higher the fluctations get smaller and lower in magnitude.</li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Retrain each model (now with proper GPU running, finally) with fixed seeds and better learning rates to obtain some averages for comparison.</label>
+<ul>
+<li>For experiments, plots and results, see:
+<ul>
+<li><a href="../training/training_with_orientation.html">With orientation</a></li>
+<li><a href="../training/training_without_orientation.html">Without orientation</a></li>
+<li><a href="../training/training_with_monochrome.html">Monochrome</a></li>
+</ul></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Visualize the activation maps</label>
+<ul>
+<li><a href="../training/visualize_with_orientation.html">With orientation</a></li>
+<li><a href="../training/visualize_without_orientation.html">Without orientation</a></li>
+<li>Very interesting visually, will incorporate into flowchart describing the architecture.</li>
+</ul></li>
 </ul>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p><strong>Stability check</strong>: <a href="../plots/acf.html">click here</a></p>
-<p><strong>Cluster count &amp; biggest cluster size</strong>: <a href="../plots/cluster_count_and_biggest.html">click here</a></p>
-<p><strong>Cluster orientation visualization</strong>: <a href="../plots/labelling.html">click here</a></p>
-<ul>
-<li>This didn’t really work out, because the clusters have a lot of detailed structure, taking only the distance from the centre of mass didn’t cut it.</li>
-</ul>
-<p><strong>Activation map visualization with orientation</strong>: <a href="../training/visualize_with_orientation.html">click here</a></p>
-<p><strong>Activation map visualization without orientation</strong>: <a href="../training/visualize_without_orientation.html">click here</a></p>
-<p><strong>Training models with orientation (7/10 models ran)</strong>: <a href="../training/training_with_orientation.html">click here</a></p>
-<p><strong>Training models without orientation (7/10 models ran)</strong>: <a href="../training/training_without_orientation.html">click here</a></p>
 </section>
 <section id="a-more-structured-idea-for-these-runs" class="level2">
 <h2 class="anchored" data-anchor-id="a-more-structured-idea-for-these-runs">A more structured idea for these runs</h2>
-<p>How relevant is orientation (a dynamical feature) in the learning of dissipation?</p>
+<p>How relevant is orientation/DOF (a dynamical feature) in the learning of dissipation?</p>
 <ul>
 <li>Hypothesis: there are no difference in performance between two models, where one is trained on data where orientation is embedded, and one where it isn’t.</li>
 <li>Rigour: 10 independent models for each (so 20 different models, and 10 seeds, one for each pair).</li>
@@ -229,7 +248,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<p><a href="https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/">Guide on all of this</a></p>
+<ul>
+<li><a href="https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/">Guide on visualizing feature maps</a></li>
+</ul>
 
 
 </section>

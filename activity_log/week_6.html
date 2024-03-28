@@ -166,7 +166,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-problem-with-how-the-h5-binaries-were-saved" id="toc-a-problem-with-how-the-h5-binaries-were-saved" class="nav-link" data-scroll-target="#a-problem-with-how-the-h5-binaries-were-saved">A problem with how the h5 binaries were saved</a></li>
   <li><a href="#steady-state-in-orientation" id="toc-steady-state-in-orientation" class="nav-link" data-scroll-target="#steady-state-in-orientation">Steady-state in orientation</a></li>
   <li><a href="#cluster-analysis" id="toc-cluster-analysis" class="nav-link" data-scroll-target="#cluster-analysis">Cluster analysis</a></li>
-  <li><a href="#cluster-size-distribution-grid" id="toc-cluster-size-distribution-grid" class="nav-link" data-scroll-target="#cluster-size-distribution-grid">Cluster size distribution grid</a></li>
+  <li><a href="#cluster-distribution" id="toc-cluster-distribution" class="nav-link" data-scroll-target="#cluster-distribution">Cluster distribution</a></li>
+  <li><a href="#scattered-thoughtsnotes" id="toc-scattered-thoughtsnotes" class="nav-link" data-scroll-target="#scattered-thoughtsnotes">Scattered thoughts/notes</a></li>
+  <li><a href="#units-for-pep" id="toc-units-for-pep" class="nav-link" data-scroll-target="#units-for-pep">Units for PEP</a></li>
+  <li><a href="#a-rough-condition-for-percolation" id="toc-a-rough-condition-for-percolation" class="nav-link" data-scroll-target="#a-rough-condition-for-percolation">A rough condition for percolation</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -219,15 +222,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul>
 <li>Some chores
-<ul class="task-list">
+<ul>
 <li><label><input type="checkbox" checked="">Update the plot on <a href="../activity_log/week_4.html#plotting-snapshots">Week 4</a> with axis labels.</label></li>
-<li><label><input type="checkbox" checked="">Update PEP’s docs. See <a href="https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md">README.md</a>.</label></li>
-<li><label><input type="checkbox" checked="">Regenerate dataset with new orientation fix.</label></li>
+<li><label><input type="checkbox" checked="">Update PEP’s docs.</label>
+<ul>
+<li>See <a href="https://github.com/dlactivematter/persistent-exclusion-process/blob/main/README.md">README.md</a>.</li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Regenerate dataset with new orientation fix</label></li>
+<li>all in folder <code>./data</code></li>
 </ul></li>
 <li>Continue with data analysis.
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Demo of mean orientation over time.</label></li>
-<li><label><input type="checkbox" checked="">Demo of cluster labelling and size distribution.</label></li>
+<li><label><input type="checkbox" checked="">Demo of mean orientation over time.</label>
+<ul>
+<li>See <a href="#steady-state-in-orientation">Steady-state in orientation</a></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Demo of cluster labelling and size distribution.</label>
+<ul>
+<li>See <a href="#cluster_distribution">Cluster distribution</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -448,11 +461,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="cluster-size-distribution-grid" class="level3">
-<h3 class="anchored" data-anchor-id="cluster-size-distribution-grid">Cluster size distribution grid</h3>
+<section id="cluster-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="cluster-distribution">Cluster distribution</h3>
+<ul>
+<li>data binning (log) and get the log-log fit, plot all of them on a plot</li>
+<li>number of cluster, average cluster size</li>
+</ul>
 <p>Same values <a href="../activity_log/week_4.html#plotting-snapshots">this one</a>, but with the above cluster size analysis for the last iteration of each dataset</p>
 <p><img src="../assets/csize.png" class="img-fluid"></p>
 <p>In addition, we can also look at how the number of cluster varies.</p>
+</section>
+<section id="scattered-thoughtsnotes" class="level3">
+<h3 class="anchored" data-anchor-id="scattered-thoughtsnotes">Scattered thoughts/notes</h3>
+<ul>
+<li>code is already doing a monte carlo sweep (in check c_move in lattice.c) it’s going through all the particles and move them at random.</li>
+<li>can check by keeping alpha the same and changing phi</li>
+<li>fix L, change N, the other way around is too painful too</li>
+<li>if too dilute then training is tricky as there’s basically no particles</li>
+<li>theres a lower limit minimal phi that’s meaningful, below that it isnt</li>
+<li>at low alpha low phi what happens?</li>
+<li>isotropic makes cluster “round”</li>
+<li>over time you find most particles pointing at the centre of the cluster (the argument is to think of a particle pointing in)</li>
+</ul>
+</section>
+<section id="units-for-pep" class="level3">
+<h3 class="anchored" data-anchor-id="units-for-pep">Units for PEP</h3>
+<ul>
+<li>time <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>: 1 particle update</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> = tumbling rate, poisson distribution, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>e</mi><mi>x</mi><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>α</mi><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(t) = exp(-\alpha t)</annotation></semantics></math></li>
+<li>lattice site = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></li>
+<li>length <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>128</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">L = 128a</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>p</mi></msub><mi>a</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>c</mi><mi>l</mi><mi>e</mi><mo>=</mo><mn>1</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">\sigma_particle = 1a</annotation></semantics></math> (particle size)</li>
+</ul>
+</section>
+<section id="a-rough-condition-for-percolation" class="level3">
+<h3 class="anchored" data-anchor-id="a-rough-condition-for-percolation">A rough condition for percolation</h3>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mi>/</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\sigma / \alpha</annotation></semantics></math> is the persistent length. If this is approximately equal to the system size then percolation occurs.</p>
+<p>Perhaps too strict as the lowest <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is 0.016, but this is only 62.5/128.</p>
 
 
 </section>

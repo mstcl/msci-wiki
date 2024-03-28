@@ -169,7 +169,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#no-orientation-8-red9392" id="toc-no-orientation-8-red9392" class="nav-link" data-scroll-target="#no-orientation-8-red9392">No-orientation 8 (red9392)</a></li>
   <li><a href="#no-orientation-9-acid7391" id="toc-no-orientation-9-acid7391" class="nav-link" data-scroll-target="#no-orientation-9-acid7391">No-orientation 9 (acid7391)</a></li>
   <li><a href="#no-orientation-10-hot6626" id="toc-no-orientation-10-hot6626" class="nav-link" data-scroll-target="#no-orientation-10-hot6626">No-orientation 10 (hot6626)</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -201,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="ff1cf88f" class="cell" data-execution_count="2">
+<div id="ff1cf88f" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>load_ext autoreload</span>
@@ -247,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-41"><a href="#cb1-41"></a><span class="bu">print</span>(gpu_devices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="95d83fca" class="cell" data-execution_count="3">
+<div id="95d83fca" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -265,7 +264,7 @@ Shape of y:  (30000,)
 Size of training data:  24000
 Size of validation data:  6000</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>0</code></pre>
 </div>
 </div>
@@ -279,14 +278,14 @@ Size of validation data:  6000</code></pre>
 <span id="cb5-3"><a href="#cb5-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb5-7"><a href="#cb5-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="45e7fe66-4ace-4bd3-b573-3f3f60995f39" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb6-4"><a href="#cb6-4"></a>    x_train,</span>
@@ -301,7 +300,7 @@ Size of validation data:  6000</code></pre>
 <span id="cb6-13"><a href="#cb6-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="5ae199a4-dcc5-4b76-a1c6-b358f96ccc10" class="cell" data-execution_count="19">
+<div id="5ae199a4-dcc5-4b76-a1c6-b358f96ccc10" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -318,7 +317,7 @@ Size of validation data:  6000</code></pre>
 <span id="cb7-12"><a href="#cb7-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb7-13"><a href="#cb7-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -329,16 +328,17 @@ Size of validation data:  6000</code></pre>
 </div>
 </div>
 </div>
-<div id="4b7a58ee-9e00-4429-8869-3c6b74923b73" class="cell" data-execution_count="10">
+<div id="4b7a58ee-9e00-4429-8869-3c6b74923b73" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>188/188 [==============================] - 0s 2ms/step
-Overlap ratio: 0.9
-(Min, Max, Avg) STD: 1.8626451e-09 0.037014466 0.015691686
-Pearson's correlation coeff:  0.9855920403338827</code></pre>
+<pre><code>0.8
+1.8626451e-09
+0.0424393
+0.0175994
+0.9802954780718554</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -380,14 +380,14 @@ Pearson's correlation coeff:  0.9855920403338827</code></pre>
 <span id="cb13-3"><a href="#cb13-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb13-5"><a href="#cb13-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb13-6"><a href="#cb13-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb13-7"><a href="#cb13-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="3021d34a-2061-45aa-8e76-531990a13327" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb14-4"><a href="#cb14-4"></a>    x_train,</span>
@@ -430,16 +430,17 @@ Pearson's correlation coeff:  0.9855920403338827</code></pre>
 </div>
 </div>
 </div>
-<div id="fca7f9f8-dfb7-441b-b4ac-2e90a3195d58" class="cell" data-execution_count="9">
+<div id="fca7f9f8-dfb7-441b-b4ac-2e90a3195d58" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>188/188 [==============================] - 0s 2ms/step
-Overlap ratio: 0.9
-(Min, Max, Avg) STD: 0.0034993119 0.047663327 0.017375419
-Pearson's correlation coeff:  0.9794216911983602</code></pre>
+<pre><code>1.0
+0.004058853
+0.05232892
+0.019909954
+0.9781499804702691</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -481,14 +482,14 @@ Pearson's correlation coeff:  0.9794216911983602</code></pre>
 <span id="cb21-3"><a href="#cb21-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb21-4"><a href="#cb21-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb21-5"><a href="#cb21-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb21-6"><a href="#cb21-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb21-7"><a href="#cb21-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="3980e74b-70f0-4883-95f9-8a9eb77f42aa" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb22-4"><a href="#cb22-4"></a>    x_train,</span>
@@ -503,7 +504,7 @@ Pearson's correlation coeff:  0.9794216911983602</code></pre>
 <span id="cb22-13"><a href="#cb22-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="10385a89-f055-44c7-acfb-a17fe1c6be71" class="cell" data-execution_count="21">
+<div id="10385a89-f055-44c7-acfb-a17fe1c6be71" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -520,7 +521,7 @@ Pearson's correlation coeff:  0.9794216911983602</code></pre>
 <span id="cb23-12"><a href="#cb23-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb23-13"><a href="#cb23-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -531,16 +532,17 @@ Pearson's correlation coeff:  0.9794216911983602</code></pre>
 </div>
 </div>
 </div>
-<div id="9c6085f1-e8c1-4fd6-a30c-830d0c2dfbf1" class="cell" data-execution_count="8">
+<div id="9c6085f1-e8c1-4fd6-a30c-830d0c2dfbf1" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>188/188 [==============================] - 0s 2ms/step
-Overlap ratio: 0.7
-(Min, Max, Avg) STD: 0.00018223333 0.03827172 0.015196959
-Pearson's correlation coeff:  0.981428819094735</code></pre>
+<pre><code>0.8
+0.0
+0.043112654
+0.016793313
+0.9769899900283121</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -574,7 +576,7 @@ Pearson's correlation coeff:  0.981428819094735</code></pre>
 </section>
 <section id="no-orientation-4-carrot8290" class="level1">
 <h1>No-orientation 4 (carrot8290)</h1>
-<div id="efea8b75-5e59-40ca-833a-240e07b6d08b" class="cell" data-execution_count="9">
+<div id="efea8b75-5e59-40ca-833a-240e07b6d08b" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>tf.keras.utils.set_random_seed(<span class="dv">8290</span>)</span>
@@ -582,14 +584,14 @@ Pearson's correlation coeff:  0.981428819094735</code></pre>
 <span id="cb29-3"><a href="#cb29-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb29-4"><a href="#cb29-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb29-5"><a href="#cb29-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb29-6"><a href="#cb29-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb29-6"><a href="#cb29-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb29-7"><a href="#cb29-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="511950e0-40c3-4254-b474-e930fb7286bf" class="cell" data-execution_count="10">
+<div id="511950e0-40c3-4254-b474-e930fb7286bf" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb30-3"><a href="#cb30-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb30-4"><a href="#cb30-4"></a>    x_train,</span>
@@ -604,7 +606,7 @@ Pearson's correlation coeff:  0.981428819094735</code></pre>
 <span id="cb30-13"><a href="#cb30-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="c92d9f38-211f-4e10-9c2a-878ebd4ffcee" class="cell" data-execution_count="16">
+<div id="c92d9f38-211f-4e10-9c2a-878ebd4ffcee" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -621,7 +623,7 @@ Pearson's correlation coeff:  0.981428819094735</code></pre>
 <span id="cb31-12"><a href="#cb31-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb31-13"><a href="#cb31-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -632,16 +634,17 @@ Pearson's correlation coeff:  0.981428819094735</code></pre>
 </div>
 </div>
 </div>
-<div id="f88e1b14-5f98-4c37-a766-d57f265cbc9a" class="cell" data-execution_count="14">
+<div id="f88e1b14-5f98-4c37-a766-d57f265cbc9a" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>188/188 [==============================] - 0s 2ms/step
-Overlap ratio: 0.9
-(Min, Max, Avg) STD: 1.8626451e-09 0.03835773 0.014301469
-Pearson's correlation coeff:  0.985338480285781</code></pre>
+<pre><code>0.9
+1.8626451e-09
+0.041985407
+0.01592515
+0.9794941948246966</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -651,7 +654,7 @@ Pearson's correlation coeff:  0.985338480285781</code></pre>
 </div>
 </div>
 </div>
-<div id="12ae5f52-2098-4456-ab7d-c15073931cba" class="cell" data-execution_count="11">
+<div id="12ae5f52-2098-4456-ab7d-c15073931cba" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Save the model here</span></span>
@@ -661,7 +664,7 @@ Pearson's correlation coeff:  0.985338480285781</code></pre>
 <span id="cb35-5"><a href="#cb35-5"></a>np.save(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.npy"</span>,history.history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="250e90ca-aa55-42e2-a406-9c3257920f59" class="cell" data-execution_count="12">
+<div id="250e90ca-aa55-42e2-a406-9c3257920f59" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">import</span> gc</span>
@@ -675,7 +678,7 @@ Pearson's correlation coeff:  0.985338480285781</code></pre>
 </section>
 <section id="no-orientation-5-virus9177" class="level1">
 <h1>No-orientation 5 (virus9177)</h1>
-<div id="54109a54-06ba-4280-8449-20ee2377c558" class="cell" data-execution_count="3">
+<div id="54109a54-06ba-4280-8449-20ee2377c558" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>tf.keras.utils.set_random_seed(<span class="dv">9177</span>)</span>
@@ -683,14 +686,14 @@ Pearson's correlation coeff:  0.985338480285781</code></pre>
 <span id="cb37-3"><a href="#cb37-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb37-4"><a href="#cb37-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb37-5"><a href="#cb37-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb37-6"><a href="#cb37-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb37-6"><a href="#cb37-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb37-7"><a href="#cb37-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="40cbb6ab-50e6-433e-b312-bc66520e8b89" class="cell" data-execution_count="4">
+<div id="40cbb6ab-50e6-433e-b312-bc66520e8b89" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb38-3"><a href="#cb38-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb38-4"><a href="#cb38-4"></a>    x_train,</span>
@@ -705,7 +708,7 @@ Pearson's correlation coeff:  0.985338480285781</code></pre>
 <span id="cb38-13"><a href="#cb38-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="800cde94-710a-46ed-b506-67b76bc41958" class="cell" data-execution_count="5">
+<div id="800cde94-710a-46ed-b506-67b76bc41958" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -722,7 +725,7 @@ Pearson's correlation coeff:  0.985338480285781</code></pre>
 <span id="cb39-12"><a href="#cb39-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb39-13"><a href="#cb39-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -733,16 +736,17 @@ Pearson's correlation coeff:  0.985338480285781</code></pre>
 </div>
 </div>
 </div>
-<div id="b80feb07-36b9-4010-ad38-8cb60156fd9a" class="cell" data-execution_count="6">
+<div id="b80feb07-36b9-4010-ad38-8cb60156fd9a" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>188/188 [==============================] - 1s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.0027240268 0.039169762 0.013859627
-Pearson's correlation coeff:  0.9859954254209227</code></pre>
+<pre><code>1.0
+0.0036960836
+0.040402703
+0.016952809
+0.9797471674263254</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -752,7 +756,7 @@ Pearson's correlation coeff:  0.9859954254209227</code></pre>
 </div>
 </div>
 </div>
-<div id="5870fc12-41ab-417e-a532-76540de61c8b" class="cell" data-execution_count="7">
+<div id="5870fc12-41ab-417e-a532-76540de61c8b" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Save the model here</span></span>
@@ -762,7 +766,7 @@ Pearson's correlation coeff:  0.9859954254209227</code></pre>
 <span id="cb43-5"><a href="#cb43-5"></a>np.save(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.npy"</span>,history.history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="55c11ee1-fa0b-407e-bf23-476a5fac1b82" class="cell" data-execution_count="8">
+<div id="55c11ee1-fa0b-407e-bf23-476a5fac1b82" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">import</span> gc</span>
@@ -776,7 +780,7 @@ Pearson's correlation coeff:  0.9859954254209227</code></pre>
 </section>
 <section id="no-orientation-6-comma1065" class="level1">
 <h1>No-orientation 6 (comma1065)</h1>
-<div id="d6d24ca4-d7b6-4b0c-988f-fb823a0523e3" class="cell" data-execution_count="11">
+<div id="d6d24ca4-d7b6-4b0c-988f-fb823a0523e3" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>tf.keras.utils.set_random_seed(<span class="dv">1065</span>)</span>
@@ -784,14 +788,14 @@ Pearson's correlation coeff:  0.9859954254209227</code></pre>
 <span id="cb45-3"><a href="#cb45-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb45-4"><a href="#cb45-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb45-5"><a href="#cb45-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb45-6"><a href="#cb45-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb45-6"><a href="#cb45-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb45-7"><a href="#cb45-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="75957d2d-4d50-43c3-afd7-3e7c8289dc7d" class="cell" data-execution_count="12">
+<div id="75957d2d-4d50-43c3-afd7-3e7c8289dc7d" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb46-3"><a href="#cb46-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb46-4"><a href="#cb46-4"></a>    x_train,</span>
@@ -806,7 +810,7 @@ Pearson's correlation coeff:  0.9859954254209227</code></pre>
 <span id="cb46-13"><a href="#cb46-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1f967bb1-80b2-4390-9afb-2dcc7dd1ce04" class="cell" data-execution_count="5">
+<div id="1f967bb1-80b2-4390-9afb-2dcc7dd1ce04" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -823,7 +827,7 @@ Pearson's correlation coeff:  0.9859954254209227</code></pre>
 <span id="cb47-12"><a href="#cb47-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb47-13"><a href="#cb47-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -834,16 +838,17 @@ Pearson's correlation coeff:  0.9859954254209227</code></pre>
 </div>
 </div>
 </div>
-<div id="61cc1a78-f04e-4e40-b9e2-ac8aac163018" class="cell" data-execution_count="14">
+<div id="61cc1a78-f04e-4e40-b9e2-ac8aac163018" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>188/188 [==============================] - 0s 2ms/step
-Overlap ratio: 0.8
-(Min, Max, Avg) STD: 0.002132868 0.051503256 0.015806586
-Pearson's correlation coeff:  0.9825176314893705</code></pre>
+<pre><code>1.0
+0.0028939936
+0.05089833
+0.019907434
+0.976472418522057</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -853,7 +858,7 @@ Pearson's correlation coeff:  0.9825176314893705</code></pre>
 </div>
 </div>
 </div>
-<div id="aa74f045-2663-4990-a11c-761d7b97c262" class="cell" data-execution_count="15">
+<div id="aa74f045-2663-4990-a11c-761d7b97c262" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Save the model here</span></span>
@@ -863,7 +868,7 @@ Pearson's correlation coeff:  0.9825176314893705</code></pre>
 <span id="cb51-5"><a href="#cb51-5"></a>np.save(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.npy"</span>,history.history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="f77ee37f-17cc-4fcb-871b-3b7398b5d9dc" class="cell" data-execution_count="20">
+<div id="f77ee37f-17cc-4fcb-871b-3b7398b5d9dc" class="cell" data-execution_count="38">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="im">import</span> gc</span>
@@ -877,7 +882,7 @@ Pearson's correlation coeff:  0.9825176314893705</code></pre>
 </section>
 <section id="no-orientation-7-toys6730" class="level1">
 <h1>No-orientation 7 (toys6730)</h1>
-<div id="38121dfc-6910-43b7-a281-c7f82f4e1ead" class="cell" data-execution_count="4">
+<div id="38121dfc-6910-43b7-a281-c7f82f4e1ead" class="cell" data-execution_count="39">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>tf.keras.utils.set_random_seed(<span class="dv">6730</span>)</span>
@@ -885,14 +890,14 @@ Pearson's correlation coeff:  0.9825176314893705</code></pre>
 <span id="cb53-3"><a href="#cb53-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb53-4"><a href="#cb53-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb53-5"><a href="#cb53-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb53-6"><a href="#cb53-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb53-6"><a href="#cb53-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb53-7"><a href="#cb53-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="ef9b964e-460a-47cd-802d-80db2b72d438" class="cell" data-execution_count="5">
+<div id="ef9b964e-460a-47cd-802d-80db2b72d438" class="cell" data-execution_count="40">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb54-3"><a href="#cb54-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb54-4"><a href="#cb54-4"></a>    x_train,</span>
@@ -907,7 +912,7 @@ Pearson's correlation coeff:  0.9825176314893705</code></pre>
 <span id="cb54-13"><a href="#cb54-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1aa2543a-4713-4249-87b4-adf38a8449d4" class="cell" data-execution_count="8">
+<div id="1aa2543a-4713-4249-87b4-adf38a8449d4" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -924,7 +929,7 @@ Pearson's correlation coeff:  0.9825176314893705</code></pre>
 <span id="cb55-12"><a href="#cb55-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb55-13"><a href="#cb55-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -935,16 +940,17 @@ Pearson's correlation coeff:  0.9825176314893705</code></pre>
 </div>
 </div>
 </div>
-<div id="92d9ea08-81ae-4485-a577-e4247efadbe6" class="cell" data-execution_count="7">
+<div id="92d9ea08-81ae-4485-a577-e4247efadbe6" class="cell" data-execution_count="42">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>188/188 [==============================] - 1s 3ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 7.271417e-05 0.039254803 0.015651431
-Pearson's correlation coeff:  0.9811996701848624</code></pre>
+<pre><code>0.9
+3.7252903e-09
+0.03729547
+0.016041566
+0.977662284587988</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -954,7 +960,7 @@ Pearson's correlation coeff:  0.9811996701848624</code></pre>
 </div>
 </div>
 </div>
-<div id="779e22a5-1f84-42d9-b636-b715e891b5fc" class="cell" data-execution_count="9">
+<div id="779e22a5-1f84-42d9-b636-b715e891b5fc" class="cell" data-execution_count="43">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># Save the model here</span></span>
@@ -964,7 +970,7 @@ Pearson's correlation coeff:  0.9811996701848624</code></pre>
 <span id="cb59-5"><a href="#cb59-5"></a>np.save(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.npy"</span>,history.history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1393b60b-5178-4c15-9aff-88c839187b17" class="cell" data-execution_count="10">
+<div id="1393b60b-5178-4c15-9aff-88c839187b17" class="cell" data-execution_count="44">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="im">import</span> gc</span>
@@ -978,7 +984,7 @@ Pearson's correlation coeff:  0.9811996701848624</code></pre>
 </section>
 <section id="no-orientation-8-red9392" class="level1">
 <h1>No-orientation 8 (red9392)</h1>
-<div id="582073c6-a133-44d1-a0d4-d2927707f6e3" class="cell" data-execution_count="3">
+<div id="582073c6-a133-44d1-a0d4-d2927707f6e3" class="cell" data-execution_count="45">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>tf.keras.utils.set_random_seed(<span class="dv">9392</span>)</span>
@@ -986,14 +992,14 @@ Pearson's correlation coeff:  0.9811996701848624</code></pre>
 <span id="cb61-3"><a href="#cb61-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb61-4"><a href="#cb61-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb61-5"><a href="#cb61-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb61-6"><a href="#cb61-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb61-6"><a href="#cb61-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb61-7"><a href="#cb61-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="fefd99a4-a962-41e4-9ed4-d978580565d9" class="cell" data-execution_count="4">
+<div id="fefd99a4-a962-41e4-9ed4-d978580565d9" class="cell" data-execution_count="46">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb62-2"><a href="#cb62-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb62-3"><a href="#cb62-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb62-4"><a href="#cb62-4"></a>    x_train,</span>
@@ -1008,7 +1014,7 @@ Pearson's correlation coeff:  0.9811996701848624</code></pre>
 <span id="cb62-13"><a href="#cb62-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="01c2c685-3813-49f2-9f9a-2de4f2827a0d" class="cell" data-execution_count="5">
+<div id="01c2c685-3813-49f2-9f9a-2de4f2827a0d" class="cell" data-execution_count="47">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -1025,7 +1031,7 @@ Pearson's correlation coeff:  0.9811996701848624</code></pre>
 <span id="cb63-12"><a href="#cb63-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb63-13"><a href="#cb63-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1036,15 +1042,17 @@ Pearson's correlation coeff:  0.9811996701848624</code></pre>
 </div>
 </div>
 </div>
-<div id="eae48ae6-17cf-45fa-baac-2ce2e319cdb0" class="cell" data-execution_count="6">
+<div id="eae48ae6-17cf-45fa-baac-2ce2e319cdb0" class="cell" data-execution_count="48">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.0037990417 0.050762594 0.016683154
-Pearson's correlation coeff:  0.9866788139409177</code></pre>
+<pre><code>1.0
+0.0051062275
+0.05373082
+0.019618535
+0.9790157724220516</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1054,7 +1062,7 @@ Pearson's correlation coeff:  0.9866788139409177</code></pre>
 </div>
 </div>
 </div>
-<div id="0dd929b6-44e2-44ff-8041-a51c52b30ecd" class="cell" data-execution_count="7">
+<div id="0dd929b6-44e2-44ff-8041-a51c52b30ecd" class="cell" data-execution_count="49">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># Save the model here</span></span>
@@ -1064,7 +1072,7 @@ Pearson's correlation coeff:  0.9866788139409177</code></pre>
 <span id="cb67-5"><a href="#cb67-5"></a>np.save(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.npy"</span>,history.history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cc08da58-3031-4ed0-83ab-4eb869cee449" class="cell" data-execution_count="8">
+<div id="cc08da58-3031-4ed0-83ab-4eb869cee449" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="im">import</span> gc</span>
@@ -1078,7 +1086,7 @@ Pearson's correlation coeff:  0.9866788139409177</code></pre>
 </section>
 <section id="no-orientation-9-acid7391" class="level1">
 <h1>No-orientation 9 (acid7391)</h1>
-<div id="c18858fd-a0ff-49f5-995a-a8aef0266c5d" class="cell" data-execution_count="9">
+<div id="c18858fd-a0ff-49f5-995a-a8aef0266c5d" class="cell" data-execution_count="51">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>tf.keras.utils.set_random_seed(<span class="dv">7391</span>)</span>
@@ -1086,14 +1094,14 @@ Pearson's correlation coeff:  0.9866788139409177</code></pre>
 <span id="cb69-3"><a href="#cb69-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb69-4"><a href="#cb69-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb69-5"><a href="#cb69-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb69-6"><a href="#cb69-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb69-6"><a href="#cb69-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb69-7"><a href="#cb69-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="0ff38f64-0414-4fce-a12c-5e57c743cc62" class="cell" data-execution_count="10">
+<div id="0ff38f64-0414-4fce-a12c-5e57c743cc62" class="cell" data-execution_count="52">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb70-2"><a href="#cb70-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb70-3"><a href="#cb70-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb70-4"><a href="#cb70-4"></a>    x_train,</span>
@@ -1108,7 +1116,7 @@ Pearson's correlation coeff:  0.9866788139409177</code></pre>
 <span id="cb70-13"><a href="#cb70-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="d817c1d4-a0e0-40ec-8780-f2b563ee95e4" class="cell" data-execution_count="11">
+<div id="d817c1d4-a0e0-40ec-8780-f2b563ee95e4" class="cell" data-execution_count="53">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -1125,7 +1133,7 @@ Pearson's correlation coeff:  0.9866788139409177</code></pre>
 <span id="cb71-12"><a href="#cb71-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb71-13"><a href="#cb71-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1136,15 +1144,17 @@ Pearson's correlation coeff:  0.9866788139409177</code></pre>
 </div>
 </div>
 </div>
-<div id="71e1be3a-b5e5-4772-b2cf-4eab6208acbd" class="cell" data-execution_count="12">
+<div id="71e1be3a-b5e5-4772-b2cf-4eab6208acbd" class="cell" data-execution_count="54">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Overlap ratio: 0.9
-(Min, Max, Avg) STD: 0.00038861317 0.035297547 0.014517394
-Pearson's correlation coeff:  0.9866282748905352</code></pre>
+<pre><code>0.9
+1.8626451e-09
+0.034938905
+0.014323948
+0.9827104520383487</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1154,7 +1164,7 @@ Pearson's correlation coeff:  0.9866282748905352</code></pre>
 </div>
 </div>
 </div>
-<div id="f7bd44c2-fcf1-438f-a17b-95f50b979c22" class="cell" data-execution_count="13">
+<div id="f7bd44c2-fcf1-438f-a17b-95f50b979c22" class="cell" data-execution_count="55">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># Save the model here</span></span>
@@ -1164,7 +1174,7 @@ Pearson's correlation coeff:  0.9866282748905352</code></pre>
 <span id="cb75-5"><a href="#cb75-5"></a>np.save(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.npy"</span>,history.history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="9ef10b18-b430-42eb-a041-0c188f599623" class="cell" data-execution_count="14">
+<div id="9ef10b18-b430-42eb-a041-0c188f599623" class="cell" data-execution_count="56">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="im">import</span> gc</span>
@@ -1178,7 +1188,7 @@ Pearson's correlation coeff:  0.9866282748905352</code></pre>
 </section>
 <section id="no-orientation-10-hot6626" class="level1">
 <h1>No-orientation 10 (hot6626)</h1>
-<div id="44358bf0-7482-49e2-94e6-aa1262364d57" class="cell" data-execution_count="15">
+<div id="44358bf0-7482-49e2-94e6-aa1262364d57" class="cell" data-execution_count="57">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>tf.keras.utils.set_random_seed(<span class="dv">6626</span>)</span>
@@ -1186,14 +1196,14 @@ Pearson's correlation coeff:  0.9866282748905352</code></pre>
 <span id="cb77-3"><a href="#cb77-3"></a>model <span class="op">=</span> make_net(shape)</span>
 <span id="cb77-4"><a href="#cb77-4"></a><span class="co"># Slightly slower adam and SGD</span></span>
 <span id="cb77-5"><a href="#cb77-5"></a>adam <span class="op">=</span> keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.0002</span>)</span>
-<span id="cb77-6"><a href="#cb77-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.008</span>)</span>
+<span id="cb77-6"><a href="#cb77-6"></a>sgd <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.002</span>)</span>
 <span id="cb77-7"><a href="#cb77-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>sgd, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="ee3e7297-ce28-4f5e-9981-d6ac9c3f738a" class="cell" data-execution_count="16">
+<div id="ee3e7297-ce28-4f5e-9981-d6ac9c3f738a" class="cell" data-execution_count="58">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>epochs<span class="op">=</span><span class="dv">45</span></span>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>epochs<span class="op">=</span><span class="dv">60</span></span>
 <span id="cb78-2"><a href="#cb78-2"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
 <span id="cb78-3"><a href="#cb78-3"></a>history <span class="op">=</span> model.fit(</span>
 <span id="cb78-4"><a href="#cb78-4"></a>    x_train,</span>
@@ -1208,7 +1218,7 @@ Pearson's correlation coeff:  0.9866282748905352</code></pre>
 <span id="cb78-13"><a href="#cb78-13"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="35b03a56-97c4-44f3-bec0-671325473364" class="cell" data-scrolled="true" data-execution_count="17">
+<div id="35b03a56-97c4-44f3-bec0-671325473364" class="cell" data-execution_count="59">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
@@ -1225,7 +1235,7 @@ Pearson's correlation coeff:  0.9866282748905352</code></pre>
 <span id="cb79-12"><a href="#cb79-12"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
 <span id="cb79-13"><a href="#cb79-13"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>Text(0.5, 1.0, 'Training and Validation MAE')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1236,15 +1246,17 @@ Pearson's correlation coeff:  0.9866282748905352</code></pre>
 </div>
 </div>
 </div>
-<div id="fb1c1a6b-eba9-41bc-bf7d-b0016325fade" class="cell" data-execution_count="18">
+<div id="fb1c1a6b-eba9-41bc-bf7d-b0016325fade" class="cell" data-execution_count="60">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Overlap ratio: 0.9
-(Min, Max, Avg) STD: 0.0012357399 0.044274896 0.016778328
-Pearson's correlation coeff:  0.9852513869103494</code></pre>
+<pre><code>0.9
+0.0018149534
+0.0497454
+0.019964295
+0.9785183278349752</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1254,7 +1266,7 @@ Pearson's correlation coeff:  0.9852513869103494</code></pre>
 </div>
 </div>
 </div>
-<div id="59b6240e-869c-4a0d-8612-c8a1da3c9642" class="cell" data-execution_count="19">
+<div id="59b6240e-869c-4a0d-8612-c8a1da3c9642" class="cell" data-execution_count="61">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a><span class="co"># Save the model here</span></span>
@@ -1264,7 +1276,7 @@ Pearson's correlation coeff:  0.9852513869103494</code></pre>
 <span id="cb83-5"><a href="#cb83-5"></a>np.save(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.npy"</span>,history.history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="902ed5c0-3b35-423a-8939-b98d07897bf4" class="cell" data-execution_count="20">
+<div id="902ed5c0-3b35-423a-8939-b98d07897bf4" class="cell" data-execution_count="62">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a><span class="im">import</span> gc</span>
@@ -1275,10 +1287,7 @@ Pearson's correlation coeff:  0.9852513869103494</code></pre>
 <span id="cb84-6"><a href="#cb84-6"></a><span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
-<div id="476d4927-0f2a-48c9-b85d-ddaa33d19abb" class="cell" data-execution_count="24">
+<div id="476d4927-0f2a-48c9-b85d-ddaa33d19abb" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -1289,52 +1298,30 @@ Pearson's correlation coeff:  0.9852513869103494</code></pre>
 <span id="cb85-6"><a href="#cb85-6"></a><span class="kw">del</span> y</span>
 <span id="cb85-7"><a href="#cb85-7"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of unique alpha:  10
-Shape of x:  (30000, 128, 128, 1)
-Shape of y:  (30000,)
-Size of training data:  24000
-Size of validation data:  6000</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>0</code></pre>
-</div>
-</div>
-<div id="d14229b1-4290-4b9f-9fb6-967f923879fb" class="cell" data-execution_count="27">
+<div id="d14229b1-4290-4b9f-9fb6-967f923879fb" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>model_names <span class="op">=</span> [</span>
-<span id="cb88-2"><a href="#cb88-2"></a>    <span class="st">"ice1822"</span>,</span>
-<span id="cb88-3"><a href="#cb88-3"></a>    <span class="st">"house9539"</span>,</span>
-<span id="cb88-4"><a href="#cb88-4"></a>    <span class="st">"cake2409"</span>,</span>
-<span id="cb88-5"><a href="#cb88-5"></a>    <span class="st">"carrot8290"</span>,</span>
-<span id="cb88-6"><a href="#cb88-6"></a>    <span class="st">"virus9177"</span>,</span>
-<span id="cb88-7"><a href="#cb88-7"></a>    <span class="st">"comma1065"</span>,</span>
-<span id="cb88-8"><a href="#cb88-8"></a>    <span class="st">"toys6730"</span>,</span>
-<span id="cb88-9"><a href="#cb88-9"></a>    <span class="st">"red9392"</span>,</span>
-<span id="cb88-10"><a href="#cb88-10"></a>    <span class="st">"acid7391"</span>,</span>
-<span id="cb88-11"><a href="#cb88-11"></a>    <span class="st">"hot6626"</span>,</span>
-<span id="cb88-12"><a href="#cb88-12"></a>]</span>
-<span id="cb88-13"><a href="#cb88-13"></a>predictions, actual <span class="op">=</span> predict_multi_by_name(model_names, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>model_names <span class="op">=</span> [</span>
+<span id="cb86-2"><a href="#cb86-2"></a>    <span class="st">"ice1822"</span>,</span>
+<span id="cb86-3"><a href="#cb86-3"></a>    <span class="st">"house9539"</span>,</span>
+<span id="cb86-4"><a href="#cb86-4"></a>    <span class="st">"cake2409"</span>,</span>
+<span id="cb86-5"><a href="#cb86-5"></a>    <span class="st">"carrot8290"</span>,</span>
+<span id="cb86-6"><a href="#cb86-6"></a>    <span class="st">"virus9177"</span>,</span>
+<span id="cb86-7"><a href="#cb86-7"></a>    <span class="st">"comma1065"</span>,</span>
+<span id="cb86-8"><a href="#cb86-8"></a>    <span class="st">"toys6730"</span>,</span>
+<span id="cb86-9"><a href="#cb86-9"></a>    <span class="st">"red9392"</span>,</span>
+<span id="cb86-10"><a href="#cb86-10"></a>    <span class="st">"acid7391"</span>,</span>
+<span id="cb86-11"><a href="#cb86-11"></a>    <span class="st">"hot6626"</span>,</span>
+<span id="cb86-12"><a href="#cb86-12"></a>]</span>
+<span id="cb86-13"><a href="#cb86-13"></a>predictions, actual <span class="op">=</span> predict_multi_by_name(model_names, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="82ab4e5d-aebd-45b0-9064-8601f99edd03" class="cell" data-execution_count="28">
+<div id="82ab4e5d-aebd-45b0-9064-8601f99edd03" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a>plot_violin_and_statistics(predictions,actual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>plot_violin_and_statistics(predictions,actual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.0044519384 0.053331453 0.021031264
-Pearson's correlation coeff:  0.9768388637627718</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="training_without_orientation_files/figure-html/cell-66-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
 </div>
 
 

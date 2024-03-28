@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="217">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> warnings</span>
@@ -207,14 +207,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-17"><a href="#cb1-17"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-2" class="cell" data-execution_count="14">
+<div id="cell-2" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> overlap(traj,i,j):</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">return</span> ((traj[i]<span class="op">&gt;</span><span class="dv">0</span>)<span class="op">*</span>(traj[j]<span class="op">&gt;</span><span class="dv">0</span>)).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-3" class="cell" data-execution_count="20">
+<div id="cell-3" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
@@ -411,54 +411,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-7"><a href="#cb9-7"></a>df.to_csv(<span class="st">"cache/acf_rolled.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-10" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="268">
+<div id="cell-10" class="cell" data-execution_count="55">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df_0 <span class="op">=</span> pd.read_csv(<span class="st">"cache/acf.csv"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/acf_rolled_removed.csv"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/acf_rolled.csv"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5"></a></span>
-<span id="cb10-6"><a href="#cb10-6"></a>df2[<span class="st">'lags'</span>] <span class="op">=</span> df2[<span class="st">'lags'</span>] <span class="op">/</span> roll</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a>alpha <span class="op">=</span> tumbles[<span class="dv">0</span>]</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>roll <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>lags <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">100</span><span class="op">*</span>roll <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a>df_0 <span class="op">=</span> pd.read_csv(<span class="st">"cache/acf.csv"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/acf_rolled_removed.csv"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/acf_rolled.csv"</span>)</span>
 <span id="cb10-9"><a href="#cb10-9"></a></span>
-<span id="cb10-10"><a href="#cb10-10"></a>dff <span class="op">=</span> df[np.<span class="bu">round</span>(df[<span class="st">'alpha'</span>],<span class="dv">3</span>) <span class="op">==</span> np.<span class="bu">round</span>(alpha,<span class="dv">3</span>)]</span>
-<span id="cb10-11"><a href="#cb10-11"></a>dff2 <span class="op">=</span> df2[np.<span class="bu">round</span>(df2[<span class="st">'alpha'</span>],<span class="dv">3</span>) <span class="op">==</span> np.<span class="bu">round</span>(alpha,<span class="dv">3</span>)]</span>
-<span id="cb10-12"><a href="#cb10-12"></a></span>
-<span id="cb10-13"><a href="#cb10-13"></a>df3 <span class="op">=</span> pd.concat([dff,dff2])</span>
-<span id="cb10-14"><a href="#cb10-14"></a></span>
-<span id="cb10-15"><a href="#cb10-15"></a>df3.insert(<span class="dv">4</span>,<span class="st">"Context"</span>, [<span class="st">"Original"</span>]<span class="op">*</span><span class="dv">101</span><span class="op">+</span>[<span class="st">"Augmented"</span>]<span class="op">*</span><span class="dv">301</span>)</span>
+<span id="cb10-10"><a href="#cb10-10"></a>df2[<span class="st">'lags'</span>] <span class="op">=</span> df2[<span class="st">'lags'</span>] <span class="op">/</span> roll</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a>alpha <span class="op">=</span> tumbles[<span class="dv">0</span>]</span>
+<span id="cb10-13"><a href="#cb10-13"></a></span>
+<span id="cb10-14"><a href="#cb10-14"></a>dff <span class="op">=</span> df[np.<span class="bu">round</span>(df[<span class="st">'alpha'</span>],<span class="dv">3</span>) <span class="op">==</span> np.<span class="bu">round</span>(alpha,<span class="dv">3</span>)]</span>
+<span id="cb10-15"><a href="#cb10-15"></a>dff2 <span class="op">=</span> df2[np.<span class="bu">round</span>(df2[<span class="st">'alpha'</span>],<span class="dv">3</span>) <span class="op">==</span> np.<span class="bu">round</span>(alpha,<span class="dv">3</span>)]</span>
 <span id="cb10-16"><a href="#cb10-16"></a></span>
-<span id="cb10-17"><a href="#cb10-17"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb10-18"><a href="#cb10-18"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
-<span id="cb10-19"><a href="#cb10-19"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
-<span id="cb10-20"><a href="#cb10-20"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>,<span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
-<span id="cb10-21"><a href="#cb10-21"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb10-22"><a href="#cb10-22"></a></span>
-<span id="cb10-23"><a href="#cb10-23"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">3</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-24"><a href="#cb10-24"></a></span>
-<span id="cb10-25"><a href="#cb10-25"></a>ax1, ax2 <span class="op">=</span> axes</span>
+<span id="cb10-17"><a href="#cb10-17"></a>df3 <span class="op">=</span> pd.concat([dff,dff2])</span>
+<span id="cb10-18"><a href="#cb10-18"></a></span>
+<span id="cb10-19"><a href="#cb10-19"></a>df3.insert(<span class="dv">4</span>,<span class="st">"Context"</span>, [<span class="st">"Original"</span>]<span class="op">*</span><span class="dv">101</span><span class="op">+</span>[<span class="st">"Augmented"</span>]<span class="op">*</span><span class="dv">301</span>)</span>
+<span id="cb10-20"><a href="#cb10-20"></a></span>
+<span id="cb10-21"><a href="#cb10-21"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb10-22"><a href="#cb10-22"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
+<span id="cb10-23"><a href="#cb10-23"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
+<span id="cb10-24"><a href="#cb10-24"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>,<span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
+<span id="cb10-25"><a href="#cb10-25"></a>plt.rcParams.update(plot_configs)</span>
 <span id="cb10-26"><a href="#cb10-26"></a></span>
-<span id="cb10-27"><a href="#cb10-27"></a>sns.lineplot(ax<span class="op">=</span>ax1, data<span class="op">=</span>df_0, x<span class="op">=</span><span class="st">'lags'</span>, y<span class="op">=</span><span class="st">'acfs'</span>, hue<span class="op">=</span><span class="st">'alpha'</span>, palette<span class="op">=</span><span class="st">'cmc.bamako'</span>, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>)</span>
-<span id="cb10-28"><a href="#cb10-28"></a>sns.lineplot(ax<span class="op">=</span>ax2, data<span class="op">=</span>df3, x<span class="op">=</span><span class="st">'lags'</span>, y<span class="op">=</span><span class="st">'acfs'</span>, hue<span class="op">=</span><span class="st">'Context'</span>, palette<span class="op">=</span><span class="st">'cmc.batlow'</span>, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb10-29"><a href="#cb10-29"></a></span>
-<span id="cb10-30"><a href="#cb10-30"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
-<span id="cb10-31"><a href="#cb10-31"></a>    ax.set_xlim(left<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb10-32"><a href="#cb10-32"></a>    ax.set_ylim(top<span class="op">=</span><span class="fl">0.11</span>)</span>
-<span id="cb10-33"><a href="#cb10-33"></a>    ax.<span class="bu">set</span>(ylabel<span class="op">=</span><span class="st">"Position ACF"</span>, xlabel<span class="op">=</span><span class="st">"Lag time (s)"</span>)</span>
-<span id="cb10-34"><a href="#cb10-34"></a>    ax.axhline(<span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>, c<span class="op">=</span>cm.bamakoS(<span class="dv">0</span>), linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb10-35"><a href="#cb10-35"></a>    ax.text(s<span class="op">=</span><span class="vs">r"$\rho^2$"</span>, x<span class="op">=</span><span class="dv">110</span>, y<span class="op">=</span><span class="fl">0.98</span><span class="op">*</span><span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb10-36"><a href="#cb10-36"></a>    ax.set_xscale(<span class="st">'log'</span>)</span>
-<span id="cb10-37"><a href="#cb10-37"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb10-38"><a href="#cb10-38"></a>    ax.set_xticks([<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>])</span>
-<span id="cb10-39"><a href="#cb10-39"></a></span>
-<span id="cb10-40"><a href="#cb10-40"></a>sns.move_legend(ax1, <span class="st">"upper right"</span>, frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="vs">r"Tumbling rate, $\alpha$"</span>)</span>
-<span id="cb10-41"><a href="#cb10-41"></a>sns.move_legend(ax2, <span class="st">"upper right"</span>, frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb10-42"><a href="#cb10-42"></a></span>
-<span id="cb10-43"><a href="#cb10-43"></a>ax2.text(s<span class="op">=</span><span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(np.<span class="bu">round</span>(alpha,<span class="dv">3</span>)), transform<span class="op">=</span>ax.transAxes, x<span class="op">=</span><span class="fl">0.09</span>, y<span class="op">=</span><span class="fl">0.9</span>)</span>
-<span id="cb10-44"><a href="#cb10-44"></a></span>
-<span id="cb10-45"><a href="#cb10-45"></a>sns.despine()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-27"><a href="#cb10-27"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">8.5</span>,<span class="fl">3.5</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-28"><a href="#cb10-28"></a></span>
+<span id="cb10-29"><a href="#cb10-29"></a>ax1, ax2 <span class="op">=</span> axes</span>
+<span id="cb10-30"><a href="#cb10-30"></a></span>
+<span id="cb10-31"><a href="#cb10-31"></a></span>
+<span id="cb10-32"><a href="#cb10-32"></a>sns.lineplot(ax<span class="op">=</span>ax1, x<span class="op">=</span>df_0.lags <span class="op">*</span> df_0.alpha, y<span class="op">=</span>df_0.acfs, hue<span class="op">=</span>df_0.alpha, palette<span class="op">=</span><span class="st">'cmc.bamako'</span>, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>, mec<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
+<span id="cb10-33"><a href="#cb10-33"></a>sns.lineplot(ax<span class="op">=</span>ax2, x<span class="op">=</span>df3.lags <span class="op">*</span> df3.alpha, y<span class="op">=</span>df3.acfs, hue<span class="op">=</span>df3.Context, palette<span class="op">=</span><span class="st">'cmc.batlow'</span>, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>, mec<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
+<span id="cb10-34"><a href="#cb10-34"></a></span>
+<span id="cb10-35"><a href="#cb10-35"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
+<span id="cb10-36"><a href="#cb10-36"></a>    ax.<span class="bu">set</span>(ylabel<span class="op">=</span><span class="st">"Position ACF"</span>, xlabel<span class="op">=</span><span class="vs">r"Lag time $/ \tau$"</span>)</span>
+<span id="cb10-37"><a href="#cb10-37"></a>    ax.axhline(<span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb10-38"><a href="#cb10-38"></a></span>
+<span id="cb10-39"><a href="#cb10-39"></a>ax1_right<span class="op">=</span><span class="fl">5.5</span></span>
+<span id="cb10-40"><a href="#cb10-40"></a>ax1.set_xlim(left<span class="op">=</span><span class="dv">0</span>, right<span class="op">=</span>ax1_right)</span>
+<span id="cb10-41"><a href="#cb10-41"></a>ax1.text(s<span class="op">=</span><span class="vs">r"$\rho^2$"</span>, x<span class="op">=</span>ax1_right<span class="op">*</span><span class="fl">1.02</span>, y<span class="op">=</span><span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb10-42"><a href="#cb10-42"></a>ax1.set_ylim(bottom<span class="op">=</span><span class="fl">0.06</span>, top<span class="op">=</span><span class="fl">0.07</span>)</span>
+<span id="cb10-43"><a href="#cb10-43"></a>ax2_right<span class="op">=</span><span class="fl">0.75</span></span>
+<span id="cb10-44"><a href="#cb10-44"></a>ax2.set_xlim(left<span class="op">=</span><span class="dv">0</span>, right<span class="op">=</span>ax2_right)</span>
+<span id="cb10-45"><a href="#cb10-45"></a>ax2.set_ylim(bottom<span class="op">=</span><span class="fl">0.06</span>, top<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb10-46"><a href="#cb10-46"></a>ax2.text(s<span class="op">=</span><span class="vs">r"$\rho^2$"</span>, x<span class="op">=</span>ax2_right<span class="op">*</span><span class="fl">1.02</span>, y<span class="op">=</span><span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb10-47"><a href="#cb10-47"></a>sns.move_legend(ax1, <span class="st">"upper right"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>,<span class="fl">1.1</span>), frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="vs">r"Tumbling rate, $\alpha$"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb10-48"><a href="#cb10-48"></a>sns.move_legend(ax2, <span class="st">"center right"</span>, frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb10-49"><a href="#cb10-49"></a></span>
+<span id="cb10-50"><a href="#cb10-50"></a>ax2.text(s<span class="op">=</span><span class="vs">r"$\alpha = </span><span class="sc">{}</span><span class="vs">$"</span>.<span class="bu">format</span>(np.<span class="bu">round</span>(alpha,<span class="dv">3</span>)), transform<span class="op">=</span>ax.transAxes, x<span class="op">=</span><span class="fl">0.09</span>, y<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb10-51"><a href="#cb10-51"></a></span>
+<span id="cb10-52"><a href="#cb10-52"></a>sns.despine()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -468,11 +475,117 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="269">
+<div id="cell-11" class="cell" data-execution_count="56">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>fig.savefig(<span class="st">"plots/acf.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>fig.savefig(<span class="st">"plots/acf.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div id="cell-12" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2"></a>a <span class="op">=</span> np.random.randint(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="dv">2</span>, size<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span>
+<span id="cb12-3"><a href="#cb12-3"></a>b <span class="op">=</span> np.random.randint(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="dv">2</span>, size<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-13" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>c <span class="op">=</span> (a<span class="op">&gt;</span><span class="dv">0</span>)<span class="op">*</span>(b<span class="op">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="bu">print</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[False  True  True False False]
+ [False False False False False]
+ [False  True False  True False]
+ [False False False False False]
+ [False False  True False False]]</code></pre>
+</div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>np.mean(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>0.2</code></pre>
+</div>
+</div>
+<div id="cell-15" class="cell" data-execution_count="58">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>acfs <span class="op">=</span> df_0[<span class="st">'acfs'</span>]</span>
+<span id="cb17-2"><a href="#cb17-2"></a>trs <span class="op">=</span> df_0[<span class="st">'alpha'</span>]</span>
+<span id="cb17-3"><a href="#cb17-3"></a>lags <span class="op">=</span> df_0[<span class="st">'lags'</span>]</span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a>true_lags <span class="op">=</span> lags<span class="op">*</span>trs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-16" class="cell" data-execution_count="61">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>ax <span class="op">=</span> sns.lineplot(x<span class="op">=</span>df_0.lags <span class="op">*</span> df_0.alpha, y<span class="op">=</span>df.acfs, hue<span class="op">=</span>trs, palette<span class="op">=</span><span class="st">'cmc.bamako'</span>, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>, mec<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#ax.set_xscale('log')</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>ax.set_xlim(left<span class="op">=</span><span class="dv">0</span>, right<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb18-4"><a href="#cb18-4"></a>ax.set_ylim(bottom<span class="op">=</span><span class="fl">0.06</span>, top<span class="op">=</span><span class="fl">0.07</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>ax.axhline(<span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="acf_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="55">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>np.array(acfs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>array([0.25      , 0.10090332, 0.08644043, ..., 0.06232056, 0.06257568,
+       0.06277466])</code></pre>
+</div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="59">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>np.shape(np.array(lags)<span class="op">*</span>np.array(trs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>(1010,)</code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="58">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>np.shape(true_lags)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>(1010,)</code></pre>
+</div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="61">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>0        0.000000
+1        0.015625
+2        0.031250
+3        0.046875
+4        0.062500
+          ...    
+1005    48.000000
+1006    48.500000
+1007    49.000000
+1008    49.500000
+1009    50.000000
+Length: 1010, dtype: float64</code></pre>
+</div>
 </div>
 
 

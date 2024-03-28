@@ -210,8 +210,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Try and tune/optimize the models we’ve tested</label></li>
-<li><label><input type="checkbox" checked="">Come up with a set of metrics to evaluate our experiments</label></li>
+<li><label><input type="checkbox" checked="">Try and tune/optimize the models we’ve tested</label>
+<ul>
+<li>See <a href="#previous-progress-and-old-strategy">Previous progress and old strategy</a></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Come up with a set of metrics to evaluate our experiments</label>
+<ul>
+<li>See <a href="#metrics">Metrics</a></li>
+</ul></li>
 </ul>
 </section>
 <section id="summary" class="level2">
@@ -322,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-33"><a href="#cb2-33"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="overall-results" class="level4">
 <h4 class="anchored" data-anchor-id="overall-results">Overall results</h4>
-<p>In general, even with minor tweaks, the performance is just okay, there is a lot of spread. The run below showcases an “average” spread/distribution of the predictions, it was trained on all <span class="math inline">$\alphas$</span>’s, using the default Adam optimizer, ran on 10 epochs (but seemed to have constant loss quickly after 3-4 epochs).</p>
+<p>In general, even with minor tweaks, the performance is just okay, there is a lot of spread. The run below showcases an “average” spread/distribution of the predictions, it was trained on all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s, using the default Adam optimizer, ran on 10 epochs (but seemed to have constant loss quickly after 3-4 epochs).</p>
 <p>Model name is <code>rock8943</code>.</p>
 <div id="3d0f2d5e" class="cell" data-execution_count="2">
 <details class="code-fold">

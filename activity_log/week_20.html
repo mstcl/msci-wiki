@@ -129,6 +129,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
+  <li><a href="#realizing-whats-going-wrong-with-acf-plots" id="toc-realizing-whats-going-wrong-with-acf-plots" class="nav-link" data-scroll-target="#realizing-whats-going-wrong-with-acf-plots">Realizing what’s going wrong with ACF plots</a></li>
+  <li><a href="#acf-plot-units" id="toc-acf-plot-units" class="nav-link" data-scroll-target="#acf-plot-units">ACF plot units</a></li>
   <li><a href="#draft-structure-for-the-final-report" id="toc-draft-structure-for-the-final-report" class="nav-link" data-scroll-target="#draft-structure-for-the-final-report">Draft structure for the final report</a></li>
   </ul></li>
   </ul>
@@ -171,19 +173,51 @@ ul.task-list li input[type="checkbox"] {
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Redo orientation analysis (<strong><a href="../plots/labelling.html">click here</a></strong>)</label>
+<li><label><input type="checkbox" checked="">Redo orientation analysis</label>
 <ul>
-<li>Look at whole system, and compare counts at negative vs positive gradients.</li>
+<li>After discussion, it’s easier to look at the whole snapshot, perform edge detection (laplace or sobel) and take orientation distribution there. I.e. We look at whole system, and compare counts at negative vs positive gradients.</li>
+<li>See the <a href="../plots/labelling.html">plots</a></li>
 </ul></li>
 <li><label><input type="checkbox" checked="">Percolation (<strong><a href="../plots/percolation.html">click here</a></strong>)</label></li>
-<li><label><input type="checkbox" checked="">Work on plots (<strong><a href="../training/training_summary.html">click here</a></strong>)</label></li>
-<li><label><input type="checkbox" checked="">Work on report structure</label></li>
-<li><label><input type="checkbox" checked="">ACF check for rolling (what’s going on?) (<strong><a href="../plots/acf.html">click here</a></strong>)</label></li>
-<li><label><input type="checkbox">Flowchart for model</label></li>
+<li><label><input type="checkbox" checked="">Work on summary plots for CNN</label>
+<ul>
+<li>See <a href="../training/training_summary.html">here</a></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Work on report structure</label>
+<ul>
+<li>See <a href="#draft-structure-for-the-final-report">Draft structure for the final report</a></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">ACF check for rolling (what’s going on?)</label>
+<ul>
+<li>See <a href="../plots/acf.html">here (second panel)</a></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Flowchart for model</label>
+<ul>
+<li>Saved on draw.io, not really relevant as it’s just for report</li>
+</ul></li>
 </ul>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="realizing-whats-going-wrong-with-acf-plots" class="level3">
+<h3 class="anchored" data-anchor-id="realizing-whats-going-wrong-with-acf-plots">Realizing what’s going wrong with ACF plots</h3>
+<ul>
+<li>The augmented data is appended after each snapshot, meaning the evolution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> times slower, where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> is the number of times the same snapshot is rolled (including itself).</li>
+<li>Thus we have to increase the maximum <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> the lag goes up to.</li>
+<li>Looking at the second panel of the plot, it seems to fit nicely</li>
+</ul>
+</section>
+<section id="acf-plot-units" class="level3">
+<h3 class="anchored" data-anchor-id="acf-plot-units">ACF plot units</h3>
+<p>Rationale:</p>
+<ul>
+<li>Lag time is initially represented in seconds.</li>
+<li>Looking back, a particle update is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>.</li>
+<li>Lag time for each <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is scaled by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mi>/</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\tau/ \alpha</annotation></semantics></math>.</li>
+<li>To get an absolute lag time in unit <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>, plot x as lags times <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.</li>
+</ul>
+<p>Both panels of the plot were updated to reflect this.</p>
+</section>
 <section id="draft-structure-for-the-final-report" class="level3">
 <h3 class="anchored" data-anchor-id="draft-structure-for-the-final-report">Draft structure for the final report</h3>
 <section id="preparation" class="level4">

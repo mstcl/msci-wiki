@@ -221,31 +221,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
 <span id="cb1-20"><a href="#cb1-20"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-21"><a href="#cb1-21"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="im">from</span> src.training_utils <span class="im">import</span> (</span>
-<span id="cb1-27"><a href="#cb1-27"></a>    extract_floats,</span>
-<span id="cb1-28"><a href="#cb1-28"></a>    data_load,</span>
-<span id="cb1-29"><a href="#cb1-29"></a>    split_dataset,</span>
-<span id="cb1-30"><a href="#cb1-30"></a>    predict_multi_by_name,</span>
-<span id="cb1-31"><a href="#cb1-31"></a>    predict_and_plot,</span>
-<span id="cb1-32"><a href="#cb1-32"></a>    plot_violin_and_statistics</span>
-<span id="cb1-33"><a href="#cb1-33"></a>)</span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="im">from</span> src.models <span class="im">import</span> make_net</span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
-<span id="cb1-37"><a href="#cb1-37"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-38"><a href="#cb1-38"></a>gpu_devices <span class="op">=</span> tf.config.experimental.list_physical_devices(<span class="st">"GPU"</span>)</span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="cf">for</span> device <span class="kw">in</span> gpu_devices:</span>
-<span id="cb1-40"><a href="#cb1-40"></a>    tf.config.experimental.set_memory_growth(device, <span class="va">True</span>)</span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="bu">print</span>(gpu_devices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Patch</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="im">from</span> src.training_utils <span class="im">import</span> (</span>
+<span id="cb1-28"><a href="#cb1-28"></a>    extract_floats,</span>
+<span id="cb1-29"><a href="#cb1-29"></a>    data_load,</span>
+<span id="cb1-30"><a href="#cb1-30"></a>    split_dataset,</span>
+<span id="cb1-31"><a href="#cb1-31"></a>    predict_multi_by_name,</span>
+<span id="cb1-32"><a href="#cb1-32"></a>    predict_and_plot,</span>
+<span id="cb1-33"><a href="#cb1-33"></a>    plot_violin_and_statistics</span>
+<span id="cb1-34"><a href="#cb1-34"></a>)</span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="im">from</span> src.models <span class="im">import</span> make_net</span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-39"><a href="#cb1-39"></a>gpu_devices <span class="op">=</span> tf.config.experimental.list_physical_devices(<span class="st">"GPU"</span>)</span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="cf">for</span> device <span class="kw">in</span> gpu_devices:</span>
+<span id="cb1-41"><a href="#cb1-41"></a>    tf.config.experimental.set_memory_growth(device, <span class="va">True</span>)</span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="bu">print</span>(gpu_devices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="self-prediction" class="level2">
 <h2 class="anchored" data-anchor-id="self-prediction">Self-prediction</h2>
-<div id="9000a820-8d0b-4eca-9eda-ba0c623b6656" class="cell" data-execution_count="52">
+<div id="9000a820-8d0b-4eca-9eda-ba0c623b6656" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -274,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-24"><a href="#cb2-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="6297159c-4a9d-401c-b62a-af827983aadb" class="cell" data-execution_count="53">
+<div id="6297159c-4a9d-401c-b62a-af827983aadb" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>gc.collect()</span>
@@ -302,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-23"><a href="#cb3-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="60067338-2692-4e2b-bf79-1ec098500f64" class="cell" data-execution_count="54">
+<div id="60067338-2692-4e2b-bf79-1ec098500f64" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>gc.collect()</span>
@@ -330,16 +331,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-23"><a href="#cb4-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="99b0a82f-259c-43ab-a17e-5f2ecfcb8cd3" class="cell" data-execution_count="55">
+<div id="99b0a82f-259c-43ab-a17e-5f2ecfcb8cd3" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb5-2"><a href="#cb5-2"></a>    {</span>
 <span id="cb5-3"><a href="#cb5-3"></a>        <span class="st">"Predicted"</span>: np.concatenate(</span>
 <span id="cb5-4"><a href="#cb5-4"></a>            (</span>
-<span id="cb5-5"><a href="#cb5-5"></a>                predictions_with_orientation <span class="op">-</span> actual_with_orientation,</span>
-<span id="cb5-6"><a href="#cb5-6"></a>                predictions_without_orientation <span class="op">-</span> actual_without_orientation,</span>
-<span id="cb5-7"><a href="#cb5-7"></a>                predictions_with_monochrome <span class="op">-</span> actual_with_monochrome,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>                predictions_with_orientation,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>                predictions_without_orientation,</span>
+<span id="cb5-7"><a href="#cb5-7"></a>                predictions_with_monochrome,</span>
 <span id="cb5-8"><a href="#cb5-8"></a>            )</span>
 <span id="cb5-9"><a href="#cb5-9"></a>        ),</span>
 <span id="cb5-10"><a href="#cb5-10"></a>        <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation, actual_without_orientation, actual_with_monochrome)),</span>
@@ -389,14 +390,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-54"><a href="#cb5-54"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="3b6c3af7-26af-4df7-aa9d-0aa5f793c448" class="cell" data-execution_count="56">
+<div id="3b6c3af7-26af-4df7-aa9d-0aa5f793c448" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.to_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1fe9ab58-374e-4f58-92cd-d399d64c2f57" class="cell" data-execution_count="57">
+<div id="1fe9ab58-374e-4f58-92cd-d399d64c2f57" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">del</span> predictions_without_orientation</span>
@@ -415,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="cross-predictions">Cross predictions</h2>
 <section id="monochrome-on-orientation" class="level3">
 <h3 class="anchored" data-anchor-id="monochrome-on-orientation">Monochrome on orientation</h3>
-<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-execution_count="89">
+<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="89">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -444,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-24"><a href="#cb8-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-execution_count="90">
+<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="90">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>gc.collect()</span>
@@ -472,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-23"><a href="#cb9-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-execution_count="91">
+<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="91">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
@@ -488,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-11"><a href="#cb10-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-execution_count="92">
+<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="92">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross_2.csv"</span>)</span>
@@ -498,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="scrambled-on-orientation" class="level3">
 <h3 class="anchored" data-anchor-id="scrambled-on-orientation">Scrambled on orientation</h3>
-<div id="c90fa90e-f507-4c3a-8a59-aeffd7014b28" class="cell" data-execution_count="80">
+<div id="c90fa90e-f507-4c3a-8a59-aeffd7014b28" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="80">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -527,7 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-24"><a href="#cb12-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="24482c70-f2b6-4798-a599-93b4c9271e1e" class="cell" data-execution_count="81">
+<div id="24482c70-f2b6-4798-a599-93b4c9271e1e" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="81">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>gc.collect()</span>
@@ -555,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-23"><a href="#cb13-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="5bdf9a0a-4106-456c-b37a-9bcddbc3c6e2" class="cell" data-execution_count="82">
+<div id="5bdf9a0a-4106-456c-b37a-9bcddbc3c6e2" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="82">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
@@ -571,14 +572,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-11"><a href="#cb14-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="feb60bcb-03f8-4fda-bc3e-9bc89ea0d044" class="cell" data-execution_count="83">
+<div id="feb60bcb-03f8-4fda-bc3e-9bc89ea0d044" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="83">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="0ddb261c-7470-4eea-94be-81ac4480ba8a" class="cell" data-execution_count="93">
+<div id="0ddb261c-7470-4eea-94be-81ac4480ba8a" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="93">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">del</span> predictions_without_orientation</span>
@@ -594,18 +595,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="plots" class="level2">
 <h2 class="anchored" data-anchor-id="plots">Plots</h2>
-<div id="53c2d23f-39df-431f-8b54-ad9f931b9ed7" class="cell" data-execution_count="94">
+<div id="53c2d23f-39df-431f-8b54-ad9f931b9ed7" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span>
-<span id="cb17-3"><a href="#cb17-3"></a>df3 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>df4 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span>
-<span id="cb17-5"><a href="#cb17-5"></a>df5 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_cross_2.csv"</span>)</span>
-<span id="cb17-6"><a href="#cb17-6"></a>df6 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std_cross_2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">#df3 = pd.read_csv("cache/model_summary_cross.csv")</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co">#df4 = pd.read_csv("cache/model_summary_std_cross.csv")</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co">#df5 = pd.read_csv("cache/model_summary_cross_2.csv")</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="co">#df6 = pd.read_csv("cache/model_summary_std_cross_2.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4b24e661-2482-48c9-a622-e93b3c739677" class="cell" data-execution_count="104">
+<div id="4b24e661-2482-48c9-a622-e93b3c739677" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
@@ -618,120 +619,155 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-8"><a href="#cb18-8"></a></span>
 <span id="cb18-9"><a href="#cb18-9"></a></span>
 <span id="cb18-10"><a href="#cb18-10"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
-<span id="cb18-11"><a href="#cb18-11"></a>    <span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">8</span>), sharex<span class="op">=</span><span class="va">True</span>, constrained_layout<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="st">"row"</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>    <span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="fl">4.25</span>, <span class="dv">7</span>), constrained_layout<span class="op">=</span><span class="va">True</span>, sharex<span class="op">=</span><span class="va">True</span></span>
 <span id="cb18-12"><a href="#cb18-12"></a>)</span>
 <span id="cb18-13"><a href="#cb18-13"></a>(ax1, ax2, ax3) <span class="op">=</span> axes</span>
 <span id="cb18-14"><a href="#cb18-14"></a></span>
-<span id="cb18-15"><a href="#cb18-15"></a>palette <span class="op">=</span>{<span class="st">"Trained with orientation"</span>: cm.glasgow(<span class="dv">50</span>), <span class="st">"Trained without orientation"</span>: cm.glasgow(<span class="dv">100</span>), <span class="st">"Trained with thresholding"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
+<span id="cb18-15"><a href="#cb18-15"></a>palette <span class="op">=</span>{<span class="st">"Trained with orientation"</span>: cm.glasgow(<span class="dv">0</span>), <span class="st">"Trained without orientation"</span>: cm.glasgow(<span class="dv">60</span>), <span class="st">"Trained with thresholding"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
 <span id="cb18-16"><a href="#cb18-16"></a></span>
-<span id="cb18-17"><a href="#cb18-17"></a>sns.lineplot(</span>
+<span id="cb18-17"><a href="#cb18-17"></a>sns.boxplot(</span>
 <span id="cb18-18"><a href="#cb18-18"></a>    ax<span class="op">=</span>ax1,</span>
 <span id="cb18-19"><a href="#cb18-19"></a>    data<span class="op">=</span>df,</span>
 <span id="cb18-20"><a href="#cb18-20"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
 <span id="cb18-21"><a href="#cb18-21"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
 <span id="cb18-22"><a href="#cb18-22"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb18-23"><a href="#cb18-23"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
-<span id="cb18-24"><a href="#cb18-24"></a>    palette<span class="op">=</span>palette,</span>
-<span id="cb18-25"><a href="#cb18-25"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
-<span id="cb18-26"><a href="#cb18-26"></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb18-27"><a href="#cb18-27"></a>)</span>
-<span id="cb18-28"><a href="#cb18-28"></a><span class="co">#sns.lineplot(</span></span>
-<span id="cb18-29"><a href="#cb18-29"></a><span class="co">#    ax=ax4,</span></span>
-<span id="cb18-30"><a href="#cb18-30"></a><span class="co">#    data=df2,</span></span>
-<span id="cb18-31"><a href="#cb18-31"></a><span class="co">#    x="Actual",</span></span>
-<span id="cb18-32"><a href="#cb18-32"></a><span class="co">#    y="STD",</span></span>
-<span id="cb18-33"><a href="#cb18-33"></a><span class="co">#    hue="Context",</span></span>
-<span id="cb18-34"><a href="#cb18-34"></a><span class="co">#    palette=palette,</span></span>
-<span id="cb18-35"><a href="#cb18-35"></a><span class="co">#    marker="o",</span></span>
-<span id="cb18-36"><a href="#cb18-36"></a><span class="co">#    alpha=0.9,</span></span>
-<span id="cb18-37"><a href="#cb18-37"></a><span class="co">#    legend=False,</span></span>
-<span id="cb18-38"><a href="#cb18-38"></a><span class="co">#)</span></span>
-<span id="cb18-39"><a href="#cb18-39"></a><span class="co">#ax4.set_ylabel(r"Spread, $\sigma_p$")</span></span>
-<span id="cb18-40"><a href="#cb18-40"></a></span>
-<span id="cb18-41"><a href="#cb18-41"></a></span>
-<span id="cb18-42"><a href="#cb18-42"></a>sns.lineplot(</span>
-<span id="cb18-43"><a href="#cb18-43"></a>    ax<span class="op">=</span>ax2,</span>
-<span id="cb18-44"><a href="#cb18-44"></a>    data<span class="op">=</span>df3,</span>
-<span id="cb18-45"><a href="#cb18-45"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb18-46"><a href="#cb18-46"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
-<span id="cb18-47"><a href="#cb18-47"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb18-48"><a href="#cb18-48"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
-<span id="cb18-49"><a href="#cb18-49"></a>    palette<span class="op">=</span>palette,</span>
-<span id="cb18-50"><a href="#cb18-50"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
-<span id="cb18-51"><a href="#cb18-51"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb18-52"><a href="#cb18-52"></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb18-53"><a href="#cb18-53"></a>)</span>
+<span id="cb18-23"><a href="#cb18-23"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-24"><a href="#cb18-24"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-25"><a href="#cb18-25"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-26"><a href="#cb18-26"></a>    whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb18-27"><a href="#cb18-27"></a>    linecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb18-28"><a href="#cb18-28"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb18-29"><a href="#cb18-29"></a>    fill<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-30"><a href="#cb18-30"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-31"><a href="#cb18-31"></a>)</span>
+<span id="cb18-32"><a href="#cb18-32"></a><span class="cf">for</span> patch <span class="kw">in</span> ax1.patches:</span>
+<span id="cb18-33"><a href="#cb18-33"></a>    r, g, b, a <span class="op">=</span> patch.get_facecolor()</span>
+<span id="cb18-34"><a href="#cb18-34"></a>    patch.set_facecolor((r, g, b, <span class="fl">.5</span>))</span>
+<span id="cb18-35"><a href="#cb18-35"></a>sns.boxplot(</span>
+<span id="cb18-36"><a href="#cb18-36"></a>    ax<span class="op">=</span>ax1,</span>
+<span id="cb18-37"><a href="#cb18-37"></a>    data<span class="op">=</span>df,</span>
+<span id="cb18-38"><a href="#cb18-38"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-39"><a href="#cb18-39"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-40"><a href="#cb18-40"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-41"><a href="#cb18-41"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-42"><a href="#cb18-42"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-43"><a href="#cb18-43"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-44"><a href="#cb18-44"></a>    whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb18-45"><a href="#cb18-45"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb18-46"><a href="#cb18-46"></a>    fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-47"><a href="#cb18-47"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-48"><a href="#cb18-48"></a>)</span>
+<span id="cb18-49"><a href="#cb18-49"></a></span>
+<span id="cb18-50"><a href="#cb18-50"></a>ax1.plot(tumbles,tumbles)</span>
+<span id="cb18-51"><a href="#cb18-51"></a></span>
+<span id="cb18-52"><a href="#cb18-52"></a>ax2.axhline(<span class="fl">0.015</span>, c<span class="op">=</span><span class="st">'0.9'</span>)</span>
+<span id="cb18-53"><a href="#cb18-53"></a>ax2.text(s<span class="op">=</span><span class="vs">r"$\sigma = 0.15$"</span>, x<span class="op">=</span><span class="fl">0.014</span>, y<span class="op">=</span><span class="fl">0.016</span>)</span>
 <span id="cb18-54"><a href="#cb18-54"></a></span>
-<span id="cb18-55"><a href="#cb18-55"></a><span class="co">#sns.lineplot(</span></span>
-<span id="cb18-56"><a href="#cb18-56"></a><span class="co">#    ax=ax5,</span></span>
-<span id="cb18-57"><a href="#cb18-57"></a><span class="co">#    data=df4,</span></span>
-<span id="cb18-58"><a href="#cb18-58"></a><span class="co">#    x="Actual",</span></span>
-<span id="cb18-59"><a href="#cb18-59"></a><span class="co">#    y="STD",</span></span>
-<span id="cb18-60"><a href="#cb18-60"></a><span class="co">#    hue="Context",</span></span>
-<span id="cb18-61"><a href="#cb18-61"></a><span class="co">#    palette=palette,</span></span>
-<span id="cb18-62"><a href="#cb18-62"></a><span class="co">#    marker="o",</span></span>
-<span id="cb18-63"><a href="#cb18-63"></a><span class="co">#    legend=False,</span></span>
-<span id="cb18-64"><a href="#cb18-64"></a><span class="co">#)</span></span>
-<span id="cb18-65"><a href="#cb18-65"></a></span>
-<span id="cb18-66"><a href="#cb18-66"></a>sns.lineplot(</span>
-<span id="cb18-67"><a href="#cb18-67"></a>    ax<span class="op">=</span>ax3,</span>
-<span id="cb18-68"><a href="#cb18-68"></a>    data<span class="op">=</span>df5,</span>
-<span id="cb18-69"><a href="#cb18-69"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb18-70"><a href="#cb18-70"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
-<span id="cb18-71"><a href="#cb18-71"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb18-72"><a href="#cb18-72"></a>    errorbar<span class="op">=</span>(<span class="st">"sd"</span>, <span class="dv">1</span>),</span>
-<span id="cb18-73"><a href="#cb18-73"></a>    palette<span class="op">=</span>palette,</span>
-<span id="cb18-74"><a href="#cb18-74"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
-<span id="cb18-75"><a href="#cb18-75"></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb18-76"><a href="#cb18-76"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb18-77"><a href="#cb18-77"></a>)</span>
-<span id="cb18-78"><a href="#cb18-78"></a></span>
-<span id="cb18-79"><a href="#cb18-79"></a><span class="co">#sns.lineplot(</span></span>
-<span id="cb18-80"><a href="#cb18-80"></a><span class="co">#    ax=ax6,</span></span>
-<span id="cb18-81"><a href="#cb18-81"></a><span class="co">#    data=df6,</span></span>
-<span id="cb18-82"><a href="#cb18-82"></a><span class="co">#    x="Actual",</span></span>
-<span id="cb18-83"><a href="#cb18-83"></a><span class="co">#    y="STD",</span></span>
-<span id="cb18-84"><a href="#cb18-84"></a><span class="co">#    hue="Context",</span></span>
-<span id="cb18-85"><a href="#cb18-85"></a><span class="co">#    palette=palette,</span></span>
-<span id="cb18-86"><a href="#cb18-86"></a><span class="co">#    marker="o",</span></span>
-<span id="cb18-87"><a href="#cb18-87"></a><span class="co">#    legend=False,</span></span>
-<span id="cb18-88"><a href="#cb18-88"></a><span class="co">#)</span></span>
-<span id="cb18-89"><a href="#cb18-89"></a></span>
-<span id="cb18-90"><a href="#cb18-90"></a></span>
-<span id="cb18-91"><a href="#cb18-91"></a>sns.despine()</span>
-<span id="cb18-92"><a href="#cb18-92"></a></span>
-<span id="cb18-93"><a href="#cb18-93"></a></span>
-<span id="cb18-94"><a href="#cb18-94"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb18-95"><a href="#cb18-95"></a></span>
-<span id="cb18-96"><a href="#cb18-96"></a>sns.move_legend(</span>
-<span id="cb18-97"><a href="#cb18-97"></a>    ax1, <span class="st">"lower center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.4</span>, <span class="fl">0.02</span>), frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="va">None</span></span>
-<span id="cb18-98"><a href="#cb18-98"></a>)</span>
+<span id="cb18-55"><a href="#cb18-55"></a>contexts <span class="op">=</span> [<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>]</span>
+<span id="cb18-56"><a href="#cb18-56"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb18-57"><a href="#cb18-57"></a>    context <span class="op">=</span> contexts[idx]</span>
+<span id="cb18-58"><a href="#cb18-58"></a>    a, b <span class="op">=</span> np.polyfit(np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>]),df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'STD'</span>][:<span class="dv">6</span>],<span class="dv">1</span>)</span>
+<span id="cb18-59"><a href="#cb18-59"></a>    sns.lineplot(</span>
+<span id="cb18-60"><a href="#cb18-60"></a>        ax<span class="op">=</span>ax2,</span>
+<span id="cb18-61"><a href="#cb18-61"></a>        x<span class="op">=</span>df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>],</span>
+<span id="cb18-62"><a href="#cb18-62"></a>        y<span class="op">=</span>np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>])<span class="op">*</span>a<span class="op">+</span>b,</span>
+<span id="cb18-63"><a href="#cb18-63"></a>        color<span class="op">=</span>palette[context],</span>
+<span id="cb18-64"><a href="#cb18-64"></a>        linestyle<span class="op">=</span><span class="st">'-'</span></span>
+<span id="cb18-65"><a href="#cb18-65"></a>    )</span>
+<span id="cb18-66"><a href="#cb18-66"></a>    <span class="bu">print</span>(a,b)</span>
+<span id="cb18-67"><a href="#cb18-67"></a></span>
+<span id="cb18-68"><a href="#cb18-68"></a><span class="co"># ------------</span></span>
+<span id="cb18-69"><a href="#cb18-69"></a></span>
+<span id="cb18-70"><a href="#cb18-70"></a>contexts <span class="op">=</span> [<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>]</span>
+<span id="cb18-71"><a href="#cb18-71"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb18-72"><a href="#cb18-72"></a>    context <span class="op">=</span> contexts[idx]</span>
+<span id="cb18-73"><a href="#cb18-73"></a>    a, b <span class="op">=</span> np.polyfit(np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:]),df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'STD'</span>][<span class="dv">6</span>:],<span class="dv">1</span>)</span>
+<span id="cb18-74"><a href="#cb18-74"></a>    sns.lineplot(</span>
+<span id="cb18-75"><a href="#cb18-75"></a>        ax<span class="op">=</span>ax2,</span>
+<span id="cb18-76"><a href="#cb18-76"></a>        x<span class="op">=</span>df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:],</span>
+<span id="cb18-77"><a href="#cb18-77"></a>        y<span class="op">=</span>np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:])<span class="op">*</span>a<span class="op">+</span>b,</span>
+<span id="cb18-78"><a href="#cb18-78"></a>        color<span class="op">=</span>palette[context],</span>
+<span id="cb18-79"><a href="#cb18-79"></a>        linestyle<span class="op">=</span><span class="st">'dashed'</span></span>
+<span id="cb18-80"><a href="#cb18-80"></a>    )</span>
+<span id="cb18-81"><a href="#cb18-81"></a>    <span class="bu">print</span>(a,b)</span>
+<span id="cb18-82"><a href="#cb18-82"></a></span>
+<span id="cb18-83"><a href="#cb18-83"></a>sns.scatterplot(</span>
+<span id="cb18-84"><a href="#cb18-84"></a>    ax<span class="op">=</span>ax2,</span>
+<span id="cb18-85"><a href="#cb18-85"></a>    data<span class="op">=</span>df2,</span>
+<span id="cb18-86"><a href="#cb18-86"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-87"><a href="#cb18-87"></a>    y<span class="op">=</span><span class="st">"STD"</span>,</span>
+<span id="cb18-88"><a href="#cb18-88"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-89"><a href="#cb18-89"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-90"><a href="#cb18-90"></a>    alpha<span class="op">=</span><span class="fl">.7</span>,</span>
+<span id="cb18-91"><a href="#cb18-91"></a>    marker<span class="op">=</span><span class="st">'o'</span>,</span>
+<span id="cb18-92"><a href="#cb18-92"></a>    ec<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb18-93"><a href="#cb18-93"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-94"><a href="#cb18-94"></a>    zorder<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb18-95"><a href="#cb18-95"></a>)</span>
+<span id="cb18-96"><a href="#cb18-96"></a></span>
+<span id="cb18-97"><a href="#cb18-97"></a></span>
+<span id="cb18-98"><a href="#cb18-98"></a>sns.despine()</span>
 <span id="cb18-99"><a href="#cb18-99"></a></span>
-<span id="cb18-100"><a href="#cb18-100"></a>labels <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb18-101"><a href="#cb18-101"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>(axes.ravel()):</span>
-<span id="cb18-102"><a href="#cb18-102"></a>    ax.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb18-103"><a href="#cb18-103"></a>    ax.text(s<span class="op">=</span><span class="ss">f"(</span><span class="sc">{</span>labels[idx]<span class="sc">}</span><span class="ss">)"</span>, transform<span class="op">=</span>ax.transAxes, x<span class="op">=</span><span class="fl">0.1</span>, y<span class="op">=</span><span class="fl">.85</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
-<span id="cb18-104"><a href="#cb18-104"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb18-105"><a href="#cb18-105"></a>    ax.set_xticks(np.unique(tumbles)[::<span class="dv">2</span>])</span>
-<span id="cb18-106"><a href="#cb18-106"></a>    ax.set_xlabel(<span class="vs">r"Tumbling rates, $\alpha$"</span>)</span>
-<span id="cb18-107"><a href="#cb18-107"></a>    ax.set_ylabel(<span class="st">""</span>)</span>
-<span id="cb18-108"><a href="#cb18-108"></a>fig.supylabel(<span class="vs">r"Mean error, $y_p - y_a$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-100"><a href="#cb18-100"></a></span>
+<span id="cb18-101"><a href="#cb18-101"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb18-102"><a href="#cb18-102"></a></span>
+<span id="cb18-103"><a href="#cb18-103"></a>palette2 <span class="op">=</span>{<span class="st">"None"</span>: cm.glasgow(<span class="dv">0</span>), <span class="st">"Random DOF"</span>: cm.glasgow(<span class="dv">60</span>), <span class="st">"Threshold"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
+<span id="cb18-104"><a href="#cb18-104"></a>handles <span class="op">=</span> [</span>
+<span id="cb18-105"><a href="#cb18-105"></a>    Patch(</span>
+<span id="cb18-106"><a href="#cb18-106"></a>        edgecolor<span class="op">=</span>color,</span>
+<span id="cb18-107"><a href="#cb18-107"></a>        facecolor<span class="op">=</span>(color[<span class="dv">0</span>], color[<span class="dv">1</span>], color[<span class="dv">2</span>], <span class="fl">0.5</span>),</span>
+<span id="cb18-108"><a href="#cb18-108"></a>        label<span class="op">=</span>label,</span>
+<span id="cb18-109"><a href="#cb18-109"></a>        linewidth<span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb18-110"><a href="#cb18-110"></a>    ) </span>
+<span id="cb18-111"><a href="#cb18-111"></a>    <span class="cf">for</span> label, color <span class="kw">in</span> palette2.items()</span>
+<span id="cb18-112"><a href="#cb18-112"></a>]</span>
+<span id="cb18-113"><a href="#cb18-113"></a></span>
+<span id="cb18-114"><a href="#cb18-114"></a>ax1.legend(handles<span class="op">=</span>handles, frameon<span class="op">=</span><span class="va">False</span>, loc<span class="op">=</span><span class="st">'lower right'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, title<span class="op">=</span><span class="st">"Data processing"</span>)<span class="op">;</span></span>
+<span id="cb18-115"><a href="#cb18-115"></a></span>
+<span id="cb18-116"><a href="#cb18-116"></a>ax1.set_xlim(left<span class="op">=</span><span class="fl">0.012</span>)</span>
+<span id="cb18-117"><a href="#cb18-117"></a></span>
+<span id="cb18-118"><a href="#cb18-118"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>(axes.ravel()):</span>
+<span id="cb18-119"><a href="#cb18-119"></a>    ax.set_xlabel(<span class="vs">r"(Actual) Tumbling rate, $\alpha_a$"</span>)</span>
+<span id="cb18-120"><a href="#cb18-120"></a>    ax.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb18-121"><a href="#cb18-121"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb18-122"><a href="#cb18-122"></a>    ax.set_xticks(np.<span class="bu">round</span>(np.unique(tumbles)[::<span class="dv">2</span>],<span class="dv">3</span>))</span>
+<span id="cb18-123"><a href="#cb18-123"></a></span>
+<span id="cb18-124"><a href="#cb18-124"></a>dfs <span class="op">=</span> pd.read_csv(<span class="st">"cache/cluster_count_size_0.25.csv"</span>)</span>
+<span id="cb18-125"><a href="#cb18-125"></a>sns.lineplot(ax<span class="op">=</span>ax3, data<span class="op">=</span>dfs, x<span class="op">=</span><span class="st">"alpha"</span>, y<span class="op">=</span><span class="st">"bigsize"</span>, errorbar<span class="op">=</span><span class="st">"sd"</span>, marker<span class="op">=</span><span class="st">'o'</span>, c<span class="op">=</span><span class="st">'darkred'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-126"><a href="#cb18-126"></a>ax1.set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb18-127"><a href="#cb18-127"></a>ax1.get_yaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb18-128"><a href="#cb18-128"></a>ax1.set_yticks(np.<span class="bu">round</span>(np.unique(tumbles)[::<span class="dv">2</span>],<span class="dv">3</span>))</span>
+<span id="cb18-129"><a href="#cb18-129"></a>ax1.set_ylabel(<span class="vs">r"Predicted value, $\alpha_p$"</span>)</span>
+<span id="cb18-130"><a href="#cb18-130"></a>ax2.set_ylabel(<span class="vs">r"$\sigma_{\alpha_p}$"</span>)</span>
+<span id="cb18-131"><a href="#cb18-131"></a>ax3.set_ylabel(<span class="vs">r"$V_{\bf max}$ $/a^2$"</span>)</span>
+<span id="cb18-132"><a href="#cb18-132"></a><span class="co">#ax3.set_yticks([10**1,10**2])</span></span>
+<span id="cb18-133"><a href="#cb18-133"></a>fig.text(s<span class="op">=</span><span class="ss">f"(A)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.96</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
+<span id="cb18-134"><a href="#cb18-134"></a>fig.text(s<span class="op">=</span><span class="ss">f"(B)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.65</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
+<span id="cb18-135"><a href="#cb18-135"></a>fig.text(s<span class="op">=</span><span class="ss">f"(C)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.33</span>, fontsize<span class="op">=</span><span class="st">'large'</span>, backgroundcolor<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="104">
-<pre><code>Text(0.02, 0.5, 'Mean error, $y_p - y_a$')</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.004503738248810316 0.022652028724380956
+0.0038497000933606362 0.01983377747523809
+0.003522612455057669 0.018080066510476195
+0.020995983952850242 0.06854198798
+0.023085168040463743 0.07011854534
+0.021783351795216864 0.06384775828</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>Text(0.22, 0.33, '(C)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="training_summary_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="training_summary_files/figure-html/cell-19-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="105">
+<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="86">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>fig.savefig(<span class="st">"plots/orientation_summary.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>fig.savefig(<span class="st">"plots/orientation_summary_box_0.25.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 

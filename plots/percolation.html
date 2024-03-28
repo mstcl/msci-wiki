@@ -185,78 +185,250 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="9de09f69-8d28-4ad7-94f9-cf8b67fdce96" class="cell" data-execution_count="43">
+<div id="a5b6aaa0-3bc6-4490-9f83-4817a30d6d30" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> os</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#from statsmodels.graphics.mosaicplot import mosaic</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> cmcrameri</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> h5py</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="im">import</span> natsort</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="im">from</span> src.utils <span class="im">import</span> get_cluster_labels, get_ds_iters</span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb1-22"><a href="#cb1-22"></a></span>
-<span id="cb1-23"><a href="#cb1-23"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb1-24"><a href="#cb1-24"></a>plt.rcParams.update(plot_configs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>pip install natsort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Defaulting to user installation because normal site-packages is not writeable
+Collecting natsort
+  Downloading natsort-8.4.0-py3-none-any.whl.metadata (21 kB)
+Downloading natsort-8.4.0-py3-none-any.whl (38 kB)
+Installing collected packages: natsort
+  WARNING: The script natsort is installed in '/home/jupyter/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed natsort-8.4.0
+Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
-<div id="7ce77594-b289-4f93-902d-13141c85d49d" class="cell" data-execution_count="56">
+</div>
+<div id="9de09f69-8d28-4ad7-94f9-cf8b67fdce96" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> get_biggest_cluster_loc(img):</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    labelled, _ <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    lb <span class="op">=</span> labelled.flatten()</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    cluster_sizes <span class="op">=</span> np.bincount(lb)[<span class="dv">1</span>:]</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    biggest_cluster_id <span class="op">=</span> np.argmax(cluster_sizes) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="cf">return</span> np.where(labelled <span class="op">==</span> biggest_cluster_id)</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">def</span> check_threshold(locs, threshold<span class="op">=</span><span class="dv">20</span>, dim<span class="op">=</span><span class="dv">128</span>):</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> np.<span class="bu">min</span>(locs[<span class="dv">0</span>]) <span class="op">&lt;=</span> threshold) <span class="kw">and</span> (dim<span class="op">-</span>threshold <span class="op">&lt;=</span> np.<span class="bu">max</span>(locs[<span class="dv">0</span>]) <span class="op">&lt;=</span> dim):</span>
-<span id="cb2-12"><a href="#cb2-12"></a>        <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>    <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> np.<span class="bu">min</span>(locs[<span class="dv">1</span>]) <span class="op">&lt;=</span> threshold) <span class="kw">and</span> (dim<span class="op">-</span>threshold <span class="op">&lt;=</span> np.<span class="bu">max</span>(locs[<span class="dv">1</span>]) <span class="op">&lt;=</span> dim):</span>
-<span id="cb2-14"><a href="#cb2-14"></a>        <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="db625473-f402-4d09-8b3a-62dd1d83db7a" class="cell" data-execution_count="71">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.016_0.5.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>data <span class="op">=</span> [ hf[i][:] <span class="cf">for</span> i <span class="kw">in</span> natsort.natsorted(<span class="bu">list</span>(hf.keys()))]</span>
-<span id="cb3-3"><a href="#cb3-3"></a>data <span class="op">=</span> np.array(data)</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a>acceptance <span class="op">=</span> <span class="fl">.5</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>P <span class="op">=</span> []</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> warnings</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> os</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
 <span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="cf">for</span> idx, d <span class="kw">in</span> <span class="bu">enumerate</span>(data):</span>
-<span id="cb3-9"><a href="#cb3-9"></a>    locs <span class="op">=</span> get_biggest_cluster_loc(d)</span>
-<span id="cb3-10"><a href="#cb3-10"></a>    P.append(check_threshold(locs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#from statsmodels.graphics.mosaicplot import mosaic</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="im">import</span> cmcrameri</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="im">import</span> h5py</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="im">import</span> natsort</span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="im">from</span> src.utils <span class="im">import</span> get_cluster_labels, get_ds_iters</span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb3-24"><a href="#cb3-24"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb3-25"><a href="#cb3-25"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="91bdbafc-fe0d-42a7-8e36-53c69d553f88" class="cell" data-execution_count="72">
+<div id="7ce77594-b289-4f93-902d-13141c85d49d" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>np.mean(P) <span class="op">&gt;=</span> acceptance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> get_biggest_cluster_loc(<span class="bu">file</span>, idx):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, idx)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    lb <span class="op">=</span> labelled.flatten()</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    cluster_sizes <span class="op">=</span> np.bincount(lb)[<span class="dv">1</span>:]</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    biggest_cluster_id <span class="op">=</span> np.argmax(cluster_sizes) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="cf">return</span> np.where(labelled <span class="op">==</span> biggest_cluster_id)</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">def</span> check_threshold(locs, threshold<span class="op">=</span><span class="dv">20</span>, dim<span class="op">=</span><span class="dv">128</span>):</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="co">#print(np.ptp(locs[0]), np.ptp(locs[1]))</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="cf">if</span> np.ptp(locs[<span class="dv">0</span>]) <span class="op">&gt;=</span> <span class="dv">128</span><span class="op">-</span>threshold:</span>
+<span id="cb4-13"><a href="#cb4-13"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="cf">if</span> np.ptp(locs[<span class="dv">1</span>]) <span class="op">&gt;=</span> <span class="dv">128</span><span class="op">-</span>threshold:</span>
+<span id="cb4-15"><a href="#cb4-15"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="72">
-<pre><code>True</code></pre>
 </div>
+<div id="db625473-f402-4d09-8b3a-62dd1d83db7a" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-execution_count="32">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>density <span class="op">=</span> [<span class="fl">0.05</span>,<span class="fl">0.1</span>,<span class="fl">0.15</span>,<span class="fl">0.2</span>,<span class="fl">0.25</span>,<span class="fl">0.3</span>,<span class="fl">0.35</span>,<span class="fl">0.4</span>,<span class="fl">0.45</span>,<span class="fl">0.5</span>]</span>
+<span id="cb5-3"><a href="#cb5-3"></a>acceptance <span class="op">=</span> <span class="fl">.5</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>res <span class="op">=</span> []</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="cf">for</span> t <span class="kw">in</span> tumbles:</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="cf">for</span> d <span class="kw">in</span> density:</span>
+<span id="cb5-7"><a href="#cb5-7"></a>        <span class="bu">file</span> <span class="op">=</span> <span class="ss">f"no_roll_data/dataset_tumble_</span><span class="sc">{</span>t<span class="sc">:.3f}</span><span class="ss">_</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">.h5"</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>        data <span class="op">=</span> [ hf[i][:] <span class="cf">for</span> i <span class="kw">in</span> natsort.natsorted(<span class="bu">list</span>(hf.keys()))]</span>
+<span id="cb5-9"><a href="#cb5-9"></a>        data <span class="op">=</span> np.array(data)</span>
+<span id="cb5-10"><a href="#cb5-10"></a></span>
+<span id="cb5-11"><a href="#cb5-11"></a>        </span>
+<span id="cb5-12"><a href="#cb5-12"></a>        P <span class="op">=</span> []</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        </span>
+<span id="cb5-14"><a href="#cb5-14"></a>        <span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb5-15"><a href="#cb5-15"></a>            locs <span class="op">=</span> get_biggest_cluster_loc(<span class="bu">file</span>, idx)</span>
+<span id="cb5-16"><a href="#cb5-16"></a>            P.append(check_threshold(locs))</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        res.append(np.mean(P))</span>
+<span id="cb5-18"><a href="#cb5-18"></a>        <span class="bu">print</span>(t, d, np.mean(P))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.015625 0.05 0.068
+0.015625 0.1 0.105
+0.015625 0.15 0.117
+0.015625 0.2 0.201
+0.015625 0.25 0.306
+0.015625 0.3 0.246
+0.015625 0.35 0.418
+0.015625 0.4 0.46
+0.015625 0.45 0.703
+0.015625 0.5 0.944
+0.022964601441806228 0.05 0.045
+0.022964601441806228 0.1 0.066
+0.022964601441806228 0.15 0.126
+0.022964601441806228 0.2 0.169
+0.022964601441806228 0.25 0.265
+0.022964601441806228 0.3 0.39
+0.022964601441806228 0.35 0.309
+0.022964601441806228 0.4 0.542
+0.022964601441806228 0.45 0.647
+0.022964601441806228 0.5 0.922
+0.03375186684038456 0.05 0.027
+0.03375186684038456 0.1 0.072
+0.03375186684038456 0.15 0.104
+0.03375186684038456 0.2 0.143
+0.03375186684038456 0.25 0.24
+0.03375186684038456 0.3 0.246
+0.03375186684038456 0.35 0.373
+0.03375186684038456 0.4 0.339
+0.03375186684038456 0.45 0.595
+0.03375186684038456 0.5 0.892
+0.049606282874006244 0.05 0.035
+0.049606282874006244 0.1 0.044
+0.049606282874006244 0.15 0.101
+0.049606282874006244 0.2 0.122
+0.049606282874006244 0.25 0.163
+0.049606282874006244 0.3 0.179
+0.049606282874006244 0.35 0.23
+0.049606282874006244 0.4 0.306
+0.049606282874006244 0.45 0.651
+0.049606282874006244 0.5 0.776
+0.0729080649735073 0.05 0.022
+0.0729080649735073 0.1 0.042
+0.0729080649735073 0.15 0.063
+0.0729080649735073 0.2 0.096
+0.0729080649735073 0.25 0.152
+0.0729080649735073 0.3 0.154
+0.0729080649735073 0.35 0.185
+0.0729080649735073 0.4 0.304
+0.0729080649735073 0.45 0.563
+0.0729080649735073 0.5 0.774
+0.1071554978566341 0.05 0.025
+0.1071554978566341 0.1 0.027
+0.1071554978566341 0.15 0.061
+0.1071554978566341 0.2 0.081
+0.1071554978566341 0.25 0.115
+0.1071554978566341 0.3 0.169
+0.1071554978566341 0.35 0.217
+0.1071554978566341 0.4 0.313
+0.1071554978566341 0.45 0.467
+0.1071554978566341 0.5 0.61
+0.15749013123685915 0.05 0.009
+0.15749013123685915 0.1 0.031
+0.15749013123685915 0.15 0.053
+0.15749013123685915 0.2 0.058
+0.15749013123685915 0.25 0.102
+0.15749013123685915 0.3 0.095
+0.15749013123685915 0.35 0.152
+0.15749013123685915 0.4 0.263
+0.15749013123685915 0.45 0.32
+0.15749013123685915 0.5 0.498
+0.23146867807182267 0.05 0.016
+0.23146867807182267 0.1 0.022
+0.23146867807182267 0.15 0.047
+0.23146867807182267 0.2 0.061
+0.23146867807182267 0.25 0.081
+0.23146867807182267 0.3 0.118
+0.23146867807182267 0.35 0.145
+0.23146867807182267 0.4 0.173
+0.23146867807182267 0.45 0.261
+0.23146867807182267 0.5 0.507
+0.3401975000435943 0.05 0.02
+0.3401975000435943 0.1 0.017
+0.3401975000435943 0.15 0.029
+0.3401975000435943 0.2 0.054
+0.3401975000435943 0.25 0.06
+0.3401975000435943 0.3 0.081
+0.3401975000435943 0.35 0.112
+0.3401975000435943 0.4 0.153
+0.3401975000435943 0.45 0.267
+0.3401975000435943 0.5 0.39
+0.5 0.05 0.016
+0.5 0.1 0.028
+0.5 0.15 0.042
+0.5 0.2 0.045
+0.5 0.25 0.054
+0.5 0.3 0.059
+0.5 0.35 0.114
+0.5 0.4 0.153
+0.5 0.45 0.18
+0.5 0.5 0.337</code></pre>
+</div>
+</div>
+<div id="19228fc6-882a-4642-80e2-f889a365dd14" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"cache/perc.txt"</span>, <span class="st">'r'</span>) <span class="im">as</span> cache:</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    res <span class="op">=</span> cache.readlines()</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    perc <span class="op">=</span> [<span class="bu">float</span>(val.strip(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)) <span class="cf">for</span> val <span class="kw">in</span> res]</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    perc <span class="op">=</span> np.reshape(perc, (<span class="dv">10</span>,<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="d97ceaef-74be-40b2-865f-351a9322717c" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>density <span class="op">=</span> [<span class="fl">0.05</span>,<span class="fl">0.1</span>,<span class="fl">0.15</span>,<span class="fl">0.2</span>,<span class="fl">0.25</span>,<span class="fl">0.3</span>,<span class="fl">0.35</span>,<span class="fl">0.4</span>,<span class="fl">0.45</span>,<span class="fl">0.5</span>]</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a>cmap <span class="op">=</span> plt.get_cmap(<span class="st">'cmc.lajolla'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a>xlabels <span class="op">=</span> np.concatenate(([<span class="dv">0</span>,<span class="dv">0</span>],tumbles))</span>
+<span id="cb8-7"><a href="#cb8-7"></a>ylabels <span class="op">=</span> np.concatenate(([<span class="dv">0</span>,<span class="dv">0</span>],density))</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-10"><a href="#cb8-10"></a>m <span class="op">=</span> ax.imshow(perc, cmap<span class="op">=</span>cmap.<span class="bu">reversed</span>())</span>
+<span id="cb8-11"><a href="#cb8-11"></a>cbar <span class="op">=</span> plt.colorbar(ax<span class="op">=</span>ax, mappable<span class="op">=</span>m, location<span class="op">=</span><span class="st">'top'</span>, aspect<span class="op">=</span><span class="dv">20</span>, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a>ax.set_yticklabels(np.<span class="bu">round</span>(xlabels,<span class="dv">3</span>)[::<span class="dv">2</span>])</span>
+<span id="cb8-13"><a href="#cb8-13"></a>ax.set_xticklabels(np.<span class="bu">round</span>(ylabels,<span class="dv">3</span>)[::<span class="dv">2</span>])</span>
+<span id="cb8-14"><a href="#cb8-14"></a></span>
+<span id="cb8-15"><a href="#cb8-15"></a>ax.plot([<span class="fl">7.5</span>,<span class="fl">7.5</span>,<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">9.5</span>],[<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">1.5</span>,<span class="fl">4.5</span>,<span class="fl">4.5</span>], c<span class="op">=</span><span class="st">'white'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb8-16"><a href="#cb8-16"></a></span>
+<span id="cb8-17"><a href="#cb8-17"></a>cbar.ax.set_xlabel(<span class="st">'Frequency of percolation'</span>)</span>
+<span id="cb8-18"><a href="#cb8-18"></a></span>
+<span id="cb8-19"><a href="#cb8-19"></a>ax.set_ylabel(<span class="vs">r"Tumbling rate, $\alpha$"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20"></a>ax.set_xlabel(<span class="vs">r"Density, $\rho$"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21"></a></span>
+<span id="cb8-22"><a href="#cb8-22"></a>ax.text(s<span class="op">=</span><span class="st">"Percolating"</span>, x<span class="op">=</span><span class="fl">8.75</span>, y<span class="op">=</span><span class="dv">4</span>, c<span class="op">=</span><span class="st">'w'</span>, rotation<span class="op">=</span><span class="dv">90</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Text(8.75, 4, 'Percolating')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="percolation_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="1b2a7db6-91ee-4c3b-a522-2e457ed50de2" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>fig.savefig(<span class="st">'plots/percolating_prob.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
