@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -164,7 +130,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#training-with-degrees-of-freedom-a.k.a.-particle-orientation" id="toc-training-with-degrees-of-freedom-a.k.a.-particle-orientation" class="nav-link" data-scroll-target="#training-with-degrees-of-freedom-a.k.a.-particle-orientation">Training with degrees of freedom a.k.a. particle orientation</a></li>
   </ul></li>
-  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
 </nav>
     </div>
@@ -226,18 +191,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="plots-for-training-with-orientation">Plots for training with orientation</h4>
 <p>Trained on SGD, with a learning rate of 0.008, for 45 epochs.</p>
 <div id="cell-2" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">from</span> src.training_utils <span class="im">import</span> extract_floats, data_load, split_dataset, predict_and_plot</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> src.models <span class="im">import</span> make_net</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-02-29 17:49:13.302023: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
 2024-02-29 17:49:13.302093: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
@@ -249,13 +202,6 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 <p><strong>With the same data</strong></p>
 <div id="cell-4" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x,y,shape <span class="op">=</span> data_load(densities<span class="op">=</span>[<span class="fl">0.2</span>], orientation<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>_, _, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb3-3"><a href="#cb3-3"></a>name <span class="op">=</span> <span class="st">"magic7474"</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  10
 Shape of x:  (30000, 128, 128, 1)
@@ -265,10 +211,6 @@ Size of validation data:  6000</code></pre>
 </div>
 </div>
 <div id="cell-5" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-02-29 17:51:50.977357: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 393216000 exceeds 10% of free system memory.</code></pre>
 </div>
@@ -291,12 +233,6 @@ Pearson's correlation coeff:  0.992173827540833</code></pre>
 </div>
 <p><strong>With data where orientation is removed (binarized)</strong></p>
 <div id="cell-7" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">del</span> x,y,x_val,y_val</span>
-<span id="cb8-2"><a href="#cb8-2"></a>x,y,shape <span class="op">=</span> data_load(densities<span class="op">=</span>[<span class="fl">0.2</span>], orientation<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>predict_and_plot(model, x[:<span class="dv">800</span>], y[:<span class="dv">800</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  5/913 [..............................] - ETA: 13s 913/913 [==============================] - 14s 16ms/step
 Overlap ratio: 0.3
@@ -320,27 +256,6 @@ Pearson's correlation coeff:  0.13855496918568383</code></pre>
 <p>With orientation removed, the model trained on orientation seems to overpredict the orientations, and cannot tell at all what’s happening at high <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s, where it cannot distinguish 0.231 and 0.340 from 0.500.</p>
 <p>To visualize what’s going on, here are the snapshots at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.340</mn><mo>,</mo><mn>0.500</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.340, 0.500</annotation></semantics></math>:</p>
 <div id="cell-9" class="cell" data-execution_count="12">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> os</span>
-<span id="cb11-2"><a href="#cb11-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="im">import</span> h5py</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-6"><a href="#cb11-6"></a></span>
-<span id="cb11-7"><a href="#cb11-7"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">3</span>))</span>
-<span id="cb11-8"><a href="#cb11-8"></a></span>
-<span id="cb11-9"><a href="#cb11-9"></a>values <span class="op">=</span> [<span class="st">"0.231"</span>,<span class="st">"0.340"</span>, <span class="st">"0.500"</span>]</span>
-<span id="cb11-10"><a href="#cb11-10"></a></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>(np.array(axes).reshape(<span class="op">-</span><span class="dv">1</span>)):</span>
-<span id="cb11-12"><a href="#cb11-12"></a>  <span class="cf">with</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_</span><span class="sc">{</span>values[idx]<span class="sc">}</span><span class="ss">_0.25.h5"</span>, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
-<span id="cb11-13"><a href="#cb11-13"></a>      count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a>      img <span class="op">=</span> fin[<span class="bu">list</span>(fin.keys())[<span class="op">-</span><span class="dv">1</span>]][:]</span>
-<span id="cb11-15"><a href="#cb11-15"></a>      ax.matshow(img)</span>
-<span id="cb11-16"><a href="#cb11-16"></a>      ax.grid(<span class="va">False</span>)</span>
-<span id="cb11-17"><a href="#cb11-17"></a>      ax.set_xticks([])</span>
-<span id="cb11-18"><a href="#cb11-18"></a>      ax.set_title(<span class="ss">f"Tumbling rate: </span><span class="sc">{</span>values[idx]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -357,15 +272,6 @@ Pearson's correlation coeff:  0.13855496918568383</code></pre>
 <h4 class="anchored" data-anchor-id="plots-for-training-without-orientation">Plots for training without orientation</h4>
 <p><strong>With the same data</strong></p>
 <div id="cell-11" class="cell" data-execution_count="13">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">del</span> x,y, model</span>
-<span id="cb12-2"><a href="#cb12-2"></a>x,y,shape <span class="op">=</span> data_load(densities<span class="op">=</span>[<span class="fl">0.2</span>], orientation<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a>_, _, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb12-4"><a href="#cb12-4"></a>name <span class="op">=</span> <span class="st">"failing2399"</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras"</span>)</span>
-<span id="cb12-6"><a href="#cb12-6"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  10
 Shape of x:  (30000, 128, 128, 1)
@@ -393,12 +299,6 @@ Pearson's correlation coeff:  0.9852125254093039</code></pre>
 </div>
 <p><strong>Orientation added into data</strong></p>
 <div id="cell-13" class="cell" data-execution_count="16">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">del</span> x,y,x_val,y_val</span>
-<span id="cb15-2"><a href="#cb15-2"></a>x,y,shape <span class="op">=</span> data_load(densities<span class="op">=</span>[<span class="fl">0.2</span>], orientation<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb15-3"><a href="#cb15-3"></a>predict_and_plot(model, x[:<span class="dv">500</span>], y[:<span class="dv">500</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>16/16 [==============================] - 0s 14ms/step
 Overlap ratio: 0.0
@@ -428,20 +328,20 @@ Pearson's correlation coeff:  0.9107537153185321</code></pre>
 <li>Overlap ratios are both 1.0.</li>
 <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≈</mo><mn>0.99</mn></mrow><annotation encoding="application/x-tex">r \approx 0.99</annotation></semantics></math>.</li>
 </ul>
-<p>I think for experiment-like, it is best to inject noise into the training dataset. Injecting noise reduces overfitting and increases robustness, as it is a form of augmentation.</p>
-</section>
-</section>
-</section>
-<section id="reference-materials" class="level2">
-<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
-<ul>
-<li><a href="https://arxiv.org/abs/2307.06855">Data Augmentation in Training CNNS: Injecting Noise to Images</a></li>
-<li><a href="https://machinelearningmastery.com/train-neural-networks-with-noise-to-reduce-overfitting/">Noise to reduce overtting</a></li>
-<li><a href="https://machinelearningmastery.com/how-to-improve-deep-learning-model-robustness-by-adding-noise/">Similar to above</a></li>
-<li><a href="https://www.sciencedirect.com/science/article/pii/S2590123021000268">Noise models for CNNs</a></li>
-</ul>
+<p>I think for experiment-like, it is best to inject noise into the training dataset<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Injecting noise reduces overfitting and increases robustness, as it is a form of augmentation<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 
 
+</section>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://machinelearningmastery.com/train-neural-networks-with-noise-to-reduce-overfitting/">Noise to reduce overtting</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://arxiv.org/abs/2307.06855">Data Augmentation in Training CNNS: Injecting Noise to Images</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://machinelearningmastery.com/how-to-improve-deep-learning-model-robustness-by-adding-noise/">Increase robustness with noise</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.sciencedirect.com/science/article/pii/S2590123021000268">Noise models for CNNs</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

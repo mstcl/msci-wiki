@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -127,9 +127,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#tasks" id="toc-tasks" class="nav-link active" data-scroll-target="#tasks">Tasks</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#a-more-structured-idea-for-these-runs" id="toc-a-more-structured-idea-for-these-runs" class="nav-link" data-scroll-target="#a-more-structured-idea-for-these-runs">A more structured idea for these runs</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#can-the-neural-network-learn" id="toc-can-the-neural-network-learn" class="nav-link" data-scroll-target="#can-the-neural-network-learn">Can the neural network learn?</a></li>
+  <li><a href="#how-relevant-is-orientationdof-a-dynamical-feature-in-the-learning-of-dissipation" id="toc-how-relevant-is-orientationdof-a-dynamical-feature-in-the-learning-of-dissipation" class="nav-link" data-scroll-target="#how-relevant-is-orientationdof-a-dynamical-feature-in-the-learning-of-dissipation">How relevant is orientation/DOF (a dynamical feature) in the learning of dissipation?</a></li>
+  <li><a href="#what-happens-when-the-packing-fraction-is-increased" id="toc-what-happens-when-the-packing-fraction-is-increased" class="nav-link" data-scroll-target="#what-happens-when-the-packing-fraction-is-increased">What happens when the packing fraction is increased?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -170,49 +173,42 @@ ul.task-list li input[type="checkbox"] {
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Attempt the cluster orientation visualization</label>
+<li><label><input type="checkbox" checked="">Attempt the cluster orientation visualization<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</label>
 <ul>
-<li>Resulting code and plots <a href="https://github.com/mstcl/msci-wiki/blob/3d890f3ed1ff3566696e5d7463a658ca4f984fe5/plots/labelling.ipynb">here</a></li>
-<li>This didn’t really work out, because the clusters have a lot of detailed structure (very fractal), taking only the distance from the centre of mass didn’t cut it.</li>
-<li>Perhaps there is a better way, without isolating single clusters (to discuss with FT).</li>
+<li>This didn’t really work out, because the clusters have a lot of detailed structure (very fractal), taking only the distance from the centre of mass didn’t cut it<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
 </ul></li>
-<li><label><input type="checkbox" checked="">Cluster count and biggest cluster size plot</label>
+<li><label><input type="checkbox" checked="">Cluster count and biggest cluster size plot<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</label>
 <ul>
-<li>See <a href="../plots/cluster_count_and_biggest.html">here</a></li>
-<li>Noticed linear relationship between biggest cluster size and the tumbling rate.</li>
-<li>It does link with cluster distribution grid plotted <a href="../plots/csize_grid.html">here</a>. But hard to put into words how.</li>
+<li>Noticed linear-ish relationship between biggest cluster size and the tumbling rate<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</li>
 </ul></li>
-<li><label><input type="checkbox" checked="">Relaxation time check</label>
-<ul>
-<li>See <a href="../plots/acf.html">here</a> (will change and undergo revisions for report).</li>
-</ul></li>
+<li><label><input type="checkbox" checked="">Relaxation time check<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</label></li>
 <li><label><input type="checkbox" checked="">Mean image plots (+rolling)</label>
 <ul>
 <li>Also in the notebook above. It doesn’t seem like there are drastic fluctuations, but it is very clear that as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> gets higher the fluctations get smaller and lower in magnitude.</li>
 </ul></li>
 <li><label><input type="checkbox" checked="">Retrain each model (now with proper GPU running, finally) with fixed seeds and better learning rates to obtain some averages for comparison.</label>
 <ul>
-<li>For experiments, plots and results, see:
+<li>For all <strong>final</strong> runs, see the following notebooks:
 <ul>
-<li><a href="../training/training_with_orientation.html">With orientation</a></li>
-<li><a href="../training/training_without_orientation.html">Without orientation</a></li>
-<li><a href="../training/training_with_monochrome.html">Monochrome</a></li>
+<li><a href="../training/training_with_orientation.html#orientation-1-helicopter1822">With orientation (low density)</a></li>
+<li><a href="../training/training_with_orientation_hi.html#orientation-1-hi_helicopter1822">With orientation (high density)</a></li>
+<li><a href="../training/training_without_orientation.html#no-orientation-1-ice1822">Without orientation (low density)</a></li>
+<li><a href="../training/training_without_orientation_high.ipynb#no-orientation-1-hi_ice1822">Without orientation (high density)</a></li>
+<li><a href="../training/training_with_monochrome.html#monochrome-1-boat1822">Monochrome (low density)</a></li>
+<li><a href="../training/training_with_monochrome_high.ipynb#monochrome-1-hi_boat1822">Monochrome (high density)</a></li>
 </ul></li>
 </ul></li>
-<li><label><input type="checkbox" checked="">Visualize the activation maps</label>
-<ul>
-<li><a href="../training/visualize_with_orientation.html">With orientation</a></li>
-<li><a href="../training/visualize_without_orientation.html">Without orientation</a></li>
-<li>Very interesting visually, will incorporate into flowchart describing the architecture.</li>
-</ul></li>
+<li><label><input type="checkbox" checked="">Visualize the activation maps<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</label></li>
 </ul>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="can-the-neural-network-learn" class="level3">
+<h3 class="anchored" data-anchor-id="can-the-neural-network-learn">Can the neural network learn?</h3>
+<p>Yes, that is clear</p>
 </section>
-<section id="a-more-structured-idea-for-these-runs" class="level2">
-<h2 class="anchored" data-anchor-id="a-more-structured-idea-for-these-runs">A more structured idea for these runs</h2>
-<p>How relevant is orientation/DOF (a dynamical feature) in the learning of dissipation?</p>
+<section id="how-relevant-is-orientationdof-a-dynamical-feature-in-the-learning-of-dissipation" class="level3">
+<h3 class="anchored" data-anchor-id="how-relevant-is-orientationdof-a-dynamical-feature-in-the-learning-of-dissipation">How relevant is orientation/DOF (a dynamical feature) in the learning of dissipation?</h3>
 <ul>
 <li>Hypothesis: there are no difference in performance between two models, where one is trained on data where orientation is embedded, and one where it isn’t.</li>
 <li>Rigour: 10 independent models for each (so 20 different models, and 10 seeds, one for each pair).</li>
@@ -246,13 +242,27 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<section id="what-happens-when-the-packing-fraction-is-increased" class="level3">
+<h3 class="anchored" data-anchor-id="what-happens-when-the-packing-fraction-is-increased">What happens when the packing fraction is increased?</h3>
 <ul>
-<li><a href="https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/">Guide on visualizing feature maps</a></li>
+<li>It seems like the spread is lower, I have yet to discuss this but I think it’s due to the presence of more clusters overall, and the model is somehow bias towards seeing clusters (but not seeing the lack of clusters)<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</li>
 </ul>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Resulting code and plots <a href="https://github.com/mstcl/msci-wiki/blob/3d890f3ed1ff3566696e5d7463a658ca4f984fe5/plots/labelling.ipynb">here</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Perhaps there is a better way, without isolating single clusters (to discuss with FT).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Plots <a href="../plots/cluster_count_and_biggest.html#size-plots">here</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>It does correlate with cluster distribution grid plotted <a href="../plots/csize_grid.html#old-plots">here</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Plots <a href="../plots/acf.html#acf-plots">here</a> (will change and undergo revisions for report).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/">A guide on visualizing feature maps</a>. The code isn’t entirely correct but I adapted it.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Demo notebook <a href="../training/visualize_with_orientation.html#input-snapshot">here</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>I need to figure out why there is underfitting at higher tumbling rates. <strong>Update: I think it’s most likely due to log-spaced samples</strong><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

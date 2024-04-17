@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -154,11 +154,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Content</h2>
+   
+  <ul>
+  <li><a href="#size-plots" id="toc-size-plots" class="nav-link active" data-scroll-target="#size-plots">Size plots</a></li>
+  <li><a href="#calculating-values-at-zero-tumbling-rate" id="toc-calculating-values-at-zero-tumbling-rate" class="nav-link" data-scroll-target="#calculating-values-at-zero-tumbling-rate">Calculating values at zero tumbling rate</a>
+  <ul class="collapse">
+  <li><a href="#keeping-track-of-counts-here" id="toc-keeping-track-of-counts-here" class="nav-link" data-scroll-target="#keeping-track-of-counts-here">Keeping track of counts here</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -167,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -185,114 +195,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
+<p><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/cluster_count_and_biggest.ipynb"><strong>Full code</strong></a></p>
+<section id="size-plots" class="level2">
+<h2 class="anchored" data-anchor-id="size-plots">Size plots</h2>
+<div id="cell-8" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cluster_count_and_biggest_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-values-at-zero-tumbling-rate" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-values-at-zero-tumbling-rate">Calculating values at zero tumbling rate</h2>
+<div id="cell-11" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-2"><a href="#cb1-2"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> os</span>
-<span id="cb1-5"><a href="#cb1-5"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> h5py</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="im">import</span> glob</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> re</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="im">from</span> src.utils <span class="im">import</span> get_ds_iters, get_cluster_labels</span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>densities <span class="op">=</span> np.sort(np.unique(df.density))</span>
+<span id="cb1-2"><a href="#cb1-2"></a>colors <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">150</span>,<span class="dv">200</span>]</span>
+<span id="cb1-3"><a href="#cb1-3"></a>palette <span class="op">=</span> {}</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    palette[densities[idx]] <span class="op">=</span> cm.glasgow(colors[idx])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-2" class="cell" data-execution_count="6">
+<div id="cell-12" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>densities <span class="op">=</span> [<span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="fl">0.5</span>]</span>
-<span id="cb2-2"><a href="#cb2-2"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>num <span class="op">=</span> []</span>
-<span id="cb2-4"><a href="#cb2-4"></a>big <span class="op">=</span> []</span>
-<span id="cb2-5"><a href="#cb2-5"></a>ds <span class="op">=</span> []</span>
-<span id="cb2-6"><a href="#cb2-6"></a>ts <span class="op">=</span> []</span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="cf">for</span> idx, d <span class="kw">in</span> <span class="bu">enumerate</span>(densities):</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="cf">for</span> jdx, t <span class="kw">in</span> <span class="bu">enumerate</span>(tumbles):</span>
-<span id="cb2-10"><a href="#cb2-10"></a>        <span class="bu">file</span> <span class="op">=</span> <span class="ss">f"no_roll_data/dataset_tumble_</span><span class="sc">{</span>t<span class="sc">:.3f}</span><span class="ss">_</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">.h5"</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>        <span class="cf">for</span> idx2 <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>,<span class="dv">1000</span>,<span class="dv">1</span>):</span>
-<span id="cb2-12"><a href="#cb2-12"></a>            ds.append(d)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>            ts.append(t)</span>
-<span id="cb2-14"><a href="#cb2-14"></a>            labelled, nlabels <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, idx2)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>            lb <span class="op">=</span> labelled.flatten()</span>
-<span id="cb2-16"><a href="#cb2-16"></a>            big.append(np.<span class="bu">max</span>(np.bincount(lb)[<span class="dv">1</span>:]))</span>
-<span id="cb2-17"><a href="#cb2-17"></a>            num.append(nlabels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">for</span> d <span class="kw">in</span> [<span class="fl">0.05</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="fl">0.5</span>,<span class="fl">0.6</span>,<span class="fl">0.7</span>,<span class="fl">0.8</span>,<span class="fl">0.9</span>,<span class="fl">1.0</span>]:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="bu">file</span> <span class="op">=</span> <span class="ss">f"validation_data/dataset_tumble_1.000_</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">.h5"</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    ds <span class="op">=</span> []</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    ts <span class="op">=</span> []</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    big <span class="op">=</span> []</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    num <span class="op">=</span> []</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    d <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    t <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="cf">for</span> idx2 <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">1000</span>,<span class="dv">1</span>):</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        ds.append(d)</span>
+<span id="cb2-11"><a href="#cb2-11"></a>        ts.append(t)</span>
+<span id="cb2-12"><a href="#cb2-12"></a>        labelled, nlabels <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, idx2)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>        lb <span class="op">=</span> labelled.flatten()</span>
+<span id="cb2-14"><a href="#cb2-14"></a>        big.append(np.<span class="bu">max</span>(np.bincount(lb)[<span class="dv">1</span>:]))</span>
+<span id="cb2-15"><a href="#cb2-15"></a>        num.append(nlabels)</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="bu">print</span>(np.mean(big))</span>
+<span id="cb2-17"><a href="#cb2-17"></a>    <span class="co">#print(np.mean(num), np.std(num))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-3" class="cell" data-execution_count="7">
+<div id="cell-13" class="cell" data-execution_count="194">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb3-2"><a href="#cb3-2"></a>df.insert(<span class="dv">0</span>, <span class="st">"alpha"</span>, ts,<span class="dv">300</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>df.insert(<span class="dv">1</span>, <span class="st">"numclus"</span>, num)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>df.insert(<span class="dv">2</span>, <span class="st">"bigsize"</span>, big)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>df.insert(<span class="dv">0</span>, <span class="st">"density"</span>, ds,<span class="dv">300</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a>df.to_csv(<span class="st">"cache/cluster_count_size.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="fl">737.47</span><span class="op">/</span>(<span class="fl">0.05</span><span class="op">*</span><span class="dv">128</span><span class="op">*</span><span class="dv">128</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="194">
+<pre><code>0.90023193359375</code></pre>
 </div>
-<div id="cell-4" class="cell" data-execution_count="8">
+</div>
+<section id="keeping-track-of-counts-here" class="level3">
+<h3 class="anchored" data-anchor-id="keeping-track-of-counts-here">Keeping track of counts here</h3>
+<ul>
+<li>0 -&gt; 1</li>
+<li>0.05 -&gt; 0.90023193359375</li>
+<li>0.1 -&gt; 0.801976318359375</li>
+<li>0.2 -&gt; 0.6097885131835937</li>
+<li>0.3 -&gt; 0.4292635091145834</li>
+<li>0.4 -&gt; 0.2676585388183593</li>
+<li>0.5 -&gt; 0.1344013671875</li>
+<li>0.6 -&gt; 0.04449951171875</li>
+<li>0.7 -&gt; 0.011117292131696429</li>
+<li>0.8 -&gt; 0.001993408203125</li>
+<li>0.9 -&gt; 0.00018819173177083332</li>
+<li>1.0 -&gt; 0.0</li>
+</ul>
+<div id="cell-15" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cluster_count_and_biggest_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="258">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/cluster_count_size.csv"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb4-5"><a href="#cb4-5"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>,<span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
-<span id="cb4-8"><a href="#cb4-8"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    <span class="dv">2</span>,</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    <span class="dv">1</span>,</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">8</span>),</span>
-<span id="cb4-14"><a href="#cb4-14"></a>    constrained_layout<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-15"><a href="#cb4-15"></a>    sharex<span class="op">=</span><span class="va">True</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a>)</span>
-<span id="cb4-17"><a href="#cb4-17"></a></span>
-<span id="cb4-18"><a href="#cb4-18"></a>ax1 <span class="op">=</span> sns.lineplot(ax<span class="op">=</span>axes[<span class="dv">0</span>], data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"alpha"</span>, y<span class="op">=</span><span class="st">"numclus"</span>, errorbar<span class="op">=</span><span class="st">"sd"</span>, marker<span class="op">=</span><span class="st">'o'</span>, hue<span class="op">=</span><span class="st">"density"</span>, palette<span class="op">=</span><span class="st">"cmc.glasgow"</span>)</span>
-<span id="cb4-19"><a href="#cb4-19"></a>ax2 <span class="op">=</span> sns.lineplot(ax<span class="op">=</span>axes[<span class="dv">1</span>], data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"alpha"</span>, y<span class="op">=</span><span class="st">"bigsize"</span>, errorbar<span class="op">=</span><span class="st">"sd"</span>, marker<span class="op">=</span><span class="st">'o'</span>, hue<span class="op">=</span><span class="st">"density"</span>, palette<span class="op">=</span><span class="st">"cmc.glasgow"</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-20"><a href="#cb4-20"></a></span>
-<span id="cb4-21"><a href="#cb4-21"></a>ax1.set_ylabel(<span class="vs">r"Cluster count"</span>)</span>
-<span id="cb4-22"><a href="#cb4-22"></a>ax2.set_ylabel(<span class="vs">r"Biggest cluster volume ($a^2$)"</span>)</span>
-<span id="cb4-23"><a href="#cb4-23"></a></span>
-<span id="cb4-24"><a href="#cb4-24"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
-<span id="cb4-25"><a href="#cb4-25"></a>    ax.set_xscale(<span class="st">'log'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26"></a>    ax.set_xlabel(<span class="vs">r"Tumbling rate, $\alpha$"</span>)</span>
-<span id="cb4-27"><a href="#cb4-27"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb4-28"><a href="#cb4-28"></a>    ax.set_xticks(np.<span class="bu">round</span>(tumbles,<span class="dv">3</span>)[::<span class="dv">2</span>])</span>
-<span id="cb4-29"><a href="#cb4-29"></a></span>
-<span id="cb4-30"><a href="#cb4-30"></a>ax2.set_yscale(<span class="st">'log'</span>)</span>
-<span id="cb4-31"><a href="#cb4-31"></a>sns.move_legend(ax1, <span class="st">"upper left"</span>, frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="vs">r"Density, $\rho$"</span>)</span>
-<span id="cb4-32"><a href="#cb4-32"></a></span>
-<span id="cb4-33"><a href="#cb4-33"></a>sns.despine()</span>
-<span id="cb4-34"><a href="#cb4-34"></a></span>
-<span id="cb4-35"><a href="#cb4-35"></a>fig.savefig(<span class="st">"plots/cluster_count_size.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>plt.scatter(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cluster_count_and_biggest_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="cluster_count_and_biggest_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

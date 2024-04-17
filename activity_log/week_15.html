@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -170,9 +170,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#model-b-trained-on-one-density-predicting-the-same-density" id="toc-model-b-trained-on-one-density-predicting-the-same-density" class="nav-link" data-scroll-target="#model-b-trained-on-one-density-predicting-the-same-density">Model B, trained on one density, predicting the same density</a></li>
   <li><a href="#model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density" id="toc-model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density" class="nav-link" data-scroll-target="#model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density">Model B, without dropout layer, trained on one density, predicting the same density</a></li>
   <li><a href="#predicting-novel-densities" id="toc-predicting-novel-densities" class="nav-link" data-scroll-target="#predicting-novel-densities">Predicting novel densities</a></li>
+  <li><a href="#model-a-on-phi0.25" id="toc-model-a-on-phi0.25" class="nav-link" data-scroll-target="#model-a-on-phi0.25">Model A on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></a></li>
+  <li><a href="#model-b-on-phi0.25" id="toc-model-b-on-phi0.25" class="nav-link" data-scroll-target="#model-b-on-phi0.25">Model B on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></a></li>
+  <li><a href="#model-b-without-dropout-layer-on-phi0.25" id="toc-model-b-without-dropout-layer-on-phi0.25" class="nav-link" data-scroll-target="#model-b-without-dropout-layer-on-phi0.25">Model B, without dropout layer, on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></a></li>
+  <li><a href="#model-a-on-phi0.45" id="toc-model-a-on-phi0.45" class="nav-link" data-scroll-target="#model-a-on-phi0.45">Model A on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></a></li>
+  <li><a href="#model-b-on-phi0.45" id="toc-model-b-on-phi0.45" class="nav-link" data-scroll-target="#model-b-on-phi0.45">Model B on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></a></li>
+  <li><a href="#model-b-without-dropout-layer-on-phi0.45" id="toc-model-b-without-dropout-layer-on-phi0.45" class="nav-link" data-scroll-target="#model-b-without-dropout-layer-on-phi0.45">Model B, without dropout layer, on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></a></li>
   <li><a href="#comparing-model-a-to-model-b" id="toc-comparing-model-a-to-model-b" class="nav-link" data-scroll-target="#comparing-model-a-to-model-b">Comparing Model A to Model B</a></li>
   </ul></li>
-  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
 </nav>
     </div>
@@ -213,14 +218,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Play with different layers in Keras and train some models</label>
-<ul>
-<li>See rest of this page for more.</li>
-</ul></li>
-<li><label><input type="checkbox" checked="">Make some utility functions to reuse for training</label>
-<ul>
-<li>Updated in <code>training_utils.py</code> (basically data preprocessing stuff).</li>
-</ul></li>
+<li><label><input type="checkbox" checked="">Play with different layers in Keras and train some models.</label></li>
+<li><label><input type="checkbox" checked="">Make some utility functions to reuse for training in <code>training_utils.py</code> (basically data preprocessing stuff).</label></li>
+<li><label><input type="checkbox" checked="">Research CNNs.</label></li>
 </ul>
 </section>
 <section id="summary" class="level2">
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="a-more-complicated-network-model-b" class="level4">
 <h4 class="anchored" data-anchor-id="a-more-complicated-network-model-b">A more complicated network: Model B</h4>
-<p>Based on <a href="https://scribe.rip/@msgold/predicting-images-with-a-cnn-90a25a9e4509">this blog post</a>, where they work on a classification problem, so we need to be careful with the output.</p>
+<p>Based on <a href="https://scribe.rip/@msgold/predicting-images-with-a-cnn-90a25a9e4509">this blog post</a>, where they work on a classification problem, so we need to be careful with the output<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>model <span class="op">=</span> Sequential()</span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a>model.add(</span>
@@ -326,68 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="model-a-trained-on-one-density-predicting-the-same-density." class="level3">
 <h3 class="anchored" data-anchor-id="model-a-trained-on-one-density-predicting-the-same-density.">Model A trained on one density, predicting the same density.</h3>
-<div id="d6580b5a" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> gc</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> os</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> glob</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> h5py</span>
-<span id="cb3-5"><a href="#cb3-5"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="im">from</span> src.training_utils <span class="im">import</span> extract_floats, split_dataset, predict_and_plot</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># Use a custom data_load here because the one finally saved now normalizes the</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># data, which messes up the model</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="kw">def</span> data_load(density):</span>
-<span id="cb3-16"><a href="#cb3-16"></a>    files <span class="op">=</span> glob.glob(<span class="ss">f"no_roll_data/dataset_tumble_*_</span><span class="sc">{</span>density<span class="sc">}</span><span class="ss">.h5"</span>)</span>
-<span id="cb3-17"><a href="#cb3-17"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
-<span id="cb3-18"><a href="#cb3-18"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
-<span id="cb3-19"><a href="#cb3-19"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
-<span id="cb3-20"><a href="#cb3-20"></a>        <span class="cf">with</span> h5py.File(f, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
-<span id="cb3-21"><a href="#cb3-21"></a>          count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a>          <span class="cf">for</span> key <span class="kw">in</span> fin.keys():</span>
-<span id="cb3-23"><a href="#cb3-23"></a>              img <span class="op">=</span> fin[key][:]</span>
-<span id="cb3-24"><a href="#cb3-24"></a>              img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>],<span class="dv">1</span>))</span>
-<span id="cb3-25"><a href="#cb3-25"></a>              shape <span class="op">=</span> img.shape</span>
-<span id="cb3-26"><a href="#cb3-26"></a>              inputs.append(img)</span>
-<span id="cb3-27"><a href="#cb3-27"></a>              outputs.append(tumble)</span>
-<span id="cb3-28"><a href="#cb3-28"></a>              count<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb3-29"><a href="#cb3-29"></a></span>
-<span id="cb3-30"><a href="#cb3-30"></a>    <span class="co"># Scramble the dataset</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a>    order <span class="op">=</span> np.arange(<span class="bu">len</span>(outputs)).astype(<span class="bu">int</span>)</span>
-<span id="cb3-32"><a href="#cb3-32"></a>    order <span class="op">=</span> np.random.permutation(order)</span>
-<span id="cb3-33"><a href="#cb3-33"></a>    <span class="cf">return</span> np.array(inputs)[order],np.array(outputs)[order],shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="3c4091c9" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> reset(<span class="bu">all</span><span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    K.clear_session()</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">global</span> prediction, x, y, x_train, y_train, x_val, y_val</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">if</span> <span class="bu">all</span>:</span>
-<span id="cb4-5"><a href="#cb4-5"></a>        <span class="kw">del</span> x</span>
-<span id="cb4-6"><a href="#cb4-6"></a>        <span class="kw">del</span> y</span>
-<span id="cb4-7"><a href="#cb4-7"></a>        <span class="kw">del</span> x_train</span>
-<span id="cb4-8"><a href="#cb4-8"></a>        <span class="kw">del</span> y_train</span>
-<span id="cb4-9"><a href="#cb4-9"></a>        <span class="kw">del</span> x_val</span>
-<span id="cb4-10"><a href="#cb4-10"></a>        <span class="kw">del</span> y_val</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    <span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="e81b5a2b" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>density <span class="op">=</span> <span class="fl">0.15</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="3253b3eb" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  10
 Shape of x:  (10000, 128, 128, 1)
@@ -396,26 +335,18 @@ Size of training data:  8000
 Size of validation data:  2000</code></pre>
 </div>
 </div>
-<div id="9cd798a8" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="bbf28687" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code> 1/63 [..............................] - ETA: 2s41/63 [==================&gt;...........] - ETA: 0s63/63 [==============================] - 0s 1ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.03649922 0.08168805 0.049839772
-Pearson's correlation coeff:  0.8748437569039451
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.03649922 0.08168805 0.049839772
-Pearson's correlation coeff:  0.8748437569039451</code></pre>
+<pre><code>1.0
+0.04027245
+0.08436323
+0.051214695
+0.8800811375901546</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-5-output-2.png" width="600" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -423,28 +354,19 @@ Pearson's correlation coeff:  0.8748437569039451</code></pre>
 </section>
 <section id="model-b-trained-on-one-density-predicting-the-same-density" class="level3">
 <h3 class="anchored" data-anchor-id="model-b-trained-on-one-density-predicting-the-same-density">Model B, trained on one density, predicting the same density</h3>
-<div id="842bff07" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>reset()</span>
-<span id="cb9-2"><a href="#cb9-2"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="81635602" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  7365
- 1/63 [..............................] - ETA: 7s23/63 [=========&gt;....................] - ETA: 0s46/63 [====================&gt;.........] - ETA: 0s63/63 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.0037262198 0.06500089 0.031655632
-Pearson's correlation coeff:  0.9384582070738373
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.0037262198 0.06500089 0.031655632
-Pearson's correlation coeff:  0.9384582070738373</code></pre>
+<pre><code>Collected:  11020
+1.0
+0.0036920607
+0.0717594
+0.032156073
+0.9376105985517396</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-6-output-2.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -452,28 +374,19 @@ Pearson's correlation coeff:  0.9384582070738373</code></pre>
 </section>
 <section id="model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density" class="level3">
 <h3 class="anchored" data-anchor-id="model-b-without-dropout-layer-trained-on-one-density-predicting-the-same-density">Model B, without dropout layer, trained on one density, predicting the same density</h3>
-<div id="186e4f36" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>reset()</span>
-<span id="cb11-2"><a href="#cb11-2"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="8b26f272" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  9044
- 1/63 [..............................] - ETA: 6s27/63 [===========&gt;..................] - ETA: 0s53/63 [========================&gt;.....] - ETA: 0s63/63 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.012121738 0.06822996 0.03387434
-Pearson's correlation coeff:  0.903605172911424
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.012121738 0.06822996 0.03387434
-Pearson's correlation coeff:  0.903605172911424</code></pre>
+<pre><code>Collected:  12148
+1.0
+0.01220879
+0.0647896
+0.03377225
+0.9100308053552608</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-7-output-2.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -484,19 +397,12 @@ Pearson's correlation coeff:  0.903605172911424</code></pre>
 <p>We previously trained on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.15</mn></mrow><annotation encoding="application/x-tex">\phi = 0.15</annotation></semantics></math> and try to predict the validation set also for the same <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>. What happens if we try and predict it on a different value for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>? We expect it to still be somewhat accurate for a slightly different value, but not perform at all for very different value.</p>
 <p>We think this is because there are thresholds for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> where the behaviour of cluster changes, they can consistently enter percolation regime (for high <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>) and can have extremely big cluster sizes (also for high <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>). This would present to the network novel situations not seen at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.15</mn></mrow><annotation encoding="application/x-tex">\phi = 0.15</annotation></semantics></math>, where we don’t expect percolation as it is very unlikely.</p>
 <p>We use <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi = 0.25</annotation></semantics></math> for the “slightly” different density and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi = 0.45</annotation></semantics></math> for the “very” different density. As of now we don’t have a metric to evaluate our model (this is planned for next week), so comparisons are done qualitatively.</p>
-<section id="model-a-on-phi0.25" class="level4">
-<h4 class="anchored" data-anchor-id="model-a-on-phi0.25">Model A on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></h4>
-<div id="47a177fb" class="cell" data-execution_count="8">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>density <span class="op">=</span> <span class="fl">0.25</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb13-5"><a href="#cb13-5"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</section>
+<section id="model-a-on-phi0.25" class="level3">
+<h3 class="anchored" data-anchor-id="model-a-on-phi0.25">Model A on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></h3>
+<div id="26b2b319" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  10678
+<pre><code>Collected:  13435
 Number of unique alpha:  10
 Shape of x:  (10000, 128, 128, 1)
 Shape of y:  (10000,)
@@ -504,102 +410,68 @@ Size of training data:  8000
 Size of validation data:  2000</code></pre>
 </div>
 </div>
-<div id="d77b010e" class="cell" data-execution_count="9">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb15-3"><a href="#cb15-3"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="fe04c6b4" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
-<pre><code> 1/63 [..............................] - ETA: 2s43/63 [===================&gt;..........] - ETA: 0s63/63 [==============================] - 0s 1ms/step
-Overlap ratio: 0.9
-(Min, Max, Avg) STD: 0.05743553 0.09258267 0.07360389
-Pearson's correlation coeff:  0.7287073323248344
-Overlap ratio: 0.9
-(Min, Max, Avg) STD: 0.05743553 0.09258267 0.07360389
-Pearson's correlation coeff:  0.7287073323248344</code></pre>
+<pre><code>0.9
+0.056310352
+0.09474326
+0.07733949
+0.7240413106786887</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-9-output-2.png" width="600" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="model-b-on-phi0.25" class="level4">
-<h4 class="anchored" data-anchor-id="model-b-on-phi0.25">Model B on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></h4>
-<div id="cf288824" class="cell" data-execution_count="10">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>reset()</span>
-<span id="cb17-2"><a href="#cb17-2"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="model-b-on-phi0.25" class="level3">
+<h3 class="anchored" data-anchor-id="model-b-on-phi0.25">Model B on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></h3>
+<div id="9de34bda" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  10549
- 1/63 [..............................] - ETA: 6s24/63 [==========&gt;...................] - ETA: 0s48/63 [=====================&gt;........] - ETA: 0s63/63 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.003805781 0.07385732 0.03241602
-Pearson's correlation coeff:  0.9579937419765887
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.003805781 0.07385732 0.03241602
-Pearson's correlation coeff:  0.9579937419765887</code></pre>
+<pre><code>Collected:  12509
+1.0
+0.0038437229
+0.07215052
+0.032901235
+0.9577752110859448</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-10-output-2.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="model-b-without-dropout-layer-on-phi0.25" class="level4">
-<h4 class="anchored" data-anchor-id="model-b-without-dropout-layer-on-phi0.25">Model B, without dropout layer, on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></h4>
-<div id="d89ba05d" class="cell" data-execution_count="11">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>reset()</span>
-<span id="cb19-2"><a href="#cb19-2"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb19-4"><a href="#cb19-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="model-b-without-dropout-layer-on-phi0.25" class="level3">
+<h3 class="anchored" data-anchor-id="model-b-without-dropout-layer-on-phi0.25">Model B, without dropout layer, on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\phi=0.25</annotation></semantics></math></h3>
+<div id="16328b7c" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  9139
- 1/63 [..............................] - ETA: 5s28/63 [============&gt;.................] - ETA: 0s56/63 [=========================&gt;....] - ETA: 0s63/63 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.01234379 0.08327133 0.042383652
-Pearson's correlation coeff:  0.9381903589661934
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.01234379 0.08327133 0.042383652
-Pearson's correlation coeff:  0.9381903589661934</code></pre>
+<pre><code>Collected:  11280
+1.0
+0.013498955
+0.08504163
+0.042217374
+0.9397948348732196</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-11-output-2.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="model-a-on-phi0.45" class="level4">
-<h4 class="anchored" data-anchor-id="model-a-on-phi0.45">Model A on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></h4>
-<div id="95b16620" class="cell" data-execution_count="12">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>reset(<span class="bu">all</span><span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>density <span class="op">=</span> <span class="fl">0.45</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>validation_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>x,y,shape <span class="op">=</span> data_load(density<span class="op">=</span>density)</span>
-<span id="cb21-5"><a href="#cb21-5"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span>validation_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="model-a-on-phi0.45" class="level3">
+<h3 class="anchored" data-anchor-id="model-a-on-phi0.45">Model A on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></h3>
+<div id="1cbf8fc1" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  10577
+<pre><code>Collected:  13630
 Number of unique alpha:  10
 Shape of x:  (10000, 128, 128, 1)
 Shape of y:  (10000,)
@@ -607,89 +479,62 @@ Size of training data:  8000
 Size of validation data:  2000</code></pre>
 </div>
 </div>
-<div id="679a0c51" class="cell" data-execution_count="13">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>name <span class="op">=</span> <span class="st">"basic_0.15"</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb23-3"><a href="#cb23-3"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="019fcb66" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
-<pre><code> 1/63 [..............................] - ETA: 2s41/63 [==================&gt;...........] - ETA: 0s63/63 [==============================] - 0s 1ms/step
-Overlap ratio: 0.1
-(Min, Max, Avg) STD: 0.062074456 0.09105668 0.07905867
-Pearson's correlation coeff:  0.37289409476532065
-Overlap ratio: 0.1
-(Min, Max, Avg) STD: 0.062074456 0.09105668 0.07905867
-Pearson's correlation coeff:  0.37289409476532065</code></pre>
+<pre><code>0.2
+0.06198603
+0.089977786
+0.07721992
+0.3369544604797045</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-13-output-2.png" width="600" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-13-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="model-b-on-phi0.45" class="level4">
-<h4 class="anchored" data-anchor-id="model-b-on-phi0.45">Model B on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></h4>
-<div id="5a314ff0" class="cell" data-execution_count="14">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>reset()</span>
-<span id="cb25-2"><a href="#cb25-2"></a>name <span class="op">=</span> <span class="st">"with_dropout_0.15"</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="model-b-on-phi0.45" class="level3">
+<h3 class="anchored" data-anchor-id="model-b-on-phi0.45">Model B on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></h3>
+<div id="5f352af0" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  10101
- 1/63 [..............................] - ETA: 6s24/63 [==========&gt;...................] - ETA: 0s47/63 [=====================&gt;........] - ETA: 0s63/63 [==============================] - 0s 2ms/step
-Overlap ratio: 0.0
-(Min, Max, Avg) STD: 0.003280147 0.05064188 0.014989456
-Pearson's correlation coeff:  0.9263580381405537
-Overlap ratio: 0.0
-(Min, Max, Avg) STD: 0.003280147 0.05064188 0.014989456
-Pearson's correlation coeff:  0.9263580381405537</code></pre>
+<pre><code>Collected:  12664
+0.0
+0.0032266236
+0.052909803
+0.015262815
+0.9224203064863151</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-14-output-2.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="model-b-without-dropout-layer-on-phi0.45" class="level4">
-<h4 class="anchored" data-anchor-id="model-b-without-dropout-layer-on-phi0.45">Model B, without dropout layer, on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></h4>
-<div id="c68b4306" class="cell" data-execution_count="15">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>reset()</span>
-<span id="cb27-2"><a href="#cb27-2"></a>name <span class="op">=</span> <span class="st">"without_dropout_0.15"</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb27-4"><a href="#cb27-4"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="model-b-without-dropout-layer-on-phi0.45" class="level3">
+<h3 class="anchored" data-anchor-id="model-b-without-dropout-layer-on-phi0.45">Model B, without dropout layer, on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi=0.45</annotation></semantics></math></h3>
+<div id="c56d0788" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stdout">
-<pre><code>Collected:  8806
- 1/63 [..............................] - ETA: 5s28/63 [============&gt;.................] - ETA: 0s54/63 [========================&gt;.....] - ETA: 0s63/63 [==============================] - 0s 2ms/step
-Overlap ratio: 0.9
-(Min, Max, Avg) STD: 0.013358538 0.06343014 0.02944007
-Pearson's correlation coeff:  0.9233295979255991
-Overlap ratio: 0.9
-(Min, Max, Avg) STD: 0.013358538 0.06343014 0.02944007
-Pearson's correlation coeff:  0.9233295979255991</code></pre>
+<pre><code>Collected:  10330
+1.0
+0.013544914
+0.06589952
+0.02933981
+0.9244929021652859</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_15_files/figure-html/cell-15-output-2.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_15_files/figure-html/cell-15-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="comparing-model-a-to-model-b" class="level3">
 <h3 class="anchored" data-anchor-id="comparing-model-a-to-model-b">Comparing Model A to Model B</h3>
@@ -703,21 +548,15 @@ Pearson's correlation coeff:  0.9233295979255991</code></pre>
 <li>But turning off dropout for B makes it perform better on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\phi = 0.45</annotation></semantics></math>.</li>
 </ul>
 <p>Dropout seems to reduce overfit by a lot. I don’t know if setting it to 0.2 here is too much dropout. In the next iteration of the network, I think we can work with 0.1.</p>
-</section>
-</section>
-<section id="reference-materials" class="level2">
-<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
-<ul>
-<li><a href="https://pyimagesearch.com/2019/01/28/keras-regression-and-cnns/">House price regression 1</a></li>
-<li><a href="https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/">House price regression 2</a></li>
-<li><a href="https://www.tensorflow.org/tutorials/keras/regression">TF Regression tutorial</a></li>
-<li><a href="https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression">StackOverflow</a></li>
-<li><a href="https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value">StackOverflow 2</a></li>
-<li><a href="https://www.tensorflow.org/tutorials/keras/regression">TDS pytorch on CNN to predict a continuous property</a></li>
-<li><a href="https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html">CNN with regression</a></li>
-</ul>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>See also <a href="https://pyimagesearch.com/2019/01/28/keras-regression-and-cnns/">House price regression 1</a>, <a href="https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/">House price regression 2</a>, <a href="https://www.tensorflow.org/tutorials/keras/regression">TF Regression tutorial</a>, <a href="https://stats.stackexchange.com/questions/335836/cnn-architectures-for-regression">StackOverflow</a>, <a href="https://datascience.stackexchange.com/questions/26969/how-to-make-a-cnn-predict-a-continuous-value">StackOverflow 2</a>, <a href="https://www.tensorflow.org/tutorials/keras/regression">TDS pytorch on CNN to predict a continuous property</a>, <a href="https://www.datatechnotes.com/2019/12/how-to-fit-regression-data-with-cnn.html">CNN with regression</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="NP">
 
-<title>Dissipation Learning in Active Matter - Cluster manipulation</title>
+<title>Dissipation Learning in Active Matter - Cluster manipulation (orientation analysis)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,20 +154,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Content</h2>
+   
+  <ul>
+  <li><a href="#functions-for-orientation-analysis" id="toc-functions-for-orientation-analysis" class="nav-link active" data-scroll-target="#functions-for-orientation-analysis">Functions for orientation analysis</a></li>
+  <li><a href="#labelling-fix" id="toc-labelling-fix" class="nav-link" data-scroll-target="#labelling-fix">Labelling fix</a></li>
+  <li><a href="#orientation-plots" id="toc-orientation-plots" class="nav-link" data-scroll-target="#orientation-plots">Orientation plots</a></li>
+  <li><a href="#other-types-of-plots" id="toc-other-types-of-plots" class="nav-link" data-scroll-target="#other-types-of-plots">Other types of plots</a></li>
+  <li><a href="#another-alpha" id="toc-another-alpha" class="nav-link" data-scroll-target="#another-alpha">Another alpha</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cluster manipulation</h1>
+<h1 class="title">Cluster manipulation (orientation analysis)</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -185,131 +195,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="193">
+<p><a href="https://github.com/mstcl/msci-wiki/blob/np/plots/labelling.ipynb"><strong>Full code</strong></a></p>
+<section id="functions-for-orientation-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="functions-for-orientation-analysis">Functions for orientation analysis</h2>
+<div id="cell-4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>load_ext autoreload</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> warnings</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> os</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> plot_labelled_cluster(axis, <span class="bu">file</span>, sshot_idx):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">"gnuplot"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, sshot_idx)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    axis.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="cf">return</span> axis</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#from statsmodels.graphics.mosaicplot import mosaic</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="im">import</span> cmcrameri</span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> h5py</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> mpl_toolkits.axes_grid1.inset_locator <span class="im">import</span> InsetPosition, inset_axes</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">def</span> get_biggest_cluster(img):</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    labelled, _ <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    lb <span class="op">=</span> labelled.flatten()</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    cluster_sizes <span class="op">=</span> np.bincount(lb)[<span class="dv">1</span>:]</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    biggest_cluster_id <span class="op">=</span> np.argmax(cluster_sizes)</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    loc <span class="op">=</span> ndimage.find_objects(labelled)[biggest_cluster_id]</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    labelled_crop <span class="op">=</span> labelled[loc]</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    img_crop <span class="op">=</span> img[loc]</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    labelled_crop[labelled_crop <span class="op">!=</span> biggest_cluster_id<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    labelled_crop[labelled_crop <span class="op">==</span> biggest_cluster_id<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    img_crop <span class="op">*=</span> labelled_crop</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="cf">return</span> img_crop, ndimage.center_of_mass(labelled_crop)</span>
 <span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="im">from</span> src.utils <span class="im">import</span> get_cluster_labels, get_ds_iters</span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb1-26"><a href="#cb1-26"></a>plt.rcParams.update(plot_configs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="kw">def</span> get_edges(img,axis):</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    img_threshold <span class="op">=</span> np.zeros_like(img)</span>
+<span id="cb1-24"><a href="#cb1-24"></a>    img_threshold[img <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>    edges <span class="op">=</span> ndimage.sobel(img_threshold, axis<span class="op">=</span>axis)</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="co">#edges[edges &gt; -2] = 0</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="co">#edges[edges != 0] = 1</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>    edges <span class="op">*=</span> img</span>
+<span id="cb1-29"><a href="#cb1-29"></a>    <span class="cf">return</span> edges</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="kw">def</span> map_ori(ori):</span>
+<span id="cb1-32"><a href="#cb1-32"></a>    ori_mapped <span class="op">=</span> np.zeros_like(ori, dtype<span class="op">=</span>np.float_)</span>
+<span id="cb1-33"><a href="#cb1-33"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> np.pi</span>
+<span id="cb1-34"><a href="#cb1-34"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">2</span>] <span class="op">=</span> np.pi<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">3</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">4</span>] <span class="op">=</span> <span class="op">-</span>np.pi<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>    <span class="cf">return</span> ori_mapped</span>
+<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-39"><a href="#cb1-39"></a></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="kw">def</span> map_ori_human(ori):</span>
+<span id="cb1-41"><a href="#cb1-41"></a>    ori_mapped <span class="op">=</span> np.zeros_like(ori, dtype<span class="op">=</span>np.dtype(<span class="st">'U100'</span>))</span>
+<span id="cb1-42"><a href="#cb1-42"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">3</span>] <span class="op">=</span> <span class="st">"Down"</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">2</span>] <span class="op">=</span> <span class="st">"Right"</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> <span class="st">"Up"</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">4</span>] <span class="op">=</span> <span class="st">"Left"</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a>    <span class="cf">return</span> ori_mapped</span>
+<span id="cb1-47"><a href="#cb1-47"></a></span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co"># 0: y, 1: x</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="kw">def</span> get_ori_and_loc(edges,com):</span>
+<span id="cb1-51"><a href="#cb1-51"></a>    positions <span class="op">=</span> edges.nonzero()</span>
+<span id="cb1-52"><a href="#cb1-52"></a>    edges_ori <span class="op">=</span> map_ori(edges[positions[<span class="dv">0</span>],positions[<span class="dv">1</span>]])</span>
+<span id="cb1-53"><a href="#cb1-53"></a>    edges_loc <span class="op">=</span> np.arctan2((com[<span class="dv">0</span>]<span class="op">-</span>positions[<span class="dv">0</span>]),(positions[<span class="dv">1</span>]<span class="op">-</span>com[<span class="dv">1</span>]))</span>
+<span id="cb1-54"><a href="#cb1-54"></a></span>
+<span id="cb1-55"><a href="#cb1-55"></a>    <span class="co"># CHECK CODE</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a>    <span class="co"># colors = ListedColormap(["k", "r", "yellow", "g", "b"])</span></span>
+<span id="cb1-57"><a href="#cb1-57"></a>    <span class="co"># edges[edges == 0] = -4</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a>    <span class="co"># edges[positions[0],positions[1]] = edges_loc</span></span>
+<span id="cb1-59"><a href="#cb1-59"></a>    plt.matshow(edges)</span>
+<span id="cb1-60"><a href="#cb1-60"></a>    plt.colorbar()</span>
+<span id="cb1-61"><a href="#cb1-61"></a>    plt.axvline(com[<span class="dv">1</span>], c<span class="op">=</span><span class="st">'w'</span>)</span>
+<span id="cb1-62"><a href="#cb1-62"></a>    plt.axhline(com[<span class="dv">0</span>], c<span class="op">=</span><span class="st">'w'</span>)</span>
+<span id="cb1-63"><a href="#cb1-63"></a></span>
+<span id="cb1-64"><a href="#cb1-64"></a>    <span class="cf">return</span> edges_ori, edges_loc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-2" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> plot_labelled_cluster(axis, <span class="bu">file</span>, sshot_idx):</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    cmap_label <span class="op">=</span> plt.get_cmap(name<span class="op">=</span><span class="st">"gnuplot"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    labelled, _ <span class="op">=</span> get_cluster_labels(<span class="bu">file</span>, sshot_idx)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    axis.matshow(labelled, cmap<span class="op">=</span>cmap_label)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="cf">return</span> axis</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">def</span> get_biggest_cluster(img):</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    kernel <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    labelled, _ <span class="op">=</span> ndimage.label(img, structure<span class="op">=</span>kernel)</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    lb <span class="op">=</span> labelled.flatten()</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    cluster_sizes <span class="op">=</span> np.bincount(lb)[<span class="dv">1</span>:]</span>
-<span id="cb2-13"><a href="#cb2-13"></a>    biggest_cluster_id <span class="op">=</span> np.argmax(cluster_sizes)</span>
-<span id="cb2-14"><a href="#cb2-14"></a>    loc <span class="op">=</span> ndimage.find_objects(labelled)[biggest_cluster_id]</span>
-<span id="cb2-15"><a href="#cb2-15"></a>    labelled_crop <span class="op">=</span> labelled[loc]</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    img_crop <span class="op">=</span> img[loc]</span>
-<span id="cb2-17"><a href="#cb2-17"></a>    labelled_crop[labelled_crop <span class="op">!=</span> biggest_cluster_id<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a>    labelled_crop[labelled_crop <span class="op">==</span> biggest_cluster_id<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a>    img_crop <span class="op">*=</span> labelled_crop</span>
-<span id="cb2-20"><a href="#cb2-20"></a>    <span class="cf">return</span> img_crop, ndimage.center_of_mass(labelled_crop)</span>
-<span id="cb2-21"><a href="#cb2-21"></a></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="kw">def</span> get_edges(img,axis):</span>
-<span id="cb2-23"><a href="#cb2-23"></a>    img_threshold <span class="op">=</span> np.zeros_like(img)</span>
-<span id="cb2-24"><a href="#cb2-24"></a>    img_threshold[img <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a>    edges <span class="op">=</span> ndimage.sobel(img_threshold, axis<span class="op">=</span>axis)</span>
-<span id="cb2-26"><a href="#cb2-26"></a>    <span class="co">#edges[edges &gt; -2] = 0</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>    <span class="co">#edges[edges != 0] = 1</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a>    edges <span class="op">*=</span> img</span>
-<span id="cb2-29"><a href="#cb2-29"></a>    <span class="cf">return</span> edges</span>
-<span id="cb2-30"><a href="#cb2-30"></a></span>
-<span id="cb2-31"><a href="#cb2-31"></a><span class="kw">def</span> map_ori(ori):</span>
-<span id="cb2-32"><a href="#cb2-32"></a>    ori_mapped <span class="op">=</span> np.zeros_like(ori, dtype<span class="op">=</span>np.float_)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> np.pi</span>
-<span id="cb2-34"><a href="#cb2-34"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">2</span>] <span class="op">=</span> np.pi<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">3</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-36"><a href="#cb2-36"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">4</span>] <span class="op">=</span> <span class="op">-</span>np.pi<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a>    <span class="cf">return</span> ori_mapped</span>
-<span id="cb2-38"><a href="#cb2-38"></a></span>
-<span id="cb2-39"><a href="#cb2-39"></a></span>
-<span id="cb2-40"><a href="#cb2-40"></a><span class="kw">def</span> map_ori_human(ori):</span>
-<span id="cb2-41"><a href="#cb2-41"></a>    ori_mapped <span class="op">=</span> np.zeros_like(ori, dtype<span class="op">=</span>np.dtype(<span class="st">'U100'</span>))</span>
-<span id="cb2-42"><a href="#cb2-42"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">3</span>] <span class="op">=</span> <span class="st">"Down"</span></span>
-<span id="cb2-43"><a href="#cb2-43"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">2</span>] <span class="op">=</span> <span class="st">"Right"</span></span>
-<span id="cb2-44"><a href="#cb2-44"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> <span class="st">"Up"</span></span>
-<span id="cb2-45"><a href="#cb2-45"></a>    ori_mapped[ori <span class="op">==</span> <span class="dv">4</span>] <span class="op">=</span> <span class="st">"Left"</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a>    <span class="cf">return</span> ori_mapped</span>
-<span id="cb2-47"><a href="#cb2-47"></a></span>
-<span id="cb2-48"><a href="#cb2-48"></a></span>
-<span id="cb2-49"><a href="#cb2-49"></a><span class="co"># 0: y, 1: x</span></span>
-<span id="cb2-50"><a href="#cb2-50"></a><span class="kw">def</span> get_ori_and_loc(edges,com):</span>
-<span id="cb2-51"><a href="#cb2-51"></a>    positions <span class="op">=</span> edges.nonzero()</span>
-<span id="cb2-52"><a href="#cb2-52"></a>    edges_ori <span class="op">=</span> map_ori(edges[positions[<span class="dv">0</span>],positions[<span class="dv">1</span>]])</span>
-<span id="cb2-53"><a href="#cb2-53"></a>    edges_loc <span class="op">=</span> np.arctan2((com[<span class="dv">0</span>]<span class="op">-</span>positions[<span class="dv">0</span>]),(positions[<span class="dv">1</span>]<span class="op">-</span>com[<span class="dv">1</span>]))</span>
-<span id="cb2-54"><a href="#cb2-54"></a></span>
-<span id="cb2-55"><a href="#cb2-55"></a>    <span class="co"># CHECK CODE</span></span>
-<span id="cb2-56"><a href="#cb2-56"></a>    <span class="co"># colors = ListedColormap(["k", "r", "yellow", "g", "b"])</span></span>
-<span id="cb2-57"><a href="#cb2-57"></a>    <span class="co"># edges[edges == 0] = -4</span></span>
-<span id="cb2-58"><a href="#cb2-58"></a>    <span class="co"># edges[positions[0],positions[1]] = edges_loc</span></span>
-<span id="cb2-59"><a href="#cb2-59"></a>    plt.matshow(edges)</span>
-<span id="cb2-60"><a href="#cb2-60"></a>    plt.colorbar()</span>
-<span id="cb2-61"><a href="#cb2-61"></a>    plt.axvline(com[<span class="dv">1</span>], c<span class="op">=</span><span class="st">'w'</span>)</span>
-<span id="cb2-62"><a href="#cb2-62"></a>    plt.axhline(com[<span class="dv">0</span>], c<span class="op">=</span><span class="st">'w'</span>)</span>
-<span id="cb2-63"><a href="#cb2-63"></a></span>
-<span id="cb2-64"><a href="#cb2-64"></a>    <span class="cf">return</span> edges_ori, edges_loc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-3" class="cell" data-execution_count="20">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>sshot_idx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">3</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>ax1 <span class="op">=</span> plot_labelled_cluster(ax1, <span class="st">"no_roll_data/dataset_tumble_0.016_0.45.h5"</span>, sshot_idx)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>ax1.text(</span>
-<span id="cb3-6"><a href="#cb3-6"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
-<span id="cb3-7"><a href="#cb3-7"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb3-8"><a href="#cb3-8"></a>    transform<span class="op">=</span>ax1.transAxes,</span>
-<span id="cb3-9"><a href="#cb3-9"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb3-10"><a href="#cb3-10"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.023$"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11"></a>)</span>
-<span id="cb3-12"><a href="#cb3-12"></a>ax2 <span class="op">=</span> plot_labelled_cluster(ax2, <span class="st">"no_roll_data/dataset_tumble_0.500_0.45.h5"</span>, sshot_idx)</span>
-<span id="cb3-13"><a href="#cb3-13"></a>ax2.text(</span>
-<span id="cb3-14"><a href="#cb3-14"></a>    y<span class="op">=-</span><span class="fl">0.1</span>,</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    x<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb3-16"><a href="#cb3-16"></a>    transform<span class="op">=</span>ax2.transAxes,</span>
-<span id="cb3-17"><a href="#cb3-17"></a>    ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb3-18"><a href="#cb3-18"></a>    s<span class="op">=</span><span class="vs">r"$\alpha = 0.500$"</span>,</span>
-<span id="cb3-19"><a href="#cb3-19"></a>)</span>
-<span id="cb3-20"><a href="#cb3-20"></a>plt.show()</span>
-<span id="cb3-21"><a href="#cb3-21"></a>fig.savefig(<span class="st">"plots/labelling_demo.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</section>
+<section id="labelling-fix" class="level2">
+<h2 class="anchored" data-anchor-id="labelling-fix">Labelling fix</h2>
+<p>Should see labelling work with periodic boundary conditions now</p>
+<div id="cell-6" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -318,244 +280,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="23">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.034_0.5.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb4-3"><a href="#cb4-3"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="dv">300</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb4-4"><a href="#cb4-4"></a>img <span class="op">=</span> np.array(img)</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a>img2 <span class="op">=</span> get_edges(img, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>img2[img2<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>img2[img2<span class="op">&gt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a>locs_neg <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb4-11"><a href="#cb4-11"></a>locs_mid <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">0</span>)</span>
-<span id="cb4-12"><a href="#cb4-12"></a>locs_pos <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">1</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a></span>
-<span id="cb4-14"><a href="#cb4-14"></a>neg <span class="op">=</span> img[locs_neg[<span class="dv">0</span>][:],locs_neg[<span class="dv">1</span>][:]]</span>
-<span id="cb4-15"><a href="#cb4-15"></a>mid <span class="op">=</span> img[locs_mid[<span class="dv">0</span>][:],locs_mid[<span class="dv">1</span>][:]]</span>
-<span id="cb4-16"><a href="#cb4-16"></a>pos <span class="op">=</span> img[locs_pos[<span class="dv">0</span>][:],locs_pos[<span class="dv">1</span>][:]]</span>
-<span id="cb4-17"><a href="#cb4-17"></a></span>
-<span id="cb4-18"><a href="#cb4-18"></a>counts <span class="op">=</span> np.column_stack((np.bincount(neg),np.bincount(pos)))[<span class="dv">1</span>:]</span>
-<span id="cb4-19"><a href="#cb4-19"></a></span>
-<span id="cb4-20"><a href="#cb4-20"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb4-21"><a href="#cb4-21"></a>    <span class="st">'Grad'</span>: ([<span class="st">"Negative"</span>]<span class="op">+</span>[<span class="st">"Positive"</span>])<span class="op">*</span><span class="dv">4</span>,</span>
-<span id="cb4-22"><a href="#cb4-22"></a>    <span class="st">'Orientation'</span>: pd.Categorical(</span>
-<span id="cb4-23"><a href="#cb4-23"></a>        [<span class="st">"Up"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>, <span class="st">"Down"</span>, <span class="st">"Left"</span>, <span class="st">"Left"</span>],</span>
-<span id="cb4-24"><a href="#cb4-24"></a>        categories<span class="op">=</span>[<span class="st">"Left"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>]</span>
-<span id="cb4-25"><a href="#cb4-25"></a>    ),</span>
-<span id="cb4-26"><a href="#cb4-26"></a>    <span class="st">'Frequency'</span>: counts.flatten(),</span>
-<span id="cb4-27"><a href="#cb4-27"></a>        })</span>
-<span id="cb4-28"><a href="#cb4-28"></a>df.to_csv(<span class="st">"cache/updown_ori_freq.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-5" class="cell" data-execution_count="24">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.034_0.5.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb5-3"><a href="#cb5-3"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="dv">300</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb5-4"><a href="#cb5-4"></a>img <span class="op">=</span> np.array(img)</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a>img2 <span class="op">=</span> get_edges(img, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>img2[img2<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>img2[img2<span class="op">&gt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a>locs_neg <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb5-11"><a href="#cb5-11"></a>locs_mid <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">0</span>)</span>
-<span id="cb5-12"><a href="#cb5-12"></a>locs_pos <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">1</span>)</span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a>neg <span class="op">=</span> img[locs_neg[<span class="dv">0</span>][:],locs_neg[<span class="dv">1</span>][:]]</span>
-<span id="cb5-15"><a href="#cb5-15"></a>mid <span class="op">=</span> img[locs_mid[<span class="dv">0</span>][:],locs_mid[<span class="dv">1</span>][:]]</span>
-<span id="cb5-16"><a href="#cb5-16"></a>pos <span class="op">=</span> img[locs_pos[<span class="dv">0</span>][:],locs_pos[<span class="dv">1</span>][:]]</span>
-<span id="cb5-17"><a href="#cb5-17"></a></span>
-<span id="cb5-18"><a href="#cb5-18"></a>counts <span class="op">=</span> np.column_stack((np.bincount(neg),np.bincount(pos)))[<span class="dv">1</span>:]</span>
-<span id="cb5-19"><a href="#cb5-19"></a></span>
-<span id="cb5-20"><a href="#cb5-20"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb5-21"><a href="#cb5-21"></a>    <span class="st">'Grad'</span>: ([<span class="st">"Negative"</span>]<span class="op">+</span>[<span class="st">"Positive"</span>])<span class="op">*</span><span class="dv">4</span>,</span>
-<span id="cb5-22"><a href="#cb5-22"></a>   <span class="st">'Orientation'</span>: pd.Categorical(</span>
-<span id="cb5-23"><a href="#cb5-23"></a>       [<span class="st">"Up"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>, <span class="st">"Down"</span>, <span class="st">"Left"</span>, <span class="st">"Left"</span>],</span>
-<span id="cb5-24"><a href="#cb5-24"></a>       categories<span class="op">=</span>[<span class="st">"Left"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>]</span>
-<span id="cb5-25"><a href="#cb5-25"></a>   ),</span>
-<span id="cb5-26"><a href="#cb5-26"></a>    <span class="st">'Frequency'</span>: counts.flatten(),</span>
-<span id="cb5-27"><a href="#cb5-27"></a>        })</span>
-<span id="cb5-28"><a href="#cb5-28"></a>df.to_csv(<span class="st">"cache/leftright_ori_freq.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-6" class="cell" data-execution_count="25">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.034_0.5.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb6-3"><a href="#cb6-3"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="dv">300</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb6-4"><a href="#cb6-4"></a>img <span class="op">=</span> np.array(img)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>img[img <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>img <span class="op">=</span> img <span class="op">*</span> np.random.randint(<span class="dv">1</span>, <span class="dv">5</span>, size<span class="op">=</span>(<span class="dv">128</span>, <span class="dv">128</span>))</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a>img2 <span class="op">=</span> get_edges(img, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb6-9"><a href="#cb6-9"></a>img2[img2<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>img2[img2<span class="op">&gt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a></span>
-<span id="cb6-12"><a href="#cb6-12"></a>locs_neg <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb6-13"><a href="#cb6-13"></a>locs_mid <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">0</span>)</span>
-<span id="cb6-14"><a href="#cb6-14"></a>locs_pos <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">1</span>)</span>
-<span id="cb6-15"><a href="#cb6-15"></a></span>
-<span id="cb6-16"><a href="#cb6-16"></a>neg <span class="op">=</span> img[locs_neg[<span class="dv">0</span>][:],locs_neg[<span class="dv">1</span>][:]]</span>
-<span id="cb6-17"><a href="#cb6-17"></a>mid <span class="op">=</span> img[locs_mid[<span class="dv">0</span>][:],locs_mid[<span class="dv">1</span>][:]]</span>
-<span id="cb6-18"><a href="#cb6-18"></a>pos <span class="op">=</span> img[locs_pos[<span class="dv">0</span>][:],locs_pos[<span class="dv">1</span>][:]]</span>
-<span id="cb6-19"><a href="#cb6-19"></a></span>
-<span id="cb6-20"><a href="#cb6-20"></a>counts <span class="op">=</span> np.column_stack((np.bincount(neg),np.bincount(pos)))[<span class="dv">1</span>:]</span>
-<span id="cb6-21"><a href="#cb6-21"></a></span>
-<span id="cb6-22"><a href="#cb6-22"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb6-23"><a href="#cb6-23"></a>    <span class="st">'Grad'</span>: ([<span class="st">"Negative"</span>]<span class="op">+</span>[<span class="st">"Positive"</span>])<span class="op">*</span><span class="dv">4</span>,</span>
-<span id="cb6-24"><a href="#cb6-24"></a>    <span class="st">'Orientation'</span>: pd.Categorical(</span>
-<span id="cb6-25"><a href="#cb6-25"></a>        [<span class="st">"Up"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>, <span class="st">"Down"</span>, <span class="st">"Left"</span>, <span class="st">"Left"</span>],</span>
-<span id="cb6-26"><a href="#cb6-26"></a>        categories<span class="op">=</span>[<span class="st">"Left"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>]</span>
-<span id="cb6-27"><a href="#cb6-27"></a>    ),</span>
-<span id="cb6-28"><a href="#cb6-28"></a>    <span class="st">'Frequency'</span>: counts.flatten(),</span>
-<span id="cb6-29"><a href="#cb6-29"></a>        })</span>
-<span id="cb6-30"><a href="#cb6-30"></a>df.to_csv(<span class="st">"cache/updown_ori_freq_scrambled.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-7" class="cell" data-execution_count="26">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.034_0.5.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb7-3"><a href="#cb7-3"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="dv">300</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb7-4"><a href="#cb7-4"></a>img <span class="op">=</span> np.array(img)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>img[img <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>img <span class="op">=</span> img <span class="op">*</span> np.random.randint(<span class="dv">1</span>, <span class="dv">5</span>, size<span class="op">=</span>(<span class="dv">128</span>, <span class="dv">128</span>))</span>
-<span id="cb7-7"><a href="#cb7-7"></a></span>
-<span id="cb7-8"><a href="#cb7-8"></a>img2 <span class="op">=</span> get_edges(img, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-9"><a href="#cb7-9"></a>img2[img2<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>img2[img2<span class="op">&gt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a></span>
-<span id="cb7-12"><a href="#cb7-12"></a>locs_neg <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb7-13"><a href="#cb7-13"></a>locs_mid <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">0</span>)</span>
-<span id="cb7-14"><a href="#cb7-14"></a>locs_pos <span class="op">=</span> np.where(img2 <span class="op">==</span> <span class="dv">1</span>)</span>
-<span id="cb7-15"><a href="#cb7-15"></a></span>
-<span id="cb7-16"><a href="#cb7-16"></a>neg <span class="op">=</span> img[locs_neg[<span class="dv">0</span>][:],locs_neg[<span class="dv">1</span>][:]]</span>
-<span id="cb7-17"><a href="#cb7-17"></a>mid <span class="op">=</span> img[locs_mid[<span class="dv">0</span>][:],locs_mid[<span class="dv">1</span>][:]]</span>
-<span id="cb7-18"><a href="#cb7-18"></a>pos <span class="op">=</span> img[locs_pos[<span class="dv">0</span>][:],locs_pos[<span class="dv">1</span>][:]]</span>
-<span id="cb7-19"><a href="#cb7-19"></a></span>
-<span id="cb7-20"><a href="#cb7-20"></a>counts <span class="op">=</span> np.column_stack((np.bincount(neg),np.bincount(pos)))[<span class="dv">1</span>:]</span>
-<span id="cb7-21"><a href="#cb7-21"></a></span>
-<span id="cb7-22"><a href="#cb7-22"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb7-23"><a href="#cb7-23"></a>    <span class="st">'Grad'</span>: ([<span class="st">"Negative"</span>]<span class="op">+</span>[<span class="st">"Positive"</span>])<span class="op">*</span><span class="dv">4</span>,</span>
-<span id="cb7-24"><a href="#cb7-24"></a>    <span class="st">'Orientation'</span>: pd.Categorical(</span>
-<span id="cb7-25"><a href="#cb7-25"></a>        [<span class="st">"Up"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>, <span class="st">"Down"</span>, <span class="st">"Left"</span>, <span class="st">"Left"</span>],</span>
-<span id="cb7-26"><a href="#cb7-26"></a>        categories<span class="op">=</span>[<span class="st">"Left"</span>, <span class="st">"Up"</span>, <span class="st">"Right"</span>, <span class="st">"Down"</span>])</span>
-<span id="cb7-27"><a href="#cb7-27"></a>    ,</span>
-<span id="cb7-28"><a href="#cb7-28"></a>    <span class="st">'Frequency'</span>: counts.flatten(),</span>
-<span id="cb7-29"><a href="#cb7-29"></a>        })</span>
-<span id="cb7-30"><a href="#cb7-30"></a>df.to_csv(<span class="st">"cache/leftright_ori_freq_scrambled.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-8" class="cell" data-execution_count="232">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/leftright_ori_freq_scrambled.csv"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb8-4"><a href="#cb8-4"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
-<span id="cb8-5"><a href="#cb8-5"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>,<span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
-<span id="cb8-7"><a href="#cb8-7"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb8-8"><a href="#cb8-8"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="fl">4.25</span>,<span class="fl">4.7</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#ax0 = fig.add_subplot(</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#    1, 1, 1</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#)</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>ax4 <span class="op">=</span> fig.add_subplot(</span>
-<span id="cb8-13"><a href="#cb8-13"></a>    <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a>)</span>
-<span id="cb8-15"><a href="#cb8-15"></a>ax2 <span class="op">=</span> fig.add_subplot(</span>
-<span id="cb8-16"><a href="#cb8-16"></a>    <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a>)</span>
-<span id="cb8-18"><a href="#cb8-18"></a>ax3 <span class="op">=</span> fig.add_subplot(</span>
-<span id="cb8-19"><a href="#cb8-19"></a>    <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a>)</span>
-<span id="cb8-21"><a href="#cb8-21"></a>ax1 <span class="op">=</span> fig.add_subplot(</span>
-<span id="cb8-22"><a href="#cb8-22"></a>    <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span></span>
-<span id="cb8-23"><a href="#cb8-23"></a>)</span>
-<span id="cb8-24"><a href="#cb8-24"></a></span>
-<span id="cb8-25"><a href="#cb8-25"></a>hf <span class="op">=</span> h5py.File(<span class="ss">f"no_roll_data/dataset_tumble_0.034_0.5.h5"</span>, <span class="st">"r"</span>)</span>
-<span id="cb8-26"><a href="#cb8-26"></a>iters <span class="op">=</span> get_ds_iters(hf.keys())</span>
-<span id="cb8-27"><a href="#cb8-27"></a>img <span class="op">=</span> hf[<span class="ss">f"conf_</span><span class="sc">{</span>iters[<span class="dv">300</span>]<span class="sc">}</span><span class="ss">"</span>]</span>
-<span id="cb8-28"><a href="#cb8-28"></a>img <span class="op">=</span> np.array(img)</span>
-<span id="cb8-29"><a href="#cb8-29"></a>img_thres <span class="op">=</span> img</span>
-<span id="cb8-30"><a href="#cb8-30"></a>img_thres[img_thres<span class="op">&gt;</span><span class="dv">0</span>]<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb8-31"><a href="#cb8-31"></a>axins <span class="op">=</span> inset_axes(ax4, width<span class="op">=</span><span class="st">"100%"</span>, height<span class="op">=</span><span class="st">"100%"</span>, borderpad<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-32"><a href="#cb8-32"></a>axins.set_axes_locator(InsetPosition(ax4, [<span class="fl">.7</span>, <span class="fl">1.3</span>, <span class="dv">1</span>, <span class="dv">1</span>]))</span>
-<span id="cb8-33"><a href="#cb8-33"></a>axins.matshow(img_thres, cmap<span class="op">=</span><span class="st">'cmc.oslo'</span>)</span>
-<span id="cb8-34"><a href="#cb8-34"></a>axins.tick_params(</span>
-<span id="cb8-35"><a href="#cb8-35"></a>    axis <span class="op">=</span> <span class="st">"both"</span>,</span>
-<span id="cb8-36"><a href="#cb8-36"></a>    which <span class="op">=</span> <span class="st">"both"</span>,</span>
-<span id="cb8-37"><a href="#cb8-37"></a>    length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb8-38"><a href="#cb8-38"></a>    labelleft <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb8-39"><a href="#cb8-39"></a>    labeltop <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb8-40"><a href="#cb8-40"></a>)</span>
-<span id="cb8-41"><a href="#cb8-41"></a>img2 <span class="op">=</span> get_edges(img, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-42"><a href="#cb8-42"></a>img2[img2<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb8-43"><a href="#cb8-43"></a>img2[img2<span class="op">&gt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb8-44"><a href="#cb8-44"></a>cbar <span class="op">=</span> ax2.matshow(img2, cmap<span class="op">=</span>plt.get_cmap(cm.lapazS, lut<span class="op">=</span><span class="dv">3</span>))</span>
-<span id="cb8-45"><a href="#cb8-45"></a>cb <span class="op">=</span> plt.colorbar(cbar, ax<span class="op">=</span>ax2, ticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span>), values<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span>), location<span class="op">=</span><span class="st">'bottom'</span>, fraction<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb8-46"><a href="#cb8-46"></a>cb.set_ticklabels([<span class="st">"Bottom</span><span class="ch">\n</span><span class="st">edges"</span>, <span class="st">"BG."</span>, <span class="st">"Top</span><span class="ch">\n</span><span class="st">edges"</span>], fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb8-47"><a href="#cb8-47"></a>ax2.tick_params(</span>
-<span id="cb8-48"><a href="#cb8-48"></a>    axis <span class="op">=</span> <span class="st">"both"</span>,</span>
-<span id="cb8-49"><a href="#cb8-49"></a>    which <span class="op">=</span> <span class="st">"both"</span>,</span>
-<span id="cb8-50"><a href="#cb8-50"></a>    length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb8-51"><a href="#cb8-51"></a>    labelleft <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb8-52"><a href="#cb8-52"></a>    labeltop <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb8-53"><a href="#cb8-53"></a>)</span>
-<span id="cb8-54"><a href="#cb8-54"></a></span>
-<span id="cb8-55"><a href="#cb8-55"></a>img2 <span class="op">=</span> get_edges(img, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-56"><a href="#cb8-56"></a>img2[img2<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb8-57"><a href="#cb8-57"></a>img2[img2<span class="op">&gt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb8-58"><a href="#cb8-58"></a>cbar <span class="op">=</span> ax4.matshow(img2, cmap<span class="op">=</span>plt.get_cmap(cm.lapazS, lut<span class="op">=</span><span class="dv">3</span>))</span>
-<span id="cb8-59"><a href="#cb8-59"></a>cb <span class="op">=</span> plt.colorbar(cbar, ax<span class="op">=</span>ax4, ticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span>), values<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span>), location<span class="op">=</span><span class="st">'bottom'</span>, fraction<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb8-60"><a href="#cb8-60"></a>cb.set_ticklabels([<span class="st">"Right</span><span class="ch">\n</span><span class="st">edges"</span>, <span class="st">"BG."</span>, <span class="st">"Left</span><span class="ch">\n</span><span class="st">edges"</span>], fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb8-61"><a href="#cb8-61"></a>ax4.tick_params(</span>
-<span id="cb8-62"><a href="#cb8-62"></a>    axis <span class="op">=</span> <span class="st">"both"</span>,</span>
-<span id="cb8-63"><a href="#cb8-63"></a>    which <span class="op">=</span> <span class="st">"both"</span>,</span>
-<span id="cb8-64"><a href="#cb8-64"></a>    length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb8-65"><a href="#cb8-65"></a>    labelleft <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb8-66"><a href="#cb8-66"></a>    labeltop <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb8-67"><a href="#cb8-67"></a>)</span>
-<span id="cb8-68"><a href="#cb8-68"></a></span>
-<span id="cb8-69"><a href="#cb8-69"></a>palette <span class="op">=</span> {<span class="st">'Negative'</span>: <span class="st">'#1a0c64'</span>, <span class="st">'Positive'</span>: <span class="st">'#ceb99f'</span> }</span>
-<span id="cb8-70"><a href="#cb8-70"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/updown_ori_freq.csv"</span>)</span>
-<span id="cb8-71"><a href="#cb8-71"></a>sns.barplot(ax<span class="op">=</span>ax1, data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'Orientation'</span>,y<span class="op">=</span><span class="st">'Frequency'</span>, hue<span class="op">=</span><span class="st">'Grad'</span>, palette<span class="op">=</span>palette, legend<span class="op">=</span><span class="va">False</span>, width<span class="op">=</span><span class="fl">0.7</span>, order<span class="op">=</span>[<span class="st">"Up"</span>,<span class="st">"Down"</span>,<span class="st">"Left"</span>,<span class="st">"Right"</span>])</span>
-<span id="cb8-72"><a href="#cb8-72"></a>ax1.<span class="bu">set</span>(xticklabels<span class="op">=</span>[])</span>
-<span id="cb8-73"><a href="#cb8-73"></a></span>
-<span id="cb8-74"><a href="#cb8-74"></a><span class="co">#df = pd.read_csv("cache/updown_ori_freq_scrambled.csv")</span></span>
-<span id="cb8-75"><a href="#cb8-75"></a><span class="co">#sns.barplot(ax=ax2, data=df, x='Orientation',y='Frequency', hue='Grad', palette=palette)</span></span>
-<span id="cb8-76"><a href="#cb8-76"></a><span class="co">#ax2.set(xlabel=None, xticklabels=[], ylabel=None, yticklabels=[])</span></span>
-<span id="cb8-77"><a href="#cb8-77"></a><span class="co">#sns.move_legend(ax2, "upper right", bbox_to_anchor=(1, 1.1), frameon=False, title=r"Gradient")</span></span>
-<span id="cb8-78"><a href="#cb8-78"></a></span>
-<span id="cb8-79"><a href="#cb8-79"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/leftright_ori_freq.csv"</span>)</span>
-<span id="cb8-80"><a href="#cb8-80"></a>sns.barplot(ax<span class="op">=</span>ax3, data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'Orientation'</span>,y<span class="op">=</span><span class="st">'Frequency'</span>, hue<span class="op">=</span><span class="st">'Grad'</span>, palette<span class="op">=</span>palette, legend<span class="op">=</span><span class="va">False</span>, width<span class="op">=</span><span class="fl">0.7</span>, order<span class="op">=</span>[<span class="st">"Up"</span>,<span class="st">"Down"</span>,<span class="st">"Left"</span>,<span class="st">"Right"</span>])</span>
-<span id="cb8-81"><a href="#cb8-81"></a></span>
-<span id="cb8-82"><a href="#cb8-82"></a><span class="co">#df = pd.read_csv("cache/leftright_ori_freq_scrambled.csv")</span></span>
-<span id="cb8-83"><a href="#cb8-83"></a><span class="co">#sns.barplot(ax=ax5, data=df, x='Orientation',y='Frequency', hue='Grad', palette=palette, legend=False)</span></span>
-<span id="cb8-84"><a href="#cb8-84"></a><span class="co">#ax5.set(yticklabels=[])</span></span>
-<span id="cb8-85"><a href="#cb8-85"></a></span>
-<span id="cb8-86"><a href="#cb8-86"></a></span>
-<span id="cb8-87"><a href="#cb8-87"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>((ax1,ax3)):</span>
-<span id="cb8-88"><a href="#cb8-88"></a>    sns.despine(ax<span class="op">=</span>ax)</span>
-<span id="cb8-89"><a href="#cb8-89"></a>    ax.set_ylim(<span class="dv">0</span>,<span class="dv">1100</span>)</span>
-<span id="cb8-90"><a href="#cb8-90"></a>    ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="va">None</span>, ylabel<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb8-91"><a href="#cb8-91"></a>    ax.set_xticklabels([<span class="st">"↑"</span>,<span class="st">"↓"</span>,<span class="st">"→"</span>,<span class="st">"←"</span>], fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb8-92"><a href="#cb8-92"></a>    <span class="co">#ax.set_ylabel('Particle count', fontsize=14)</span></span>
-<span id="cb8-93"><a href="#cb8-93"></a>    ax.set_xlabel(<span class="st">"Particle orientation"</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb8-94"><a href="#cb8-94"></a></span>
-<span id="cb8-95"><a href="#cb8-95"></a><span class="co">#fig.text(s="(A)",x=0.17, y=0.95)</span></span>
-<span id="cb8-96"><a href="#cb8-96"></a><span class="co">#fig.text(s="(B)",x=0.52, y=0.95, backgroundcolor=(1,1,1,0.95))</span></span>
-<span id="cb8-97"><a href="#cb8-97"></a><span class="co">#fig.text(s="(C)",x=0.17, y=0.48)</span></span>
-<span id="cb8-98"><a href="#cb8-98"></a><span class="co">#fig.text(s="(D)",x=0.52, y=0.48, backgroundcolor=(1,1,1,0.95))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</section>
+<section id="orientation-plots" class="level2">
+<h2 class="anchored" data-anchor-id="orientation-plots">Orientation plots</h2>
+<div id="cell-12" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -564,22 +292,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="233">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>fig.savefig(<span class="st">"plots/edge_orientation.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-10" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-execution_count="15">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/updown_ori_freq.csv"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>sns.barplot(ax<span class="op">=</span>ax1, data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'Orientation'</span>,y<span class="op">=</span><span class="st">'Frequency'</span>, hue<span class="op">=</span><span class="st">'Grad'</span>, palette<span class="op">=</span>palette, legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb10-3"><a href="#cb10-3"></a>ax1.<span class="bu">set</span>(xticklabels<span class="op">=</span>[])</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a>waffle_plot(df[df[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Positive"</span>][<span class="st">'Orientation'</span>], df[df[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Positive"</span>][<span class="st">'Frequency'</span>], cmap<span class="op">=</span>cm.glasgow)</span>
-<span id="cb10-6"><a href="#cb10-6"></a>waffle_plot(df[df[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Negative"</span>][<span class="st">'Orientation'</span>], df[df[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Negative"</span>][<span class="st">'Frequency'</span>], cmap<span class="op">=</span>cm.glasgow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</section>
+<section id="other-types-of-plots" class="level2">
+<h2 class="anchored" data-anchor-id="other-types-of-plots">Other types of plots</h2>
+<div id="cell-15" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -595,92 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="16">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#diff = pd.DataFrame({</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#    "Difference": np.concatenate((</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#        df[df['Grad'] == "Positive"]['Frequency'].values - df[df['Grad'] == "Negative"]['Frequency'].values,</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">#        df2[df2['Grad'] == "Positive"]['Frequency'].values - df2[df2['Grad'] == "Negative"]['Frequency'].values,</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co">#                                 )),</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">#    "Orientation": ["Up", "Left", "Down", "Right"]*2,</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co">#    'Context': ["Original"]*4+["Scrambled"]*4,</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#})</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a></span>
-<span id="cb11-10"><a href="#cb11-10"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/updown_ori_freq.csv"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/updown_ori_freq_scrambled.csv"</span>)</span>
-<span id="cb11-12"><a href="#cb11-12"></a></span>
-<span id="cb11-13"><a href="#cb11-13"></a>df3 <span class="op">=</span> pd.read_csv(<span class="st">"cache/leftright_ori_freq.csv"</span>)</span>
-<span id="cb11-14"><a href="#cb11-14"></a>df4 <span class="op">=</span> pd.read_csv(<span class="st">"cache/leftright_ori_freq_scrambled.csv"</span>)</span>
-<span id="cb11-15"><a href="#cb11-15"></a></span>
-<span id="cb11-16"><a href="#cb11-16"></a>diff1 <span class="op">=</span> (df[df[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Positive"</span>][<span class="st">'Frequency'</span>].values <span class="op">-</span> df[df[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Negative"</span>][<span class="st">'Frequency'</span>].values)</span>
-<span id="cb11-17"><a href="#cb11-17"></a>diff1[[<span class="dv">1</span>,<span class="dv">2</span>]] <span class="op">=</span> diff1[[<span class="dv">2</span>,<span class="dv">1</span>]]</span>
-<span id="cb11-18"><a href="#cb11-18"></a></span>
-<span id="cb11-19"><a href="#cb11-19"></a>diff2 <span class="op">=</span> (df3[df3[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Positive"</span>][<span class="st">'Frequency'</span>].values <span class="op">-</span> df3[df3[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Negative"</span>][<span class="st">'Frequency'</span>].values)</span>
-<span id="cb11-20"><a href="#cb11-20"></a>diff2[[<span class="dv">1</span>,<span class="dv">2</span>]] <span class="op">=</span> diff2[[<span class="dv">2</span>,<span class="dv">1</span>]]</span>
-<span id="cb11-21"><a href="#cb11-21"></a></span>
-<span id="cb11-22"><a href="#cb11-22"></a>diff3 <span class="op">=</span> (df2[df2[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Positive"</span>][<span class="st">'Frequency'</span>].values <span class="op">-</span> df2[df2[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Negative"</span>][<span class="st">'Frequency'</span>].values)</span>
-<span id="cb11-23"><a href="#cb11-23"></a>diff3[[<span class="dv">1</span>,<span class="dv">2</span>]] <span class="op">=</span> diff3[[<span class="dv">2</span>,<span class="dv">1</span>]]</span>
-<span id="cb11-24"><a href="#cb11-24"></a></span>
-<span id="cb11-25"><a href="#cb11-25"></a>diff4 <span class="op">=</span> (df4[df4[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Positive"</span>][<span class="st">'Frequency'</span>].values <span class="op">-</span> df4[df4[<span class="st">'Grad'</span>] <span class="op">==</span> <span class="st">"Negative"</span>][<span class="st">'Frequency'</span>].values)</span>
-<span id="cb11-26"><a href="#cb11-26"></a>diff4[[<span class="dv">1</span>,<span class="dv">2</span>]] <span class="op">=</span> diff4[[<span class="dv">2</span>,<span class="dv">1</span>]]</span>
-<span id="cb11-27"><a href="#cb11-27"></a></span>
-<span id="cb11-28"><a href="#cb11-28"></a>ori <span class="op">=</span> np.array([<span class="st">"Up"</span>, <span class="st">"Left"</span>, <span class="st">"Down"</span>, <span class="st">"Right"</span>])</span>
-<span id="cb11-29"><a href="#cb11-29"></a>ori[[<span class="dv">1</span>,<span class="dv">2</span>]] <span class="op">=</span> ori[[<span class="dv">2</span>,<span class="dv">1</span>]]</span>
-<span id="cb11-30"><a href="#cb11-30"></a></span>
-<span id="cb11-31"><a href="#cb11-31"></a><span class="bu">len</span>(np.tile(ori,<span class="dv">2</span>))</span>
-<span id="cb11-32"><a href="#cb11-32"></a></span>
-<span id="cb11-33"><a href="#cb11-33"></a>diff_v <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb11-34"><a href="#cb11-34"></a>    <span class="st">"Difference"</span>: np.concatenate((</span>
-<span id="cb11-35"><a href="#cb11-35"></a>        diff1,</span>
-<span id="cb11-36"><a href="#cb11-36"></a>        diff2</span>
-<span id="cb11-37"><a href="#cb11-37"></a>    )),</span>
-<span id="cb11-38"><a href="#cb11-38"></a>    <span class="st">"Orientation"</span>: np.tile(ori,<span class="dv">2</span>),</span>
-<span id="cb11-39"><a href="#cb11-39"></a>    <span class="st">'Context'</span>: ([<span class="st">"Vertical filter"</span>]<span class="op">*</span><span class="dv">4</span><span class="op">+</span>[<span class="st">"Horizontal filter"</span>]<span class="op">*</span><span class="dv">4</span>)<span class="op">*</span><span class="dv">1</span>,</span>
-<span id="cb11-40"><a href="#cb11-40"></a>})</span>
-<span id="cb11-41"><a href="#cb11-41"></a></span>
-<span id="cb11-42"><a href="#cb11-42"></a></span>
-<span id="cb11-43"><a href="#cb11-43"></a>diff_v2 <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb11-44"><a href="#cb11-44"></a>    <span class="st">"Difference"</span>: np.concatenate((</span>
-<span id="cb11-45"><a href="#cb11-45"></a>        diff3,</span>
-<span id="cb11-46"><a href="#cb11-46"></a>        diff4,</span>
-<span id="cb11-47"><a href="#cb11-47"></a>    )),</span>
-<span id="cb11-48"><a href="#cb11-48"></a>    <span class="st">"Orientation"</span>: np.tile(ori,<span class="dv">2</span>),</span>
-<span id="cb11-49"><a href="#cb11-49"></a>    <span class="st">'Context'</span>: ([<span class="st">"Vertical filter"</span>]<span class="op">*</span><span class="dv">4</span><span class="op">+</span>[<span class="st">"Horizontal filter"</span>]<span class="op">*</span><span class="dv">4</span>)<span class="op">*</span><span class="dv">1</span>,</span>
-<span id="cb11-50"><a href="#cb11-50"></a>})</span>
-<span id="cb11-51"><a href="#cb11-51"></a></span>
-<span id="cb11-52"><a href="#cb11-52"></a><span class="co">#df = pd.read_csv("cache/leftright_ori_freq.csv")</span></span>
-<span id="cb11-53"><a href="#cb11-53"></a><span class="co">#df2 = pd.read_csv("cache/leftright_ori_freq_scrambled.csv")</span></span>
-<span id="cb11-54"><a href="#cb11-54"></a></span>
-<span id="cb11-55"><a href="#cb11-55"></a><span class="co">#diff_h= pd.DataFrame({</span></span>
-<span id="cb11-56"><a href="#cb11-56"></a><span class="co">#    "Difference": df[df['Grad'] == "Positive"]['Frequency'].values - df[df['Grad'] == "Negative"]['Frequency'].values,</span></span>
-<span id="cb11-57"><a href="#cb11-57"></a><span class="co">#    "Orientation": ["Up", "Left", "Down", "Right"],</span></span>
-<span id="cb11-58"><a href="#cb11-58"></a>    <span class="co">#'Context': ["Original"]*1+["Scrambled"]*1,</span></span>
-<span id="cb11-59"><a href="#cb11-59"></a><span class="co">#})</span></span>
-<span id="cb11-60"><a href="#cb11-60"></a><span class="co">#diff_h2 = pd.DataFrame({</span></span>
-<span id="cb11-61"><a href="#cb11-61"></a><span class="co">#    "Difference": df2[df2['Grad'] == "Positive"]['Frequency'].values - df2[df2['Grad'] == "Negative"]['Frequency'].values,</span></span>
-<span id="cb11-62"><a href="#cb11-62"></a><span class="co">#    "Orientation": ["Up", "Left", "Down", "Right"],</span></span>
-<span id="cb11-63"><a href="#cb11-63"></a>    <span class="co">#'Context': ["Original"]*1+["Scrambled"]*1,</span></span>
-<span id="cb11-64"><a href="#cb11-64"></a><span class="co">#})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-12" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">5</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a></span>
-<span id="cb12-3"><a href="#cb12-3"></a>ax1 <span class="op">=</span> sns.barplot(data<span class="op">=</span>diff_v, x<span class="op">=</span><span class="st">'Orientation'</span>,y<span class="op">=</span><span class="st">'Difference'</span>, palette<span class="op">=</span><span class="st">'cmc.glasgow'</span>, hue<span class="op">=</span><span class="st">'Context'</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a></span>
-<span id="cb12-5"><a href="#cb12-5"></a>sns.move_legend(ax1, <span class="st">"lower center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">0.1</span>), frameon<span class="op">=</span><span class="va">False</span>, title<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a>ax1.<span class="bu">set</span>(ylabel<span class="op">=</span><span class="st">"Difference between opposing edges"</span>)</span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="co">#sns.scatterplot(ax=ax1, data=diff_v2, x='Orientation',y='Difference', hue='Context', legend=False)</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a></span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="co">#sns.barplot(ax=ax2, data=diff_h, x='Orientation',y='Difference', edgecolor=cm.glasgowS(5,1), facecolor=cm.glasgowS(5,0.4), legend=False)</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="co">#sns.scatterplot(ax=ax2, data=diff_h2, x='Orientation',y='Difference', edgecolor=cm.glasgowS(5,1), facecolor=cm.glasgowS(5,1), legend=False)</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a></span>
-<span id="cb12-13"><a href="#cb12-13"></a>sns.despine()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="cell-17" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -689,14 +320,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="17">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>fig.savefig(<span class="st">"plots/edge_orientation_difference.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</section>
+<section id="another-alpha" class="level2">
+<h2 class="anchored" data-anchor-id="another-alpha">Another alpha</h2>
+<div id="cell-24" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="labelling_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

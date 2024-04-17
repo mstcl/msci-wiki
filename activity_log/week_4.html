@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -172,18 +172,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Act on feedback on <a href="../writing/motivation.html">writing</a> from last week.</label></li>
-<li><label><input type="checkbox" checked="">We can aim to make a density map of snapshots (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>/</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\alpha / \phi</annotation></semantics></math>), on a 3x3 grid.</label>
+<li><label><input type="checkbox" checked="">Act on feedback on from last week.</label></li>
+<li><label><input type="checkbox" checked="">We can aim to make a density map of snapshots (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>/</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\alpha / \phi</annotation></semantics></math>), on a 3x3 grid<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</label>
 <ul>
 <li>Range of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>: [0.01, 0.5], 10 values in total, split between me and CP.</li>
 <li>Use scikit-learn to detect clusters and cluster size.</li>
-<li>See <a href="../shared/ftnotes/label.html">this notebook</a> for a demo.</li>
 <li>I didn’t get enough time to do any cluster analysis, just the grid of snapshots.</li>
 </ul></li>
-<li><label><input type="checkbox" checked="">Plot some snapshots</label>
-<ul>
-<li>See <a href="#Plotting-%20snapshots">Plotting snapshots</a></li>
-</ul></li>
+<li><label><input type="checkbox" checked="">Plot some snapshots<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</label></li>
 </ul>
 </section>
 <section id="summary" class="level2">
@@ -191,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="general" class="level3">
 <h3 class="anchored" data-anchor-id="general">General</h3>
 <ul>
-<li>I acted on the feedback, which is reflected <a href="../writing/motivation.html">here</a>.</li>
+<li>I acted on the feedback<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
 <li>We decided on a range <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, which is 10 values spaced logarithmically (base 2) in the range [2<sup>-6</sup>,2<sup>-1</sup>]. We thought this would be a sensible range for the snapshot grid, and we weren’t sure whether to go with log-spacing or normal spacing. In the end, we went with log-spacing.</li>
 <li>For <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> (density), we decided on a range of [0.05,0.5], with intervals of 0.05, giving a total of 10 values.</li>
 <li>We modified <code>sampler.py</code> to reflect this, and regenerated the data so that we get a set of static datasets to work on creating this grid, ensuring the plot can be reproduced. I ran everything on the cluster this time.</li>
@@ -199,23 +195,29 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="plotting-snapshots" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-snapshots">Plotting snapshots</h3>
-<ul>
-<li>I began making plots of a selection of these datasets (a 3x5 grid), first as individual plots to before I spend more time and place them all on one figure. Then, I put them altogether on one grid:</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
+<p>I began making plots of a selection of these datasets (a 3x5 grid), first as individual plots to before I spend more time and place them all on one figure. Then, I put them altogether on one grid:</p>
+<div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="../assets/grid.png" class="img-fluid figure-img"></p>
-<figcaption>Various values of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>.</figcaption>
+<p><img src="../assets/grid.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Snapshots for various values of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>.</figcaption>
 </figure>
 </div>
+<p>Some observations:</p>
 <ul>
 <li>Percolation is observed clearly in top right figures. This is an exotic feature of phase transition.</li>
 <li>I tried to add figure x and y labels but the matplotlib I was using was too old to support <code>fig.supxlabel</code> or <code>fig.supylabel</code>. I also need to add labels for each block to indicate the value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>ϕ</mi><mo>,</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\phi, \alpha)</annotation></semantics></math>.</li>
-<li><strong>Update 2023-11-06: labels added.</strong></li>
 </ul>
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>See <a href="../shared/ftnotes/label.html#minimal-cluster-analysis">this notebook</a> for a demo.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See section <a href="#plotting-snapshots">Plotting snapshots</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Reflected/updated <a href="../writing/motivation.html#introduction">here</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -165,7 +165,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#monochrome-on-orientation" id="toc-monochrome-on-orientation" class="nav-link" data-scroll-target="#monochrome-on-orientation">Monochrome on orientation</a></li>
   <li><a href="#scrambled-on-orientation" id="toc-scrambled-on-orientation" class="nav-link" data-scroll-target="#scrambled-on-orientation">Scrambled on orientation</a></li>
   </ul></li>
-  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
+  <li><a href="#plotting-cross-predictions" id="toc-plotting-cross-predictions" class="nav-link" data-scroll-target="#plotting-cross-predictions">Plotting cross predictions</a></li>
+  <li><a href="#old-plot-experimentation" id="toc-old-plot-experimentation" class="nav-link" data-scroll-target="#old-plot-experimentation">Old plot (experimentation)</a></li>
   </ul>
 </nav>
     </div>
@@ -275,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-24"><a href="#cb2-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="6297159c-4a9d-401c-b62a-af827983aadb" class="cell" data-execution_count="11">
+<div id="6297159c-4a9d-401c-b62a-af827983aadb" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>gc.collect()</span>
@@ -303,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-23"><a href="#cb3-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="60067338-2692-4e2b-bf79-1ec098500f64" class="cell" data-execution_count="12">
+<div id="60067338-2692-4e2b-bf79-1ec098500f64" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>gc.collect()</span>
@@ -416,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="cross-predictions">Cross predictions</h2>
 <section id="monochrome-on-orientation" class="level3">
 <h3 class="anchored" data-anchor-id="monochrome-on-orientation">Monochrome on orientation</h3>
-<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="89">
+<div id="104cec5d-6eef-46fd-9d0d-da6046854e4e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -445,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-24"><a href="#cb8-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="90">
+<div id="14240a97-d994-4f54-ae27-0566672ef982" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>gc.collect()</span>
@@ -473,10 +474,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-23"><a href="#cb9-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="91">
+<div id="58a119a5-5b36-4d0c-adea-3cceb2df424f" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation, predictions_without_orientation)),</span>
 <span id="cb10-2"><a href="#cb10-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
 <span id="cb10-3"><a href="#cb10-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained with thresholding"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
 <span id="cb10-4"><a href="#cb10-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained with thresholding"</span>])</span>
@@ -489,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-11"><a href="#cb10-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="92">
+<div id="72440b38-979a-465f-aa5b-4a3acc1720da" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross_2.csv"</span>)</span>
@@ -499,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="scrambled-on-orientation" class="level3">
 <h3 class="anchored" data-anchor-id="scrambled-on-orientation">Scrambled on orientation</h3>
-<div id="c90fa90e-f507-4c3a-8a59-aeffd7014b28" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="80">
+<div id="c90fa90e-f507-4c3a-8a59-aeffd7014b28" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span>
@@ -528,7 +529,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-24"><a href="#cb12-24"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="24482c70-f2b6-4798-a599-93b4c9271e1e" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="81">
+<div id="24482c70-f2b6-4798-a599-93b4c9271e1e" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>gc.collect()</span>
@@ -556,10 +557,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-23"><a href="#cb13-23"></a>gc.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="5bdf9a0a-4106-456c-b37a-9bcddbc3c6e2" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="82">
+<div id="5bdf9a0a-4106-456c-b37a-9bcddbc3c6e2" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation<span class="op">-</span>actual_with_orientation, predictions_without_orientation<span class="op">-</span>actual_without_orientation)),</span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Predicted"</span>: np.concatenate((predictions_with_orientation, predictions_without_orientation)),</span>
 <span id="cb14-2"><a href="#cb14-2"></a>                   <span class="st">"Actual"</span>: np.concatenate((actual_with_orientation,actual_without_orientation)),</span>
 <span id="cb14-3"><a href="#cb14-3"></a>                   <span class="st">"Context"</span>: pd.Categorical([<span class="st">"Trained with orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_with_orientation)<span class="op">+</span>[<span class="st">"Trained without orientation"</span>]<span class="op">*</span><span class="bu">len</span>(actual_without_orientation),</span>
 <span id="cb14-4"><a href="#cb14-4"></a>                                             categories<span class="op">=</span>[<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>])</span>
@@ -572,14 +573,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-11"><a href="#cb14-11"></a>                   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="feb60bcb-03f8-4fda-bc3e-9bc89ea0d044" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="83">
+<div id="feb60bcb-03f8-4fda-bc3e-9bc89ea0d044" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.to_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>df2.to_csv(<span class="st">"cache/model_summary_std_cross.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="0ddb261c-7470-4eea-94be-81ac4480ba8a" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-execution_count="93">
+<div id="0ddb261c-7470-4eea-94be-81ac4480ba8a" class="cell" data-execution_count="93">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">del</span> predictions_without_orientation</span>
@@ -593,157 +594,465 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="plots" class="level2">
-<h2 class="anchored" data-anchor-id="plots">Plots</h2>
-<div id="53c2d23f-39df-431f-8b54-ad9f931b9ed7" class="cell" data-execution_count="17">
+<section id="plotting-cross-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-cross-predictions">Plotting cross predictions</h2>
+<div id="53c2d23f-39df-431f-8b54-ad9f931b9ed7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_std.csv"</span>)</span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="co">#df3 = pd.read_csv("cache/model_summary_cross.csv")</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="co">#df4 = pd.read_csv("cache/model_summary_std_cross.csv")</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="co">#df5 = pd.read_csv("cache/model_summary_cross_2.csv")</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="co">#df6 = pd.read_csv("cache/model_summary_std_cross_2.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> iqr</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co"># | code-fold: true</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>) <span class="co"># here are all the alphas available</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<div id="7ae7f1f2-4434-40cc-84ee-b5d08030d261" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> matplotlib.cm <span class="im">as</span> mcm</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_cross.csv"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4"></a></span>
+<span id="cb18-5"><a href="#cb18-5"></a>df2 <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb18-6"><a href="#cb18-6"></a>    {</span>
+<span id="cb18-7"><a href="#cb18-7"></a>        <span class="st">"IQR"</span>: np.concatenate(</span>
+<span id="cb18-8"><a href="#cb18-8"></a>            (</span>
+<span id="cb18-9"><a href="#cb18-9"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb18-10"><a href="#cb18-10"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb18-11"><a href="#cb18-11"></a>                .agg(iqr)[<span class="st">"Predicted"</span>],</span>
+<span id="cb18-12"><a href="#cb18-12"></a>                df.query(<span class="st">'Context == "Trained without orientation"'</span>)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>                .groupby(<span class="st">'Actual'</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">'Predicted'</span>]</span>
+<span id="cb18-14"><a href="#cb18-14"></a>                .agg(iqr)[<span class="st">"Predicted"</span>],</span>
+<span id="cb18-15"><a href="#cb18-15"></a>            )</span>
+<span id="cb18-16"><a href="#cb18-16"></a>        ),</span>
+<span id="cb18-17"><a href="#cb18-17"></a>        <span class="st">"MedRes"</span>: np.<span class="bu">abs</span>(np.concatenate(</span>
+<span id="cb18-18"><a href="#cb18-18"></a>            (</span>
+<span id="cb18-19"><a href="#cb18-19"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb18-20"><a href="#cb18-20"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb18-21"><a href="#cb18-21"></a>                .median()[<span class="st">"Predicted"</span>] <span class="op">-</span> tumbles,</span>
+<span id="cb18-22"><a href="#cb18-22"></a>                df.query(<span class="st">'Context == "Trained without orientation"'</span>)</span>
+<span id="cb18-23"><a href="#cb18-23"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb18-24"><a href="#cb18-24"></a>                .median()[<span class="st">"Predicted"</span>] <span class="op">-</span> tumbles,</span>
+<span id="cb18-25"><a href="#cb18-25"></a>        ))),</span>
+<span id="cb18-26"><a href="#cb18-26"></a>        <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
+<span id="cb18-27"><a href="#cb18-27"></a>        <span class="st">"Context"</span>: [<span class="st">"Trained with orientation"</span>] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [<span class="st">"Trained without orientation"</span>] <span class="op">*</span> <span class="dv">10</span>,</span>
+<span id="cb18-28"><a href="#cb18-28"></a>    }</span>
+<span id="cb18-29"><a href="#cb18-29"></a>)</span>
+<span id="cb18-30"><a href="#cb18-30"></a></span>
+<span id="cb18-31"><a href="#cb18-31"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb18-32"><a href="#cb18-32"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
+<span id="cb18-33"><a href="#cb18-33"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
+<span id="cb18-34"><a href="#cb18-34"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>, <span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
+<span id="cb18-35"><a href="#cb18-35"></a></span>
+<span id="cb18-36"><a href="#cb18-36"></a></span>
+<span id="cb18-37"><a href="#cb18-37"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb18-38"><a href="#cb18-38"></a></span>
+<span id="cb18-39"><a href="#cb18-39"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(</span>
+<span id="cb18-40"><a href="#cb18-40"></a>    <span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>), constrained_layout<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span></span>
+<span id="cb18-41"><a href="#cb18-41"></a>)</span>
+<span id="cb18-42"><a href="#cb18-42"></a></span>
+<span id="cb18-43"><a href="#cb18-43"></a>ax1.axhline(<span class="dv">0</span>, c<span class="op">=</span><span class="st">'.9'</span>, zorder<span class="op">=</span><span class="dv">0</span>, ls<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb18-44"><a href="#cb18-44"></a></span>
+<span id="cb18-45"><a href="#cb18-45"></a>palette <span class="op">=</span>{<span class="st">"Trained with orientation"</span>: mcm.gnuplot2(<span class="dv">30</span>), <span class="st">"Trained without orientation"</span>:  mcm.gnuplot2(<span class="dv">90</span>), <span class="st">"Trained with thresholding"</span>: mcm.gnuplot(<span class="dv">120</span>)}</span>
+<span id="cb18-46"><a href="#cb18-46"></a></span>
+<span id="cb18-47"><a href="#cb18-47"></a>sns.boxplot(</span>
+<span id="cb18-48"><a href="#cb18-48"></a>    ax<span class="op">=</span>ax1,</span>
+<span id="cb18-49"><a href="#cb18-49"></a>    data<span class="op">=</span>df,</span>
+<span id="cb18-50"><a href="#cb18-50"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-51"><a href="#cb18-51"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-52"><a href="#cb18-52"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-53"><a href="#cb18-53"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-54"><a href="#cb18-54"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-55"><a href="#cb18-55"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-56"><a href="#cb18-56"></a>    width<span class="op">=</span><span class="fl">.85</span>,</span>
+<span id="cb18-57"><a href="#cb18-57"></a>    whis<span class="op">=</span><span class="fl">2.5</span>,</span>
+<span id="cb18-58"><a href="#cb18-58"></a>    linecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb18-59"><a href="#cb18-59"></a>    showfliers <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb18-60"><a href="#cb18-60"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb18-61"><a href="#cb18-61"></a>    fill<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-62"><a href="#cb18-62"></a>)</span>
+<span id="cb18-63"><a href="#cb18-63"></a><span class="cf">for</span> patch <span class="kw">in</span> ax1.patches:</span>
+<span id="cb18-64"><a href="#cb18-64"></a>    r, g, b, a <span class="op">=</span> patch.get_facecolor()</span>
+<span id="cb18-65"><a href="#cb18-65"></a>    patch.set_facecolor((r, g, b, <span class="fl">.5</span>))</span>
+<span id="cb18-66"><a href="#cb18-66"></a>sns.boxplot(</span>
+<span id="cb18-67"><a href="#cb18-67"></a>    ax<span class="op">=</span>ax1,</span>
+<span id="cb18-68"><a href="#cb18-68"></a>    data<span class="op">=</span>df,</span>
+<span id="cb18-69"><a href="#cb18-69"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-70"><a href="#cb18-70"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-71"><a href="#cb18-71"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-72"><a href="#cb18-72"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-73"><a href="#cb18-73"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-74"><a href="#cb18-74"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-75"><a href="#cb18-75"></a>    whis<span class="op">=</span><span class="fl">2.5</span>,</span>
+<span id="cb18-76"><a href="#cb18-76"></a>    width<span class="op">=</span><span class="fl">.85</span>,</span>
+<span id="cb18-77"><a href="#cb18-77"></a>    flierprops <span class="op">=</span> <span class="bu">dict</span>(markersize <span class="op">=</span> <span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.2</span>),</span>
+<span id="cb18-78"><a href="#cb18-78"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb18-79"><a href="#cb18-79"></a>    fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-80"><a href="#cb18-80"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-81"><a href="#cb18-81"></a>)</span>
+<span id="cb18-82"><a href="#cb18-82"></a>sns.despine()</span>
+<span id="cb18-83"><a href="#cb18-83"></a></span>
+<span id="cb18-84"><a href="#cb18-84"></a>palette2 <span class="op">=</span>{<span class="st">"None"</span>: mcm.gnuplot2(<span class="dv">30</span>), <span class="st">"Random DOF"</span>: mcm.gnuplot2(<span class="dv">90</span>)}</span>
+<span id="cb18-85"><a href="#cb18-85"></a>handles <span class="op">=</span> [</span>
+<span id="cb18-86"><a href="#cb18-86"></a>    Patch(</span>
+<span id="cb18-87"><a href="#cb18-87"></a>        edgecolor<span class="op">=</span>color,</span>
+<span id="cb18-88"><a href="#cb18-88"></a>        facecolor<span class="op">=</span>(color[<span class="dv">0</span>], color[<span class="dv">1</span>], color[<span class="dv">2</span>], <span class="fl">0.7</span>),</span>
+<span id="cb18-89"><a href="#cb18-89"></a>        label<span class="op">=</span>label,</span>
+<span id="cb18-90"><a href="#cb18-90"></a>        linewidth<span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb18-91"><a href="#cb18-91"></a>    ) </span>
+<span id="cb18-92"><a href="#cb18-92"></a>    <span class="cf">for</span> label, color <span class="kw">in</span> palette2.items()</span>
+<span id="cb18-93"><a href="#cb18-93"></a>]</span>
+<span id="cb18-94"><a href="#cb18-94"></a></span>
+<span id="cb18-95"><a href="#cb18-95"></a>ax1.legend(handles<span class="op">=</span>handles, frameon<span class="op">=</span><span class="va">False</span>, loc<span class="op">=</span><span class="st">'lower right'</span>, </span>
+<span id="cb18-96"><a href="#cb18-96"></a>           fontsize<span class="op">=</span><span class="dv">16</span>, title<span class="op">=</span><span class="st">"Model data filter"</span>, title_fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb18-97"><a href="#cb18-97"></a></span>
+<span id="cb18-98"><a href="#cb18-98"></a>ax1.set_xlim((<span class="fl">0.012</span>,<span class="fl">0.64</span>))</span>
+<span id="cb18-99"><a href="#cb18-99"></a>ax1.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb18-100"><a href="#cb18-100"></a>ax1.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb18-101"><a href="#cb18-101"></a>ax1.set_xticks(np.<span class="bu">round</span>(np.unique(tumbles)[<span class="dv">1</span>::<span class="dv">2</span>],<span class="dv">3</span>))</span>
+<span id="cb18-102"><a href="#cb18-102"></a></span>
+<span id="cb18-103"><a href="#cb18-103"></a>tumbles2 <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">12</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb18-104"><a href="#cb18-104"></a></span>
+<span id="cb18-105"><a href="#cb18-105"></a>ax1.plot(tumbles2,tumbles2, c<span class="op">=</span><span class="st">'.9'</span>, zorder<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-106"><a href="#cb18-106"></a>ax1.set_xlabel(<span class="vs">r"Target tumbling rate, $y$"</span>)</span>
+<span id="cb18-107"><a href="#cb18-107"></a>ax1.set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb18-108"><a href="#cb18-108"></a>ax1.set_ylabel(<span class="vs">r"Predicted tumbling rate, $\hat</span><span class="sc">{y}</span><span class="vs">_i$"</span>)</span>
+<span id="cb18-109"><a href="#cb18-109"></a><span class="co">#ax1.text(s=r"$\phi = 0.25$", x=0.016, y=.95, fontsize='large')</span></span>
+<span id="cb18-110"><a href="#cb18-110"></a></span>
+<span id="cb18-111"><a href="#cb18-111"></a><span class="co">#----</span></span>
+<span id="cb18-112"><a href="#cb18-112"></a></span>
+<span id="cb18-113"><a href="#cb18-113"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary_cross_2.csv"</span>)</span>
+<span id="cb18-114"><a href="#cb18-114"></a></span>
+<span id="cb18-115"><a href="#cb18-115"></a>df2 <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb18-116"><a href="#cb18-116"></a>    {</span>
+<span id="cb18-117"><a href="#cb18-117"></a>        <span class="st">"IQR"</span>: np.concatenate(</span>
+<span id="cb18-118"><a href="#cb18-118"></a>            (</span>
+<span id="cb18-119"><a href="#cb18-119"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb18-120"><a href="#cb18-120"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb18-121"><a href="#cb18-121"></a>                .agg(iqr)[<span class="st">"Predicted"</span>],</span>
+<span id="cb18-122"><a href="#cb18-122"></a>                df.query(<span class="st">'Context == "Trained with thresholding"'</span>)</span>
+<span id="cb18-123"><a href="#cb18-123"></a>                .groupby(<span class="st">'Actual'</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">'Predicted'</span>]</span>
+<span id="cb18-124"><a href="#cb18-124"></a>                .agg(iqr)[<span class="st">"Predicted"</span>],</span>
+<span id="cb18-125"><a href="#cb18-125"></a>            )</span>
+<span id="cb18-126"><a href="#cb18-126"></a>        ),</span>
+<span id="cb18-127"><a href="#cb18-127"></a>        <span class="st">"MedRes"</span>: np.<span class="bu">abs</span>(np.concatenate(</span>
+<span id="cb18-128"><a href="#cb18-128"></a>            (</span>
+<span id="cb18-129"><a href="#cb18-129"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb18-130"><a href="#cb18-130"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb18-131"><a href="#cb18-131"></a>                .median()[<span class="st">"Predicted"</span>] <span class="op">-</span> tumbles,</span>
+<span id="cb18-132"><a href="#cb18-132"></a>                df.query(<span class="st">'Context == "Trained with thresholding"'</span>)</span>
+<span id="cb18-133"><a href="#cb18-133"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb18-134"><a href="#cb18-134"></a>                .median()[<span class="st">"Predicted"</span>] <span class="op">-</span> tumbles,</span>
+<span id="cb18-135"><a href="#cb18-135"></a>        ))),</span>
+<span id="cb18-136"><a href="#cb18-136"></a>        <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">2</span>),</span>
+<span id="cb18-137"><a href="#cb18-137"></a>        <span class="st">"Context"</span>: [<span class="st">"Trained with orientation"</span>] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [<span class="st">"Trained without orientation"</span>] <span class="op">*</span> <span class="dv">10</span>,</span>
+<span id="cb18-138"><a href="#cb18-138"></a>    }</span>
+<span id="cb18-139"><a href="#cb18-139"></a>)</span>
+<span id="cb18-140"><a href="#cb18-140"></a></span>
+<span id="cb18-141"><a href="#cb18-141"></a>ax2.axhline(<span class="dv">0</span>, c<span class="op">=</span><span class="st">'.9'</span>, zorder<span class="op">=</span><span class="dv">0</span>, ls<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb18-142"><a href="#cb18-142"></a></span>
+<span id="cb18-143"><a href="#cb18-143"></a>palette <span class="op">=</span>{<span class="st">"Trained with orientation"</span>: mcm.gnuplot2(<span class="dv">30</span>), <span class="st">"Trained without orientation"</span>:  mcm.gnuplot2(<span class="dv">90</span>), <span class="st">"Trained with thresholding"</span>: mcm.gnuplot(<span class="dv">120</span>)}</span>
+<span id="cb18-144"><a href="#cb18-144"></a></span>
+<span id="cb18-145"><a href="#cb18-145"></a>sns.boxplot(</span>
+<span id="cb18-146"><a href="#cb18-146"></a>    ax<span class="op">=</span>ax2,</span>
+<span id="cb18-147"><a href="#cb18-147"></a>    data<span class="op">=</span>df,</span>
+<span id="cb18-148"><a href="#cb18-148"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-149"><a href="#cb18-149"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-150"><a href="#cb18-150"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-151"><a href="#cb18-151"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-152"><a href="#cb18-152"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-153"><a href="#cb18-153"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-154"><a href="#cb18-154"></a>    width<span class="op">=</span><span class="fl">.85</span>,</span>
+<span id="cb18-155"><a href="#cb18-155"></a>    whis<span class="op">=</span><span class="fl">2.5</span>,</span>
+<span id="cb18-156"><a href="#cb18-156"></a>    linecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb18-157"><a href="#cb18-157"></a>    showfliers <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb18-158"><a href="#cb18-158"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb18-159"><a href="#cb18-159"></a>    fill<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-160"><a href="#cb18-160"></a>)</span>
+<span id="cb18-161"><a href="#cb18-161"></a><span class="cf">for</span> patch <span class="kw">in</span> ax2.patches:</span>
+<span id="cb18-162"><a href="#cb18-162"></a>    r, g, b, a <span class="op">=</span> patch.get_facecolor()</span>
+<span id="cb18-163"><a href="#cb18-163"></a>    patch.set_facecolor((r, g, b, <span class="fl">.5</span>))</span>
+<span id="cb18-164"><a href="#cb18-164"></a>sns.boxplot(</span>
+<span id="cb18-165"><a href="#cb18-165"></a>    ax<span class="op">=</span>ax2,</span>
+<span id="cb18-166"><a href="#cb18-166"></a>    data<span class="op">=</span>df,</span>
+<span id="cb18-167"><a href="#cb18-167"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb18-168"><a href="#cb18-168"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb18-169"><a href="#cb18-169"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb18-170"><a href="#cb18-170"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb18-171"><a href="#cb18-171"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-172"><a href="#cb18-172"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-173"><a href="#cb18-173"></a>    whis<span class="op">=</span><span class="fl">2.5</span>,</span>
+<span id="cb18-174"><a href="#cb18-174"></a>    width<span class="op">=</span><span class="fl">.85</span>,</span>
+<span id="cb18-175"><a href="#cb18-175"></a>    flierprops <span class="op">=</span> <span class="bu">dict</span>(markersize <span class="op">=</span> <span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.2</span>),</span>
+<span id="cb18-176"><a href="#cb18-176"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb18-177"><a href="#cb18-177"></a>    fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-178"><a href="#cb18-178"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb18-179"><a href="#cb18-179"></a>)</span>
+<span id="cb18-180"><a href="#cb18-180"></a>sns.despine()</span>
+<span id="cb18-181"><a href="#cb18-181"></a></span>
+<span id="cb18-182"><a href="#cb18-182"></a>palette2 <span class="op">=</span>{<span class="st">"None"</span>: mcm.gnuplot2(<span class="dv">30</span>), <span class="st">"Threshold"</span>: mcm.gnuplot(<span class="dv">120</span>)}</span>
+<span id="cb18-183"><a href="#cb18-183"></a>handles <span class="op">=</span> [</span>
+<span id="cb18-184"><a href="#cb18-184"></a>    Patch(</span>
+<span id="cb18-185"><a href="#cb18-185"></a>        edgecolor<span class="op">=</span>color,</span>
+<span id="cb18-186"><a href="#cb18-186"></a>        facecolor<span class="op">=</span>(color[<span class="dv">0</span>], color[<span class="dv">1</span>], color[<span class="dv">2</span>], <span class="fl">0.7</span>),</span>
+<span id="cb18-187"><a href="#cb18-187"></a>        label<span class="op">=</span>label,</span>
+<span id="cb18-188"><a href="#cb18-188"></a>        linewidth<span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb18-189"><a href="#cb18-189"></a>    ) </span>
+<span id="cb18-190"><a href="#cb18-190"></a>    <span class="cf">for</span> label, color <span class="kw">in</span> palette2.items()</span>
+<span id="cb18-191"><a href="#cb18-191"></a>]</span>
+<span id="cb18-192"><a href="#cb18-192"></a></span>
+<span id="cb18-193"><a href="#cb18-193"></a>ax2.legend(handles<span class="op">=</span>handles, loc<span class="op">=</span><span class="st">'lower right'</span>, fontsize<span class="op">=</span><span class="dv">16</span>, title<span class="op">=</span><span class="st">"Model data filter"</span>, title_fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb18-194"><a href="#cb18-194"></a></span>
+<span id="cb18-195"><a href="#cb18-195"></a>ax2.set_xlim((<span class="fl">0.012</span>,<span class="fl">0.64</span>))</span>
+<span id="cb18-196"><a href="#cb18-196"></a>ax2.set_xlabel(<span class="vs">r"Target tumbling rate, $y$"</span>)</span>
+<span id="cb18-197"><a href="#cb18-197"></a>ax2.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb18-198"><a href="#cb18-198"></a>ax2.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb18-199"><a href="#cb18-199"></a>ax2.set_xticks(np.<span class="bu">round</span>(np.unique(tumbles)[<span class="dv">1</span>::<span class="dv">2</span>],<span class="dv">3</span>))</span>
+<span id="cb18-200"><a href="#cb18-200"></a></span>
+<span id="cb18-201"><a href="#cb18-201"></a>tumbles2 <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">12</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb18-202"><a href="#cb18-202"></a></span>
+<span id="cb18-203"><a href="#cb18-203"></a>ax2.plot(tumbles2,tumbles2, c<span class="op">=</span><span class="st">'.9'</span>, zorder<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-204"><a href="#cb18-204"></a></span>
+<span id="cb18-205"><a href="#cb18-205"></a>ax2.set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb18-206"><a href="#cb18-206"></a>ax2.set_ylabel(<span class="vs">r"Predicted tumbling rate, $\hat</span><span class="sc">{y}</span><span class="vs">_i$"</span>)</span>
+<span id="cb18-207"><a href="#cb18-207"></a>ax1.text(s<span class="op">=</span><span class="st">"(A)"</span>, x<span class="op">=</span><span class="fl">0.05</span>, y<span class="op">=</span><span class="fl">0.95</span>, transform<span class="op">=</span>ax1.transAxes)</span>
+<span id="cb18-208"><a href="#cb18-208"></a>ax2.text(s<span class="op">=</span><span class="st">"(B)"</span>, x<span class="op">=</span><span class="fl">0.05</span>, y<span class="op">=</span><span class="fl">0.95</span>, transform<span class="op">=</span>ax2.transAxes)</span>
+<span id="cb18-209"><a href="#cb18-209"></a><span class="co">#ax2.text(s=r"$\phi = 0.25$", x=0.016, y=.95, fontsize='large')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Text(0.05, 0.95, '(B)')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="training_summary_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f236aca5-f381-40ac-a1d7-f9fb26a554ae" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cache/model_summary.csv"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>df3 <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb20-3"><a href="#cb20-3"></a>    {</span>
+<span id="cb20-4"><a href="#cb20-4"></a>        <span class="st">"IQR"</span>: np.concatenate(</span>
+<span id="cb20-5"><a href="#cb20-5"></a>            (</span>
+<span id="cb20-6"><a href="#cb20-6"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb20-8"><a href="#cb20-8"></a>                .agg(iqr)[<span class="st">"Predicted"</span>],</span>
+<span id="cb20-9"><a href="#cb20-9"></a>                df.query(<span class="st">'Context == "Trained without orientation"'</span>)</span>
+<span id="cb20-10"><a href="#cb20-10"></a>                .groupby(<span class="st">'Actual'</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">'Predicted'</span>]</span>
+<span id="cb20-11"><a href="#cb20-11"></a>                .agg(iqr)[<span class="st">"Predicted"</span>],</span>
+<span id="cb20-12"><a href="#cb20-12"></a>                df.query(<span class="st">'Context == "Trained with thresholding"'</span>)</span>
+<span id="cb20-13"><a href="#cb20-13"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb20-14"><a href="#cb20-14"></a>                .agg(iqr)[<span class="st">"Predicted"</span>],</span>
+<span id="cb20-15"><a href="#cb20-15"></a>            )</span>
+<span id="cb20-16"><a href="#cb20-16"></a>        ),</span>
+<span id="cb20-17"><a href="#cb20-17"></a>        <span class="st">"MedRes"</span>: np.<span class="bu">abs</span>(np.concatenate(</span>
+<span id="cb20-18"><a href="#cb20-18"></a>            (</span>
+<span id="cb20-19"><a href="#cb20-19"></a>                df.query(<span class="st">'Context == "Trained with orientation"'</span>)</span>
+<span id="cb20-20"><a href="#cb20-20"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb20-21"><a href="#cb20-21"></a>                .median()[<span class="st">"Predicted"</span>] <span class="op">-</span> tumbles,</span>
+<span id="cb20-22"><a href="#cb20-22"></a>                df.query(<span class="st">'Context == "Trained without orientation"'</span>)</span>
+<span id="cb20-23"><a href="#cb20-23"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb20-24"><a href="#cb20-24"></a>                .median()[<span class="st">"Predicted"</span>] <span class="op">-</span> tumbles,</span>
+<span id="cb20-25"><a href="#cb20-25"></a>                df.query(<span class="st">'Context == "Trained with thresholding"'</span>)</span>
+<span id="cb20-26"><a href="#cb20-26"></a>                .groupby(<span class="st">"Actual"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"Predicted"</span>]</span>
+<span id="cb20-27"><a href="#cb20-27"></a>                .median()[<span class="st">"Predicted"</span>] <span class="op">-</span> tumbles,</span>
+<span id="cb20-28"><a href="#cb20-28"></a>            )</span>
+<span id="cb20-29"><a href="#cb20-29"></a>        )),</span>
+<span id="cb20-30"><a href="#cb20-30"></a>        <span class="st">"Actual"</span>: np.tile(np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>), <span class="dv">3</span>),</span>
+<span id="cb20-31"><a href="#cb20-31"></a>        <span class="st">"Context"</span>: [<span class="st">"Trained with orientation"</span>] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [<span class="st">"Trained without orientation"</span>] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [<span class="st">"Trained with thresholding"</span>] <span class="op">*</span> <span class="dv">10</span>,</span>
+<span id="cb20-32"><a href="#cb20-32"></a>    }</span>
+<span id="cb20-33"><a href="#cb20-33"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="86cb01c5-d23c-45f1-8f72-66751021b478" class="cell" data-execution_count="47">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>o_on_no <span class="op">=</span> np.array(df2[df2[<span class="st">"Context"</span>] <span class="op">==</span> <span class="st">"Trained with orientation"</span>][<span class="st">"IQR"</span>])</span>
+<span id="cb21-2"><a href="#cb21-2"></a>o_on_o <span class="op">=</span> np.array(df3[df3[<span class="st">"Context"</span>] <span class="op">==</span> <span class="st">"Trained with orientation"</span>][<span class="st">"IQR"</span>])</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="bu">print</span>((o_on_no))</span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="bu">print</span>((o_on_o))</span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="bu">print</span>(</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    np.<span class="bu">max</span>((o_on_no <span class="op">-</span> o_on_o)<span class="op">/</span>o_on_o),</span>
+<span id="cb21-7"><a href="#cb21-7"></a>    np.mean((o_on_no <span class="op">-</span> o_on_o)<span class="op">/</span>o_on_o),</span>
+<span id="cb21-8"><a href="#cb21-8"></a>    np.std((o_on_no <span class="op">-</span> o_on_o)<span class="op">/</span>o_on_o),</span>
+<span id="cb21-9"><a href="#cb21-9"></a>    np.<span class="bu">min</span>((o_on_no <span class="op">-</span> o_on_o)<span class="op">/</span>o_on_o)</span>
+<span id="cb21-10"><a href="#cb21-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.069 0.148 0.279 0.455 0.635 0.788 0.865 0.897 0.897 0.882]
+[0.004 0.007 0.016 0.011 0.013 0.015 0.031 0.059 0.07  0.073]
+50.98521061810109 25.470724982249404 14.189871810630494 11.005069243662067</code></pre>
+</div>
+</div>
+<div id="1b85bc99-43f2-4ca1-ad57-f0e6dbfa6b79" class="cell" data-execution_count="46">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>no_on_o <span class="op">=</span> np.array(df2[df2[<span class="st">"Context"</span>] <span class="op">==</span> <span class="st">"Trained without orientation"</span>][<span class="st">"IQR"</span>])</span>
+<span id="cb23-2"><a href="#cb23-2"></a>no_on_no <span class="op">=</span> np.array(df3[df3[<span class="st">"Context"</span>] <span class="op">==</span> <span class="st">"Trained without orientation"</span>][<span class="st">"IQR"</span>])</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>((no_on_o))</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="bu">print</span>((no_on_no))</span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="bu">print</span>(</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    np.<span class="bu">max</span>((no_on_o <span class="op">-</span> no_on_no)<span class="op">/</span>no_on_no),</span>
+<span id="cb23-7"><a href="#cb23-7"></a>    np.mean((no_on_o <span class="op">-</span> no_on_no)<span class="op">/</span>no_on_no),</span>
+<span id="cb23-8"><a href="#cb23-8"></a>    np.std((no_on_o <span class="op">-</span> no_on_no)<span class="op">/</span>no_on_no),</span>
+<span id="cb23-9"><a href="#cb23-9"></a>    np.<span class="bu">min</span>((no_on_o <span class="op">-</span> no_on_no)<span class="op">/</span>no_on_no)</span>
+<span id="cb23-10"><a href="#cb23-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.17  0.184 0.165 0.154 0.165 0.21  0.296 0.387 0.455 0.479]
+[0.003 0.006 0.016 0.011 0.01  0.014 0.027 0.056 0.066 0.072]
+51.279031786113904 15.960653331321359 13.44323225487701 5.674001343189423</code></pre>
+</div>
+</div>
+<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>fig.savefig(<span class="st">"plots/cnn_summary_cross_0.25.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="old-plot-experimentation" class="level2">
+<h2 class="anchored" data-anchor-id="old-plot-experimentation">Old plot (experimentation)</h2>
 <div id="4b24e661-2482-48c9-a622-e93b3c739677" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
-<span id="cb18-2"><a href="#cb18-2"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
-<span id="cb18-3"><a href="#cb18-3"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>, <span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
-<span id="cb18-5"><a href="#cb18-5"></a></span>
-<span id="cb18-6"><a href="#cb18-6"></a></span>
-<span id="cb18-7"><a href="#cb18-7"></a>plt.rcParams.update(plot_configs)</span>
-<span id="cb18-8"><a href="#cb18-8"></a></span>
-<span id="cb18-9"><a href="#cb18-9"></a></span>
-<span id="cb18-10"><a href="#cb18-10"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
-<span id="cb18-11"><a href="#cb18-11"></a>    <span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="fl">4.25</span>, <span class="dv">7</span>), constrained_layout<span class="op">=</span><span class="va">True</span>, sharex<span class="op">=</span><span class="va">True</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a>)</span>
-<span id="cb18-13"><a href="#cb18-13"></a>(ax1, ax2, ax3) <span class="op">=</span> axes</span>
-<span id="cb18-14"><a href="#cb18-14"></a></span>
-<span id="cb18-15"><a href="#cb18-15"></a>palette <span class="op">=</span>{<span class="st">"Trained with orientation"</span>: cm.glasgow(<span class="dv">0</span>), <span class="st">"Trained without orientation"</span>: cm.glasgow(<span class="dv">60</span>), <span class="st">"Trained with thresholding"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
-<span id="cb18-16"><a href="#cb18-16"></a></span>
-<span id="cb18-17"><a href="#cb18-17"></a>sns.boxplot(</span>
-<span id="cb18-18"><a href="#cb18-18"></a>    ax<span class="op">=</span>ax1,</span>
-<span id="cb18-19"><a href="#cb18-19"></a>    data<span class="op">=</span>df,</span>
-<span id="cb18-20"><a href="#cb18-20"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb18-21"><a href="#cb18-21"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
-<span id="cb18-22"><a href="#cb18-22"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb18-23"><a href="#cb18-23"></a>    palette<span class="op">=</span>palette,</span>
-<span id="cb18-24"><a href="#cb18-24"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb18-25"><a href="#cb18-25"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb18-26"><a href="#cb18-26"></a>    whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
-<span id="cb18-27"><a href="#cb18-27"></a>    linecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb18-28"><a href="#cb18-28"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
-<span id="cb18-29"><a href="#cb18-29"></a>    fill<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb18-30"><a href="#cb18-30"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb18-31"><a href="#cb18-31"></a>)</span>
-<span id="cb18-32"><a href="#cb18-32"></a><span class="cf">for</span> patch <span class="kw">in</span> ax1.patches:</span>
-<span id="cb18-33"><a href="#cb18-33"></a>    r, g, b, a <span class="op">=</span> patch.get_facecolor()</span>
-<span id="cb18-34"><a href="#cb18-34"></a>    patch.set_facecolor((r, g, b, <span class="fl">.5</span>))</span>
-<span id="cb18-35"><a href="#cb18-35"></a>sns.boxplot(</span>
-<span id="cb18-36"><a href="#cb18-36"></a>    ax<span class="op">=</span>ax1,</span>
-<span id="cb18-37"><a href="#cb18-37"></a>    data<span class="op">=</span>df,</span>
-<span id="cb18-38"><a href="#cb18-38"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb18-39"><a href="#cb18-39"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
-<span id="cb18-40"><a href="#cb18-40"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb18-41"><a href="#cb18-41"></a>    palette<span class="op">=</span>palette,</span>
-<span id="cb18-42"><a href="#cb18-42"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb18-43"><a href="#cb18-43"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb18-44"><a href="#cb18-44"></a>    whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
-<span id="cb18-45"><a href="#cb18-45"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
-<span id="cb18-46"><a href="#cb18-46"></a>    fill<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb18-47"><a href="#cb18-47"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb18-48"><a href="#cb18-48"></a>)</span>
-<span id="cb18-49"><a href="#cb18-49"></a></span>
-<span id="cb18-50"><a href="#cb18-50"></a>ax1.plot(tumbles,tumbles)</span>
-<span id="cb18-51"><a href="#cb18-51"></a></span>
-<span id="cb18-52"><a href="#cb18-52"></a>ax2.axhline(<span class="fl">0.015</span>, c<span class="op">=</span><span class="st">'0.9'</span>)</span>
-<span id="cb18-53"><a href="#cb18-53"></a>ax2.text(s<span class="op">=</span><span class="vs">r"$\sigma = 0.15$"</span>, x<span class="op">=</span><span class="fl">0.014</span>, y<span class="op">=</span><span class="fl">0.016</span>)</span>
-<span id="cb18-54"><a href="#cb18-54"></a></span>
-<span id="cb18-55"><a href="#cb18-55"></a>contexts <span class="op">=</span> [<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>]</span>
-<span id="cb18-56"><a href="#cb18-56"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb18-57"><a href="#cb18-57"></a>    context <span class="op">=</span> contexts[idx]</span>
-<span id="cb18-58"><a href="#cb18-58"></a>    a, b <span class="op">=</span> np.polyfit(np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>]),df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'STD'</span>][:<span class="dv">6</span>],<span class="dv">1</span>)</span>
-<span id="cb18-59"><a href="#cb18-59"></a>    sns.lineplot(</span>
-<span id="cb18-60"><a href="#cb18-60"></a>        ax<span class="op">=</span>ax2,</span>
-<span id="cb18-61"><a href="#cb18-61"></a>        x<span class="op">=</span>df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>],</span>
-<span id="cb18-62"><a href="#cb18-62"></a>        y<span class="op">=</span>np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>])<span class="op">*</span>a<span class="op">+</span>b,</span>
-<span id="cb18-63"><a href="#cb18-63"></a>        color<span class="op">=</span>palette[context],</span>
-<span id="cb18-64"><a href="#cb18-64"></a>        linestyle<span class="op">=</span><span class="st">'-'</span></span>
-<span id="cb18-65"><a href="#cb18-65"></a>    )</span>
-<span id="cb18-66"><a href="#cb18-66"></a>    <span class="bu">print</span>(a,b)</span>
-<span id="cb18-67"><a href="#cb18-67"></a></span>
-<span id="cb18-68"><a href="#cb18-68"></a><span class="co"># ------------</span></span>
-<span id="cb18-69"><a href="#cb18-69"></a></span>
-<span id="cb18-70"><a href="#cb18-70"></a>contexts <span class="op">=</span> [<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>]</span>
-<span id="cb18-71"><a href="#cb18-71"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb18-72"><a href="#cb18-72"></a>    context <span class="op">=</span> contexts[idx]</span>
-<span id="cb18-73"><a href="#cb18-73"></a>    a, b <span class="op">=</span> np.polyfit(np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:]),df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'STD'</span>][<span class="dv">6</span>:],<span class="dv">1</span>)</span>
-<span id="cb18-74"><a href="#cb18-74"></a>    sns.lineplot(</span>
-<span id="cb18-75"><a href="#cb18-75"></a>        ax<span class="op">=</span>ax2,</span>
-<span id="cb18-76"><a href="#cb18-76"></a>        x<span class="op">=</span>df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:],</span>
-<span id="cb18-77"><a href="#cb18-77"></a>        y<span class="op">=</span>np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:])<span class="op">*</span>a<span class="op">+</span>b,</span>
-<span id="cb18-78"><a href="#cb18-78"></a>        color<span class="op">=</span>palette[context],</span>
-<span id="cb18-79"><a href="#cb18-79"></a>        linestyle<span class="op">=</span><span class="st">'dashed'</span></span>
-<span id="cb18-80"><a href="#cb18-80"></a>    )</span>
-<span id="cb18-81"><a href="#cb18-81"></a>    <span class="bu">print</span>(a,b)</span>
-<span id="cb18-82"><a href="#cb18-82"></a></span>
-<span id="cb18-83"><a href="#cb18-83"></a>sns.scatterplot(</span>
-<span id="cb18-84"><a href="#cb18-84"></a>    ax<span class="op">=</span>ax2,</span>
-<span id="cb18-85"><a href="#cb18-85"></a>    data<span class="op">=</span>df2,</span>
-<span id="cb18-86"><a href="#cb18-86"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
-<span id="cb18-87"><a href="#cb18-87"></a>    y<span class="op">=</span><span class="st">"STD"</span>,</span>
-<span id="cb18-88"><a href="#cb18-88"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
-<span id="cb18-89"><a href="#cb18-89"></a>    palette<span class="op">=</span>palette,</span>
-<span id="cb18-90"><a href="#cb18-90"></a>    alpha<span class="op">=</span><span class="fl">.7</span>,</span>
-<span id="cb18-91"><a href="#cb18-91"></a>    marker<span class="op">=</span><span class="st">'o'</span>,</span>
-<span id="cb18-92"><a href="#cb18-92"></a>    ec<span class="op">=</span><span class="st">'k'</span>,</span>
-<span id="cb18-93"><a href="#cb18-93"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb18-94"><a href="#cb18-94"></a>    zorder<span class="op">=</span><span class="dv">10</span></span>
-<span id="cb18-95"><a href="#cb18-95"></a>)</span>
-<span id="cb18-96"><a href="#cb18-96"></a></span>
-<span id="cb18-97"><a href="#cb18-97"></a></span>
-<span id="cb18-98"><a href="#cb18-98"></a>sns.despine()</span>
-<span id="cb18-99"><a href="#cb18-99"></a></span>
-<span id="cb18-100"><a href="#cb18-100"></a></span>
-<span id="cb18-101"><a href="#cb18-101"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb18-102"><a href="#cb18-102"></a></span>
-<span id="cb18-103"><a href="#cb18-103"></a>palette2 <span class="op">=</span>{<span class="st">"None"</span>: cm.glasgow(<span class="dv">0</span>), <span class="st">"Random DOF"</span>: cm.glasgow(<span class="dv">60</span>), <span class="st">"Threshold"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
-<span id="cb18-104"><a href="#cb18-104"></a>handles <span class="op">=</span> [</span>
-<span id="cb18-105"><a href="#cb18-105"></a>    Patch(</span>
-<span id="cb18-106"><a href="#cb18-106"></a>        edgecolor<span class="op">=</span>color,</span>
-<span id="cb18-107"><a href="#cb18-107"></a>        facecolor<span class="op">=</span>(color[<span class="dv">0</span>], color[<span class="dv">1</span>], color[<span class="dv">2</span>], <span class="fl">0.5</span>),</span>
-<span id="cb18-108"><a href="#cb18-108"></a>        label<span class="op">=</span>label,</span>
-<span id="cb18-109"><a href="#cb18-109"></a>        linewidth<span class="op">=</span><span class="fl">1.5</span></span>
-<span id="cb18-110"><a href="#cb18-110"></a>    ) </span>
-<span id="cb18-111"><a href="#cb18-111"></a>    <span class="cf">for</span> label, color <span class="kw">in</span> palette2.items()</span>
-<span id="cb18-112"><a href="#cb18-112"></a>]</span>
-<span id="cb18-113"><a href="#cb18-113"></a></span>
-<span id="cb18-114"><a href="#cb18-114"></a>ax1.legend(handles<span class="op">=</span>handles, frameon<span class="op">=</span><span class="va">False</span>, loc<span class="op">=</span><span class="st">'lower right'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, title<span class="op">=</span><span class="st">"Data processing"</span>)<span class="op">;</span></span>
-<span id="cb18-115"><a href="#cb18-115"></a></span>
-<span id="cb18-116"><a href="#cb18-116"></a>ax1.set_xlim(left<span class="op">=</span><span class="fl">0.012</span>)</span>
-<span id="cb18-117"><a href="#cb18-117"></a></span>
-<span id="cb18-118"><a href="#cb18-118"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>(axes.ravel()):</span>
-<span id="cb18-119"><a href="#cb18-119"></a>    ax.set_xlabel(<span class="vs">r"(Actual) Tumbling rate, $\alpha_a$"</span>)</span>
-<span id="cb18-120"><a href="#cb18-120"></a>    ax.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb18-121"><a href="#cb18-121"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb18-122"><a href="#cb18-122"></a>    ax.set_xticks(np.<span class="bu">round</span>(np.unique(tumbles)[::<span class="dv">2</span>],<span class="dv">3</span>))</span>
-<span id="cb18-123"><a href="#cb18-123"></a></span>
-<span id="cb18-124"><a href="#cb18-124"></a>dfs <span class="op">=</span> pd.read_csv(<span class="st">"cache/cluster_count_size_0.25.csv"</span>)</span>
-<span id="cb18-125"><a href="#cb18-125"></a>sns.lineplot(ax<span class="op">=</span>ax3, data<span class="op">=</span>dfs, x<span class="op">=</span><span class="st">"alpha"</span>, y<span class="op">=</span><span class="st">"bigsize"</span>, errorbar<span class="op">=</span><span class="st">"sd"</span>, marker<span class="op">=</span><span class="st">'o'</span>, c<span class="op">=</span><span class="st">'darkred'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb18-126"><a href="#cb18-126"></a>ax1.set_yscale(<span class="st">'log'</span>)</span>
-<span id="cb18-127"><a href="#cb18-127"></a>ax1.get_yaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb18-128"><a href="#cb18-128"></a>ax1.set_yticks(np.<span class="bu">round</span>(np.unique(tumbles)[::<span class="dv">2</span>],<span class="dv">3</span>))</span>
-<span id="cb18-129"><a href="#cb18-129"></a>ax1.set_ylabel(<span class="vs">r"Predicted value, $\alpha_p$"</span>)</span>
-<span id="cb18-130"><a href="#cb18-130"></a>ax2.set_ylabel(<span class="vs">r"$\sigma_{\alpha_p}$"</span>)</span>
-<span id="cb18-131"><a href="#cb18-131"></a>ax3.set_ylabel(<span class="vs">r"$V_{\bf max}$ $/a^2$"</span>)</span>
-<span id="cb18-132"><a href="#cb18-132"></a><span class="co">#ax3.set_yticks([10**1,10**2])</span></span>
-<span id="cb18-133"><a href="#cb18-133"></a>fig.text(s<span class="op">=</span><span class="ss">f"(A)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.96</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
-<span id="cb18-134"><a href="#cb18-134"></a>fig.text(s<span class="op">=</span><span class="ss">f"(B)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.65</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
-<span id="cb18-135"><a href="#cb18-135"></a>fig.text(s<span class="op">=</span><span class="ss">f"(C)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.33</span>, fontsize<span class="op">=</span><span class="st">'large'</span>, backgroundcolor<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>plot_configs <span class="op">=</span> get_plot_configs()</span>
+<span id="cb26-2"><a href="#cb26-2"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>plot_configs)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>sns.set_style({<span class="st">"xtick.direction"</span>: <span class="st">"in"</span>, <span class="st">"ytick.direction"</span>: <span class="st">"in"</span>})</span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a></span>
+<span id="cb26-7"><a href="#cb26-7"></a>plt.rcParams.update(plot_configs)</span>
+<span id="cb26-8"><a href="#cb26-8"></a></span>
+<span id="cb26-9"><a href="#cb26-9"></a></span>
+<span id="cb26-10"><a href="#cb26-10"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
+<span id="cb26-11"><a href="#cb26-11"></a>    <span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="fl">4.25</span>, <span class="dv">7</span>), constrained_layout<span class="op">=</span><span class="va">True</span>, sharex<span class="op">=</span><span class="va">True</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a>)</span>
+<span id="cb26-13"><a href="#cb26-13"></a>(ax1, ax2, ax3) <span class="op">=</span> axes</span>
+<span id="cb26-14"><a href="#cb26-14"></a></span>
+<span id="cb26-15"><a href="#cb26-15"></a>palette <span class="op">=</span>{<span class="st">"Trained with orientation"</span>: cm.glasgow(<span class="dv">0</span>), <span class="st">"Trained without orientation"</span>: cm.glasgow(<span class="dv">60</span>), <span class="st">"Trained with thresholding"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
+<span id="cb26-16"><a href="#cb26-16"></a></span>
+<span id="cb26-17"><a href="#cb26-17"></a>sns.boxplot(</span>
+<span id="cb26-18"><a href="#cb26-18"></a>    ax<span class="op">=</span>ax1,</span>
+<span id="cb26-19"><a href="#cb26-19"></a>    data<span class="op">=</span>df,</span>
+<span id="cb26-20"><a href="#cb26-20"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb26-21"><a href="#cb26-21"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb26-22"><a href="#cb26-22"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb26-23"><a href="#cb26-23"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb26-24"><a href="#cb26-24"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-25"><a href="#cb26-25"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-26"><a href="#cb26-26"></a>    whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb26-27"><a href="#cb26-27"></a>    linecolor<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb26-28"><a href="#cb26-28"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb26-29"><a href="#cb26-29"></a>    fill<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-30"><a href="#cb26-30"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb26-31"><a href="#cb26-31"></a>)</span>
+<span id="cb26-32"><a href="#cb26-32"></a><span class="cf">for</span> patch <span class="kw">in</span> ax1.patches:</span>
+<span id="cb26-33"><a href="#cb26-33"></a>    r, g, b, a <span class="op">=</span> patch.get_facecolor()</span>
+<span id="cb26-34"><a href="#cb26-34"></a>    patch.set_facecolor((r, g, b, <span class="fl">.5</span>))</span>
+<span id="cb26-35"><a href="#cb26-35"></a>sns.boxplot(</span>
+<span id="cb26-36"><a href="#cb26-36"></a>    ax<span class="op">=</span>ax1,</span>
+<span id="cb26-37"><a href="#cb26-37"></a>    data<span class="op">=</span>df,</span>
+<span id="cb26-38"><a href="#cb26-38"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb26-39"><a href="#cb26-39"></a>    y<span class="op">=</span><span class="st">"Predicted"</span>,</span>
+<span id="cb26-40"><a href="#cb26-40"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb26-41"><a href="#cb26-41"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb26-42"><a href="#cb26-42"></a>    native_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-43"><a href="#cb26-43"></a>    dodge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-44"><a href="#cb26-44"></a>    whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb26-45"><a href="#cb26-45"></a>    log_scale<span class="op">=</span>(<span class="va">True</span>,<span class="va">False</span>),</span>
+<span id="cb26-46"><a href="#cb26-46"></a>    fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb26-47"><a href="#cb26-47"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb26-48"><a href="#cb26-48"></a>)</span>
+<span id="cb26-49"><a href="#cb26-49"></a></span>
+<span id="cb26-50"><a href="#cb26-50"></a>ax1.plot(tumbles,tumbles)</span>
+<span id="cb26-51"><a href="#cb26-51"></a></span>
+<span id="cb26-52"><a href="#cb26-52"></a>ax2.axhline(<span class="fl">0.015</span>, c<span class="op">=</span><span class="st">'0.9'</span>)</span>
+<span id="cb26-53"><a href="#cb26-53"></a>ax2.text(s<span class="op">=</span><span class="vs">r"$\sigma = 0.15$"</span>, x<span class="op">=</span><span class="fl">0.014</span>, y<span class="op">=</span><span class="fl">0.016</span>)</span>
+<span id="cb26-54"><a href="#cb26-54"></a></span>
+<span id="cb26-55"><a href="#cb26-55"></a>contexts <span class="op">=</span> [<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>]</span>
+<span id="cb26-56"><a href="#cb26-56"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb26-57"><a href="#cb26-57"></a>    context <span class="op">=</span> contexts[idx]</span>
+<span id="cb26-58"><a href="#cb26-58"></a>    a, b <span class="op">=</span> np.polyfit(np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>]),df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'STD'</span>][:<span class="dv">6</span>],<span class="dv">1</span>)</span>
+<span id="cb26-59"><a href="#cb26-59"></a>    sns.lineplot(</span>
+<span id="cb26-60"><a href="#cb26-60"></a>        ax<span class="op">=</span>ax2,</span>
+<span id="cb26-61"><a href="#cb26-61"></a>        x<span class="op">=</span>df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>],</span>
+<span id="cb26-62"><a href="#cb26-62"></a>        y<span class="op">=</span>np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][:<span class="dv">6</span>])<span class="op">*</span>a<span class="op">+</span>b,</span>
+<span id="cb26-63"><a href="#cb26-63"></a>        color<span class="op">=</span>palette[context],</span>
+<span id="cb26-64"><a href="#cb26-64"></a>        linestyle<span class="op">=</span><span class="st">'-'</span></span>
+<span id="cb26-65"><a href="#cb26-65"></a>    )</span>
+<span id="cb26-66"><a href="#cb26-66"></a>    <span class="bu">print</span>(a,b)</span>
+<span id="cb26-67"><a href="#cb26-67"></a></span>
+<span id="cb26-68"><a href="#cb26-68"></a><span class="co"># ------------</span></span>
+<span id="cb26-69"><a href="#cb26-69"></a></span>
+<span id="cb26-70"><a href="#cb26-70"></a>contexts <span class="op">=</span> [<span class="st">"Trained with orientation"</span>, <span class="st">"Trained without orientation"</span>, <span class="st">"Trained with thresholding"</span>]</span>
+<span id="cb26-71"><a href="#cb26-71"></a><span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb26-72"><a href="#cb26-72"></a>    context <span class="op">=</span> contexts[idx]</span>
+<span id="cb26-73"><a href="#cb26-73"></a>    a, b <span class="op">=</span> np.polyfit(np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:]),df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'STD'</span>][<span class="dv">6</span>:],<span class="dv">1</span>)</span>
+<span id="cb26-74"><a href="#cb26-74"></a>    sns.lineplot(</span>
+<span id="cb26-75"><a href="#cb26-75"></a>        ax<span class="op">=</span>ax2,</span>
+<span id="cb26-76"><a href="#cb26-76"></a>        x<span class="op">=</span>df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:],</span>
+<span id="cb26-77"><a href="#cb26-77"></a>        y<span class="op">=</span>np.log(df2[df2[<span class="st">'Context'</span>] <span class="op">==</span> context][<span class="st">'Actual'</span>][<span class="dv">6</span>:])<span class="op">*</span>a<span class="op">+</span>b,</span>
+<span id="cb26-78"><a href="#cb26-78"></a>        color<span class="op">=</span>palette[context],</span>
+<span id="cb26-79"><a href="#cb26-79"></a>        linestyle<span class="op">=</span><span class="st">'dashed'</span></span>
+<span id="cb26-80"><a href="#cb26-80"></a>    )</span>
+<span id="cb26-81"><a href="#cb26-81"></a>    <span class="bu">print</span>(a,b)</span>
+<span id="cb26-82"><a href="#cb26-82"></a></span>
+<span id="cb26-83"><a href="#cb26-83"></a>sns.scatterplot(</span>
+<span id="cb26-84"><a href="#cb26-84"></a>    ax<span class="op">=</span>ax2,</span>
+<span id="cb26-85"><a href="#cb26-85"></a>    data<span class="op">=</span>df2,</span>
+<span id="cb26-86"><a href="#cb26-86"></a>    x<span class="op">=</span><span class="st">"Actual"</span>,</span>
+<span id="cb26-87"><a href="#cb26-87"></a>    y<span class="op">=</span><span class="st">"STD"</span>,</span>
+<span id="cb26-88"><a href="#cb26-88"></a>    hue<span class="op">=</span><span class="st">"Context"</span>,</span>
+<span id="cb26-89"><a href="#cb26-89"></a>    palette<span class="op">=</span>palette,</span>
+<span id="cb26-90"><a href="#cb26-90"></a>    alpha<span class="op">=</span><span class="fl">.7</span>,</span>
+<span id="cb26-91"><a href="#cb26-91"></a>    marker<span class="op">=</span><span class="st">'o'</span>,</span>
+<span id="cb26-92"><a href="#cb26-92"></a>    ec<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb26-93"><a href="#cb26-93"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb26-94"><a href="#cb26-94"></a>    zorder<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb26-95"><a href="#cb26-95"></a>)</span>
+<span id="cb26-96"><a href="#cb26-96"></a></span>
+<span id="cb26-97"><a href="#cb26-97"></a></span>
+<span id="cb26-98"><a href="#cb26-98"></a>sns.despine()</span>
+<span id="cb26-99"><a href="#cb26-99"></a></span>
+<span id="cb26-100"><a href="#cb26-100"></a></span>
+<span id="cb26-101"><a href="#cb26-101"></a>tumbles <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb26-102"><a href="#cb26-102"></a></span>
+<span id="cb26-103"><a href="#cb26-103"></a>palette2 <span class="op">=</span>{<span class="st">"None"</span>: cm.glasgow(<span class="dv">0</span>), <span class="st">"Random DOF"</span>: cm.glasgow(<span class="dv">60</span>), <span class="st">"Threshold"</span>: cm.glasgow(<span class="dv">200</span>)}</span>
+<span id="cb26-104"><a href="#cb26-104"></a>handles <span class="op">=</span> [</span>
+<span id="cb26-105"><a href="#cb26-105"></a>    Patch(</span>
+<span id="cb26-106"><a href="#cb26-106"></a>        edgecolor<span class="op">=</span>color,</span>
+<span id="cb26-107"><a href="#cb26-107"></a>        facecolor<span class="op">=</span>(color[<span class="dv">0</span>], color[<span class="dv">1</span>], color[<span class="dv">2</span>], <span class="fl">0.5</span>),</span>
+<span id="cb26-108"><a href="#cb26-108"></a>        label<span class="op">=</span>label,</span>
+<span id="cb26-109"><a href="#cb26-109"></a>        linewidth<span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb26-110"><a href="#cb26-110"></a>    ) </span>
+<span id="cb26-111"><a href="#cb26-111"></a>    <span class="cf">for</span> label, color <span class="kw">in</span> palette2.items()</span>
+<span id="cb26-112"><a href="#cb26-112"></a>]</span>
+<span id="cb26-113"><a href="#cb26-113"></a></span>
+<span id="cb26-114"><a href="#cb26-114"></a>ax1.legend(handles<span class="op">=</span>handles, frameon<span class="op">=</span><span class="va">False</span>, loc<span class="op">=</span><span class="st">'lower right'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, title<span class="op">=</span><span class="st">"Data processing"</span>)<span class="op">;</span></span>
+<span id="cb26-115"><a href="#cb26-115"></a></span>
+<span id="cb26-116"><a href="#cb26-116"></a>ax1.set_xlim(left<span class="op">=</span><span class="fl">0.012</span>)</span>
+<span id="cb26-117"><a href="#cb26-117"></a></span>
+<span id="cb26-118"><a href="#cb26-118"></a><span class="cf">for</span> idx, ax <span class="kw">in</span> <span class="bu">enumerate</span>(axes.ravel()):</span>
+<span id="cb26-119"><a href="#cb26-119"></a>    ax.set_xlabel(<span class="vs">r"(Actual) Tumbling rate, $\alpha_a$"</span>)</span>
+<span id="cb26-120"><a href="#cb26-120"></a>    ax.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb26-121"><a href="#cb26-121"></a>    ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb26-122"><a href="#cb26-122"></a>    ax.set_xticks(np.<span class="bu">round</span>(np.unique(tumbles)[::<span class="dv">2</span>],<span class="dv">3</span>))</span>
+<span id="cb26-123"><a href="#cb26-123"></a></span>
+<span id="cb26-124"><a href="#cb26-124"></a>dfs <span class="op">=</span> pd.read_csv(<span class="st">"cache/cluster_count_size_0.25.csv"</span>)</span>
+<span id="cb26-125"><a href="#cb26-125"></a>sns.lineplot(ax<span class="op">=</span>ax3, data<span class="op">=</span>dfs, x<span class="op">=</span><span class="st">"alpha"</span>, y<span class="op">=</span><span class="st">"bigsize"</span>, errorbar<span class="op">=</span><span class="st">"sd"</span>, marker<span class="op">=</span><span class="st">'o'</span>, c<span class="op">=</span><span class="st">'darkred'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb26-126"><a href="#cb26-126"></a>ax1.set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb26-127"><a href="#cb26-127"></a>ax1.get_yaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb26-128"><a href="#cb26-128"></a>ax1.set_yticks(np.<span class="bu">round</span>(np.unique(tumbles)[::<span class="dv">2</span>],<span class="dv">3</span>))</span>
+<span id="cb26-129"><a href="#cb26-129"></a>ax1.set_ylabel(<span class="vs">r"Predicted value, $\alpha_p$"</span>)</span>
+<span id="cb26-130"><a href="#cb26-130"></a>ax2.set_ylabel(<span class="vs">r"$\sigma_{\alpha_p}$"</span>)</span>
+<span id="cb26-131"><a href="#cb26-131"></a>ax3.set_ylabel(<span class="vs">r"$V_{\bf max}$ $/a^2$"</span>)</span>
+<span id="cb26-132"><a href="#cb26-132"></a><span class="co">#ax3.set_yticks([10**1,10**2])</span></span>
+<span id="cb26-133"><a href="#cb26-133"></a>fig.text(s<span class="op">=</span><span class="ss">f"(A)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.96</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
+<span id="cb26-134"><a href="#cb26-134"></a>fig.text(s<span class="op">=</span><span class="ss">f"(B)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.65</span>, fontsize<span class="op">=</span><span class="st">'large'</span>)</span>
+<span id="cb26-135"><a href="#cb26-135"></a>fig.text(s<span class="op">=</span><span class="ss">f"(C)"</span>, x<span class="op">=</span><span class="fl">0.22</span>, y<span class="op">=</span><span class="fl">.33</span>, fontsize<span class="op">=</span><span class="st">'large'</span>, backgroundcolor<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.004503738248810316 0.022652028724380956
@@ -759,16 +1068,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="training_summary_files/figure-html/cell-19-output-3.png" class="img-fluid figure-img"></p>
+<p><img src="training_summary_files/figure-html/cell-24-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div>
-<div id="7c649a62-0509-48a1-ad72-204833a7bf6f" class="cell" data-execution_count="86">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>fig.savefig(<span class="st">"plots/orientation_summary_box_0.25.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 
 

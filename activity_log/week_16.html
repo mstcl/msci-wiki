@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -167,9 +167,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics">Metrics</a></li>
   <li><a href="#previous-progress-and-old-strategy" id="toc-previous-progress-and-old-strategy" class="nav-link" data-scroll-target="#previous-progress-and-old-strategy">Previous progress and old strategy</a></li>
   <li><a href="#validating-our-code-and-figuring-out-the-effect-of-learning-rate" id="toc-validating-our-code-and-figuring-out-the-effect-of-learning-rate" class="nav-link" data-scroll-target="#validating-our-code-and-figuring-out-the-effect-of-learning-rate">Validating our code (and figuring out the effect of learning rate)</a></li>
+  <li><a href="#one-alpha" id="toc-one-alpha" class="nav-link" data-scroll-target="#one-alpha">One <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></a></li>
+  <li><a href="#two-alphas" id="toc-two-alphas" class="nav-link" data-scroll-target="#two-alphas">Two <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s</a></li>
+  <li><a href="#three-alphas" id="toc-three-alphas" class="nav-link" data-scroll-target="#three-alphas">Three <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s</a></li>
   <li><a href="#filling-in-the-gaps" id="toc-filling-in-the-gaps" class="nav-link" data-scroll-target="#filling-in-the-gaps">Filling in the gaps</a></li>
   </ul></li>
-  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
 </nav>
     </div>
@@ -210,21 +212,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Try and tune/optimize the models we’ve tested</label>
-<ul>
-<li>See <a href="#previous-progress-and-old-strategy">Previous progress and old strategy</a></li>
-</ul></li>
-<li><label><input type="checkbox" checked="">Come up with a set of metrics to evaluate our experiments</label>
-<ul>
-<li>See <a href="#metrics">Metrics</a></li>
-</ul></li>
+<li><label><input type="checkbox" checked="">Try and tune/optimize the models we’ve tested<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</label></li>
+<li><label><input type="checkbox" checked="">Come up with a set of metrics to evaluate our experiments<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</label></li>
 </ul>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <section id="tracking-progress-systematically" class="level3">
 <h3 class="anchored" data-anchor-id="tracking-progress-systematically">Tracking progress systematically</h3>
-<p>We made a <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/">spreadsheet table</a> to log and track different changes, and start anew, as last week we only designed basic experiments to see what we can potentially do. We also give the model a unique ID (randomly generated), to refer to them easier.</p>
+<p>We made a spreadsheet table<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. to log and track different changes, and start anew, as last week we only designed basic experiments to see what we can potentially do. We also give the model a unique ID (randomly generated), to refer to them easier.</p>
 </section>
 <section id="metrics" class="level3">
 <h3 class="anchored" data-anchor-id="metrics">Metrics</h3>
@@ -232,12 +228,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Mean absolute error
 <ul>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi><mi>E</mi><mo>&lt;</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">MAE &lt; 0.01</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">E</mi></mrow><mo>&lt;</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">\mathrm{MAE} &lt; 0.01</annotation></semantics></math></li>
 </ul></li>
 <li>Standard deviation (minimum, maxmimum and average of all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s)
 <ul>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>&lt;</mo><mn>0.02</mn></mrow><annotation encoding="application/x-tex">\sigma_{max} &lt; 0.02</annotation></semantics></math></li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mrow><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi></mrow></msub><mo>&lt;</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">\sigma_{mean} &lt; 0.01</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">x</mi></mrow></msub><mo>&lt;</mo><mn>0.02</mn></mrow><annotation encoding="application/x-tex">\sigma_{\mathrm{max}} &lt; 0.02</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow></msub><mo>&lt;</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">\sigma_{\mathrm{mean}} &lt; 0.01</annotation></semantics></math></li>
 </ul></li>
 <li>Overlap ratio within <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><annotation encoding="application/x-tex">10^{-3}</annotation></semantics></math> (whether the prediction ranges cover the actual value)
 <ul>
@@ -251,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="previous-progress-and-old-strategy" class="level3">
 <h3 class="anchored" data-anchor-id="previous-progress-and-old-strategy">Previous progress and old strategy</h3>
-<p>From last week, model B was okay. It didn’t reduce the spread to the desirable metric after 10 epochs. This prompted us to tweak it slightly. Here were the different attempts:</p>
+<p>From last week, model B learned okay. It didn’t reduce the spread to the desirable metric after 10 epochs. This prompted us to tweak it slightly. Here were the different attempts, after researching for some tips online<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>:</p>
 <ul>
 <li>From the previous week, reducing dropout from 0.2 to 0.1.</li>
 <li>Instead of training on one <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>, train on similar values to add to it more data (everything else kept the same).
@@ -262,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>No improvement, if not slightly worse, slow training times as there are now many more parameters. Still not descending after 10 epochs or so.</li>
 </ul></li>
-<li>Use LeakyReLU (ReLU but with small gradient when unit is inactive, apparently works well on regression)
+<li>Use LeakyReLU<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> (ReLU but with small gradient when unit is inactive, apparently works well on regression)
 <ul>
 <li>LeakyReLU seems to be worse. We stick to ReLU for now.</li>
 </ul></li>
@@ -288,94 +284,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11"></a>model.add(BatchNormalization())</span>
 <span id="cb1-12"><a href="#cb1-12"></a></span>
 <span id="cb1-13"><a href="#cb1-13"></a><span class="co"># After</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
-<span id="cb1-15"><a href="#cb1-15"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb1-16"><a href="#cb1-16"></a>model.add(ReLU())</span>
-<span id="cb1-17"><a href="#cb1-17"></a>model.add(BatchNormalization())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Advising the models from <a href="https://www.kaggle.com/code/guidosalimbeni/regression-with-convolutional-neural-network-keras/notebook">here</a> and (here)[https://github.com/rsyamil/cnn-regression/blob/master/cnn_regression.ipynb]. We revise last weeks’ architecture to give:</p>
+<span id="cb1-14"><a href="#cb1-14"></a>model.add(Conv2D(</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    filters<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    padding<span class="op">=</span><span class="st">"same"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    input_shape<span class="op">=</span>shape)</span>
+<span id="cb1-19"><a href="#cb1-19"></a>)</span>
+<span id="cb1-20"><a href="#cb1-20"></a>model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb1-21"><a href="#cb1-21"></a>model.add(ReLU())</span>
+<span id="cb1-22"><a href="#cb1-22"></a>model.add(BatchNormalization())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Advising some models found in examples online<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, we revise last weeks’ architecture:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> make_net(shape):</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    model <span class="op">=</span> Sequential()</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    model.add(ReLU())</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    model.add(BatchNormalization())</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">4</span>, kernel_size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    model.add(ReLU())</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    model.add(BatchNormalization())</span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb2-15"><a href="#cb2-15"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    model.add(ReLU())</span>
-<span id="cb2-17"><a href="#cb2-17"></a>    model.add(BatchNormalization())</span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a>    model.add(GlobalAveragePooling2D())</span>
-<span id="cb2-20"><a href="#cb2-20"></a></span>
-<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
-<span id="cb2-22"><a href="#cb2-22"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
-<span id="cb2-23"><a href="#cb2-23"></a></span>
-<span id="cb2-24"><a href="#cb2-24"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb2-25"><a href="#cb2-25"></a></span>
-<span id="cb2-26"><a href="#cb2-26"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
-<span id="cb2-27"><a href="#cb2-27"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
-<span id="cb2-28"><a href="#cb2-28"></a></span>
-<span id="cb2-29"><a href="#cb2-29"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">3</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb2-30"><a href="#cb2-30"></a></span>
-<span id="cb2-31"><a href="#cb2-31"></a>    model.add(Flatten())</span>
-<span id="cb2-32"><a href="#cb2-32"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
-<span id="cb2-33"><a href="#cb2-33"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>                     kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb2-6"><a href="#cb2-6"></a>                     padding<span class="op">=</span><span class="st">"same"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>                     input_shape<span class="op">=</span>shape)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>             )</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    model.add(ReLU())</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    model.add(BatchNormalization())</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">4</span>, kernel_size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    model.add(ReLU())</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    model.add(BatchNormalization())</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    model.add(ReLU())</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    model.add(BatchNormalization())</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a>    model.add(GlobalAveragePooling2D())</span>
+<span id="cb2-24"><a href="#cb2-24"></a></span>
+<span id="cb2-25"><a href="#cb2-25"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
+<span id="cb2-26"><a href="#cb2-26"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
+<span id="cb2-27"><a href="#cb2-27"></a></span>
+<span id="cb2-28"><a href="#cb2-28"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb2-29"><a href="#cb2-29"></a></span>
+<span id="cb2-30"><a href="#cb2-30"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
+<span id="cb2-31"><a href="#cb2-31"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
+<span id="cb2-32"><a href="#cb2-32"></a></span>
+<span id="cb2-33"><a href="#cb2-33"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">3</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb2-34"><a href="#cb2-34"></a></span>
+<span id="cb2-35"><a href="#cb2-35"></a>    model.add(Flatten())</span>
+<span id="cb2-36"><a href="#cb2-36"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
+<span id="cb2-37"><a href="#cb2-37"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="overall-results" class="level4">
 <h4 class="anchored" data-anchor-id="overall-results">Overall results</h4>
 <p>In general, even with minor tweaks, the performance is just okay, there is a lot of spread. The run below showcases an “average” spread/distribution of the predictions, it was trained on all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s, using the default Adam optimizer, ran on 10 epochs (but seemed to have constant loss quickly after 3-4 epochs).</p>
 <p>Model name is <code>rock8943</code>.</p>
-<div id="3d0f2d5e" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> os</span>
-<span id="cb3-2"><a href="#cb3-2"></a>os.chdir(<span class="st">"/hades/projects/persistent-exclusion-process/"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="im">from</span> src.training_utils <span class="im">import</span> extract_floats, data_load, split_dataset, predict_and_plot</span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="0ccae612" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x,y,shape <span class="op">=</span> data_load(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    alphas<span class="op">=</span>np.logspace(<span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>),</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    densities<span class="op">=</span>[<span class="fl">0.25</span>],</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    orientation<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb4-5"><a href="#cb4-5"></a>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a>name <span class="op">=</span> <span class="st">"rock8943"</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="96947133" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  10
 Shape of x:  (30000, 128, 128, 1)
 Shape of y:  (30000,)
 Size of training data:  24000
 Size of validation data:  6000
-  1/188 [..............................] - ETA: 14s 30/188 [===&gt;..........................] - ETA: 0s  60/188 [========&gt;.....................] - ETA: 0s 89/188 [=============&gt;................] - ETA: 0s119/188 [=================&gt;............] - ETA: 0s149/188 [======================&gt;.......] - ETA: 0s178/188 [===========================&gt;..] - ETA: 0s188/188 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.0021450114 0.030011639 0.011386833
-Pearson's correlation coeff:  0.9908949291825183
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 0.0021450114 0.030011639 0.011386833
-Pearson's correlation coeff:  0.9908949291825183</code></pre>
+0.9
+0.0021703113
+0.030762767
+0.011323685
+0.9913190773147734</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-04-14 19:31:56.708222: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.723473: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.723659: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.724326: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.724474: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.724604: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.826565: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.826731: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.826865: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:995] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-14 19:31:56.826976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1639] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 727 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:07:00.0, compute capability: 7.5
+2024-04-14 19:31:57.032079: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 393216000 exceeds 10% of free system memory.
+2024-04-14 19:31:57.228226: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:432] Loaded cuDNN version 8906</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_16_files/figure-html/cell-3-output-2.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_16_files/figure-html/cell-3-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -385,197 +375,114 @@ Pearson's correlation coeff:  0.9908949291825183</code></pre>
 <section id="validating-our-code-and-figuring-out-the-effect-of-learning-rate" class="level3">
 <h3 class="anchored" data-anchor-id="validating-our-code-and-figuring-out-the-effect-of-learning-rate">Validating our code (and figuring out the effect of learning rate)</h3>
 <p>As a sanity check, it’s important to make sure our model can learn and overfit a few values at a time. Thus, with the same architecture, we start with one value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>. The models are actually trained on augmented data. To redo the predictions here, we remove the augmentation.</p>
-<section id="one-alpha" class="level4">
-<h4 class="anchored" data-anchor-id="one-alpha">One <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></h4>
+</section>
+<section id="one-alpha" class="level3">
+<h3 class="anchored" data-anchor-id="one-alpha">One <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></h3>
 <p>With the chosen network, try training only on one set of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mo>,</mo><mi>ϕ</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\alpha, \phi)</annotation></semantics></math> value first. It worked fine with the default Adam parameters, loss stopped improving after roughly 3-4 epochs.</p>
 <p>Model name is <code>rattle9304</code>.</p>
-<div id="d74f9435" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x,y,shape <span class="op">=</span> data_load(</span>
-<span id="cb6-2"><a href="#cb6-2"></a>    alphas<span class="op">=</span>[<span class="fl">0.023</span>],</span>
-<span id="cb6-3"><a href="#cb6-3"></a>    densities<span class="op">=</span>[<span class="fl">0.2</span>],</span>
-<span id="cb6-4"><a href="#cb6-4"></a>    orientation<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a>name <span class="op">=</span> <span class="st">"rattle9304"</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb6-10"><a href="#cb6-10"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="38012f74" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  1
 Shape of x:  (3000, 128, 128, 1)
 Shape of y:  (3000,)
 Size of training data:  2400
 Size of validation data:  600
- 1/19 [&gt;.............................] - ETA: 1s19/19 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 1.8626451e-09 1.8626451e-09 1.8626451e-09
-Pearson's correlation coeff:  nan
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 1.8626451e-09 1.8626451e-09 1.8626451e-09
-Pearson's correlation coeff:  nan</code></pre>
+1.0
+5.8096216e-08
+5.8096216e-08
+5.8096216e-08
+nan</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/project/persistent-exclusion-process/src/training_utils.py:153: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  print(pearsonr(actual, predictions).statistic)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_16_files/figure-html/cell-4-output-2.png" width="631" height="429" class="figure-img"></p>
+<p><img src="week_16_files/figure-html/cell-4-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="two-alphas" class="level4">
-<h4 class="anchored" data-anchor-id="two-alphas">Two <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s</h4>
+<section id="two-alphas" class="level3">
+<h3 class="anchored" data-anchor-id="two-alphas">Two <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s</h3>
 <p>Also works wonderfully well with default Adam, but now loss stopped improving after roughly 17-18 epochs.</p>
 <p>Model name is <code>bake3945</code>.</p>
-<div id="39f3efa4" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>x, y, shape <span class="op">=</span> data_load(</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    alphas<span class="op">=</span>[<span class="fl">0.023</span>, <span class="fl">0.231</span>],</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    densities<span class="op">=</span>[<span class="fl">0.2</span>],</span>
-<span id="cb8-4"><a href="#cb8-4"></a>    orientation<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb8-5"><a href="#cb8-5"></a>)</span>
-<span id="cb8-6"><a href="#cb8-6"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x, y, last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x) <span class="op">*</span> <span class="fl">0.2</span>))</span>
-<span id="cb8-7"><a href="#cb8-7"></a></span>
-<span id="cb8-8"><a href="#cb8-8"></a>name <span class="op">=</span> <span class="st">"bake3945"</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras"</span>)</span>
-<span id="cb8-10"><a href="#cb8-10"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="e943aa83" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  2
 Shape of x:  (6000, 128, 128, 1)
 Shape of y:  (6000,)
 Size of training data:  4800
 Size of validation data:  1200
- 1/38 [..............................] - ETA: 2s31/38 [=======================&gt;......] - ETA: 0s38/38 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 1.8626451e-09 6.2178533e-06 3.109858e-06
-Pearson's correlation coeff:  0.9999999991070567
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 1.8626451e-09 6.2178533e-06 3.109858e-06
-Pearson's correlation coeff:  0.9999999991070567</code></pre>
+1.0
+1.8626451e-09
+6.2078734e-06
+3.104868e-06
+0.9999999990745181</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_16_files/figure-html/cell-5-output-2.png" width="597" height="429" class="figure-img"></p>
+<p><img src="week_16_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="three-alphas" class="level4">
-<h4 class="anchored" data-anchor-id="three-alphas">Three <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s</h4>
+<section id="three-alphas" class="level3">
+<h3 class="anchored" data-anchor-id="three-alphas">Three <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s</h3>
 <p>Starting out with Adam again, but it was getting stuck with 0.001 learning rate. Reducing to 0.006 made it converge again, after around 10 epochs. Here, we learned that one thing we didn’t try earlier was also decreasing the learning rate.</p>
 <p>Model name is <code>fish9182</code>.</p>
-<div id="4c21dd5c" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x, y, shape <span class="op">=</span> data_load(</span>
-<span id="cb10-2"><a href="#cb10-2"></a>    alphas<span class="op">=</span>[<span class="fl">0.023</span>, <span class="fl">0.073</span>, <span class="fl">0.231</span>],</span>
-<span id="cb10-3"><a href="#cb10-3"></a>    densities<span class="op">=</span>[<span class="fl">0.2</span>],</span>
-<span id="cb10-4"><a href="#cb10-4"></a>    orientation<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb10-5"><a href="#cb10-5"></a>)</span>
-<span id="cb10-6"><a href="#cb10-6"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x, y, last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x) <span class="op">*</span> <span class="fl">0.2</span>))</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a>name <span class="op">=</span> <span class="st">"fish9182"</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras"</span>)</span>
-<span id="cb10-10"><a href="#cb10-10"></a>prediction <span class="op">=</span> model.predict(x_val)</span>
-<span id="cb10-11"><a href="#cb10-11"></a>predict_and_plot(model, x_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="19e7123b" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  3
 Shape of x:  (9000, 128, 128, 1)
 Shape of y:  (9000,)
 Size of training data:  7200
 Size of validation data:  1800
- 1/57 [..............................] - ETA: 4s31/57 [===============&gt;..............] - ETA: 0s57/57 [==============================] - 0s 2ms/step
- 1/57 [..............................] - ETA: 0s31/57 [===============&gt;..............] - ETA: 0s57/57 [==============================] - 0s 2ms/step
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 1.8626451e-09 6.7605615e-06 2.2566248e-06
-Pearson's correlation coeff:  0.9999998800795662
-Overlap ratio: 1.0
-(Min, Max, Avg) STD: 1.8626451e-09 6.7605615e-06 2.2566248e-06
-Pearson's correlation coeff:  0.9999998800795662</code></pre>
+57/57 [==============================] - 0s 3ms/step
+1.0
+1.8626451e-09
+6.458889e-06
+2.1560675e-06
+0.9999998813094848</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_16_files/figure-html/cell-6-output-2.png" width="597" height="429" class="figure-img"></p>
+<p><img src="week_16_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-</section>
 <section id="filling-in-the-gaps" class="level3">
 <h3 class="anchored" data-anchor-id="filling-in-the-gaps">Filling in the gaps</h3>
 <p>A model trained on 4 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s with the same architecture as above tries to predict the values in between. Here, the learning rate is 0.0002.</p>
 <p>Model name is <code>tart1924</code>.</p>
-<div id="9ff96773" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>x,y,shape <span class="op">=</span> data_load(</span>
-<span id="cb12-2"><a href="#cb12-2"></a>    alphas<span class="op">=</span>[<span class="fl">0.023</span>,<span class="fl">0.231</span>,<span class="fl">0.073</span>,<span class="fl">0.500</span>],</span>
-<span id="cb12-3"><a href="#cb12-3"></a>    densities<span class="op">=</span>[<span class="fl">0.2</span>],</span>
-<span id="cb12-4"><a href="#cb12-4"></a>    orientation<span class="op">=</span><span class="va">False</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>)</span>
-<span id="cb12-6"><a href="#cb12-6"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x, y, last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x) <span class="op">*</span> <span class="fl">0.2</span>))</span>
-<span id="cb12-7"><a href="#cb12-7"></a></span>
-<span id="cb12-8"><a href="#cb12-8"></a>x_new,y_new,_ <span class="op">=</span> data_load(</span>
-<span id="cb12-9"><a href="#cb12-9"></a>    alphas<span class="op">=</span>[<span class="fl">0.340</span>,<span class="fl">0.107</span>,<span class="fl">0.016</span>,<span class="fl">0.157</span>,<span class="fl">0.034</span>,<span class="fl">0.050</span>],</span>
-<span id="cb12-10"><a href="#cb12-10"></a>    densities<span class="op">=</span>[<span class="fl">0.2</span>],</span>
-<span id="cb12-11"><a href="#cb12-11"></a>    orientation<span class="op">=</span><span class="va">False</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a>)</span>
-<span id="cb12-13"><a href="#cb12-13"></a>x_new,y_new <span class="op">=</span> x_new[::<span class="dv">2</span>], y_new[::<span class="dv">2</span>]</span>
-<span id="cb12-14"><a href="#cb12-14"></a></span>
-<span id="cb12-15"><a href="#cb12-15"></a>name <span class="op">=</span> <span class="st">"tart1924"</span></span>
-<span id="cb12-16"><a href="#cb12-16"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f"models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras"</span>)</span>
-<span id="cb12-17"><a href="#cb12-17"></a>prediction <span class="op">=</span> model.predict(x_val)</span>
-<span id="cb12-18"><a href="#cb12-18"></a>prediction_new <span class="op">=</span> model.predict(x_new)</span>
-<span id="cb12-19"><a href="#cb12-19"></a></span>
-<span id="cb12-20"><a href="#cb12-20"></a>bins <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">0.85</span></span>
-<span id="cb12-21"><a href="#cb12-21"></a></span>
-<span id="cb12-22"><a href="#cb12-22"></a>v <span class="op">=</span> prediction.T[<span class="dv">0</span>]</span>
-<span id="cb12-23"><a href="#cb12-23"></a>v_new <span class="op">=</span> prediction_new.T[<span class="dv">0</span>]</span>
-<span id="cb12-24"><a href="#cb12-24"></a></span>
-<span id="cb12-25"><a href="#cb12-25"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb12-26"><a href="#cb12-26"></a>ax.scatter(y_val, v, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb12-27"><a href="#cb12-27"></a>ax.scatter(y_new, v_new, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb12-28"><a href="#cb12-28"></a>ax.scatter(np.unique(y_val), np.unique(y_val), marker<span class="op">=</span><span class="st">"_"</span>, color<span class="op">=</span><span class="st">'r'</span>, s<span class="op">=</span><span class="dv">200</span>)</span>
-<span id="cb12-29"><a href="#cb12-29"></a>ax.scatter(np.unique(y_new), np.unique(y_new), marker<span class="op">=</span><span class="st">"_"</span>, color<span class="op">=</span><span class="st">'b'</span>, s<span class="op">=</span><span class="dv">200</span>)</span>
-<span id="cb12-30"><a href="#cb12-30"></a></span>
-<span id="cb12-31"><a href="#cb12-31"></a>ax.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb12-32"><a href="#cb12-32"></a>ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb12-33"><a href="#cb12-33"></a>ax.set_xticks(np.unique(y_new))</span>
-<span id="cb12-34"><a href="#cb12-34"></a></span>
-<span id="cb12-35"><a href="#cb12-35"></a>ax.set_facecolor([<span class="fl">0.98</span>,<span class="fl">0.98</span>,<span class="fl">0.98</span>,<span class="dv">1</span>])</span>
-<span id="cb12-36"><a href="#cb12-36"></a></span>
-<span id="cb12-37"><a href="#cb12-37"></a><span class="cf">for</span> val <span class="kw">in</span> bins:</span>
-<span id="cb12-38"><a href="#cb12-38"></a>    ax.axvline(val, alpha<span class="op">=</span><span class="fl">0.05</span>, c<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb12-39"><a href="#cb12-39"></a></span>
-<span id="cb12-40"><a href="#cb12-40"></a>ax.set_xlabel(<span class="st">"Input turning rate"</span>)</span>
-<span id="cb12-41"><a href="#cb12-41"></a>ax.set_ylabel(<span class="st">"Predicted turning rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="96eae107" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of unique alpha:  4
 Shape of x:  (12000, 128, 128, 1)
 Shape of y:  (12000,)
 Size of training data:  9600
 Size of validation data:  2400
- 1/75 [..............................] - ETA: 6s31/75 [===========&gt;..................] - ETA: 0s60/75 [=======================&gt;......] - ETA: 0s75/75 [==============================] - 0s 2ms/step
-  1/282 [..............................] - ETA: 22s 32/282 [==&gt;...........................] - ETA: 0s  62/282 [=====&gt;........................] - ETA: 0s 92/282 [========&gt;.....................] - ETA: 0s122/282 [===========&gt;..................] - ETA: 0s151/282 [===============&gt;..............] - ETA: 0s181/282 [==================&gt;...........] - ETA: 0s211/282 [=====================&gt;........] - ETA: 0s242/282 [========================&gt;.....] - ETA: 0s270/282 [===========================&gt;..] - ETA: 0s282/282 [==============================] - 1s 2ms/step</code></pre>
+75/75 [==============================] - 0s 2ms/step
+ 57/282 [=====&gt;........................] - ETA: 0s282/282 [==============================] - 1s 2ms/step</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-04-14 19:32:30.603963: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 589824000 exceeds 10% of free system memory.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Text(0, 0.5, 'Predicted turning rate')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="week_16_files/figure-html/cell-7-output-3.png" width="589" height="429" class="figure-img"></p>
+<p><img src="week_16_files/figure-html/cell-7-output-4.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -583,19 +490,22 @@ Size of validation data:  2400
 <p>For low values, it does quite poorly, being able to only predict values centered around <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.023</mn><annotation encoding="application/x-tex">0.023</annotation></semantics></math>. At <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.05</mn><mo>,</mo><mn>0.107</mn><mo>,</mo><mn>0.157</mn><mo>,</mo><mn>0.340</mn></mrow><annotation encoding="application/x-tex">0.05, 0.107,0.157,0.340</annotation></semantics></math>, it starts to spread more, predicting values with range established by the nearest <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>’s that was trained on.</p>
 <p>The model shows that it is quite specific for each <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.</p>
 <p>We also learn here that we’ve left the learning rate for our optimizer untouched, but this parameter is quite important! The optimizer, often stochastic gradient descent (SGD), imparts “momentum” to “unstuck” the network from local minima. When traversing the loss landscape, which for us is non-trival (i.e.&nbsp;non-convex, so not just one minimum), a learning rate too high means we figuratively jump from valley to valley, not converging on anything. Too slow and we don’t make any progress, and potentially get stuck.</p>
-</section>
-</section>
-<section id="reference-materials" class="level2">
-<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
-<ul>
-<li><a href="https://scribe.rip/mlearning-ai/activation-functions-relu-vs-leaky-relu-b8272dc0b1be">LeakyReLU vs ReLU</a></li>
-<li><a href="https://stats.stackexchange.com/questions/352036/what-should-i-do-when-my-neural-network-doesnt-learn">A lot of good tips</a></li>
-<li><a href="https://scribe.rip/@bijil.subhash/deep-learning-how-to-pick-optimal-learning-rate-using-tensorflow-2-x-af278cadbedb">A tip on finding a good learning rate</a></li>
-<li><a href="https://github.com/rsyamil/cnn-regression/blob/master/cnn_regression.ipynb">One CNN regression model</a></li>
-<li><a href="https://www.kaggle.com/code/guidosalimbeni/regression-with-convolutional-neural-network-keras/notebook">Another one, less useful though</a></li>
-</ul>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>See section <a href="#previous-progress-and-old-strategy">Previous progress and old strategy</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See section <a href="#metrics">Metrics</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Link <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/">here</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://scribe.rip/@bijil.subhash/deep-learning-how-to-pick-optimal-learning-rate-using-tensorflow-2-x-af278cadbedb">Finding a good learning rate.</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://stats.stackexchange.com/questions/352036/what-should-i-do-when-my-neural-network-doesnt-learn">A lot of good general tips.</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://scribe.rip/mlearning-ai/activation-functions-relu-vs-leaky-relu-b8272dc0b1be">LeakyReLU vs ReLU.</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://github.com/rsyamil/cnn-regression/blob/master/cnn_regression.ipynb">Well-explained CNN regression model</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://www.kaggle.com/code/guidosalimbeni/regression-with-convolutional-neural-network-keras/notebook">Another one, less useful though</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

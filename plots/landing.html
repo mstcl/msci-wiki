@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -181,10 +181,10 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1711496975688" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1713133869458" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
 <div class="thumbnail">
 <p><a href="../plots/acf.html" class="no-external"></a></p><a href="../plots/acf.html" class="no-external">
-<p class="card-img-top"><img src="acf_files/figure-html/cell-6-output-1.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="acf_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p>
 </a><p><a href="../plots/acf.html" class="no-external"></a></p>
 </div>
 <div class="body">
@@ -195,18 +195,7 @@ ul.task-list li input[type="checkbox"] {
 <a href="../plots/acf.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="../plots/acf.html" class="no-external">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> warnings</span>
-<span id="cb1-2">warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="im">import</span> os</span>
-<span id="cb1-5">os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-8"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-9"><span class="im">impo…</span><span class="im"></span></span><span id="cb1-10"><span class="im"></span><span class="im"></span></span><span id="cb1-11"><span class="im"></span></span><span id="cb1-12"><span class="im"></span><span class="im"></span></span><span id="cb1-13"><span class="im"></span><span class="im"></span></span><span id="cb1-14"><span class="im"></span><span class="im"></span></span><span id="cb1-15"></span><span id="cb1-16"><span class="im"></span><span class="im"></span></span><span id="cb1-17"><span class="im"></span><span class="im"></span></span></code></pre></div></details></a>
+<a href="../plots/acf.html" class="no-external"><strong>Full code</strong></a>
 </div>
 </div>
 <div class="metadata">
@@ -217,10 +206,10 @@ NP
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1711418925208" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1713133951036" data-listing-reading-time-sort="1" data-listing-word-count-sort="49">
 <div class="thumbnail">
 <p><a href="../plots/cluster_count_and_biggest.html" class="no-external"></a></p><a href="../plots/cluster_count_and_biggest.html" class="no-external">
-<p class="card-img-top"><img src="cluster_count_and_biggest_files/figure-html/cell-5-output-1.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="cluster_count_and_biggest_files/figure-html/cell-7-output-1.png"  class="thumbnail-image card-img"/></p>
 </a><p><a href="../plots/cluster_count_and_biggest.html" class="no-external"></a></p>
 </div>
 <div class="body">
@@ -231,20 +220,7 @@ NP
 <a href="../plots/cluster_count_and_biggest.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="../plots/cluster_count_and_biggest.html" class="no-external">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> warnings</span>
-<span id="cb1-2">warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="im">import</span> os</span>
-<span id="cb1-5">os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="im">import</span> h5py</span>
-<span id="cb1-8"><span class="im">import</span> glob</span>
-<span id="cb1-9"><span class="im">import</span> re</span>
-<span id="cb1-10"></span>
-<span id="cb1-11"><span class="im">from</span> scipy <span class="im">import</span> nd…</span><span id="cb1-12"><span class="im"></span><span class="im"></span></span><span id="cb1-13"><span class="im"></span><span class="im"></span></span><span id="cb1-14"><span class="im"></span><span class="im"></span></span><span id="cb1-15"><span class="im"></span><span class="im"></span></span><span id="cb1-16"><span class="im"></span><span class="im"></span></span><span id="cb1-17"><span class="im"></span><span class="im"></span></span><span id="cb1-18"></span><span id="cb1-19"><span class="im"></span><span class="im"></span></span><span id="cb1-20"><span class="im"></span><span class="im"></span></span></code></pre></div></details></a>
+<a href="../plots/cluster_count_and_biggest.html" class="no-external"><strong>Full code</strong></a>
 </div>
 </div>
 <div class="metadata">
@@ -255,37 +231,21 @@ NP
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1711658098541" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1713188155111" data-listing-reading-time-sort="1" data-listing-word-count-sort="130">
 <div class="thumbnail">
 <p><a href="../plots/cnn_summary.html" class="no-external"></a></p><a href="../plots/cnn_summary.html" class="no-external">
-<p class="card-img-top"><img src="cnn_summary_files/figure-html/cell-6-output-3.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="cnn_summary_files/figure-html/cell-6-output-2.png"  class="thumbnail-image card-img"/></p>
 </a><p><a href="../plots/cnn_summary.html" class="no-external"></a></p>
 </div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../plots/cnn_summary.html" class="no-external">Training summary</a>
+<a href="../plots/cnn_summary.html" class="no-external">CNN analysis</a>
 </h3>
 <div class="listing-subtitle">
 <a href="../plots/cnn_summary.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="../plots/cnn_summary.html" class="no-external">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op">%</span>load_ext autoreload</span>
-<span id="cb1-2"><span class="op">%</span>autoreload <span class="dv">2</span></span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="im">import</span> warnings</span>
-<span id="cb1-5"></span>
-<span id="cb1-6">warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-7"></span>
-<span id="cb1-8"><span class="im">import</span> os</span>
-<span id="cb1-9"></span>
-<span id="cb1-10">os.chdir(<span class="st">"/project/persistent-exclusion-process/"</span>)</span>
-<span id="cb1-11"></span>
-<span id="cb1-12"><span class="im">import</span> gc</span>
-<span id="cb1-13"></span>
-<span id="cb1-14"><span class="im">import</span>…<span class="im"></span></span><span id="cb1-15"><span class="im"></span></span><span id="cb1-16"><span class="im"></span></span><span id="cb1-17"><span class="im"></span></span><span id="cb1-18"><span class="im"></span><span class="im"></span></span><span id="cb1-19"><span class="im"></span><span class="im"></span></span><span id="cb1-20"><span class="im"></span><span class="im"></span></span><span id="cb1-21"><span class="im"></span><span class="im"></span></span><span id="cb1-22"><span class="im"></span><span class="im"></span></span><span id="cb1-23"><span class="im"></span><span class="im"></span></span><span id="cb1-24"><span class="im"></span><span class="im"></span></span><span id="cb1-25"></span><span id="cb1-26"><span class="im"></span><span class="im"></span></span><span id="cb1-27"></span><span id="cb1-28"></span><span id="cb1-29"></span><span id="cb1-30"></span><span id="cb1-31"></span><span id="cb1-32"></span><span id="cb1-33"></span><span id="cb1-34"><span class="im"></span><span class="im"></span></span><span id="cb1-35"><span class="im"></span><span class="im"></span></span><span id="cb1-36"><span class="im"></span><span class="im"></span></span></code></pre></div></details></a>
+<a href="../plots/cnn_summary.html" class="no-external"><strong>Full code</strong></a>
 </div>
 </div>
 <div class="metadata">
@@ -296,7 +256,7 @@ NP
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1711150123985" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1713130989816" data-listing-reading-time-sort="1" data-listing-word-count-sort="8">
 <div class="thumbnail">
 <p><a href="../plots/csize_grid.html" class="no-external"></a></p><a href="../plots/csize_grid.html" class="no-external">
 <p class="card-img-top"><img src="csize_grid_files/figure-html/cell-6-output-1.png"  class="thumbnail-image card-img"/></p>
@@ -310,18 +270,7 @@ NP
 <a href="../plots/csize_grid.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="../plots/csize_grid.html" class="no-external">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> os</span>
-<span id="cb1-2">os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="im">import</span> glob</span>
-<span id="cb1-5"><span class="im">import</span> ast</span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="im">import</span> h5py</span>
-<span id="cb1-8"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-9"><span class="im">from</span> mpl_toolkits.axes_grid1.inset_loc…<span class="im"></span></span><span id="cb1-10"><span class="im"></span><span class="im"></span></span><span id="cb1-11"><span class="im"></span><span class="im"></span></span><span id="cb1-12"><span class="im"></span><span class="im"></span></span><span id="cb1-13"><span class="im"></span><span class="im"></span></span><span id="cb1-14"><span class="im"></span><span class="im"></span></span><span id="cb1-15"></span><span id="cb1-16"><span class="im"></span><span class="im"></span></span><span id="cb1-17"><span class="im"></span><span class="im"></span></span><span id="cb1-18"><span class="im"></span><span class="im"></span></span></code></pre></div></details></a>
+<a href="../plots/csize_grid.html" class="no-external"><strong>Full code</strong></a>
 </div>
 </div>
 <div class="metadata">
@@ -367,7 +316,7 @@ NP
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1711578976059" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1713361971816" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
 <div class="thumbnail">
 <p><a href="../plots/labelling.html" class="no-external"></a></p><a href="../plots/labelling.html" class="no-external">
 <p class="card-img-top"><img src="labelling_files/figure-html/cell-4-output-1.png"  class="thumbnail-image card-img"/></p>
@@ -375,26 +324,13 @@ NP
 </div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../plots/labelling.html" class="no-external">Cluster manipulation</a>
+<a href="../plots/labelling.html" class="no-external">Cluster manipulation (orientation analysis)</a>
 </h3>
 <div class="listing-subtitle">
 <a href="../plots/labelling.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="../plots/labelling.html" class="no-external">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op">%</span>load_ext autoreload</span>
-<span id="cb1-2"><span class="op">%</span>autoreload <span class="dv">2</span></span>
-<span id="cb1-3"><span class="im">import</span> warnings</span>
-<span id="cb1-4"></span>
-<span id="cb1-5">warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-6"><span class="im">import</span> os</span>
-<span id="cb1-7"></span>
-<span id="cb1-8">os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"></span>
-<span id="cb1-11"><span class="co">#from…</span></span><span id="cb1-12"><span class="im"></span><span class="im"></span></span><span id="cb1-13"><span class="im"></span></span><span id="cb1-14"><span class="im"></span></span><span id="cb1-15"><span class="im"></span><span class="im"></span></span><span id="cb1-16"><span class="im"></span><span class="im"></span></span><span id="cb1-17"><span class="im"></span><span class="im"></span></span><span id="cb1-18"><span class="im"></span><span class="im"></span></span><span id="cb1-19"><span class="im"></span><span class="im"></span></span><span id="cb1-20"><span class="im"></span><span class="im"></span></span><span id="cb1-21"></span><span id="cb1-22"><span class="im"></span><span class="im"></span></span><span id="cb1-23"><span class="im"></span><span class="im"></span></span><span id="cb1-24"></span><span id="cb1-25"><span class="op"></span></span><span id="cb1-26"></span></code></pre></div></details></a>
+<a href="../plots/labelling.html" class="no-external"><strong>Full code</strong></a>
 </div>
 </div>
 <div class="metadata">
@@ -442,10 +378,10 @@ NP
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1711147039431" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1712451643091" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <div class="thumbnail">
 <p><a href="../plots/percolation.html" class="no-external"></a></p><a href="../plots/percolation.html" class="no-external">
-<p class="card-img-top"><img src="percolation_files/figure-html/cell-7-output-2.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="percolation_files/figure-html/cell-7-output-1.png"  class="thumbnail-image card-img"/></p>
 </a><p><a href="../plots/percolation.html" class="no-external"></a></p>
 </div>
 <div class="body">
@@ -475,7 +411,7 @@ NP
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1710941731061" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1713131420703" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
 <div class="thumbnail">
 <p><a href="../plots/percolation_ratio_rho.html" class="no-external"></a></p><a href="../plots/percolation_ratio_rho.html" class="no-external">
 <p class="card-img-top"><img src="percolation_ratio_rho_files/figure-html/cell-2-output-1.png"  class="thumbnail-image card-img"/></p>
@@ -489,19 +425,7 @@ NP
 <a href="../plots/percolation_ratio_rho.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="../plots/percolation_ratio_rho.html" class="no-external">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> warnings</span>
-<span id="cb1-2">warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="im">import</span> os</span>
-<span id="cb1-5">os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="im">import</span> glob</span>
-<span id="cb1-8"></span>
-<span id="cb1-9"><span class="im">import</span> h5py</span>
-<span id="cb1-10"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>…<span id="cb1-11"><span class="im"></span><span class="im"></span></span><span id="cb1-12"><span class="im"></span><span class="im"></span></span><span id="cb1-13"><span class="im"></span><span class="im"></span></span><span id="cb1-14"><span class="im"></span><span class="im"></span></span><span id="cb1-15"></span><span id="cb1-16"><span class="im"></span><span class="im"></span></span><span id="cb1-17"><span class="im"></span><span class="im"></span></span><span id="cb1-18"><span class="im"></span><span class="im"></span></span><span id="cb1-19"></span><span id="cb1-20"><span class="op"></span><span class="bu"></span><span class="st"></span></span><span id="cb1-21"><span class="op"></span></span><span id="cb1-22"><span class="op"></span></span><span id="cb1-23"><span class="cf"></span><span class="bu"></span><span class="kw"></span></span><span id="cb1-24"><span class="op"></span><span class="bu"></span><span class="bu"></span><span class="dv"></span></span><span id="cb1-25"><span class="op"></span><span class="bu"></span><span class="bu"></span><span class="dv"></span></span><span id="cb1-26"></span><span id="cb1-27"></span><span id="cb1-28"><span class="op"></span><span class="bu"></span><span class="bu"></span></span><span id="cb1-29"></span><span id="cb1-30"></span><span id="cb1-31"><span class="op"></span></span><span id="cb1-32"><span class="st"></span><span class="op"></span><span class="dv"></span></span><span id="cb1-33"><span class="st"></span><span class="op"></span><span class="dv"></span></span><span id="cb1-34"></span><span id="cb1-35"><span class="op"></span><span class="op"></span><span class="dv"></span><span class="dv"></span><span class="op"></span><span class="va"></span></span><span id="cb1-36"></span><span id="cb1-37"><span class="op"></span><span class="dv"></span><span class="dv"></span><span class="bu"></span></span><span id="cb1-38"><span class="op"></span><span class="dv"></span></span><span id="cb1-39"><span class="op"></span></span><span id="cb1-40"><span class="op"></span><span class="dv"></span><span class="op"></span><span class="dv"></span></span><span id="cb1-41"></span><span id="cb1-42"><span class="cf"></span><span class="bu"></span><span class="kw"></span><span class="bu"></span></span><span id="cb1-43"><span class="op"></span><span class="op"></span><span class="bu"></span></span><span id="cb1-44"><span class="op"></span><span class="bu"></span><span class="op"></span><span class="dv"></span></span><span id="cb1-45"><span class="op"></span><span class="dv"></span></span><span id="cb1-46"><span class="op"></span><span class="bu"></span></span><span id="cb1-47"><span class="op"></span></span><span id="cb1-48"><span class="cf"></span><span class="op"></span><span class="bu"></span><span class="op"></span><span class="dv"></span></span><span id="cb1-49"><span class="op"></span><span class="op"></span><span class="st"></span></span><span id="cb1-50"></span><span id="cb1-51"><span class="op"></span><span class="ss"></span><span class="sc"></span><span class="dv"></span><span class="sc"></span><span class="ss"></span></span><span id="cb1-52"><span class="op"></span><span class="op"></span><span class="dv"></span><span class="bu"></span></span><span id="cb1-53"><span class="op"></span><span class="fl"></span><span class="dv"></span></span><span id="cb1-54"><span class="op"></span><span class="dv"></span></span><span id="cb1-55"><span class="op"></span><span class="st"></span></span><span id="cb1-56"><span class="op"></span></span><span id="cb1-57"><span class="op"></span><span class="st"></span><span class="cf"></span><span class="kw"></span><span class="dv"></span><span class="dv"></span><span class="dv"></span><span class="cf"></span><span class="st"></span></span><span id="cb1-58"></span><span id="cb1-59"><span class="op"></span></span><span id="cb1-60"><span class="op"></span><span class="dv"></span></span><span id="cb1-61"></span><span id="cb1-62"><span class="st"></span></span></code></pre></div></details><div class="cell-output cell-output-display"><div><figure class="figure"><p></p></figure></div></div></a>
+<a href="../plots/percolation_ratio_rho.html" class="no-external"><strong>Full code</strong></a>
 </div>
 </div>
 <div class="metadata">
@@ -509,6 +433,40 @@ NP
 <div class="listing-author">
 NP
 </div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1713134241351">
+<div class="thumbnail">
+<p><a href="../plots/snapshot.html" class="no-external"></a></p><a href="../plots/snapshot.html" class="no-external">
+<p class="card-img-top"><img src="snapshot_files/figure-html/cell-4-output-2.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="../plots/snapshot.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../plots/snapshot.html" class="no-external"></a>
+</h3>
+<div class="listing-subtitle">
+<a href="../plots/snapshot.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="../plots/snapshot.html" class="no-external">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> os</span>
+<span id="cb1-2">os.chdir(<span class="st">"/project/persistent-exclusion-process"</span>)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="im">from</span> src.utils <span class="im">import</span> get_ds_iters</span>
+<span id="cb1-5"><span class="im">from</span> src.plot_utils <span class="im">import</span> get_plot_configs</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="im">import</span> h5py</span>
+<span id="cb1-8"><span class="im">import</span> glob</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="im">f…</span><span class="im"></span></span><span id="cb1-11"><span class="im"></span><span class="im"></span></span><span id="cb1-12"><span class="im"></span><span class="im"></span></span><span id="cb1-13"><span class="im"></span><span class="im"></span></span><span id="cb1-14"><span class="im"></span><span class="im"></span></span><span id="cb1-15"></span><span id="cb1-16"><span class="op"></span></span><span id="cb1-17"><span class="st"></span><span class="op"></span><span class="dv"></span></span><span id="cb1-18"><span class="st"></span><span class="op"></span><span class="dv"></span></span><span id="cb1-19"></span></code></pre></div></details></a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="../plots/snapshot.html" class="no-external"></a></p><a href="../plots/snapshot.html" class="no-external">
 </a>
 </div>
 </div>

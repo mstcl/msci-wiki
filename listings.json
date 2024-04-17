@@ -17,8 +17,8 @@
   {
     "listing": "/writing/landing.html",
     "items": [
-      "/writing/prepatory_work.html",
       "/writing/motivation.html",
+      "/writing/prepatory_work.html",
       "/writing/interim.html"
     ]
   },
@@ -53,13 +53,15 @@
       "/plots/labelling.html",
       "/plots/number_of_cluster.html",
       "/plots/percolation.html",
-      "/plots/percolation_ratio_rho.html"
+      "/plots/percolation_ratio_rho.html",
+      "/plots/snapshot.html"
     ]
   },
   {
     "listing": "/training/landing.html",
     "items": [
       "/training/prediction_vs_actual.html",
+      "/training/training_mse.html",
       "/training/training_summary.html",
       "/training/training_summary_hi.html",
       "/training/training_with_monochrome.html",
@@ -68,6 +70,7 @@
       "/training/training_with_orientation_hi.html",
       "/training/training_without_orientation.html",
       "/training/training_without_orientation_hi.html",
+      "/training/visualize_summary.html",
       "/training/visualize_with_orientation.html",
       "/training/visualize_with_orientation_hi.html",
       "/training/visualize_with_thresholding.html",

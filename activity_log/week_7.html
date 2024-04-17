@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -131,10 +151,8 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#pep-code" id="toc-pep-code" class="nav-link" data-scroll-target="#pep-code">PEP code</a></li>
   <li><a href="#project-outline" id="toc-project-outline" class="nav-link" data-scroll-target="#project-outline">Project outline</a></li>
-  <li><a href="#pondering-on-tumbling-algorithm" id="toc-pondering-on-tumbling-algorithm" class="nav-link" data-scroll-target="#pondering-on-tumbling-algorithm">Pondering on tumbling algorithm</a></li>
-  <li><a href="#cluster-distribution-plot-tips" id="toc-cluster-distribution-plot-tips" class="nav-link" data-scroll-target="#cluster-distribution-plot-tips">Cluster distribution plot tips</a></li>
+  <li><a href="#notes-from-discussions" id="toc-notes-from-discussions" class="nav-link" data-scroll-target="#notes-from-discussions">Notes from discussions</a></li>
   </ul></li>
-  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
 </nav>
     </div>
@@ -172,29 +190,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Part of this week was the school of arts’ reading week so I only set out to do a few things.</p>
-</div>
-</div>
-</div>
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul>
-<li>Start the interim report (writing are both synced in under “writing” and on <a href="https://www.overleaf.com/read/tczpxpzmsrrm#e56017">Overleaf</a>)</li>
+<li>Start the interim report (writing are both synced in under “writing” and on Overleaf)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 <li>Figures for interim report
 <ul class="task-list">
 <li><label><input type="checkbox" checked="">Snapshot grid (3x3 and better font sizes).</label></li>
-<li><label><input type="checkbox"><del>Orientation (one plot with multiple values, fixed density, and same scale)</del></label></li>
+<li><label><input type="checkbox">Orientation (one plot with multiple values, fixed density, and same scale)</label></li>
 <li><label><input type="checkbox" checked="">Cluster labelling (separate plot to demonstrate)</label></li>
-<li><label><input type="checkbox" checked="">Cluster size distribution (one plot with multiple values of fit, low alpha data points, with data binning to demonstrate power law)</label>
-<ul>
-<li><a href="https://rubendewitte.be/blogposts/DataBinning.html">A good resource for data binning</a>.</li>
-</ul></li>
+<li><label><input type="checkbox" checked="">Cluster size distribution (one plot with multiple values of fit, low alpha data points, with data binning to demonstrate power law)</label></li>
 <li><label><input type="checkbox" checked="">Number of clusters (need to write code for this)</label>
 <ul>
 <li>it’s actually just returned by <code>ndimage.label()</code></li>
@@ -207,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This week I started writing up the interim report, there were a few things to discuss and notes were taken with regard to plans, as well as the PEP code.</p>
 <section id="pep-code" class="level3">
 <h3 class="anchored" data-anchor-id="pep-code">PEP code</h3>
-<p>We had a discussion on whether or not the random, independent tumbling mechanism is justified. For a continuous model, the new orientation is a value between 0 and 2<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>, and strictly speaking the probability to get any single value is 0. However, for a discrete case, it’s one in four of (up, down, left, right), thus, 25% of the time there is the case that the particle ‘tumbles’ but it actually just carries on in a straight line. We wonder what the effect of this might be, compared to if we re-roll until it is no longer facing the same direction. It is important to keep in mind what this model models, which are bacteria like <em>E. coli.</em>, so in a way there is still some kind of feedback even if the bacteria ‘tumbles’ on the spot (it continues to go in a straight line). I don’t know if what I’m saying is truly correct, though.</p>
+<p>We had a discussion on whether or not the random, independent tumbling mechanism is justified. For a continuous model, the new orientation is a value between 0 and 2<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>, and strictly speaking the probability to get any single value is 0. However, for a discrete case, it’s one in four of (up, down, left, right), thus, 25% of the time there is the case that the particle ‘tumbles’ but it actually just carries on in a straight line. We wonder what the effect of this might be, compared to if we re-roll until it is no longer facing the same direction. It is important to keep in mind what this model models, which are bacteria like <em>E. coli.</em>, so in a way there is still some kind of feedback even if the bacteria ‘tumbles’ on the spot (it continues to go in a straight line)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 </section>
 <section id="project-outline" class="level3">
 <h3 class="anchored" data-anchor-id="project-outline">Project outline</h3>
@@ -217,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 <li>timescales</li>
 <li>cluster drift</li>
 <li>percolation</li>
-<li>alpha-phi diagram</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> diagram</li>
 <li>pair correlations (orientation)</li>
 </ul>
 <p>Then, there comes to neural network component, where we construct a minimal CNN for two cases:</p>
@@ -225,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
 <li>where we ignore orientation (exp-like)</li>
 <li>where we include full information</li>
 </ol>
-<p>and compare between the two. Here, Rassolov (2022) is built upon. We also define dissipation as the breaking of detailed balance, and there are some relations we can use to ‘measure it’.</p>
+<p>and compare between the two. Here, Rassolov (2022) is built upon <span class="citation" data-cites="rassolov_predicting_2022">Rassolov et al. (<a href="#ref-rassolov_predicting_2022" role="doc-biblioref">2022</a>)</span>. We also define dissipation as the breaking of detailed balance, and there are some relations we can use to ‘measure it’.</p>
 <p>Then, we validate the architecture in terms of how well it predicts. We keep in mind:</p>
 <ul>
 <li>the number of layers, the feature map, other options</li>
@@ -239,31 +244,29 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>And finally, we can also consider its robustness, which ties in prediction and explanation</p>
 </section>
-<section id="pondering-on-tumbling-algorithm" class="level3">
-<h3 class="anchored" data-anchor-id="pondering-on-tumbling-algorithm">Pondering on tumbling algorithm</h3>
-<p>Should we change how it works?</p>
-<p><code>pcg32_boundedrand_r(rngptr, bound)</code>, <code>bound</code> to be set to 3, and tumbling should uniquely determine a new direction (not the one it’s currently on).</p>
-<p>After some discussions with FT, seems like this is not quite right, the current method is fully intended (isotropy).</p>
-</section>
-<section id="cluster-distribution-plot-tips" class="level3">
-<h3 class="anchored" data-anchor-id="cluster-distribution-plot-tips">Cluster distribution plot tips</h3>
-<ul>
-<li>why do we want to data bin it with log? we can get the relationship by finding the fit anyway?</li>
-<li>dissipation: breaking detailed balance, not spontaneously</li>
-<li>equilibrium limit: alpha=1</li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>E</mi><mo>=</mo><mi>v</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>D</mi><mi>r</mi></msub><mo>*</mo><mi>s</mi><mi>i</mi><mi>g</mi><mi>m</mi><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">PE = v / (D_r * sigma)</annotation></semantics></math></li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>E</mi><mo>=</mo><msub><mi>v</mi><mi>r</mi></msub><mo>*</mo><mi>g</mi><mi>a</mi><mi>m</mi><mi>m</mi><mi>a</mi><mo>*</mo><mi>s</mi><mi>i</mi><mi>g</mi><mi>m</mi><mi>a</mi><mi>/</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">PE = v_r * gamma * sigma / T</annotation></semantics></math></li>
-<li>track-head on collisions possible? Need to modify source code too much.</li>
-</ul>
-</section>
-</section>
-<section id="reference-materials" class="level2">
-<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
-<ul>
-<li><a href="https://rubendewitte.be/blogposts/DataBinning.html">Data binning</a></li>
-</ul>
+<section id="notes-from-discussions" class="level3">
+<h3 class="anchored" data-anchor-id="notes-from-discussions">Notes from discussions</h3>
+<p>Should we change how the tumbling algorithm works?</p>
+<p><code>pcg32_boundedrand_r(rngptr, bound)</code>, <code>bound</code> to be set to 3, and tumbling should uniquely determine a new direction (not the one it’s currently on)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Why do we want to data bin it with log? Can get the relationship by finding the fit anyway without binning?<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>Dissipation: breaking detailed balance, not spontaneous. - equilibrium limit: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha=1</annotation></semantics></math> - <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>E</mi><mo>=</mo><mi>v</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>D</mi><mi>r</mi></msub><mo>*</mo><mi>σ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">PE = v / (D_r * \sigma)</annotation></semantics></math> - <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>E</mi><mo>=</mo><msub><mi>v</mi><mi>r</mi></msub><mo>*</mo><mi>γ</mi><mo>*</mo><mi>σ</mi><mi>/</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">PE = v_r * \gamma * \sigma / T</annotation></semantics></math> - track-head on collisions possible? Need to modify source code too much.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-rassolov_predicting_2022" class="csl-entry" role="listitem">
+Rassolov, Gregory, Laura Tociu, Étienne Fodor, and Suriyanarayanan Vaikuntanathan. 2022. <span>“From Predicting to Learning Dissipation from Pair Correlations of Active Liquids.”</span> <em>The Journal of Chemical Physics</em> 157 (5): 054901. <a href="https://doi.org/10.1063/5.0097863">https://doi.org/10.1063/5.0097863</a>.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Link to <a href="https://www.overleaf.com/read/tczpxpzmsrrm#e56017">Overleaf document</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>I don’t know if what I’m saying is actually correct, though.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>After some discussions with FT, seems like this is not quite right, the current method is fully intended (isotropy).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Binning is recommended depending on the non-binned distribution, we should do it. Here’s a <a href="https://rubendewitte.be/blogposts/DataBinning.html">visual explanation</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

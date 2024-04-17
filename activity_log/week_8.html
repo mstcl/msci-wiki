@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -209,21 +209,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="task-for-week-8-12" class="level2">
 <h2 class="anchored" data-anchor-id="task-for-week-8-12">Task for week 8-12</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Finish and submit interim report</label>
-<ul>
-<li>See <a href="../writing/interim.html">here</a> for converted HTML version.</li>
-</ul></li>
+<li><label><input type="checkbox" checked="">Finish and submit a draft interim report</label></li>
 <li><label><input type="checkbox" checked="">Have a chat with our assessor over our report</label></li>
 </ul>
 </section>
 <section id="task-for-the-break-up-to-week-13" class="level2">
 <h2 class="anchored" data-anchor-id="task-for-the-break-up-to-week-13">Task for the break up to week 13</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Test GPU on BluePebble</label>
-<ul>
-<li>See <a href="#tensorflow-and-gpu-testing">Tensorflow and GPU testing</a></li>
-</ul></li>
-<li><label><input type="checkbox" checked="">Fit the cluster size distribution (see <a href="../plots/csize_grid.html">here</a>)</label></li>
+<li><label><input type="checkbox" checked="">Test GPU on BluePebble<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</label></li>
+<li><label><input type="checkbox" checked="">Fit the cluster size distribution<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</label></li>
 <li><label><input type="checkbox">Look at cluster distribution over time</label>
 <ul>
 <li>This provides timescale for stationarity</li>
@@ -233,24 +227,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>For a given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, at what <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> do you get a cluster that is as large as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>?
 <ul>
-<li>Requires combing through may <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>’s, which means combining our data.</li>
+<li>Requires combing through may <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>’s, which means combining our data<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
 </ul></li>
-<li>See <a href="#quantifying-percolation">Quantifying percolation</a></li>
 </ul></li>
 <li><label><input type="checkbox">Look at convergence of cluster distribution. (???)</label></li>
-<li><label><input type="checkbox" checked="">Quantify percolation</label></li>
+<li><label><input type="checkbox" checked="">Quantify percolation<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</label></li>
 </ul>
 </section>
 <section id="project-plan-and-outline" class="level2">
 <h2 class="anchored" data-anchor-id="project-plan-and-outline">Project plan and outline</h2>
 <ul>
-<li>characterisation: this is to set the landscape through PEP analysis, contrasted to a data-driven method with ML
+<li>Characterisation: this is to set the landscape through PEP analysis, contrasted to a data-driven method with ML
 <ul>
 <li>timescales</li>
 <li>cluster drift</li>
 <li>percolation</li>
-<li>alpha-phi diagram</li>
-<li>pair correlations (linking with dissipation), which we have not looked at</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> diagram</li>
+<li>Pair correlations (linking with dissipation)<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</li>
 </ul></li>
 <li>Construction: a minimal CNN model with two approaches
 <ol type="1">
@@ -287,15 +280,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#SBATCH --gres=gpu:2</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">#SBATCH --partition gpu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is the output of <code>tf.config.list_physical_devices("GPU")</code>:</p>
-<pre><code>I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:0 with 9804 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
-I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\] Created device /device:GPU:1 with 9804 MB memory:  -&gt; device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:af:00.0, compute capability: 7.5</code></pre>
+<pre><code>I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\]
+  Created device /device:GPU:0 with 9804 MB memory:
+  -&gt; device: 0, name: NVIDIA GeForce RTX 2080 Ti,
+  pci bus id: 0000:3b:00.0, compute capability: 7.5
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:1886\]
+  Created device /device:GPU:1 with 9804 MB memory:
+  -&gt; device: 1, name: NVIDIA GeForce RTX 2080 Ti,
+  pci bus id: 0000:af:00.0, compute capability: 7.5</code></pre>
 <p>In addition to this, I got weird errors and info even though the above works:</p>
 <pre><code>cpu-bind=MASK - bp1-gpu002, task  0  0 [170146]: mask 0x2020 set
-E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.</code></pre>
+E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342]
+  Unable to register cuDNN factory: Attempting to register factory
+  for plugin cuDNN when one has already been registered
+E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609]
+  Unable to register cuFFT factory: Attempting to register factory
+  for plugin cuFFT when one has already been registered
+E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518]
+  Unable to register cuBLAS factory: Attempting to register factory
+  for plugin cuBLAS when one has already been registered
+I tensorflow/core/platform/cpu_feature_guard.cc:182]
+  This TensorFlow binary is optimized to use available CPU
+  instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other
+operations, rebuild TensorFlow with the appropriate compiler flags.</code></pre>
 <p>Importing keras and other tensorflow modules seem to work fine. The error appears at the start. Maybe it might be an issue later on.</p>
 </section>
 <section id="quantifying-percolation" class="level2">
@@ -305,8 +313,7 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 <li>Percolation: increase <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math> increases largest cluster size (physical dimension is the limiting factor).</li>
 <li>No percolation: increase <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math> does not affect “biggest” cluster size.</li>
 </ul>
-<p>We can’t implement this in code because we cannot modify physical dimension without making new datasets at different system sizes. Instead, we looked at how <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math> affect the biggest cluster size, measured as the ratio to the system size.</p>
-<p>See <a href="../plots/percolation_ratio_rho.html">here</a> for plots.</p>
+<p>We can’t implement this in code because we cannot modify physical dimension without making new datasets at different system sizes<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
 <section id="problem" class="level3">
 <h3 class="anchored" data-anchor-id="problem">Problem</h3>
 <p>The issue with this approach is it doesn’t quite capture percolation, as what we care more about is the edge-to-edge connectedness. For this, we look not at its bulk size but its size from one edge to the other, and calculate its fractal dimension, which will indicate whether or not its smooth or has more complex details.</p>
@@ -314,6 +321,17 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>See section <a href="#tensorflow-and-gpu-testing">Tensorflow and GPU testing</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Plots <a href="../plots/csize_grid.html#old-plots">here</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See section <a href="#quantifying-percolation">Quantifying percolation</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Plots <a href="../plots/percolation_ratio_rho.html#ratio-of-biggest-cluster-over-density">here</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>If time allows.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Instead, we looked at how <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> affect the biggest cluster size, measured as the ratio to the system size.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

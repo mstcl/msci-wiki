@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/writing/interim.html</loc>
-    <lastmod>2024-03-19T22:00:02.777Z</lastmod>
+    <lastmod>2024-04-14T23:10:49.914Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/prediction_vs_actual.html</loc>
@@ -26,23 +26,27 @@
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/training_with_orientation_hi.html</loc>
-    <lastmod>2024-03-28T17:23:01.715Z</lastmod>
+    <lastmod>2024-04-14T23:08:05.171Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/visualize_with_orientation.html</loc>
-    <lastmod>2024-03-25T17:48:59.488Z</lastmod>
+    <lastmod>2024-04-14T22:58:45.622Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/training_with_monochrome.html</loc>
-    <lastmod>2024-03-26T19:02:08.350Z</lastmod>
+    <lastmod>2024-04-14T23:07:01.423Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/training/training_with_orientation.html</loc>
-    <lastmod>2024-03-26T19:36:36.973Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/training/training_mse.html</loc>
+    <lastmod>2024-04-07T00:03:25.691Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/training/training_summary_hi.html</loc>
-    <lastmod>2024-03-28T18:19:18.369Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/training/training_without_orientation_hi.html</loc>
+    <lastmod>2024-04-14T23:09:09.359Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/training/visualize_summary.html</loc>
+    <lastmod>2024-04-08T21:29:13.463Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/visualize_with_orientation_hi.html</loc>
@@ -54,31 +58,31 @@
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/activity_log/week_7.html</loc>
-    <lastmod>2024-03-28T00:40:40.314Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_19.html</loc>
-    <lastmod>2024-03-28T00:10:00.180Z</lastmod>
+    <lastmod>2024-04-14T20:34:09.712Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/activity_log/landing.html</loc>
     <lastmod>2024-03-19T22:12:19.716Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_14.html</loc>
-    <lastmod>2024-03-28T00:28:52.526Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_5.html</loc>
+    <lastmod>2024-04-14T23:13:52.797Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_4.html</loc>
-    <lastmod>2024-03-28T00:34:27.723Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_2.html</loc>
+    <lastmod>2024-04-14T21:03:58.115Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_16.html</loc>
-    <lastmod>2024-03-28T20:36:05.155Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_15.html</loc>
+    <lastmod>2024-04-14T21:19:45.265Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_8.html</loc>
+    <lastmod>2024-04-15T13:06:22.902Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/activity_log/week_17.html</loc>
-    <lastmod>2024-03-28T20:36:20.317Z</lastmod>
+    <lastmod>2024-04-14T21:25:55.799Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/shared/ftnotes/label.html</loc>
@@ -86,7 +90,7 @@
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/shared/repo.html</loc>
-    <lastmod>2024-02-14T14:06:41.738Z</lastmod>
+    <lastmod>2024-04-14T21:01:12.811Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/shared/deadlines.html</loc>
@@ -94,47 +98,51 @@
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/index.html</loc>
-    <lastmod>2024-03-19T22:07:38.985Z</lastmod>
+    <lastmod>2024-04-14T23:44:31.479Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/evo.html</loc>
-    <lastmod>2024-03-20T13:35:22.481Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/percolation.html</loc>
-    <lastmod>2024-03-22T22:37:19.431Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/percolation_ratio_rho.html</loc>
-    <lastmod>2024-03-20T13:35:31.061Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/number_of_cluster.html</loc>
-    <lastmod>2024-03-20T13:35:28.441Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/acf.html</loc>
-    <lastmod>2024-03-26T23:49:35.688Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/labelling.html</loc>
-    <lastmod>2024-03-27T22:36:16.059Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/cnn_summary.html</loc>
-    <lastmod>2024-03-28T20:34:58.541Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mstcl.github.io/msci-wiki/plots/csize_grid.html</loc>
-    <lastmod>2024-03-22T23:28:43.985Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/plots/snapshot.html</loc>
+    <lastmod>2024-04-14T22:37:21.351Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/plots/landing.html</loc>
     <lastmod>2024-03-19T22:12:13.012Z</lastmod>
   </url>
   <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/csize_grid.html</loc>
+    <lastmod>2024-04-14T21:43:09.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/cnn_summary.html</loc>
+    <lastmod>2024-04-15T13:35:55.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/labelling.html</loc>
+    <lastmod>2024-04-17T13:52:51.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/acf.html</loc>
+    <lastmod>2024-04-14T22:31:09.458Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/number_of_cluster.html</loc>
+    <lastmod>2024-03-20T13:35:28.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/percolation_ratio_rho.html</loc>
+    <lastmod>2024-04-14T21:50:20.703Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/percolation.html</loc>
+    <lastmod>2024-04-07T01:00:43.091Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/plots/evo.html</loc>
+    <lastmod>2024-03-20T13:35:22.481Z</lastmod>
+  </url>
+  <url>
     <loc>https://mstcl.github.io/msci-wiki/plots/cluster_count_and_biggest.html</loc>
-    <lastmod>2024-03-26T02:08:45.208Z</lastmod>
+    <lastmod>2024-04-14T22:32:31.036Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/shared/gitinfo.html</loc>
@@ -154,43 +162,47 @@
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/activity_log/week_20.html</loc>
-    <lastmod>2024-03-28T00:24:25.766Z</lastmod>
+    <lastmod>2024-04-15T13:30:58.271Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_8.html</loc>
-    <lastmod>2024-03-28T00:31:53.810Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_4.html</loc>
+    <lastmod>2024-04-14T21:04:05.558Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_2.html</loc>
-    <lastmod>2024-03-28T00:36:46.260Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_16.html</loc>
+    <lastmod>2024-04-14T21:21:31.033Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_5.html</loc>
-    <lastmod>2024-03-28T00:33:34.269Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_14.html</loc>
+    <lastmod>2024-04-14T23:14:03.444Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/activity_log/week_6.html</loc>
-    <lastmod>2024-03-28T00:23:21.218Z</lastmod>
+    <lastmod>2024-04-14T23:12:40.776Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_15.html</loc>
-    <lastmod>2024-03-28T00:27:25.830Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/activity_log/week_19.html</loc>
+    <lastmod>2024-04-15T13:09:11.408Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/activity_log/week_18.html</loc>
-    <lastmod>2024-03-28T20:36:32.740Z</lastmod>
+    <lastmod>2024-04-14T22:34:51.205Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/activity_log/week_1.html</loc>
-    <lastmod>2024-03-28T00:37:25.634Z</lastmod>
+    <lastmod>2024-04-14T21:01:54.479Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/visualize_without_orientation.html</loc>
     <lastmod>2024-03-22T17:47:30.061Z</lastmod>
   </url>
   <url>
-    <loc>https://mstcl.github.io/msci-wiki/training/training_without_orientation_hi.html</loc>
-    <lastmod>2024-03-28T17:56:25.599Z</lastmod>
+    <loc>https://mstcl.github.io/msci-wiki/training/training_summary_hi.html</loc>
+    <lastmod>2024-03-28T18:19:18.369Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mstcl.github.io/msci-wiki/training/training_with_orientation.html</loc>
+    <lastmod>2024-04-14T23:08:19.848Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/visualize_with_thresholding.html</loc>
@@ -202,23 +214,23 @@
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/training_summary.html</loc>
-    <lastmod>2024-03-28T15:49:03.300Z</lastmod>
+    <lastmod>2024-04-17T14:32:44.224Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/training_without_orientation.html</loc>
-    <lastmod>2024-03-28T15:27:31.719Z</lastmod>
+    <lastmod>2024-04-14T23:09:08.262Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/training/training_with_monochrome_hi.html</loc>
-    <lastmod>2024-03-28T16:22:40.103Z</lastmod>
+    <lastmod>2024-04-14T23:07:48.860Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/writing/motivation.html</loc>
-    <lastmod>2024-02-14T14:06:41.754Z</lastmod>
+    <lastmod>2024-04-14T19:02:03.378Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/writing/prepatory_work.html</loc>
-    <lastmod>2023-11-13T18:16:09.283Z</lastmod>
+    <lastmod>2024-04-14T21:14:23.620Z</lastmod>
   </url>
   <url>
     <loc>https://mstcl.github.io/msci-wiki/literature_notes/motile-active-matter-intro.html</loc>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -165,7 +165,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#remove-the-hardcoded-augmentation-function" id="toc-remove-the-hardcoded-augmentation-function" class="nav-link" data-scroll-target="#remove-the-hardcoded-augmentation-function">Remove the hardcoded augmentation function</a></li>
   </ul></li>
-  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
   </ul>
 </nav>
     </div>
@@ -206,15 +205,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Regenerate datasets without the rolling to reduce filesizes and complexity</label>
-<ul>
-<li>All saved in subdirectory <code>no_roll_data</code>.</li>
-<li>Changes for this summarized on this page.</li>
-</ul></li>
-<li><label><input type="checkbox">Quantify where cluster distribution stabilises</label>
+<li><label><input type="checkbox" checked="">Regenerate datasets without the rolling to reduce filesizes and complexity<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></label></li>
+<li><label><input type="checkbox">Quantify where cluster distribution stabilises<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></label>
 <ul>
 <li>An aside for now as we wrap up analysis to focus on the neural network</li>
-<li>Didn’t complete. Might have to return later down the line.</li>
 </ul></li>
 </ul>
 </section>
@@ -222,22 +216,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <section id="remove-the-hardcoded-augmentation-function" class="level3">
 <h3 class="anchored" data-anchor-id="remove-the-hardcoded-augmentation-function">Remove the hardcoded augmentation function</h3>
-<p>To remove the extra snapshots (look at <a href="./week_5.qmdk">Week 5</a> for an explanation of this), we remove the final loop in <code>sampler.py</code>, create a new version for this, which we named <code>sampler_no_roll.py</code>, and regenerated the datasets, each only 66 MB in size (reduced from 220 MB!).</p>
+<p>To remove the extra snapshots<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, we remove the final loop in <code>sampler.py</code>, create a new version for this, which we named <code>sampler_no_roll.py</code>, and regenerated the datasets, each only 66 MB in size (reduced from 220 MB!).</p>
 <p>A one-liner for this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="va">$(</span><span class="fu">seq</span> 0.0.5 0.05 0.5<span class="va">)</span><span class="kw">;</span> <span class="cf">do</span> <span class="ex">python3</span> sampler_no_roll.py <span class="at">--odd</span> <span class="at">--density</span> <span class="va">$i</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="va">$(</span><span class="fu">seq</span> 0.0.5 0.05 0.5<span class="va">)</span><span class="kw">;</span> <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="cf">do</span> <span class="ex">python3</span> sampler_no_roll.py <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>--odd <span class="at">--density</span> <span class="va">$i</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I think augmentation can be added in when we clean up and prepare data for the neural network, instead of being saved on disk.</p>
-<p>The rest of this week was spent wrapping up the analysis, and doing some reading on neural network, and convolutional neural networks.</p>
-</section>
-</section>
-<section id="reference-materials" class="level2">
-<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
-<ul>
-<li><a href="https://www.deeplearningbook.org/">Deep learning book (MIT Press)</a> (good for references)</li>
-<li><a href="http://neuralnetworksanddeeplearning.com/">Neural networks and deep learning</a> (nicely written)</li>
-<li><a href="https://www.tensorflow.org/tutorials">TF tutorial</a> (hands-on)</li>
-</ul>
+<p>The rest of this week was spent wrapping up the analysis, and doing some reading on neural network, and convolutional neural networks <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>All saved in subdirectory <code>no_roll_data</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Didn’t complete. Might have to return later down the line.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>look at <a href="../activity_log/week_5.html#what-to-run-to-look-into-h5-files">Week 5</a> for an explanation of this<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.deeplearningbook.org/">Deep learning book (MIT Press)</a> (good for references), <a href="http://neuralnetworksanddeeplearning.com/">Neural networks and deep learning</a> (nicely written), <a href="https://www.tensorflow.org/tutorials">TF tutorial</a> (hands-on)<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
